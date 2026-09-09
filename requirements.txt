@@ -47,7 +47,7 @@ overrides==7.7.0
 pyproject_hooks==1.2.0
 requests-oauthlib==2.0.0
 requests-toolbelt==1.0.0
-scikit-learn==1.9.0
+scikit-learn==1.6.1  # predictor joblib trained with 1.6.x; sklearn >=1.8 SimpleImputer requires _fill_dtype absent from these pickles
 #scipy==1.18.0 #used before with cuda 13 and python 3.12
 scipy==1.17.1  # Compatible with Python 3.11 in the CUDA 12.6 Grand Challenge container
 sentence-transformers==5.6.0
