@@ -1,0 +1,19 @@
+# @package _global_
+# T2 override：在 qwen_local(openai->8765) 基础上启用 T2 predictor override
+model:
+  provider: openai
+  model_id: Qwen3.6-35B-A3B-UD-Q4_K_M.gguf
+  base_url: http://127.0.0.1:8765/v1
+  api_key_env: LLAMA_API_KEY
+  request_timeout: 600
+  extra_body:
+    reasoning_budget_tokens: 4096
+generation:
+  temperature: 0.3
+  max_new_tokens: 8192
+  top_p: 0.95
+agent:
+  predictor:
+    enabled: true
+    decision_override: false
+    decision_override_tasks: [2]
