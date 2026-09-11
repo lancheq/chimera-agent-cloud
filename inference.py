@@ -39,6 +39,7 @@ from omegaconf import OmegaConf
 
 from src.chimera_agent_baseline.rag import start_embedding_service
 from src.chimera_agent_baseline.run import run_agent
+from src.chimera_agent_baseline.tools.base import CASE_DATA_FILENAMES_BY_TASK
 from src.chimera_agent_baseline.utils import setup_logging
 
 log = logging.getLogger(__name__)
@@ -141,13 +142,28 @@ def _materialise_case(task: int, slug_to_path: dict[str, Path], root: Path, case
     prompt["task"] = task
     _write_json(case_dir / "prompt.json", prompt)
 
-    # clinical-data -> clinical.json (served behind MCP tools). Field names in
-    # the GC socket already match the ToolSpec field names, so pass it through.
+    # clinical-data -> the per-task clinical filename + a legacy ``clinical.json``.
+    #
+    # MCP tools resolve the case file through
+    # ``tools/base.CASE_DATA_FILENAMES_BY_TASK``, i.e. the *task-specific* name
+    # (``prostate-biopsy-decision-clinical-data.json`` for task 1) -- writing
+    # only ``clinical.json`` made ``CaseDataStore`` log "Loaded 0 cases" and
+    # every tool answer "Case 'gc-case' not found", so the agent reasoned
+    # without any clinical data at all (GC run a7d7744d: the run's own
+    # self_refine critique reported "The tools are returning Case not found
+    # errors" and listed the fabricated PSA/PI-RADS/PSAD values it then
+    # invented). The real data trees on the school server carry the long name,
+    # which is why the 180-case batch never showed this.
     clinical_slug = next(s for s in CLINICAL_SLUG_TO_TASK if s in slug_to_path)
     clinical = _load_json(slug_to_path[clinical_slug])
     if isinstance(clinical, dict):
         clinical.setdefault("case_id", case_id)
-    _write_json(case_dir / "clinical.json", clinical)
+    task_clinical_name = CASE_DATA_FILENAMES_BY_TASK[task]
+    _write_json(case_dir / task_clinical_name, clinical)
+    # Keep writing the legacy alias: it is what older copies of this adapter and
+    # any ad-hoc tooling look for, and an extra file here is inert.
+    if task_clinical_name != "clinical.json":
+        _write_json(case_dir / "clinical.json", clinical)
 
     # neural representations -> features.json (only consumed when the optional
     # image predictor is enabled; inert otherwise).
@@ -190,7 +206,7 @@ def _reasoning_value(task: int, prediction: dict[str, Any]) -> Any:
         "confidence": prediction["confidence"],
         "variable_weights": prediction["variable_weights"],
         "reveal_sequence": _reveal_sequence_for_platform(
-            prediction.get("reveal_sequence", [])
+            prediction.get("reveal_sequence", []), task
         ),
     }
 
@@ -201,26 +217,39 @@ def _reasoning_value(task: int, prediction: dict[str, Any]) -> Any:
 # (``page``/``order``/``key``/``label``/``value``/``via``/``ts``), which is what
 # the vendored evaluation fixtures also contain -- so every local check passed.
 # The platform's live socket schema instead types this field as the union of the
-# five clinical *segments*:
+# clinical *segments*:
 #
 #     instance is not one of ['family_history', 'previous_notes',
 #     'laboratory_results', 'psa_trend', 'radiology_report']
 #
-# GC run 0e45f139-4235-43b4-a6cf-59f0c9fde848 rejected the file for exactly
-# that reason (exec 216 s / total 746 s -- the run itself was fine). Same class
-# of defect as the ``biospy`` filename: the local fixtures are more permissive
-# than the platform. Note the values are the *segment names*, NOT the socket
-# slug ``prostate-...-clinical-data`` -- the evaluation's own slug set is
+# Two GC runs pinned this down. 0e45f139 rejected the dict form outright; then
+# a7d7744d rejected the value ``pathology_report`` for TASK 1:
+#
+#     instance 'pathology_report' is not one of ['family_history', ...]
+#
+# so the vocabulary is task-scoped and task 1 has exactly five members. The
+# project docs mention ``pathology_report`` as a task-2 extra, but that is not
+# independently confirmed by a platform error, so it is allowed for task 2 only
+# -- never for task 1, where the platform has now explicitly refused it. Note
+# the values are the *segment names*, NOT the socket slug
+# ``prostate-...-clinical-data`` -- the evaluation's own slug set is
 # ``{prostate-biospy-decision, prostate-biopsy-decision}`` for the decision
 # socket only.
-_PLATFORM_SEGMENTS = (
+_TASK1_SEGMENTS = (
     "family_history",
     "previous_notes",
     "laboratory_results",
     "psa_trend",
     "radiology_report",
-    "pathology_report",  # task 2 documents this as an extra segment
 )
+
+# Task 2 documents one extra segment (histology is part of its decision).
+_TASK2_SEGMENTS = _TASK1_SEGMENTS + ("pathology_report",)
+
+_PLATFORM_SEGMENTS_BY_TASK: dict[int, tuple[str, ...]] = {
+    1: _TASK1_SEGMENTS,
+    2: _TASK2_SEGMENTS,
+}
 
 # Internal trace key -> platform segment name.
 _KEY_TO_SEGMENT = {
@@ -244,13 +273,18 @@ _TOOL_TO_SEGMENT = {
 }
 
 
-def _reveal_sequence_for_platform(reveal_sequence: Any) -> list[str]:
+def _reveal_sequence_for_platform(reveal_sequence: Any, task: int) -> list[str]:
     """Map the internal reveal trace to the platform's segment vocabulary.
 
-    Entries that cannot be mapped to a known segment are dropped rather than
-    emitted: a single unrecognised value fails the whole socket, and this field
-    is a secondary scoring signal, not the decision itself.
+    The vocabulary is *task-scoped*: the platform refused ``pathology_report``
+    for task 1, so a task-1 sequence can never carry it even though the
+    internal trace may contain a pathology section key.
+
+    Entries that cannot be mapped to a segment this task may emit are dropped
+    rather than passed through: a single unrecognised value fails the whole
+    socket, and this field is a secondary scoring signal, not the decision.
     """
+    allowed = _PLATFORM_SEGMENTS_BY_TASK.get(task, ())
     out: list[str] = []
     for entry in reveal_sequence or []:
         segment = None
@@ -267,7 +301,7 @@ def _reveal_sequence_for_platform(reveal_sequence: Any) -> list[str]:
                 key = entry.get("key")
                 if isinstance(key, str):
                     segment = _KEY_TO_SEGMENT.get(key)
-        if segment in _PLATFORM_SEGMENTS and segment not in out:
+        if segment in allowed and segment not in out:
             out.append(segment)
     return out
 
