@@ -177,7 +177,13 @@ TASK2_VARIABLES: dict[str, str | None] = {
     "cspca": None,
     "bx_gl_prim": None,
     "bx_gl_sec": None,
-    "bx_gl_tert": None,
+    # NB: no "bx_gl_tert". The platform's task-2 socket schema rejects it:
+    #   instance Additional properties are not allowed ('bx_gl_tert' was
+    #   unexpected)
+    # GC run f698486a. docs/CHIMERA-agent赛事整理.md:103 also lists exactly 11
+    # task-2 variables and omits it, so the platform and the docs agree and this
+    # dict was the outlier. Because normalise_to_full_shape() pads every key
+    # listed here, keeping it guaranteed an invalid key in EVERY task-2 output.
     "bx_isup": None,
     "fh": "get_family_history",
 }

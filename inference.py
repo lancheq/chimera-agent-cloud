@@ -204,11 +204,51 @@ def _reasoning_value(task: int, prediction: dict[str, Any]) -> Any:
     return {
         "free_text": prediction["free_text"],
         "confidence": prediction["confidence"],
-        "variable_weights": prediction["variable_weights"],
+        "variable_weights": _variable_weights_for_platform(
+            prediction.get("variable_weights", {}), task
+        ),
         "reveal_sequence": _reveal_sequence_for_platform(
             prediction.get("reveal_sequence", []), task
         ),
     }
+
+
+# --- variable_weights: allow only the platform's per-task key set ------------
+#
+# The task-2 socket schema sets ``additionalProperties: false``. GC run
+# f698486a rejected the whole file over one key our own schema padding had added:
+#
+#   instance Additional properties are not allowed ('bx_gl_tert' was unexpected)
+#
+# The fix for the padding lives in output/schema.py (TASK2_VARIABLES no longer
+# lists bx_gl_tert); this boundary filter is the belt-and-braces guard so a key
+# can never reach the socket even if the internal shape changes again. The sets
+# below are the platform's, which match docs/CHIMERA-agent赛事整理.md.
+_TASK1_WEIGHT_KEYS = frozenset({
+    "psa", "age", "dre", "comorbidity", "bx", "pirads", "psad", "vol", "cspca", "fh",
+})
+_TASK2_WEIGHT_KEYS = frozenset({
+    "psa", "age", "ct", "comorbidity", "pirads", "psad", "cspca",
+    "bx_gl_prim", "bx_gl_sec", "bx_isup", "fh",
+})
+
+_WEIGHT_KEYS_BY_TASK: dict[int, frozenset[str]] = {
+    1: _TASK1_WEIGHT_KEYS,
+    2: _TASK2_WEIGHT_KEYS,
+}
+
+
+def _variable_weights_for_platform(weights: Any, task: int) -> dict[str, Any]:
+    """Drop any variable the platform's schema does not declare for *task*.
+
+    Unlike ``reveal_sequence`` this field is not padded here: the internal
+    record already carries the full per-task key set, and this only removes
+    keys the platform would reject.
+    """
+    allowed = _WEIGHT_KEYS_BY_TASK.get(task)
+    if allowed is None or not isinstance(weights, dict):
+        return dict(weights or {}) if isinstance(weights, dict) else {}
+    return {k: v for k, v in weights.items() if k in allowed}
 
 
 # --- reveal_sequence: internal trace shape -> platform socket vocabulary -----
