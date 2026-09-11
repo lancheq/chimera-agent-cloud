@@ -564,6 +564,40 @@ class Predictor:
                 log.info("Predictor loaded task%d from %s", task, f)
             else:
                 log.warning("Predictor model missing: %s (run scripts/train_predictor.py --save)", f)
+        self._repair_legacy_estimators()
+
+    def _repair_legacy_estimators(self) -> None:
+        """Restore the ``multi_class`` attribute stripped by cross-version unpickling.
+
+        The shipped bundles were pickled by scikit-learn **1.9.0** (which had
+        already removed the ``multi_class`` parameter), while the container runs
+        **1.6.1** (which still declares it). ``LogisticRegression.get_params()``
+        re-derives every declared parameter via ``getattr(self, name)`` without a
+        default, so on the loaded object it raises
+
+            AttributeError: 'LogisticRegression' object has no attribute 'multi_class'
+
+        and ``predict_proba`` calls ``get_params`` internally -- so *every*
+        predictor call fails, not just probability reporting. On GC this surfaced
+        only as ``Task 1: predictor failed for gc-case: ...`` and silently
+        degraded the deterministic predictor to a fallback.
+
+        ``multi_class="auto"`` is exactly the value these models were trained
+        under (it was 1.9.0's default), so pinning it explicitly restores the
+        training-time semantics instead of changing them. Retraining the bundles
+        under 1.6.1 would also fix this; that is a larger change and is tracked
+        separately.
+        """
+        for task, bundle in self._models.items():
+            for key in ("clf", "clf_event", "reg_months"):
+                est = bundle.get(key) if isinstance(bundle, dict) else None
+                if est is not None and hasattr(est, "get_params") and not hasattr(est, "multi_class"):
+                    est.multi_class = "auto"
+                    log.info(
+                        "Predictor task%d: restored %s.multi_class='auto' "
+                        "(cross-version unpickle repair)",
+                        task, type(est).__name__,
+                    )
 
     @property
     def available_tasks(self) -> list[int]:
