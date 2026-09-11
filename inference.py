@@ -189,8 +189,87 @@ def _reasoning_value(task: int, prediction: dict[str, Any]) -> Any:
         "free_text": prediction["free_text"],
         "confidence": prediction["confidence"],
         "variable_weights": prediction["variable_weights"],
-        "reveal_sequence": prediction.get("reveal_sequence", []),
+        "reveal_sequence": _reveal_sequence_for_platform(
+            prediction.get("reveal_sequence", [])
+        ),
     }
+
+
+# --- reveal_sequence: internal trace shape -> platform socket vocabulary -----
+#
+# The run's own ``reveal_sequence`` is a list of rich trace dicts
+# (``page``/``order``/``key``/``label``/``value``/``via``/``ts``), which is what
+# the vendored evaluation fixtures also contain -- so every local check passed.
+# The platform's live socket schema instead types this field as the union of the
+# five clinical *segments*:
+#
+#     instance is not one of ['family_history', 'previous_notes',
+#     'laboratory_results', 'psa_trend', 'radiology_report']
+#
+# GC run 0e45f139-4235-43b4-a6cf-59f0c9fde848 rejected the file for exactly
+# that reason (exec 216 s / total 746 s -- the run itself was fine). Same class
+# of defect as the ``biospy`` filename: the local fixtures are more permissive
+# than the platform. Note the values are the *segment names*, NOT the socket
+# slug ``prostate-...-clinical-data`` -- the evaluation's own slug set is
+# ``{prostate-biospy-decision, prostate-biopsy-decision}`` for the decision
+# socket only.
+_PLATFORM_SEGMENTS = (
+    "family_history",
+    "previous_notes",
+    "laboratory_results",
+    "psa_trend",
+    "radiology_report",
+    "pathology_report",  # task 2 documents this as an extra segment
+)
+
+# Internal trace key -> platform segment name.
+_KEY_TO_SEGMENT = {
+    "section_s3-mri": "radiology_report",
+    "section_s3-labs": "laboratory_results",
+    "section_s3-psa": "psa_trend",
+    "section_s3-prev": "previous_notes",
+    "section_s3-fh": "family_history",
+    "section_s3-path": "pathology_report",
+}
+
+# MCP tool name -> platform segment name (fallback when only the tool is known).
+_TOOL_TO_SEGMENT = {
+    "get_mri_report": "radiology_report",
+    "get_lab_results": "laboratory_results",
+    "get_psa_trend": "psa_trend",
+    "get_previous_notes": "previous_notes",
+    "get_family_history": "family_history",
+    "get_pathology_report": "pathology_report",
+    "get_surgical_pathology_report": "pathology_report",
+}
+
+
+def _reveal_sequence_for_platform(reveal_sequence: Any) -> list[str]:
+    """Map the internal reveal trace to the platform's segment vocabulary.
+
+    Entries that cannot be mapped to a known segment are dropped rather than
+    emitted: a single unrecognised value fails the whole socket, and this field
+    is a secondary scoring signal, not the decision itself.
+    """
+    out: list[str] = []
+    for entry in reveal_sequence or []:
+        segment = None
+        if isinstance(entry, str):
+            segment = entry
+        elif isinstance(entry, dict):
+            # Prefer the tool name, then the internal section key.
+            for field in ("tool", "tool_name", "name", "via"):
+                value = entry.get(field)
+                if isinstance(value, str) and value in _TOOL_TO_SEGMENT:
+                    segment = _TOOL_TO_SEGMENT[value]
+                    break
+            if segment is None:
+                key = entry.get("key")
+                if isinstance(key, str):
+                    segment = _KEY_TO_SEGMENT.get(key)
+        if segment in _PLATFORM_SEGMENTS and segment not in out:
+            out.append(segment)
+    return out
 
 
 # ---------------------------------------------------------------------------
