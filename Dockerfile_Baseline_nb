@@ -1,0 +1,65 @@
+FROM --platform=linux/amd64 pytorch/pytorch:2.9.1-cuda12.6-cudnn9-runtime AS example_algorithm_amd64
+
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/opt/app/src
+ENV LD_LIBRARY_PATH=/opt/conda/lib/python3.11/site-packages/torch/lib:/opt/conda/lib/python3.11/site-packages/nvidia/cuda_runtime/lib:$LD_LIBRARY_PATH
+ENV VLLM_USE_FLASHINFER_SAMPLER=0
+ENV CC=/usr/bin/gcc
+ENV CXX=/usr/bin/g++
+# 国内镜像: apt (Aliyun) + pip/uv (TUNA)
+ENV PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
+ENV UV_DEFAULT_INDEX=https://pypi.tuna.tsinghua.edu.cn/simple
+ENV UV_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
+
+RUN groupadd -r user && useradd -m --no-log-init -r -g user user
+
+WORKDIR /opt/app
+
+RUN sed -i 's|archive.ubuntu.com|mirrors.aliyun.com|g; s|security.ubuntu.com|mirrors.aliyun.com|g' /etc/apt/sources.list 2>/dev/null; \
+    sed -i 's|archive.ubuntu.com|mirrors.aliyun.com|g; s|security.ubuntu.com|mirrors.aliyun.com|g' /etc/apt/sources.list.d/ubuntu.sources 2>/dev/null; \
+    true
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        ffmpeg \
+        build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --chown=user:user requirements.txt pyproject.toml README.md /opt/app/
+
+RUN python3 -m pip install --no-cache-dir -r requirements.txt
+
+RUN python3 -m pip install --no-cache-dir --upgrade pip wheel packaging setuptools uv
+
+ARG VLLM_VERSION=0.25.0
+
+# Network hardening: longer timeout + lower download concurrency to survive
+# transient resets on the school network (builds fail when large HDL downloads
+# get reset under uv's default 30s timeout / 8x parallelism).
+ENV UV_HTTP_TIMEOUT=120
+ENV UV_CONCURRENT_DOWNLOADS=4
+
+RUN uv pip install --system --no-cache --reinstall \
+    "vllm==${VLLM_VERSION}+cu129" \
+    --extra-index-url "https://wheels.vllm.ai/${VLLM_VERSION}/cu129" \
+    --extra-index-url "https://download.pytorch.org/whl/cu129" \
+    --index-strategy unsafe-best-match
+
+RUN python3 -m pip uninstall -y torchcodec || true
+
+COPY --chown=user:user inference.py /opt/app/
+COPY --chown=user:user src/ /opt/app/src/
+
+RUN python3 -m pip install --no-cache-dir --no-deps .
+
+COPY --chown=user:user templates/ /opt/app/templates/
+# Only the guidelines DB + QA pairs ship in the image (small). The embedding
+# model and reranker (GB-scale) travel in model.tar.gz, mounted at
+# /opt/ml/model by Grand Challenge — keeping the image well under the
+# ~10 GB guideline.
+COPY --chown=user:user resources/guidelines_db/ /opt/app/resources/guidelines_db/
+COPY --chown=user:user resources/guideline_qa.jsonl /opt/app/resources/guideline_qa.jsonl
+COPY --chown=user:user configs/ /opt/app/configs/
+
+USER user
+
+ENTRYPOINT ["python3", "inference.py"]

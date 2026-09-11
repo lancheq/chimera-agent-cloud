@@ -44,8 +44,11 @@ model:
     reasoning_budget_tokens: 4096
 
 # --- Agent ---
+# GC enforces a hard per-run wall clock. On the A10G the old 25-iteration loop
+# with 8192-token generations could not finish once the model had loaded, so
+# both the call count and the per-call token ceiling are cut to fit the budget.
 agent:
-  max_iterations: 25             # max ReAct loop steps before stopping
+  max_iterations: 10             # max ReAct loop steps before stopping
   step_timeout: 900              # seconds per graph step #old value 120
   # Which tasks to run. Defaults to all; task dirs missing under data_root are
   # skipped with a warning. Each task auto-selects its tool set and input dir.
@@ -62,7 +65,7 @@ agent:
   force_rag_grayzone: false
   # Form-fill node — terminal step that emits the structured submission.
   form_fill:
-    max_retries: 3               # validation retries before raising
+    max_retries: 2               # validation retries before raising
     # Hippocrates self-refine: Critique→Refine loop (1 iteration) after
     # initial judgment. Adds 2 LLM calls per case (~10-20s). Targets
     # GEval + F1 by catching reasoning errors before output.
@@ -71,7 +74,7 @@ agent:
     #   accuracy +7.4pp (66.7%→74.1%), fixed 3 / broke 1, critique
     #   contamination 0% (S1 fix effective), refine triggered 9/30.
     self_refine: true
-    self_refine_max_iter: 2        # max critique→refine cycles
+    self_refine_max_iter: 1        # max critique→refine cycles
     # Atomic fact verification (programmatic, no LLM). Checks free_text
     # values against transcript, verifies decisive variables have support,
     # auto-downgrades over-calibrated confidence. Targets GEval + grounding.
@@ -104,7 +107,7 @@ logging:
 # --- Generation ---
 generation:
   temperature: 0.3
-  max_new_tokens: 8192
+  max_new_tokens: 2048
   max_model_len: 32768           # vLLM context window
   gpu_memory_utilization: 0.9    # fraction of total VRAM vLLM may use (lower for consumer GPUs / shared desktops)
   top_p: 0.95

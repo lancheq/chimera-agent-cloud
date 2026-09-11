@@ -1,0 +1,248 @@
+FROM --platform=linux/amd64 pytorch/pytorch:2.9.1-cuda12.6-cudnn9-runtime AS example_algorithm_amd64
+
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/opt/app/src
+ENV LD_LIBRARY_PATH=/opt/conda/lib/python3.11/site-packages/torch/lib:/opt/conda/lib/python3.11/site-packages/nvidia/cuda_runtime/lib:$LD_LIBRARY_PATH
+ENV VLLM_USE_FLASHINFER_SAMPLER=0
+ENV CC=/usr/bin/gcc
+ENV CXX=/usr/bin/g++
+# 国内镜像: apt (Aliyun) + pip/uv (TUNA)
+ENV PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
+ENV UV_DEFAULT_INDEX=https://pypi.tuna.tsinghua.edu.cn/simple
+ENV UV_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
+
+RUN groupadd -r user && useradd -m --no-log-init -r -g user user
+
+WORKDIR /opt/app
+
+RUN sed -i 's|archive.ubuntu.com|mirrors.aliyun.com|g; s|security.ubuntu.com|mirrors.aliyun.com|g' /etc/apt/sources.list 2>/dev/null; \
+    sed -i 's|archive.ubuntu.com|mirrors.aliyun.com|g; s|security.ubuntu.com|mirrors.aliyun.com|g' /etc/apt/sources.list.d/ubuntu.sources 2>/dev/null; \
+    true
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        ffmpeg \
+        build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --chown=user:user requirements.txt pyproject.toml README.md /opt/app/
+
+RUN python3 -m pip install --no-cache-dir -r requirements.txt
+
+RUN python3 -m pip install --no-cache-dir --upgrade pip wheel packaging setuptools uv
+
+ARG VLLM_VERSION=0.25.0
+
+# Network hardening: longer timeout + lower download concurrency to survive
+# transient resets on the school network (builds fail when large HDL downloads
+# get reset under uv's default 30s timeout / 8x parallelism).
+ENV UV_HTTP_TIMEOUT=120
+ENV UV_CONCURRENT_DOWNLOADS=4
+
+# NOTE: the vLLM layer (vllm==0.25.0+cu129) was removed on purpose. It re-pulled
+# torch plus the entire CUDA 12.9 pip stack -- 13.4 GB, and the single reason
+# this image was pressed against Grand Challenge's ~10 GiB container ceiling.
+# It is dead weight: the agent runs with model.provider=openai and
+# models/__init__.py only imports vllm lazily under provider=vllm. The GGUF is
+# served by llama.cpp instead, which uses the base image's CUDA 12.6.
+RUN python3 -m pip uninstall -y torchcodec || true
+
+# langchain-mcp-adapters 0.2.2 imports RequestContext from mcp.shared.context;
+# unpinned "mcp" landed on 2.x which removed that symbol (ImportError at boot).
+# Pin 1.12.4 (last 1.x line with shared.context.RequestContext) AFTER the big
+# dependency layers, so only this layer rebuilds.
+RUN python3 -m pip install --no-cache-dir "mcp==1.12.4"
+
+COPY --chown=user:user inference.py /opt/app/
+COPY --chown=user:user src/ /opt/app/src/
+
+RUN python3 -m pip install --no-cache-dir --no-deps .
+
+COPY --chown=user:user templates/ /opt/app/templates/
+# Only the guidelines DB + QA pairs ship in the image (small). The embedding
+# model and reranker (GB-scale) travel in model.tar.gz, mounted at
+# /opt/ml/model by Grand Challenge — keeping the image well under the
+# ~10 GB guideline.
+COPY --chown=user:user resources/guidelines_db/ /opt/app/resources/guidelines_db/
+COPY --chown=user:user resources/guideline_qa.jsonl /opt/app/resources/guideline_qa.jsonl
+# Only the single config the container path actually reads -- NOT the whole
+# configs/ tree. The dev-only overlays under configs/experiment/ select
+# alternative backends via `+experiment=<name>`, and qwen_api.yaml points at an
+# external aggregation API (https://llmapi.blsc.cn/v1). Merely carrying an
+# external endpoint inside the submitted container is a needless compliance
+# liability (R1: containers run offline, external APIs are forbidden and misuse
+# "may lead to disqualification") and would also leak into the open-source
+# release (R10). inference.py loads exactly one file and nothing else --
+# CONFIG_PATH = /opt/app/configs/config.yaml (inference.py:49, :197), and
+# run.py's @hydra.main entry is the dev-only `make run` path, never used here.
+# The overlays stay in the git repo for reproducibility; they just don't ship
+# inside the image.
+COPY --chown=user:user configs/config.yaml /opt/app/configs/config.yaml
+
+# --- LLM serving (llama_cpp.server on 127.0.0.1:8765) -----------------------
+# Ensure the small python deps needed by llama_cpp.server (mostly already
+# present via chromadb/langchain, starlette_context is the only missing one).
+# fastapi + uvicorn are listed explicitly: llama_cpp/server/*.py imports both,
+# and they used to arrive only transitively through the vLLM layer that was
+# removed above -- without them the server dies at import time.
+RUN python3 -m pip install --no-cache-dir \
+        pydantic-settings sse-starlette starlette-context \
+        fastapi uvicorn
+# The school-server llama_cpp build used to be copied in verbatim. That was
+# wrong: its libllama.so needs glibc 2.38 while this image is Ubuntu 22.04
+# (glibc 2.35), so dlopen failed with "GLIBC_2.38 not found" and
+# llama_cpp.server died before it ever served a request.
+# Install the official prebuilt CUDA wheel instead -- it is manylinux_2_35,
+# i.e. built against exactly this glibc, and needs only CUDA 12.x + sm_60+.
+# Installed from the wheel vendored under vendor/ so the build never has to
+# reach GitHub: the release CDN is unreachable from this network (only the
+# index on *.github.io resolves), the wheel was fetched through a proxy and is
+# byte-identical to the official release asset.
+COPY --chown=user:user vendor/llama_cpp_python-0.3.35-py3-none-manylinux_2_35_x86_64.whl /tmp/
+# CPU kernel library, rebuilt from the 0.3.35 sdist with GGML_NATIVE=OFF so it
+# carries only an AVX2 baseline. The official wheel's libggml-cpu.so was built
+# with -march=native on a Sapphire Rapids host (it self-reports "AMX_INT8 = 1")
+# and therefore emits 10,495 AVX512 (zmm) plus 677 VNNI (vpdpbusd) instructions
+# with no runtime dispatch -- on Grand Challenge's AMD EPYC 7R32 (Rome, AVX2
+# only) the very first CPU operator raises SIGILL: "Illegal instruction (core
+# dumped)" and llama_cpp.server dies during load. Only the CPU lib is affected
+# (base / llama / mtmd / ggml / ggml-cuda are all clean), so we swap just this
+# one file. Built on the school server against the same glibc 2.35.
+COPY --chown=user:user vendor/libggml-cpu.clean.so.0.20.0 /tmp/
+# Install, then de-duplicate inside the SAME layer: the wheel ships the same
+# libggml-cuda.so (~866 MB) as seven real files across site-packages/lib/,
+# llama_cpp/lib/ and llama_cpp_python.libs/ -- ~6 GB of pure duplication.
+# libllama.so carries RPATH=$ORIGIN, so it resolves its siblings from
+# llama_cpp/lib/; keep one real file per soname there and symlink the rest.
+# This must be a single RUN: deleting the files in a later layer would only
+# whiteout them and leave the 6 GB sitting in the image.
+RUN python3 -m pip install --no-cache-dir \
+        /tmp/llama_cpp_python-0.3.35-py3-none-manylinux_2_35_x86_64.whl \
+ && rm -f /tmp/llama_cpp_python-0.3.35-py3-none-manylinux_2_35_x86_64.whl \
+ && rm -rf /opt/conda/lib/python3.11/site-packages/lib \
+           /opt/conda/lib/python3.11/site-packages/llama_cpp_python.libs \
+ && cd /opt/conda/lib/python3.11/site-packages/llama_cpp/lib \
+ && for real in *.so.*.*.*; do \
+        stem="${real%%.so.*}"; rest="${real#*.so.}"; major="${rest%%.*}"; \
+        rm -f "$stem.so" "$stem.so.$major"; \
+        ln -s "$real" "$stem.so"; \
+        ln -s "$real" "$stem.so.$major"; \
+    done \
+ && cp -f /tmp/libggml-cpu.clean.so.0.20.0 \
+           /opt/conda/lib/python3.11/site-packages/llama_cpp/lib/libggml-cpu.so.0.20.0 \
+ && rm -f /tmp/libggml-cpu.clean.so.0.20.0 \
+ && du -sh /opt/conda/lib/python3.11/site-packages/llama_cpp
+
+# Guard against silently regressing the exact defect that broke every earlier
+# upload: the vendored school-server libllama.so needed glibc 2.38 while this
+# image ships 2.35, so dlopen failed and the server died before serving a byte.
+RUN python3 - <<'PY'
+import glob, re, subprocess
+
+def image_glibc():
+    out = subprocess.run(["ldd", "--version"], capture_output=True, text=True).stdout
+    return tuple(map(int, re.search(r"(\d+\.\d+)", out).group(1).split(".")))
+
+try:
+    libs = sorted(glob.glob("/opt/conda/lib/python3.11/site-packages/llama_cpp/lib/*.so"))
+    needed = set()
+    for lib in libs:
+        out = subprocess.run(["objdump", "-T", lib], capture_output=True, text=True).stdout
+        needed |= {tuple(map(int, v.split("."))) for v in re.findall(r"GLIBC_(\d+\.\d+)", out)}
+    have = image_glibc()
+    print("llama_cpp shared libs:", len(libs))
+    print("requires GLIBC:", sorted(".".join(map(str, n)) for n in needed))
+    print("image GLIBC   :", ".".join(map(str, have)))
+    if needed and max(needed) > have:
+        raise SystemExit(
+            f"FATAL: llama_cpp needs glibc {max(needed)} but the image has {have}; "
+            "dlopen will fail on Grand Challenge"
+        )
+except SystemExit:
+    raise
+except Exception as exc:  # never let the check itself break the build
+    print(f"glibc compatibility check skipped ({type(exc).__name__}: {exc})")
+PY
+
+# Guard against the other defect that killed a GC run: AVX512/VNNI instructions
+# baked into the CPU kernels. The official wheel's libggml-cpu.so was compiled
+# -march=native on Sapphire Rapids, so it emits AVX512 (zmm) + VNNI
+# (vpdpbusd/vpdpwssd) unconditionally with no runtime dispatch; Grand
+# Challenge's AMD EPYC 7R32 (Rome) has neither, so the first CPU operator
+# SIGILLs. We overwrote that file above -- verify the replacement really is
+# AVX2-only so this can never silently regress on the next wheel bump.
+RUN python3 - <<'PY'
+import glob, re, subprocess
+
+LIBDIR = "/opt/conda/lib/python3.11/site-packages/llama_cpp/lib"
+# Everything except libggml-cuda*.so: that one is a 866 MB fat binary holding
+# CUDA device code, not x86 kernels, and disassembling it takes minutes.
+BANNED = re.compile(r"(zmm|vpdpbusd|vpdpwssd|vdpbf16ps)")
+
+targets = sorted(
+    p for p in glob.glob(f"{LIBDIR}/*.so.*.*.*")
+    if "libggml-cuda" not in p
+)
+if not targets:
+    raise SystemExit("FATAL: no versioned llama_cpp shared libs found to audit")
+
+bad = {}
+for lib in targets:
+    out = subprocess.run(
+        ["objdump", "-d", "--no-show-raw-insn", lib],
+        capture_output=True, text=True,
+    ).stdout
+    hits = BANNED.findall(out)
+    name = lib.rsplit("/", 1)[-1]
+    print(f"  ISA audit {name:<30} avx512/vnni hits = {len(hits)}")
+    if hits:
+        bad[name] = len(hits)
+
+cpu_lib = f"{LIBDIR}/libggml-cpu.so.0.20.0"
+if bad:
+    raise SystemExit(
+        f"FATAL: AVX512/VNNI instructions present in {bad}; these SIGILL on "
+        "Grand Challenge's AMD EPYC 7R32 (Rome, AVX2 only). Rebuild the listed "
+        "library with -DGGML_NATIVE=OFF and re-vendor it."
+    )
+# The swap itself must have landed: the clean CPU lib is ~1.02 MB, the official
+# one ~1.46 MB. A size mismatch means the cp was skipped or undone.
+size = subprocess.run(["stat", "-c", "%s", cpu_lib], capture_output=True, text=True).stdout.strip()
+print(f"ISA audit clean: no AVX512/VNNI in {len(targets)} libs; {cpu_lib} = {size} bytes")
+if size != "1067088":
+    raise SystemExit(
+        f"FATAL: libggml-cpu.so.0.20.0 is {size} bytes, expected the vendored "
+        "AVX2-only build (1067088) -- the overwrite did not take effect."
+    )
+PY
+COPY --chown=user:user docker/start_server.sh /opt/app/docker/start_server.sh
+
+# --- Hard offline switch ----------------------------------------------------
+# Grand Challenge containers have NO network. Several dependencies nevertheless
+# try to reach the internet on first use, and a blackholed TCP SYN does not fail
+# fast -- it hangs. Measured on the school server (HF is firewalled there): a
+# bare `SentenceTransformer(<local dir>, device="cpu")` never returns, because
+# huggingface_hub opens an HTTPS connection to a CDN IP that sits in SYN_SENT
+# forever, so the embedding subprocess never prints its "ready" handshake, the
+# parent blocks on readline(), and the whole run times out with no diagnostic.
+# With the switches below the same load finishes in 3.6 s.
+#   HF_HUB_OFFLINE / TRANSFORMERS_OFFLINE  -> skip all Hub lookups and use the
+#       local files under /opt/ml/model (embedding model + reranker) as-is.
+#   ANONYMIZED_TELEMETRY / DO_NOT_TRACK    -> chromadb 1.5.9 ships PostHog
+#       telemetry that also dials out.
+#   TOKENIZERS_PARALLELISM=false           -> avoids a fork+OpenMP deadlock
+#       between the embedding subprocess and the tokenizers Rust pool.
+# Deliberately set LAST: ENV takes effect for the container's whole runtime
+# regardless of where it appears, but anything placed earlier would invalidate
+# every cached layer below it (the multi-GB pip + wheel installs).
+ENV HF_HUB_OFFLINE=1
+ENV TRANSFORMERS_OFFLINE=1
+ENV HF_HUB_DISABLE_TELEMETRY=1
+ENV HF_HUB_DISABLE_PROGRESS_BARS=1
+ENV ANONYMIZED_TELEMETRY=False
+ENV CHROMA_ANONYMIZED_TELEMETRY=False
+ENV DO_NOT_TRACK=1
+ENV TOKENIZERS_PARALLELISM=false
+
+USER user
+
+ENTRYPOINT ["bash", "/opt/app/docker/start_server.sh"]

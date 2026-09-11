@@ -1485,24 +1485,34 @@ def _extract_json_object(text: str) -> str:
     if not text:
         return text
 
-    # 1. Prefer markdown fence if present.
-    fence = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL)
+    # 1. Prefer markdown fence if present. The regex is greedy to the last
+    # '}' of the fenced block, then _balanced_extract re-trims to the
+    # outermost object — the old non-greedy version stopped at the FIRST
+    # '}' and silently truncated fenced JSON containing nested objects
+    # (e.g. variable_weights).
+    fence = re.search(r"```(?:json)?\s*(\{.*\})\s*```", text, re.DOTALL)
     if fence:
-        return fence.group(1)
+        balanced = _balanced_extract(fence.group(1), 0)
+        return balanced if balanced else fence.group(1)
 
     # 2. Collect every balanced {…} candidate (skips braces inside strings).
     candidates: list[str] = []
     for i, ch in enumerate(text):
         if ch == "{":
             obj = _balanced_extract(text, i)
-            if obj:
+            if obj and obj not in candidates:
                 candidates.append(obj)
 
     if not candidates:
         return text  # no { at all — let parser raise the error
 
-    # 3. From last to first, return the first that json.loads successfully.
-    for c in reversed(candidates):
+    # 3. Longest parseable candidate first. The judgment object is the
+    # outermost (largest) balanced object in the text. The old
+    # `reversed(candidates)` ordering tried the LAST opening brace first,
+    # which — for bare JSON with nested variable_weights — returned the
+    # innermost sub-object, failed schema validation, and degraded every
+    # such case to the salvage path.
+    for c in sorted(candidates, key=len, reverse=True):
         try:
             json.loads(c)
             return c
@@ -1515,8 +1525,9 @@ def _extract_json_object(text: str) -> str:
             except json.JSONDecodeError:
                 continue
 
-    # 4. All candidates failed to parse — return the last (most likely target).
-    return candidates[-1]
+    # 4. All candidates failed to parse — return the longest (the biggest
+    # chunk of the real object) so the parser's error is informative.
+    return max(candidates, key=len)
 
 
 def _balanced_extract(text: str, start: int) -> str | None:

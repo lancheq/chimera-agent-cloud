@@ -1,3 +1,5 @@
 __pycache__/
 *.pyc
 *.bak_w5
+llama_cpp/
+vendor/*.whl
