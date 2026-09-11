@@ -69,11 +69,17 @@ CLINICAL_SLUG_TO_TASK: dict[str, int] = {
 }
 
 # Result-socket filenames per task (written flat to ``/output``): the decision
-# value and the reasoning value. Slugs carry the challenge's ``biospy`` spelling.
+# value and the reasoning value. NB the platform's own per-case dumps spell task
+# 1's socket ``prostate-biospy-decision`` (and task 3's slug ``...-reas``), but
+# the *filenames* the platform validates against are the corrected spellings:
+# GC failed run 17a095b4-... with "Output file 'prostate-biopsy-decision.json'
+# was not produced" while this container wrote the ``biospy`` spelling. The
+# official baseline carries the same typo; see evaluation/evaluate.py, which
+# accepts both only because it reads the aggregation file, not the sockets.
 OUTPUT_SOCKETS: dict[int, dict[str, str]] = {
     1: {
-        "decision": "prostate-biospy-decision.json",
-        "reasoning": "prostate-biospy-decision-reasoning.json",
+        "decision": "prostate-biopsy-decision.json",
+        "reasoning": "prostate-biopsy-decision-reasoning.json",
     },
     2: {
         "decision": "prostate-treatment-decision.json",
