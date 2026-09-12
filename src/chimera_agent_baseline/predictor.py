@@ -70,6 +70,17 @@ class VectorReducer(BaseEstimator, TransformerMixin):
 # 特征定义（与 scripts/train_predictor.py 保持一致）
 # ---------------------------------------------------------------------------
 
+# NOTE (2026-09-13, round 27): do NOT replace the task-3 censored (event=0)
+# months with a constant, even though `recurrence_time_score` is
+# `min(1, pred / follow_up_time)` for censored cases and therefore rewards
+# over-prediction.  Measured on the 75 labeled cases, forcing event=0 to a large
+# constant scores time 0.8243 vs 0.8407 for the Cox quantile: the model's
+# `event` and `months` outputs are coupled, so on the 9 cases where a true
+# recurrence is misclassified as censored the quantile still emits a *small*
+# (partially correct) value, while a constant turns those nine into hard zeros
+# (19-event subgroup: 0.5230 -> 0.3063).  The 110-month clip is a real ceiling
+# but it is not worth breaking this coupling.
+
 NUMERIC_FEATURES = {
     1: ["psa", "age", "psad", "psav", "vol", "cspca", "months", "pirads_int"],
     2: ["psa", "age", "psad", "psav", "vol", "cspca", "months", "bx_gl_prim", "bx_gl_sec", "pirads_int"],
