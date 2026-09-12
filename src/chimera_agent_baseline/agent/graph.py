@@ -448,8 +448,19 @@ def _make_plan_node(
             log.warning("plan_node: %s LLM output empty tools, fallback to %s", case_id, selected_tools)
 
         # 修复 6: T3 强制包含 get_mri_report + get_surgical_pathology_report + search_guidelines
+        #
+        # NOTE: this is an UNCONDITIONAL override of the LLM's own tool choice.
+        # The platform's `tool_score` is |our_tools ∩ pathologist_tools| /
+        # |our_tools| -- precision only, no reward for recall -- so a tool we
+        # call that the reference did not is a pure penalty on that component
+        # (0.150 of the gate-passed case score).  Whether forcing is worth it is
+        # therefore an accuracy question that has to be measured, not assumed.
+        # Gate it on CHIMERA_T3_MANDATORY_TOOLS (default on = current shipped
+        # behaviour) so the two arms can be compared directly.
         _t3_mandatory = ["get_mri_report", "get_surgical_pathology_report", "search_guidelines"]
-        if task == 3:
+        _force_t3 = os.environ.get("CHIMERA_T3_MANDATORY_TOOLS", "1").strip().lower() \
+            not in ("0", "false", "no", "off")
+        if task == 3 and _force_t3:
             for mt in _t3_mandatory:
                 if mt in tool_by_name and mt not in selected_tools:
                     selected_tools.append(mt)
