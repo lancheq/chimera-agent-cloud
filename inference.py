@@ -37,6 +37,7 @@ from typing import Any
 
 from omegaconf import OmegaConf
 
+from reasoning_align import align_reasoning
 from src.chimera_agent_baseline.rag import start_embedding_service
 from src.chimera_agent_baseline.run import run_agent
 from src.chimera_agent_baseline.tools.base import CASE_DATA_FILENAMES_BY_TASK
@@ -198,9 +199,19 @@ def _reasoning_value(task: int, prediction: dict[str, Any]) -> Any:
     ``confidence``, the per-variable ``variable_weights``, and the tool
     ``reveal_sequence``. Task 3 emits the free-text rationale on its own (its
     reveal sequence is not evaluated).
+
+    Tasks 1 & 2 are first passed through :func:`reasoning_align.align_reasoning`,
+    which replaces the LLM-authored ``confidence``/``variable_weights`` with the
+    measured fixed tables. Those two fields carry 67.5% of the platform's
+    gate-passed case score and the LLM's own values score below the constant
+    table on the official training ground truth; see ``reasoning_align.py`` for
+    the measurements and ``tools/reasoning_alignment_regress.py`` to reproduce
+    them. The decision socket, the free text and the reveal sequence are
+    untouched, so gate behaviour is unchanged.
     """
     if task == 3:
         return prediction["free_text"]
+    prediction = align_reasoning(task, prediction)
     return {
         "free_text": prediction["free_text"],
         "confidence": prediction["confidence"],
