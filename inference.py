@@ -31,6 +31,7 @@ This entrypoint is the thin adapter between the two worlds:
 import asyncio
 import json
 import logging
+import os
 import tempfile
 from pathlib import Path
 from typing import Any
@@ -375,6 +376,26 @@ def _load_config(data_root: Path, output_dir: Path, task: int):
     # /opt/ml/model (mirrors the local data layout used during development).
     OmegaConf.update(cfg, "paths.embedding_model_dir", str(MODEL_PATH / "embedding_model"))
     OmegaConf.update(cfg, "agent.tasks", [task])
+
+    # Point the agent at a specific endpoint.  Grand Challenge runs use the
+    # shipped default; offline A/B runs (comparing two served models) set this.
+    #
+    # NB: the first attempt at this wrapped `inference._load_config` from the
+    # calling harness.  That silently did nothing -- two supposedly different
+    # models produced byte-identical result files -- so the override now lives
+    # *inside* the loader and is verified before use: if the caller asked for a
+    # URL and the loaded config does not carry it, the process aborts instead of
+    # quietly evaluating the wrong model.
+    requested = os.environ.get("CHIMERA_BASE_URL", "").strip()
+    if requested:
+        OmegaConf.update(cfg, "model.base_url", requested)
+        effective = str(cfg.model.base_url).strip()
+        if effective != requested:
+            raise RuntimeError(
+                f"base_url override did not take effect: requested {requested!r} "
+                f"but config carries {effective!r} -- refusing to run the wrong model"
+            )
+        log.info("model.base_url overridden to %s (verified)", effective)
     return cfg
 
 
