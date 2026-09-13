@@ -349,7 +349,35 @@ def make_form_fill_node(
             _calibrate_uncertain(task, transcript, judgment, fc_result, warnings)
 
         if decision_override and predictor_dec:
+            # Snapshot the judgement on both sides of the override.
+            #
+            # Without this the override is un-auditable: the form-fill trace only
+            # keeps the model's raw text truncated to 4000 chars, and the record
+            # is overwritten in place, so afterwards there is no way to tell
+            # whether a wrong final decision came from the LLM (with the
+            # predictor failing to rescue it) or from the predictor overriding a
+            # correct LLM call.  An earlier offline A/B could not answer that.
+            import os as _snap_os
+            _snap_dir = _snap_os.path.join(
+                _snap_os.environ.get("CHIMERA_OUTPUT_DIR", "output"), "trace", str(case_id)
+            )
+            _snap_os.makedirs(_snap_dir, exist_ok=True)
+            _keys = ("biopsy_decision", "treatment_recommendation", "event",
+                     "months_to_recurrence", "confidence")
+            _pre = {k: judgment[k] for k in _keys if k in judgment}
             _apply_decision_override(task, judgment, predictor_dec, warnings)
+            _post = {k: judgment[k] for k in _keys if k in judgment}
+            try:
+                import json as _snap_json
+                with open(_snap_os.path.join(_snap_dir, "override.json"), "w") as _f:
+                    _snap_json.dump({
+                        "llm_pre_override": _pre,
+                        "predictor_decision": predictor_dec,
+                        "post_override": _post,
+                        "changed": _pre != _post,
+                    }, _f, ensure_ascii=False, indent=1)
+            except Exception:  # noqa: BLE001 - auditing must never break a run
+                log.warning("could not write override snapshot", exc_info=True)
 
         # 修复 5: 公式计算后处理 — 校验 free_text 数值，修正错误
         ft = judgment.get("free_text", "")
