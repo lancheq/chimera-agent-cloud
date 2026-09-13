@@ -2,13 +2,88 @@
   <img src="docs/images/thumbnail.png" alt="CHIMERA Agent" width="250">
 </p>
 
-# Chimera Agent Baseline
+# ChimeraAgent ReflectiveRAG PredictorFusionAgent
 
-Baseline agent for the
-[CHIMERA-Agent challenge](https://chimera-agent.grand-challenge.org/chimera-agent/).
-A LangGraph ReAct loop calls clinical tools served via MCP, retrieves
-guidelines via RAG, and emits a structured per-case decision through a
-terminal form-fill node.
+Submission for the
+[CHIMERA-agent challenge](https://chimera-agent.grand-challenge.org/chimera-agent/),
+built on the organizers' baseline (whose original documentation follows below).
+A LangGraph ReAct loop calls clinical tools served via MCP, retrieves guidelines
+via RAG, and emits a structured per-case decision through a terminal form-fill
+node.
+
+**Released under the Apache License 2.0** — see `LICENSE`. Third-party components
+and their licences: `THIRD_PARTY.md`.
+
+## Our submission
+
+### What it adds on top of the baseline
+
+| Layer | Change |
+|---|---|
+| Evidence contract | `reveal_sequence` is built from the tools actually called. In early versions every reveal sequence was empty, which silently zeroed the section-grounding component for every case. |
+| Planner | mandatory MCP tool calls are injected per task, so the agent cannot answer from the prompt alone. |
+| Decision fusion | the deterministic predictor overrides the decision for T2 and T3 only; T1 stays pure language model because cross-validation did not support overriding it. |
+| Safety rules | a *treatment floor* enforces active treatment for high-risk structured inputs (structured fields only — never parsed from generated prose), and a recurrence rule downgrades over-predicted events. |
+| Reasoning alignment | `reasoning_align.py` maps the two highest-weight judge-free rubric components (confidence, variable weights) onto values measured optimal on the annotated data, at the output boundary only. By construction it cannot change the decision socket, free text or reveal sequence. |
+| Output guards | the reasoning socket is filtered against the platform's declared per-task key set, and that table is asserted at import time. |
+
+### Container provenance
+
+| Version | tarball md5 | image id | platform status |
+|---|---|---|---|
+| v8 (currently scored) | `47cb147f3b9e5e5f09df0933ab7b9960` | `sha256:28c91a51…538233` | validation phase, overall `0.6063`, n=109 |
+| v12 (current build) | `fcbcc2b4b0b8b0bdc5f240044f56f032` | `sha256:d20c2b21f7df0b64512ab35b8c6c2c12cc9fbd2679671cf12883b2d6c7cc101e` | see the project log |
+
+v12 = v10 alignment layer + structured treatment-floor fix + version label +
+trace-dump guard. Model weights are **not** in the image; they are mounted from
+the separate model archive at `/opt/ml/model`.
+
+### Build
+
+```bash
+# the working Dockerfile is Dockerfile_Baseline_nb2 (must be passed with -f)
+docker buildx build --platform linux/amd64 -f Dockerfile_Baseline_nb2 \
+  -t chimera-agent:submit --load .
+docker save chimera-agent:submit | pigz -c > ../chimera-agent.tar.gz
+```
+
+### Verify before uploading
+
+```bash
+bash ../tools/verify_submission.sh ../chimera-agent.tar.gz
+```
+
+The script loads the image **from the tarball** (not from the build cache),
+checks the artifact identity, the offline environment and the functional
+self-checks below.
+
+### Functional self-checks
+
+Each check was written after a real silent failure caused by the condition it now
+tests, and is expected to fail on the pre-fix artefact:
+
+| Check | Guards against |
+|---|---|
+| `socket_contract_test.py` | wrong output socket filename/shape |
+| `reasoning_schema_test.py` | `reveal_sequence` / reasoning socket type mismatch |
+| `reasoning_alignment_test.py` | alignment table drifting from the platform key set |
+| `reasoning_socket_e2e_test.py` | reasoning socket not surviving the real container path |
+| `mcp_case_data_test.py` | MCP tools silently reading no clinical data |
+| `predictor_fix_verify.py` | predictor silently inert after cross-version deserialisation |
+| `container_conditions_test.py` | non-root / read-only / no-network runtime assumptions |
+
+### Development discipline
+
+The project follows a layered protocol (L0 static → L1 offline replay → L2
+targeted cases → L3-light stratified sample → L3-full), documented in `docs/`.
+A new self-check must first be shown to fail on the old artefact, and a measured
+gain must exceed fold-to-fold noise before it is accepted. Numbers that failed
+those rules are recorded as rejected rather than silently dropped.
+
+## Baseline documentation
+
+The remainder of this file is the organizers' baseline documentation and still
+applies to the shared parts of the code.
 
 ## Quick start
 
