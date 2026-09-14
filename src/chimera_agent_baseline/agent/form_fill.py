@@ -44,6 +44,7 @@ from chimera_agent_baseline.output.schema import (
     eligible_variables,
     reveal_info_for_tool,
 )
+from chimera_agent_baseline.agent.trace_ids import trace_case_id as _trace_case_id
 
 log = logging.getLogger(__name__)
 
@@ -241,7 +242,7 @@ def make_form_fill_node(
                 import os as _os, json as _json, time as _time
                 _trace_path = None
                 try:
-                    _trace_dir = _os.path.join(_os.environ.get("CHIMERA_OUTPUT_DIR", "output"), "trace", str(case_id))
+                    _trace_dir = _os.path.join(_os.environ.get("CHIMERA_OUTPUT_DIR", "output"), "trace", _trace_case_id(case_id))
                     _os.makedirs(_trace_dir, exist_ok=True)
                     _reasoning = ""
                     try:
@@ -357,18 +358,31 @@ def make_form_fill_node(
             # whether a wrong final decision came from the LLM (with the
             # predictor failing to rescue it) or from the predictor overriding a
             # correct LLM call.  An earlier offline A/B could not answer that.
-            import os as _snap_os
-            _snap_dir = _snap_os.path.join(
-                _snap_os.environ.get("CHIMERA_OUTPUT_DIR", "output"), "trace", str(case_id)
-            )
-            _snap_os.makedirs(_snap_dir, exist_ok=True)
+            #
+            # The override itself and the snapshot are *separated* on purpose:
+            # `_apply_decision_override` is scoring-relevant and must always run,
+            # while everything below is diagnostics that must never be able to
+            # fail a case.  This was a real platform regression: the trace dir
+            # defaults to the RELATIVE "output", the container runs as a
+            # non-root user with CWD=/ (the image sets no WORKDIR) and
+            # CHIMERA_OUTPUT_DIR unset, so `makedirs` raised
+            # `PermissionError: [Errno 13] ... 'output'` -- and because it sat
+            # outside the guard it killed the case for every task that actually
+            # overrides (T2/T3) while T1 kept working.  Keep the audit path
+            # inside the try.
             _keys = ("biopsy_decision", "treatment_recommendation", "event",
                      "months_to_recurrence", "confidence")
             _pre = {k: judgment[k] for k in _keys if k in judgment}
             _apply_decision_override(task, judgment, predictor_dec, warnings)
             _post = {k: judgment[k] for k in _keys if k in judgment}
             try:
+                import os as _snap_os
                 import json as _snap_json
+                _snap_dir = _snap_os.path.join(
+                    _snap_os.environ.get("CHIMERA_OUTPUT_DIR", "output"),
+                    "trace", _trace_case_id(case_id),
+                )
+                _snap_os.makedirs(_snap_dir, exist_ok=True)
                 with open(_snap_os.path.join(_snap_dir, "override.json"), "w") as _f:
                     _snap_json.dump({
                         "llm_pre_override": _pre,
@@ -388,7 +402,7 @@ def make_form_fill_node(
 
         # T2 AT→AS 欠治疗偏置修复：高危 case 强制 AT
         if task == 2:
-            _enforce_treatment_floor(judgment, transcript, warnings)
+            _enforce_treatment_floor(judgment, state.get("floor_inputs") or {}, warnings)
 
         # T3 event 偏置修复：防止 LLM 机械套 BCR 阈值导致 event=1 偏置
         if task == 3:
@@ -636,16 +650,37 @@ def _extract_float(text: str, pattern: str) -> float | None:
     return None
 
 
-def _enforce_treatment_floor(judgment: dict, transcript: str, warnings: list) -> None:
-    """ISUP>=3 + PI-RADS>=4 + PSA>10 → 强制 AT（防欠治疗）。"""
-    if judgment.get("treatment_recommendation", {}).get("primary") in (
-        "active_surveillance", "continued_surveillance", "watchful_waiting"):
-        isup = _extract_int(transcript, r"ISUP.*?(\d)")
-        pirads = _extract_int(transcript, r"PI-?RADS.*?(\d)")
-        psa = _extract_float(transcript, r"PSA[:\s]+(\d+\.?\d*)")
-        if isup and isup >= 3 and pirads and pirads >= 4 and psa and psa > 10:
-            judgment["treatment_recommendation"]["primary"] = "active_treatment"
-            warnings.append(f"treatment floor enforced: AS→AT (ISUP{isup},PI-RADS{pirads},PSA{psa})")
+def _enforce_treatment_floor(judgment: dict, floor_inputs: dict, warnings: list) -> None:
+    """ISUP>=3 + PI-RADS>=4 + PSA>10 → 强制 AT（防欠治疗）。
+
+    数值来自**结构化临床记录**（`state["floor_inputs"]`，由 runner 用
+    `predictor.treatment_floor_inputs` 读入），不再用正则从 LLM 自己的 ReAct
+    正文里抠。
+
+    为什么改（2026-09-13，69 例带标签 T2 实测）：旧版正则抠的是模型自己写下的
+    数字，实际只触发过两次，两次都落在结构化 ISUP=0、真值为
+    `continued_surveillance` 的病例上（T2-042、T2-053），把两个正确决策改成
+    错误；而 8 个真值为 AT 却被判 surveillance 的病例一次都没触发。换成结构化
+    来源后，同样的阈值在 44 个可触发病例上触发 0 次 —— 规则保留，但不可能再被
+    正文里的数字误触发。
+
+    缺失值一律视为"不触发"：报告没解析出来是**没有证据**，不是低风险证据。
+    """
+    rec = judgment.get("treatment_recommendation", {})
+    if rec.get("primary") not in (
+        "active_surveillance", "continued_surveillance", "watchful_waiting"
+    ):
+        return
+    isup = floor_inputs.get("path_isup")
+    pirads = floor_inputs.get("pirads_max")
+    psa = floor_inputs.get("psa_trend_last")
+    if isup is None or pirads is None or psa is None:
+        return
+    if isup >= 3 and pirads >= 4 and psa > 10:
+        rec["primary"] = "active_treatment"
+        warnings.append(
+            f"treatment floor enforced: AS→AT (ISUP{isup:g},PI-RADS{pirads:g},PSA{psa:g})"
+        )
 
 
 def _calibrate_t3_event(judgment: dict, transcript: str, warnings: list) -> None:

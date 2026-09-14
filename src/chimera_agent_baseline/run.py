@@ -38,7 +38,7 @@ from chimera_agent_baseline.agent.graph import create_graph
 from chimera_agent_baseline.agent.prompts import build_system_prompt
 from chimera_agent_baseline.case_loader import load_cases
 from chimera_agent_baseline.models import load_model
-from chimera_agent_baseline.predictor import Predictor
+from chimera_agent_baseline.predictor import Predictor, treatment_floor_inputs
 from chimera_agent_baseline.rag import start_embedding_service
 from chimera_agent_baseline.utils import setup_logging
 
@@ -315,12 +315,21 @@ async def _run_task(
                 except Exception as exc:
                     log.warning("Task %d: predictor failed for %s: %s", task_int, case_id, exc)
 
+            # Structured inputs for the task-2 treatment-floor guard. Read from
+            # the clinical record rather than the model's own prose, and read
+            # independently of the predictor so the guard behaves identically in
+            # a predictor-off A/B arm.
+            floor_inputs: dict[str, Any] = {}
+            if task_int == 2:
+                floor_inputs = treatment_floor_inputs(input_dir / case_id)
+
             initial_state: dict[str, Any] = {
                 "messages": [HumanMessage(content=query["context"])],
                 "case_id": case_id,
                 "task": task_int,
                 "patient": {"psa": query.get("psa"), "age": query.get("age")},
                 "predictor_decision": predictor_decision,
+                "floor_inputs": floor_inputs,
             }
             result = await graph.ainvoke(initial_state, {"recursion_limit": cfg.agent.max_iterations})
 

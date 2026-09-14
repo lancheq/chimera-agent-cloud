@@ -33,6 +33,7 @@ from langgraph.prebuilt import ToolNode, tools_condition
 from chimera_agent_baseline.agent.form_fill import make_form_fill_node
 from chimera_agent_baseline.agent.prompts import build_rag_injection
 from chimera_agent_baseline.agent.self_refine import run_self_refine
+from chimera_agent_baseline.agent.trace_ids import trace_case_id as _trace_case_id
 
 log = logging.getLogger(__name__)
 
@@ -54,6 +55,10 @@ class AgentState(TypedDict, total=False):
       case (populated by the runner when ``agent.predictor.enabled``), read
       by ``form_fill`` to ground the LLM's reasoning trace and optionally
       override the final decision fields.
+    * ``floor_inputs`` — the task-2 treatment-floor guard's inputs (structured
+      ISUP / PI-RADS / PSA read from the clinical record by the runner). Kept
+      separate from ``predictor_decision`` so the guard keeps working when the
+      predictor is switched off for an A/B arm.
     * ``structured_response`` — populated by ``form_fill`` and read by
       :mod:`chimera_agent_baseline.run` after graph completion.
     * ``form_fill_warnings`` — diagnostics (validation retries, post-hoc
@@ -65,6 +70,7 @@ class AgentState(TypedDict, total=False):
     case_id: str
     patient: dict[str, Any]
     predictor_decision: dict[str, Any]
+    floor_inputs: dict[str, Any]
     structured_response: dict[str, Any]
     form_fill_warnings: list[str]
     # Pro four-stage fields
@@ -568,7 +574,7 @@ def _make_plan_node(
         # === TRACE DUMP（不影响主流程，失败不报错）===
         import os as _os, json as _json, time as _time
         try:
-            _trace_dir = _os.path.join(_os.environ.get("CHIMERA_OUTPUT_DIR", "output"), "trace", str(case_id))
+            _trace_dir = _os.path.join(_os.environ.get("CHIMERA_OUTPUT_DIR", "output"), "trace", _trace_case_id(case_id))
             _os.makedirs(_trace_dir, exist_ok=True)
             with open(_os.path.join(_trace_dir, "plan.json"), "w") as f:
                 _json.dump({"ts": _time.time(), "plan_text": plan_text[:200], "plan_full_len": len(plan_text),
@@ -634,7 +640,7 @@ def _make_reflect_node(model: BaseChatModel, max_iterations: int = 2):
         # === TRACE DUMP（不影响主流程，失败不报错）===
         import os as _os, json as _json, time as _time
         try:
-            _trace_dir = _os.path.join(_os.environ.get("CHIMERA_OUTPUT_DIR", "output"), "trace", str(case_id))
+            _trace_dir = _os.path.join(_os.environ.get("CHIMERA_OUTPUT_DIR", "output"), "trace", _trace_case_id(case_id))
             _os.makedirs(_trace_dir, exist_ok=True)
             with open(_os.path.join(_trace_dir, "reflect.json"), "w") as f:
                 _json.dump({"ts": _time.time(), "warnings": warnings,

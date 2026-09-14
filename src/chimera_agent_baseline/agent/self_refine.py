@@ -25,6 +25,7 @@ from typing import Any
 
 from langchain_core.language_models import BaseChatModel
 from langchain_core.messages import HumanMessage, SystemMessage
+from chimera_agent_baseline.agent.trace_ids import trace_case_id as _trace_case_id
 
 log = logging.getLogger(__name__)
 
@@ -291,7 +292,7 @@ def run_self_refine(
         # === TRACE DUMP（不影响主流程，失败不报错）===
         import os as _os, json as _json, time as _time
         try:
-            _trace_dir = _os.path.join(_os.environ.get("CHIMERA_OUTPUT_DIR", "output"), "trace", str(case_id))
+            _trace_dir = _os.path.join(_os.environ.get("CHIMERA_OUTPUT_DIR", "output"), "trace", _trace_case_id(case_id))
             _os.makedirs(_trace_dir, exist_ok=True)
             with open(_os.path.join(_trace_dir, f"critique_iter{iteration}.json"), "w") as f:
                 _json.dump({"iteration": iteration,

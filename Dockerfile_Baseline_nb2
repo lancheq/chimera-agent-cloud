@@ -70,8 +70,9 @@ COPY --chown=user:user resources/guidelines_db/ /opt/app/resources/guidelines_db
 COPY --chown=user:user resources/guideline_qa.jsonl /opt/app/resources/guideline_qa.jsonl
 # Only the single config the container path actually reads -- NOT the whole
 # configs/ tree. The dev-only overlays under configs/experiment/ select
-# alternative backends via `+experiment=<name>`, and qwen_api.yaml points at an
-# external aggregation API (https://llmapi.blsc.cn/v1). Merely carrying an
+# alternative backends via `+experiment=<name>`, and qwen_api.yaml is a dev-only
+# overlay that can point at an external OpenAI-compatible endpoint (its base_url
+# is a placeholder in the repo, never a real endpoint). Merely carrying an
 # external endpoint inside the submitted container is a needless compliance
 # liability (R1: containers run offline, external APIs are forbidden and misuse
 # "may lead to disqualification") and would also leak into the open-source
@@ -80,7 +81,24 @@ COPY --chown=user:user resources/guideline_qa.jsonl /opt/app/resources/guideline
 # run.py's @hydra.main entry is the dev-only `make run` path, never used here.
 # The overlays stay in the git repo for reproducibility; they just don't ship
 # inside the image.
-COPY --chown=user:user configs/config.yaml /opt/app/configs/config.yaml
+# The predictor-off A/B variant ships the same code with a different config.
+# Selected at build time (default unchanged) so the shipped image is
+# byte-identical unless the caller asks for the variant -- Grand Challenge sets
+# no environment variables, so the choice has to be baked in.
+ARG CONFIG_FILE=configs/config.yaml
+COPY --chown=user:user ${CONFIG_FILE} /opt/app/configs/config.yaml
+
+# --- Self-identifying version stamp ----------------------------------------
+# Grand Challenge de-duplicates algorithm images by content: re-uploading bytes
+# it already holds fails with "This container image has already been uploaded.
+# Please re-activate the existing container image or upload a new version."
+# Stamping the version does two things: it guarantees a distinct digest, and it
+# makes the platform side auditable -- v8 and v10 differ *only* in the reasoning
+# socket (constant confidence + fixed weight table vs the LLM's own values), so
+# at runtime they are otherwise indistinguishable and a wrong upload would not
+# fail, it would just score differently.
+ARG CHIMERA_VERSION=v11-align+floorfix
+LABEL chimera.version="${CHIMERA_VERSION}"
 
 # --- LLM serving (llama_cpp.server on 127.0.0.1:8765) -----------------------
 # Ensure the small python deps needed by llama_cpp.server (mostly already

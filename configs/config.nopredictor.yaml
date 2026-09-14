@@ -1,0 +1,119 @@
+# =============================================================================
+# Chimera Agent Baseline — default config.
+#
+# All parameters live here, not in code.
+# Override per-experiment with +experiment=name or bare key=value on the CLI.
+#
+#   make run                                                 # all tasks under data/
+#   make run RUN_ARGS="agent.tasks=[2]"                      # just task 2
+#   make run RUN_ARGS="+experiment=qwen_local"               # swap model
+#   make run RUN_ARGS="agent.limit=5"                        # first 5 cases per task
+# =============================================================================
+
+defaults:
+  - _self_
+
+# --- Paths ---
+# The agent walks <data_root>/task<N>/agent_input/<case>/ and writes
+# <output_dir>/task<N>/<case>/prediction.json. In the Grand Challenge container
+# these are overridden to /input and /output (same hierarchy).
+paths:
+  data_root: data
+  output_dir: test/output
+  resource_dir: resources
+  model_dir: model
+  embedding_model_dir: resources/embedding_model
+
+# --- Model ---
+# provider=vllm   -- in-process inference via vLLM (the GC container path).
+# provider=openai -- any OpenAI-compatible HTTP endpoint (llama.cpp server,
+#                    vLLM OpenAI server, OpenAI itself). Set base_url and
+#                    optionally api_key_env.
+model:
+  provider: openai
+  model_id: Qwen3.6-35B-A3B-UD-Q4_K_M.gguf
+  # vLLM tool-call parser — must match the model's function-calling format.
+  # Ignored when provider=openai (the server speaks the protocol natively).
+  # Common values: gemma4, hermes, llama, mistral, pythonic.
+  tool_parser: gemma4
+  # OpenAI-compatible server settings (used only when provider=openai).
+  base_url: http://127.0.0.1:8765/v1
+  api_key_env: LLAMA_API_KEY    # env var holding the bearer token
+  request_timeout: 600
+  extra_body:
+    reasoning_budget_tokens: 4096
+
+# --- Agent ---
+# GC enforces a hard per-run wall clock. On the A10G the old 25-iteration loop
+# with 8192-token generations could not finish once the model had loaded, so
+# both the call count and the per-call token ceiling are cut to fit the budget.
+agent:
+  max_iterations: 10             # max ReAct loop steps before stopping
+  step_timeout: 900              # seconds per graph step #old value 120
+  # Which tasks to run. Defaults to all; task dirs missing under data_root are
+  # skipped with a warning. Each task auto-selects its tool set and input dir.
+  tasks: [1, 2, 3]
+  # Optional case-subset filters (applied per task). ``pids`` wins over ``limit``.
+  pids: null
+  limit: null
+  # Skip cases that have ground-truth files (for pseudo-label generation runs).
+  # Also skips mock cases (*-mock-*) and official cases (BX_*, T2_*).
+  skip_gt: false
+  # W5-T2 (experimental, default OFF): force search_guidelines on T1 gray-zone
+  # cases (PSA 3-10 OR PI-RADS 3-4) in plan_node and inject the retrieved QA /
+  # guideline passages into the agent's context. Task 1 only.
+  force_rag_grayzone: false
+  # Form-fill node — terminal step that emits the structured submission.
+  form_fill:
+    max_retries: 2               # validation retries before raising
+    # Hippocrates self-refine: Critique→Refine loop (1 iteration) after
+    # initial judgment. Adds 2 LLM calls per case (~10-20s). Targets
+    # GEval + F1 by catching reasoning errors before output.
+    #
+    # ENABLED — S2 ablation (2026-08-31, N=30) confirmed positive:
+    #   accuracy +7.4pp (66.7%→74.1%), fixed 3 / broke 1, critique
+    #   contamination 0% (S1 fix effective), refine triggered 9/30.
+    self_refine: true
+    self_refine_max_iter: 1        # max critique→refine cycles
+    # Atomic fact verification (programmatic, no LLM). Checks free_text
+    # values against transcript, verifies decisive variables have support,
+    # auto-downgrades over-calibrated confidence. Targets GEval + grounding.
+    atomic_check: true
+  # Optional image-embedding predictor tool (default OFF). When enabled, the
+  # MCP server exposes `get_image_predictor`, which loads ALL of a patient's
+  # features.json embeddings (MRI / biopsy / prostatectomy) via FeatureStore
+  # and returns a compact score — never the raw vectors. Replace `run_predictor`
+  # in tools/predictor.py with your trained head (use one origin or fuse them).
+  predictor:
+    # --- Predictor-OFF A/B variant (2026-09-13) ---------------------------
+    # All three switches must be off together, and that is not obvious:
+    # run.py:246-252 falls back to the *global* `decision_override` bool
+    # whenever `decision_override_tasks` is empty, so leaving
+    # `decision_override: true` here would silently override every task.
+    # And `enabled` must also be false, because `_predictor_note()` injects the
+    # predictor's answer into the form-fill prompt whenever a predictor decision
+    # exists -- measured on 69 labeled T2 cases, the LLM then reproduces the
+    # predictor's decision 69/69, so turning off the override alone would change
+    # nothing.  This variant therefore measures a genuinely predictor-free LLM.
+    enabled: false
+    decision_override: false
+    decision_override_tasks: []
+
+# --- Logging ---
+logging:
+  level: INFO                    # DEBUG, INFO, WARNING, ERROR
+
+# --- Generation ---
+generation:
+  temperature: 0.3
+  max_new_tokens: 2048
+  max_model_len: 32768           # vLLM context window
+  gpu_memory_utilization: 0.9    # fraction of total VRAM vLLM may use (lower for consumer GPUs / shared desktops)
+  top_p: 0.95
+
+# --- Hydra settings ---
+hydra:
+  run:
+    dir: .
+  job:
+    chdir: false
