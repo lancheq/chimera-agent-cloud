@@ -34,6 +34,20 @@ separate model archive that the platform mounts at `/opt/ml/model`.
 | MCP Python SDK | MIT |
 | Hydra / OmegaConf | MIT / Apache-2.0 |
 
+## Corpus-building tools (not part of the inference image)
+
+`scripts/process_guidelines.py` rebuilds the guideline vector index from a PDF.
+It is a development-time tool and is **not** shipped in the submitted image: the
+image carries the finished index only. It additionally uses
+
+| Library | Licence |
+|---|---|
+| PyMuPDF (`fitz`) | AGPL-3.0 (or commercial) |
+| sentence-transformers | Apache-2.0 |
+
+and the embedding model (`google/embeddinggemma-300m`, Gemma terms of use) that
+the runtime index was built with.
+
 A CPU backend shared object is vendored under `vendor/` to make the container
 run on the platform's older instruction set (see `docs/`); it is a build of the
 MIT-licensed llama.cpp CPU backend.

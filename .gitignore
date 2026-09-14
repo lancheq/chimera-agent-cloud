@@ -3,3 +3,5 @@ __pycache__/
 *.bak_w5
 llama_cpp/
 vendor/*.whl
+# built artefacts (multi-GB): never commit, regenerate from the Dockerfile
+*.tar.gz

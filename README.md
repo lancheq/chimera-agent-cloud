@@ -85,23 +85,31 @@ mounted from the separate model archive at `/opt/ml/model`.
 # the working Dockerfile is Dockerfile_Baseline_nb2 (must be passed with -f)
 docker buildx build --platform linux/amd64 -f Dockerfile_Baseline_nb2 \
   -t chimera-agent:submit --load .
-docker save chimera-agent:submit | pigz -c > ../chimera-agent.tar.gz
+docker save chimera-agent:submit | pigz -c > chimera-agent.tar.gz
 ```
 
 ### Verify before uploading
 
 ```bash
-bash ../tools/verify_submission.sh ../chimera-agent.tar.gz
+bash tools/verify_submission.sh chimera-agent.tar.gz
 ```
 
 The script loads the image **from the tarball** (not from the build cache),
 checks the artifact identity, the offline environment and the functional
-self-checks below.
+self-checks below. The identity defaults name the released build (v13); a
+rebuilt image cannot be byte-identical, so a mismatch is a note rather than a
+failure unless you pass `STRICT_IDENTITY=1`.
+
+Suites that need challenge material are **skipped** unless you point the matching
+variables at your own copies (`CHIMERA_CASES_DIR`, `CHIMERA_MODEL_DIR`,
+`CHIMERA_ALIGN_MAPPING_DIR`, `CHIMERA_ARCHIVE_DIR`, `CHIMERA_TRAIN_RELEASE`),
+because that material is not redistributed here.
 
 ### Functional self-checks
 
-Each check was written after a real silent failure caused by the condition it now
-tests, and is expected to fail on the pre-fix artefact:
+The suites live in `tools/probes/` and run inside the built image (mounted at
+`/mnt`). Each check was written after a real silent failure caused by the
+condition it now tests, and is expected to fail on the pre-fix artefact:
 
 | Check | Guards against |
 |---|---|
@@ -440,6 +448,11 @@ JSON files back to `/output`.
 | [Model Configuration](docs/models.md) | Swapping models, providers, experiment overlays |
 | [Challenge Tasks](docs/chimera.md) | Task definitions, inputs, outputs |
 
+The four documents above belong to the organizers' baseline repository
+(`DIAGNijmegen/chimera-agent-baseline`), whose README the lower half of this file
+follows; they are not duplicated here. Our own protocol document is
+`docs/layered-validation-protocol.md`.
+
 ## What to change
 
 | Goal | Where |
@@ -453,6 +466,10 @@ JSON files back to `/output`.
 | Change the agent loop | `src/chimera_agent_baseline/agent/graph.py` |
 | Tune the form-fill prompt / retry | `src/chimera_agent_baseline/agent/form_fill.py` |
 | Rebuild the RAG corpus | `scripts/process_guidelines.py` |
+
+The corpus builder consumes the EAU prostate-cancer guideline PDF, which is not
+redistributed here; the index it produced ships prebuilt in
+`resources/guidelines_db/`.
 
 ## What NOT to change
 

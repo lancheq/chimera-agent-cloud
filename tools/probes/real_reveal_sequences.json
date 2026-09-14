@@ -1,0 +1,194 @@
+{
+ "task1_BX_01": [
+  {
+   "page": "decision",
+   "order": 1,
+   "key": "section_s3-mri",
+   "label": "Radiology / MRI report",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T16:35:47.494Z"
+  },
+  {
+   "page": "decision",
+   "order": 2,
+   "key": "section_s3-psa",
+   "label": "PSA trend",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T16:35:49.494Z"
+  },
+  {
+   "page": "decision",
+   "order": 3,
+   "key": "section_s3-labs",
+   "label": "Laboratory results",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T16:35:51.494Z"
+  },
+  {
+   "page": "decision",
+   "order": 4,
+   "key": "section_s3-prev",
+   "label": "Previous notes",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T16:35:53.494Z"
+  },
+  {
+   "page": "decision",
+   "order": 5,
+   "key": "section_s3-fh",
+   "label": "Family history (anamnesis)",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T16:35:55.494Z"
+  }
+ ],
+ "task1_BX_02": [
+  {
+   "page": "decision",
+   "order": 1,
+   "key": "section_s3-mri",
+   "label": "Radiology / MRI report",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T16:36:42.405Z"
+  },
+  {
+   "page": "decision",
+   "order": 2,
+   "key": "section_s3-psa",
+   "label": "PSA trend",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T16:36:44.405Z"
+  }
+ ],
+ "task2_T2-001": [
+  {
+   "page": "decision",
+   "order": 1,
+   "key": "section_s3-mri",
+   "label": "Radiology / MRI report",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T17:35:16.703Z"
+  },
+  {
+   "page": "decision",
+   "order": 2,
+   "key": "section_s3-path",
+   "label": "Pathology report",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T17:35:18.703Z"
+  },
+  {
+   "page": "decision",
+   "order": 3,
+   "key": "section_s3-psa",
+   "label": "PSA trend",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T17:35:20.703Z"
+  }
+ ],
+ "task2_T2-002": [
+  {
+   "page": "decision",
+   "order": 1,
+   "key": "section_s3-path",
+   "label": "Pathology report",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T17:36:28.668Z"
+  },
+  {
+   "page": "decision",
+   "order": 2,
+   "key": "section_s3-mri",
+   "label": "Radiology / MRI report",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T17:36:30.668Z"
+  },
+  {
+   "page": "decision",
+   "order": 3,
+   "key": "section_s3-psa",
+   "label": "PSA trend",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T17:36:32.668Z"
+  },
+  {
+   "page": "decision",
+   "order": 4,
+   "key": "section_s3-prev",
+   "label": "Previous notes",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T17:36:34.668Z"
+  }
+ ],
+ "task3_T3-001": [
+  {
+   "page": "decision",
+   "order": 1,
+   "key": "section_s3-surgpath",
+   "label": "Surgical pathology report",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T18:37:37.234Z"
+  },
+  {
+   "page": "decision",
+   "order": 2,
+   "key": "section_s3-mri",
+   "label": "Radiology / MRI report",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T18:37:39.234Z"
+  },
+  {
+   "page": "decision",
+   "order": 3,
+   "key": "section_search_guidelines",
+   "label": "search guidelines",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T18:37:41.234Z"
+  }
+ ],
+ "task3_T3-002": [
+  {
+   "page": "decision",
+   "order": 1,
+   "key": "section_s3-surgpath",
+   "label": "Surgical pathology report",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T18:38:34.712Z"
+  },
+  {
+   "page": "decision",
+   "order": 2,
+   "key": "section_s3-mri",
+   "label": "Radiology / MRI report",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T18:38:36.712Z"
+  },
+  {
+   "page": "decision",
+   "order": 3,
+   "key": "section_search_guidelines",
+   "label": "search guidelines",
+   "value": "section",
+   "via": "tool_call",
+   "ts": "2026-09-10T18:38:38.712Z"
+  }
+ ]
+}
