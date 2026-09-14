@@ -23,7 +23,7 @@ and their licences: `THIRD_PARTY.md`.
 | Evidence contract | `reveal_sequence` is built from the tools actually called. In early versions every reveal sequence was empty, which silently zeroed the section-grounding component for every case. |
 | Planner | mandatory MCP tool calls are injected per task, so the agent cannot answer from the prompt alone. |
 | Decision fusion | the deterministic predictor overrides the decision for T2 and T3 only; T1 stays pure language model because cross-validation did not support overriding it. |
-| Safety rules | a *treatment floor* enforces active treatment for high-risk structured inputs (structured fields only — never parsed from generated prose), and a recurrence rule downgrades over-predicted events. |
+| Safety rules | a *treatment floor* enforces active treatment for high-risk structured inputs (structured fields only — never parsed from generated prose); a recurrence rule downgrades, never upgrades, over-predicted events; and a task-2 *prior correction* promotes a case to active treatment when that class probability exceeds 0.30, because the class is under-called out of distribution. |
 | Reasoning alignment | `reasoning_align.py` maps the two highest-weight judge-free rubric components (confidence, variable weights) onto values measured optimal on the annotated data, at the output boundary only. By construction it cannot change the decision socket, free text or reveal sequence. |
 | Output guards | the reasoning socket is filtered against the platform's declared per-task key set, and that table is asserted at import time. |
 
@@ -31,12 +31,16 @@ and their licences: `THIRD_PARTY.md`.
 
 | Version | tarball md5 | image id | platform status |
 |---|---|---|---|
-| v8 (currently scored) | `47cb147f3b9e5e5f09df0933ab7b9960` | `sha256:28c91a51…538233` | validation phase, overall `0.6063`, n=109 |
-| v12 (current build) | `fcbcc2b4b0b8b0bdc5f240044f56f032` | `sha256:d20c2b21f7df0b64512ab35b8c6c2c12cc9fbd2679671cf12883b2d6c7cc101e` | see the project log |
+| **v13 (submitted)** | `d67b8064d3a29ac3102a4979720c2a79` | `sha256:59e50698615b92a5392118a30bd2190bbd2e61b8d52fda8d7d098a7210bd7a16` | validation phase, overall `0.6418`, n=109 |
+| v12 | `fcbcc2b4b0b8b0bdc5f240044f56f032` | `sha256:d20c2b21f7df0b64512ab35b8c6c2c12cc9fbd2679671cf12883b2d6c7cc101e` | validation phase, overall `0.6322` |
+| v8 | `47cb147f3b9e5e5f09df0933ab7b9960` | `sha256:28c91a51…538233` | validation phase, overall `0.6063` |
 
-v12 = v10 alignment layer + structured treatment-floor fix + version label +
-trace-dump guard. Model weights are **not** in the image; they are mounted from
-the separate model archive at `/opt/ml/model`.
+The three rows are scored runs of the same pipeline, in the order they were
+submitted. v13 = v12 + a task-2 active-treatment prior correction (promote to
+active treatment when that class probability exceeds 0.30, recorded per case as
+`at_threshold`); v12 = v10 alignment layer + structured treatment-floor fix +
+version label + trace-dump guard. Model weights are **not** in the image; they are
+mounted from the separate model archive at `/opt/ml/model`.
 
 ### Build
 
