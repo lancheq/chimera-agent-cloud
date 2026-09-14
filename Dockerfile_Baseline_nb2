@@ -97,7 +97,10 @@ COPY --chown=user:user ${CONFIG_FILE} /opt/app/configs/config.yaml
 # socket (constant confidence + fixed weight table vs the LLM's own values), so
 # at runtime they are otherwise indistinguishable and a wrong upload would not
 # fail, it would just score differently.
-ARG CHIMERA_VERSION=v11-align+floorfix
+# The default below names the released version (v13, see the README provenance
+# table); override it per build with --build-arg CHIMERA_VERSION=... so every
+# upload carries a distinct digest and an auditable stamp.
+ARG CHIMERA_VERSION=v13-align+floorfix+atprior
 LABEL chimera.version="${CHIMERA_VERSION}"
 
 # --- LLM serving (llama_cpp.server on 127.0.0.1:8765) -----------------------
