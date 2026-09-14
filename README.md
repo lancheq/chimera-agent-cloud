@@ -14,6 +14,43 @@ node.
 **Released under the Apache License 2.0** — see `LICENSE`. Third-party components
 and their licences: `THIRD_PARTY.md`.
 
+## Authors and citation
+
+This submission was designed and implemented by:
+
+| Author | Affiliation | Contact |
+|---|---|---|
+| Dongze He | Beihang University, Beijing, China | 23101026@buaa.edu.cn |
+| Yuping Wang | Beihang University, Beijing, China | yupingw@buaa.edu.cn |
+
+If you refer to this code, please cite the accompanying 6-page method paper
+(Springer LNCS / MICCAI format) submitted to the CHIMERA-agent challenge:
+
+```bibtex
+@misc{he2026chimeraagent,
+  title  = {Reasoning-Aligned Evidence Orchestration: a Hybrid Reflective RAG
+            and Predictor-Fusion Agent for Sequential Prostate Cancer Decisions},
+  author = {He, Dongze and Wang, Yuping},
+  year   = {2026},
+  note   = {Method paper, CHIMERA-agent challenge (MICCAI 2026 workshop)},
+  url    = {https://github.com/lancheq/chimera-agent-cloud}
+}
+```
+
+The authors also cite the challenge description itself, as required by the
+challenge's embargo terms:
+
+```bibtex
+@misc{khalili2026chimeraagent,
+  title  = {Combining HIstology, Medical imaging and molEcular data for medical
+            pRognosis and diAgnosis Agent (CHIMERA-agent)},
+  author = {Khalili, N. and Litjens, G. and Kartasalo, K. and Eklund, M. and
+            Ragusi, M. and van Ipenburg, J.},
+  year   = {2026},
+  doi    = {10.5281/zenodo.19818695}
+}
+```
+
 ## Our submission
 
 ### What it adds on top of the baseline
