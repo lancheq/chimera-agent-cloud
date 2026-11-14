@@ -1,3 +1,11 @@
+# 第二轮研究进度与 Chat 阅读入口
+
+**最新项目详解与过程报告：[discussion/README.md](discussion/README.md)** · [当前状态](discussion/CURRENT.md) · [最新存档](discussion/LATEST.md) · [实验索引](discussion/EXPERIMENT_INDEX.md)
+
+第二轮代码、配置、测试和公开报告位于 [`round2/`](round2/)。根目录保留上一轮发布版本，不能将其与第二轮候选混用。每个阶段以 Git 提交和检查点归档；患者原文、标签、逐例日志、模型权重与凭证不随本次更新上传。
+
+---
+
 <p align="center">
   <img src="docs/images/thumbnail.png" alt="CHIMERA Agent" width="250">
 </p>

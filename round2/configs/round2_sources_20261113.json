@@ -1,0 +1,7 @@
+{
+  "sources": [
+    {"name": "server_legacy", "root": "../data", "role": "legacy_exposed", "identity_namespace": "chimera_review_candidates", "label_provenance": "previously_inspected_not_fresh_holdout", "patient_id_field": null},
+    {"name": "local_train_release_v1", "root": "../data/round2_materials_20261111/mac_transfer/20261111_101222_bn72g8xr/payload/releases/local_train_release_v1", "role": "legacy_exposed", "identity_namespace": "chimera_review_candidates", "label_provenance": "transferred_release_manifest_pending_patient_mapping", "patient_id_field": null},
+    {"name": "phase2_train_release_20261104", "root": "../data/round2_materials_20261111/mac_transfer/20261111_101222_bn72g8xr/payload/releases/phase2_train_release_20261104", "role": "legacy_exposed", "identity_namespace": "chimera_review_candidates", "label_provenance": "transferred_release_manifest_pending_patient_mapping", "patient_id_field": null}
+  ]
+}

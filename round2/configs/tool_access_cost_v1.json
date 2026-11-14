@@ -1,0 +1,166 @@
+{
+  "status": "engineering_contract_not_performance_profile",
+  "tasks": {
+    "1": {
+      "schema_version": 1,
+      "task": 1,
+      "cost_unit": "research_new_section_unit_not_currency",
+      "tools": {
+        "get_psa_trend": {
+          "fields": [
+            "psa_trend"
+          ],
+          "new_section_units": 1,
+          "kind": "clinical_section"
+        },
+        "get_lab_results": {
+          "fields": [
+            "laboratory_results"
+          ],
+          "new_section_units": 1,
+          "kind": "clinical_section"
+        },
+        "get_mri_report": {
+          "fields": [
+            "radiology_report"
+          ],
+          "new_section_units": 1,
+          "kind": "clinical_section"
+        },
+        "get_pathology_report": {
+          "fields": [
+            "pathology_report"
+          ],
+          "new_section_units": 1,
+          "kind": "clinical_section"
+        },
+        "get_previous_notes": {
+          "fields": [
+            "previous_notes"
+          ],
+          "new_section_units": 1,
+          "kind": "clinical_section"
+        },
+        "get_family_history": {
+          "fields": [
+            "family_history"
+          ],
+          "new_section_units": 1,
+          "kind": "clinical_section"
+        }
+      },
+      "search_guidelines": {
+        "kind": "knowledge_search",
+        "new_section_units": 0,
+        "admitted_attempt_units": 1
+      },
+      "get_image_predictor": "blocked_until_modality_provenance_and_authorization_verified"
+    },
+    "2": {
+      "schema_version": 1,
+      "task": 2,
+      "cost_unit": "research_new_section_unit_not_currency",
+      "tools": {
+        "get_psa_trend": {
+          "fields": [
+            "psa_trend"
+          ],
+          "new_section_units": 1,
+          "kind": "clinical_section"
+        },
+        "get_lab_results": {
+          "fields": [
+            "laboratory_results"
+          ],
+          "new_section_units": 1,
+          "kind": "clinical_section"
+        },
+        "get_mri_report": {
+          "fields": [
+            "radiology_report"
+          ],
+          "new_section_units": 1,
+          "kind": "clinical_section"
+        },
+        "get_pathology_report": {
+          "fields": [
+            "pathology_report"
+          ],
+          "new_section_units": 1,
+          "kind": "clinical_section"
+        },
+        "get_previous_notes": {
+          "fields": [
+            "previous_notes"
+          ],
+          "new_section_units": 1,
+          "kind": "clinical_section"
+        },
+        "get_family_history": {
+          "fields": [
+            "family_history"
+          ],
+          "new_section_units": 1,
+          "kind": "clinical_section"
+        }
+      },
+      "search_guidelines": {
+        "kind": "knowledge_search",
+        "new_section_units": 0,
+        "admitted_attempt_units": 1
+      },
+      "get_image_predictor": "blocked_until_modality_provenance_and_authorization_verified"
+    },
+    "3": {
+      "schema_version": 1,
+      "task": 3,
+      "cost_unit": "research_new_section_unit_not_currency",
+      "tools": {
+        "get_mri_report": {
+          "fields": [
+            "radiology_report"
+          ],
+          "new_section_units": 1,
+          "kind": "clinical_section"
+        },
+        "get_pathology_report": {
+          "fields": [
+            "pathology_report"
+          ],
+          "new_section_units": 1,
+          "kind": "clinical_section"
+        },
+        "get_surgical_pathology_report": {
+          "fields": [
+            "surgical_pathology_report"
+          ],
+          "new_section_units": 1,
+          "kind": "clinical_section"
+        },
+        "get_previous_notes": {
+          "fields": [
+            "previous_notes"
+          ],
+          "new_section_units": 1,
+          "kind": "clinical_section"
+        },
+        "get_family_history": {
+          "fields": [
+            "family_history"
+          ],
+          "new_section_units": 1,
+          "kind": "clinical_section"
+        }
+      },
+      "search_guidelines": {
+        "kind": "knowledge_search",
+        "new_section_units": 0,
+        "admitted_attempt_units": 1
+      },
+      "get_image_predictor": "blocked_until_modality_provenance_and_authorization_verified"
+    }
+  },
+  "runtime_activation": "explicit per-case --access-session only",
+  "currency_prices": null,
+  "units_are_proxy": true
+}
