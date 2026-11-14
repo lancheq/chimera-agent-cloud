@@ -1,7 +1,7 @@
 # 最新存档
 
-20261114-161852-publication-acceptance
+20261114-193915-dsh-headless-smoke
 
-公开Git归档验收与使用说明完成；过程报告、代码及Chat入口同步，后续按执行会话阶段结束流程更新。
+DSH headless and Our Free Model configured; synthetic model and file-writing smoke tests passed. No clinical data used; OS isolation and model revision remain unverified.
 
-[存档摘要](checkpoints/20261114-161852-publication-acceptance/SUMMARY.md) · [指纹清单](checkpoints/20261114-161852-publication-acceptance/manifest.json)
+[存档摘要](checkpoints/20261114-193915-dsh-headless-smoke/SUMMARY.md) · [指纹清单](checkpoints/20261114-193915-dsh-headless-smoke/manifest.json)
