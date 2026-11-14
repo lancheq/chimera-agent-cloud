@@ -1,7 +1,7 @@
 # 最新存档
 
-20261114-161354-round2-public-baseline
+20261114-161652-sync-workflow-ready
 
-第二轮代码与公开过程报告首次归档；v1对照已分析，控制修复v2已验收，v2完整对照处于已授权运行阶段。
+阶段归档与GitHub连接发布流程已安装；首次代码和过程报告已回读，增加自动发布及全文件指纹核验。
 
-[存档摘要](checkpoints/20261114-161354-round2-public-baseline/SUMMARY.md) · [指纹清单](checkpoints/20261114-161354-round2-public-baseline/manifest.json)
+[存档摘要](checkpoints/20261114-161652-sync-workflow-ready/SUMMARY.md) · [指纹清单](checkpoints/20261114-161652-sync-workflow-ready/manifest.json)

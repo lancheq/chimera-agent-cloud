@@ -22,7 +22,7 @@ PATTERNS=('src/**/*.py','tests/test_*.py','configs/round2*.yaml','configs/round2
           'docs/ROUND2*.md','docs/EXECUTION_CHAIN.md','reports/ROUND2*.md','reports/T1*.md',
           'tools/*shared_plan*.py','tools/*guarded*.py','tools/*knowledge*.py',
           'tools/*round2*.py','tools/*control*.py','tools/*information_access*.py',
-          'tools/public_checkpoint.py','scripts/train_predictor.py')
+          'tools/public_checkpoint.py','tools/public_checkpoint_publish.js','scripts/train_predictor.py')
 EXACT=('AGENTS.md','pyproject.toml','requirements.txt','Dockerfile_Baseline','inference.py','reasoning_align.py')
 SENSITIVE_ID=re.compile(r'PT-(?:pseudo_)?[A-Za-z0-9_-]+|study-case-\d+|BX_\d+|T[123]-\d+|`[a-f0-9]{12}`')
 SECRET=re.compile(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|\bgh[pousr]_[A-Za-z0-9]{20,}|\bsk-[A-Za-z0-9_-]{20,}')

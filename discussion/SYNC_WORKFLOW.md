@@ -12,6 +12,8 @@
 
 本服务器未配置命令行GitHub写入凭证，发布由执行会话使用GitHub连接工具完成。不要索取或把API密钥写到仓库。
 
+可直接读取 `tools/public_checkpoint_publish.js` 的源码并作为 `functions.exec` 调用执行：该脚本会完成以下全部步骤，并核对每个公开文件的 Git blob 指纹后写回执。不是在 Node 或 shell 中直接运行。
+
 1. 从pending读取bundle；先检查清单、排除项和报告公开版本。若代码含患者特定内容被排除，先解决范围，不假装完整代码已发布。
 2. GitHub fetch读取 `lancheq/chimera-agent-cloud` 的 `branches/main`，记录head和tree。
 3. create_tree以该tree为base，加入bundle.files中的UTF-8文本；不删除原有路径。新增代码位于round2/，旧根目录代码保持。
