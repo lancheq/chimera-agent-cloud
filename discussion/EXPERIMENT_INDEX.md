@@ -9,7 +9,7 @@
 | 首轮真实配对v1 | 91例，两组均60正确；自主控制失败较多 | [结果与机制](../round2/reports/ROUND2_S4_PAIRED_RESULTS_20261114.md) |
 | 控制修复v2 | 接口和有限恢复工程验收，不是提分实验 | [修复](../round2/reports/ROUND2_CONTROL_REPAIR_ACCEPTANCE_20261114.md) |
 | v2首次正式尝试 | 源码实际导入v1，私有分析拒绝；760次调用不作v2医学结果 | [失效取证与数据范围](../round2/reports/ROUND2_S4_V2_PROVENANCE_FAILURE_20261115.md) |
-| v2-r1部署恢复 | 补齐实际导入门槛，同91例，11月15日12:30:44启动；结果待分析 | [恢复协议](../round2/docs/ROUND2_S4_V2_RECOVERY_20261115.md) |
+| v2-r1有效完整对照 | 182组别全成功；两组64/91，自主信息少10.33%，组内token约2.22倍；无准确率优势证据 | [有效结果与机制](../round2/reports/ROUND2_S4_V2_RESULTS_20261115.md) |
 
 更早试验见 reports 下的过程报告。不同患者集合／输入版本／统计环节不能连成一条提分曲线，重复调用不增加独立患者数。
 
