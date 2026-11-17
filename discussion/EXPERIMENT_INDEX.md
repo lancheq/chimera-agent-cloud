@@ -52,3 +52,11 @@ C02交付：DELIVERED_AWAIT_PLANNING_REVIEW。工程通过与医学晋级分开�
 | 顺序调整 | 状态／口径 | 材料 |
 |---|---|---|
 | P01提交准备 | READY_AWAIT_USER；先机制触发／消费与实际离线镜像，再一次validation冒烟；0新实验／0提交 | [新计划](../round2/docs/ROUND2_SUBMISSION_SMOKE_FIRST_PLAN_20261117.md) · [任务卡](tasks/20261117_P01_TRIGGER_AND_SUBMISSION_READINESS.md) |
+
+
+| 接续登记 | 状态与证据 | 材料 |
+|---|---|---|
+| P01-PACK | 只读报告存在，41控制文件SHA复核一致；NOT_READY，非构建验收 | [审查](../round2/reports/ROUND2_P01_PACKAGING_AUDIT_20261117.md) |
+| P01-GIT | 已有仓库public；过程快照与独立构建分开，未新建仓库或上传 | [审查](../round2/reports/ROUND2_P01_PUBLIC_RELEASE_AUDIT_20261117.md) |
+| B02 | INVESTIGATE／NOT_DISPATCHED；先文献、作者实现与合法纵向可行性；0实验 | [候选](../round2/docs/ROUND2_LONGITUDINAL_EVIDENCE_CANDIDATE_20261117.md) · [待派发任务](tasks/20261117_B02_LITERATURE_AND_FEASIBILITY.md) |
+| 接续总控 | Mac原件未接收，SSH自动审批／消息连接阻断明确记录 | [整合报告](../round2/reports/ROUND2_P01_REVIEW_AND_B02_INTAKE_20261117.md) |

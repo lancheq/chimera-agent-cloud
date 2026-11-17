@@ -1,7 +1,7 @@
 # 最新存档
 
-20261117-164221-submission-smoke-first
+20261117-202910-p01-audit-b02-intake
 
-按用户调整部署顺序：细调后移，先机制触发/消费核查、T1/T2/T3提交profile和实际离线镜像，再计划一次第二轮validation冒烟。已定位默认C02未启用、宿主output路径未打包、模型服务启动和无docker环境缺口；当前账号额度未核实。仅更新规划及P01待确认任务卡，0新会话/派发/模型调用/构建/平台提交，不提交test。
+恢复P01-PACK/GIT只读审查，41控制文件接续前指纹一致；仅规划AGENTS后续更新。仓库已public但真实提交仍NOT_READY：入口/资源路径/精确依赖/模型启动/容器缺口未修。已读详解与讨论，B02纵向证据候选登记为INVESTIGATE未派发，原文及作者实现优先，P01仍优先。Mac原件未接收，SSH自动审批拒绝及消息连接失败如实记录。0新机制/临床生成/训练/构建/平台提交。
 
-[存档摘要](checkpoints/20261117-164221-submission-smoke-first/SUMMARY.md) · [指纹清单](checkpoints/20261117-164221-submission-smoke-first/manifest.json)
+[存档摘要](checkpoints/20261117-202910-p01-audit-b02-intake/SUMMARY.md) · [指纹清单](checkpoints/20261117-202910-p01-audit-b02-intake/manifest.json)
