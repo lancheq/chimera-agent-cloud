@@ -60,6 +60,10 @@ def create_server(
     """
     mcp = FastMCP(name)
     access = InformationAccess.from_config(data_dir, access_config) if access_config is not None else None
+    packager = None
+    if access_config is not None and access_config.get('evidence_package') is not None:
+        from chimera_agent_baseline.evidence_package import EvidencePackager
+        packager = EvidencePackager(access_config['evidence_package'], access, data_dir)
     if access is not None and predictor_enabled:
         raise ValueError('Guarded image predictor needs verified modality authorization; cannot enable yet')
     store = BoundCaseDataStore(data_dir,access) if access is not None else CaseDataStore(data_dir)
@@ -90,7 +94,8 @@ def create_server(
         if guidelines_search is None:
             from chimera_agent_baseline.knowledge_access import create_search
             guidelines_search = create_search(access_config['knowledge_manifest'], access.binding['knowledge_snapshot_id'])
-        return {'query': query, 'results': guidelines_search.query(query)}
+        hits = guidelines_search.query(query)
+        return packager.package(query, hits) if packager is not None else {'query': query, 'results': hits}
 
     @mcp.tool()
     def search_guidelines(query: str) -> str:
@@ -102,11 +107,16 @@ def create_server(
         phrase as a clinical question.
         """
         if access is not None:
+            if packager is not None:
+                from chimera_agent_baseline.evidence_package import load_overlay
+                load_overlay(packager.config['overlay_path'], packager.config['overlay_sha256'])
             # Admission precedes lazy verified loading; cached queries never
             # invoke a backend and unverified resources fail explicitly.
             try:
                 value=access.execute('search_guidelines',access.binding['case_id'],
                     lambda: guarded_search(query),query=query)
+                if packager is not None:
+                    packager.validate_delivery(value)
             except AccessDenied as exc:
                 raise ToolError('information_access:'+str(exc)) from None
             return json.dumps(value)

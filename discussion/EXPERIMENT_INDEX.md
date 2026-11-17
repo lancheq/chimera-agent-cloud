@@ -13,6 +13,7 @@
 | 原始文献定位修正 | 已有相似实验及负面证据比较；S4降为工程基线，非新生成 | [文献比较](../round2/reports/ROUND2_LITERATURE_POSITIONING_20261115.md) |
 | 6例／47次离线机制复盘 | 3例同临床事实但请求不同；23次早停少25单位，24次无患者信息节省；未作因果干预 | [机制复盘](../round2/reports/ROUND2_MECHANISM_REVIEW_20261115.md) |
 | 两份任务规则来源／适用性审查 | 69条全覆盖；36窄义相符、17条件不全、13偏差、3未定位／说明；0新调用，资源未改 | [来源台账与单一候选](../round2/reports/ROUND2_EVIDENCE_APPLICABILITY_AUDIT_20261117.md) |
+| C02来源／适用条件证据包 | 工程204测试＋真实MCP/CPU检索/stub消费通过；默认关闭，仅2原文载体；医学NO_GO、0新临床生成 | [验收与边界](../round2/reports/ROUND2_EVIDENCE_PACKAGE_ACCEPTANCE_20261117.md) |
 
 更早试验见 reports 下的过程报告。不同患者集合／输入版本／统计环节不能连成一条提分曲线，重复调用不增加独立患者数。
 
@@ -33,3 +34,11 @@
 | D01 | 具备条件，待用户确认；最多3个外部来源的资格与目标映射 | [任务指令](tasks/20261117_D01_EXTERNAL_DATA.md) |
 
 上述READY不表示已派发或已生成结果。正式临床批次、训练、批量下载和平台提交均未启动。
+
+
+| 新Task | 状态／边界 | 指令 |
+|---|---|---|
+| A01规划验收 | 接受进入候选准备，P60理由更正为必做项；非专家医学裁定 | 本地output/planning_c02_control_20261117/a01_planning_review.json |
+| C02 | DISPATCHED，已有《主会话》执行；证据包工程／合成验收，非临床提分 | [完整目标](tasks/20261117_C02_EVIDENCE_PACKAGE.md) |
+
+C02交付：DELIVERED_AWAIT_PLANNING_REVIEW。工程通过与医学晋级分开；真实合法格式/条件/来源覆盖未完成，临床NO_GO。[未执行验证草案](../round2/docs/ROUND2_EVIDENCE_PACKAGE_VALIDATION_DRAFT_20261117.md)。

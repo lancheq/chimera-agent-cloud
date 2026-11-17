@@ -1,7 +1,7 @@
 # 最新存档
 
-20261117-154009-a01-source-applicability-delivery
+20261117-162706-c02-evidence-package-engineering
 
-A01交付待规划验收：原始文献定位、6例与47次复盘及69条来源适用性审查完成，0新临床调用，3299文件未变；只建议单一证据包候选，尚未实现或部署。私有患者轨迹不发布。
+C02默认关闭证据包已实现并独立冻结，最后版本204测试及真实MCP/CPU检索/stub消费通过；P60理由更正，0临床生成/训练。工程PASS、真实输入覆盖未验故医学NO_GO，不启动草案或其他工作线。
 
-[存档摘要](checkpoints/20261117-154009-a01-source-applicability-delivery/SUMMARY.md) · [指纹清单](checkpoints/20261117-154009-a01-source-applicability-delivery/manifest.json)
+[存档摘要](checkpoints/20261117-162706-c02-evidence-package-engineering/SUMMARY.md) · [指纹清单](checkpoints/20261117-162706-c02-evidence-package-engineering/manifest.json)

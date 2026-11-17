@@ -101,6 +101,9 @@ def prepare_case(cfg,input_dir,task,query,case_output):
         load_manifest(manifest, require_alignment=True)
         config['knowledge_manifest']=str(manifest)
         config['knowledge_snapshot_id']=sha(manifest)
+    package = cfg.agent.information_access.get('evidence_package')
+    if package is not None:
+        config['evidence_package'] = OmegaConf.to_container(package, resolve=True) if OmegaConf.is_config(package) else deepcopy(package)
     case_output.mkdir(parents=True,exist_ok=True);path=case_output/'access_session.json'
     if path.exists() and json.loads(path.read_text())!=config:raise ValueError('Existing case session differs; use a new output directory, not a reset ledger')
     access=InformationAccess.from_config(input_dir,config)
@@ -139,6 +142,9 @@ def verify_messages(access,messages):
             value=decode_payload(m.content)
             if not value or canonical(value) != canonical(access.require_knowledge(value.get('query'))):
                 raise AccessDenied('Tool knowledge result does not match granted source')
+            if access.binding.get('evidence_package_id'):
+                from chimera_agent_baseline.evidence_package import verify_consumer
+                verify_consumer(access, value)
             m.additional_kwargs['information_access_clinical_success']=False
             m.additional_kwargs['information_access_knowledge_success']=True
             continue

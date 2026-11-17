@@ -48,7 +48,7 @@ def tool_contract(task):
 
 class InformationAccess:
     def __init__(self,*,ledger_path,session_id,case_id,task,snapshot_id,budget_units,max_attempts,
-                 initial_sections=None,initial_source_sha256=None,knowledge_snapshot_id=None):
+                 initial_sections=None,initial_source_sha256=None,knowledge_snapshot_id=None,evidence_package_id=None):
         for name,value in [('budget_units',budget_units),('max_attempts',max_attempts)]:
             if type(value) is not int or value<0:raise ValueError('Nonnegative integer '+name+' required')
         if type(task) is not int or task not in (1,2,3):raise ValueError('Invalid task')
@@ -62,6 +62,10 @@ class InformationAccess:
             'budget_units':budget_units,'max_attempts':max_attempts,'contract':self.contract,
             'knowledge_snapshot_id':knowledge_snapshot_id,
             'initial_sections_digest':digest(initial_sections),'initial_source_sha256':initial_source_sha256}
+        if evidence_package_id is not None:
+            if not knowledge_snapshot_id or task != 1:
+                raise ValueError('Evidence package requires pinned T1 knowledge')
+            self.binding['evidence_package_id'] = evidence_package_id
         with self._tx() as db:
             db.execute('CREATE TABLE IF NOT EXISTS meta (binding TEXT NOT NULL, spent INTEGER NOT NULL, attempts INTEGER NOT NULL)')
             db.execute('CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, payload TEXT NOT NULL, source TEXT NOT NULL)')
@@ -80,6 +84,13 @@ class InformationAccess:
         from chimera_agent_baseline.tools.base import CASE_DATA_FILENAMES_BY_TASK,infer_task_from_data_dir
         options=deepcopy(config);case=options['case_id'];root=Path(data_dir).resolve()
         knowledge_manifest=options.pop('knowledge_manifest', None)
+        package = options.pop('evidence_package', None)
+        if 'evidence_package_id' in options:
+            raise ValueError('MCP evidence identity must come from a validated package config')
+        if package is not None:
+            from chimera_agent_baseline.evidence_package import load_overlay
+            load_overlay(package['overlay_path'], package['overlay_sha256'])
+            options['evidence_package_id'] = package['overlay_sha256']
         if not Path(options['ledger_path']).is_absolute():raise ValueError('MCP ledger_path must be absolute across subprocesses')
         if not isinstance(case,str) or case in ('.','..') or Path(case).name!=case or '/' in case or '\\' in case:
             raise ValueError('Invalid bound case identifier')

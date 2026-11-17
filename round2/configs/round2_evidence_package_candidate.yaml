@@ -1,0 +1,13 @@
+# Explicit C02 opt-in overlay; never loaded by configs/config.yaml.
+# Merge only after the unchanged shared-plan v2 overlay, into NEW outputs.
+agent:
+  information_access:
+    run_id: round2-c02-source-applicability-v1
+    evidence_package:
+      overlay_path: /home/hedongze/CHIMERA-agent/output/evidence_package_candidate_20261117/frozen/resources/overlay.json
+      overlay_sha256: 2f61e4232e6b54fcc6a82a289fa73a5083ccf6cb54df62a92dfb5b632f5b43f9
+      max_consumer_bytes: 24000
+      tokenizer:
+        base_url: http://127.0.0.1:8765
+        model_id: Qwen3.6-35B-A3B-UD-Q4_K_M.gguf
+        max_evidence_tokens: 8000
