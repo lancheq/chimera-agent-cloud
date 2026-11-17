@@ -33,7 +33,7 @@
 1. 已完成原始来源比较和[6例／47次离线审查](../reports/ROUND2_MECHANISM_REVIEW_20261115.md)。私有案卷不公开，汇总和限制公开。
 2. 已完成[两份摘要的来源／条件及既有轨迹审查](../reports/ROUND2_EVIDENCE_APPLICABILITY_AUDIT_20261117.md)。所有69条纳入，不按GT选择；原始资源与实验保持。下一项只为来源／适用条件证据包准备新版本与验收。
 3. 并入必要的Direct ReAct参照协议准备，统一权限／预算／最终证据投影；不把已有react开关当已验收完整候选。
-4. C02候选已实现、冻结并提交规划复核，见[验收](../reports/ROUND2_EVIDENCE_PACKAGE_ACCEPTANCE_20261117.md)。下一项先GT盲、合法已见资料的真实格式/条件/来源覆盖与失配预注册；门槛未完成，医学NO_GO。[有限协议草案](ROUND2_EVIDENCE_PACKAGE_VALIDATION_DRAFT_20261117.md)不执行。
+4. C02候选已实现、冻结并通过限定范围的规划终验，见[验收](../reports/ROUND2_EVIDENCE_PACKAGE_ACCEPTANCE_20261117.md)。下一项先GT盲、合法已见资料的真实格式/条件/来源覆盖与失配预注册；门槛未完成，医学NO_GO。[有限协议草案](ROUND2_EVIDENCE_PACKAGE_VALIDATION_DRAFT_20261117.md)不执行。
 
 ## 持续执行规则
 
@@ -46,3 +46,6 @@
 后台按科学问题安排有限任务，完成决定性对照后分析，不填满GPU或准点强停。接续保留冻结源码、证据、账本和成功输出。每个可复核步骤按discussion/SYNC_WORKFLOW.md公开代码与脱敏汇总，读回核验后才能称同步成功。
 
 当前阶段无后台任务，无需等待。
+
+
+2026-11-17规划终验：[C02限定工程通过／医学NO_GO](../reports/ROUND2_C02_PLANNING_ACCEPTANCE_20261117.md)。规划独立111项与执行204项为重叠工程证据，不是新增患者或临床调用。C02自动目标至此结题，未启动下一方向。

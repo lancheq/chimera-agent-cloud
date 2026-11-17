@@ -27,7 +27,7 @@
 | INIT-20261117 | 状态恢复完成，0新临床生成，冻结源码与历史产物复核通过 | [规划报告](../round2/docs/ROUND2_PLANNING_INITIALIZATION_20261117.md) |
 | MECH-20261115 | 已完成的6例／47次只读复盘，本轮恢复并补入导航 | [机制报告](../round2/reports/ROUND2_MECHANISM_REVIEW_20261115.md) |
 | LIT-20261115 | 既有比较性核查，含负面结论与适配限制，不当新机制实验 | [定位报告](../round2/reports/ROUND2_LITERATURE_POSITIONING_20261115.md) |
-| A01 | DELIVERED_AWAIT_PLANNING_REVIEW：69条审查交付，待规划文件验收，不重复派发 | [验收卡](tasks/20261117_A01_SOURCE_APPLICABILITY.md) |
+| A01 | PLANNING_ACCEPTED_WITH_ADDENDUM：69条交付已验收，P60理由更正在C02新补充中落实 | [验收卡](tasks/20261117_A01_SOURCE_APPLICABILITY.md) |
 | A02 | 具备条件，待用户确认；Reflection检测／纠正／审核／消费分层 | [任务指令](tasks/20261117_A02_REFLECTION_PATH.md) |
 | B01 | 具备条件，待用户确认；66条未裁候选的恢复与合法成本 | [任务指令](tasks/20261117_B01_EVIDENCE_RECOVERY.md) |
 | C01 | 可静态准备，规范冻结依赖A01；检索／诊断利用分开评价 | [任务指令](tasks/20261117_C01_RETRIEVAL_CONTRACT.md) |
@@ -39,6 +39,11 @@
 | 新Task | 状态／边界 | 指令 |
 |---|---|---|
 | A01规划验收 | 接受进入候选准备，P60理由更正为必做项；非专家医学裁定 | 本地output/planning_c02_control_20261117/a01_planning_review.json |
-| C02 | DISPATCHED，已有《主会话》执行；证据包工程／合成验收，非临床提分 | [完整目标](tasks/20261117_C02_EVIDENCE_PACKAGE.md) |
+| C02 | PLANNING_ACCEPTED_ENGINEERING_CLINICAL_NO_GO：工程结题，真实覆盖门槛未满足 | [完整目标](tasks/20261117_C02_EVIDENCE_PACKAGE.md) |
 
 C02交付：DELIVERED_AWAIT_PLANNING_REVIEW。工程通过与医学晋级分开；真实合法格式/条件/来源覆盖未完成，临床NO_GO。[未执行验证草案](../round2/docs/ROUND2_EVIDENCE_PACKAGE_VALIDATION_DRAFT_20261117.md)。
+
+
+| 规划终验 | 已核查证据／状态 | 报告 |
+|---|---|---|
+| C02终验 | 独立111项通过，与执行204项重叠；271新冻结／3321既有／278旧源码保全；工程通过、医学NO_GO；184公开文件独立回读 | [规划终验](../round2/reports/ROUND2_C02_PLANNING_ACCEPTANCE_20261117.md) |

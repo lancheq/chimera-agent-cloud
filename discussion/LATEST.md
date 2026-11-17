@@ -1,7 +1,7 @@
 # 最新存档
 
-20261117-162706-c02-evidence-package-engineering
+20261117-163218-c02-planning-review
 
-C02默认关闭证据包已实现并独立冻结，最后版本204测试及真实MCP/CPU检索/stub消费通过；P60理由更正，0临床生成/训练。工程PASS、真实输入覆盖未验故医学NO_GO，不启动草案或其他工作线。
+规划独立验收C02有限工程候选：冻结目录111项专项通过，与执行端204项总回归重叠；271新冻结文件、3321既有文件、278旧v2源码指纹复核。原始命中与顺序固定，真实MCP/CPU检索/stub消费通过；历史/否定/跨行反例已修正。工程通过、医学NO_GO：仅两个原文载体及限定格式，真实合法条件/来源覆盖未完成。0临床生成、0GPU模型计算、0训练，有限Goal结题，不自动启动下一任务。
 
-[存档摘要](checkpoints/20261117-162706-c02-evidence-package-engineering/SUMMARY.md) · [指纹清单](checkpoints/20261117-162706-c02-evidence-package-engineering/manifest.json)
+[存档摘要](checkpoints/20261117-163218-c02-planning-review/SUMMARY.md) · [指纹清单](checkpoints/20261117-163218-c02-planning-review/manifest.json)
