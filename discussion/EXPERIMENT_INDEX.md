@@ -47,3 +47,8 @@ C02交付：DELIVERED_AWAIT_PLANNING_REVIEW。工程通过与医学晋级分开�
 | 规划终验 | 已核查证据／状态 | 报告 |
 |---|---|---|
 | C02终验 | 独立111项通过，与执行204项重叠；271新冻结／3321既有／278旧源码保全；工程通过、医学NO_GO；184公开文件独立回读 | [规划终验](../round2/reports/ROUND2_C02_PLANNING_ACCEPTANCE_20261117.md) |
+
+
+| 顺序调整 | 状态／口径 | 材料 |
+|---|---|---|
+| P01提交准备 | READY_AWAIT_USER；先机制触发／消费与实际离线镜像，再一次validation冒烟；0新实验／0提交 | [新计划](../round2/docs/ROUND2_SUBMISSION_SMOKE_FIRST_PLAN_20261117.md) · [任务卡](tasks/20261117_P01_TRIGGER_AND_SUBMISSION_READINESS.md) |

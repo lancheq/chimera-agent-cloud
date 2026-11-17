@@ -1,7 +1,7 @@
 # 最新存档
 
-20261117-163218-c02-planning-review
+20261117-164221-submission-smoke-first
 
-规划独立验收C02有限工程候选：冻结目录111项专项通过，与执行端204项总回归重叠；271新冻结文件、3321既有文件、278旧v2源码指纹复核。原始命中与顺序固定，真实MCP/CPU检索/stub消费通过；历史/否定/跨行反例已修正。工程通过、医学NO_GO：仅两个原文载体及限定格式，真实合法条件/来源覆盖未完成。0临床生成、0GPU模型计算、0训练，有限Goal结题，不自动启动下一任务。
+按用户调整部署顺序：细调后移，先机制触发/消费核查、T1/T2/T3提交profile和实际离线镜像，再计划一次第二轮validation冒烟。已定位默认C02未启用、宿主output路径未打包、模型服务启动和无docker环境缺口；当前账号额度未核实。仅更新规划及P01待确认任务卡，0新会话/派发/模型调用/构建/平台提交，不提交test。
 
-[存档摘要](checkpoints/20261117-163218-c02-planning-review/SUMMARY.md) · [指纹清单](checkpoints/20261117-163218-c02-planning-review/manifest.json)
+[存档摘要](checkpoints/20261117-164221-submission-smoke-first/SUMMARY.md) · [指纹清单](checkpoints/20261117-164221-submission-smoke-first/manifest.json)
