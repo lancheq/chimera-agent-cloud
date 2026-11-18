@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "checkpoint": "20261118-213404-b-time-eligibility-review",
+  "created_beijing": "20261118-213404",
+  "source_git_head": "7301642d0eedda2f143ba44b93d42f948249d813",
+  "summary": "B-TIME 只读资格与隔离设计通过规划验收。三任务的真实时间覆盖未知，等待数据方可信截止。A-SMOKE 主会话接续待恢复。本检查点归档任务和研究结论。",
+  "files": {
+    "reports/ROUND2_B_TIME_ELIGIBILITY_20261118.md": {
+      "source_sha256": "52dfff563be00536f0617f32bdb0b44f25bc8694d8e2617320f8100433dc7a8a",
+      "public_sha256": "52dfff563be00536f0617f32bdb0b44f25bc8694d8e2617320f8100433dc7a8a",
+      "public_path": "round2/reports/ROUND2_B_TIME_ELIGIBILITY_20261118.md",
+      "public_derivative": false
+    },
+    "reports/ROUND2_B_TIME_PLANNING_REVIEW_20261118.md": {
+      "source_sha256": "300fc688847d4ea6ae5dd7c2f15315c11ce12f75fa8c361cc35b72f02813f470",
+      "public_sha256": "300fc688847d4ea6ae5dd7c2f15315c11ce12f75fa8c361cc35b72f02813f470",
+      "public_path": "round2/reports/ROUND2_B_TIME_PLANNING_REVIEW_20261118.md",
+      "public_derivative": false
+    }
+  },
+  "note": "Public text derivative; raw outputs, clinical data, model weights and credentials are not included."
+}

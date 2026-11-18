@@ -2,10 +2,12 @@
 
 ## 当前派发清单（2026-11-18）
 
-B 的 T1/T2 已通过真实 MCP stdio 的合成入口验收，T3 显式跳过。服务器真实模板计数、数据时间元数据及迟到原始内容隔离待核。C01 保留前 20 基线。
+A-SMOKE 等待原《主会话》恢复后接续正式入口与冒烟前置检查。B-TIME 只读调查已验收，真实时间资格仍未知。若官网动作占用首次正式 validation，则 B 正式验收是前置。
 
 | 任务 | 执行会话 | 本次唯一入口文件 | 预计交付 | 派发状态 |
 |---|---|---|---|---|
+| **A-SMOKE · Adaptive 官网冒烟前置检查** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **新任务卡** [20261118_P01_ADAPTIVE_SMOKE_READINESS.md](tasks/20261118_P01_ADAPTIVE_SMOKE_READINESS.md) | `reports/ROUND2_A_SMOKE_READINESS_20261118.md`、`output/a_smoke_readiness_20261118/` 下的 `handoff.json`、`readiness_matrix.json`、`g2_proposal.md` | 首轮 `d20261118211413-d05f22` 连接失败。原会话为 `systemError`，接续请求 `d20261118212242-d4f72e` 在创建轮次前退出。待原会话恢复后使用同卡继续。 |
+| **B-TIME · 时间来源资格与迟到证据隔离** | **独立只读会话**《B-TIME 时间资格与迟到证据隔离》，`01a1eecb-397a-7921-a09b-c3eac54aa5a6` | **已执行任务卡** [20261118_B_TIME_ELIGIBILITY_AND_LATE_EVIDENCE.md](tasks/20261118_B_TIME_ELIGIBILITY_AND_LATE_EVIDENCE.md) | [调查报告](../round2/reports/ROUND2_B_TIME_ELIGIBILITY_20261118.md)和[规划验收](../round2/reports/ROUND2_B_TIME_PLANNING_REVIEW_20261118.md)，字段表、隔离方案、最小协议和交接由调查报告索引。 | 21:31 交付，`d20261118211418-b99853` 有 `turn.completed`、退出 0。规划接受只读研究设计。无后台任务。 |
 | **B-MCP-SDK · MCP 工具文本与 SDK 请求兼容** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行接续卡** [20261118_B_MCP_SDK_COMPATIBILITY.md](tasks/20261118_B_MCP_SDK_COMPATIBILITY.md) | [执行报告](../round2/reports/ROUND2_B_MCP_SDK_COMPATIBILITY_20261118.md)、[规划验收](../round2/reports/ROUND2_B_MCP_SDK_PLANNING_REVIEW_20261118.md)，本地入口证据由执行报告索引。 | 20:39 登记 `d20261118203925-ff11b6`，20:52 交付，`turn.completed`、退出 0。规划接受真实 stdio 合成工程，无后台任务。 |
 | **B-EVIDENCE-RECONCILIATION-BUILD · 证据冲突与时间边界最小机制** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **历史任务卡，供查阅** [20261118_B_EVIDENCE_RECONCILIATION_BUILD.md](tasks/20261118_B_EVIDENCE_RECONCILIATION_BUILD.md) | 查阅材料为[执行报告](../round2/reports/ROUND2_B_EVIDENCE_RECONCILIATION_BUILD_20261118.md)和[规划验收](../round2/reports/ROUND2_B_EVIDENCE_RECONCILIATION_PLANNING_REVIEW_20261118.md)。 | 合成工程验收。原请求失败，接续轮 `01a1ee9e-2fd4-70d2-93d6-3f0034c91203` 回读已完成。 |
 

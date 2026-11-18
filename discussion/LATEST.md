@@ -1,7 +1,7 @@
 # 最新存档
 
-20261118-205424-b-mcp-sdk-compatibility-review
+20261118-213404-b-time-eligibility-review
 
-B-MCP-SDK 的 T1/T2 真实 stdio 合成入口、工具回执、SDK 计量和两路输出通过规划验收。T3 跳过，226 项回归通过。服务器真实模板计数、真实模型消费和病例时间资格待验。
+B-TIME 只读资格与隔离设计通过规划验收。三任务的真实时间覆盖未知，等待数据方可信截止。A-SMOKE 主会话接续待恢复。本检查点归档任务和研究结论。
 
-[存档摘要](checkpoints/20261118-205424-b-mcp-sdk-compatibility-review/SUMMARY.md) · [指纹清单](checkpoints/20261118-205424-b-mcp-sdk-compatibility-review/manifest.json)
+[存档摘要](checkpoints/20261118-213404-b-time-eligibility-review/SUMMARY.md) · [指纹清单](checkpoints/20261118-213404-b-time-eligibility-review/manifest.json)

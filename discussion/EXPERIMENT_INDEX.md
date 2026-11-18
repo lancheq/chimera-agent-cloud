@@ -1,5 +1,9 @@
 # 实验与过程索引
 
+2026-11-18。B-TIME 完成并经规划验收。真实合格纵向对数量未知，生产前仍需可信截止和历史可得证明。接受在数据进入决策状态前建立独立视图的设计。[B-TIME 规划验收](../round2/reports/ROUND2_B_TIME_PLANNING_REVIEW_20261118.md)
+
+2026-11-18。A-SMOKE 第一轮连接失败，原《主会话》为 `systemError`，自动接续被拒。初步定位默认 `planned_react` 与冻结 Adaptive 入口不同，最终交付待原会话恢复。[当前派发表](CURRENT.md)
+
 2026-11-18。B-MCP-SDK 接续原《主会话》，`d20261118203925-ff11b6` 结束并经规划验收。T1/T2 的真实 stdio 工具回执、计量发送、MockTransport 消费与双输出均匹配，T3 跳过。226 项回归通过，真实模型、服务器模板计数及病例时间资格待核。[规划验收](../round2/reports/ROUND2_B_MCP_SDK_PLANNING_REVIEW_20261118.md) · [已执行接续卡](tasks/20261118_B_MCP_SDK_COMPATIBILITY.md)
 
 2026-11-18。B-EVIDENCE-RECONCILIATION-BUILD 合成工程已验收。T1/T2 的未裁冲突状态经正式入口进入合成消费者，T3 显式跳过。346 项回归通过，其中 B 专项 37 项。真实 stdio 带工具分支在 G1T 请求格式校验处阻断，真实数据覆盖仍未知。[规划验收](../round2/reports/ROUND2_B_EVIDENCE_RECONCILIATION_PLANNING_REVIEW_20261118.md) · [已执行任务卡](tasks/20261118_B_EVIDENCE_RECONCILIATION_BUILD.md)
