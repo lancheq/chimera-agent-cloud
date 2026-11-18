@@ -2,13 +2,14 @@
 
 ## 当前派发清单（2026-11-18）
 
-当前优先完成 B 线运行前置。B 的 T1/T2 合成接线已验收，T3 显式跳过。真实 MCP 工具响应的 SDK 格式、真实模板计数及正式数据时间元数据待核。C01 保留前 20 基线。
+B 的 T1/T2 已通过真实 MCP stdio 的合成入口验收，T3 显式跳过。服务器真实模板计数、数据时间元数据及迟到原始内容隔离待核。C01 保留前 20 基线。
 
-| 任务 | 执行会话 | 本次入口文件 | 状态与预期交付 |
-|---|---|---|---|
-| **B-EVIDENCE-RECONCILIATION-BUILD · 证据冲突与时间边界最小机制** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行的新任务卡** [20261118_B_EVIDENCE_RECONCILIATION_BUILD.md](tasks/20261118_B_EVIDENCE_RECONCILIATION_BUILD.md) | **接受合成工程交付。** 原请求 `d20261118181625-c1cdbb` 失败，回读接续轮 `01a1ee9e-2fd4-70d2-93d6-3f0034c91203` 为已完成。[执行报告](../round2/reports/ROUND2_B_EVIDENCE_RECONCILIATION_BUILD_20261118.md) · [规划验收](../round2/reports/ROUND2_B_EVIDENCE_RECONCILIATION_PLANNING_REVIEW_20261118.md)。本地交接和入口消费证据由执行报告索引。无后台任务。 |
+| 任务 | 执行会话 | 本次唯一入口文件 | 预计交付 | 派发状态 |
+|---|---|---|---|---|
+| **B-MCP-SDK · MCP 工具文本与 SDK 请求兼容** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行接续卡** [20261118_B_MCP_SDK_COMPATIBILITY.md](tasks/20261118_B_MCP_SDK_COMPATIBILITY.md) | [执行报告](../round2/reports/ROUND2_B_MCP_SDK_COMPATIBILITY_20261118.md)、[规划验收](../round2/reports/ROUND2_B_MCP_SDK_PLANNING_REVIEW_20261118.md)，本地入口证据由执行报告索引。 | 20:39 登记 `d20261118203925-ff11b6`，20:52 交付，`turn.completed`、退出 0。规划接受真实 stdio 合成工程，无后台任务。 |
+| **B-EVIDENCE-RECONCILIATION-BUILD · 证据冲突与时间边界最小机制** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **历史任务卡，供查阅** [20261118_B_EVIDENCE_RECONCILIATION_BUILD.md](tasks/20261118_B_EVIDENCE_RECONCILIATION_BUILD.md) | 查阅材料为[执行报告](../round2/reports/ROUND2_B_EVIDENCE_RECONCILIATION_BUILD_20261118.md)和[规划验收](../round2/reports/ROUND2_B_EVIDENCE_RECONCILIATION_PLANNING_REVIEW_20261118.md)。 | 合成工程验收。原请求失败，接续轮 `01a1ee9e-2fd4-70d2-93d6-3f0034c91203` 回读已完成。 |
 
-2026-11-18 用户恢复阶段验收后的公开 Git 同步。C01 的公开检查点覆盖定位、固定回放和召回深度对照的汇总结果，见 [最新存档](LATEST.md)。
+2026-11-18 用户恢复阶段验收后的公开 Git 同步。最新公开检查点覆盖 B 线任务、执行汇总和规划验收，见 [最新存档](LATEST.md)。
 
 [公开版省略逐例记录；汇总与机制结论保留。]
 

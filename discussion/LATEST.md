@@ -1,7 +1,7 @@
 # 最新存档
 
-20261118-203524-b-evidence-reconciliation-review
+20261118-205424-b-mcp-sdk-compatibility-review
 
-B 线 T1/T2 窄范围合成接线验收通过，T3 显式跳过。346 项回归通过。真实 MCP 工具返回仍在 SDK 格式校验处阻断，真实时间资格和模型消费待验。本检查点归档任务、研究汇总和规划验收。
+B-MCP-SDK 的 T1/T2 真实 stdio 合成入口、工具回执、SDK 计量和两路输出通过规划验收。T3 跳过，226 项回归通过。服务器真实模板计数、真实模型消费和病例时间资格待验。
 
-[存档摘要](checkpoints/20261118-203524-b-evidence-reconciliation-review/SUMMARY.md) · [指纹清单](checkpoints/20261118-203524-b-evidence-reconciliation-review/manifest.json)
+[存档摘要](checkpoints/20261118-205424-b-mcp-sdk-compatibility-review/SUMMARY.md) · [指纹清单](checkpoints/20261118-205424-b-mcp-sdk-compatibility-review/manifest.json)

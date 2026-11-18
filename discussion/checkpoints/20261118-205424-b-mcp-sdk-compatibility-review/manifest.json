@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "checkpoint": "20261118-205424-b-mcp-sdk-compatibility-review",
+  "created_beijing": "20261118-205424",
+  "source_git_head": "7301642d0eedda2f143ba44b93d42f948249d813",
+  "summary": "B-MCP-SDK 的 T1/T2 真实 stdio 合成入口、工具回执、SDK 计量和两路输出通过规划验收。T3 跳过，226 项回归通过。服务器真实模板计数、真实模型消费和病例时间资格待验。",
+  "files": {
+    "reports/ROUND2_B_MCP_SDK_COMPATIBILITY_20261118.md": {
+      "source_sha256": "a77e6ce0f1cb51f1f7c4cbe4d4556550dd61af1d9c3c27d9ef6a254e95e5f367",
+      "public_sha256": "424caadd61122e2e6eb645f61b98d6377a60572fdf8358f05256ea7daf2cedb1",
+      "public_path": "round2/reports/ROUND2_B_MCP_SDK_COMPATIBILITY_20261118.md",
+      "public_derivative": true
+    },
+    "reports/ROUND2_B_MCP_SDK_PLANNING_REVIEW_20261118.md": {
+      "source_sha256": "114126fb4077c1ad05fe865a50e231a0ec5b9d1ca83109861066c872e2f9a36e",
+      "public_sha256": "486f1c8253cc23ec120c07becdde7311c929ec7282d3ce115d5a5ca6109845e9",
+      "public_path": "round2/reports/ROUND2_B_MCP_SDK_PLANNING_REVIEW_20261118.md",
+      "public_derivative": true
+    }
+  },
+  "note": "Public text derivative; raw outputs, clinical data, model weights and credentials are not included."
+}

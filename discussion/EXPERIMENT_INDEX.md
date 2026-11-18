@@ -1,5 +1,7 @@
 # 实验与过程索引
 
+2026-11-18。B-MCP-SDK 接续原《主会话》，`d20261118203925-ff11b6` 结束并经规划验收。T1/T2 的真实 stdio 工具回执、计量发送、MockTransport 消费与双输出均匹配，T3 跳过。226 项回归通过，真实模型、服务器模板计数及病例时间资格待核。[规划验收](../round2/reports/ROUND2_B_MCP_SDK_PLANNING_REVIEW_20261118.md) · [已执行接续卡](tasks/20261118_B_MCP_SDK_COMPATIBILITY.md)
+
 2026-11-18。B-EVIDENCE-RECONCILIATION-BUILD 合成工程已验收。T1/T2 的未裁冲突状态经正式入口进入合成消费者，T3 显式跳过。346 项回归通过，其中 B 专项 37 项。真实 stdio 带工具分支在 G1T 请求格式校验处阻断，真实数据覆盖仍未知。[规划验收](../round2/reports/ROUND2_B_EVIDENCE_RECONCILIATION_PLANNING_REVIEW_20261118.md) · [已执行任务卡](tasks/20261118_B_EVIDENCE_RECONCILIATION_BUILD.md)
 
 2026-11-18。C01 召回深度对照通过 `codex-dispatch` 自动接续原会话并完成（`d20261118172600-65caa3`）。6 个配对有效，前 40 补回 1 条但失去 1 条，最终前五覆盖仍为 3/6。规划核验 16 项交付并接受前 40 不晋级结论，保留前 20 基线。[对照报告](../round2/reports/ROUND2_C01_RECALL_DEPTH_COMPARISON_20261118.md) · [已执行接续卡](tasks/20261118_C01_RECALL_DEPTH_COMPARISON.md)
