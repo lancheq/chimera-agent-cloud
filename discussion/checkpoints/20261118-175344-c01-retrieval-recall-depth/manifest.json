@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "checkpoint": "20261118-175344-c01-retrieval-recall-depth",
+  "created_beijing": "20261118-175344",
+  "source_git_head": "7301642d0eedda2f143ba44b93d42f948249d813",
+  "summary": "C01 冻结检索复现 6/6 条历史查询、48 个返回位置。将两路召回深度从各 20 扩为各 40 后，最终正文前五的完整同场景支持仍为 3/6，补回 1 条、失去 1 条，前 40 不晋级。发布 C01 汇总与研究状态。",
+  "files": {
+    "AGENTS.md": {
+      "source_sha256": "a3a81150bff9aaffd3e3cfb53915237497245012715d68ba0baa9161e562e758",
+      "public_sha256": "a3a81150bff9aaffd3e3cfb53915237497245012715d68ba0baa9161e562e758",
+      "public_path": "round2/AGENTS.md",
+      "public_derivative": false
+    },
+    "reports/ROUND2_C01_FROZEN_RETRIEVAL_REPLAY_20261118.md": {
+      "source_sha256": "e3c431eccb740cf439d9e5146546325e52ebb999b3ceee610a599ae022ec7da6",
+      "public_sha256": "e3c431eccb740cf439d9e5146546325e52ebb999b3ceee610a599ae022ec7da6",
+      "public_path": "round2/reports/ROUND2_C01_FROZEN_RETRIEVAL_REPLAY_20261118.md",
+      "public_derivative": false
+    },
+    "reports/ROUND2_C01_RECALL_DEPTH_COMPARISON_20261118.md": {
+      "source_sha256": "59a4e713b2db6e3ca69e62eb60708e7e771c5ecfe165858aa1432b996c933b52",
+      "public_sha256": "59a4e713b2db6e3ca69e62eb60708e7e771c5ecfe165858aa1432b996c933b52",
+      "public_path": "round2/reports/ROUND2_C01_RECALL_DEPTH_COMPARISON_20261118.md",
+      "public_derivative": false
+    },
+    "reports/ROUND2_C01_RETRIEVAL_LOSS_LOCALIZATION_20261118.md": {
+      "source_sha256": "72679490d5c044e6418a1207f7cd0caa34c1326a006364d8b97c9785da0b6b53",
+      "public_sha256": "72679490d5c044e6418a1207f7cd0caa34c1326a006364d8b97c9785da0b6b53",
+      "public_path": "round2/reports/ROUND2_C01_RETRIEVAL_LOSS_LOCALIZATION_20261118.md",
+      "public_derivative": false
+    }
+  },
+  "note": "Public text derivative; raw outputs, clinical data, model weights and credentials are not included."
+}

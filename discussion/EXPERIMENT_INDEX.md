@@ -1,12 +1,22 @@
 # 实验与过程索引
 
-2026-11-18 最新。G1R 合成结构候选消费工程已验收。151 项测试记录、18 条入口事件链及 30 个输出文件核对一致，4 条末端覆写由回执标记为消费合同失败。外层结构候选及审核、最终字段权威和真实模型仍待验收。G1T 具备接续条件，CLI `d20261118122957-4c8b6c` 因主会话 active writer 失败，G1T 尚未启动，范围为非生成模板计数。[G1R 规划验收](../reports/ROUND2_P01_G1R_PLANNING_REVIEW_20261118.md) · [G1T 任务卡](tasks/20261118_P01_G1T_EXACT_TOOL_CONTEXT.md)
+2026-11-18。C01 召回深度对照通过 `codex-dispatch` 自动接续原会话并完成（`d20261118172600-65caa3`）。6 个配对有效，前 40 补回 1 条但失去 1 条，最终前五覆盖仍为 3/6。规划核验 16 项交付并接受前 40 不晋级结论，保留前 20 基线。无后台任务。[对照报告](../round2/reports/ROUND2_C01_RECALL_DEPTH_COMPARISON_20261118.md) · [已执行接续卡](tasks/20261118_C01_RECALL_DEPTH_COMPARISON.md)
+
+C01 冻结回放已验收。6 条查询的 48 个返回位置复现一致，8 个目标正文机会在召回、RRF 截断、重排结果窗的损失分别为 5、2、1。[回放报告](../round2/reports/ROUND2_C01_FROZEN_RETRIEVAL_REPLAY_20261118.md)
+
+2026-11-18 最新。C01 首轮已交付并获限定验收。6 条旧查询中 3 条命中完整目标正文，3 条的目标正文在冻结索引中但未返回。独立核对 11 项交付和 48 个诊断请求送达位置。下一步待交已有《定位 C01 检索损失》会话，做原样 CPU 回放。[汇总报告](../round2/reports/ROUND2_C01_RETRIEVAL_LOSS_LOCALIZATION_20261118.md) · [唯一接续卡](tasks/20261118_C01_FROZEN_RETRIEVAL_REPLAY.md)
+
+《主会话》交付 P01-G1T 的 SDK 请求计量接续。规划接受固定版本下的合成工程，核对 53 项交付产物和 198 项通过的测试记录。真实计数和服务端 schema 待验。[SDK 接续报告](../round2/reports/ROUND2_P01_G1T_SDK_REQUEST_BOUNDARY_20261118.md)
+
+当前接收会话、唯一入口卡和交付文件见 [CURRENT 顶部的派发清单](CURRENT.md)。下文保留各阶段的历史记录。
+
+2026-11-18。G1T 调查已交付，33 项产物指纹一致，实际精确计数接线 `BLOCKED`。G1R 有限工程已经验收。151 项测试记录、18 条入口事件链及 30 个输出文件核对一致，4 条末端覆写由回执标记为消费合同失败。[G1R 规划验收](../round2/reports/ROUND2_P01_G1R_PLANNING_REVIEW_20261118.md) · [G1T 调查报告](../round2/reports/ROUND2_P01_G1T_EXACT_TOOL_CONTEXT_20261118.md)
 
 ## 2026-11-18 G1A/A02规划验收与手动接续
 
 | Task | 当前结论/状态 | 材料 |
 |---|---|---|
-| G1A | PLANNING_ACCEPTED_LIMITED_ENGINEERING：330产物/69源码身份、81项日志、42事件合成链/两socket核对；无live工具模板或真实端到端通过声明 | [规划验收](../reports/ROUND2_G1A_A02_PLANNING_REVIEW_20261118.md) |
+| G1A | PLANNING_ACCEPTED_LIMITED_ENGINEERING：330产物/69源码身份、81项日志、42事件合成链/两socket核对；无live工具模板或真实端到端通过声明 | [规划验收](../round2/reports/ROUND2_G1A_A02_PLANNING_REVIEW_20261118.md) |
 | A02 | PLANNING_ACCEPTED_BOUNDED_AUDIT：11交付身份、25历史绑定、4链12版本核查；未找到医学正确改判未消费的真实正例，18项回归矩阵仍仅设计 | 同上 |
 | P01-G1R | MANUAL_HANDOFF_READY，用户转交唯一执行会话；已授权结构候选消费/唯一赋值/最终回执，0真实生成 | [完整任务](tasks/20261118_P01_G1R_REFLECTION_CONSUMPTION.md) |
 | P01-G1T | QUEUED_MANUAL_HANDOFF；G1R审查后同一写入者另接，工具/结构模板精确计数及非生成探针，不并发 | [后继任务](tasks/20261118_P01_G1T_EXACT_TOOL_CONTEXT.md) |
@@ -21,8 +31,8 @@
 
 | 项 | 实际状态/门槛 | 材料 |
 |---|---|---|
-| B01 | DELIVERED_AWAIT_PLANNING_REVIEW，22:34:02完成；66标记/59记录/29风险组，认证消解0，无后台 | [报告](../reports/ROUND2_EVIDENCE_RECOVERY_FEASIBILITY_20261117.md) |
-| B02-LIT | DELIVERED_AWAIT_PLANNING_REVIEW，22:34:22完成；5论文/3仓库，建议HOLD、真实纵向资格UNKNOWN，无后台 | [报告](../reports/ROUND2_B02_LITERATURE_FEASIBILITY_20261117.md) |
+| B01 | DELIVERED_AWAIT_PLANNING_REVIEW，22:34:02完成；66标记/59记录/29风险组，认证消解0，无后台 | [报告](../round2/reports/ROUND2_EVIDENCE_RECOVERY_FEASIBILITY_20261117.md) |
+| B02-LIT | DELIVERED_AWAIT_PLANNING_REVIEW，22:34:22完成；5论文/3仓库，建议HOLD、真实纵向资格UNKNOWN，无后台 | [报告](../round2/reports/ROUND2_B02_LITERATURE_FEASIBILITY_20261117.md) |
 | P01-G1A | 用户已批准；本会话发送旧MCP端点失败，尚无送达回执。仅公共执行基础/0真实生成 | [Goal](tasks/20261117_P01_G1A_COMMON_RUNTIME.md) |
 | A02 | 用户已批准；本会话创建旧MCP端点失败，无成功threadId。仅有界只读归因/最小修复契约 | [Goal](tasks/20261117_A02_REFLECTION_PATH.md) |
 | P01-G1R | 待G1A接口+A02契约规划审查；由原主会话统一消费链修复，不开并发代码分支 | [调度与转交文本](REFLECTION_DISPATCH_20261117.md) |
@@ -31,16 +41,16 @@
 
 | 当前正式调度（2026-11-17 22:19） | 状态 | 证据/范围 |
 |---|---|---|
-| P01-MECH-G0 | 正常完成，有限交付规划接受；机制总体NOT_READY，G1/G2未启动 | [规划核查](../reports/ROUND2_P01_G0_PLANNING_REVIEW_20261117.md) |
+| P01-MECH-G0 | 正常完成，有限交付规划接受；机制总体NOT_READY，G1/G2未启动 | [规划核查](../round2/reports/ROUND2_P01_G0_PLANNING_REVIEW_20261117.md) |
 | B01 | 正式派发并RUNNING，既有会话01a1e9da-451c-7113-8b39-1fbf5c93b801，sol High | [任务](tasks/20261117_B01_EVIDENCE_RECOVERY.md) |
 | B02-LIT | 正式派发并RUNNING，新会话01a1e9e0-c5da-7570-9291-b97e8f08670e，sol High | [任务](tasks/20261117_B02_LITERATURE_AND_FEASIBILITY.md) |
 | P01-G1A | PROPOSED_NOT_DISPATCHED，拟复用主会话的共用基础修复，0真实生成 | [接续Goal](tasks/20261117_P01_G1A_COMMON_RUNTIME.md) |
 
 | 最新接续（2026-11-17 22:12） | 状态与证据 | 材料 |
 |---|---|---|
-| Codex通道恢复 | 官方MCP刷新；实际创建/消息回读通过，完整保留历史4消息/2创建错误；非医学实验 | [诊断](../reports/ROUND2_CODEX_SESSION_CHANNEL_REPAIR_20261117.md) |
+| Codex通道恢复 | 官方MCP刷新；实际创建/消息回读通过，完整保留历史4消息/2创建错误；非医学实验 | [诊断](../round2/reports/ROUND2_CODEX_SESSION_CHANNEL_REPAIR_20261117.md) |
 | B01接收确认 | 已创建01a1e9da-451c-7113-8b39-1fbf5c93b801，sol High；仅读任务卡/回执，66条分析未启动 | [任务卡](tasks/20261117_B01_EVIDENCE_RECOVERY.md) |
-| P01-MECH-G0 | 主会话已交付，待规划独立审查，G1/G2未开始；本轮只读确认交付不等于验收 | [完成度报告](../reports/ROUND2_P01_MECHANISM_COMPLETENESS_20261117.md) |
+| P01-MECH-G0 | 主会话已交付，待规划独立审查，G1/G2未开始；本轮只读确认交付不等于验收 | [完成度报告](../round2/reports/ROUND2_P01_MECHANISM_COMPLETENESS_20261117.md) |
 
 
 最新调度（2026-11-17）：先P01-MECH机制验收；正式打包/上传/平台准备冻结。规划不承担工程，原有《主会话》执行。仅G0可启动，G1/G2待规划冻结，不是新实验结果。
