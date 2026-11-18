@@ -1,8 +1,10 @@
 # 实验与过程索引
 
+2026-11-18。A-G2 已登记接续请求 `d20261118222340-e561d4`，待完成回执。先验证正式入口与可信工程 profile，再检查服务和真实模板计数。达到门槛后先跑 T1，再各一例 T2/T3，然后整理上传准备。[接续卡](tasks/20261118_A_ADAPTIVE_HOST_SMOKE_AND_UPLOAD_READINESS.md)
+
 2026-11-18。B-TIME 完成并经规划验收。真实合格纵向对数量未知，生产前仍需可信截止和历史可得证明。接受在数据进入决策状态前建立独立视图的设计。[B-TIME 规划验收](../round2/reports/ROUND2_B_TIME_PLANNING_REVIEW_20261118.md)
 
-2026-11-18。A-SMOKE 第一轮连接失败，原《主会话》为 `systemError`，自动接续被拒。初步定位默认 `planned_react` 与冻结 Adaptive 入口不同，最终交付待原会话恢复。[当前派发表](CURRENT.md)
+2026-11-18。A-SMOKE 由原《主会话》恢复并交付。规划接受前置调查。正式默认 `planned_react`，冻结 Adaptive 处于独立研究入口，35B 未监听。15 项交付、53 项实际源码及 4 个冻结夹具指纹核对一致。[前置调查](../round2/reports/ROUND2_A_SMOKE_READINESS_20261118.md)
 
 2026-11-18。B-MCP-SDK 接续原《主会话》，`d20261118203925-ff11b6` 结束并经规划验收。T1/T2 的真实 stdio 工具回执、计量发送、MockTransport 消费与双输出均匹配，T3 跳过。226 项回归通过，真实模型、服务器模板计数及病例时间资格待核。[规划验收](../round2/reports/ROUND2_B_MCP_SDK_PLANNING_REVIEW_20261118.md) · [已执行接续卡](tasks/20261118_B_MCP_SDK_COMPATIBILITY.md)
 

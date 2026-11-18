@@ -2,11 +2,12 @@
 
 ## 当前派发清单（2026-11-18）
 
-A-SMOKE 等待原《主会话》恢复后接续正式入口与冒烟前置检查。B-TIME 只读调查已验收，真实时间资格仍未知。若官网动作占用首次正式 validation，则 B 正式验收是前置。
+A-SMOKE 前置调查已验收，确认根入口尚未接入冻结 Adaptive，35B 未监听。A-G2 先接线并验证工程 profile，随后在实际门槛通过后按 T1→T2→T3 各一例试跑，再整理上传准备。B-TIME 只读调查已验收。若官网动作占用首次正式 validation，则 B 正式验收是前置。
 
 | 任务 | 执行会话 | 本次唯一入口文件 | 预计交付 | 派发状态 |
 |---|---|---|---|---|
-| **A-SMOKE · Adaptive 官网冒烟前置检查** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **新任务卡** [20261118_P01_ADAPTIVE_SMOKE_READINESS.md](tasks/20261118_P01_ADAPTIVE_SMOKE_READINESS.md) | `reports/ROUND2_A_SMOKE_READINESS_20261118.md`、`output/a_smoke_readiness_20261118/` 下的 `handoff.json`、`readiness_matrix.json`、`g2_proposal.md` | 首轮 `d20261118211413-d05f22` 连接失败。原会话为 `systemError`，接续请求 `d20261118212242-d4f72e` 在创建轮次前退出。待原会话恢复后使用同卡继续。 |
+| **A-G2 · Adaptive 正式入口、三任务宿主冒烟与上传准备** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **接续卡** [20261118_A_ADAPTIVE_HOST_SMOKE_AND_UPLOAD_READINESS.md](tasks/20261118_A_ADAPTIVE_HOST_SMOKE_AND_UPLOAD_READINESS.md) | `reports/ROUND2_A_G2_ADAPTIVE_HOST_SMOKE_20261118.md`、`output/a_g2_adaptive_host_smoke_20261118/` 下的 `gate1.json`、`handoff.json`、试跑证据和 `upload_readiness.md` | 22:23 登记 `d20261118222340-e561d4`，等待完成回执。 |
+| **A-SMOKE · Adaptive 官网冒烟前置检查** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行任务卡，供查阅** [20261118_P01_ADAPTIVE_SMOKE_READINESS.md](tasks/20261118_P01_ADAPTIVE_SMOKE_READINESS.md) | [前置调查报告](../round2/reports/ROUND2_A_SMOKE_READINESS_20261118.md)，本地 profile 矩阵和 G2 草案由报告索引。 | 22:09 交付，回读接续轮 `01a1eef1-5b56-7ae1-b21a-fbdd2f5c23ec` 已完成。规划核对 15 项文件、53 项实际源码及 4 个冻结夹具指纹，接受调查交付。适配、真实计数和宿主验证仍未执行。 |
 | **B-TIME · 时间来源资格与迟到证据隔离** | **独立只读会话**《B-TIME 时间资格与迟到证据隔离》，`01a1eecb-397a-7921-a09b-c3eac54aa5a6` | **已执行任务卡** [20261118_B_TIME_ELIGIBILITY_AND_LATE_EVIDENCE.md](tasks/20261118_B_TIME_ELIGIBILITY_AND_LATE_EVIDENCE.md) | [调查报告](../round2/reports/ROUND2_B_TIME_ELIGIBILITY_20261118.md)和[规划验收](../round2/reports/ROUND2_B_TIME_PLANNING_REVIEW_20261118.md)，字段表、隔离方案、最小协议和交接由调查报告索引。 | 21:31 交付，`d20261118211418-b99853` 有 `turn.completed`、退出 0。规划接受只读研究设计。无后台任务。 |
 | **B-MCP-SDK · MCP 工具文本与 SDK 请求兼容** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行接续卡** [20261118_B_MCP_SDK_COMPATIBILITY.md](tasks/20261118_B_MCP_SDK_COMPATIBILITY.md) | [执行报告](../round2/reports/ROUND2_B_MCP_SDK_COMPATIBILITY_20261118.md)、[规划验收](../round2/reports/ROUND2_B_MCP_SDK_PLANNING_REVIEW_20261118.md)，本地入口证据由执行报告索引。 | 20:39 登记 `d20261118203925-ff11b6`，20:52 交付，`turn.completed`、退出 0。规划接受真实 stdio 合成工程，无后台任务。 |
 | **B-EVIDENCE-RECONCILIATION-BUILD · 证据冲突与时间边界最小机制** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **历史任务卡，供查阅** [20261118_B_EVIDENCE_RECONCILIATION_BUILD.md](tasks/20261118_B_EVIDENCE_RECONCILIATION_BUILD.md) | 查阅材料为[执行报告](../round2/reports/ROUND2_B_EVIDENCE_RECONCILIATION_BUILD_20261118.md)和[规划验收](../round2/reports/ROUND2_B_EVIDENCE_RECONCILIATION_PLANNING_REVIEW_20261118.md)。 | 合成工程验收。原请求失败，接续轮 `01a1ee9e-2fd4-70d2-93d6-3f0034c91203` 回读已完成。 |

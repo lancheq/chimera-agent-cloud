@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "checkpoint": "20261118-222442-a-smoke-readiness-review",
+  "created_beijing": "20261118-222442",
+  "source_git_head": "7301642d0eedda2f143ba44b93d42f948249d813",
+  "summary": "A-SMOKE 正式入口与服务前置调查已验收。冻结 Adaptive 尚未进入默认正式路径，现有 35B 当时未监听。A-G2 工程接续已登记，真实冒烟和上传仍待门槛。",
+  "files": {
+    "reports/ROUND2_A_SMOKE_READINESS_20261118.md": {
+      "source_sha256": "557fde0728656d1df45d331deee42c34dc778859cf2234fa800c7ea87dc1b32d",
+      "public_sha256": "557fde0728656d1df45d331deee42c34dc778859cf2234fa800c7ea87dc1b32d",
+      "public_path": "round2/reports/ROUND2_A_SMOKE_READINESS_20261118.md",
+      "public_derivative": false
+    }
+  },
+  "note": "Public text derivative; raw outputs, clinical data, model weights and credentials are not included."
+}
