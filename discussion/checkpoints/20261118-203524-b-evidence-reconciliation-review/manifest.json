@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "checkpoint": "20261118-203524-b-evidence-reconciliation-review",
+  "created_beijing": "20261118-203524",
+  "source_git_head": "7301642d0eedda2f143ba44b93d42f948249d813",
+  "summary": "B 线 T1/T2 窄范围合成接线验收通过，T3 显式跳过。346 项回归通过。真实 MCP 工具返回仍在 SDK 格式校验处阻断，真实时间资格和模型消费待验。本检查点归档任务、研究汇总和规划验收。",
+  "files": {
+    "reports/ROUND2_B_EVIDENCE_RECONCILIATION_BUILD_20261118.md": {
+      "source_sha256": "b07726309c19dbebe93e08e6b61720facf03ac2e7b4bb1d98f3ef80a80f9796f",
+      "public_sha256": "60315724d8ca287486d30b0e98c345d15a3b3fbbb008d6da547dbcd7db28ffe4",
+      "public_path": "round2/reports/ROUND2_B_EVIDENCE_RECONCILIATION_BUILD_20261118.md",
+      "public_derivative": true
+    },
+    "reports/ROUND2_B_EVIDENCE_RECONCILIATION_PLANNING_REVIEW_20261118.md": {
+      "source_sha256": "321406638071a8016e682b747a663ee9dfe77f28d4c341111236aaab26561ffd",
+      "public_sha256": "321406638071a8016e682b747a663ee9dfe77f28d4c341111236aaab26561ffd",
+      "public_path": "round2/reports/ROUND2_B_EVIDENCE_RECONCILIATION_PLANNING_REVIEW_20261118.md",
+      "public_derivative": false
+    }
+  },
+  "note": "Public text derivative; raw outputs, clinical data, model weights and credentials are not included."
+}

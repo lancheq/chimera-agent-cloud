@@ -1,6 +1,8 @@
 # 实验与过程索引
 
-2026-11-18。C01 召回深度对照通过 `codex-dispatch` 自动接续原会话并完成（`d20261118172600-65caa3`）。6 个配对有效，前 40 补回 1 条但失去 1 条，最终前五覆盖仍为 3/6。规划核验 16 项交付并接受前 40 不晋级结论，保留前 20 基线。无后台任务。[对照报告](../round2/reports/ROUND2_C01_RECALL_DEPTH_COMPARISON_20261118.md) · [已执行接续卡](tasks/20261118_C01_RECALL_DEPTH_COMPARISON.md)
+2026-11-18。B-EVIDENCE-RECONCILIATION-BUILD 合成工程已验收。T1/T2 的未裁冲突状态经正式入口进入合成消费者，T3 显式跳过。346 项回归通过，其中 B 专项 37 项。真实 stdio 带工具分支在 G1T 请求格式校验处阻断，真实数据覆盖仍未知。[规划验收](../round2/reports/ROUND2_B_EVIDENCE_RECONCILIATION_PLANNING_REVIEW_20261118.md) · [已执行任务卡](tasks/20261118_B_EVIDENCE_RECONCILIATION_BUILD.md)
+
+2026-11-18。C01 召回深度对照通过 `codex-dispatch` 自动接续原会话并完成（`d20261118172600-65caa3`）。6 个配对有效，前 40 补回 1 条但失去 1 条，最终前五覆盖仍为 3/6。规划核验 16 项交付并接受前 40 不晋级结论，保留前 20 基线。[对照报告](../round2/reports/ROUND2_C01_RECALL_DEPTH_COMPARISON_20261118.md) · [已执行接续卡](tasks/20261118_C01_RECALL_DEPTH_COMPARISON.md)
 
 C01 冻结回放已验收。6 条查询的 48 个返回位置复现一致，8 个目标正文机会在召回、RRF 截断、重排结果窗的损失分别为 5、2、1。[回放报告](../round2/reports/ROUND2_C01_FROZEN_RETRIEVAL_REPLAY_20261118.md)
 

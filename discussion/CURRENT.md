@@ -2,7 +2,11 @@
 
 ## 当前派发清单（2026-11-18）
 
-当前无待派发任务。C01 的前 40 方案未达到晋级门槛，保留前 20 为基线。《主会话》的真实模板计数等待可复用服务与身份核验。
+当前优先完成 B 线运行前置。B 的 T1/T2 合成接线已验收，T3 显式跳过。真实 MCP 工具响应的 SDK 格式、真实模板计数及正式数据时间元数据待核。C01 保留前 20 基线。
+
+| 任务 | 执行会话 | 本次入口文件 | 状态与预期交付 |
+|---|---|---|---|
+| **B-EVIDENCE-RECONCILIATION-BUILD · 证据冲突与时间边界最小机制** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行的新任务卡** [20261118_B_EVIDENCE_RECONCILIATION_BUILD.md](tasks/20261118_B_EVIDENCE_RECONCILIATION_BUILD.md) | **接受合成工程交付。** 原请求 `d20261118181625-c1cdbb` 失败，回读接续轮 `01a1ee9e-2fd4-70d2-93d6-3f0034c91203` 为已完成。[执行报告](../round2/reports/ROUND2_B_EVIDENCE_RECONCILIATION_BUILD_20261118.md) · [规划验收](../round2/reports/ROUND2_B_EVIDENCE_RECONCILIATION_PLANNING_REVIEW_20261118.md)。本地交接和入口消费证据由执行报告索引。无后台任务。 |
 
 2026-11-18 用户恢复阶段验收后的公开 Git 同步。C01 的公开检查点覆盖定位、固定回放和召回深度对照的汇总结果，见 [最新存档](LATEST.md)。
 

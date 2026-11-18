@@ -1,7 +1,7 @@
 # 最新存档
 
-20261118-175344-c01-retrieval-recall-depth
+20261118-203524-b-evidence-reconciliation-review
 
-C01 冻结检索复现 6/6 条历史查询、48 个返回位置。将两路召回深度从各 20 扩为各 40 后，最终正文前五的完整同场景支持仍为 3/6，补回 1 条、失去 1 条，前 40 不晋级。发布 C01 汇总与研究状态。
+B 线 T1/T2 窄范围合成接线验收通过，T3 显式跳过。346 项回归通过。真实 MCP 工具返回仍在 SDK 格式校验处阻断，真实时间资格和模型消费待验。本检查点归档任务、研究汇总和规划验收。
 
-[存档摘要](checkpoints/20261118-175344-c01-retrieval-recall-depth/SUMMARY.md) · [指纹清单](checkpoints/20261118-175344-c01-retrieval-recall-depth/manifest.json)
+[存档摘要](checkpoints/20261118-203524-b-evidence-reconciliation-review/SUMMARY.md) · [指纹清单](checkpoints/20261118-203524-b-evidence-reconciliation-review/manifest.json)
