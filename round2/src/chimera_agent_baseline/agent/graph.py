@@ -15,6 +15,7 @@ import logging
 import operator
 import os
 import time
+from dataclasses import asdict
 from pathlib import Path
 from typing import Annotated, Any, TypedDict
 
@@ -26,10 +27,13 @@ from langgraph.graph.message import add_messages
 from langgraph.prebuilt import ToolNode, tools_condition
 
 from chimera_agent_baseline.agent.form_fill import make_form_fill_node
+from chimera_agent_baseline.agent.form_parsing import _final_assistant_text
 from chimera_agent_baseline.agent.predictor_node import make_predictor_node
 from chimera_agent_baseline.agent.policy import action_event, validate_policy
 from chimera_agent_baseline.agent.prompts import build_rag_injection
+from chimera_agent_baseline.agent.reflection_contract import ReflectionArtifact, draft_artifact
 from chimera_agent_baseline.agent.self_refine import run_self_refine
+from chimera_agent_baseline.runtime_audit import content_digest
 
 log = logging.getLogger(__name__)
 
@@ -84,6 +88,7 @@ class AgentState(TypedDict, total=False):
     disease_plan: dict[str, Any]        # Stage A output: evidence gathering plan
     refined_transcript: str             # Stage C output: refined reasoning
     reflect_warnings: list[str]         # Stage C diagnostics
+    reflection_artifact: dict[str, Any]
     policy_model_turns: int
     processing_stages: list[dict[str, Any]]
     policy_trace: Annotated[list[dict[str, Any]], operator.add]
@@ -664,10 +669,13 @@ def _make_reflect_node(model: BaseChatModel, max_iterations: int = 2):
             elif not hasattr(m, "type"):
                 transcript_parts.append(str(content))
         transcript = "\n---\n".join(transcript_parts)
+        draft = draft_artifact(messages, _final_assistant_text(messages))
 
         if not transcript.strip():
             log.warning("reflect_node: %s empty transcript, skipping", case_id)
-            return {"refined_transcript": "", "reflect_warnings": ["empty transcript"]}
+            artifact = ReflectionArtifact('external_graph', draft, content_digest(''), 'not_triggered')
+            return {"refined_transcript": "", "reflect_warnings": ["empty transcript"],
+                    "reflection_artifact": asdict(artifact)}
 
         # Extract draft decision from last assistant message
         draft_decision = ""
@@ -683,6 +691,11 @@ def _make_reflect_node(model: BaseChatModel, max_iterations: int = 2):
             draft_decision=draft_decision,
             max_iterations=max_iterations,
         )
+        # The legacy producer has no binding review or structured candidate.
+        # Its parser can conflate unparseable critique and an empty issue list.
+        status = 'error' if any('failed' in warning for warning in warnings) else (
+            'detected' if any('critique:' in warning for warning in warnings) else 'unreviewed')
+        artifact = ReflectionArtifact('external_graph', draft, content_digest(refined), status)
 
         log.info("reflect_node: %s done, %d warnings", case_id, len(warnings))
 
@@ -703,6 +716,7 @@ def _make_reflect_node(model: BaseChatModel, max_iterations: int = 2):
         return {
             "refined_transcript": refined,
             "reflect_warnings": warnings,
+            "reflection_artifact": asdict(artifact),
         }
 
     return reflect_node

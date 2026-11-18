@@ -97,11 +97,16 @@ class ChatVLLM(BaseChatModel):
         msg_dicts = _to_openai_messages(messages)
         tools = self.bound_tools or None
 
-        outputs = self.llm.chat(
-            messages=msg_dicts,
-            sampling_params=self.sampling_params,
-            tools=tools,
-        )
+        from chimera_agent_baseline.models.request_meter import wire_scope
+        payload = dict(messages=msg_dicts, tools=tools,
+                       max_tokens=self.sampling_params.max_tokens,
+                       sampling_params=str(self.sampling_params))
+        with wire_scope(payload, 'vllm_offline_chat') as attempt:
+            outputs = self.llm.chat(
+                messages=msg_dicts,
+                sampling_params=self.sampling_params,
+                tools=tools,
+            )
 
         output = outputs[0].outputs[0]
 
@@ -130,6 +135,9 @@ class ChatVLLM(BaseChatModel):
         else:
             message = AIMessage(content=clean_text)
 
+        from chimera_agent_baseline.runtime_audit import current_runtime
+        if current_runtime():
+            current_runtime().emit('model_response', attempt=attempt, response=message)
         return ChatResult(generations=[ChatGeneration(message=message)])
 
 

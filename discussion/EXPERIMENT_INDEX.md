@@ -1,5 +1,55 @@
 # 实验与过程索引
 
+2026-11-18 最新。G1R 合成结构候选消费工程已验收。151 项测试记录、18 条入口事件链及 30 个输出文件核对一致，4 条末端覆写由回执标记为消费合同失败。外层结构候选及审核、最终字段权威和真实模型仍待验收。G1T 具备接续条件，CLI `d20261118122957-4c8b6c` 因主会话 active writer 失败，G1T 尚未启动，范围为非生成模板计数。[G1R 规划验收](../reports/ROUND2_P01_G1R_PLANNING_REVIEW_20261118.md) · [G1T 任务卡](tasks/20261118_P01_G1T_EXACT_TOOL_CONTEXT.md)
+
+## 2026-11-18 G1A/A02规划验收与手动接续
+
+| Task | 当前结论/状态 | 材料 |
+|---|---|---|
+| G1A | PLANNING_ACCEPTED_LIMITED_ENGINEERING：330产物/69源码身份、81项日志、42事件合成链/两socket核对；无live工具模板或真实端到端通过声明 | [规划验收](../reports/ROUND2_G1A_A02_PLANNING_REVIEW_20261118.md) |
+| A02 | PLANNING_ACCEPTED_BOUNDED_AUDIT：11交付身份、25历史绑定、4链12版本核查；未找到医学正确改判未消费的真实正例，18项回归矩阵仍仅设计 | 同上 |
+| P01-G1R | MANUAL_HANDOFF_READY，用户转交唯一执行会话；已授权结构候选消费/唯一赋值/最终回执，0真实生成 | [完整任务](tasks/20261118_P01_G1R_REFLECTION_CONSUMPTION.md) |
+| P01-G1T | QUEUED_MANUAL_HANDOFF；G1R审查后同一写入者另接，工具/结构模板精确计数及非生成探针，不并发 | [后继任务](tasks/20261118_P01_G1T_EXACT_TOOL_CONTEXT.md) |
+
+本轮仅规划只读审查和任务编制，未自动派发/执行工程；机制整体NOT_READY，生产Reflection未启用、G2/构建/上传/平台仍冻结。下文旧在途状态以本条为准。
+
+2026-11-18 10:31更新：A02 CLI已turn.completed并返回，11声明产物SHA一致，待规划验收；G1A改为用户批准的独立唯一代码写入会话，CLI d20261118103121-783ba8在途、尚无turn.completed，原主会话保持等待。0新临床批次，无工程/医学通过声明。[回执](CLI_DISPATCH_RECEIPTS_20261118.md)。
+
+2026-11-18最新调度回执：G1A CLI请求因原主会话active writer失败；A02 CLI已建立独立thread但尚待turn.completed。不能将thread.started记为派发成功/机制验收。[完整回执](CLI_DISPATCH_RECEIPTS_20261118.md)。本轮无临床实验，旧MCP通道禁用。
+
+## 最新接续（2026-11-17）
+
+| 项 | 实际状态/门槛 | 材料 |
+|---|---|---|
+| B01 | DELIVERED_AWAIT_PLANNING_REVIEW，22:34:02完成；66标记/59记录/29风险组，认证消解0，无后台 | [报告](../reports/ROUND2_EVIDENCE_RECOVERY_FEASIBILITY_20261117.md) |
+| B02-LIT | DELIVERED_AWAIT_PLANNING_REVIEW，22:34:22完成；5论文/3仓库，建议HOLD、真实纵向资格UNKNOWN，无后台 | [报告](../reports/ROUND2_B02_LITERATURE_FEASIBILITY_20261117.md) |
+| P01-G1A | 用户已批准；本会话发送旧MCP端点失败，尚无送达回执。仅公共执行基础/0真实生成 | [Goal](tasks/20261117_P01_G1A_COMMON_RUNTIME.md) |
+| A02 | 用户已批准；本会话创建旧MCP端点失败，无成功threadId。仅有界只读归因/最小修复契约 | [Goal](tasks/20261117_A02_REFLECTION_PATH.md) |
+| P01-G1R | 待G1A接口+A02契约规划审查；由原主会话统一消费链修复，不开并发代码分支 | [调度与转交文本](REFLECTION_DISPATCH_20261117.md) |
+
+当前没有新临床批次/生产Reflection启用/构建/上传/平台操作。下文旧运行状态按最新条目更新，不重复旧审计。
+
+| 当前正式调度（2026-11-17 22:19） | 状态 | 证据/范围 |
+|---|---|---|
+| P01-MECH-G0 | 正常完成，有限交付规划接受；机制总体NOT_READY，G1/G2未启动 | [规划核查](../reports/ROUND2_P01_G0_PLANNING_REVIEW_20261117.md) |
+| B01 | 正式派发并RUNNING，既有会话01a1e9da-451c-7113-8b39-1fbf5c93b801，sol High | [任务](tasks/20261117_B01_EVIDENCE_RECOVERY.md) |
+| B02-LIT | 正式派发并RUNNING，新会话01a1e9e0-c5da-7570-9291-b97e8f08670e，sol High | [任务](tasks/20261117_B02_LITERATURE_AND_FEASIBILITY.md) |
+| P01-G1A | PROPOSED_NOT_DISPATCHED，拟复用主会话的共用基础修复，0真实生成 | [接续Goal](tasks/20261117_P01_G1A_COMMON_RUNTIME.md) |
+
+| 最新接续（2026-11-17 22:12） | 状态与证据 | 材料 |
+|---|---|---|
+| Codex通道恢复 | 官方MCP刷新；实际创建/消息回读通过，完整保留历史4消息/2创建错误；非医学实验 | [诊断](../reports/ROUND2_CODEX_SESSION_CHANNEL_REPAIR_20261117.md) |
+| B01接收确认 | 已创建01a1e9da-451c-7113-8b39-1fbf5c93b801，sol High；仅读任务卡/回执，66条分析未启动 | [任务卡](tasks/20261117_B01_EVIDENCE_RECOVERY.md) |
+| P01-MECH-G0 | 主会话已交付，待规划独立审查，G1/G2未开始；本轮只读确认交付不等于验收 | [完成度报告](../reports/ROUND2_P01_MECHANISM_COMPLETENESS_20261117.md) |
+
+
+最新调度（2026-11-17）：先P01-MECH机制验收；正式打包/上传/平台准备冻结。规划不承担工程，原有《主会话》执行。仅G0可启动，G1/G2待规划冻结，不是新实验结果。
+
+| Task | 状态与依赖 | 指令 |
+|---|---|---|
+| P01-MECH | HANDOFF_READY_DISPATCH_FAILED：跨会话HTTP传输失败、未取得送达回执，待用户转交；仅G0具备启动条件→规划审查→G1接线→G2有限真实模型→规划验收→再决定构建 | [完整Goal](tasks/20261117_P01_MECHANISM_WIRING_AND_E2E.md) |
+
+
 | 工作 | 测量对象与结果 | 报告 |
 |---|---|---|
 | 数据池登记 | 三来源1275条记录不是独立患者数；来源／版本分账 | [登记](../round2/reports/ROUND2_DATA_POOL_REGISTRATION_20261113.md) |

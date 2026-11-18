@@ -25,6 +25,11 @@ log = logging.getLogger(__name__)
 
 def load_model(cfg: DictConfig) -> BaseChatModel:
     """Instantiate the chat model selected by ``cfg.model.provider``."""
+    from chimera_agent_baseline.runtime_audit import current_runtime, RuntimeFatal
+    if current_runtime() is not None:
+        # G1A only approves synthetic test profiles; tests supply fake models.
+        # No production model initialization/download or network is authorized.
+        raise RuntimeFatal("Synthetic entry approval cannot load a real model")
     provider = cfg.model.get("provider", "vllm")
     if provider == "vllm":
         return _load_vllm(cfg)

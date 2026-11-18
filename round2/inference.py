@@ -35,6 +35,11 @@ import os
 import tempfile
 from pathlib import Path
 from typing import Any
+from contextlib import ExitStack
+
+from chimera_agent_baseline.entry_profile import verify_profile, verify_identity, effective_config
+from chimera_agent_baseline.runtime_audit import (PrivateRuntime, RuntimeFatal, case_scope,
+    consumption_event)
 
 from omegaconf import OmegaConf
 
@@ -217,7 +222,10 @@ def _reasoning_value(task: int, prediction: dict[str, Any]) -> Any:
     """
     if task == 3:
         return prediction["free_text"]
-    prediction = align_reasoning(task, prediction)
+    aligned = align_reasoning(task, prediction)
+    consumption_event('reasoning_align', prediction, aligned, task=task, case_id=CASE_ID,
+                      authority='existing_align_D05_unreviewed')
+    prediction = aligned
     return {
         "free_text": prediction["free_text"],
         "confidence": prediction["confidence"],
@@ -404,38 +412,72 @@ def _load_config(data_root: Path, output_dir: Path, task: int):
     return cfg
 
 
-def run() -> int:
+def run(*, _profile_registry=None, _token_counter=None, _reflection_test=None) -> int:
     setup_logging("INFO")
-
     slug_to_path = _socket_paths()
     task = _detect_task(slug_to_path)
     log.info("Detected interface for task %d", task)
 
-    with tempfile.TemporaryDirectory(prefix="chimera-gc-") as tmp:
+    with tempfile.TemporaryDirectory(prefix="chimera-gc-") as tmp, ExitStack() as stack:
         tmp_root = Path(tmp)
         data_root = tmp_root / "input"
         output_dir = tmp_root / "output"
         _materialise_case(task, slug_to_path, data_root, CASE_ID)
-
         cfg = _load_config(data_root, output_dir, task)
-        log.info("Starting agent inference (model=%s, task=%d)", cfg.model.model_id, task)
-
-        embed_svc = start_embedding_service(cfg.paths.embedding_model_dir)
+        profile = verify_profile(cfg, CONFIG_PATH, registry=_profile_registry)
+        if _reflection_test is not None:
+            from chimera_agent_baseline.agent.reflection_contract import SyntheticReview
+            if (type(_reflection_test) is not SyntheticReview or _profile_registry is None
+                    or profile is None or profile.purpose != 'synthetic_test_only'):
+                raise RuntimeFatal('Reflection fixture requires a code-injected synthetic profile')
+        runtime = None
+        if profile is not None:
+            def refuse_unverified_counter(payload):
+                raise RuntimeFatal("No exact full-template counter approved")
+            # Only explicit code-injected synthetic tests supply a counter.
+            # Production registry is empty and load_model rejects this scope.
+            runtime = PrivateRuntime(profile.audit_root,
+                max_attempts=profile.max_attempts,
+                max_reserved_tokens=profile.max_reserved_tokens,
+                token_counter=_token_counter or refuse_unverified_counter,
+                identity=dict(profile=profile.name, purpose=profile.purpose,
+                              effective_config=effective_config(cfg), sources=profile.sources,
+                              loaded_flags=profile.runtime_flags),
+                identity_check=lambda: verify_identity(profile, cfg, CONFIG_PATH))
+            runtime.reflection_test = _reflection_test
+            if runtime.root.is_relative_to(tmp_root):
+                raise RuntimeFatal("Audit sink must survive temporary directory cleanup")
+            stack.enter_context(runtime.activate())
+        stack.enter_context(case_scope(task, CASE_ID))
         try:
-            asyncio.run(run_agent(cfg))
+            log.info("Starting agent inference (model=%s, task=%d)", cfg.model.model_id, task)
+            # A test approval never starts model services. The regular model
+            # loader refuses this scope unless replaced in the test process.
+            embed_svc = None if profile is not None else start_embedding_service(cfg.paths.embedding_model_dir)
+            try:
+                asyncio.run(run_agent(cfg))
+            finally:
+                if embed_svc:
+                    embed_svc.stop()
+            prediction = _load_json(output_dir / f"task{task}" / CASE_ID / "prediction.json")
+            sockets = OUTPUT_SOCKETS[task]
+            values = dict(decision=_decision_value(task, prediction),
+                          reasoning=_reasoning_value(task, prediction))
+            paths = {key: OUTPUT_PATH / filename for key, filename in sockets.items()}
+            for key, path in paths.items():
+                _write_json(path, values[key])
         finally:
-            if embed_svc:
-                embed_svc.stop()
-
-        prediction = _load_json(output_dir / f"task{task}" / CASE_ID / "prediction.json")
-
-    # Write the GC result sockets flat to /output, in the task-specific shapes.
-    # The reasoning socket carries the tool ``reveal_sequence`` so nothing is
-    # lost even though only the two declared sockets are written.
-    sockets = OUTPUT_SOCKETS[task]
-    _write_json(OUTPUT_PATH / sockets["decision"], _decision_value(task, prediction))
-    _write_json(OUTPUT_PATH / sockets["reasoning"], _reasoning_value(task, prediction))
-
+            if runtime is not None:
+                # Includes failure evidence, before TemporaryDirectory exits.
+                try:
+                    runtime.export_tree(tmp_root)
+                except OSError as error:
+                    raise RuntimeFatal('audit_persistence_failed') from error
+        if runtime is not None:
+            runtime.finalize_sockets(task, CASE_ID, prediction, paths, values,
+                                     weight_keys=_WEIGHT_KEYS_BY_TASK.get(task))
+            runtime.emit('run_completed', attempts=runtime.attempts,
+                         reserved_tokens=runtime.reserved_tokens, scope='synthetic_test_only')
     log.info("Wrote GC result sockets for task %d to %s", task, OUTPUT_PATH)
     return 0
 

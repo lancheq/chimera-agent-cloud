@@ -32,6 +32,32 @@ from langchain_openai import ChatOpenAI
 class ChatOpenAICompat(ChatOpenAI):
     """:class:`ChatOpenAI` that preserves ``reasoning_content`` in messages."""
 
+    def _generate(self, messages, stop=None, run_manager=None, **kwargs):
+        from chimera_agent_baseline.runtime_audit import stage_scope, current_stage
+        metadata = getattr(run_manager, 'metadata', {}) or {}
+        stage = current_stage()
+        if stage == 'model_request_unattributed':
+            stage = metadata.get('langgraph_node') or stage
+        with stage_scope(stage):
+            return super()._generate(messages, stop=stop, run_manager=run_manager, **kwargs)
+
+    async def _agenerate(self, messages, stop=None, run_manager=None, **kwargs):
+        from chimera_agent_baseline.runtime_audit import stage_scope, current_stage
+        metadata = getattr(run_manager, 'metadata', {}) or {}
+        stage = current_stage()
+        if stage == 'model_request_unattributed':
+            stage = metadata.get('langgraph_node') or stage
+        with stage_scope(stage):
+            return await super()._agenerate(messages, stop=stop, run_manager=run_manager, **kwargs)
+
+    def _get_request_payload(self, *args, **kwargs):
+        from chimera_agent_baseline.runtime_audit import current_runtime, RuntimeFatal
+        from chimera_agent_baseline.models.request_meter import MeteredEndpoint
+        if current_runtime() and (not isinstance(self.client, MeteredEndpoint)
+                                  or not isinstance(self.async_client, MeteredEndpoint)):
+            raise RuntimeFatal("Active private runtime requires metered SDK clients")
+        return super()._get_request_payload(*args, **kwargs)
+
     def _create_chat_result(self, response: Any, generation_info: dict | None = None):
         result = super()._create_chat_result(response, generation_info)
 

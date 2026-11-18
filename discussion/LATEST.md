@@ -1,7 +1,7 @@
 # 最新存档
 
-20261117-202910-p01-audit-b02-intake
+20261118-142853-p01-a02-g1a-g1r-g1t-incremental
 
-恢复P01-PACK/GIT只读审查，41控制文件接续前指纹一致；仅规划AGENTS后续更新。仓库已public但真实提交仍NOT_READY：入口/资源路径/精确依赖/模型启动/容器缺口未修。已读详解与讨论，B02纵向证据候选登记为INVESTIGATE未派发，原文及作者实现优先，P01仍优先。Mac原件未接收，SSH自动审批拒绝及消息连接失败如实记录。0新机制/临床生成/训练/构建/平台提交。
+11-17 22:34 B01/B02 交付；11-18 10:25 A02、10:54 G1A、12:26 G1R、13:34 G1T 交付。G1A/A02 通过规划有限接受，G1R 授权结构候选合成消费工程通过规划验收，G1T 精确工具计数待规划审查。Reflection 整体 NOT_READY，G2 未启动；真实生成、临床批次、构建与上传继续冻结。
 
-[存档摘要](checkpoints/20261117-202910-p01-audit-b02-intake/SUMMARY.md) · [指纹清单](checkpoints/20261117-202910-p01-audit-b02-intake/manifest.json)
+[存档摘要](checkpoints/20261118-142853-p01-a02-g1a-g1r-g1t-incremental/SUMMARY.md) · [指纹清单](checkpoints/20261118-142853-p01-a02-g1a-g1r-g1t-incremental/manifest.json)

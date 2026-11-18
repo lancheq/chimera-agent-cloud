@@ -8,6 +8,7 @@ class LlamaContextGuard:
     def __init__(self,cfg):
         if cfg.model.get('provider')!='openai':
             raise ValueError('This candidate context adapter is verified for the local llama.cpp endpoint only')
+        self.model_id = str(cfg.model.model_id)
         self.base=str(cfg.model.base_url).rstrip('/')
         if self.base.endswith('/v1'):self.base=self.base[:-3]
         self.limit=cfg.agent.shared_plan.context_limit
@@ -31,6 +32,12 @@ class LlamaContextGuard:
         roles={'human':'user','ai':'assistant','system':'system'}
         packed=[]
         for message in messages:
+            # This adapter has no verified tool-aware template contract. Never
+            # silently discard assistant tool calls or tool/result metadata.
+            if (getattr(message, 'tool_calls', None)
+                    or getattr(message, 'invalid_tool_calls', None)
+                    or getattr(message, 'additional_kwargs', {})):
+                raise ValueError('Tool calls or extra message fields require a verified full-template adapter')
             if message.type not in roles or not isinstance(message.content,str):
                 raise ValueError('Unsupported candidate message in exact context checker')
             packed.append(dict(role=roles[message.type],content=message.content))
@@ -44,3 +51,29 @@ class LlamaContextGuard:
         if not state['fits']:
             raise ValueError('Candidate context budget exhausted before generation: '+json.dumps(state))
         return state
+
+
+    def count_wire_payload(self, payload):
+        """Exact plain chat only; explicit refusal for tools/format/extra options.
+
+        Pass the *actual* wire payload. A future tool adapter must demonstrate
+        schema/role equivalence; dropping tools to fit is never permitted.
+        """
+        if payload.get('model') != self.model_id:
+            raise ValueError('Wire model differs from verified serving model')
+        allowed = {'model', 'messages', 'max_tokens', 'max_completion_tokens',
+                   'temperature', 'top_p', 'stream', 'stop'}
+        if set(payload) - allowed or payload.get('stream'):
+            raise ValueError('Wire options require an unverified template adapter')
+        packed = payload['messages']
+        if any(set(m) - {'role', 'content'} or m.get('role') not in {'user', 'assistant', 'system'}
+               or not isinstance(m.get('content'), str) for m in packed):
+            raise ValueError('Tool/extended roles require a verified full-template adapter')
+        body = dict(messages=packed, add_generation_prompt=True)
+        prompt = self._request('/apply-template', body)['prompt']
+        count = len(self._request('/tokenize', dict(content=prompt, add_special=False,
+                                                   parse_special=True))['tokens'])
+        maximum = payload.get('max_completion_tokens', payload.get('max_tokens'))
+        return dict(input_tokens=count, max_new_tokens=maximum, context_limit=self.limit,
+                    reserved_template_tokens=self.reserve, tokenizer='loaded_llama_cpp_model',
+                    fits=count + maximum + self.reserve <= self.limit)

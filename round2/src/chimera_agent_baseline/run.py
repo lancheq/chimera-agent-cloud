@@ -43,7 +43,8 @@ from chimera_agent_baseline.models import load_model
 from chimera_agent_baseline.predictor import Predictor
 from chimera_agent_baseline.rag import start_embedding_service
 from chimera_agent_baseline.utils import setup_logging
-from chimera_agent_baseline.runtime_audit import ComponentFailure, component_event, strict_runtime
+from chimera_agent_baseline.runtime_audit import (ComponentFailure, component_event, strict_runtime,
+    case_scope, consumption_event)
 from chimera_agent_baseline import guarded_runtime
 
 load_dotenv()
@@ -509,7 +510,10 @@ async def _run_task_impl(
             }
             if access is not None:
                 initial_state["information_access"] = access.snapshot()
-            result = await graph.ainvoke(initial_state, {"recursion_limit": cfg.agent.max_iterations})
+            with case_scope(task_int, case_id):
+                consumption_event('graph_input', {}, initial_state, status='actual_input')
+                result = await graph.ainvoke(initial_state, {"recursion_limit": cfg.agent.max_iterations})
+                consumption_event('graph_output', {}, result, status='observed')
 
             # form_fill is the single validation point: it parses the model's
             # output against the per-task Pydantic model and raises if every
@@ -527,6 +531,9 @@ async def _run_task_impl(
             case_dir = task_dir / case_id
             case_dir.mkdir(parents=True, exist_ok=True)
             (case_dir / "prediction.json").write_text(json.dumps(structured, indent=2))
+            consumption_event('prediction_file', structured,
+                              json.loads((case_dir / 'prediction.json').read_text()),
+                              task=task_int, case_id=case_id, status='written_and_read_back')
             (case_dir / ".failed").unlink(missing_ok=True)
 
             elapsed = time.monotonic() - case_start

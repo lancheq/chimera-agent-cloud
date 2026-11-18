@@ -45,7 +45,16 @@ from chimera_agent_baseline.output.schema import (
 )
 
 from copy import deepcopy
-from chimera_agent_baseline.runtime_audit import ProcessingAudit
+from dataclasses import asdict
+
+from chimera_agent_baseline.agent.reflection_contract import (
+    Context, DraftArtifact, ReflectionArtifact, ReviewBatch, Subject, draft_artifact,
+    judgment_label, resolve, upfront_digest, upfront_record, validate_judgment,
+)
+from chimera_agent_baseline.runtime_audit import (
+    ProcessingAudit, RuntimeFatal, audit_stage, canonical, consumption_event,
+    content_digest, current_runtime, stage_scope,
+)
 from chimera_agent_baseline.agent.postprocess import PostprocessOps, apply_postprocessing
 from chimera_agent_baseline.agent.form_parsing import (  # noqa: F401 - preserve legacy replay imports
     _extract_json_object,
@@ -191,6 +200,7 @@ def make_form_fill_node(
     auto-downgraded (clear→borderline).
     """
 
+    @audit_stage('form_fill')
     def form_fill(state: dict[str, Any]) -> dict[str, Any]:
         messages = state["messages"]
         task = int(state.get("task", 1))
@@ -198,6 +208,8 @@ def make_form_fill_node(
         predictor_dec = state.get("predictor_decision") or {}
         audit = ProcessingAudit(task, case_id)
         guarded = state.get("information_access") is not None
+        runtime = current_runtime()
+        authority = runtime.reflection_test if runtime is not None else None
         for message in messages:
             if isinstance(message, ToolMessage) and (
                 getattr(message, "status", "success") == "error"
@@ -214,6 +226,13 @@ def make_form_fill_node(
         tool_order = _called_tools_in_order(observed)
         called = set(tool_order)
         transcript = _final_assistant_text(messages)
+        consumption_event('formfill_input', {}, dict(messages=messages, transcript=transcript,
+                          tool_order=tool_order, predictor_decision=predictor_dec),
+                          task=task, case_id=case_id, status='actual_input',
+                          reflection=dict(artifact=state.get('reflection_artifact'),
+                                          legacy_text_present=bool(state.get('refined_transcript')),
+                                          acceptance='not_selected_at_input',
+                                          consumed=False))
         elig = eligible_variables(task, called) if task in VARIABLES_BY_TASK else []
 
         Dynamic = build_dynamic_model(task, called)
@@ -247,6 +266,8 @@ def make_form_fill_node(
         for attempt in range(1, max_retries + 1):
             user_content = base_user if not retry_hint else f"{base_user}\n\n{retry_hint}"
             raw = ""
+            consumption_event('formfill_request_input', {}, dict(system=_SYSTEM_PROMPT, user=user_content),
+                              task=task, case_id=case_id, attempt=attempt, status='prepared')
             try:
                 # Try assistant prefill "{" to force JSON-first output.
                 try:
@@ -293,16 +314,19 @@ def make_form_fill_node(
                     pass
                 # --- 检测扁平输出：变量键直接在顶层而非 variable_weights 内 ---
                 raw_json = _extract_json_object(raw)
-                try:
-                    _tmp = json.loads(raw_json)
-                    if isinstance(_tmp, dict) and any(k in elig for k in _tmp):
-                        _weights = {k: _tmp.pop(k) for k in list(_tmp.keys()) if k in elig}
-                        _tmp.setdefault("variable_weights", {}).update(_weights)
-                        raw_json = json.dumps(_tmp)
-                except (json.JSONDecodeError, TypeError):
-                    pass
-                obj = parser.parse(raw_json)
-                judgment = obj.model_dump(mode="json")
+                if authority is not None:
+                    # Do not repair the object before validating the reviewed schema.
+                    judgment = validate_judgment(task, Dynamic, json.loads(raw_json))
+                else:
+                    try:
+                        flat = json.loads(raw_json)
+                        if isinstance(flat, dict) and any(key in elig for key in flat):
+                            weights = {key: flat.pop(key) for key in list(flat) if key in elig}
+                            flat.setdefault("variable_weights", {}).update(weights)
+                            raw_json = json.dumps(flat)
+                    except (json.JSONDecodeError, TypeError):
+                        pass
+                    judgment = parser.parse(raw_json).model_dump(mode="json")
                 # === TRACE DUMP: 解析成功，回写 parse_ok=True ===
                 if _trace_path:
                     try:
@@ -315,9 +339,10 @@ def make_form_fill_node(
                         pass
                 # --- 补缺必要字段（扁平输出时 wrapper 字段可能缺失或为 None）---
                 # P6: decision 缺失时先 salvage raw_json，失败才走默认值（warning 区分）
-                _fill_missing_decision_fields(task, judgment, raw_json, warnings)
+                if authority is None:
+                    _fill_missing_decision_fields(task, judgment, raw_json, warnings)
                 judgment.setdefault("repeat_test", None)
-                if not judgment.get("free_text") or len(judgment.get("free_text", "")) < 40:
+                if authority is None and (not judgment.get("free_text") or len(judgment.get("free_text", "")) < 40):
                     # P5: 从 transcript 尾部提取"最后一个非工具调用文本块"——
                     # 直接截尾部会抓到 ReAct 工具调用语法裸文本（<function=...>），
                     # 实测 14/91 case free_text 中毒、GEval 0.00-0.20。
@@ -327,6 +352,7 @@ def make_form_fill_node(
                     warnings.append("free_text fallback: final answer extracted")
                 break
             except Exception as exc:  # noqa: BLE001 — any parse/validation failure triggers a retry
+                judgment = None if authority is not None else judgment
                 warnings.append(f"attempt {attempt}: {type(exc).__name__}: {exc}")
                 log.warning("form_fill parse failed (attempt %d) for %s: %s", attempt, case_id, exc)
                 if attempt == max_retries:
@@ -337,6 +363,10 @@ def make_form_fill_node(
                 )
 
         if judgment is None:
+            if authority is not None:
+                consumption_event('reflection_selection', {}, {}, status='failed_no_valid_initial',
+                                  task=task, case_id=case_id)
+                raise RuntimeFatal('failed_no_valid_initial')
             # P6: All retries failed — salvage decision from last raw response
             # before falling back to defaults. Prevents silent AS pollution
             # when the model emitted a valid decision but wrapped it in
@@ -407,21 +437,79 @@ def make_form_fill_node(
 
         before_verification = deepcopy(judgment)
         verification_warning_start = len(warnings)
+        artifacts = []
+        external = state.get('reflection_artifact')
+        if external:
+            artifacts.append(ReflectionArtifact(
+                **{**external, 'draft': DraftArtifact(**external['draft'])}))
+        if runtime is not None and (external or state.get('refined_transcript')):
+            status = {'detected': 'detected_no_executable_proposal', 'error': 'error_fallback_initial',
+                      'not_triggered': 'not_triggered'}.get(
+                          external['status'] if external else None, 'blocked_missing_authorization')
+            consumption_event('external_reflection', judgment, judgment, status=status,
+                              task=task, case_id=case_id, artifact=external, consumed=False)
         # --- Hippocrates self-refine: Critique → Refine (1 iteration) ---
         if self_refine:
-            judgment = _run_self_refine(
-                model, parser, task, case_id, transcript, judgment, skeleton, warnings
-            )
+            with stage_scope('internal_reflection'):
+                legacy_result = _run_self_refine(
+                    model, parser, task, case_id, transcript, judgment, skeleton, warnings
+                )
+            if runtime is not None:
+                artifacts.append(ReflectionArtifact(
+                    'internal_formfill', draft_artifact(messages, transcript),
+                    content_digest(legacy_result), 'unreviewed'))
+            if authority is None:
+                judgment = legacy_result  # Preserve the existing legacy path.
 
+        consumption_event('internal_reflection', before_verification, legacy_result if self_refine else judgment,
+                          task=task, case_id=case_id,
+                          status='observed_legacy_execution' if self_refine else 'disabled',
+                          acceptance='legacy_behavior_unreviewed', not_a_G1R_receipt=True,
+                          artifact=asdict(artifacts[-1]) if self_refine and artifacts else None)
+        if authority is not None:
+            draft = draft_artifact(messages, transcript)
+            # run_agent supplies the original rendered upfront message first.
+            upfront = upfront_record(messages[0].content) if messages and isinstance(messages[0], HumanMessage) else None
+            subject = Subject(runtime.run_id, task, case_id, runtime.identity_digest, draft,
+                              content_digest(judgment), upfront_digest(upfront),
+                              content_digest({'draft': asdict(draft), 'artifacts': [asdict(a) for a in artifacts]}))
+            context = Context(subject, canonical(judgment), upfront, tuple(artifacts))
+            try:
+                batch = authority.review(context)
+            except Exception as error:
+                consumption_event('reflection_review_error', {}, {}, status='error',
+                                  task=task, case_id=case_id, error_type=type(error).__name__)
+                batch = ReviewBatch('error')
+            if type(batch) is ReviewBatch:
+                consumption_event('reflection_review', {}, asdict(batch), status='synthetic_stub',
+                                  task=task, case_id=case_id, binding=asdict(subject),
+                                  source_record_id='rendered_upfront')
+            selection = resolve(context, batch, authority, Dynamic)
+            selected = consumption_event('reflection_selection', judgment, selection.judgment,
+                                         task=task, case_id=case_id, status=selection.status,
+                                         selected_source=selection.source, binding=asdict(subject),
+                                         label_changed=judgment_label(task, judgment) != judgment_label(task, selection.judgment),
+                                         proposal_digest=selection.proposal_digest,
+                                         verdict_digest=selection.verdict_digest, reason=selection.reason)
+            judgment = selection.judgment  # Sole authorized assignment after J0, before atomic.
+            if content_digest(judgment) != selected['after_digest']:
+                raise RuntimeFatal('Assigned reflection judgment differs from selection')
+            consumption_event('reflection_formfill_consumed', before_verification, judgment,
+                              task=task, case_id=case_id, status='actual_assignment',
+                              selection_digest=selected['digest'], source=selection.source)
+        before_atomic = deepcopy(judgment)
         # --- Atomic fact verification (programmatic, no LLM) ---
         if atomic_check:
-            fc_result = atomic_fact_check(task, case_id, transcript, judgment, elig, model=model)
+            with stage_scope('atomic_verification'):
+                fc_result = atomic_fact_check(task, case_id, transcript, judgment, elig, model=model)
             warnings.extend(fc_result.warnings)
             # P1-C: Post-check confidence calibration — downgrade to 'uncertain'
             # when the evidence is genuinely ambiguous (beyond fact_check's
             # clear→borderline downgrade).
             _calibrate_uncertain(task, transcript, judgment, fc_result, warnings)
 
+        consumption_event('atomic_verification', before_atomic, judgment, task=task, case_id=case_id,
+                          status='observed_legacy_execution' if atomic_check else 'disabled')
         audit.record("verified_judgment", before_verification, judgment,
                      warnings[verification_warning_start:], configured=bool(atomic_check or self_refine),
                      status="executed" if atomic_check or self_refine else "disabled")
