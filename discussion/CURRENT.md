@@ -2,11 +2,11 @@
 
 ## 当前派发清单（2026-11-19）
 
-A-G2 三任务宿主工程冒烟已验收。T3 通用时间字段进入模型并被解释为已观察随访，影响提交候选晋级。优先由原《主会话》修复 T3 输入准入并继续核实上传前置。首次正式 validation 仍以 B 正式验收为前置。
+A-G2 三任务宿主工程冒烟已验收。T3 字段准入修复已通过合成验收，修复后的真实模型待一例复验。上传前置复核已交，容器构建器、生产 profile 和目标 phase 运行条件仍待证。首次正式 validation 仍以 B 正式验收为前置。
 
 | 任务 | 执行会话 | 本次唯一入口文件 | 预计交付 | 派发状态 |
 |---|---|---|---|---|
-| **A-T3-INPUT · T3 输入准入修复与上传前置复核** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **接续卡** [20261119_A_T3_INPUT_AND_UPLOAD_PREFLIGHT.md](tasks/20261119_A_T3_INPUT_AND_UPLOAD_PREFLIGHT.md) | `reports/ROUND2_A_T3_INPUT_UPLOAD_PREFLIGHT_20261119.md`、`output/a_t3_input_upload_preflight_20261119/` 下的 `handoff.json`、`request_view_evidence.json` 和 `upload_gate_matrix.md`。 | 09:11 登记 `d20261119091158-edfeb2`，等待完成回执。 |
+| **A-T3-INPUT · T3 输入准入修复与上传前置复核** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行接续卡** [20261119_A_T3_INPUT_AND_UPLOAD_PREFLIGHT.md](tasks/20261119_A_T3_INPUT_AND_UPLOAD_PREFLIGHT.md) | [执行报告](../round2/reports/ROUND2_A_T3_INPUT_UPLOAD_PREFLIGHT_20261119.md) · [规划验收](../round2/reports/ROUND2_A_T3_INPUT_UPLOAD_PLANNING_REVIEW_20261119.md)。原始请求与上传矩阵由执行报告索引。 | 09:28 交付，`d20261119091158-edfeb2` 有 `turn.completed`、退出 0。合成验收通过，真实复验及上传待门槛。 |
 | **A-G2 · Adaptive 正式入口、三任务宿主冒烟与上传准备** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行接续卡，供查阅** [20261118_A_ADAPTIVE_HOST_SMOKE_AND_UPLOAD_READINESS.md](tasks/20261118_A_ADAPTIVE_HOST_SMOKE_AND_UPLOAD_READINESS.md) | [执行报告](../round2/reports/ROUND2_A_G2_ADAPTIVE_HOST_SMOKE_20261118.md)、[规划验收](../round2/reports/ROUND2_A_G2_ADAPTIVE_HOST_SMOKE_PLANNING_REVIEW_20261119.md)，私有试跑和上传准备由报告索引。 | 原请求 `d20261118222340-e561d4` 在交接前失败，接续轮 `01a1f158-17ae-71c0-9e86-3e652f0b5ac8` 回读完成。接受三例入口工程结果，T3 输入准入阻断晋级。35B 已退出。 |
 | **A-SMOKE · Adaptive 官网冒烟前置检查** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行任务卡，供查阅** [20261118_P01_ADAPTIVE_SMOKE_READINESS.md](tasks/20261118_P01_ADAPTIVE_SMOKE_READINESS.md) | [前置调查报告](../round2/reports/ROUND2_A_SMOKE_READINESS_20261118.md)，本地 profile 矩阵和 G2 草案由报告索引。 | 22:09 交付，回读接续轮 `01a1eef1-5b56-7ae1-b21a-fbdd2f5c23ec` 已完成。规划核对 15 项文件、53 项实际源码及 4 个冻结夹具指纹，接受调查交付。适配、真实计数和宿主验证仍未执行。 |
 | **B-TIME · 时间来源资格与迟到证据隔离** | **独立只读会话**《B-TIME 时间资格与迟到证据隔离》，`01a1eecb-397a-7921-a09b-c3eac54aa5a6` | **已执行任务卡** [20261118_B_TIME_ELIGIBILITY_AND_LATE_EVIDENCE.md](tasks/20261118_B_TIME_ELIGIBILITY_AND_LATE_EVIDENCE.md) | [调查报告](../round2/reports/ROUND2_B_TIME_ELIGIBILITY_20261118.md)和[规划验收](../round2/reports/ROUND2_B_TIME_PLANNING_REVIEW_20261118.md)，字段表、隔离方案、最小协议和交接由调查报告索引。 | 21:31 交付，`d20261118211418-b99853` 有 `turn.completed`、退出 0。规划接受只读研究设计。无后台任务。 |

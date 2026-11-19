@@ -1,5 +1,7 @@
 # 实验与过程索引
 
+2026-11-19。A-T3-INPUT 已经规划验收。130 项回归通过，T3 歧义时间字段被隔离，T1/T2 合法同名字段保留。无新增真实生成。修复后的真实模型、生产 profile、builder 及目标 phase 待证。[A-T3-INPUT 规划验收](../round2/reports/ROUND2_A_T3_INPUT_UPLOAD_PLANNING_REVIEW_20261119.md)
+
 2026-11-19。A-G2 的 T1/T2/T3 宿主工程冒烟经规划验收。三例、15 次生成、6 路输出，T2/T3 自然修订剩余计划。T3 合成时间字段经整份 JSON 到达请求并被误释为观察随访，修复前不晋级。上传准备已交，正式镜像、候选 profile 和平台条件待验。[A-G2 规划验收](../round2/reports/ROUND2_A_G2_ADAPTIVE_HOST_SMOKE_PLANNING_REVIEW_20261119.md)
 
 2026-11-18。B-TIME 完成并经规划验收。真实合格纵向对数量未知，生产前仍需可信截止和历史可得证明。接受在数据进入决策状态前建立独立视图的设计。[B-TIME 规划验收](../round2/reports/ROUND2_B_TIME_PLANNING_REVIEW_20261118.md)

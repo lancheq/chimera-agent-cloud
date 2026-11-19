@@ -1,7 +1,7 @@
 # 最新存档
 
-20261119-091233-a-g2-host-smoke-review
+20261119-093008-a-t3-input-upload-review
 
-A-G2 使用三个无患者冻结夹具完成真实 35B 宿主链路，15 次发送和六个输出通过核对。T3 输入时间语义缺口阻断晋级，接续修复待验。上传清单已交，离线镜像和平台操作待证。
+A-T3-INPUT 的正式候选字段准入通过合成验收，130 项回归通过。T1/T2 合法间隔字段保留。修复后真实单例、生产配置和容器平台条件待核。
 
-[存档摘要](checkpoints/20261119-091233-a-g2-host-smoke-review/SUMMARY.md) · [指纹清单](checkpoints/20261119-091233-a-g2-host-smoke-review/manifest.json)
+[存档摘要](checkpoints/20261119-093008-a-t3-input-upload-review/SUMMARY.md) · [指纹清单](checkpoints/20261119-093008-a-t3-input-upload-review/manifest.json)
