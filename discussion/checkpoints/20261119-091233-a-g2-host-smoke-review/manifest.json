@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "checkpoint": "20261119-091233-a-g2-host-smoke-review",
+  "created_beijing": "20261119-091233",
+  "source_git_head": "7301642d0eedda2f143ba44b93d42f948249d813",
+  "summary": "A-G2 使用三个无患者冻结夹具完成真实 35B 宿主链路，15 次发送和六个输出通过核对。T3 输入时间语义缺口阻断晋级，接续修复待验。上传清单已交，离线镜像和平台操作待证。",
+  "files": {
+    "reports/ROUND2_A_G2_ADAPTIVE_HOST_SMOKE_20261118.md": {
+      "source_sha256": "0db123d40c73bec179247382642e241ee873b5a9e3e35a305c71d48156ec64c9",
+      "public_sha256": "0db123d40c73bec179247382642e241ee873b5a9e3e35a305c71d48156ec64c9",
+      "public_path": "round2/reports/ROUND2_A_G2_ADAPTIVE_HOST_SMOKE_20261118.md",
+      "public_derivative": false
+    },
+    "reports/ROUND2_A_G2_ADAPTIVE_HOST_SMOKE_PLANNING_REVIEW_20261119.md": {
+      "source_sha256": "c7f500082403774a9272c569242520284bf1902afda31cb0cd52002a02045483",
+      "public_sha256": "c7f500082403774a9272c569242520284bf1902afda31cb0cd52002a02045483",
+      "public_path": "round2/reports/ROUND2_A_G2_ADAPTIVE_HOST_SMOKE_PLANNING_REVIEW_20261119.md",
+      "public_derivative": false
+    }
+  },
+  "note": "Public text derivative; raw outputs, clinical data, model weights and credentials are not included."
+}
