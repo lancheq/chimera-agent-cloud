@@ -1,6 +1,10 @@
 # 实验与过程索引
 
-2026-11-19。A-F06-RECHECK 的两个前置轮均交付阻断诊断。原《主会话》不能访问本机回环和 GPU，真实生成和服务启动均 0，一例授权仍可用。F06 全链路通过后才接续 G2-CASE-PILOT。[宿主复核](../round2/reports/ROUND2_A_F06_BUDGET_RECHECK_PLANNING_STATUS_20261119.md)
+2026-11-19。A-F06-RECHECK 经原《主会话》桌面端 SSH 实际执行，预算动作在派发前停止、真实诊断和填表接续、两路 Socket 独立验收。T3 数值是预测，观察随访仍未知，时域依据和措辞单列。已放行 G2-CASE-PILOT 首批。[真实验收](../round2/reports/ROUND2_A_F06_BUDGET_RECHECK_LIVE_PLANNING_REVIEW_20261119.md)
+
+2026-11-19。G2-CASE-PILOT 向原《主会话》登记首轮请求 `d20261119181000-5f1d20`。先核实病例隔离、候选授权与实际宿主能力。每任务仅一例，待完成回执。[唯一任务卡](tasks/20261119_G2_CASE_PILOT.md)
+
+2026-11-19。A-F06-RECHECK 的两个自动前置轮均因回环和 GPU 访问受限停止，均未发真实请求。结论是执行环境阻断，随后改用桌面端 SSH。[宿主复核](../round2/reports/ROUND2_A_F06_BUDGET_RECHECK_PLANNING_STATUS_20261119.md)
 
 2026-11-19。A-BUDGET-CLOSE 通过规划零生成验收。原 F06 前五条控制请求与对照逐项一致，收费工具在发送前封存，诊断、填表和双 Socket 通过合成验证。201 项回归通过。[规划验收](../round2/reports/ROUND2_A_BUDGET_CLOSE_PLANNING_REVIEW_20261119.md)
 

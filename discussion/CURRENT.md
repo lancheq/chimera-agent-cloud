@@ -2,14 +2,14 @@
 
 ## 当前派发清单（2026-11-19）
 
-A-BUDGET-CLOSE 零生成验收通过。A-F06-RECHECK 已批准一例，当前因原《主会话》的回环与 GPU 访问受限阻断，尚未启动。首批 G2-CASE-PILOT 等待 F06 全链路独立验收。容器准备独立。正式 validation 等待 B 正式验收与离线镜像。
+A-F06-RECHECK 已通过真实全链路独立验收。填表新增的 60 个月登记为模型预测窗口，观察随访为 UNKNOWN。按条件授权推进 G2-CASE-PILOT 首批各一例。容器准备独立，正式 validation 等待 B 与离线镜像。
 
 | 任务 | 执行会话 | 本次唯一入口文件 | 预计交付 | 派发状态 |
 |---|---|---|---|---|
-| **P0 A-F06-RECHECK · 预算停止接线后单例** | **原《主会话》** `01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **宿主接续卡** [20261119_A_F06_BUDGET_RECHECK.md](tasks/20261119_A_F06_BUDGET_RECHECK.md) | [前置复核](../round2/reports/ROUND2_A_F06_BUDGET_RECHECK_PLANNING_STATUS_20261119.md)；实际 `live/handoff.json` 与模型请求、停止和 Socket 证据待交。 | `d20261119174102-438c9d`、`d20261119174642-c2c8db` 两轮收到完成回执，均为前置阻断。0 启动、0 模型请求，原授权未用。 |
+| **P0 A-F06-RECHECK · 预算停止接线后单例** | **原《主会话》** `01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行宿主接续卡** [20261119_A_F06_BUDGET_RECHECK.md](tasks/20261119_A_F06_BUDGET_RECHECK.md) | [真实执行](../round2/reports/ROUND2_A_F06_BUDGET_RECHECK_LIVE_20261119.md) · [规划验收](../round2/reports/ROUND2_A_F06_BUDGET_RECHECK_LIVE_PLANNING_REVIEW_20261119.md)。 | 原会话在桌面端 SSH 完成一次。工程链路通过，T3 时域依据与措辞在 pilot 分层复盘。 |
 | **P0 A-BUDGET-CLOSE · 取证耗尽后的停止与共同诊断** | **原《主会话》** `01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行任务卡，含停止合同** [20261119_A_BUDGET_CLOSE.md](tasks/20261119_A_BUDGET_CLOSE.md) | [执行报告](../round2/reports/ROUND2_A_BUDGET_CLOSE_20261119.md) · [规划验收](../round2/reports/ROUND2_A_BUDGET_CLOSE_PLANNING_REVIEW_20261119.md)，私有证据由报告索引 | 原请求 `d20261119112053-7a1c3d` 失败；接续轮 `01a1f26b-42af-78a1-875a-7f243da5bf25` 回读完成。201 项零生成回归通过，规划接受。 |
 | **P0-1 A-F06 · T3 修复后真实单例复验** | **原《主会话》** `01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行接续卡** [20261119_A_T3_F06_REAL_RECHECK.md](tasks/20261119_A_T3_F06_REAL_RECHECK.md) | [执行报告](../round2/reports/ROUND2_A_F06_REAL_RECHECK_20261119.md) · [规划验收](../round2/reports/ROUND2_A_F06_PLANNING_REVIEW_20261119.md) | `d20261119105600-c9f073` 已完成。单例预算拒绝，诊断与双 Socket 未到达。 |
-| **P0-2 G2-CASE-PILOT · 三任务首批真实病例** | **原《主会话》** `01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **待派发新任务卡** [20261119_G2_CASE_PILOT.md](tasks/20261119_G2_CASE_PILOT.md) | `ROUND2_G2_CASE_PILOT_20261119.md`、私有预注册、三例 trace、失败分层及交接 | F06 全链路未通过，未派发。首批已条件批准，追加需另批。 |
+| **P0-2 G2-CASE-PILOT · 三任务首批真实病例** | **原《主会话》** `01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **唯一新任务卡** [20261119_G2_CASE_PILOT.md](tasks/20261119_G2_CASE_PILOT.md) | `reports/ROUND2_G2_CASE_PILOT_20261119.md`、`output/g2_case_pilot_20261119/` 的私有预注册、三例 trace、失败分层及交接 | 18:10 登记 `d20261119181000-5f1d20`，待完成回执。 |
 | **并行 P01-PROFILE · 生产机制组合审查** | **本《研究规划》** `01a1e862-66be-7991-b3bf-cc6fcb387119` | **本地新任务卡** [20261119_P01_PROFILE_FREEZE.md](tasks/20261119_P01_PROFILE_FREEZE.md) | [D01–D07 待审稿](../round2/reports/ROUND2_P01_PROFILE_DECISION_20261119.md) | 第一版完成，正式裁定等待 F06、首批三例和前置证据。 |
 | **并行 B-DATA · 真实时间资料资格** | **既有独立只读会话**《B-TIME 时间资格与迟到证据隔离》 `01a1eecb-397a-7921-a09b-c3eac54aa5a6` | **已执行新任务卡** [20261119_B_REAL_DATA_ELIGIBILITY.md](tasks/20261119_B_REAL_DATA_ELIGIBILITY.md) | [资格报告](../round2/reports/ROUND2_B_REAL_DATA_ELIGIBILITY_20261119.md)、来源资格与交接 | `d20261119105609-a554a1` 已完成，规划复核3项文件与25项来源。三任务时间资格仍未知。 |
 | **并行 P01-UPLOAD-PREP · 构建与平台前置** | **独立只读会话**《P01-UPLOAD-PREP 构建与平台前置》 `01a1f1bb-a7d8-7c01-bc52-842bccba570c` | **已执行新任务卡** [20261119_P01_UPLOAD_PREPARATION.md](tasks/20261119_P01_UPLOAD_PREPARATION.md) | [前置调查](../round2/reports/ROUND2_P01_UPLOAD_PREPARATION_20261119.md)、builder／phase 矩阵、离线准备方案与交接 | `d20261119105609-688e9d` 已完成。规划接受只读调查，实际 builder、包配对和二轮 phase 条件待证。 |

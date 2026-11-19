@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "checkpoint": "20261119-181047-a-f06-live-budget-review",
+  "created_beijing": "20261119-181047",
+  "source_git_head": "7301642d0eedda2f143ba44b93d42f948249d813",
+  "summary": "A-F06-RECHECK 真正完成冻结无患者单例，7 次真实请求、派发前预算停止及双 Socket 通过规划验收。观察随访保持未知，时间预测的依据待审。首批 G2-CASE-PILOT 已登记。",
+  "files": {
+    "reports/ROUND2_A_F06_BUDGET_RECHECK_LIVE_20261119.md": {
+      "source_sha256": "4fd9d0cb8ae3d1d06097b07d5c4d2855bbc80f49c3dfa77e8bbccf6b638a2044",
+      "public_sha256": "4fd9d0cb8ae3d1d06097b07d5c4d2855bbc80f49c3dfa77e8bbccf6b638a2044",
+      "public_path": "round2/reports/ROUND2_A_F06_BUDGET_RECHECK_LIVE_20261119.md",
+      "public_derivative": false
+    },
+    "reports/ROUND2_A_F06_BUDGET_RECHECK_LIVE_PLANNING_REVIEW_20261119.md": {
+      "source_sha256": "046605f3b2b5ef7a90b6f6e56ac29ab7db3003d07ac25598737d32e3cde08eeb",
+      "public_sha256": "046605f3b2b5ef7a90b6f6e56ac29ab7db3003d07ac25598737d32e3cde08eeb",
+      "public_path": "round2/reports/ROUND2_A_F06_BUDGET_RECHECK_LIVE_PLANNING_REVIEW_20261119.md",
+      "public_derivative": false
+    }
+  },
+  "note": "Public text derivative; raw outputs, clinical data, model weights and credentials are not included."
+}
