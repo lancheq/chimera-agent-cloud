@@ -1,7 +1,7 @@
 # 最新存档
 
-20261119-181047-a-f06-live-budget-review
+20261119-190856-pilot-runtime-contract
 
-A-F06-RECHECK 真正完成冻结无患者单例，7 次真实请求、派发前预算停止及双 Socket 通过规划验收。观察随访保持未知，时间预测的依据待审。首批 G2-CASE-PILOT 已登记。
+记录正式推理入口的许可、输入隔离、工具回执与恢复合同。公开范围为工程过程，训练集结果和个案证据保留本地。
 
-[存档摘要](checkpoints/20261119-181047-a-f06-live-budget-review/SUMMARY.md) · [指纹清单](checkpoints/20261119-181047-a-f06-live-budget-review/manifest.json)
+[存档摘要](checkpoints/20261119-190856-pilot-runtime-contract/SUMMARY.md) · [指纹清单](checkpoints/20261119-190856-pilot-runtime-contract/manifest.json)

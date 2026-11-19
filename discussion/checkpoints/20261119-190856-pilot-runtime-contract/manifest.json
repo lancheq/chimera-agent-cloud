@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "checkpoint": "20261119-190856-pilot-runtime-contract",
+  "created_beijing": "20261119-190856",
+  "source_git_head": "7301642d0eedda2f143ba44b93d42f948249d813",
+  "summary": "记录正式推理入口的许可、输入隔离、工具回执与恢复合同。公开范围为工程过程，训练集结果和个案证据保留本地。",
+  "files": {
+    "docs/ROUND2_PILOT_RUNTIME_CONTRACT_20261119.md": {
+      "source_sha256": "9dfc622830f79cfb28b6ba2ad665e2c668462ca2a9bb80eae9f186fb67d04551",
+      "public_sha256": "9dfc622830f79cfb28b6ba2ad665e2c668462ca2a9bb80eae9f186fb67d04551",
+      "public_path": "round2/docs/ROUND2_PILOT_RUNTIME_CONTRACT_20261119.md",
+      "public_derivative": false
+    }
+  },
+  "note": "Public text derivative; raw outputs, clinical data, model weights and credentials are not included."
+}
