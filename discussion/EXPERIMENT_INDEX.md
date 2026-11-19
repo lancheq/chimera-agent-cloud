@@ -1,5 +1,9 @@
 # 实验与过程索引
 
+2026-11-19。A-F06 获批单例已执行。5 次实际生成均通过已到达请求的字段准入，余额归零后预算拒绝，诊断、填表和双 Socket 未到达。G2-CASE-PILOT 保持条件队列。[A-F06 规划验收](../round2/reports/ROUND2_A_F06_PLANNING_REVIEW_20261119.md)
+
+2026-11-19。B-DATA 和 P01-UPLOAD-PREP 完成只读调查并经规划复核。真实时间资格仍未知，历史 Mac builder 已定位，现时构建环境和目标 phase 待证。P01-PROFILE 第一版已更新，正式组合待首批病例证据。[当前队列](CURRENT.md)
+
 2026-11-19。A-T3-INPUT 已经规划验收。130 项回归通过，T3 歧义时间字段被隔离，T1/T2 合法同名字段保留。无新增真实生成。修复后的真实模型、生产 profile、builder 及目标 phase 待证。[A-T3-INPUT 规划验收](../round2/reports/ROUND2_A_T3_INPUT_UPLOAD_PLANNING_REVIEW_20261119.md)
 
 2026-11-19。A-G2 的 T1/T2/T3 宿主工程冒烟经规划验收。三例、15 次生成、6 路输出，T2/T3 自然修订剩余计划。T3 合成时间字段经整份 JSON 到达请求并被误释为观察随访，修复前不晋级。上传准备已交，正式镜像、候选 profile 和平台条件待验。[A-G2 规划验收](../round2/reports/ROUND2_A_G2_ADAPTIVE_HOST_SMOKE_PLANNING_REVIEW_20261119.md)

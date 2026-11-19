@@ -2,10 +2,15 @@
 
 ## 当前派发清单（2026-11-19）
 
-A-G2 三任务宿主工程冒烟已验收。T3 字段准入修复已通过合成验收，修复后的真实模型待一例复验。上传前置复核已交，容器构建器、生产 profile 和目标 phase 运行条件仍待证。首次正式 validation 仍以 B 正式验收为前置。
+A-F06 已执行，已发送请求的字段准入通过，整例在信息预算拒绝时中止。G2-CASE-PILOT 仍等待 F06 全链路通过。P01-PROFILE、B-DATA、P01-UPLOAD-PREP 的准备工作不构成首批三例前置。正式 validation 等待 B 正式验收与离线平台门槛。
 
 | 任务 | 执行会话 | 本次唯一入口文件 | 预计交付 | 派发状态 |
 |---|---|---|---|---|
+| **P0-1 A-F06 · T3 修复后真实单例复验** | **原《主会话》** `01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行接续卡** [20261119_A_T3_F06_REAL_RECHECK.md](tasks/20261119_A_T3_F06_REAL_RECHECK.md) | [执行报告](../round2/reports/ROUND2_A_F06_REAL_RECHECK_20261119.md) · [规划验收](../round2/reports/ROUND2_A_F06_PLANNING_REVIEW_20261119.md) | `d20261119105600-c9f073` 已完成。单例预算拒绝，诊断与双 Socket 未到达。 |
+| **P0-2 G2-CASE-PILOT · 三任务首批真实病例** | **原《主会话》** `01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **待派发新任务卡** [20261119_G2_CASE_PILOT.md](tasks/20261119_G2_CASE_PILOT.md) | `ROUND2_G2_CASE_PILOT_20261119.md`、私有预注册、三例 trace、失败分层及交接 | F06 全链路未通过，未派发。首批已条件批准，追加需另批。 |
+| **并行 P01-PROFILE · 生产机制组合审查** | **本《研究规划》** `01a1e862-66be-7991-b3bf-cc6fcb387119` | **本地新任务卡** [20261119_P01_PROFILE_FREEZE.md](tasks/20261119_P01_PROFILE_FREEZE.md) | [D01–D07 待审稿](../round2/reports/ROUND2_P01_PROFILE_DECISION_20261119.md) | 第一版完成，正式裁定等待 F06、首批三例和前置证据。 |
+| **并行 B-DATA · 真实时间资料资格** | **既有独立只读会话**《B-TIME 时间资格与迟到证据隔离》 `01a1eecb-397a-7921-a09b-c3eac54aa5a6` | **已执行新任务卡** [20261119_B_REAL_DATA_ELIGIBILITY.md](tasks/20261119_B_REAL_DATA_ELIGIBILITY.md) | [资格报告](../round2/reports/ROUND2_B_REAL_DATA_ELIGIBILITY_20261119.md)、来源资格与交接 | `d20261119105609-a554a1` 已完成，规划复核3项文件与25项来源。三任务时间资格仍未知。 |
+| **并行 P01-UPLOAD-PREP · 构建与平台前置** | **独立只读会话**《P01-UPLOAD-PREP 构建与平台前置》 `01a1f1bb-a7d8-7c01-bc52-842bccba570c` | **已执行新任务卡** [20261119_P01_UPLOAD_PREPARATION.md](tasks/20261119_P01_UPLOAD_PREPARATION.md) | [前置调查](../round2/reports/ROUND2_P01_UPLOAD_PREPARATION_20261119.md)、builder／phase 矩阵、离线准备方案与交接 | `d20261119105609-688e9d` 已完成。规划接受只读调查，实际 builder、包配对和二轮 phase 条件待证。 |
 | **A-T3-INPUT · T3 输入准入修复与上传前置复核** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行接续卡** [20261119_A_T3_INPUT_AND_UPLOAD_PREFLIGHT.md](tasks/20261119_A_T3_INPUT_AND_UPLOAD_PREFLIGHT.md) | [执行报告](../round2/reports/ROUND2_A_T3_INPUT_UPLOAD_PREFLIGHT_20261119.md) · [规划验收](../round2/reports/ROUND2_A_T3_INPUT_UPLOAD_PLANNING_REVIEW_20261119.md)。原始请求与上传矩阵由执行报告索引。 | 09:28 交付，`d20261119091158-edfeb2` 有 `turn.completed`、退出 0。合成验收通过，真实复验及上传待门槛。 |
 | **A-G2 · Adaptive 正式入口、三任务宿主冒烟与上传准备** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行接续卡，供查阅** [20261118_A_ADAPTIVE_HOST_SMOKE_AND_UPLOAD_READINESS.md](tasks/20261118_A_ADAPTIVE_HOST_SMOKE_AND_UPLOAD_READINESS.md) | [执行报告](../round2/reports/ROUND2_A_G2_ADAPTIVE_HOST_SMOKE_20261118.md)、[规划验收](../round2/reports/ROUND2_A_G2_ADAPTIVE_HOST_SMOKE_PLANNING_REVIEW_20261119.md)，私有试跑和上传准备由报告索引。 | 原请求 `d20261118222340-e561d4` 在交接前失败，接续轮 `01a1f158-17ae-71c0-9e86-3e652f0b5ac8` 回读完成。接受三例入口工程结果，T3 输入准入阻断晋级。35B 已退出。 |
 | **A-SMOKE · Adaptive 官网冒烟前置检查** | **已有《主会话》**，`01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行任务卡，供查阅** [20261118_P01_ADAPTIVE_SMOKE_READINESS.md](tasks/20261118_P01_ADAPTIVE_SMOKE_READINESS.md) | [前置调查报告](../round2/reports/ROUND2_A_SMOKE_READINESS_20261118.md)，本地 profile 矩阵和 G2 草案由报告索引。 | 22:09 交付，回读接续轮 `01a1eef1-5b56-7ae1-b21a-fbdd2f5c23ec` 已完成。规划核对 15 项文件、53 项实际源码及 4 个冻结夹具指纹，接受调查交付。适配、真实计数和宿主验证仍未执行。 |

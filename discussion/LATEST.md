@@ -1,7 +1,7 @@
 # 最新存档
 
-20261119-093008-a-t3-input-upload-review
+20261119-111142-a-f06-and-readiness-review
 
-A-T3-INPUT 的正式候选字段准入通过合成验收，130 项回归通过。T1/T2 合法间隔字段保留。修复后真实单例、生产配置和容器平台条件待核。
+A-F06 完成获批单例，已发送请求的输入隔离获验，取证预算拒绝使后续链路未到达。三任务真实病例保持条件队列。B-DATA 及 P01-UPLOAD-PREP 只读交付已复核，正式时间与平台范围待裁。
 
-[存档摘要](checkpoints/20261119-093008-a-t3-input-upload-review/SUMMARY.md) · [指纹清单](checkpoints/20261119-093008-a-t3-input-upload-review/manifest.json)
+[存档摘要](checkpoints/20261119-111142-a-f06-and-readiness-review/SUMMARY.md) · [指纹清单](checkpoints/20261119-111142-a-f06-and-readiness-review/manifest.json)
