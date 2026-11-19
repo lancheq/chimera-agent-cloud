@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "checkpoint": "20261119-194916-p01-offline-profile",
+  "created_beijing": "20261119-194916",
+  "source_git_head": "7301642d0eedda2f143ba44b93d42f948249d813",
+  "summary": "更新唯一受控离线候选、任务字段权威、机制开关、预算与 T3/生产晋级门槛。",
+  "files": {
+    "reports/ROUND2_P01_PROFILE_DECISION_20261119.md": {
+      "source_sha256": "d4a89fcaa51eb29ef206992979b4ffb2b8746de65345f9da85141f24eed3fea9",
+      "public_sha256": "d4a89fcaa51eb29ef206992979b4ffb2b8746de65345f9da85141f24eed3fea9",
+      "public_path": "round2/reports/ROUND2_P01_PROFILE_DECISION_20261119.md",
+      "public_derivative": false
+    }
+  },
+  "note": "Public text derivative; raw outputs, clinical data, model weights and credentials are not included."
+}

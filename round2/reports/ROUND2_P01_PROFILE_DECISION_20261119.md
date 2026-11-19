@@ -1,21 +1,19 @@
-# P01-PROFILE 三任务机制组合待审稿
+# P01-PROFILE 三任务生产候选裁定
 
-2026-11-19，北京时间。状态为条件试跑范围已冻结、正式生产组合待裁。A-F06 已执行，因取证预算拒绝未走到诊断及输出，G2-CASE-PILOT 暂停。B-DATA 与 P01-UPLOAD-PREP 的只读证据已经验收。合成、真实模型宿主工程与真实病例试跑分别登记。此稿不改生产允许表。
+2026-11-19。唯一受控离线候选为 **P01-PROD-CANDIDATE-V1**。独立 staging 可执行。正式生产和 validation 仍需准入证据。
 
-| 门槛 | T1 | T2 | T3 | 正式裁定所需 |
-|---|---|---|---|---|
-| D01 控制 | Adaptive v2 正式入口宿主验证、自然停止 | 同链宿主验证、观察后改订 | 同链宿主验证、改订；修复后的 F06 走到预算拒绝而中止 | 冻结共享入口、逐任务 profile、合法动作集合及耗尽后的停止合同 |
-| D02 审核 | 试跑不启用 Reflection/atomic | 同 T1 | 同 T1 | 结构化纠正需可认证来源、审核与最终写回绑定；G1R 已有合成边界，生产批准待裁 |
-| D03 边界 | 任务许可初始输入与工具，暂不启用 predictor/few-shot/额外影像 | 同基础约束，T2 资产身份单列，不授权覆写 | 修复后窄字段准入、本任务工具；禁结局与跨任务取材 | 逐任务审核权限和数据身份，独立证明额外取材收益和写回授权 |
-| D04 证据 | 试跑冻结 RAG，与 C02 分列；B 候选关闭 | 同 T1 | B 纵向显式跳过，与合法术后病理/既往工具分列 | B-DATA 证据和 B-TIME 安全视图验收。缺可靠时间时仅评估合法来源与并列保留未裁冲突，不给出趋势；C02 另需获准消费证据 |
-| D05 输出 | 模型表单到正式 biopsy decision 和理由，试跑无既有决策层覆写 | 模型表单到 primary 和理由，试跑无 predictor 覆写 | 模型表单到 event/months 和理由，不用目标字段做输入、不开校准 | 冻结字段权威、改写条件、审计、每任务两个正式输出，覆盖失败 |
-| D06 计量 | 实例原生精确计数与 HTTP 对照 | 同 T1 | 同 T1 | 计量随实际镜像 SDK、模板及 slot 复验，模型用量、工具成本、墙时分账 |
-| D07 审计 | 输入、工具、决策、最终结果私有持久化 | 同 T1 | 同 T1，原件与准入视图分开 | 验收失败导出与非 root 的审计挂载、退敏公开规则 |
+| 门槛 | 候选范围 | 待验 |
+| --- | --- | --- |
+| D01 控制 | Adaptive v2、共同诊断、MCP 权限与预算耗尽前停止 | 与实际平台启动模式和非 root 环境一致 |
+| D02 审核 | Reflection/atomic 关闭 | 结构化纠正、采纳、写回的独立批准 |
+| D03 取材 | 按任务及来源约束首屏和官方 MCP。predictor、few-shot 和额外影像关闭 | T3 目标字段持续排除，逐请求检查 |
+| D04 检索 | 冻结指南 RAG。C02 和 B 关闭 | RAG 适用性复核，B 正式范围及真实消费待验 |
+| D05 输出 | 模型表单提供决策与理由。正式投影负责 schema，关闭后验置信度及诊断覆写 | T3 保持官方 Socket 结构，预测时间数值逻辑 HOLD |
+| D06 计量 | 原生完整模板计数与实际 HTTP 请求对照 | 容器内版号、模板、slot 和资源验收 |
+| D07 审计 | 保存最小许可、工具回执、请求到表单及双 Socket 的私有指纹 | 错绑、越权、异常的实际停止与证据保全 |
 
-基线为 [A-G2](ROUND2_A_G2_ADAPTIVE_HOST_SMOKE_PLANNING_REVIEW_20261119.md)、[A-T3-INPUT](ROUND2_A_T3_INPUT_UPLOAD_PLANNING_REVIEW_20261119.md)、[B-TIME](ROUND2_B_TIME_PLANNING_REVIEW_20261118.md)、[B-MCP-SDK](ROUND2_B_MCP_SDK_PLANNING_REVIEW_20261118.md) 与 [G1R](ROUND2_P01_G1R_PLANNING_REVIEW_20261118.md)。A-G2 的 15 次真实生成是无患者工程证据，不能认证真实病例、生产机制覆盖或性能。
+T1 决策用 `biopsy_decision`，T2 用 `treatment_recommendation.primary`。T1/T2 理由、置信度、变量权重和工具使用顺序按官方 schema 投影。T3 有 `event`、`months_to_recurrence` 及理由输出。观察随访、预测时间和正式字段分别核验。允许无患者夹具检查 T3 形状，预测数值晋级须独立确认口径、来源和跨层一致性。[官方输入与结果合同](https://chimera-agent.grand-challenge.org/data-sources-and-imaging/)
 
-待裁顺序为 F06 全链路、GT 盲首批三例及构建前置调查。B-DATA 独立核对3份产物和25项来源，三任务真实时间资格维持 UNKNOWN。只有可信 as-of 可得性和同观察口径可证时，才考虑 T1/T2 的来源并列与未裁冲突，不生成趋势。B 安全视图与真实消费仍待审，T3 纵向能力保持跳过。[资格报告](ROUND2_B_REAL_DATA_ELIGIBILITY_20261119.md)
+候选锁定 Adaptive v2 工作源码、Qwen3.6-35B-A3B-UD-Q4_K_M、llama-server、SDK 模板及冻结指南索引。工作树基线是 `7301642d0eedda2f143ba44b93d42f948249d813`，独立锁定清单另记工作树指纹。历史 v15 仅作构建环境和路径对照。实际候选 image digest、资产许可和安装路径须从独立 staging 核实。
 
-P01-UPLOAD-PREP 的三份可哈希文件和交接已核对。《研究规划》接受其只读前置结果：既有传入台账可定位历史 Mac Colima/Buildx 路径，服务器旧 v15 与模型包仍在，当前可用 builder、包的成对身份及目标 phase 条件仍待确认。正式生产和镜像待裁，首次正式 validation 还需 B 正式范围和离线验收。[前置调查](ROUND2_P01_UPLOAD_PREPARATION_20261119.md)
-
-执行结果记录于 [A-F06 规划验收](ROUND2_A_F06_PLANNING_REVIEW_20261119.md)。本轮不重复真实 F06。
+当前 trace 复核及 staging 零新增生成。待核准的有限离线测试共三个固定无患者夹具，单 GPU、单并发。每任务最多 12 次真实请求、3 信息单位及 195,072 预留 token。正式 validation 依赖 T3 语义裁定、B 正式范围、同一镜像与模型配对的离线验收和目标 phase 授权。训练集结果和逐例证据保留本机。[赛事规则](https://chimera-agent.grand-challenge.org/rules/)
