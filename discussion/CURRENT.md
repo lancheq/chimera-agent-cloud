@@ -2,11 +2,11 @@
 
 ## 当前派发清单（2026-11-19）
 
-A-BUDGET-CLOSE 零生成工程验收通过。A-F06-RECHECK 等待用户批准一例真实复验，已条件批准的首批 G2-CASE-PILOT 紧随 F06 全链路通过。P01-PROFILE、B-DATA、P01-UPLOAD-PREP 既有报告复用，容器准备独立。正式 validation 等待 B 正式验收与离线镜像。
+A-BUDGET-CLOSE 零生成验收通过。A-F06-RECHECK 已批准一例，当前因原《主会话》的回环与 GPU 访问受限阻断，尚未启动。首批 G2-CASE-PILOT 等待 F06 全链路独立验收。容器准备独立。正式 validation 等待 B 正式验收与离线镜像。
 
 | 任务 | 执行会话 | 本次唯一入口文件 | 预计交付 | 派发状态 |
 |---|---|---|---|---|
-| **P0 A-F06-RECHECK · 预算停止接线后单例** | **原《主会话》** `01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **待授权接续卡** [20261119_A_F06_BUDGET_RECHECK.md](tasks/20261119_A_F06_BUDGET_RECHECK.md) | `reports/ROUND2_A_F06_BUDGET_RECHECK_20261119.md`、`output/a_f06_budget_recheck_20261119/handoff.json` 及真实请求、停止、Socket 与资源证据 | 等待用户批准一次真实复验，未派发。 |
+| **P0 A-F06-RECHECK · 预算停止接线后单例** | **原《主会话》** `01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **宿主接续卡** [20261119_A_F06_BUDGET_RECHECK.md](tasks/20261119_A_F06_BUDGET_RECHECK.md) | [前置复核](../round2/reports/ROUND2_A_F06_BUDGET_RECHECK_PLANNING_STATUS_20261119.md)；实际 `live/handoff.json` 与模型请求、停止和 Socket 证据待交。 | `d20261119174102-438c9d`、`d20261119174642-c2c8db` 两轮收到完成回执，均为前置阻断。0 启动、0 模型请求，原授权未用。 |
 | **P0 A-BUDGET-CLOSE · 取证耗尽后的停止与共同诊断** | **原《主会话》** `01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行任务卡，含停止合同** [20261119_A_BUDGET_CLOSE.md](tasks/20261119_A_BUDGET_CLOSE.md) | [执行报告](../round2/reports/ROUND2_A_BUDGET_CLOSE_20261119.md) · [规划验收](../round2/reports/ROUND2_A_BUDGET_CLOSE_PLANNING_REVIEW_20261119.md)，私有证据由报告索引 | 原请求 `d20261119112053-7a1c3d` 失败；接续轮 `01a1f26b-42af-78a1-875a-7f243da5bf25` 回读完成。201 项零生成回归通过，规划接受。 |
 | **P0-1 A-F06 · T3 修复后真实单例复验** | **原《主会话》** `01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **已执行接续卡** [20261119_A_T3_F06_REAL_RECHECK.md](tasks/20261119_A_T3_F06_REAL_RECHECK.md) | [执行报告](../round2/reports/ROUND2_A_F06_REAL_RECHECK_20261119.md) · [规划验收](../round2/reports/ROUND2_A_F06_PLANNING_REVIEW_20261119.md) | `d20261119105600-c9f073` 已完成。单例预算拒绝，诊断与双 Socket 未到达。 |
 | **P0-2 G2-CASE-PILOT · 三任务首批真实病例** | **原《主会话》** `01a1c5dc-e5e9-7730-8606-7bd7a57a98e2` | **待派发新任务卡** [20261119_G2_CASE_PILOT.md](tasks/20261119_G2_CASE_PILOT.md) | `ROUND2_G2_CASE_PILOT_20261119.md`、私有预注册、三例 trace、失败分层及交接 | F06 全链路未通过，未派发。首批已条件批准，追加需另批。 |

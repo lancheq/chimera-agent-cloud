@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "checkpoint": "20261119-175025-a-f06-host-eligibility-review",
+  "created_beijing": "20261119-175025",
+  "source_git_head": "7301642d0eedda2f143ba44b93d42f948249d813",
+  "summary": "A-F06-RECHECK 已有真实单例授权，两次前置复核均被执行环境的回环与 GPU 访问限制阻断。35B 未启动，真实请求为零，授权仍保留。",
+  "files": {
+    "reports/ROUND2_A_F06_BUDGET_RECHECK_20261119.md": {
+      "source_sha256": "c043c924950818941f9361cdf94227441ec00deb820f74f0972092f3b4eb3b08",
+      "public_sha256": "c043c924950818941f9361cdf94227441ec00deb820f74f0972092f3b4eb3b08",
+      "public_path": "round2/reports/ROUND2_A_F06_BUDGET_RECHECK_20261119.md",
+      "public_derivative": false
+    },
+    "reports/ROUND2_A_F06_BUDGET_RECHECK_PLANNING_STATUS_20261119.md": {
+      "source_sha256": "280fb9da48c379b3eaccb5f8c2ef29d7f1a14b76275245fac5b4253ee2da6b4d",
+      "public_sha256": "280fb9da48c379b3eaccb5f8c2ef29d7f1a14b76275245fac5b4253ee2da6b4d",
+      "public_path": "round2/reports/ROUND2_A_F06_BUDGET_RECHECK_PLANNING_STATUS_20261119.md",
+      "public_derivative": false
+    }
+  },
+  "note": "Public text derivative; raw outputs, clinical data, model weights and credentials are not included."
+}
