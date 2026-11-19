@@ -1,6 +1,6 @@
 # 路线与门槛
 
-2026-11-19 更新。A-F06 已执行且输入字段准入通过，在信息预算拒绝处中止。先明确耗尽预算时的合法动作与停止合同，F06 全链路验收后立即接续 G2-CASE-PILOT 的 T1/T2/T3 各一例。B-DATA、P01-UPLOAD-PREP 只读已交，P01-PROFILE 待场景证据再裁定。镜像和 B 安全视图等到首批真实病例审查后裁定。正式 validation 等待 B 正式验收、离线平台门槛和单独授权。C/D 扩展继续后置。见 [CURRENT 顶部的派发清单](CURRENT.md)。
+2026-11-19 更新。P0 A-BUDGET-CLOSE 零生成工程验收通过。A-F06-RECHECK 待批准一次真实全链路复验，F06 通过后即接续 G2-CASE-PILOT 的 T1/T2/T3 各一例。复用 B-DATA、P01-UPLOAD-PREP 与 P01-PROFILE 的证据，容器准备独立。正式 validation 等待 B 正式验收、离线镜像与单独授权。见 [CURRENT 顶部的派发清单](CURRENT.md)。
 
 2026-11-18最新：G1A有限公共运行基础、A02有限历史审计经规划接受；下一步用户手动交P01-G1R，由唯一执行者实现已授权结构候选的消费闭环并合成验收。工具/schema精确模板计数另列G1T、等前项审查后串行，不并发改共享runtime。外部自由文本缺完整候选/绑定审核、完整机制组合/真实profile仍阻断G2，不以工程日志/合成通过声称机制整体完成。见[规划验收](../round2/reports/ROUND2_G1A_A02_PLANNING_REVIEW_20261118.md)及[优先任务卡](tasks/20261118_P01_G1R_REFLECTION_CONSUMPTION.md)。
 

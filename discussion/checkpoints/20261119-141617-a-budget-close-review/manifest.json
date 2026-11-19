@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "checkpoint": "20261119-141617-a-budget-close-review",
+  "created_beijing": "20261119-141617",
+  "source_git_head": "7301642d0eedda2f143ba44b93d42f948249d813",
+  "summary": "A-BUDGET-CLOSE 完成 201 项零生成回归。冻结 F06 的合法收费动作在余额用尽后于派发前停止，随后合成诊断、填表和双 Socket 通过。等待一例真实授权。",
+  "files": {
+    "reports/ROUND2_A_BUDGET_CLOSE_20261119.md": {
+      "source_sha256": "8004f801815142980c99af3083584b6c246443a503f05f5d362952bef6a84fc7",
+      "public_sha256": "8004f801815142980c99af3083584b6c246443a503f05f5d362952bef6a84fc7",
+      "public_path": "round2/reports/ROUND2_A_BUDGET_CLOSE_20261119.md",
+      "public_derivative": false
+    },
+    "reports/ROUND2_A_BUDGET_CLOSE_PLANNING_REVIEW_20261119.md": {
+      "source_sha256": "7f9966cbe17d68b3663ee1464a396e0423ff775666df61a6ecb5619aa50da5cb",
+      "public_sha256": "7f9966cbe17d68b3663ee1464a396e0423ff775666df61a6ecb5619aa50da5cb",
+      "public_path": "round2/reports/ROUND2_A_BUDGET_CLOSE_PLANNING_REVIEW_20261119.md",
+      "public_derivative": false
+    }
+  },
+  "note": "Public text derivative; raw outputs, clinical data, model weights and credentials are not included."
+}

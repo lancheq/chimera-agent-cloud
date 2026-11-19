@@ -1,5 +1,7 @@
 # 实验与过程索引
 
+2026-11-19。A-BUDGET-CLOSE 通过规划零生成验收。原 F06 前五条控制请求与对照逐项一致，收费工具在发送前封存，诊断、填表和双 Socket 通过合成验证。201 项回归通过。A-F06-RECHECK 等待一例真实授权，完整通过才接续 G2-CASE-PILOT。[规划验收](../round2/reports/ROUND2_A_BUDGET_CLOSE_PLANNING_REVIEW_20261119.md)
+
 2026-11-19。A-F06 获批单例已执行。5 次实际生成均通过已到达请求的字段准入，余额归零后预算拒绝，诊断、填表和双 Socket 未到达。G2-CASE-PILOT 保持条件队列。[A-F06 规划验收](../round2/reports/ROUND2_A_F06_PLANNING_REVIEW_20261119.md)
 
 2026-11-19。B-DATA 和 P01-UPLOAD-PREP 完成只读调查并经规划复核。真实时间资格仍未知，历史 Mac builder 已定位，现时构建环境和目标 phase 待证。P01-PROFILE 第一版已更新，正式组合待首批病例证据。[当前队列](CURRENT.md)
