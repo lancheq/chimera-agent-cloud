@@ -4,6 +4,7 @@
 
 | 任务 | 执行端 | 唯一入口 | 交付与派发状态 |
 |---|---|---|---|
+| **WB-DESKTOP-SMOKE · 个人桌面版** | 用户的 WorkBuddy 5.11.3，界面确认提供 DeepSeek-V4.1-Flash（1017） | **真实冒烟卡** [20261120_WORKBUDDY_DISPATCH_SMOKE.md](tasks/20261120_WORKBUDDY_DISPATCH_SMOKE.md) | 交接卡 `d20261120150433-a0b807` 已生成，等待桌面端回传。模型选择可用性已目视核对。[交接与回收](WORKBUDDY_DISPATCH_20261120.md) |
 | **WB-SMOKE · Codex 规划 → WorkBuddy 执行** | 新建拟用标题 `WB-SMOKE`，WorkBuddy 托管智能体 | **真实冒烟卡** [20261120_WORKBUDDY_DISPATCH_SMOKE.md](tasks/20261120_WORKBUDDY_DISPATCH_SMOKE.md) | [配置与验收](WORKBUDDY_DISPATCH_20261120.md)。本地合成验收通过，待 WMA 授权运行真实合成卡。未向 WorkBuddy 创建真实会话。 |
 
 ## 当前派发清单（2026-11-19）

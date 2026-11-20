@@ -1,5 +1,6 @@
 """Run the dispatch CLI against an isolated WorkBuddy HTTP/ACP test server."""
 
+import hashlib
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 import os
@@ -255,6 +256,35 @@ class WorkBuddyDispatchTest(unittest.TestCase):
         self.assertIn("state:    completed", status)
         self.assertIn("thread:   stub-codex", status)
         self.assertNotIn("workbuddy", status)
+
+    def test_desktop_handoff_binds_result_to_card_and_dispatch(self):
+        outbox = self.directory / "desktop share"
+        self.env[PREFIX + "DESKTOP_OUTBOX"] = str(outbox)
+        submitted = self.cli(
+            "new", "--backend", "workbuddy-desktop", "--name", "desktop-smoke",
+            "--cd", str(self.directory), "--prompt-file", str(self.card),
+        )
+        dispatch_id = re.search(r"dispatch-id: (\S+)", submitted.stdout)[1]
+        handoff = outbox / f"{dispatch_id}.md"
+        self.assertTrue(handoff.read_bytes().endswith(self.card.read_bytes()))
+        self.assertEqual(handoff.stat().st_mode & 0o777, 0o600)
+        self.assertIn("awaiting_desktop", self.cli("status", dispatch_id).stdout)
+        self.assertEqual(self.server.creates, [])
+        result = dict(dispatch_id=dispatch_id, prompt_sha256="wrong", status="completed", result="SMOKE-618")
+        result_path = self.directory / "desk-result.json"
+
+        def receive(outcome):
+            result_path.write_text(json.dumps(outcome, ensure_ascii=False), encoding="utf-8-sig")
+            return self.cli("receive", dispatch_id, "--result-file", str(result_path), check=False)
+
+        self.assertEqual(receive(result).returncode, 2)
+        self.assertIn("awaiting_desktop", self.cli("status", dispatch_id).stdout)
+        result["prompt_sha256"] = hashlib.sha256(self.card.read_bytes()).hexdigest()
+        self.assertEqual(receive(result).returncode, 0)
+        self.assertEqual(receive(result).returncode, 0)
+        self.assertEqual(receive({**result, "result": "different"}).returncode, 2)
+        self.assertIn("returned", self.cli("status", dispatch_id).stdout)
+        self.assertIn("desktop_ui_required", self.cli("log", dispatch_id).stdout)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "checkpoint": "20261120-150703-workbuddy-desktop-handoff",
+  "created_beijing": "20261120-150703",
+  "source_git_head": "7301642d0eedda2f143ba44b93d42f948249d813",
+  "summary": "个人 WorkBuddy 交接卡与结果导入接入，8 项本地验收通过，DeepSeek-V4.1-Flash 的桌面任务等待回执。",
+  "files": {
+    "AGENTS.md": {
+      "source_sha256": "c7bd19ed5ae8eb4422650ddcd42e6a42f63611dc332a4a9cad95e0d29af4603a",
+      "public_sha256": "c7bd19ed5ae8eb4422650ddcd42e6a42f63611dc332a4a9cad95e0d29af4603a",
+      "public_path": "round2/AGENTS.md",
+      "public_derivative": false
+    },
+    "discussion/codex-dispatch-workbuddy-desktop.py": {
+      "source_sha256": "2f024ca76bfc5407d8d1e7635aebe92e166f00e7d46fd491cfe4b7571629b06b",
+      "public_sha256": "2f024ca76bfc5407d8d1e7635aebe92e166f00e7d46fd491cfe4b7571629b06b",
+      "public_path": "round2/discussion/codex-dispatch-workbuddy-desktop.py",
+      "public_derivative": false
+    },
+    "discussion/codex-dispatch.sh": {
+      "source_sha256": "c0d6871828483d4c4779239de232a0dec72bd4929a82032e220626ce8c8801ae",
+      "public_sha256": "c0d6871828483d4c4779239de232a0dec72bd4929a82032e220626ce8c8801ae",
+      "public_path": "round2/discussion/codex-dispatch.sh",
+      "public_derivative": false
+    },
+    "tests/test_workbuddy_dispatch.py": {
+      "source_sha256": "26fd160aec636adbf5792a46debcd80d29b9664d1976e1db80f1ba39be8e9a89",
+      "public_sha256": "26fd160aec636adbf5792a46debcd80d29b9664d1976e1db80f1ba39be8e9a89",
+      "public_path": "round2/tests/test_workbuddy_dispatch.py",
+      "public_derivative": false
+    }
+  },
+  "note": "Public text derivative; raw outputs, clinical data, model weights and credentials are not included."
+}

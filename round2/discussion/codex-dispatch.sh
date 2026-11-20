@@ -34,6 +34,8 @@ codex-dispatch — 派发、续写和查看回执
                       (--prompt-file F | --prompt "文本")
   codex-dispatch new --backend workbuddy --name <标签> --cd <本地登记目录> --prompt-file F
   codex-dispatch send wb:<session-id> --backend workbuddy --cd <本地登记目录> --prompt-file F
+  codex-dispatch new --backend workbuddy-desktop --name <标签> --cd <本地登记目录> --prompt-file F
+  codex-dispatch receive <dispatch-id> --result-file F
   codex-dispatch read <thread-id> [--limit N] [--cursor CURSOR]
   codex-dispatch list
   codex-dispatch status <dispatch-id>
@@ -46,6 +48,7 @@ codex-dispatch — 派发、续写和查看回执
   list    列出本脚本发起过的派发
   status  查看某个派发的运行状态（running / completed / failed）
   log     打印派发日志末尾，加 -f 持续跟随
+  receive 导入个人桌面版 WorkBuddy 结果文件
 
 可选环境变量：
   CODEX_BIN                    codex 可执行文件路径
@@ -55,6 +58,7 @@ codex-dispatch — 派发、续写和查看回执
   CODEX_DISPATCH_SANDBOX       默认沙箱（workspace-write）
   CODEX_DISPATCH_APPROVAL      默认审批策略（never）
   CODEX_DISPATCH_BACKEND       默认 app-server，可显式选择 exec
+  CODEX_DISPATCH_WORKBUDDY_DESKTOP_OUTBOX  个人桌面版交接卡目录，默认 ~/.codex-dispatch/desktop-outbox
 EOF
 }
 
@@ -64,10 +68,11 @@ CMD="${1:-}"; [ -n "$CMD" ] || { usage; exit 1; }; shift || true
 NAME=""; CWD=""; MODEL="${CODEX_DISPATCH_MODEL:-}"; EFFORT="$EFFORT_DEFAULT"
 PROMPT=""; PROMPT_FILE=""; GOAL_FILE=""; THREAD=""; FOLLOW=0; DID=""; LIMIT=3; CURSOR=""
 EXPLICIT_BACKEND=""; EXPLICIT_MODEL=""; EXPLICIT_EFFORT=""
+RESULT_FILE=""
 
 while [ $# -gt 0 ]; do
   case "$1" in
-    --name|--cd|--model|--effort|--prompt|--prompt-file|--goal-file|--backend|--limit|--cursor)
+    --name|--cd|--model|--effort|--prompt|--prompt-file|--goal-file|--backend|--limit|--cursor|--result-file)
       [ "$#" -ge 2 ] && [ -n "$2" ] || die "$1 需要参数" ;;
   esac
   case "$1" in
@@ -78,6 +83,8 @@ while [ $# -gt 0 ]; do
     --prompt)      PROMPT="${2:-}"; shift 2 ;;
     --prompt-file) PROMPT_FILE="${2:-}"; shift 2 ;;
     --goal-file)   GOAL_FILE="$2"; shift 2 ;;
+    --result-file) [ "$CMD" = receive ] || die "--result-file 仅用于 receive"
+                   RESULT_FILE="$2"; shift 2 ;;
     --backend)     BACKEND="$2"; EXPLICIT_BACKEND="$2"; shift 2 ;;
     --limit)       LIMIT="$2"; shift 2 ;;
     --cursor)      CURSOR="$2"; shift 2 ;;
@@ -86,12 +93,20 @@ while [ $# -gt 0 ]; do
     -*)            die "未知选项 $1" ;;
     *)
       if [[ "$CMD" = send || "$CMD" = read ]] && [ -z "$THREAD" ]; then THREAD="$1"
-      elif [ "$CMD" = "status" ] || [ "$CMD" = "log" ]; then DID="$1"
+      elif [[ "$CMD" = status || "$CMD" = log || "$CMD" = receive ]] && [ -z "$DID" ]; then DID="$1"
       else die "多余参数 $1"
       fi
       shift ;;
   esac
 done
+
+dispatch_client() {
+  local name="$1" client
+  client="$(dirname -- "${BASH_SOURCE[0]}")/codex-dispatch-$name.py"
+  [ -r "$client" ] || client="$APP_DIR/$name.py"
+  [ -r "$client" ] || die "缺少 $name 派发客户端"
+  realpath -- "$client" || die "无法定位 $name 派发客户端"
+}
 
 load_prompt() {
   if [ -n "$PROMPT_FILE" ] && [ -n "$PROMPT" ]; then die "--prompt 与 --prompt-file 只能给一个"; fi
@@ -175,12 +190,17 @@ case "$CMD" in
         [ -z "$GOAL_FILE$EXPLICIT_EFFORT" ] || die "WorkBuddy 不接受 --goal-file 或 --effort"
         [[ "$EXPLICIT_MODEL" = "" || "$EXPLICIT_MODEL" = deepseek-v4.1-flash ]] ||
           die "WorkBuddy 后端固定使用 deepseek-v4.1-flash"
-        WORKBUDDY_CLIENT="$(dirname -- "${BASH_SOURCE[0]}")/codex-dispatch-workbuddy.py"
-        [ -r "$WORKBUDDY_CLIENT" ] ||
-          WORKBUDDY_CLIENT="$APP_DIR/workbuddy.py"
-        [ -r "$WORKBUDDY_CLIENT" ] || die "缺少 WorkBuddy 派发客户端"
-        WORKBUDDY_CLIENT="$(realpath -- "$WORKBUDDY_CLIENT")" || die "无法定位 WorkBuddy 派发客户端"
+        WORKBUDDY_CLIENT="$(dispatch_client workbuddy)" || exit 2
         python3 "$WORKBUDDY_CLIENT" --check-config >&2 || exit 2
+        ;;
+      workbuddy-desktop)
+        [[ "$EXPLICIT_BACKEND" = workbuddy-desktop && "$CMD" = new ]] ||
+          die "个人桌面版需要显式 new --backend workbuddy-desktop"
+        [ -n "$PROMPT_FILE" ] || die "WorkBuddy 需要 --prompt-file"
+        [ -z "$GOAL_FILE$EXPLICIT_EFFORT" ] || die "个人桌面版不接受 --goal-file 或 --effort"
+        [[ "$EXPLICIT_MODEL" = "" || "$EXPLICIT_MODEL" = deepseek-v4.1-flash ]] ||
+          die "个人桌面版任务卡要求选择 DeepSeek V4.1 Flash"
+        DESKTOP_CLIENT="$(dispatch_client workbuddy-desktop)" || exit 2
         ;;
       *) die "未知后端 $BACKEND" ;;
     esac
@@ -206,6 +226,15 @@ case "$CMD" in
       GOAL_FILE="$LOG_DIR/$DID.goal"
     fi
 
+    if [ "$BACKEND" = workbuddy-desktop ]; then
+      if CARD="$(python3 "$DESKTOP_CLIENT" prepare "$DID" "$PSF" "$LOG" "$ROOT")"; then
+        record "$DID" "$CMD" "$THREAD" "$LOG" "$PIDF" "$NAME" "$CWD" || die "无法写入派发台账"
+        printf 'dispatch-id: %s\ncard:        %s\nlog:         %s\n' "$DID" "$CARD" "$LOG"
+        echo "已生成交接卡，等待 WorkBuddy 桌面端处理。"
+        exit 0
+      fi
+      exit 2
+    fi
     record "$DID" "$CMD" "$THREAD" "$LOG" "$PIDF" "$NAME" "$CWD" || die "无法写入派发台账"
     cd -- "$CWD" || die "无法进入 $CWD"
     if [ "$BACKEND" = app-server ]; then
@@ -233,18 +262,26 @@ case "$CMD" in
     echo "已登记请求，使用 status $DID 查看完成回执。"
     ;;
 
+  receive)
+    [[ "$DID" =~ ^d[0-9]{14}-[0-9a-f]{6}$ ]] || die "receive 需要 dispatch-id"
+    [ -n "$RESULT_FILE" ] || die "receive 需要 --result-file"
+    DESKTOP_CLIENT="$(dispatch_client workbuddy-desktop)" || exit 2
+    umask 077
+    exec python3 "$DESKTOP_CLIENT" receive "$DID" "$LOG_DIR/$DID.log" "$RESULT_FILE"
+    ;;
+
   list)
     [ -f "$REG" ] || { echo "（无记录）"; exit 0; }
     python3 - "$REG" <<'PY'
 import json
 import sys
 
-print(f"{'ID':22} {'MODE':6} {'BACKEND':11} {'THREAD':38} NAME")
+print(f"{'ID':22} {'MODE':6} {'BACKEND':17} {'THREAD':38} NAME")
 with open(sys.argv[1], encoding="utf-8") as registry:
     for number, line in enumerate(registry, 1):
         try:
             row = json.loads(line)
-            print(f"{row['id']:22} {row['mode']:6} {row.get('backend', '—'):11} {row['thread']:38} {row['name']}")
+            print(f"{row['id']:22} {row['mode']:6} {row.get('backend', '—'):17} {row['thread']:38} {row['name']}")
         except (ValueError, KeyError, TypeError):
             print(f"台账第 {number} 行无法读取", file=sys.stderr)
 PY
@@ -280,6 +317,8 @@ turn_id = ""
 goal_status = ""
 workbuddy = False
 model = ""
+desktop_card = ""
+desktop_result = ""
 with open(log, encoding="utf-8", errors="replace") as events:
     for line in events:
         try:
@@ -310,10 +349,16 @@ with open(log, encoding="utf-8", errors="replace") as events:
             workbuddy = True
             model = event.get("model", "")
             turn = kind
+        elif kind == "workbuddy.desktop_prepared":
+            desktop_card = event["card"]
+        elif kind == "workbuddy.desktop_result":
+            desktop_result = event["result_status"]
         elif kind == "error":
             writer_conflict |= "already has an active writer" in str(event.get("message", ""))
 
-if live:
+if desktop_card:
+    state = {"": "awaiting_desktop", "completed": "returned", "failed": "failed"}[desktop_result]
+elif live:
     state = "running"
 elif (turn == "turn.completed" and exit_code in ("", "0")) or (
     turn == "workbuddy.completed" and exit_code == "0"
@@ -324,8 +369,13 @@ else:
 
 print(f"dispatch: {dispatch}")
 print(f"state:    {state}")
-print(f"pid:      {pid or '?'}")
-if workbuddy:
+if not desktop_card:
+    print(f"pid:      {pid or '?'}")
+if desktop_card:
+    print("backend:  workbuddy-desktop")
+    print(f"card:     {desktop_card}")
+    print("model:    DeepSeek V4.1 Flash (等待或依 WorkBuddy 界面核验)")
+elif workbuddy:
     print("backend:  workbuddy")
     print(f"session:  {thread or '（没有 WorkBuddy 会话回执）'}")
     if model:

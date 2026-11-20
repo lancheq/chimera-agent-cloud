@@ -1,7 +1,7 @@
 # 最新存档
 
-20261120-145304-workbuddy-dispatch
+20261120-150703-workbuddy-desktop-handoff
 
-Codex 可选 WorkBuddy 托管执行接入，回环 HTTP/ACP 冒烟通过，真实 DeepSeek V4.1 Flash 执行待 WMA 授权。
+个人 WorkBuddy 交接卡与结果导入接入，8 项本地验收通过，DeepSeek-V4.1-Flash 的桌面任务等待回执。
 
-[存档摘要](checkpoints/20261120-145304-workbuddy-dispatch/SUMMARY.md) · [指纹清单](checkpoints/20261120-145304-workbuddy-dispatch/manifest.json)
+[存档摘要](checkpoints/20261120-150703-workbuddy-desktop-handoff/SUMMARY.md) · [指纹清单](checkpoints/20261120-150703-workbuddy-desktop-handoff/manifest.json)

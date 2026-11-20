@@ -1,8 +1,30 @@
 # Codex 规划派发到 WorkBuddy
 
-2026-11-20。Codex 负责规划、写任务卡和验收。执行端按每张任务卡显式选择，WorkBuddy 自动路径使用腾讯 WorkBuddy 企业版托管智能体（WMA）的 OpenAPI 和 ACP。启用该路径需要一个配置为 DeepSeek V4.1 Flash、已启用并可通过公网 API 访问的 Agent 版本。个人桌面版的本地助理 API 可以触发任务，其公开请求格式未提供逐轮模型锁定和型号回执。[托管接入](https://cloud.tencent.com/document/product/1831/140759) · [桌面助理 Open API](https://open.workbuddy.cn/docs/openapi)
+2026-11-20。Codex 负责规划、写任务卡和验收。个人桌面版用 `--backend workbuddy-desktop` 生成交接卡，在 WorkBuddy 选择模型并执行，由 Codex 导入结果。托管版用 `--backend workbuddy` 调用企业版托管智能体（WMA）的 OpenAPI 和 ACP。[托管接入](https://cloud.tencent.com/document/product/1831/140759) · [桌面助理 Open API](https://open.workbuddy.cn/docs/openapi)
 
-## 配置
+## 个人桌面版
+
+用户提供的 WorkBuddy 5.11.3 截图确认模型选择器有内置 DeepSeek-V4.1-Flash，显示 1017。Codex 当前在 SSH 远端 Linux，WorkBuddy 在用户电脑。任务卡和结果文件可以手动传输，也可以放在双方都能访问的目录中。本路径直接使用已登录的 WorkBuddy 桌面端。[桌面端新建本地任务](https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Task-Bar)
+
+```bash
+codex-dispatch new --backend workbuddy-desktop --name WB-DESKTOP-SMOKE \
+  --cd /home/hedongze/CHIMERA-agent \
+  --prompt-file /home/hedongze/CHIMERA-agent/discussion/tasks/20261120_WORKBUDDY_DISPATCH_SMOKE.md
+
+codex-dispatch status <dispatch-id>
+codex-dispatch receive <dispatch-id> --result-file /绝对路径/结果.json
+codex-dispatch log <dispatch-id>
+```
+
+- `new` 将任务原文和回执模板写入交接卡，输出 `card` 路径。默认目录为 `~/.codex-dispatch/desktop-outbox`，可用 `CODEX_DISPATCH_WORKBUDDY_DESKTOP_OUTBOX` 指向已有共享路径。仅把获准交给 WorkBuddy 的任务卡放入该目录。
+- 桌面端新建任务，选 **DeepSeek-V4.1-Flash**，粘贴卡片或作为文件交给 WorkBuddy。将它回传的 JSON 保存为文件，供 Codex 导入。可以直接将 JSON 粘贴回当前 Codex 对话，由 Codex 完成导入。
+- `receive` 核对派发编号、任务卡 SHA-256、返回状态和正文。成功回收显示 `returned`，模型证据以该轮 WorkBuddy 界面为准。冒烟预期 `result` 为 `WB-SMOKE-618`。
+
+重新安装 CLI 时，把 `discussion/codex-dispatch-workbuddy-desktop.py` 安装为 `~/.local/share/codex-dispatch/workbuddy-desktop.py`。
+
+## 托管版配置
+
+托管路径需要一个配置为 DeepSeek V4.1 Flash、已启用并可通过公网 API 访问的 Agent 版本。个人桌面助理公开 API 的请求格式未提供逐轮模型锁定和型号回执。[桌面助理 Open API](https://open.workbuddy.cn/docs/openapi)
 
 在启动派发的 shell 注入以下环境变量。复用本机凭据管理方式，勿把值放进任务卡、参数或 Git。安装后的入口见[原派发通道](DISPATCH_CHANNEL_20261117.md)。
 
@@ -18,7 +40,7 @@
 
 新装时把 `discussion/codex-dispatch.sh` 安装为 `~/.local/bin/codex-dispatch`，把 `discussion/codex-dispatch-workbuddy.py` 安装为 `~/.local/share/codex-dispatch/workbuddy.py`。WorkBuddy 客户端只用 Python 3.9+ 标准库。
 
-## 派发和验收
+## 托管版派发和验收
 
 按项目约定使用任务卡明确输入范围、交付格式、停止条件和验收标准。WorkBuddy 在云沙箱执行，`--cd` 用于本地登记，任务卡正文是唯一发送内容。任务卡须用已批准外发的自含材料。新会话会创建计费沙箱，同一项任务的接续可复用已核对的 WorkBuddy 会话 ID。
 
@@ -39,6 +61,8 @@ codex-dispatch send wb:<session-id> --backend workbuddy \
 3. WB-SMOKE 的回复正文应为 `WB-SMOKE-618`。`workbuddy.session` 只给出会话 ID。若提交后连接中断，先核对该 ID 在 WorkBuddy 的执行情况，再决定是否续写。派发器不自动重投会话创建或模型请求。Codex 回执继续使用 `turn.completed`。[Codex App Server](https://learn.chatgpt.com/docs/app-server)
 
 ## 2026-11-20 冒烟结果
+
+个人桌面版文件交接通过回环验收。覆盖任务原文与指纹、错误指纹拒绝、重复导入、不同结果覆盖拒绝和模型证据标记。真实冒烟交接卡 `d20261120150433-a0b807` 已生成，当前等待桌面结果。用户截图只用于确认模型可选。
 
 本地回环 HTTP/SSE 验收通过。测试覆盖新建和续写、GET 和 POST 两种 SSE 返回、原任务卡逐字传递、排除会话回放内容、模型与用量回读、错误及缺失型号拒绝、配置错误拒绝、超时取消，以及 Codex CLI 原有完成回执。运行 `python tests/test_workbuddy_dispatch.py -v` 可复跑。
 
