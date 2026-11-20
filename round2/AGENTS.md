@@ -9,6 +9,7 @@
 
 - 跨会话派发一律用 `codex-dispatch`：`new` 建会话、`send` 追加一轮，`status <dispatch-id>` 取回执。
   禁止再调用 `create_thread` / `send_message_to_thread` / `fork_thread` / `handoff_thread`：它们走 `http://127.0.0.1:<随机端口>/mcp`，端口随桌面端重启漂移，且会话创建时会把当时的端点固化进上下文，一旦 app 重启该会话就永久指向死端口，表现为 `Transport send error` 且无 threadId 回执。
+- 2026-11-20 增加逐任务显式选择 `--backend workbuddy` 的工程入口，固定 DeepSeek V4.1 Flash，限已授权外发的自含任务卡。WorkBuddy 用 `workbuddy.completed` 和退出 0 核验，项目当前只通过合成冒烟。正式使用前先取得真实合成卡的模型与结束回执。见 `discussion/WORKBUDDY_DISPATCH_20261120.md`。
 - `codex-dispatch` 默认通过本机 Codex app-server 的固定 Unix 控制套接字派发，直接由桌面端使用的服务接续已有会话。另有显式 `--backend exec` 用于无桌面 daemon 的独立 CLI 运行。操作、回执与安装位置见 `discussion/DISPATCH_CHANNEL_20261117.md`。
 - 派发必须留回执：只有日志出现 `{"type":"turn.completed",...}` 才算送达；仅有 `thread.started` 只代表会话已建立，不代表任务已完成。未拿到 `turn.completed` 不得声称已派发/已启动。
 - `new` 和 `send` 必须给 `--cd`。默认后端创建会话时设置标题并加入桌面置顶；`read <thread-id>` 可读取会话历史与 Goal，且不会开启模型轮次。

@@ -2,6 +2,8 @@
 
 2026-11-17。适用于 CHIMERA-agent 全部跨会话派发。原作者保留，旧通道作废。
 
+2026-11-20 增加 [WorkBuddy 可选后端](WORKBUDDY_DISPATCH_20261120.md)。Codex 默认入口见下文。
+
 ## 2026-11-18 最新入口
 
 `codex-dispatch` 现在默认连接当前主机上桌面端使用的 Codex app-server。客户端通过 `$CODEX_HOME/app-server-control/app-server-control.sock`（默认 `~/.codex`）使用官方 App Server 协议。已有会话可以由同一 app-server 继续，无需释放桌面持有的写入权。[Codex App Server](https://learn.chatgpt.com/docs/app-server)

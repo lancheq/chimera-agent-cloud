@@ -1,5 +1,7 @@
 # 实验与过程索引
 
+2026-11-20。派发工程 WB-SMOKE 支持 Codex 按任务卡显式选择 WorkBuddy 托管智能体，读回 DeepSeek V4.1 Flash 型号后确认完成。本地 HTTP/ACP 冒烟通过，真实执行待 WMA 配置。无医学批次。[实现与复跑](WORKBUDDY_DISPATCH_20261120.md)
+
 2026-11-19。A-F06-RECHECK 经原《主会话》桌面端 SSH 实际执行，预算动作在派发前停止、真实诊断和填表接续、两路 Socket 独立验收。T3 数值是预测，观察随访仍未知，时域依据和措辞单列。已放行 G2-CASE-PILOT 首批。[真实验收](../round2/reports/ROUND2_A_F06_BUDGET_RECHECK_LIVE_PLANNING_REVIEW_20261119.md)
 
 2026-11-19。登记正式推理入口的隔离验收、工具回执绑定与错账停止合同。公开材料仅包含工程流程。[试跑运行与回执合同](../round2/docs/ROUND2_PILOT_RUNTIME_CONTRACT_20261119.md)

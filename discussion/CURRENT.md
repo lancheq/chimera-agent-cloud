@@ -1,5 +1,11 @@
 # 当前状态（2026-11-17）
 
+## 2026-11-20 派发工程
+
+| 任务 | 执行端 | 唯一入口 | 交付与派发状态 |
+|---|---|---|---|
+| **WB-SMOKE · Codex 规划 → WorkBuddy 执行** | 新建拟用标题 `WB-SMOKE`，WorkBuddy 托管智能体 | **真实冒烟卡** [20261120_WORKBUDDY_DISPATCH_SMOKE.md](tasks/20261120_WORKBUDDY_DISPATCH_SMOKE.md) | [配置与验收](WORKBUDDY_DISPATCH_20261120.md)。本地合成验收通过，待 WMA 授权运行真实合成卡。未向 WorkBuddy 创建真实会话。 |
+
 ## 当前派发清单（2026-11-19）
 
 本轮公开更新记录许可、病例隔离与工具回执核对的通用工程合同。生产配置、B 正式范围和离线验证仍按路线门槛处理。[试跑运行与回执合同](../round2/docs/ROUND2_PILOT_RUNTIME_CONTRACT_20261119.md)

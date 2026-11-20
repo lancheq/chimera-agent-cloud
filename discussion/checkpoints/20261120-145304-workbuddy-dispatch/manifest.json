@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "checkpoint": "20261120-145304-workbuddy-dispatch",
+  "created_beijing": "20261120-145304",
+  "source_git_head": "7301642d0eedda2f143ba44b93d42f948249d813",
+  "summary": "Codex 可选 WorkBuddy 托管执行接入，回环 HTTP/ACP 冒烟通过，真实 DeepSeek V4.1 Flash 执行待 WMA 授权。",
+  "files": {
+    "AGENTS.md": {
+      "source_sha256": "8edd0f10a20e4775d3bc759744a5e39b7e9ac2d8d12eee021da0a91aef30570f",
+      "public_sha256": "8edd0f10a20e4775d3bc759744a5e39b7e9ac2d8d12eee021da0a91aef30570f",
+      "public_path": "round2/AGENTS.md",
+      "public_derivative": false
+    },
+    "discussion/codex-dispatch-app-server.py": {
+      "source_sha256": "76e3df0f81389c882311cc110069e8d504c6d0e6d44cd1aa065b408ef7f66e49",
+      "public_sha256": "76e3df0f81389c882311cc110069e8d504c6d0e6d44cd1aa065b408ef7f66e49",
+      "public_path": "round2/discussion/codex-dispatch-app-server.py",
+      "public_derivative": false
+    },
+    "discussion/codex-dispatch-workbuddy.py": {
+      "source_sha256": "14293c9c7210515423f6db9592f7dd12a625e13e4486ac2e0af397ee05e864b8",
+      "public_sha256": "14293c9c7210515423f6db9592f7dd12a625e13e4486ac2e0af397ee05e864b8",
+      "public_path": "round2/discussion/codex-dispatch-workbuddy.py",
+      "public_derivative": false
+    },
+    "discussion/codex-dispatch.sh": {
+      "source_sha256": "a34ec72a3f8d1d134e6f3958e9164b44a22276281c25484caadd5cad17803796",
+      "public_sha256": "a34ec72a3f8d1d134e6f3958e9164b44a22276281c25484caadd5cad17803796",
+      "public_path": "round2/discussion/codex-dispatch.sh",
+      "public_derivative": false
+    },
+    "tests/test_workbuddy_dispatch.py": {
+      "source_sha256": "7513a52ec0d9d2181cce16884df487ae105fa493a615095d1bfb49070d3d0aac",
+      "public_sha256": "7513a52ec0d9d2181cce16884df487ae105fa493a615095d1bfb49070d3d0aac",
+      "public_path": "round2/tests/test_workbuddy_dispatch.py",
+      "public_derivative": false
+    }
+  },
+  "note": "Public text derivative; raw outputs, clinical data, model weights and credentials are not included."
+}
