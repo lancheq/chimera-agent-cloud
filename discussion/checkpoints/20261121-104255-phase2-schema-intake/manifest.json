@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "checkpoint": "20261121-104255-phase2-schema-intake",
+  "created_beijing": "20261121-104255",
+  "source_git_head": "7301642d0eedda2f143ba44b93d42f948249d813",
+  "summary": "第二轮新版训练发布已独立接收，公开记录传输完整性与字段变更。训练数据和逐文件回执留在服务器。",
+  "files": {
+    "reports/ROUND2_PHASE2_SCHEMA_INTAKE_20261121.md": {
+      "source_sha256": "6c85852f8c2af18466b5b103fa760a617f00fef085c973826a5c7a5f291abf65",
+      "public_sha256": "6c85852f8c2af18466b5b103fa760a617f00fef085c973826a5c7a5f291abf65",
+      "public_path": "round2/reports/ROUND2_PHASE2_SCHEMA_INTAKE_20261121.md",
+      "public_derivative": false
+    }
+  },
+  "note": "Public text derivative; raw outputs, clinical data, model weights and credentials are not included."
+}

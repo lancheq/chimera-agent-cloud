@@ -1,5 +1,7 @@
 # 实验与过程索引
 
+2026-11-21。登记 Phase 2 新训练发布的传输完整性与输入字段变更。未运行训练或评测。[接收与 schema 记录](../round2/reports/ROUND2_PHASE2_SCHEMA_INTAKE_20261121.md)
+
 2026-11-20。个人 WorkBuddy 5.11.3 界面确认 DeepSeek-V4.1-Flash（1017）。Codex 增加跨设备交接卡和按派发指纹回收结果的入口。个人版真实冒烟卡待返回。[个人桌面版交接](WORKBUDDY_DISPATCH_20261120.md)
 
 2026-11-20。派发工程 WB-SMOKE 支持 Codex 按任务卡显式选择 WorkBuddy 托管智能体，读回 DeepSeek V4.1 Flash 型号后确认完成。本地 HTTP/ACP 冒烟通过，真实执行待 WMA 配置。无医学批次。[实现与复跑](WORKBUDDY_DISPATCH_20261120.md)
