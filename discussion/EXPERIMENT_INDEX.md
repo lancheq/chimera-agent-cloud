@@ -1,5 +1,7 @@
 # 实验与过程索引
 
+2026-11-22。B12 短格式以一个无患者合成案例进行两次真实 35B 诊断回放。格式 2/2 通过，完整语义 0/2 通过。结构臂保留趋势未知，仍遗漏已确认的同次观察冲突。 [B12 规划验收](../round2/reports/ROUND2_B12_SHORT_OUTPUT_PLANNING_REVIEW_20261122.md)
+
 2026-11-21。登记 Phase 2 新训练发布的传输完整性与输入字段变更。未运行训练或评测。[接收与 schema 记录](../round2/reports/ROUND2_PHASE2_SCHEMA_INTAKE_20261121.md)
 
 2026-11-20。个人 WorkBuddy 5.11.3 界面确认 DeepSeek-V4.1-Flash（1017）。Codex 增加跨设备交接卡和按派发指纹回收结果的入口。个人版真实冒烟卡待返回。[个人桌面版交接](WORKBUDDY_DISPATCH_20261120.md)
