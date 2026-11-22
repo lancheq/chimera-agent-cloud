@@ -1,6 +1,8 @@
 # 实验与过程索引
 
-2026-11-22。记录四线任务规则和 A/D 阶段验收。A 盲审 BLOCKED；D01 核查 3 个来源、0 ADMIT，D02 待资格。[公开汇总](LINE_STATUS_20261122.md)
+2026-11-22。撤销自动派发与续派。B-DATA-SEMANTIC-FIX 和 C04-1 技术就绪，待用户启动，暂无新实验读数。[公开摘要](LINE_STATUS_20261122.md)
+
+2026-11-22。A 盲审 BLOCKED；D01 核查 3 个来源、0 ADMIT，D02 待资格。
 
 2026-11-22。R11 在 T1 Direct ReAct 隔离副本中通过独立合成验收，27/27。截止后的工具正文保持私有，已获准的正文、原结算及双 Socket 保留。正式接线及实机仍待验收。 [规划验收](../round2/reports/B12_R11_VIEW_FIX_PLANNING_REVIEW_20261122.md)
 

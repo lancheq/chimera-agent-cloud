@@ -2,7 +2,7 @@
 
 ## 分线任务与验收
 
-A/T1 盲审材料已准备，实际审阅 BLOCKED。B/C 已收口；D01 核查完成，0 来源获准独立验证。用户确认分线启动，统括会话复核交付。[分线任务规则](LINE_TASK_RULES.md) · [验收摘要](LINE_STATUS_20261122.md)
+A/T1 盲审准备完成，实际审阅 BLOCKED。B-DATA-SEMANTIC-FIX 与 C04-1 均为 `READY_TO_DISPATCH`，尚未执行。D01 已核查，0 来源获准独立验证。派发、续派、模型运行及工程执行须等用户本轮明确启动。[分线任务规则](LINE_TASK_RULES.md) · [验收摘要](LINE_STATUS_20261122.md)
 
 以下为历史阶段记录。
 
