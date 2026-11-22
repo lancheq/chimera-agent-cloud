@@ -1,5 +1,7 @@
 # 实验与过程索引
 
+2026-11-22。B12-RCA 独立验收通过。冻结双臂的首次语义失配可复现，结构臂的已确认冲突在模型原答中变为 UNKNOWN，解析保留原值。方案 A 获准进入隔离候选实现。 零新模型调用。 [规划验收](../round2/reports/B12_RCA_PLANNING_REVIEW_20261122.md)
+
 2026-11-22。B12 短格式以一个无患者合成案例进行两次真实 35B 诊断回放。格式 2/2 通过，完整语义 0/2 通过。结构臂保留趋势未知，仍遗漏已确认的同次观察冲突。 [B12 规划验收](../round2/reports/ROUND2_B12_SHORT_OUTPUT_PLANNING_REVIEW_20261122.md)
 
 2026-11-21。登记 Phase 2 新训练发布的传输完整性与输入字段变更。未运行训练或评测。[接收与 schema 记录](../round2/reports/ROUND2_PHASE2_SCHEMA_INTAKE_20261121.md)

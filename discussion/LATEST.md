@@ -1,9 +1,9 @@
 # 最新存档
 
-20261122-104344-b12-short-output
+20261122-124001-b12-rca-review
 
-B12 短格式以一个无患者合成案例进行两次真实 35B 诊断回放。格式 2/2 通过，完整语义 0/2 通过。结构臂保留趋势未知，仍遗漏已确认的同次观察冲突。 本轮收口，生产晋级和实际病例验证继续等待。
+B12-RCA 独立验收通过。冻结双臂的首次语义失配可复现，结构臂的已确认冲突在模型原答中变为 UNKNOWN，解析保留原值。方案 A 获准进入隔离候选实现。
 
-[存档摘要](checkpoints/20261122-104344-b12-short-output/SUMMARY.md) · [规划验收](../round2/reports/ROUND2_B12_SHORT_OUTPUT_PLANNING_REVIEW_20261122.md)
+[存档摘要](checkpoints/20261122-124001-b12-rca-review/SUMMARY.md) · [规划验收](../round2/reports/B12_RCA_PLANNING_REVIEW_20261122.md)
 
-[上一存档](checkpoints/20261121-104255-phase2-schema-intake/SUMMARY.md)
+[上一存档](checkpoints/20261122-104344-b12-short-output/SUMMARY.md)
