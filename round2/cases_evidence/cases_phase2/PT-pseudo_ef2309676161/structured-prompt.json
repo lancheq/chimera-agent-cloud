@@ -1,0 +1,53 @@
+{
+  "case_id": "PT-pseudo_ef2309676161",
+  "pid": "PT-pseudo_ef2309676161",
+  "age": 67,
+  "months": 3,
+  "psav": 2.45,
+  "dre": "Normal",
+  "bx": "None",
+  "medhx": "Not reported",
+  "meds": "None",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "100 kg",
+    "height": "190 cm",
+    "bmi": "27.7",
+    "bp": "124/83 mmHg",
+    "hr": "60 bpm",
+    "smoking": "Ex-smoker (19 pack-yr, quit 2011)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "07 Jan 2025",
+  "enc_ref": "Dr. N. Kuiper (GP)",
+  "enc_type": "Follow-up - PSA + MRI",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Clinical attention sought to address a progressive increase in prostate-specific antigen levels alongside newly acquired imaging results."
+    },
+    {
+      "s": "History",
+      "t": "A 67-year-old civil engineer initiated this consultation to investigate an incidental prostate-specific antigen elevation documented in May 2023. Numerical values have steadily climbed over the preceding twenty-four months, aligning with the recent magnetic resonance imaging studies. He resides with his spouse, abstains from alcohol entirely, and maintains a daily twenty-minute walking regimen for general conditioning. Severe lower urinary tract symptoms dominate his clinical picture, yielding an International Prostate Symptom Score of 33 out of 35, which heavily disrupts his daily activities; however, he explicitly denies hematuria or bone pain. His medical background includes a minor arthroscopic knee intervention performed more than ten years ago, and he continues full-time professional consultancy. Additionally, he holds a smoking history of nineteen pack-years, having ceased consumption in 2011."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE: Prostate symmetrically enlarged with a smooth, homogeneous texture and no palpable nodules or asymmetry. Vital signs remain stable, registering a blood pressure of 124/83 mmHg alongside a regular heart rate of 60 bpm. General examination reveals no abnormalities, with clear absence of lymphadenopathy or abdominal masses."
+    }
+  ],
+  "occupation": "civil engineer",
+  "marital": "Married",
+  "living": "Lives with partner",
+  "next_of_kin": "Long-time friend (no close family)",
+  "recent_other": [],
+  "alcohol": "0 units / week (alcohol-free)",
+  "exercise": "Walking 20 min/day",
+  "ipss": "IPSS score: 33/35 (severe LUTS)",
+  "admin": "Visual impairment: large-print correspondence requested.",
+  "mri_hospital": "Amsterdam UMC (location VUmc)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

@@ -1,0 +1,57 @@
+{
+  "case_id": "PT-pseudo_8636aa471ef7",
+  "pid": "PT-pseudo_8636aa471ef7",
+  "age": 66,
+  "months": 3,
+  "psav": 0.69,
+  "dre": "Normal",
+  "bx": "Positive",
+  "medhx": "Not reported",
+  "meds": "None",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "75 kg",
+    "height": "179 cm",
+    "bmi": "23.4",
+    "bp": "124/65 mmHg",
+    "hr": "73 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "1 yr ago",
+    "flu_vax": "Oct 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "03 Feb 2025",
+  "enc_ref": "Dr. K. Bakker (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Clinical reassessment initiated after previous prostate sampling and an upward PSA trajectory."
+    },
+    {
+      "s": "History",
+      "t": "Initial detection of a prostate-specific antigen abnormality occurred in early 2023, prompting structured monitoring thereafter. At sixty-six years of age, the individual works as a retired civil engineer and shares a household with his spouse. Daily physical activity includes a forty-five-minute walking regimen, while weekly alcohol consumption averages twenty units. Moderate lower urinary tract symptoms correspond to an International Prostate Symptom Score of thirteen. General health remains clear of comorbidities and prescription medications. Non-urological maintenance visits recently covered routine ophthalmologic screening for cataracts, standard dental prophylaxis, and dermatological surveillance of actinic keratoses. He maintains a non-smoking status and reports no skeletal discomfort, visible hematuria, or unprovoked weight reduction. Baseline wellness remains consistent aside from the ongoing prostate assessment."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE: Examination reveals a clinically normal digital rectal assessment, with palpation identifying a uniformly enlarged gland approximating 60 mL in size. Tactile evaluation confirms homogeneous smoothness and firm resilience without discrete masses or lobar discrepancy. Vital parameters remain within stable limits, recording a blood pressure of 124/65 mmHg and a regular cardiac rhythm at 73 beats per minute. Systemic inspection shows a well-maintained physique with no signs of acute physiological compromise or toxic appearance."
+    }
+  ],
+  "occupation": "retired civil engineer",
+  "marital": "Married",
+  "living": "Lives with partner",
+  "next_of_kin": "Adult son (primary contact)",
+  "recent_other": [
+    "Ophthalmology — cataract review",
+    "Dental — biannual check-up",
+    "Dermatology — actinic keratosis check"
+  ],
+  "alcohol": "20 units / week",
+  "exercise": "Walking 45 min/day",
+  "ipss": "IPSS score: 13/35 (moderate LUTS)",
+  "admin": "Daughter manages communication; CC on letters with patient consent.",
+  "mri_hospital": "OLVG (Amsterdam)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

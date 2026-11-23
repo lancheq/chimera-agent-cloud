@@ -1,0 +1,80 @@
+{
+  "case_id": "PT-pseudo_079636ac5644",
+  "id": "pseudo_079636ac5644",
+  "pid": "PT-pseudo_079636ac5644",
+  "task": 1,
+  "psa": 6.8,
+  "age": 62,
+  "months": 2,
+  "pirads": "4",
+  "psad": 0.2,
+  "psav": 1.2,
+  "psap": 6.6,
+  "vol": 36.0,
+  "dre": "Normal",
+  "bx": "Positive",
+  "cspca": 0.82952833,
+  "medhx": "Type 2 diabetes",
+  "meds": "empagliflozin",
+  "notes": "PSA 6.8 ng/mL. PI-RADS 4. PSAD 0.20. Prostate volume 36 mL. csPCa 0.83.",
+  "pmhx": [
+    "Type 2 diabetes"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "67 kg",
+    "height": "175 cm",
+    "bmi": "21.9",
+    "bp": "125/73 mmHg",
+    "hr": "65 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "3 yr ago",
+    "flu_vax": "Oct 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "13 Jan 2025",
+  "enc_ref": "Dr. H. Martens (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Assessment sought for a previously diagnosed ISUP grade group 2 condition alongside a steadily climbing PSA profile."
+    },
+    {
+      "s": "History",
+      "t": "Occupied as an office administrator, this 62-year-old individual was first evaluated for a PSA increase during early 2023. A subsequent Positive biopsy placed him under ongoing observation. He manages type 2 diabetes with empagliflozin. He is a Non-smoker and Lives with partner, maintaining a regimen of light weight-training at home twice weekly, and consumes approximately six units of alcohol per week. His Marital status is Never married. Lower urinary tract symptoms remain mild, scoring four on the IPSS questionnaire. His visual impairment is well-managed with large-print correspondence at work, and he attends regular endocrine and cardiology reviews, the latter of which confirmed stable cardiovascular status last autumn. Beyond his urological follow-up, he remains active in his daily routine, occasionally tending to his garden and having recently completed a routine knee physiotherapy course for minor wear-and-tear."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE: Normal. Texture: smooth and symmetric; mobility: unrestricted; asymmetry: absent. General assessment shows stable hemodynamics (BP 125/73 mmHg, HR 65 bpm), a body mass index of 21.9, and an absence of systemic disease or palpable lymphadenopathy."
+    }
+  ],
+  "occupation": "office administrator",
+  "marital": "Never married",
+  "living": "Lives with partner",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Endocrine — thyroid screening",
+    "Cardiology — annual review (stable, autumn 2024)"
+  ],
+  "alcohol": "6 units / week",
+  "exercise": "Light weight-training at home, 2x/week",
+  "ipss": "IPSS score: 4/35 (mild LUTS)",
+  "admin": "Visual impairment: large-print correspondence requested.",
+  "mri_hospital": "Antoni van Leeuwenhoek",
+  "bx_isup": 2,
+  "bx_gl_prim": 3,
+  "bx_gl_sec": 4,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

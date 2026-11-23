@@ -1,0 +1,84 @@
+{
+  "task_id": "B01",
+  "status": "COMPLETE_LOCAL_AWAIT_PLANNING_REVIEW",
+  "started_beijing": "2026-11-17T22:19:51+08:00",
+  "completed_beijing": "2026-11-17T22:34:02+08:00",
+  "output_directory": "output/planning_B01_recovery_20261117",
+  "report": "reports/ROUND2_EVIDENCE_RECOVERY_FEASIBILITY_20261117.md",
+  "denominators": {
+    "flags": 66,
+    "case_version_records": 59,
+    "risk_groups": 29,
+    "independent_patients": null
+  },
+  "results": {
+    "partial_existing_tool_field_recovery_flags": 66,
+    "original_material_or_external_verification_required_flags": 64,
+    "currently_unadjudicable_flags": 2,
+    "full_dispute_resolutions_certified": 0,
+    "MRI_density_unit_unspecified_flags": 10
+  },
+  "private_artifacts": [
+    "recovery_private.jsonl",
+    "field_recovery_private.jsonl",
+    "pilot6_private.jsonl",
+    "group_accounting_private.json",
+    "redundancy_private.json",
+    "initial_alias_preflight_private.json"
+  ],
+  "aggregate_artifacts": [
+    "summary.json",
+    "field_summary.json",
+    "cost_matrix.json",
+    "representation_matrix.json",
+    "tool_contract_review.json",
+    "run_registration.json",
+    "resource_summary.json",
+    "validation.json",
+    "preservation.json",
+    "delivery_manifest.json"
+  ],
+  "validation": {
+    "status": "PASS_B01_STATIC_SCOPE_ONLY",
+    "paired_original_assets_verified": 118,
+    "additional_upfront_alias_verified": 1,
+    "actual_read_inputs_and_contracts_unchanged": 145
+  },
+  "three_cost_accounts": {
+    "information_units_actually_acquired": 0,
+    "official_tool_score": "unknown_no_GT_read",
+    "compute_and_proxy_observations": "resource_summary.json",
+    "future_three_finite_trace_options_max_units_attempts": 8,
+    "future_clinical_generation_budget": 0,
+    "future_options_executed": false
+  },
+  "unknowns": [
+    "specimen-to-card/report linkage",
+    "original calculator/export/precision lineage",
+    "actual collection versus report timing where not explicit",
+    "source retrieval/availability time",
+    "external original material availability",
+    "real world monetary/wait/risk cost",
+    "official reference reveal sets intentionally unread",
+    "derived modality authorization"
+  ],
+  "boundary": {
+    "clinical_model_calls": 0,
+    "clinical_tool_calls": 0,
+    "GPU": 0,
+    "training": 0,
+    "GT_reasoning_platform_content_reads": 0,
+    "encoder_loads": 0,
+    "production_or_input_or_KB_or_config_changes": false,
+    "shared_CURRENT_INDEX_public_pending_modified": false,
+    "public_Git_sync_or_upload": false,
+    "cross_chat_messages_sent": false,
+    "subagents_or_additional_chats_created": 0,
+    "agent_fewshot_or_retrieval_quality_label_export": false
+  },
+  "next_owner": "Planning reads local artifacts; no message sent",
+  "next_decision": "Whether any legal finite contract trace merits validation; no new medical experiment authorized here",
+  "stop_conditions_observed": "All66 assigned evidence and unknowns; no disputed value selected or repaired; external branch not expanded",
+  "background_jobs": 0,
+  "wait_required": false
+}

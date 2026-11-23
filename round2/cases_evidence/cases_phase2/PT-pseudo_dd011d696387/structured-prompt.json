@@ -1,0 +1,56 @@
+{
+  "case_id": "PT-pseudo_dd011d696387",
+  "pid": "PT-pseudo_dd011d696387",
+  "age": 75,
+  "months": 3,
+  "psav": 0.55,
+  "dre": "Normal",
+  "bx": "Positive",
+  "medhx": "Coronary artery disease, Benign prostatic hyperplasia",
+  "meds": "atorvastatin, tamsulosin",
+  "pmhx": [
+    "Coronary artery disease",
+    "Benign prostatic hyperplasia"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "92 kg",
+    "height": "179 cm",
+    "bmi": "28.7",
+    "bp": "101/75 mmHg",
+    "hr": "73 bpm",
+    "smoking": "Ex-smoker (13 pack-yr, quit 2002)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "11 Jan 2025",
+  "enc_ref": "Dr. M. Jansen (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Clinical attention sought for reassessment of a previously confirmed prostate malignancy alongside recent fluctuations in prostate-specific antigen levels."
+    },
+    {
+      "s": "History",
+      "t": "Clinical review initiated to reassess a previously established prostate cancer diagnosis. At 75 years of age, he works as an active dairy farmer and resides independently as a widower, relying on his adult daughter as his main point of contact. Body mass indexes 28.7 at a weight of 92 kg. Tobacco use ceased in 2002, accounting for a cumulative 13 pack-year exposure. Chronic coronary artery disease remains controlled via atorvastatin, while tamsulosin addresses benign prostatic hyperplasia; lower urinary tract symptoms are negligible, scoring just 2 on the IPSS scale. Daily life centers around agricultural work, with otherwise limited physical activity. Alcohol intake stays around three units weekly. Public transit limitations dictate a preference for morning visits. A decades-old meniscal injury occasionally flares during wet conditions, and he maintains routine cardiology appointments solely for blood pressure tracking. Unexplained weight reduction, skeletal discomfort, and blood in the urine are firmly denied, as he prioritizes continuing his agricultural schedule. December 2024 bloodwork revealed a prostate-specific antigen level of 10.0 ng/mL (free fraction 16%), complemented by unremarkable renal panels and complete blood counts. No medication sensitivities exist."
+    },
+    {
+      "s": "Physical examination",
+      "t": "Digital rectal examination proves normal; the prostate presents as symmetrically enlarged with a smooth, firm consistency and absent nodules or asymmetry. Hemodynamic parameters show a blood pressure of 101/75 mmHg and a pulse of 73 beats per minute. Systemic assessment identifies a well-nourished individual exhibiting no signs of acute distress; pulmonary fields are clear and cardiac rhythm remains regular."
+    }
+  ],
+  "occupation": "active dairy farmer",
+  "marital": "Widowed",
+  "living": "Lives alone; adult daughter is primary contact",
+  "next_of_kin": "None recorded — patient declines to nominate",
+  "recent_other": [],
+  "alcohol": "3 units / week",
+  "exercise": "Sedentary lifestyle, occasional walking",
+  "ipss": "IPSS score: 2/35 (mild LUTS)",
+  "admin": "Patient prefers morning appointments (public transport).",
+  "mri_hospital": "UMCG (Groningen)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

@@ -1,0 +1,56 @@
+{
+  "case_id": "PT-pseudo_099651db404e",
+  "pid": "PT-pseudo_099651db404e",
+  "age": 54,
+  "months": 3,
+  "psav": 0.97,
+  "dre": "Normal",
+  "bx": "Negative",
+  "medhx": "Not reported",
+  "meds": "None",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "113 kg",
+    "height": "186 cm",
+    "bmi": "32.7",
+    "bp": "117/68 mmHg",
+    "hr": "68 bpm",
+    "smoking": "Ex-smoker (39 pack-yr, quit 2010)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Oct 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "17 Jan 2025",
+  "enc_ref": "Dr. T. Hendriks (GP)",
+  "enc_type": "Re-evaluation - prior negative biopsy",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Persistent elevation of prostate-specific antigen alongside a previous negative biopsy necessitates specialist review."
+    },
+    {
+      "s": "History",
+      "t": "Originally referred for a 3.9 ng/mL prostate-specific antigen reading in 2022, this 54-year-old retired farmer has completed a negative biopsy yet continues to report moderate lower urinary tract symptoms, currently registering 13 on the IPSS questionnaire. He resides alone and has never married, maintaining his daily routine through a brisk 20-minute walk, accompanied by a modest three units of alcohol per week. His medical background remains clear apart from a substantial 39 pack-year smoking history, which he ceased in 2010. A recent audiology visit for routine hearing screening and his annual influenza vaccination proceeded without incident. Traveling over an hour by train for clinic appointments, he approaches his ongoing urological follow-up with a practical, straightforward mindset."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE: The prostate presents as symmetrically smooth, maintaining normal dimensions and consistency without palpable nodules or asymmetry. General examination shows stable vital signs and a BMI of 32.7, with no abdominal masses or lymphadenopathy detected. The individual appears well-nourished and ambulates without assistance."
+    }
+  ],
+  "occupation": "retired farmer",
+  "marital": "Never married",
+  "living": "Lives alone",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Audiology — hearing test",
+    "GP practice nurse — flu vaccination"
+  ],
+  "alcohol": "3 units / week",
+  "exercise": "Walking 20 min/day",
+  "ipss": "IPSS score: 13/35 (moderate LUTS)",
+  "admin": "Patient travels 60+ min by train to clinic; allow buffer.",
+  "mri_hospital": "OLVG (Amsterdam)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

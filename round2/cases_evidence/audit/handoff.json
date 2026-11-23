@@ -1,0 +1,11 @@
+{
+  "related_tests_passed": 22,
+  "old_candidates": 171,
+  "screen_flags_explained": 105,
+  "unresolved_candidate_entries": 66,
+  "unresolved_risk_groups": 29,
+  "records_annotated": 1275,
+  "input_values_changed": 0,
+  "GT_read": false,
+  "tool_sha256": "a8567d4a7dbd19891d0ce16990c3f7df2e2eb52ef8ca2221ed8672d80ebb6b05"
+}

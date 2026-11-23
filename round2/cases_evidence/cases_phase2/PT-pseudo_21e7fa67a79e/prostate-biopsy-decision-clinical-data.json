@@ -1,0 +1,103 @@
+{
+  "radiology_report": "LUMC Imaging Department | 28 Jan 2025 | Exam: Multiparametric MRI Prostate\n\nClinical Indication:\nAssessment of a rising PSA trajectory (11.0 ng/mL) alongside a previously positive biopsy, given ongoing suspicion for clinically significant prostate cancer.\n\nFINDINGS:\nThe gland measures 101.95 mL in volume. Diffuse benign prostatic hyperplasia is evident, featuring a prominent median lobe that extends into the bladder neck.\n\nA focal lesion occupies the left peripheral zone at the base/mid-gland level, spanning approximately 28 mm in maximum dimension. Marked T2-weighted hypointensity correlates with severely restricted diffusion on high b-value DWI, yielding low ADC values. Dynamic contrast imaging shows early, focal enhancement relative to the surrounding parenchyma. No extracapsular extension is visualised. Bilateral neurovascular bundles appear intact. Seminal vesicles demonstrate normal morphology and enhancement. Pelvic lymphadenopathy is absent. Bladder and rectal walls are unremarkable.\n\nIMPRESSION:\nPI-RADS 5 lesion in the left peripheral zone (base/mid), consistent with high probability of clinically significant prostate cancer.\nProstate volume: 101.95 mL\nPSA density: 0.108\nClinical staging: iT2NxMx",
+  "previous_notes": [
+    {
+      "date": "07 Feb 2024",
+      "author": "Dr. N. Kuiper (GP)",
+      "text": "11 Aug 2023 - Dr. N. Kuiper (GP): Review of the PSA trend revealed an increase to 6.7 ng/mL compared to the previous measurement. A multiparametric MRI was subsequently arranged to further characterise the gland and rule out clinically significant disease. Results were discussed in a multidisciplinary setting prior to scheduling a urology referral."
+    },
+    {
+      "date": "11 Aug 2023",
+      "author": "Dr. N. Kuiper (GP)",
+      "text": "07 Feb 2024 - Dr. N. Kuiper (GP): Follow-up laboratory testing showed a further PSA rise to 7.8 ng/mL. The previously scheduled MRI at LUMC has been completed and returned a suspicious finding in the left peripheral zone. A referral to the urology clinic was processed."
+    }
+  ],
+  "psa_trend": [
+    {
+      "date": "Dec 2022",
+      "val": 10.2
+    },
+    {
+      "date": "Aug 2023",
+      "val": 9.2
+    },
+    {
+      "date": "May 2024",
+      "val": 5.2
+    },
+    {
+      "date": "Feb 2025",
+      "val": 11.0
+    }
+  ],
+  "laboratory_results": [
+    {
+      "name": "PSA",
+      "val": "11.0 ng/mL",
+      "date": "06 Jan 2025",
+      "flag": "H"
+    },
+    {
+      "name": "Free PSA",
+      "val": "2.96 ng/mL",
+      "date": "06 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "%Free PSA",
+      "val": "27%",
+      "date": "06 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Haemoglobin",
+      "val": "12.9 g/dL",
+      "date": "06 Jan 2025",
+      "flag": "L"
+    },
+    {
+      "name": "WBC",
+      "val": "6.1 x10^9/L",
+      "date": "06 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Platelets",
+      "val": "206 x10^9/L",
+      "date": "06 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Creatinine",
+      "val": "90 umol/L",
+      "date": "06 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "eGFR",
+      "val": ">60 mL/min/1.73m2",
+      "date": "06 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Testosterone",
+      "val": "13.0 nmol/L",
+      "date": "06 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Alkaline phosphatase",
+      "val": "69 U/L",
+      "date": "06 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "LDH",
+      "val": "224 U/L",
+      "date": "06 Jan 2025",
+      "flag": ""
+    }
+  ],
+  "family_history": "No",
+  "cspca": 0.77544403
+}

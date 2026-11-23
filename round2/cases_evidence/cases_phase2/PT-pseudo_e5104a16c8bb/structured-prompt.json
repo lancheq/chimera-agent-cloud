@@ -1,0 +1,58 @@
+{
+  "case_id": "PT-pseudo_e5104a16c8bb",
+  "pid": "PT-pseudo_e5104a16c8bb",
+  "age": 60,
+  "months": 3,
+  "psav": 0.31,
+  "dre": "Normal",
+  "bx": "Positive",
+  "medhx": "Osteoarthritis, Atrial fibrillation",
+  "meds": "apixaban, metoprolol",
+  "pmhx": [
+    "Osteoarthritis",
+    "Atrial fibrillation"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "99 kg",
+    "height": "183 cm",
+    "bmi": "29.6",
+    "bp": "102/68 mmHg",
+    "hr": "62 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "3 yr ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "14 Jan 2025",
+  "enc_ref": "Dr. N. Kuiper (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Current visit initiated to reassess established prostate malignancy following a recent rise in prostate-specific antigen levels."
+    },
+    {
+      "s": "History",
+      "t": "At sixty years of age, this retired plumber first sought evaluation for an elevated prostate-specific antigen reading in early 2023, which ultimately led to a biopsy confirming ISUP GG 3 carcinoma. He currently denies any lower urinary tract symptoms, registering an IPSS score of zero, and maintains a strictly alcohol-free lifestyle. A non-smoker, he resides with his partner and follows a mostly sedentary daily routine, punctuated by occasional neighborhood strolls. His osteoarthritis remains stable and is controlled with paracetamol, while routine dental visits occur every six months without complication. Well-controlled atrial fibrillation is managed with apixaban and metoprolol. Morning clinic slots align best with his reliance on public transportation."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE: The prostate gland presents with a smooth, symmetric contour and typical firmness. Palpation detects no focal nodularity or asymmetrical enlargement. General systemic assessment shows stable cardiovascular parameters, including blood pressure and heart rate, with no clinical evidence of disseminated disease or enlarged lymph nodes."
+    }
+  ],
+  "occupation": "retired plumber",
+  "marital": "Married",
+  "living": "Lives with partner",
+  "next_of_kin": "Niece",
+  "recent_other": [
+    "Dental — biannual check-up"
+  ],
+  "alcohol": "0 units / week (alcohol-free)",
+  "exercise": "Sedentary lifestyle, occasional walking",
+  "ipss": "IPSS score: 0/35 (mild LUTS)",
+  "admin": "Patient prefers morning appointments (public transport).",
+  "mri_hospital": "Maastricht UMC+",
+  "ct": null,
+  "active_treatment_flag": 0
+}

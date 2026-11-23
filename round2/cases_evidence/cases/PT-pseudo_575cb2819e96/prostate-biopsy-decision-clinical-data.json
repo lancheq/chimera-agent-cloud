@@ -1,0 +1,102 @@
+{
+  "radiology_report": "Maastricht UMC+ | Radiology | 20 January 2025 | mpMRI Prostate\nClinical context: 67-year-old man presenting with PSA 7.4 ng/mL and a previous Negative systematic biopsy.\nFINDINGS:\nProstatic volume registers at 28.0 mL. A discrete abnormality occupies the right posterior mid-gland peripheral zone, spanning 14 × 10 × 12 mm. T2-weighted sequences show pronounced hypointensity against the normal peripheral zone tissue. Diffusion-weighted imaging confirms marked restriction, mirrored by low apparent diffusion coefficient values. Dynamic contrast sequences demonstrate early, focal enhancement within the same region. The transition zone remains clear of significant nodular hyperplasia. There is no evidence of seminal vesicle invasion or extraprostatic extension. Pelvic lymph nodes appear benign.\nIMPRESSION:\nPI-RADS 5 lesion in the right posterior mid-gland peripheral zone.\nprostate volume 28.0; PSA density 0.25.\ncsPCa probability 0.7299785.",
+  "previous_notes": [
+    {
+      "date": "30 Jan 2024",
+      "author": "Dr. N. Kuiper (GP)",
+      "text": "Clinical review focused on a sustained rise in prostate-specific antigen values. An earlier measurement from September 2023 recorded 6.2 ng/mL, indicating a gradual upward trajectory. The preceding systematic biopsy yielded Negative results for malignancy. Current pharmacotherapy includes metformin and empagliflozin to manage Type 2 diabetes, with glycaemic parameters remaining stable. Recorded for specialist urological follow-up."
+    },
+    {
+      "date": "03 Aug 2023",
+      "author": "Dr. N. Kuiper (GP)",
+      "text": "Annual wellness assessment conducted when the patient was 66 years old. Cardiovascular metrics showed a blood pressure reading of 138/82 mmHg. Type 2 diabetes was addressed through dietary adjustments and metformin administration. A general health screening captured a prostate-specific antigen level of 5.8 ng/mL. The individual reported no lower urinary tract complaints at the time."
+    }
+  ],
+  "psa_trend": [
+    {
+      "date": "Sep 2023",
+      "val": 5.8
+    },
+    {
+      "date": "Feb 2024",
+      "val": 7.2
+    },
+    {
+      "date": "Aug 2024",
+      "val": 4.0
+    },
+    {
+      "date": "Jan 2025",
+      "val": 7.4
+    }
+  ],
+  "laboratory_results": [
+    {
+      "name": "PSA",
+      "val": "7.4 ng/mL",
+      "date": "26 Dec 2024",
+      "flag": "H"
+    },
+    {
+      "name": "Free PSA",
+      "val": "0.83 ng/mL",
+      "date": "26 Dec 2024",
+      "flag": ""
+    },
+    {
+      "name": "%Free PSA",
+      "val": "11%",
+      "date": "26 Dec 2024",
+      "flag": "L"
+    },
+    {
+      "name": "Haemoglobin",
+      "val": "15.7 g/dL",
+      "date": "26 Dec 2024",
+      "flag": ""
+    },
+    {
+      "name": "WBC",
+      "val": "8.3 x10^9/L",
+      "date": "26 Dec 2024",
+      "flag": ""
+    },
+    {
+      "name": "Platelets",
+      "val": "261 x10^9/L",
+      "date": "26 Dec 2024",
+      "flag": ""
+    },
+    {
+      "name": "Creatinine",
+      "val": "86 umol/L",
+      "date": "26 Dec 2024",
+      "flag": ""
+    },
+    {
+      "name": "eGFR",
+      "val": ">60 mL/min/1.73m2",
+      "date": "26 Dec 2024",
+      "flag": ""
+    },
+    {
+      "name": "Testosterone",
+      "val": "13.4 nmol/L",
+      "date": "26 Dec 2024",
+      "flag": ""
+    },
+    {
+      "name": "Alkaline phosphatase",
+      "val": "86 U/L",
+      "date": "26 Dec 2024",
+      "flag": ""
+    },
+    {
+      "name": "LDH",
+      "val": "148 U/L",
+      "date": "26 Dec 2024",
+      "flag": ""
+    }
+  ],
+  "family_history": "No"
+}

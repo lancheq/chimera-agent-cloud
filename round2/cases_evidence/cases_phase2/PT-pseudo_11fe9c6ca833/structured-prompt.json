@@ -1,0 +1,58 @@
+{
+  "case_id": "PT-pseudo_11fe9c6ca833",
+  "pid": "PT-pseudo_11fe9c6ca833",
+  "age": 66,
+  "months": 2,
+  "psav": 41.57,
+  "dre": "Nodus",
+  "bx": "Positive",
+  "medhx": "Hypertension, Coronary artery disease",
+  "meds": "valsartan, lisinopril, metoprolol, aspirin 80 mg",
+  "pmhx": [
+    "Hypertension",
+    "Coronary artery disease"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "61 kg",
+    "height": "167 cm",
+    "bmi": "21.9",
+    "bp": "125/89 mmHg",
+    "hr": "77 bpm",
+    "smoking": "Ex-smoker (10 pack-yr, quit 2022)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "02 Feb 2025",
+  "enc_ref": "Dr. E. Mulder (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Clinical attention was requested due to a prostate-specific antigen measurement of 190.0 ng/mL and a prior biopsy-proven prostate cancer."
+    },
+    {
+      "s": "History",
+      "t": "A 66-year-old civil engineer resides with his partner, balancing a biweekly tennis regimen with moderate alcohol intake. Clinical consultation was sought to reassess a previously established prostate malignancy following a positive prior biopsy, now accompanied by a prostate-specific antigen level of 190.0 ng/mL. Urinary complaints include an IPSS score of 14/35, driven mainly by nocturia and a diminished stream, though hematuria and acute retention are absent. Systemic history encompasses hypertension and coronary artery disease, stabilized during his most recent cardiology visit, and managed pharmacologically with valsartan, lisinopril, metoprolol, and aspirin 80 mg. Tobacco use ceased in 2022 after a cumulative 10 pack-year exposure. A recent chest radiograph showed no abnormalities. Commuting over an hour via rail, he specifically requested extended consultation time."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: firm with an irregular nodule situated in the left peripheral zone, while the surrounding tissue remains symmetrically enlarged yet non-tender. General vitals show a blood pressure of 125/89 mmHg alongside a regular cardiac rhythm at 77 beats per minute. Peripheral lymph nodes and abdominal organs reveal no enlargement or masses."
+    }
+  ],
+  "occupation": "civil engineer",
+  "marital": "Married",
+  "living": "Lives with partner",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Radiology — chest X-ray (routine)"
+  ],
+  "alcohol": "4 units / week",
+  "exercise": "Tennis 2x/week",
+  "ipss": "IPSS score: 14/35 (moderate LUTS)",
+  "admin": "Patient travels 60+ min by train to clinic; allow buffer.",
+  "mri_hospital": "Spaarne Gasthuis (Haarlem)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

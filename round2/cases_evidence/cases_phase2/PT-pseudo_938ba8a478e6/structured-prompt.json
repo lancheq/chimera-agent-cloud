@@ -1,0 +1,60 @@
+{
+  "case_id": "PT-pseudo_938ba8a478e6",
+  "pid": "PT-pseudo_938ba8a478e6",
+  "age": 65,
+  "months": 1,
+  "psav": 2.6,
+  "dre": "Normal",
+  "bx": "Positive",
+  "medhx": "Hypertension, COPD, Chronic kidney disease",
+  "meds": "amlodipine, valsartan, metoprolol, tiotropium, salbutamol PRN",
+  "pmhx": [
+    "Hypertension",
+    "COPD",
+    "Chronic kidney disease"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "78 kg",
+    "height": "180 cm",
+    "bmi": "24.1",
+    "bp": "123/70 mmHg",
+    "hr": "83 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "16 Jan 2025",
+  "enc_ref": "Dr. M. Jansen (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Clinician review requested due to escalating antigen levels alongside a previously confirmed malignant biopsy."
+    },
+    {
+      "s": "History",
+      "t": "Aged 65 and employed as an office administrator, the individual resides solo, with his nephew designated as next of kin. A married non-smoker, his initial workup commenced in late 2022 following an elevated antigen reading. Chronic conditions include hypertension, chronic obstructive pulmonary disease, and chronic kidney disease. Current pharmacotherapy encompasses amlodipine, valsartan, metoprolol, tiotropium, and salbutamol administered on an as-needed basis. Lower urinary tract complaints register at 8 on the IPSS scale, yet recreational cycling persists at roughly 30 kilometres three times weekly. Recent outpatient visits to gastroenterology for routine colonoscopy and to endocrinology for thyroid evaluation both returned negative findings. Aside from minor visual deficits necessitating large-print materials, systemic complaints, bone discomfort, and urinary blood are denied. Workplace and domestic environments present no notable stressors. Alcohol consumption remains low at two weekly units. The subject maintains full independence in daily routines. A systematic transrectal ultrasound biopsy performed in early 2023 yielded Gleason 4+3 pathology."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — consistency: smooth and firm; symmetry: preserved; nodularity: absent. General inspection reveals clear pulmonary fields and a regular cardiac rhythm aligning with his established cardiovascular baseline. Abdominal palpation demonstrates a soft, non-tender contour devoid of masses or organomegaly."
+    }
+  ],
+  "occupation": "office administrator",
+  "marital": "Married",
+  "living": "Lives alone",
+  "next_of_kin": "Nephew",
+  "recent_other": [
+    "Gastroenterology — surveillance colonoscopy",
+    "Endocrine — thyroid screening"
+  ],
+  "alcohol": "2 units / week",
+  "exercise": "Cycling 3x/week, ~30 km",
+  "ipss": "IPSS score: 8/35 (moderate LUTS)",
+  "admin": "Visual impairment: large-print correspondence requested.",
+  "mri_hospital": "Tergooi MC",
+  "ct": null,
+  "active_treatment_flag": 0
+}

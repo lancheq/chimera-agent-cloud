@@ -1,0 +1,139 @@
+{
+  "three_accounts_separate": true,
+  "rows": [
+    {
+      "missing_field_family": "bx_mention",
+      "flags": 2,
+      "case_version_records": 2,
+      "risk_groups": 1,
+      "first_probe_tools": [
+        "get_previous_notes",
+        "get_mri_report"
+      ],
+      "conditional_tools": [],
+      "section_units_per_flag_first_probe": 2,
+      "section_units_per_flag_envelope": 2,
+      "official_score": "unknown; reference reveal sets deliberately not read",
+      "future_compute": "unmeasured CPU latency; zero generation needed for static feasibility",
+      "real_world_check_cost": "unknown",
+      "executed": false
+    },
+    {
+      "missing_field_family": "psa_multi",
+      "flags": 4,
+      "case_version_records": 4,
+      "risk_groups": 2,
+      "first_probe_tools": [
+        "get_lab_results",
+        "get_psa_trend",
+        "get_mri_report"
+      ],
+      "conditional_tools": [],
+      "section_units_per_flag_first_probe": 3,
+      "section_units_per_flag_envelope": 3,
+      "official_score": "unknown; reference reveal sets deliberately not read",
+      "future_compute": "unmeasured CPU latency; zero generation needed for static feasibility",
+      "real_world_check_cost": "unknown",
+      "executed": false
+    },
+    {
+      "missing_field_family": "psad_self",
+      "flags": 58,
+      "case_version_records": 58,
+      "risk_groups": 29,
+      "first_probe_tools": [
+        "get_mri_report"
+      ],
+      "conditional_tools": [
+        "get_lab_results",
+        "get_psa_trend"
+      ],
+      "section_units_per_flag_first_probe": 1,
+      "section_units_per_flag_envelope": 3,
+      "official_score": "unknown; reference reveal sets deliberately not read",
+      "future_compute": "unmeasured CPU latency; zero generation needed for static feasibility",
+      "real_world_check_cost": "unknown",
+      "executed": false
+    },
+    {
+      "missing_field_family": "psad_vs_mri",
+      "flags": 2,
+      "case_version_records": 2,
+      "risk_groups": 1,
+      "first_probe_tools": [
+        "get_mri_report"
+      ],
+      "conditional_tools": [
+        "get_lab_results",
+        "get_psa_trend"
+      ],
+      "section_units_per_flag_first_probe": 1,
+      "section_units_per_flag_envelope": 3,
+      "official_score": "unknown; reference reveal sets deliberately not read",
+      "future_compute": "unmeasured CPU latency; zero generation needed for static feasibility",
+      "real_world_check_cost": "unknown",
+      "executed": false
+    }
+  ],
+  "naive_flag_sum_do_not_execute": {
+    "first_probe_attempts_and_new_sections_if_success": 76,
+    "conditional_envelope_attempts_and_new_sections_if_success": 196,
+    "assumptions": "all selected sections present, not initially full-visible, no repeats/failures; not an authorized runtime batch"
+  },
+  "same_snapshot_unique_record_section_union": {
+    "first_probe_attempts_and_new_sections_if_success": 69,
+    "conditional_envelope_attempts_and_new_sections_if_success": 179,
+    "assumptions": "all selected sections present, not initially full-visible, no repeats/failures; not an authorized runtime batch"
+  },
+  "risk_group_count_not_patient_bill_count": 29,
+  "no_group_total_as_independent_patient_budget": true,
+  "failure_missing_cache_rules": "admitted attempts count even when cached/no-section/failure; present null/empty charges1, absent0; overbudget rejected before fetch",
+  "bounded_followup_options_not_executed": [
+    {
+      "scenario": "one density provenance contract trace",
+      "information_unit_cap": 3,
+      "attempt_cap": 3,
+      "clinical_generation_cap": 0,
+      "tools": [
+        "get_mri_report",
+        "get_lab_results",
+        "get_psa_trend"
+      ],
+      "stop": "if card measurement linkage still absent stop; no correction"
+    },
+    {
+      "scenario": "one PSA time-label contract trace",
+      "information_unit_cap": 3,
+      "attempt_cap": 3,
+      "clinical_generation_cap": 0,
+      "tools": [
+        "get_lab_results",
+        "get_psa_trend",
+        "get_mri_report"
+      ],
+      "stop": "report date cannot timestamp PSA; retain unknown"
+    },
+    {
+      "scenario": "one historical mention contract trace",
+      "information_unit_cap": 2,
+      "attempt_cap": 2,
+      "clinical_generation_cap": 0,
+      "tools": [
+        "get_previous_notes",
+        "get_mri_report"
+      ],
+      "stop": "without original pathology do not adjudicate result"
+    }
+  ],
+  "combined_three_trace_maximum_if_separate_source_records": {
+    "information_units": 8,
+    "admitted_attempts": 8,
+    "clinical_model_generations": 0,
+    "CPU_seconds": "unknown_until_authorized_execution",
+    "real_world_cost": "unknown",
+    "official_tool_score": "unknown"
+  },
+  "approval_status": "planning review required; neither source selection nor runtime experiment authorized by B01",
+  "reservation_rule_missing_sections": "Budget must admit/reserve1 before fetching a potentially absent section; absence then settles0. B01 proposes no pathology probe because targeted sources contain no report.",
+  "temporal_rule": "Any future acquisition additionally requires predecision applicability; unknown retrieval time is not filled. Section budgets do not buy permission to use future/hidden/GT facts."
+}

@@ -1,0 +1,80 @@
+{
+  "case_id": "PT-pseudo_ef66ca71e996",
+  "id": "pseudo_ef66ca71e996",
+  "pid": "PT-pseudo_ef66ca71e996",
+  "task": 1,
+  "psa": 10.0,
+  "age": 53,
+  "months": 3,
+  "pirads": "3",
+  "psad": 0.17,
+  "psav": 1.98,
+  "psap": 7.1,
+  "vol": 90.0,
+  "dre": "Normal",
+  "bx": "Negative",
+  "cspca": 0.0,
+  "medhx": "Type 2 diabetes",
+  "meds": "metformin, empagliflozin",
+  "notes": "PSA 10 ng/mL. PI-RADS 3. PSAD 0.17. Prostate volume 90 mL. csPCa 0.00.",
+  "pmhx": [
+    "Type 2 diabetes"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "111 kg",
+    "height": "191 cm",
+    "bmi": "30.4",
+    "bp": "140/76 mmHg",
+    "hr": "58 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "1 yr ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "18 Feb 2025",
+  "enc_ref": "Dr. P. van Dijk (GP)",
+  "enc_type": "Re-evaluation - prior negative biopsy",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "A recent PSA elevation to 10.0 ng/mL alongside a prior Negative biopsy warrants clinical review."
+    },
+    {
+      "s": "History",
+      "t": "Work-up commenced in April 2022 after an initial PSA spike. The subject is a 53-year-old retired carpenter. He is married and resides on a working farm with his partner. Type 2 diabetes is managed through metformin and empagliflozin, with recent cardiology assessments confirming stable metabolic markers. He experiences moderate lower urinary tract symptoms, chiefly nocturia and a diminished stream, scoring 8 on the IPSS questionnaire. These issues are attributed to natural ageing rather than pathology. A non-smoker, he maintains a weekly swimming schedule and ingests roughly 18 units of alcohol weekly. A systematic transrectal biopsy performed last year returned benign results, and aside from a knee arthroscopy in his thirties, his health is otherwise robust. He explicitly denies bone pain, haematuria, or unexplained weight loss."
+    },
+    {
+      "s": "Physical examination",
+      "t": "Normal DRE. Texture is smooth and firm, with unrestricted mobility and no asymmetry. The gland presents symmetrically enlarged without focal nodularity. Vital signs remain stable, registering a blood pressure of 140/76 mmHg and a heart rate of 58 bpm. General inspection is unremarkable, with no palpable lymphadenopathy or abdominal masses detected."
+    }
+  ],
+  "occupation": "retired carpenter",
+  "marital": "Married",
+  "living": "Lives on a working farm with partner",
+  "next_of_kin": "Niece",
+  "recent_other": [
+    "Podiatry — routine foot care",
+    "Dental — biannual check-up"
+  ],
+  "alcohol": "18 units / week",
+  "exercise": "Swimming 1x/week",
+  "ipss": "IPSS score: 8/35 (moderate LUTS)",
+  "admin": "Interpreter: not required. Consent for data use: signed.",
+  "mri_hospital": "Ziekenhuis Gelderse Vallei (Ede)",
+  "bx_isup": 0,
+  "bx_gl_prim": 0,
+  "bx_gl_sec": 0,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

@@ -1,0 +1,55 @@
+{
+  "case_id": "PT-pseudo_180352970ace",
+  "pid": "PT-pseudo_180352970ace",
+  "age": 63,
+  "months": 3,
+  "psav": 1.18,
+  "dre": "Normal",
+  "bx": "None",
+  "medhx": "Not reported",
+  "meds": "None",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "71 kg",
+    "height": "183 cm",
+    "bmi": "21.2",
+    "bp": "124/82 mmHg",
+    "hr": "84 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "2 yr ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "18 Jan 2025",
+  "enc_ref": "Dr. K. Bakker (GP)",
+  "enc_type": "Follow-up - PSA + MRI",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Clinical concern stems from a sustained increase in prostate-specific antigen levels coupled with a newly identified high-risk lesion on multiparametric magnetic resonance imaging."
+    },
+    {
+      "s": "History",
+      "t": "At sixty-three years of age, this self-employed carpentry contractor presents with a minimal International Prostate Symptom Score of 5/35, despite an initial workup for hesitancy and frequency two years prior. Prior biopsy bucket: None. He has never wed and resides with his partner, while his grown daughter acts as the designated emergency contact. A strict non-smoker, his daily routine features biweekly tennis matches and a weekly alcohol intake hovering around fourteen units. Medical background remains entirely clear, with no comorbidities or active prescriptions. He denies haematuria, skeletal discomfort, or unaccounted weight reduction, and has arranged for an Arabic interpreter to facilitate his next consultation."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: uniformly smooth; mobility: unrestricted; asymmetry: absent. The gland exhibits no focal irregularities, aligning with a benign digital assessment. Hemodynamic parameters show a blood pressure of 124/82 mmHg and a pulse of 84 beats per minute. Systemic evaluation notes a well-built individual in comfortable repose, featuring unremarkable pulmonary fields and a steady cardiac rhythm upon auscultation."
+    }
+  ],
+  "occupation": "self-employed contractor (carpentry)",
+  "marital": "Never married",
+  "living": "Lives with partner",
+  "next_of_kin": "Adult daughter (primary contact)",
+  "recent_other": [
+    "Dental — biannual check-up"
+  ],
+  "alcohol": "14 units / week",
+  "exercise": "Tennis 2x/week",
+  "ipss": "IPSS score: 5/35 (mild LUTS)",
+  "admin": "Interpreter (Arabic) requested for next visit.",
+  "mri_hospital": "Catharina Ziekenhuis (Eindhoven)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

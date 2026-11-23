@@ -1,0 +1,80 @@
+{
+  "case_id": "PT-pseudo_b63dfe0f311e",
+  "id": "pseudo_b63dfe0f311e",
+  "pid": "PT-pseudo_b63dfe0f311e",
+  "task": 1,
+  "psa": 5.3,
+  "age": 67,
+  "months": 2,
+  "pirads": "2",
+  "psad": 0.1,
+  "psav": 0.47,
+  "psap": 5.1,
+  "vol": 50.0,
+  "dre": "Normal",
+  "bx": "Positive",
+  "cspca": 0.39097,
+  "medhx": "Hypertension, Hypercholesterolaemia",
+  "meds": "amlodipine, valsartan, lisinopril, metoprolol, atorvastatin, simvastatin, rosuvastatin",
+  "notes": "PSA 5.3 ng/mL. PI-RADS 2. PSAD 0.10. Prostate volume 50 mL. csPCa 0.39.",
+  "pmhx": [
+    "Hypertension",
+    "Hypercholesterolaemia"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "68 kg",
+    "height": "175 cm",
+    "bmi": "22.2",
+    "bp": "138/89 mmHg",
+    "hr": "85 bpm",
+    "smoking": "Ex-smoker (37 pack-yr, quit 2018)",
+    "last_dental": "2 yr ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "17 Feb 2025",
+  "enc_ref": "Dr. R. van den Berg (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Ongoing evaluation of elevated prostate-specific antigen levels alongside reassessment after a previous biopsy."
+    },
+    {
+      "s": "History",
+      "t": "First noted for a PSA rise in late 2022, this 67-year-old widower has since been tracked by his primary care physician. He works as a retired carpenter residing in an independent retirement community, with his sister designated as next of kin. A 37 pack-year smoking history ends in 2018. Clinical background includes hypertension and hypercholesterolaemia, currently treated with amlodipine, valsartan, lisinopril, metoprolol, atorvastatin, simvastatin, and rosuvastatin. He avoids alcohol entirely, swims weekly, and manages mild knee pain stemming from years of manual labour. A cardiology assessment in autumn 2024 confirmed stable cardiovascular health. Urinary symptoms remain minimal, anchored at a baseline IPSS of 9, and he commutes 60 minutes by train for each clinic visit. The clinical picture aligns with a positive prior biopsy bucket."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE: Normal. The prostate exhibits a symmetrically enlarged, smooth, and firm consistency without palpable nodules or asymmetry. General examination reveals a well-nourished, alert gentleman in no acute distress. Blood pressure measures 138/89 mmHg, accompanied by a regular heart rate of 85 bpm."
+    }
+  ],
+  "occupation": "retired carpenter",
+  "marital": "Widowed",
+  "living": "Lives in retirement community (independent unit)",
+  "next_of_kin": "Sibling (sister)",
+  "recent_other": [
+    "Cardiology — annual review (stable, autumn 2024)"
+  ],
+  "alcohol": "0 units / week (alcohol-free)",
+  "exercise": "Swimming 1x/week",
+  "ipss": "IPSS score: 9/35 (moderate LUTS)",
+  "admin": "Patient travels 60+ min by train to clinic; allow buffer.",
+  "mri_hospital": "OLVG (Amsterdam)",
+  "bx_isup": 1,
+  "bx_gl_prim": 3,
+  "bx_gl_sec": 3,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

@@ -1,0 +1,55 @@
+{
+  "case_id": "PT-pseudo_1dc32184cab6",
+  "pid": "PT-pseudo_1dc32184cab6",
+  "age": 60,
+  "months": 2,
+  "psav": 0.17,
+  "dre": "Normal",
+  "bx": "Negative",
+  "medhx": "Not reported",
+  "meds": "None",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "84 kg",
+    "height": "169 cm",
+    "bmi": "29.4",
+    "bp": "115/77 mmHg",
+    "hr": "64 bpm",
+    "smoking": "Ex-smoker (21 pack-yr, quit 2010)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "26 Feb 2025",
+  "enc_ref": "Dr. P. van Dijk (GP)",
+  "enc_type": "Re-evaluation - prior negative biopsy",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Clinical reassessment follows a documented history of benign prior biopsies alongside a progressively ascending prostate-specific antigen trajectory."
+    },
+    {
+      "s": "History",
+      "t": "At sixty years of age, the patient works as a primary school teacher and occupies an independent unit within a retirement community. Never married, he relies on his partner for primary communication. A gradual increase in prostate-specific antigen prompted initial investigation three years ago. Lower urinary tract symptoms generate an IPSS score of 20, though he firmly denies haematuria or acute retention episodes. Physical mobility restricts him to chair-based exercises, and he completely abstains from alcohol. A routine chest radiograph conducted last month showed no abnormalities, and his surgical history is limited to a minor knee arthroscopy performed during his forties. No comorbidities or active medications exist. Mild anxiety accompanies the biopsy results, yet he remains otherwise well. He previously smoked twenty-one pack-years before ceasing in 2010."
+    },
+    {
+      "s": "Physical examination",
+      "t": "Per rectum: the gland measures symmetrically enlarged, presenting a smooth and firm consistency without palpable nodules or asymmetry. General assessment proves unremarkable, characterized by clear lung fields and a regular cardiovascular rhythm. The abdomen remains soft and non-tender, with no detectable masses or organomegaly."
+    }
+  ],
+  "occupation": "primary school teacher",
+  "marital": "Never married",
+  "living": "Lives in retirement community (independent unit)",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Radiology — chest X-ray (routine)"
+  ],
+  "alcohol": "0 units / week (alcohol-free)",
+  "exercise": "Limited mobility — chair-based exercises only",
+  "ipss": "IPSS score: 20/35 (severe LUTS)",
+  "admin": "Interpreter (Arabic) requested for next visit.",
+  "mri_hospital": "Catharina Ziekenhuis (Eindhoven)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

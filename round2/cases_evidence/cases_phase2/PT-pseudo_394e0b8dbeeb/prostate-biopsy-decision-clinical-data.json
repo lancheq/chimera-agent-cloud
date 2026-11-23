@@ -1,0 +1,103 @@
+{
+  "radiology_report": "Subject: Multiparametric MRI Prostate | Date: 20 December 2024 | Institution: Jeroen Bosch Ziekenhuis ('s-Hertogenbosch)\nClinical Context: 71-year-old male presenting with a PSA trajectory of 9.2 ng/mL and a previously documented negative biopsy bucket. Scan performed to assess for suspicious morphology.\n\nFINDINGS:\nThe gland measures 53.0 mL in total volume. T2-weighted sequences identify a 12 mm hypointense focus within the right mid-gland, reaching toward the peripheral zone. Margins appear irregular with architectural disruption. Diffusion-weighted imaging demonstrates significant restriction paired with low ADC values, indicating increased cellularity. Dynamic contrast enhancement is early and focal compared to adjacent tissue. Seminal vesicles appear normal. There is no evidence of extraprostatic extension or pelvic lymphadenopathy.\n\nIMPRESSION:\nPI-RADS 4 lesion in the right mid-gland peripheral zone.\nProstate volume 53.0 mL yielding a PSA density of 0.17 ng/mL/mL.",
+  "previous_notes": [
+    {
+      "date": "15 Jan 2023",
+      "author": "Dr. E. Mulder (GP)",
+      "text": "Initial laboratory workup in April 2023 flagged a PSA elevation of 6.1 ng/mL. The individual noted mild urinary hesitancy, though acute retention and haematuria were absent. Because of his age and the first elevation, clinicians arranged a follow-up PSA test six months later and initiated a urology referral for baseline evaluation."
+    },
+    {
+      "date": "06 Sep 2024",
+      "author": "Dr. E. Mulder (GP)",
+      "text": "Subsequent laboratory data collected in June 2024 showed a further rise to 10.1 ng/mL, prompting a repeat multiparametric MRI that located a suspicious focus. In light of the earlier negative biopsy, the steady upward PSA trend, and the present imaging results, specialist input was requested. The case was forwarded to the urology outpatient department for clinical re-assessment and to review targeted sampling options."
+    }
+  ],
+  "psa_trend": [
+    {
+      "date": "Apr 2023",
+      "val": 7.0
+    },
+    {
+      "date": "Nov 2023",
+      "val": 7.9
+    },
+    {
+      "date": "Jun 2024",
+      "val": 6.5
+    },
+    {
+      "date": "Jan 2025",
+      "val": 9.2
+    }
+  ],
+  "laboratory_results": [
+    {
+      "name": "PSA",
+      "val": "9.2 ng/mL",
+      "date": "21 Nov 2024",
+      "flag": "H"
+    },
+    {
+      "name": "Free PSA",
+      "val": "1.44 ng/mL",
+      "date": "21 Nov 2024",
+      "flag": ""
+    },
+    {
+      "name": "%Free PSA",
+      "val": "16%",
+      "date": "21 Nov 2024",
+      "flag": "L"
+    },
+    {
+      "name": "Haemoglobin",
+      "val": "15.0 g/dL",
+      "date": "21 Nov 2024",
+      "flag": ""
+    },
+    {
+      "name": "WBC",
+      "val": "7.5 x10^9/L",
+      "date": "21 Nov 2024",
+      "flag": ""
+    },
+    {
+      "name": "Platelets",
+      "val": "310 x10^9/L",
+      "date": "21 Nov 2024",
+      "flag": ""
+    },
+    {
+      "name": "Creatinine",
+      "val": "107 umol/L",
+      "date": "21 Nov 2024",
+      "flag": ""
+    },
+    {
+      "name": "eGFR",
+      "val": ">60 mL/min/1.73m2",
+      "date": "21 Nov 2024",
+      "flag": ""
+    },
+    {
+      "name": "Testosterone",
+      "val": "8.5 nmol/L",
+      "date": "21 Nov 2024",
+      "flag": ""
+    },
+    {
+      "name": "Alkaline phosphatase",
+      "val": "63 U/L",
+      "date": "21 Nov 2024",
+      "flag": ""
+    },
+    {
+      "name": "LDH",
+      "val": "160 U/L",
+      "date": "21 Nov 2024",
+      "flag": ""
+    }
+  ],
+  "family_history": "No",
+  "cspca": 0.78939086
+}

@@ -1,0 +1,56 @@
+{
+  "case_id": "PT-pseudo_7efca1668c87",
+  "pid": "PT-pseudo_7efca1668c87",
+  "age": 75,
+  "months": 3,
+  "psav": 18.38,
+  "dre": "Nodus",
+  "bx": "Positive",
+  "medhx": "Not reported",
+  "meds": "None",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "85 kg",
+    "height": "185 cm",
+    "bmi": "24.8",
+    "bp": "146/74 mmHg",
+    "hr": "63 bpm",
+    "smoking": "Ex-smoker (22 pack-yr, quit 2019)",
+    "last_dental": "1 yr ago",
+    "flu_vax": "Oct 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "29 Jan 2025",
+  "enc_ref": "Dr. M. Jansen (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "A documented prostate cancer history combined with a rising antigen level of 68.0 ng/mL establishes the current clinical focus."
+    },
+    {
+      "s": "History",
+      "t": "Initially assessed for antigen elevation toward the end of 2023, the individual is a 75-year-old male currently tracked by urology specialists. He lives within an assisted-living facility, is married, and counts his niece as his next of kin. Before retiring from a mechanical engineering career, he accumulated 22 pack-years of tobacco use before ceasing in 2019. His weekly alcohol intake averages 8 units, and he preserves fitness through a daily 45-minute walking regimen. Lower urinary tract symptoms remain minimal, quantified by an IPSS score of 6 out of 35. Chronic back discomfort resolved after six physiotherapy sessions, and dental evaluations occur twice yearly without incident. He reports no bone aches, blood in the urine, or unexpected weight reduction, and maintains a medication-free status."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE: A firm, asymmetric Nodus localized to the right peripheral zone presents with indistinct margins. General systems remain unremarkable, registering a blood pressure of 146/74 mmHg and a regular cardiac rate of 63 bpm. Peripheral lymphadenopathy and hepatosplenomegaly are absent."
+    }
+  ],
+  "occupation": "mechanical engineer",
+  "marital": "Married",
+  "living": "Lives in assisted-living facility",
+  "next_of_kin": "Niece",
+  "recent_other": [
+    "Physiotherapy — lower back, six sessions",
+    "Dental — biannual check-up"
+  ],
+  "alcohol": "8 units / week",
+  "exercise": "Walking 45 min/day",
+  "ipss": "IPSS score: 6/35 (mild LUTS)",
+  "admin": "Interpreter: not required. Consent for data use: signed.",
+  "mri_hospital": "Ziekenhuis Gelderse Vallei (Ede)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

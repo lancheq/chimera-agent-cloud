@@ -1,0 +1,57 @@
+{
+  "case_id": "PT-pseudo_2ef22b5dd08e",
+  "pid": "PT-pseudo_2ef22b5dd08e",
+  "age": 66,
+  "months": 2,
+  "psav": 1.34,
+  "dre": "Normal",
+  "bx": "None",
+  "medhx": "Not reported",
+  "meds": "None",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "75 kg",
+    "height": "184 cm",
+    "bmi": "22.2",
+    "bp": "136/76 mmHg",
+    "hr": "71 bpm",
+    "smoking": "Ex-smoker (24 pack-yr, quit 2020)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Oct 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "18 Feb 2025",
+  "enc_ref": "Dr. C. Peters (GP)",
+  "enc_type": "Follow-up - PSA + MRI",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Clinical reassessment indicated due to a persistent upward PSA trajectory coupled with recent multiparametric magnetic resonance imaging results."
+    },
+    {
+      "s": "History",
+      "t": "At 66 years of age, this semi-retired harbour pilot seeks review concerning his prostate-specific antigen trajectory, accompanied by a longstanding record of moderate lower urinary tract symptoms (IPSS 8/35). He shares an assisted-living residence with his spouse, who serves as his main point of contact. Physical activity remains a priority, featuring three weekly cycling sessions covering roughly 30 km each, balanced with an alcohol intake of 8 units weekly. His smoking history totals 24 pack-years, though he ceased tobacco use in 2020. Ocular limitations necessitate large-print documents. Recent medical engagements include a gastroenterology visit for standard colonoscopy screening, pulmonary function testing, and a baseline chest radiograph. A laparoscopic gallbladder removal occurred in 2015, entirely separate from his present urological evaluation. He maintains no active comorbidities, takes no prescribed medications, manages occasional seasonal allergies with non-prescription antihistamines, and carries no prior biopsy history. No unexplained weight reduction, skeletal discomfort, or blood in the urine has been reported. General health otherwise appears stable."
+    },
+    {
+      "s": "Physical examination",
+      "t": "Per rectum: Normal DRE; digital assessment reveals a uniformly enlarged gland exhibiting consistent firmness without discrete irregularities or lateralised masses. Cardiovascular and respiratory auscultation demonstrate regular rhythms and clear field expansion. Abdominal percussion and palpation confirm a pliable, non-tender cavity lacking palpable hepatosplenomegaly or abnormal growths."
+    }
+  ],
+  "occupation": "harbour pilot (semi-retired)",
+  "marital": "Married",
+  "living": "Lives in assisted-living facility",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Gastroenterology — surveillance colonoscopy",
+    "Radiology — chest X-ray (routine)",
+    "Pulmonary function test — known COPD follow-up"
+  ],
+  "alcohol": "8 units / week",
+  "exercise": "Cycling 3x/week, ~30 km",
+  "ipss": "IPSS score: 8/35 (moderate LUTS)",
+  "admin": "Visual impairment: large-print correspondence requested.",
+  "mri_hospital": "Radboudumc",
+  "ct": null,
+  "active_treatment_flag": 0
+}

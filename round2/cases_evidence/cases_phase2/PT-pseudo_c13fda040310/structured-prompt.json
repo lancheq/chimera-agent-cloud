@@ -1,0 +1,58 @@
+{
+  "case_id": "PT-pseudo_c13fda040310",
+  "pid": "PT-pseudo_c13fda040310",
+  "age": 63,
+  "months": 3,
+  "psav": 1.35,
+  "dre": "Normal",
+  "bx": "Negative",
+  "medhx": "Type 2 diabetes, Hypercholesterolaemia, Osteoarthritis, Benign prostatic hyperplasia",
+  "meds": "metformin, empagliflozin, atorvastatin, simvastatin, rosuvastatin, paracetamol PRN, tamsulosin",
+  "pmhx": [
+    "Type 2 diabetes",
+    "Hypercholesterolaemia",
+    "Osteoarthritis",
+    "Benign prostatic hyperplasia"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "81 kg",
+    "height": "180 cm",
+    "bmi": "25.0",
+    "bp": "125/95 mmHg",
+    "hr": "72 bpm",
+    "smoking": "Current smoker (23 pack-yr)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Oct 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "19 Feb 2025",
+  "enc_ref": "Dr. E. Mulder (GP)",
+  "enc_type": "Re-evaluation - prior negative biopsy",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "An escalating PSA trajectory reaching 6.1 ng/mL after a previously negative systematic biopsy necessitates specialist re-evaluation."
+    },
+    {
+      "s": "History",
+      "t": "Divorced and currently residing with a partner, the 63-year-old freelance translator entered initial prostate cancer risk assessment in mid-2023 following a PSA reading of 3.5 ng/mL. Over the subsequent two years, he has experienced a steady, asymptomatic PSA increase now reaching 6.1 ng/mL. Despite the earlier negative biopsy, he expresses considerable apprehension regarding another invasive procedure. Lower urinary tract symptoms remain minimal (IPSS 5), adequately controlled with tamsulosin and a routine of commuter cycling five times each week. His clinical background includes benign prostatic hyperplasia, well-managed type 2 diabetes treated with metformin and empagliflozin, as well as hypercholesterolaemia addressed through atorvastatin, simvastatin, and rosuvastatin. He maintains an active lifestyle despite being a current smoker with a 23 pack-year history. He explicitly denies haematuria, pelvic pain, or unexplained weight loss. A stable, decades-long right knee osteoarthritis restricts his marathon goals and occasionally requires paracetamol PRN. Weekly alcohol intake averages one unit, and he notes that extended hours spent translating technical documents frequently contribute to his general fatigue."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: smooth and firm; mobility: unrestricted; asymmetry: none. The prostate is symmetrically enlarged but otherwise unremarkable, confirming a normal digital rectal examination. General physical assessment shows no abnormalities, with clear cardiovascular and respiratory auscultation, absent peripheral lymphadenopathy, and no palpable abdominal masses."
+    }
+  ],
+  "occupation": "freelance translator",
+  "marital": "Divorced",
+  "living": "Lives with partner",
+  "next_of_kin": "Adult daughter (primary contact)",
+  "recent_other": [],
+  "alcohol": "1 units / week",
+  "exercise": "Cycling 5x/week (commuter)",
+  "ipss": "IPSS score: 5/35 (mild LUTS)",
+  "admin": "Patient anxious about procedures — allocate extra consult time.",
+  "mri_hospital": "Catharina Ziekenhuis (Eindhoven)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

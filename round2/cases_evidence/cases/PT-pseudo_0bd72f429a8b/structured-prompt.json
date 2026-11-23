@@ -1,0 +1,79 @@
+{
+  "case_id": "PT-pseudo_0bd72f429a8b",
+  "id": "pseudo_0bd72f429a8b",
+  "pid": "PT-pseudo_0bd72f429a8b",
+  "task": 1,
+  "psa": 5.3,
+  "age": 56,
+  "months": 3,
+  "pirads": "4",
+  "psad": 0.1,
+  "psav": 2.26,
+  "psap": 2.7,
+  "vol": 48.0,
+  "dre": "Nodus",
+  "bx": "Positive",
+  "cspca": 0.40281674,
+  "medhx": "Obesity (BMI >30)",
+  "meds": "None",
+  "notes": "PSA 5.3 ng/mL. PI-RADS 4. PSAD 0.10. Prostate volume 48 mL. DRE nodus. csPCa 0.40.",
+  "pmhx": [
+    "Obesity (BMI >30)"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "79 kg",
+    "height": "175 cm",
+    "bmi": "25.8",
+    "bp": "123/64 mmHg",
+    "hr": "80 bpm",
+    "smoking": "Ex-smoker (33 pack-yr, quit 2021)",
+    "last_dental": "1 yr ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "11 Jan 2025",
+  "enc_ref": "Dr. F. de Boer (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Request for clinical re-evaluation driven by previous biopsy results and a current PSA elevation to 5.3 ng/mL."
+    },
+    {
+      "s": "History",
+      "t": "A 56-year-old retired bank clerk first entered investigation during early 2023 after a PSA elevation triggered a positive biopsy and subsequent monitoring protocol. He is married and shares his residence with his partner, maintaining a fairly active routine that includes cycling roughly 20 kilometres twice weekly. Lower urinary tract symptoms register at a moderate IPSS of 11, with no reports of pelvic pain or haematuria. After accumulating 33 pack-years of smoking, he ceased tobacco use in 2021. Alcohol intake stays near one unit per week. Unrelated urological issues include uncomplicated cataract surgery performed three years prior and routine podiatry visits. He previously opted out of research trials and currently maintains a BMI exceeding 30 without any active medications."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: moderately enlarged gland with a distinct Nodus palpable in the left peripheral zone; mobility: unrestricted. General assessment shows stable vital signs, absent lymphadenopathy, and no bone tenderness."
+    }
+  ],
+  "occupation": "retired bank clerk",
+  "marital": "Married",
+  "living": "Lives with partner",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Podiatry — routine foot care"
+  ],
+  "alcohol": "1 units / week",
+  "exercise": "Cycling 2x/week, ~20 km",
+  "ipss": "IPSS score: 11/35 (moderate LUTS)",
+  "admin": "Patient declined research participation previously; respect for AS-related trials.",
+  "mri_hospital": "Amsterdam UMC (location VUmc)",
+  "bx_isup": 2,
+  "bx_gl_prim": 3,
+  "bx_gl_sec": 4,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

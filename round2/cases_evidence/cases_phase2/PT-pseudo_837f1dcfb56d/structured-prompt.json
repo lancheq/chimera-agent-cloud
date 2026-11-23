@@ -1,0 +1,57 @@
+{
+  "case_id": "PT-pseudo_837f1dcfb56d",
+  "pid": "PT-pseudo_837f1dcfb56d",
+  "age": 68,
+  "months": 1,
+  "psav": 0.72,
+  "dre": "Normal",
+  "bx": "None",
+  "medhx": "Not reported",
+  "meds": "None",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "98 kg",
+    "height": "174 cm",
+    "bmi": "32.4",
+    "bp": "115/76 mmHg",
+    "hr": "71 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "2 yr ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "28 Feb 2025",
+  "enc_ref": "Dr. P. van Dijk (GP)",
+  "enc_type": "Follow-up - PSA + MRI",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Clinical reassessment sought after recent PSA variability and subsequent imaging arrangement."
+    },
+    {
+      "s": "History",
+      "t": "At 68 years of age, this retired firefighter first entered clinical evaluation for a PSA rise toward the end of 2023 and has monitored subsequent values diligently. Residing with his partner, he sustains a fairly vigorous routine that includes biweekly tennis matches and approximately seven weekly alcoholic drinks. Lower urinary complaints remain negligible, registering a mere 5 on the IPSS, yet he expresses considerable apprehension concerning possible biopsies or invasive treatments. Recent visits to a pain management facility address persistent shoulder discomfort, while an audiology assessment identified mild presbycusis currently managed with non-prescription hearing devices. A referral to a sleep specialist occurred last month following reports of heavy snoring and daytime drowsiness, leaving obstructive sleep apnoea under active evaluation. He reports no hematuria, skeletal pain, or unaccounted weight reduction, maintaining overall stability apart from his procedural concerns. He maintains a non-smoking status."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE: The gland presents as uniformly enlarged with a firm, smooth contour and zero nodularity or asymmetrical regions. Systemic assessment shows a BMI of 32.4 alongside stable hemodynamics, although visible tension surrounds the impending appointment. Palpation of the abdomen yields a soft, non-tender response, with no evidence of lymph node enlargement or visceral hypertrophy."
+    }
+  ],
+  "occupation": "retired firefighter",
+  "marital": "Divorced",
+  "living": "Lives with partner",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Pain clinic — chronic shoulder pain",
+    "Audiology — hearing test",
+    "Sleep clinic — suspected obstructive sleep apnoea"
+  ],
+  "alcohol": "7 units / week",
+  "exercise": "Tennis 2x/week",
+  "ipss": "IPSS score: 5/35 (mild LUTS)",
+  "admin": "Patient anxious about procedures — allocate extra consult time.",
+  "mri_hospital": "Catharina Ziekenhuis (Eindhoven)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

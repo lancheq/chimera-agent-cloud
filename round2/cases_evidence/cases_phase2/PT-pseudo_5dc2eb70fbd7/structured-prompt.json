@@ -1,0 +1,60 @@
+{
+  "case_id": "PT-pseudo_5dc2eb70fbd7",
+  "pid": "PT-pseudo_5dc2eb70fbd7",
+  "age": 63,
+  "months": 1,
+  "psav": 0.0,
+  "dre": "Normal",
+  "bx": "Negative",
+  "medhx": "Hypertension, Hypercholesterolaemia, Osteoarthritis",
+  "meds": "amlodipine, lisinopril, metoprolol, atorvastatin, paracetamol PRN",
+  "pmhx": [
+    "Hypertension",
+    "Hypercholesterolaemia",
+    "Osteoarthritis"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "84 kg",
+    "height": "179 cm",
+    "bmi": "26.2",
+    "bp": "142/80 mmHg",
+    "hr": "67 bpm",
+    "smoking": "Current smoker (36 pack-yr)",
+    "last_dental": "2 yr ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "09 Feb 2025",
+  "enc_ref": "Dr. C. Peters (GP)",
+  "enc_type": "Re-evaluation - prior negative biopsy",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Persistent uncertainty regarding prostate cancer screening warrants re-evaluation after an earlier negative biopsy and a steady PSA course."
+    },
+    {
+      "s": "History",
+      "t": "A 63-year-old civil engineer initially entered evaluation years ago after a mildly elevated PSA triggered a systematic biopsy that returned entirely benign. He currently experiences moderate lower urinary tract symptoms, notably nocturia twice nightly and a slightly weak stream, yielding an IPSS score of 10. Medical background includes well-controlled hypertension and hypercholesterolaemia, treated with amlodipine, lisinopril, metoprolol, and atorvastatin, plus occasional paracetamol PRN for osteoarthritis. He maintains a 36 pack-year smoking history and drinks roughly 26 units of alcohol weekly. Daily fitness routines include a 20-minute walk. Beyond urological matters, he recently finished six physiotherapy sessions for mechanical lower back pain, keeps up with regular dental check-ups, and manages mild visual impairment requiring large-print materials. He lives with his wife; their adult children visit weekly, and he continues active involvement in local engineering consultancy projects."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: smooth and symmetric; consistency: normal; asymmetry/nodules: absent. Vital signs reveal a blood pressure of 142/80 mmHg and a regular heart rate of 67 beats per minute. General inspection shows no peripheral oedema, while abdominal palpation confirms the absence of suprapubic tenderness or palpable masses."
+    }
+  ],
+  "occupation": "civil engineer",
+  "marital": "Married",
+  "living": "Lives with partner; adult children visit weekly",
+  "next_of_kin": "Sibling (sister)",
+  "recent_other": [
+    "Physiotherapy — lower back, six sessions",
+    "Dental — biannual check-up"
+  ],
+  "alcohol": "26 units / week",
+  "exercise": "Walking 20 min/day",
+  "ipss": "IPSS score: 10/35 (moderate LUTS)",
+  "admin": "Visual impairment: large-print correspondence requested.",
+  "mri_hospital": "Spaarne Gasthuis (Haarlem)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

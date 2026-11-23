@@ -1,0 +1,102 @@
+{
+  "radiology_report": "Radiology Department, Amsterdam UMC (AMC) | 05 Feb 2025 | Multiparametric MRI Prostate\n\nClinical indication: Re-evaluation for rising PSA value: 7.68 ng/mL and prior negative biopsy; assess for clinically significant prostate cancer.\n\nFINDINGS:\nProstatic enlargement is noted, with a total prostate volume: 80.93 mL. T2-weighted sequences reveal mild right mid-gland peripheral zone asymmetry. Within this region, a 12 x 8 mm focus of T2 hypointensity appears, accompanied by restricted diffusion on high b-value DWI (b=1400) and prompt enhancement on DCE. Benign nodular hyperplasia characterizes the transition zone, lacking any worrisome architectural changes. Seminal vesicles maintain normal caliber and signal intensity. There is no evidence of extraprostatic spread or suspicious lymphadenopathy. The bladder wall appears smooth, free from trabeculation or diverticula.\n\nIMPRESSION:\nPI-RADS: 3 lesion in the right mid-gland peripheral zone.\nProstate volume: 80.93 mL yielding a PSA density: 0.1 ng/mL/mL.\ncsPCa probability: 0.7373852.",
+  "previous_notes": [
+    {
+      "date": "21 Aug 2023",
+      "author": "Dr. H. Martens (GP)",
+      "text": "Assessment today centered on a prostate-specific antigen level of 4.6 ng/mL, marking a consistent climb from the baseline drawn in 2022. The individual notes mild urinary frequency, though acute retention and haematuria are absent. The case was forwarded to the urology outpatient clinic for deeper investigation and imaging assessment."
+    },
+    {
+      "date": "16 Jun 2024",
+      "author": "Dr. H. Martens (GP)",
+      "text": "Consultation focused on the ongoing urological workup. Attendance at the urology clinic occurred last month, where a systematic biopsy returned benign histology. The current PSA stands at 6.1 ng/mL, and despite the negative biopsy, the upward trajectory necessitates ongoing observation. A repeat PSA and a return to urology for re-evaluation and potential MRI planning were organized."
+    }
+  ],
+  "psa_trend": [
+    {
+      "date": "Feb 2022",
+      "val": 7.2
+    },
+    {
+      "date": "Feb 2023",
+      "val": 0.5
+    },
+    {
+      "date": "Feb 2024",
+      "val": 2.1
+    },
+    {
+      "date": "Feb 2025",
+      "val": 7.68
+    }
+  ],
+  "laboratory_results": [
+    {
+      "name": "PSA",
+      "val": "7.7 ng/mL",
+      "date": "16 Jan 2025",
+      "flag": "H"
+    },
+    {
+      "name": "Free PSA",
+      "val": "1.40 ng/mL",
+      "date": "16 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "%Free PSA",
+      "val": "18%",
+      "date": "16 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Haemoglobin",
+      "val": "14.1 g/dL",
+      "date": "16 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "WBC",
+      "val": "5.8 x10^9/L",
+      "date": "16 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Platelets",
+      "val": "195 x10^9/L",
+      "date": "16 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Creatinine",
+      "val": "107 umol/L",
+      "date": "16 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "eGFR",
+      "val": ">60 mL/min/1.73m2",
+      "date": "16 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Testosterone",
+      "val": "8.5 nmol/L",
+      "date": "16 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Alkaline phosphatase",
+      "val": "84 U/L",
+      "date": "16 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "LDH",
+      "val": "231 U/L",
+      "date": "16 Jan 2025",
+      "flag": ""
+    }
+  ],
+  "family_history": "No"
+}

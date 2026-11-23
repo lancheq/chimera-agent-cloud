@@ -1,0 +1,53 @@
+{
+  "case_id": "PT-pseudo_8967e0df17fc",
+  "pid": "PT-pseudo_8967e0df17fc",
+  "age": 72,
+  "months": 1,
+  "psav": 1.2,
+  "dre": "Normal",
+  "bx": "Positive",
+  "medhx": "Not reported",
+  "meds": "None",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "85 kg",
+    "height": "182 cm",
+    "bmi": "25.7",
+    "bp": "128/88 mmHg",
+    "hr": "63 bpm",
+    "smoking": "Current smoker (31 pack-yr)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Oct 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "06 Jan 2025",
+  "enc_ref": "Dr. R. van den Berg (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Clinical reassessment is requested in light of a prior biopsy bucket \"Positive\" and a steadily climbing PSA trajectory."
+    },
+    {
+      "s": "History",
+      "t": "A 72-year-old retired truck driver presents for ongoing assessment of his prostate cancer diagnosis alongside a recent PSA trajectory. He is married and shares a multi-generational household with his wife and adult child. While maintaining an active lifestyle that includes weekend hiking in the Veluwe, he experiences mild lower urinary tract symptoms, specifically occasional nocturia twice nightly, correlating with an IPSS score of 6/35. His alcohol intake averages 15 units weekly, and he is a Current smoker (31 pack-yr)."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE: Normal. Prostate symmetrically enlarged with smooth, firm consistency and absent nodules or asymmetry. General inspection reveals stable vital signs, adequate nutritional status, and no signs of acute distress. Respiratory and cardiac examinations are unremarkable, with no peripheral lymphadenopathy detected."
+    }
+  ],
+  "occupation": "retired truck driver",
+  "marital": "Married",
+  "living": "Lives with adult child (multi-generational household)",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [],
+  "alcohol": "15 units / week",
+  "exercise": "Hiking on weekends",
+  "ipss": "IPSS score: 6/35 (mild LUTS)",
+  "admin": "Hard of hearing — speak clearly; prefers written summaries.",
+  "mri_hospital": "Ziekenhuis Gelderse Vallei (Ede)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

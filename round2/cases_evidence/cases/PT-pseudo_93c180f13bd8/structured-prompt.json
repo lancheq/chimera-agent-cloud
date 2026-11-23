@@ -1,0 +1,79 @@
+{
+  "case_id": "PT-pseudo_93c180f13bd8",
+  "id": "pseudo_93c180f13bd8",
+  "pid": "PT-pseudo_93c180f13bd8",
+  "task": 1,
+  "psa": 7.68,
+  "age": 66,
+  "months": 1,
+  "pirads": "3",
+  "psad": 0.1,
+  "psav": 2.5,
+  "psap": 6.1,
+  "vol": 80.93,
+  "dre": "Normal",
+  "bx": "Negative",
+  "cspca": 0.7373852,
+  "medhx": "Not reported",
+  "meds": "None",
+  "notes": "PSA 7.68 ng/mL. PI-RADS 3. PSAD 0.10. Prostate volume 81 mL. csPCa 0.74.",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "101 kg",
+    "height": "181 cm",
+    "bmi": "30.8",
+    "bp": "147/74 mmHg",
+    "hr": "58 bpm",
+    "smoking": "Ex-smoker (24 pack-yr, quit 2004)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "11 Feb 2025",
+  "enc_ref": "Dr. H. Martens (GP)",
+  "enc_type": "Re-evaluation - prior negative biopsy",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Continuing assessment after an earlier benign biopsy alongside steadily climbing prostate-specific antigen values."
+    },
+    {
+      "s": "History",
+      "t": "A 66-year-old office administrator who lives with his partner initially sought care for urinary frequency and urgency that have steadily intensified over the last two years, resulting in an IPSS score of 26. He previously smoked 24 pack-years but ceased in 2004, and now swims once weekly while consuming roughly ten alcohol units per week. Recent non-urological encounters included a vascular surgery consultation for bilateral varicose veins, a sleep clinic evaluation for suspected obstructive sleep apnoea, and ongoing pain clinic management for chronic right shoulder discomfort. He denies haematuria, bone pain, or unexplained weight loss, and his overall status remains stable apart from bothersome lower urinary tract symptoms. A prior systematic biopsy elsewhere returned benign histology, yet his PSA continued to climb from 2.9 ng/mL in early 2022 to 7.7 ng/mL last month."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE: the prostate presents as uniformly enlarged with a smooth, rubbery texture, lacking any palpable nodules or asymmetrical areas. General examination yields no remarkable findings; blood pressure reads 147/74 mmHg, heart rate is regular at 58 bpm, and body mass index measures 30.8 kg/m². He appears well-nourished and ambulates independently, though he reports mild stiffness in his right shoulder during active abduction."
+    }
+  ],
+  "occupation": "office administrator",
+  "marital": "Married",
+  "living": "Lives with partner",
+  "next_of_kin": "Niece",
+  "recent_other": [
+    "Vascular surgery — varicose veins consult",
+    "Sleep clinic — suspected obstructive sleep apnoea",
+    "Pain clinic — chronic shoulder pain"
+  ],
+  "alcohol": "10 units / week",
+  "exercise": "Swimming 1x/week",
+  "ipss": "IPSS score: 26/35 (severe LUTS)",
+  "admin": "Patient prefers morning appointments (public transport).",
+  "mri_hospital": "Amsterdam UMC (location AMC)",
+  "bx_isup": 0,
+  "bx_gl_prim": 0,
+  "bx_gl_sec": 0,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

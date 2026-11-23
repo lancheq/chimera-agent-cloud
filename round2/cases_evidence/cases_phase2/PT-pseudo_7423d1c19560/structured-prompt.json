@@ -1,0 +1,59 @@
+{
+  "case_id": "PT-pseudo_7423d1c19560",
+  "pid": "PT-pseudo_7423d1c19560",
+  "age": 76,
+  "months": 3,
+  "psav": 0.32,
+  "dre": "Nodus",
+  "bx": "None",
+  "medhx": "Hypercholesterolaemia",
+  "meds": "atorvastatin, simvastatin, rosuvastatin",
+  "pmhx": [
+    "Hypercholesterolaemia"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "76 kg",
+    "height": "172 cm",
+    "bmi": "25.7",
+    "bp": "124/75 mmHg",
+    "hr": "67 bpm",
+    "smoking": "Ex-smoker (18 pack-yr, quit 2014)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "01 Mar 2025",
+  "enc_ref": "Dr. P. van Dijk (GP)",
+  "enc_type": "Follow-up - PSA + MRI",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "A urological consultation was initiated on 01 Mar 2025 after an mpMRI and a recent PSA elevation to 4.3 ng/mL."
+    },
+    {
+      "s": "History",
+      "t": "First evaluated in 2022 for a steady PSA climb, the individual is a 76-year-old primary school teacher. Cycling to work five days a week remains part of his routine, and he cohabits with his partner despite being widowed; a longstanding friend assists with paperwork. Lower urinary tract symptoms are negligible (IPSS 1/35). Tobacco use ceased in 2014 following an 18 pack-year exposure. Recent healthcare visits include orthopaedic reviews for degenerative knee disease, dermatology appointments for actinic keratosis monitoring, and a sleep clinic evaluation for probable obstructive sleep apnoea. Invasive interventions cause considerable distress, prompting a request for detailed procedural explanations. Atorvastatin, simvastatin, and rosuvastatin manage hypercholesterolaemia, while renal parameters remain steady."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: firm, discrete Nodus localized to the left mid-gland peripheral zone; remaining parenchyma feels symmetrically smooth. Vitals show a blood pressure of 124/75 mmHg and a regular pulse at 67 bpm. Systemic review reveals no lymphadenopathy or abdominal masses."
+    }
+  ],
+  "occupation": "primary school teacher",
+  "marital": "Widowed",
+  "living": "Lives with partner",
+  "next_of_kin": "Long-time friend (no close family)",
+  "recent_other": [
+    "Orthopaedic outpatient — knee follow-up",
+    "Dermatology — actinic keratosis check",
+    "Sleep clinic — suspected obstructive sleep apnoea"
+  ],
+  "alcohol": "1 units / week",
+  "exercise": "Cycling 5x/week (commuter)",
+  "ipss": "IPSS score: 1/35 (mild LUTS)",
+  "admin": "Patient anxious about procedures — allocate extra consult time.",
+  "mri_hospital": "Amsterdam UMC (location AMC)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

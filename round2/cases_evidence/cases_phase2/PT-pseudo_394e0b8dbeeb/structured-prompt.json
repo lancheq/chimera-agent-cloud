@@ -1,0 +1,60 @@
+{
+  "case_id": "PT-pseudo_394e0b8dbeeb",
+  "pid": "PT-pseudo_394e0b8dbeeb",
+  "age": 71,
+  "months": 3,
+  "psav": 1.1,
+  "dre": "Nodus",
+  "bx": "Negative",
+  "medhx": "Hypercholesterolaemia, Coronary artery disease, Obesity (BMI >30), Benign prostatic hyperplasia",
+  "meds": "atorvastatin, simvastatin, rosuvastatin, aspirin 80 mg, metoprolol, tamsulosin",
+  "pmhx": [
+    "Hypercholesterolaemia",
+    "Coronary artery disease",
+    "Obesity (BMI >30)",
+    "Benign prostatic hyperplasia"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "93 kg",
+    "height": "164 cm",
+    "bmi": "34.6",
+    "bp": "114/71 mmHg",
+    "hr": "70 bpm",
+    "smoking": "Current smoker (45 pack-yr)",
+    "last_dental": "2 yr ago",
+    "flu_vax": "Oct 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "04 Jan 2025",
+  "enc_ref": "Dr. E. Mulder (GP)",
+  "enc_type": "Re-evaluation - prior negative biopsy",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Elevated PSA progression alongside a newly identified PI-RADS 4 lesion on multiparametric MRI has necessitated specialist re-assessment."
+    },
+    {
+      "s": "History",
+      "t": "Mr X, a 71-year-old harbour pilot (semi-retired), entered initial evaluation in early 2023 following an incidental PSA elevation. Lower urinary tract symptoms remain mild and are currently managed with tamsulosin, yielding an IPSS score of 7. He reports no haematuria or acute urinary retention. Cardiovascular comorbidities encompass coronary artery disease and hypercholesterolaemia, managed through a regimen of atorvastatin, simvastatin, rosuvastatin, aspirin 80 mg, and metoprolol. He is a Current smoker (45 pack-yr) but maintains physical activity by cycling roughly 30 kilometres three times weekly. Obesity (BMI >30) is present. He remains married and lives with his partner. An adult daughter handles his medical correspondence upon request. Aside from the urological investigations, he experiences stable bilateral knee discomfort stemming from years of deck work and recently visited a podiatrist for routine nail care. No systemic symptoms or unexplained weight loss are reported."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — prostate: asymmetrically enlarged, firm texture, discrete nodule palpable in the right mid-gland. General examination remains unremarkable, with stable vital signs and no evidence of palpable lymphadenopathy or abdominal masses."
+    }
+  ],
+  "occupation": "harbour pilot (semi-retired)",
+  "marital": "Married",
+  "living": "Lives with partner",
+  "next_of_kin": "Adult son (primary contact)",
+  "recent_other": [
+    "Podiatry — routine foot care"
+  ],
+  "alcohol": "8 units / week",
+  "exercise": "Cycling 3x/week, ~30 km",
+  "ipss": "IPSS score: 7/35 (mild LUTS)",
+  "admin": "Daughter manages communication; CC on letters with patient consent.",
+  "mri_hospital": "Jeroen Bosch Ziekenhuis ('s-Hertogenbosch)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

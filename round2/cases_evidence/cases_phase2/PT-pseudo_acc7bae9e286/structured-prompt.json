@@ -1,0 +1,56 @@
+{
+  "case_id": "PT-pseudo_acc7bae9e286",
+  "pid": "PT-pseudo_acc7bae9e286",
+  "age": 67,
+  "months": 2,
+  "psav": 0.62,
+  "dre": "Not done",
+  "bx": "Positive",
+  "medhx": "Not reported",
+  "meds": "None",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "73 kg",
+    "height": "169 cm",
+    "bmi": "25.6",
+    "bp": "144/66 mmHg",
+    "hr": "72 bpm",
+    "smoking": "Ex-smoker (11 pack-yr, quit 2008)",
+    "last_dental": "1 yr ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "28 Feb 2025",
+  "enc_ref": "Dr. R. van den Berg (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Clinical review of a confirmed malignancy alongside a concerning prostate-specific antigen trajectory."
+    },
+    {
+      "s": "History",
+      "t": "A sixty-seven-year-old retired butcher entered clinical evaluation in 2022 after initial marker elevation, ultimately receiving an ISUP 2 classification. He abstains from tobacco following an eleven pack-year accumulation, having stopped consumption in 2008. Married status is maintained, and he resides with his partner. Daily navigation requires a walking apparatus due to slight mobility restrictions. Recreational habits include weekend trekking and a weekly alcohol intake near twenty-one standard drinks. Recent healthcare interactions involved uncomplicated podiatric maintenance and a surveillance endoscopy arranged by gastroenterology. Past surgical history is limited to a 2015 knee procedure, while chronic manual labor occasionally triggers lower spinal stiffness. Genitourinary symptoms remain negligible, with an IPSS score of 5/35, and he denies hematuria or skeletal discomfort. No other systemic conditions or pharmacological interventions are reported."
+    },
+    {
+      "s": "Physical examination",
+      "t": "On clinical assessment, digital rectal probing was declined by the individual citing personal preference and mobility limitations. Vital signs recorded a blood pressure of 144/66 mmHg and a heart rate of 72 beats per minute. Anthropometric measurements indicate a body mass index of 25.6, derived from a weight of 73 kilograms and height of 169 centimeters. Mobility relies on a supportive frame, yet cardiopulmonary performance remains robust."
+    }
+  ],
+  "occupation": "retired butcher",
+  "marital": "Married",
+  "living": "Lives with partner",
+  "next_of_kin": "Adult son (primary contact)",
+  "recent_other": [
+    "Podiatry — routine foot care",
+    "Gastroenterology — surveillance colonoscopy"
+  ],
+  "alcohol": "21 units / week",
+  "exercise": "Hiking on weekends",
+  "ipss": "IPSS score: 5/35 (mild LUTS)",
+  "admin": "Mobility limitation (frame); ground-floor consult room preferred.",
+  "mri_hospital": "UMCG (Groningen)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

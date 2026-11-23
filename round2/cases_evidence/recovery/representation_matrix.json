@@ -1,0 +1,37 @@
+[
+  {
+    "representation": "initial structured fields",
+    "source": "per-version prompt SHA",
+    "already_visible": true,
+    "increment": "only fields actually present; template units not raw measurement certification",
+    "cost": "upfront0; not entire clinical-section visibility"
+  },
+  {
+    "representation": "MRI report prose",
+    "source": "clinical.radiology_report SHA-bound projection",
+    "already_visible": false,
+    "increment": "literal measurement/context/report date/unit wording beyond headline; specimen linkage may remain absent",
+    "cost": "first successful whole-section1, cached0 extra; admitted attempts and latency separate"
+  },
+  {
+    "representation": "pathology report prose",
+    "source": "clinical.pathology_report",
+    "already_visible": false,
+    "increment": "all59 targeted T1 records checked for field presence; absent here, no new pathology result can be recovered",
+    "cost": "absent field0 section units but1 admitted attempt if requested; clinical result unknown"
+  },
+  {
+    "representation": "other structured clinical sections",
+    "source": "lab/trend/previous-notes declared field contracts",
+    "already_visible": false,
+    "increment": "dates/units/note context only as explicitly recorded; full panel returned when requested",
+    "cost": "each newly returned section1, no scalar-to-section free upgrade"
+  },
+  {
+    "representation": "MRI embedding/predictor",
+    "source": "not opened; source/authorization not certified by B01",
+    "already_visible": false,
+    "increment": "unknown; same-source derived representation is not independent provenance",
+    "cost": "unknown; blocked until separate acceptance, not free and not labeled useless"
+  }
+]

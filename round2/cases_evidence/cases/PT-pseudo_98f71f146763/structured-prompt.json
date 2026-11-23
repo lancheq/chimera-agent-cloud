@@ -1,0 +1,81 @@
+{
+  "case_id": "PT-pseudo_98f71f146763",
+  "id": "pseudo_98f71f146763",
+  "pid": "PT-pseudo_98f71f146763",
+  "task": 1,
+  "psa": 8.1,
+  "age": 64,
+  "months": 1,
+  "pirads": "5",
+  "psad": 0.14,
+  "psav": 1.13,
+  "psap": 8.2,
+  "vol": 47.0,
+  "dre": "Nodus",
+  "bx": "Positive",
+  "cspca": 0.82094896,
+  "medhx": "Hypercholesterolaemia, Osteoarthritis",
+  "meds": "atorvastatin, simvastatin, rosuvastatin",
+  "notes": "PSA 8.1 ng/mL. PI-RADS 5. PSAD 0.14. Prostate volume 47 mL. DRE nodus. csPCa 0.82.",
+  "pmhx": [
+    "Hypercholesterolaemia",
+    "Osteoarthritis"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "86 kg",
+    "height": "179 cm",
+    "bmi": "26.8",
+    "bp": "120/70 mmHg",
+    "hr": "81 bpm",
+    "smoking": "Ex-smoker (26 pack-yr, quit 2010)",
+    "last_dental": "3 yr ago",
+    "flu_vax": "Oct 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "02 Feb 2025",
+  "enc_ref": "Dr. S. de Vries (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Persistent elevation in prostate-specific antigen levels warrants reassessment after previous biopsy results."
+    },
+    {
+      "s": "History",
+      "t": "An initial rise in prostate-specific antigen early in 2023 triggered a surveillance protocol for a 64-year-old retired carpenter. He shares a ground-floor apartment with his married partner, while his adult son holds lasting power of attorney and acts as primary caregiver. Residing over ninety minutes from the clinic, telephone consultations have been designated as the standard follow-up method whenever clinically appropriate. Lower urinary tract complaints remain minimal, evidenced by an International Prostate Symptom Score of five. A twice-weekly home weight-training routine complements his lifestyle. Alcohol consumption is restricted to three weekly units. He maintains overall wellness, though he attends routine ophthalmology appointments for cataract monitoring and visits a pain clinic for stable chronic shoulder discomfort. Active medications include atorvastatin, simvastatin, and rosuvastatin for hypercholesterolaemia, with osteoarthritis noted as a background condition. A former smoker, he accumulated 26 pack-years before quitting in 2010. He explicitly denies constitutional symptoms, haematuria, or bone pain."
+    },
+    {
+      "s": "Physical examination",
+      "t": "Digital rectal assessment reveals a discrete nodule (Nodus) situated in the right posterior peripheral zone, while the remainder of the gland feels firm and symmetric. Systemic examination shows stable vital parameters without lymphadenopathy or hepatosplenomegaly. Cardiovascular and respiratory evaluations fall within expected limits for his age."
+    }
+  ],
+  "occupation": "retired carpenter",
+  "marital": "Married",
+  "living": "Lives in ground-floor apartment with partner",
+  "next_of_kin": "Adult son (acts as caregiver, lasting power of attorney)",
+  "recent_other": [
+    "Ophthalmology — cataract review",
+    "Pain clinic — chronic shoulder pain"
+  ],
+  "alcohol": "3 units / week",
+  "exercise": "Light weight-training at home, 2x/week",
+  "ipss": "IPSS score: 5/35 (mild LUTS)",
+  "admin": "Lives >90 min from clinic; phone follow-up preferred where clinically safe.",
+  "mri_hospital": "Maastricht UMC+",
+  "bx_isup": 1,
+  "bx_gl_prim": 3,
+  "bx_gl_sec": 3,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

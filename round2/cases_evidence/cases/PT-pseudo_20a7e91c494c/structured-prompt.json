@@ -1,0 +1,81 @@
+{
+  "case_id": "PT-pseudo_20a7e91c494c",
+  "id": "pseudo_20a7e91c494c",
+  "pid": "PT-pseudo_20a7e91c494c",
+  "task": 1,
+  "psa": 4.5,
+  "age": 71,
+  "months": 1,
+  "pirads": "4",
+  "psad": 0.07,
+  "psav": 0.63,
+  "psap": 3.9,
+  "vol": 73.0,
+  "dre": "Normal",
+  "bx": "Positive",
+  "cspca": 0.7866596,
+  "medhx": "Obesity (BMI >30), Atrial fibrillation",
+  "meds": "metoprolol",
+  "notes": "PSA 4.5 ng/mL. PI-RADS 4. PSAD 0.07. Prostate volume 73 mL. csPCa 0.79.",
+  "pmhx": [
+    "Obesity (BMI >30)",
+    "Atrial fibrillation"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "88 kg",
+    "height": "176 cm",
+    "bmi": "28.4",
+    "bp": "114/76 mmHg",
+    "hr": "90 bpm",
+    "smoking": "Ex-smoker (31 pack-yr, quit 2008)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "13 Feb 2025",
+  "enc_ref": "Dr. R. Visser (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Rising PSA to 4.5 ng/mL prompts clinical reassessment following a prior positive biopsy."
+    },
+    {
+      "s": "History",
+      "t": "A 71-year-old, retired postal worker, lives in a ground-floor apartment with his partner, and is divorced. He manages moderate lower urinary tract symptoms (IPSS 11/35) through watchful waiting, complemented by a daily 45-minute walking regimen and weekly alcohol consumption of approximately 23 units. Medical background includes well-controlled atrial fibrillation, currently treated with metoprolol, alongside remote right knee arthroscopy (2015) and managed hypothyroidism with recent endocrine follow-up. Obesity (BMI >30) is noted. He is an ex-smoker (31 pack-yr, quit 2008), attends biannual podiatry visits, and routinely commutes over an hour by train to this clinic without difficulty. He explicitly denies bone pain, haematuria, or unexplained weight loss."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — prostate symmetrically enlarged, smooth and firm texture, absent nodules or asymmetry. General survey shows blood pressure at 114/76 mmHg with a regular heart rate of 90 bpm. Abdominal palpation yields a soft, non-tender field, free of masses or organomegaly."
+    }
+  ],
+  "occupation": "retired postal worker",
+  "marital": "Divorced",
+  "living": "Lives in ground-floor apartment with partner",
+  "next_of_kin": "Adult daughter (primary contact)",
+  "recent_other": [
+    "Podiatry — routine foot care",
+    "Endocrine — thyroid screening"
+  ],
+  "alcohol": "23 units / week",
+  "exercise": "Walking 45 min/day",
+  "ipss": "IPSS score: 11/35 (moderate LUTS)",
+  "admin": "Patient travels 60+ min by train to clinic; allow buffer.",
+  "mri_hospital": "Amsterdam UMC (location VUmc)",
+  "bx_isup": 1,
+  "bx_gl_prim": 3,
+  "bx_gl_sec": 3,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

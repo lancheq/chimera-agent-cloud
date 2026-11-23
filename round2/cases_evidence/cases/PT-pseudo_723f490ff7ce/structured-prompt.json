@@ -1,0 +1,81 @@
+{
+  "case_id": "PT-pseudo_723f490ff7ce",
+  "id": "pseudo_723f490ff7ce",
+  "pid": "PT-pseudo_723f490ff7ce",
+  "task": 1,
+  "psa": 3.7,
+  "age": 69,
+  "months": 2,
+  "pirads": "2",
+  "psad": 0.07,
+  "psav": 0.77,
+  "psap": 3.0,
+  "vol": 60.0,
+  "dre": "Normal",
+  "bx": "None",
+  "cspca": 0.60122794,
+  "medhx": "Hypertension, Benign prostatic hyperplasia",
+  "meds": "amlodipine, valsartan, tamsulosin",
+  "notes": "PSA 3.7 ng/mL. PI-RADS 2. PSAD 0.07. Prostate volume 60 mL. csPCa 0.60.",
+  "pmhx": [
+    "Hypertension",
+    "Benign prostatic hyperplasia"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "63 kg",
+    "height": "166 cm",
+    "bmi": "22.9",
+    "bp": "129/81 mmHg",
+    "hr": "68 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "3 yr ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "16 Jan 2025",
+  "enc_ref": "Dr. K. Bakker (GP)",
+  "enc_type": "Follow-up - PSA + MRI",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Progressive PSA elevation necessitates this consultation alongside an upcoming multiparametric MRI."
+    },
+    {
+      "s": "History",
+      "t": "Employed as a hospital porter and residing independently, the 69-year-old patient first entered clinical evaluation three years ago due to urinary complaints, at which point his PSA measured 1.5 ng/mL. Subsequent testing revealed a steady upward trend, now reaching 3.7 ng/mL, while his lower urinary tract symptoms stay mild, quantified by an IPSS score of 5. Pharmacological management includes tamsulosin for benign prostatic hyperplasia, complemented by amlodipine and valsartan for hypertension, currently maintaining a blood pressure of 129/81 mmHg. Alcohol consumption is limited to 3 units weekly, and physical activity consists of chair-based exercises due to mobility constraints. Following his divorce, his former spouse remains his primary contact, assisting with administrative tasks. A long-standing hearing impairment leads him to request written summaries for all consultations. Unrelated to his urological assessment, he recently visited a podiatrist for routine foot care and underwent a standard chest radiograph during a general health screening last month. He explicitly denies bone pain, haematuria, or unexplained weight loss, noting that his daily routine remains stable despite his marital status change."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE reveals a symmetrically enlarged gland with smooth, rubbery consistency and absent asymmetry or nodularity. General assessment shows a well-nourished individual in no acute distress, featuring clear lung fields and a regular cardiac rhythm. Peripheral pulses are fully intact, with no evidence of peripheral oedema."
+    }
+  ],
+  "occupation": "hospital porter",
+  "marital": "Divorced",
+  "living": "Lives alone",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Podiatry — routine foot care",
+    "Radiology — chest X-ray (routine)"
+  ],
+  "alcohol": "3 units / week",
+  "exercise": "Limited mobility — chair-based exercises only",
+  "ipss": "IPSS score: 5/35 (mild LUTS)",
+  "admin": "Hard of hearing — speak clearly; prefers written summaries.",
+  "mri_hospital": "Amsterdam UMC (location VUmc)",
+  "bx_isup": null,
+  "bx_gl_prim": null,
+  "bx_gl_sec": null,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

@@ -1,0 +1,60 @@
+{
+  "case_id": "PT-pseudo_a62fdda714c0",
+  "pid": "PT-pseudo_a62fdda714c0",
+  "age": 71,
+  "months": 3,
+  "psav": 3.09,
+  "dre": "Normal",
+  "bx": "None",
+  "medhx": "Hypercholesterolaemia, Osteoarthritis, Atrial fibrillation",
+  "meds": "rosuvastatin, apixaban, metoprolol",
+  "pmhx": [
+    "Hypercholesterolaemia",
+    "Osteoarthritis",
+    "Atrial fibrillation"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "94 kg",
+    "height": "176 cm",
+    "bmi": "30.3",
+    "bp": "130/76 mmHg",
+    "hr": "65 bpm",
+    "smoking": "Ex-smoker (30 pack-yr, quit 2014)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Oct 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "22 Feb 2025",
+  "enc_ref": "Dr. K. Bakker (GP)",
+  "enc_type": "Follow-up - PSA + MRI",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Persistent elevation of prostate-specific antigen warrants assessment after a recent multiparametric MRI."
+    },
+    {
+      "s": "History",
+      "t": "Clinical evaluation began for this 71-year-old delivery driver in late 2022 due to a climbing prostate-specific antigen trajectory. Current lower urinary tract complaints yield an IPSS score of 11, dominated by nocturia and a diminished urinary stream, though he denies pelvic discomfort or visible blood in the urine. Chronic conditions include atrial fibrillation, hypercholesterolaemia, and osteoarthritis, managed with apixaban, rosuvastatin, and metoprolol respectively. He is an Ex-smoker (30 pack-yr, quit 2014). Weekly alcohol consumption averages 13 units, and physical activity stems from regular gardening rather than formal exercise routines. Residing with his spouse, he recently completed a standard chest radiograph and a baseline cognitive assessment. He reports no unexplained weight reduction or skeletal pain. Because his home lies over ninety minutes away from the medical centre, he strongly favours remote telephone consultations when medically feasible. Prior biopsy bucket \"None\"."
+    },
+    {
+      "s": "Physical examination",
+      "t": "Per rectum: the gland exhibits uniform enlargement with a firm, smooth contour and lacks any discrete masses or lateral asymmetry. Clinical assessment confirms Normal DRE. Systemic evaluation shows stable vital parameters, clear lung fields, and an unremarkable abdominal palpation without peripheral lymph node enlargement."
+    }
+  ],
+  "occupation": "delivery driver",
+  "marital": "Married",
+  "living": "Lives with partner",
+  "next_of_kin": "Adult son (primary contact)",
+  "recent_other": [
+    "Radiology — chest X-ray (routine)",
+    "Memory clinic — baseline screening"
+  ],
+  "alcohol": "13 units / week",
+  "exercise": "Gardening, no structured exercise",
+  "ipss": "IPSS score: 11/35 (moderate LUTS)",
+  "admin": "Lives >90 min from clinic; phone follow-up preferred where clinically safe.",
+  "mri_hospital": "Spaarne Gasthuis (Haarlem)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

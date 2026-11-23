@@ -1,0 +1,79 @@
+{
+  "case_id": "PT-pseudo_2e0346bce3b3",
+  "id": "pseudo_2e0346bce3b3",
+  "pid": "PT-pseudo_2e0346bce3b3",
+  "task": 1,
+  "psa": 3.5,
+  "age": 64,
+  "months": 2,
+  "pirads": "4",
+  "psad": 0.01,
+  "psav": 0.63,
+  "psap": 3.1,
+  "vol": 99.0,
+  "dre": "Normal",
+  "bx": "Positive",
+  "cspca": 0.7092595,
+  "medhx": "COPD",
+  "meds": "salbutamol PRN",
+  "notes": "PSA 3.5 ng/mL. PI-RADS 4. PSAD 0.01. Prostate volume 99 mL. csPCa 0.71.",
+  "pmhx": [
+    "COPD"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "68 kg",
+    "height": "183 cm",
+    "bmi": "20.3",
+    "bp": "137/71 mmHg",
+    "hr": "70 bpm",
+    "smoking": "Ex-smoker (31 pack-yr, quit 2021)",
+    "last_dental": "3 yr ago",
+    "flu_vax": "Oct 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "22 Jan 2025",
+  "enc_ref": "Dr. M. Jansen (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Assessment driven by a previously positive prostate biopsy and a steady upward trajectory in PSA measurements."
+    },
+    {
+      "s": "History",
+      "t": "A 64-year-old delivery driver initially sought evaluation for elevated PSA levels in mid-2022, leading to a biopsy that confirmed low-grade disease. Following a divorce, he resides independently, with his adult daughter serving as his main point of contact. He experiences mild lower urinary tract symptoms, scoring a 6 on the IPSS scale, and manages these without alpha-blocker therapy. A smoking history of 31 pack-years was recorded before he ceased tobacco use in 2021; COPD remains stable, requiring only PRN salbutamol. He engages in light weight-training twice weekly at home and abstains from alcohol. Recent endocrinology consultations centered on routine thyroid screening, and he reports a right knee meniscectomy performed in his early twenties that remains stable without current functional limitations. There is no report of bone pain, haematuria, or unexplained weight loss."
+    },
+    {
+      "s": "Physical examination",
+      "t": "Normal DRE: The prostate presents as symmetrically enlarged yet smooth, lacking any palpable nodules or asymmetry. General assessment shows no abnormalities; height measures 183 cm, weight 68 kg, yielding a BMI of 20.3. Vital signs record a blood pressure of 137/71 mmHg and a heart rate of 70 bpm. Bilateral lung fields are clear, and the cardiovascular examination falls within normal limits."
+    }
+  ],
+  "occupation": "delivery driver",
+  "marital": "Divorced",
+  "living": "Lives alone; adult daughter is primary contact",
+  "next_of_kin": "None recorded — patient declines to nominate",
+  "recent_other": [
+    "Endocrine — thyroid screening"
+  ],
+  "alcohol": "0 units / week (alcohol-free)",
+  "exercise": "Light weight-training at home, 2x/week",
+  "ipss": "IPSS score: 6/35 (mild LUTS)",
+  "admin": "Interpreter: not required. Consent for data use: signed.",
+  "mri_hospital": "Amsterdam UMC (location AMC)",
+  "bx_isup": 1,
+  "bx_gl_prim": 3,
+  "bx_gl_sec": 3,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

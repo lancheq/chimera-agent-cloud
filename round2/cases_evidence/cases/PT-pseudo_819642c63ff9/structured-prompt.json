@@ -1,0 +1,77 @@
+{
+  "case_id": "PT-pseudo_819642c63ff9",
+  "id": "pseudo_819642c63ff9",
+  "pid": "PT-pseudo_819642c63ff9",
+  "task": 1,
+  "psa": 5.7,
+  "age": 72,
+  "months": 1,
+  "pirads": "5",
+  "psad": 0.134,
+  "psav": 1.68,
+  "psap": 3.1,
+  "vol": 42.59,
+  "dre": "Not done",
+  "bx": "Positive",
+  "cspca": 0.8136245,
+  "medhx": "Not reported",
+  "meds": "None",
+  "notes": "PSA 5.7 ng/mL. PI-RADS 5. PSAD 0.13. Prostate volume 43 mL. csPCa 0.81.",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "87 kg",
+    "height": "183 cm",
+    "bmi": "26.0",
+    "bp": "130/67 mmHg",
+    "hr": "50 bpm",
+    "smoking": "Ex-smoker",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "12 Jan 2025",
+  "enc_ref": "Dr. S. de Vries (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Assessment requested after a previous prostate cancer diagnosis alongside an upward prostate-specific antigen trajectory."
+    },
+    {
+      "s": "History",
+      "t": "Surveillance was initiated after a previous prostate biopsy bucket was \"Positive\" for low-grade disease. The patient is a 72-year-old widowed gentleman residing in an assisted-living facility, where his brother serves as his primary next-of-kin. Occupation includes a background as a retired postal worker. He identifies as an ex-smoker with no current comorbidities or active medication. Lower urinary tract symptoms are moderate, scoring fifteen on the IPSS, driven mainly by nocturia and a weak stream. He denies hematuria and pelvic discomfort. Alcohol consumption is completely absent. Mobility is preserved through daily gardening, though formal exercise routines are avoided. A recent orthopaedic visit for a routine knee check showed stability. Hearing impairment is present, so clear verbal communication and written summaries during consultations are appreciated. Drug allergies are unknown, and his medication list remains empty."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE: The procedure was omitted during this visit. General assessment shows a well-appearing individual with stable vital signs. A mild antalgic gait is noted, aligning with his recent orthopaedic review."
+    }
+  ],
+  "occupation": "retired postal worker",
+  "marital": "Widowed",
+  "living": "Lives in assisted-living facility",
+  "next_of_kin": "Sibling (brother)",
+  "recent_other": [
+    "Orthopaedic outpatient — knee follow-up"
+  ],
+  "alcohol": "0 units / week (alcohol-free)",
+  "exercise": "Gardening, no structured exercise",
+  "ipss": "IPSS score: 15/35 (moderate LUTS)",
+  "admin": "Hard of hearing — speak clearly; prefers written summaries.",
+  "mri_hospital": "Ziekenhuis Gelderse Vallei (Ede)",
+  "bx_isup": 2,
+  "bx_gl_prim": 3,
+  "bx_gl_sec": 4,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

@@ -1,0 +1,87 @@
+{
+  "case_id": "PT-pseudo_80d551b63772",
+  "id": "pseudo_80d551b63772",
+  "pid": "PT-pseudo_80d551b63772",
+  "task": 1,
+  "psa": 1.6,
+  "age": 76,
+  "months": 2,
+  "pirads": "2",
+  "psad": 0.06,
+  "psav": 0.32,
+  "psap": 1.5,
+  "vol": 32.0,
+  "dre": "Normal",
+  "bx": "None",
+  "cspca": 0.6872062,
+  "medhx": "Type 2 diabetes, Hypercholesterolaemia, COPD, Osteoarthritis, Benign prostatic hyperplasia",
+  "meds": "empagliflozin, simvastatin, rosuvastatin, salbutamol PRN, paracetamol PRN",
+  "notes": "PSA 1.6 ng/mL. PI-RADS 2. PSAD 0.06. Prostate volume 32 mL. csPCa 0.69.",
+  "pmhx": [
+    "Type 2 diabetes",
+    "Hypercholesterolaemia",
+    "COPD",
+    "Osteoarthritis",
+    "Benign prostatic hyperplasia"
+  ],
+  "allergies": [
+    "Iodinated contrast (mild)"
+  ],
+  "vitals": {
+    "weight": "83 kg",
+    "height": "186 cm",
+    "bmi": "24.0",
+    "bp": "123/54 mmHg",
+    "hr": "69 bpm",
+    "smoking": "Ex-smoker (19 pack-yr, quit 2017)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "21 Feb 2025",
+  "enc_ref": "Dr. R. Visser (GP)",
+  "enc_type": "Follow-up - PSA + MRI",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "A clinician sought expert evaluation due to consistent antigen elevation and an earlier imaging categorization."
+    },
+    {
+      "s": "History",
+      "t": "Attributed to a slow antigen climb documented in 2022, this clinical review centers on a 76-year-old married warehouse manager who resides with his spouse. Tobacco use ceased in 2017, following a cumulative 19 pack-year exposure, while alcohol intake averages two units per week. Chronic conditions comprise controlled type 2 diabetes managed with empagliflozin, hypercholesterolaemia treated via simvastatin and rosuvastatin, COPD addressed with PRN salbutamol, and osteoarthritis managed through PRN paracetamol. Urinary function remains largely intact, reflected by an IPSS of 3, and no prior prostate biopsy or transurethral resection has been performed, maintaining a prior biopsy bucket 'None'. Additional medical encounters include a stable cardiology assessment in autumn 2024, a vascular surgery visit for varicose veins, and ongoing pain clinic oversight for persistent shoulder discomfort. A predominantly inactive routine, limited to sporadic walking, characterizes his daily habits. The patient specifically requested extended dialogue regarding his apprehension toward invasive interventions."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: uniformly smooth; mobility: full; asymmetry: absent; consistency: standard. Systemic assessment reveals clear pulmonary fields and cardiovascular parameters aligning with recent cardiology findings. Hemodynamic markers remain stable, with no evidence of peripheral swelling or lymph node enlargement."
+    }
+  ],
+  "occupation": "warehouse manager",
+  "marital": "Married",
+  "living": "Lives with partner",
+  "next_of_kin": "Adult daughter (primary contact)",
+  "recent_other": [
+    "Vascular surgery — varicose veins consult",
+    "Cardiology — annual review (stable, autumn 2024)",
+    "Pain clinic — chronic shoulder pain"
+  ],
+  "alcohol": "2 units / week",
+  "exercise": "Sedentary lifestyle, occasional walking",
+  "ipss": "IPSS score: 3/35 (mild LUTS)",
+  "admin": "Patient anxious about procedures — allocate extra consult time.",
+  "mri_hospital": "Amsterdam UMC (location VUmc)",
+  "bx_isup": null,
+  "bx_gl_prim": null,
+  "bx_gl_sec": null,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

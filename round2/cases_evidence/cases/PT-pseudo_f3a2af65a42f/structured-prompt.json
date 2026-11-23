@@ -1,0 +1,80 @@
+{
+  "case_id": "PT-pseudo_f3a2af65a42f",
+  "id": "pseudo_f3a2af65a42f",
+  "pid": "PT-pseudo_f3a2af65a42f",
+  "task": 1,
+  "psa": 4.3,
+  "age": 60,
+  "months": 3,
+  "pirads": "2",
+  "psad": 0.07,
+  "psav": 0.6,
+  "psap": 5.8,
+  "vol": 57.0,
+  "dre": "Normal",
+  "bx": "None",
+  "cspca": 0.2787341,
+  "medhx": "Type 2 diabetes, Hypercholesterolaemia",
+  "meds": "empagliflozin, atorvastatin, simvastatin, rosuvastatin",
+  "notes": "PSA 4.3 ng/mL. PI-RADS 2. PSAD 0.07. Prostate volume 57 mL. csPCa 0.28.",
+  "pmhx": [
+    "Type 2 diabetes",
+    "Hypercholesterolaemia"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "62 kg",
+    "height": "174 cm",
+    "bmi": "20.5",
+    "bp": "123/67 mmHg",
+    "hr": "75 bpm",
+    "smoking": "Ex-smoker (35 pack-yr, quit 2008)",
+    "last_dental": "2 yr ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "12 Jan 2025",
+  "enc_ref": "Dr. L. Smits (GP)",
+  "enc_type": "Follow-up - PSA + MRI",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "A recent PSA elevation to 4.3 ng/mL prompted this mpMRI evaluation."
+    },
+    {
+      "s": "History",
+      "t": "Aged sixty, this married gentleman resides alone with support from his adult son, having previously worked as a retired postal worker. His medical background includes type 2 diabetes managed via empagliflozin, alongside hypercholesterolaemia treated with atorvastatin, simvastatin, and rosuvastatin. He ceased smoking in 2008 after accumulating a 35 pack-year history. Current lifestyle habits involve cycling roughly twenty kilometres on a biweekly basis and consuming approximately four alcohol units each week. General health remains stable aside from occasional mild urinary hesitancy scoring 1/35 on the IPSS and a routine chest radiograph obtained last month. He recalls undergoing a knee arthroscopy during his late forties, while his most recent cardiology assessment raised no concerns, particularly regarding fatigue or unexplained weight loss."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: smooth and homogeneous; mobility: preserved; asymmetry: absent. The gland appears symmetrically enlarged without palpable nodules. General systemic review yields normal cardiovascular and respiratory auscultation, alongside an absence of peripheral lymphadenopathy or abdominal masses."
+    }
+  ],
+  "occupation": "retired postal worker",
+  "marital": "Married",
+  "living": "Lives alone",
+  "next_of_kin": "Adult son (primary contact)",
+  "recent_other": [
+    "Radiology — chest X-ray (routine)"
+  ],
+  "alcohol": "4 units / week",
+  "exercise": "Cycling 2x/week, ~20 km",
+  "ipss": "IPSS score: 1/35 (mild LUTS)",
+  "admin": "Interpreter: not required. Consent for data use: signed.",
+  "mri_hospital": "UMCG (Groningen)",
+  "bx_isup": null,
+  "bx_gl_prim": null,
+  "bx_gl_sec": null,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

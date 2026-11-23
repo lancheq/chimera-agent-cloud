@@ -1,0 +1,81 @@
+{
+  "case_id": "PT-pseudo_c12bcf838ec8",
+  "id": "pseudo_c12bcf838ec8",
+  "pid": "PT-pseudo_c12bcf838ec8",
+  "task": 1,
+  "psa": 3.4,
+  "age": 63,
+  "months": 2,
+  "pirads": "3",
+  "psad": 0.05,
+  "psav": -0.28,
+  "psap": 3.5,
+  "vol": 58.0,
+  "dre": "Normal",
+  "bx": "Negative",
+  "cspca": 0.71182245,
+  "medhx": "Obesity (BMI >30), Osteoarthritis",
+  "meds": "paracetamol PRN",
+  "notes": "PSA 3.4 ng/mL. PI-RADS 3. PSAD 0.05. Prostate volume 58 mL. csPCa 0.71.",
+  "pmhx": [
+    "Obesity (BMI >30)",
+    "Osteoarthritis"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "75 kg",
+    "height": "183 cm",
+    "bmi": "22.4",
+    "bp": "111/68 mmHg",
+    "hr": "68 bpm",
+    "smoking": "Ex-smoker (23 pack-yr, quit 2011)",
+    "last_dental": "1 yr ago",
+    "flu_vax": "Oct 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "28 Feb 2025",
+  "enc_ref": "Dr. T. Hendriks (GP)",
+  "enc_type": "Re-evaluation - prior negative biopsy",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "A request for clinical reassessment has been submitted after the initial biopsy returned negative and recent MRI results are now available."
+    },
+    {
+      "s": "History",
+      "t": "First assessed in May 2022 due to a PSA elevation, this 63-year-old gentleman has since completed a negative biopsy and entered serial monitoring. He works as a retired bank clerk, is divorced, and resides alone with his adult son living nearby as his main contact. A history of smoking covers 23 pack-years, though he quit in 2011. He stays active with twice-weekly tennis matches and drinks no alcohol. Lower urinary tract symptoms remain minimal, scoring 4 out of 35 on the IPSS. Recent administrative records note he lives more than 90 minutes from the clinic, favoring telephone follow-up when clinically suitable. Earlier this month, he underwent a routine audiology check for mild hearing changes and has a gastroenterology surveillance colonoscopy scheduled; neither impacts his urological pathway. His medical background includes osteoarthritis and obesity (BMI >30), currently managed with paracetamol on an as-needed basis. He explicitly denies bone pain, haematuria, or unexplained weight loss."
+    },
+    {
+      "s": "Physical examination",
+      "t": "Normal DRE: texture smooth and firm, no palpable nodules or asymmetry. The gland is symmetrically enlarged. General assessment shows stable vital signs, registering a blood pressure of 111/68 mmHg and a heart rate of 68 bpm. Peripheral lymphadenopathy and abdominal masses are absent."
+    }
+  ],
+  "occupation": "retired bank clerk",
+  "marital": "Divorced",
+  "living": "Lives alone; adult son nearby",
+  "next_of_kin": "Adult son (primary contact)",
+  "recent_other": [
+    "Audiology — hearing test",
+    "Gastroenterology — surveillance colonoscopy"
+  ],
+  "alcohol": "0 units / week (alcohol-free)",
+  "exercise": "Tennis 2x/week",
+  "ipss": "IPSS score: 4/35 (mild LUTS)",
+  "admin": "Lives >90 min from clinic; phone follow-up preferred where clinically safe.",
+  "mri_hospital": "Antoni van Leeuwenhoek",
+  "bx_isup": 0,
+  "bx_gl_prim": 0,
+  "bx_gl_sec": 0,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

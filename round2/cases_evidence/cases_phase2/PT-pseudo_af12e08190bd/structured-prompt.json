@@ -1,0 +1,60 @@
+{
+  "case_id": "PT-pseudo_af12e08190bd",
+  "pid": "PT-pseudo_af12e08190bd",
+  "age": 76,
+  "months": 3,
+  "psav": 0.99,
+  "dre": "Normal",
+  "bx": "Negative",
+  "medhx": "COPD",
+  "meds": "salbutamol PRN",
+  "pmhx": [
+    "COPD"
+  ],
+  "allergies": [
+    "NSAIDs"
+  ],
+  "vitals": {
+    "weight": "82 kg",
+    "height": "179 cm",
+    "bmi": "25.6",
+    "bp": "114/79 mmHg",
+    "hr": "90 bpm",
+    "smoking": "Ex-smoker (33 pack-yr, quit 2005)",
+    "last_dental": "3 yr ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "22 Jan 2025",
+  "enc_ref": "Dr. P. van Dijk (GP)",
+  "enc_type": "Re-evaluation - prior negative biopsy",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Persistent prostate-specific antigen elevation warrants re-evaluation after a previously negative biopsy."
+    },
+    {
+      "s": "History",
+      "t": "Investigation for elevated prostate-specific antigen began in April 2023 for this 76-year-old retired electrical engineer. He resides in a ground-floor apartment alongside his partner and engages in light weight-training twice weekly, occasionally reporting non-exertional fatigue. A 33 pack-year smoking history was fully abandoned in 2005, and he abstains from alcohol. Lower urinary tract symptoms remain minimal (IPSS 2), with no haematuria or pelvic pain reported. His medical background includes COPD managed with salbutamol PRN, alongside a recent pulmonary function assessment and a vascular surgery consult for asymptomatic varicose veins. Mild visual impairment leads him to request large-print medical correspondence. A previous biopsy yielded a negative result."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE: The prostate presents with a symmetrically smooth contour, devoid of palpable nodules or asymmetrical changes. General inspection reveals clear bilateral lung fields, absent peripheral oedema, and stable vital signs. The gentleman appears well-nourished and comfortable."
+    }
+  ],
+  "occupation": "retired electrical engineer",
+  "marital": "Divorced",
+  "living": "Lives in ground-floor apartment with partner",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Pulmonary function test — known COPD follow-up",
+    "Vascular surgery — varicose veins consult"
+  ],
+  "alcohol": "0 units / week (alcohol-free)",
+  "exercise": "Light weight-training at home, 2x/week",
+  "ipss": "IPSS score: 2/35 (mild LUTS)",
+  "admin": "Visual impairment: large-print correspondence requested.",
+  "mri_hospital": "Amsterdam UMC (location VUmc)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

@@ -1,0 +1,81 @@
+{
+  "case_id": "PT-pseudo_4c6b2b2bbf94",
+  "id": "pseudo_4c6b2b2bbf94",
+  "pid": "PT-pseudo_4c6b2b2bbf94",
+  "task": 1,
+  "psa": 4.7,
+  "age": 59,
+  "months": 2,
+  "pirads": "4",
+  "psad": 0.07,
+  "psav": 1.47,
+  "psap": 2.7,
+  "vol": 56.0,
+  "dre": "Normal",
+  "bx": "Positive",
+  "cspca": 0.78553134,
+  "medhx": "Hypertension, Hypercholesterolaemia, Coronary artery disease",
+  "meds": "amlodipine, valsartan, lisinopril, metoprolol, simvastatin, rosuvastatin, aspirin 80 mg, atorvastatin",
+  "notes": "PSA 4.7 ng/mL. PI-RADS 4. PSAD 0.07. Prostate volume 56 mL. csPCa 0.79.",
+  "pmhx": [
+    "Hypertension",
+    "Hypercholesterolaemia",
+    "Coronary artery disease"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "75 kg",
+    "height": "168 cm",
+    "bmi": "26.6",
+    "bp": "148/88 mmHg",
+    "hr": "49 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "2 yr ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "16 Jan 2025",
+  "enc_ref": "Dr. T. Hendriks (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Assessment required due to prior biopsy results and a continuing upward trend in prostate-specific antigen levels."
+    },
+    {
+      "s": "History",
+      "t": "A 59-year-old retired mechanical engineer, Mr. X, initially entered clinical investigation after a PSA elevation emerged in mid-2022. Marital: Never married. Lives alone; adult son nearby. His weekly routine includes light home weight-training twice weekly, complemented by a modest alcohol intake of seven units per week. He reports zero lower urinary tract symptoms on the IPSS scale, actively denying hematuria or pelvic discomfort. Smoking: Non-smoker. Cardiovascular comorbidities include Hypertension, Hypercholesterolaemia, Coronary artery disease. Active medication: amlodipine, valsartan, lisinopril, metoprolol, simvastatin, rosuvastatin, aspirin 80 mg, atorvastatin. His most recent cardiology assessment was conducted six months ago. He is concurrently undergoing conservative management for suspected obstructive sleep apnoea using positional therapy, and an Arabic interpreter has been arranged for his forthcoming consultation. prior biopsy bucket \"Positive\"."
+    },
+    {
+      "s": "Physical examination",
+      "t": "Normal DRE: The prostate gland presents as symmetrically enlarged with a smooth, rubbery consistency and no palpable nodules or asymmetry. General examination yields unremarkable findings, alongside a blood pressure of 148/88 mmHg and a resting heart rate of 49 bpm. Peripheral lymphadenopathy and abdominal masses are notably absent."
+    }
+  ],
+  "occupation": "retired mechanical engineer",
+  "marital": "Never married",
+  "living": "Lives alone; adult son nearby",
+  "next_of_kin": "Sibling (brother)",
+  "recent_other": [
+    "Sleep clinic — suspected obstructive sleep apnoea"
+  ],
+  "alcohol": "7 units / week",
+  "exercise": "Light weight-training at home, 2x/week",
+  "ipss": "IPSS score: 0/35 (mild LUTS)",
+  "admin": "Interpreter (Arabic) requested for next visit.",
+  "mri_hospital": "LUMC (Leiden)",
+  "bx_isup": 1,
+  "bx_gl_prim": 3,
+  "bx_gl_sec": 3,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

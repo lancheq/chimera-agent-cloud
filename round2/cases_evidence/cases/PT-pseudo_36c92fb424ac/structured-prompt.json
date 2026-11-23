@@ -1,0 +1,84 @@
+{
+  "case_id": "PT-pseudo_36c92fb424ac",
+  "id": "pseudo_36c92fb424ac",
+  "pid": "PT-pseudo_36c92fb424ac",
+  "task": 1,
+  "psa": 6.0,
+  "age": 67,
+  "months": 2,
+  "pirads": "4",
+  "psad": 0.08,
+  "psav": 1.32,
+  "psap": 5.4,
+  "vol": 79.0,
+  "dre": "Normal",
+  "bx": "Negative",
+  "cspca": 0.7697653,
+  "medhx": "Hypercholesterolaemia, Chronic kidney disease, Obesity (BMI >30), Osteoarthritis, Benign prostatic hyperplasia",
+  "meds": "atorvastatin, simvastatin, rosuvastatin, paracetamol PRN, tamsulosin",
+  "notes": "PSA 6 ng/mL. PI-RADS 4. PSAD 0.08. Prostate volume 79 mL. csPCa 0.77.",
+  "pmhx": [
+    "Hypercholesterolaemia",
+    "Chronic kidney disease",
+    "Obesity (BMI >30)",
+    "Osteoarthritis",
+    "Benign prostatic hyperplasia"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "94 kg",
+    "height": "184 cm",
+    "bmi": "27.8",
+    "bp": "123/65 mmHg",
+    "hr": "58 bpm",
+    "smoking": "Ex-smoker (36 pack-yr, quit 2005)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "20 Jan 2025",
+  "enc_ref": "Dr. K. Bakker (GP)",
+  "enc_type": "Re-evaluation - prior negative biopsy",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Ongoing PSA elevation combined with a previous negative biopsy necessitates clinical reassessment."
+    },
+    {
+      "s": "History",
+      "t": "Initial evaluation for elevated PSA began in late 2022. This 67-year-old gentleman has completed a negative biopsy and returns now for reassessment. A retired police officer, he is married and resides alone. He walks daily for 45 minutes and abstains completely from alcohol. Lower urinary tract symptoms (IPSS 19/35) remain moderate and are effectively managed with tamsulosin. His active medications consist of atorvastatin, simvastatin, rosuvastatin, paracetamol PRN, and tamsulosin. Comorbidities include hypercholesterolaemia, chronic kidney disease, obesity (BMI >30), osteoarthritis, and benign prostatic hyperplasia. He quit smoking in 2005 after a 36 pack-year history. He completed a six-session physiotherapy regimen for stable lower back discomfort that holds no relation to his urological concerns. Routine podiatry visits maintain his foot health. Residing over 90 minutes from the facility, he favours telephone consultations when medically suitable."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: smooth and firm; mobility: unrestricted; asymmetry: absent. The gland appears symmetrically enlarged without palpable nodules. General assessment remains unremarkable. Vital signs are stable. There are no clinical indicators of systemic disease or lymphadenopathy."
+    }
+  ],
+  "occupation": "retired police officer",
+  "marital": "Married",
+  "living": "Lives alone",
+  "next_of_kin": "Adult son (primary contact)",
+  "recent_other": [
+    "Podiatry — routine foot care",
+    "Physiotherapy — lower back, six sessions"
+  ],
+  "alcohol": "0 units / week (alcohol-free)",
+  "exercise": "Walking 45 min/day",
+  "ipss": "IPSS score: 19/35 (moderate LUTS)",
+  "admin": "Lives >90 min from clinic; phone follow-up preferred where clinically safe.",
+  "mri_hospital": "Catharina Ziekenhuis (Eindhoven)",
+  "bx_isup": 0,
+  "bx_gl_prim": 0,
+  "bx_gl_sec": 0,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

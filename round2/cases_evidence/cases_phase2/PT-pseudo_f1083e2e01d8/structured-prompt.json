@@ -1,0 +1,56 @@
+{
+  "case_id": "PT-pseudo_f1083e2e01d8",
+  "pid": "PT-pseudo_f1083e2e01d8",
+  "age": 61,
+  "months": 3,
+  "psav": 3.06,
+  "dre": "Normal",
+  "bx": "Negative",
+  "medhx": "Type 2 diabetes, Coronary artery disease",
+  "meds": "metformin, empagliflozin, atorvastatin, metoprolol",
+  "pmhx": [
+    "Type 2 diabetes",
+    "Coronary artery disease"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "70 kg",
+    "height": "171 cm",
+    "bmi": "23.9",
+    "bp": "111/70 mmHg",
+    "hr": "73 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "1 yr ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "15 Feb 2025",
+  "enc_ref": "Dr. N. Kuiper (GP)",
+  "enc_type": "Re-evaluation - prior negative biopsy",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Persistent elevation of prostate-specific antigen warrants clinical reassessment after an earlier biopsy returned negative results."
+    },
+    {
+      "s": "History",
+      "t": "Investigated for a PSA increase documented in September 2022, this 61-year-old retired police officer now presents for ongoing assessment. Following a divorce, he resides independently, with his adult son serving as the main point of contact. He avoids tobacco entirely. Lower urinary tract complaints are negligible, reflected by an IPSS score of 7, and he commutes via cycling five days weekly while limiting alcohol intake to four units each week. His medical background includes well-managed type 2 diabetes, currently treated with metformin and empagliflozin, alongside coronary artery disease addressed through atorvastatin and metoprolol; his most recent cardiology evaluation in late 2024 showed stability with an HbA1c of 6.8%. A previous systematic transrectal ultrasound-guided biopsy yielded entirely benign tissue. He also notes a distant appendectomy from his youth and occasional mild knee strain from his former occupation, yet explicitly denies any new skeletal pain, haematuria, or unexplained weight loss."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE: Assessment is normal. The gland presents as symmetrically enlarged, exhibiting a firm, smooth texture without nodularity or asymmetry. Vital parameters remain stable, registering a blood pressure of 111/70 mmHg and a pulse of 73 bpm. Cardiovascular and pulmonary auscultation yield normal results. Palpation of the abdomen discloses a soft, non-tender contour with no detectable masses or organ enlargement."
+    }
+  ],
+  "occupation": "retired police officer",
+  "marital": "Divorced",
+  "living": "Lives alone",
+  "next_of_kin": "Adult son (primary contact)",
+  "recent_other": [],
+  "alcohol": "4 units / week",
+  "exercise": "Cycling 5x/week (commuter)",
+  "ipss": "IPSS score: 7/35 (mild LUTS)",
+  "admin": "Patient self-employed; flexible appointment slots requested.",
+  "mri_hospital": "Ziekenhuis Gelderse Vallei (Ede)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

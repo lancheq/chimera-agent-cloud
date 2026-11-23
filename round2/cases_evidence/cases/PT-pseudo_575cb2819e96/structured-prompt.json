@@ -1,0 +1,77 @@
+{
+  "case_id": "PT-pseudo_575cb2819e96",
+  "id": "pseudo_575cb2819e96",
+  "pid": "PT-pseudo_575cb2819e96",
+  "task": 1,
+  "psa": 7.4,
+  "age": 67,
+  "months": 1,
+  "pirads": "5",
+  "psad": 0.25,
+  "psav": 0.39,
+  "psap": 7.0,
+  "vol": 28.0,
+  "dre": "Normal",
+  "bx": "Negative",
+  "cspca": 0.7299785,
+  "medhx": "Type 2 diabetes",
+  "meds": "metformin, empagliflozin",
+  "notes": "PSA 7.4 ng/mL. PI-RADS 5. PSAD 0.25. Prostate volume 28 mL. csPCa 0.73.",
+  "pmhx": [
+    "Type 2 diabetes"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "58 kg",
+    "height": "175 cm",
+    "bmi": "18.9",
+    "bp": "137/80 mmHg",
+    "hr": "69 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "2 yr ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "24 Jan 2025",
+  "enc_ref": "Dr. N. Kuiper (GP)",
+  "enc_type": "Re-evaluation - prior negative biopsy",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Persistent elevation of prostate-specific antigen levels necessitates clinical reassessment after an earlier Negative biopsy."
+    },
+    {
+      "s": "History",
+      "t": "A 67-year-old retired firefighter initially entered the clinical pathway three years ago after a routine screening flagged an elevated prostate-specific antigen value. He has navigated Type 2 diabetes for more than ten years using metformin and empagliflozin, maintaining recent hemoglobin A1c measurements near 58 mmol/mol. A previous systematic transrectal ultrasound biopsy returned entirely benign tissue. Urinary complaints are minimal, scoring just 1 point on the International Prostate Symptom Score questionnaire. He abstains completely from alcohol and walks for twenty minutes every day. Married and Lives with partner in a ground-floor apartment, he previously opted out of prostate cancer research trials. His surgical background includes a laparoscopic cholecystectomy performed in 2015, alongside occasional mild knee discomfort stemming from his former occupational duties. He remains a Non-smoker. While the recent magnetic resonance imaging results have prompted some concern, he continues to prioritize his daily fitness regimen."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: smooth and symmetric; size: normal; consistency: firm; mobility: unrestricted; asymmetry: none. General inspection reveals a well-nourished individual with a body mass index of 18.9. Blood pressure measures 137/80 mmHg, and the cardiac rhythm remains regular at 69 beats per minute. No abdominal masses or peripheral lymphadenopathy are detectable upon palpation."
+    }
+  ],
+  "occupation": "retired firefighter",
+  "marital": "Married",
+  "living": "Lives with partner",
+  "next_of_kin": "Sibling (brother)",
+  "recent_other": [],
+  "alcohol": "0 units / week (alcohol-free)",
+  "exercise": "Walking 20 min/day",
+  "ipss": "IPSS score: 1/35 (mild LUTS)",
+  "admin": "Patient declined research participation previously; respect for AS-related trials.",
+  "mri_hospital": "Maastricht UMC+",
+  "bx_isup": 0,
+  "bx_gl_prim": 0,
+  "bx_gl_sec": 0,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

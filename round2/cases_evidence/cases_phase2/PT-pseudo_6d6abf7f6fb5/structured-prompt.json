@@ -1,0 +1,56 @@
+{
+  "case_id": "PT-pseudo_6d6abf7f6fb5",
+  "pid": "PT-pseudo_6d6abf7f6fb5",
+  "age": 72,
+  "months": 3,
+  "psav": 1.04,
+  "dre": "Normal",
+  "bx": "None",
+  "medhx": "Not reported",
+  "meds": "None",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "80 kg",
+    "height": "186 cm",
+    "bmi": "23.1",
+    "bp": "122/70 mmHg",
+    "hr": "80 bpm",
+    "smoking": "Current smoker",
+    "last_dental": "2 yr ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "12 Jan 2025",
+  "enc_ref": "Dr. T. Hendriks (GP)",
+  "enc_type": "Follow-up - PSA + MRI",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Persistent PSA elevation accompanied by mpMRI prostate results indicating a PI-RADS 5 lesion prompted this consultation."
+    },
+    {
+      "s": "History",
+      "t": "Urological evaluation was initiated due to a PSA trajectory that ascended from 2.3 ng/mL in mid-2022 to 5.8 ng/mL at present. A 72-year-old retired bus driver, he is married and resides alone. Despite living independently, he maintains rigorous physical activity, cycling five days weekly, and reports moderate lower urinary tract symptoms quantified at an IPSS of 10, notably absent of nocturia or retention. He is a current smoker and consumes roughly 28 units of alcohol per week. Past medical history remains clear of comorbidities, and he takes no active medications. Denial of unexplained weight loss, bone pain, or haematuria is noted. Administrative correspondence is managed by his daughter, who receives copies of all clinical letters with explicit consent."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: smooth and symmetric; mobility: unrestricted; asymmetry: absent. The gland presents with normal dimensions and consistency, lacking any palpable nodules. Systemic assessment shows stable vital signs, clear lungs, and absence of peripheral lymphadenopathy or hepatosplenomegaly. Nutritional status appears adequate, and functional mobility is well preserved."
+    }
+  ],
+  "occupation": "retired bus driver",
+  "marital": "Married",
+  "living": "Lives alone",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Pain clinic — chronic shoulder pain",
+    "Gastroenterology — surveillance colonoscopy"
+  ],
+  "alcohol": "28 units / week",
+  "exercise": "Cycling 5x/week (commuter)",
+  "ipss": "IPSS score: 10/35 (moderate LUTS)",
+  "admin": "Daughter manages communication; CC on letters with patient consent.",
+  "mri_hospital": "Catharina Ziekenhuis (Eindhoven)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

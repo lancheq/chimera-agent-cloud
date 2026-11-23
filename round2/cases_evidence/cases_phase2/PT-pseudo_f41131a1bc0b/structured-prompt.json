@@ -1,0 +1,55 @@
+{
+  "case_id": "PT-pseudo_f41131a1bc0b",
+  "pid": "PT-pseudo_f41131a1bc0b",
+  "age": 63,
+  "months": 2,
+  "psav": 1.06,
+  "dre": "Nodus",
+  "bx": "Positive",
+  "medhx": "Not reported",
+  "meds": "None",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "87 kg",
+    "height": "178 cm",
+    "bmi": "27.5",
+    "bp": "116/70 mmHg",
+    "hr": "62 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "3 yr ago",
+    "flu_vax": "Oct 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "25 Feb 2025",
+  "enc_ref": "Dr. T. Hendriks (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Elevated prostate-specific antigen levels alongside recent magnetic resonance imaging abnormalities mark the focus of this two-year post-prostatectomy assessment."
+    },
+    {
+      "s": "History",
+      "t": "A 63-year-old retired electrical engineer underwent initial prostate cancer therapy at age 61 and has since been monitored closely. He reports an IPSS score of 5 with zero urinary complaints, explicitly denying hematuria or pelvic discomfort. Smoking: Non-smoker. Comorbidities: none. Active medication: None. Marital: Married. Living: Lives with partner; adult children visit weekly. Prior biopsy bucket \"Positive\" was documented during earlier evaluation. His fitness routine includes three weekly 5 km runs, complemented by moderate alcohol intake. Past medical events include an uncomplicated knee arthroscopy five years ago and a recent routine chest radiograph during a general health screening, both showing stable results. While he harbors slight apprehension about the recent prostate-specific antigen trajectory, his overall physical and cognitive status remains robust."
+    },
+    {
+      "s": "Physical examination",
+      "t": "Nodus DRE identifies a firm, irregular mass approximately 1.5 cm in diameter located in the right peripheral zone, with the left side retaining normal symmetry. General inspection shows clear pulmonary fields and a regular cardiac rhythm at 62 beats per minute. Blood pressure registers at 116/70 mmHg. Palpation detects no lymphadenopathy or hepatosplenomegaly."
+    }
+  ],
+  "occupation": "retired electrical engineer",
+  "marital": "Married",
+  "living": "Lives with partner; adult children visit weekly",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Radiology — chest X-ray (routine)"
+  ],
+  "alcohol": "5 units / week",
+  "exercise": "Running 3x/week, 5 km",
+  "ipss": "IPSS score: 5/35 (mild LUTS)",
+  "admin": "Patient self-employed; flexible appointment slots requested.",
+  "mri_hospital": "Antoni van Leeuwenhoek",
+  "ct": null,
+  "active_treatment_flag": 0
+}

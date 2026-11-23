@@ -1,0 +1,81 @@
+{
+  "case_id": "PT-pseudo_d49b896a09e6",
+  "id": "pseudo_d49b896a09e6",
+  "pid": "PT-pseudo_d49b896a09e6",
+  "task": 1,
+  "psa": 6.7,
+  "age": 67,
+  "months": 1,
+  "pirads": "4",
+  "psad": 0.2,
+  "psav": 1.78,
+  "psap": 4.4,
+  "vol": 36.0,
+  "dre": "Normal",
+  "bx": "Positive",
+  "cspca": 0.7934635,
+  "medhx": "Hypercholesterolaemia, Coronary artery disease, Obesity (BMI >30)",
+  "meds": "rosuvastatin, aspirin 80 mg, atorvastatin",
+  "notes": "PSA 6.7 ng/mL. PI-RADS 4. PSAD 0.20. Prostate volume 36 mL. csPCa 0.79.",
+  "pmhx": [
+    "Hypercholesterolaemia",
+    "Coronary artery disease",
+    "Obesity (BMI >30)"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "93 kg",
+    "height": "178 cm",
+    "bmi": "29.4",
+    "bp": "146/77 mmHg",
+    "hr": "77 bpm",
+    "smoking": "Current smoker (17 pack-yr)",
+    "last_dental": "3 yr ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "31 Jan 2025",
+  "enc_ref": "Dr. P. van Dijk (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "An upward PSA trend alongside a previously positive biopsy necessitates urological review."
+    },
+    {
+      "s": "History",
+      "t": "A widowed retired warehouse worker currently residing with his partner presents for surveillance after a positive biopsy yielded a Gleason 6 diagnosis. His medical background includes coronary artery disease, hypercholesterolaemia, and obesity (BMI >30). Daily medication consists of rosuvastatin, atorvastatin, and aspirin 80 mg. He maintains a 17 pack-year smoking history and consumes approximately 19 units of alcohol each week. Despite a consistent running routine covering five kilometres three times weekly, he reports moderate lower urinary tract symptoms scoring 13 on the IPSS scale, absent of significant nocturia or urgency. Cardiology reviewed him in November, confirming stable angina without recent procedures. An unrelated cataract evaluation occurred last month, and he mentions occasional mild fatigue he attributes to seasonal shifts rather than systemic disease. Distance to the hospital exceeds ninety minutes, leading him to prefer telephone consultations when clinically suitable."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: smooth and symmetric; mobility: unremarkable; asymmetry: none. The digital rectal examination confirms a normal prostate without palpable irregularities. General inspection shows a well-nourished individual with a blood pressure reading of 146/77 mmHg and a regular pulse of 77 beats per minute. Palpation of the abdomen reveals a soft, non-tender abdomen free of masses or organomegaly."
+    }
+  ],
+  "occupation": "retired warehouse worker",
+  "marital": "Widowed",
+  "living": "Lives with partner",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Ophthalmology — cataract review"
+  ],
+  "alcohol": "19 units / week",
+  "exercise": "Running 3x/week, 5 km",
+  "ipss": "IPSS score: 13/35 (moderate LUTS)",
+  "admin": "Lives >90 min from clinic; phone follow-up preferred where clinically safe.",
+  "mri_hospital": "UMCG (Groningen)",
+  "bx_isup": 1,
+  "bx_gl_prim": 3,
+  "bx_gl_sec": 3,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

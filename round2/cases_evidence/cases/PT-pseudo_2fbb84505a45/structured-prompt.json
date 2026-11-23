@@ -1,0 +1,77 @@
+{
+  "case_id": "PT-pseudo_2fbb84505a45",
+  "id": "pseudo_2fbb84505a45",
+  "pid": "PT-pseudo_2fbb84505a45",
+  "task": 1,
+  "psa": 8.4,
+  "age": 63,
+  "months": 3,
+  "pirads": "4",
+  "psad": 0.1,
+  "psav": 2.3,
+  "psap": 6.7,
+  "vol": 78.0,
+  "dre": "Normal",
+  "bx": "Positive",
+  "cspca": 0.44532543,
+  "medhx": "Not reported",
+  "meds": "None",
+  "notes": "PSA 8.4 ng/mL. PI-RADS 4. PSAD 0.10. Prostate volume 78 mL. csPCa 0.45.",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "65 kg",
+    "height": "176 cm",
+    "bmi": "21.0",
+    "bp": "135/64 mmHg",
+    "hr": "73 bpm",
+    "smoking": "Ex-smoker (27 pack-yr, quit 2011)",
+    "last_dental": "1 yr ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "26 Feb 2025",
+  "enc_ref": "Dr. K. Bakker (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Persistent PSA elevation and prior positive prostate biopsy warrant clinical reassessment."
+    },
+    {
+      "s": "History",
+      "t": "A 63-year-old graphic designer, married and residing with his partner, initially presented for evaluation of a PSA elevation detected in early 2024. Lower urinary tract symptoms remain mild, scoring an IPSS of 5 without significant daily disruption. Physical activity continues at a steady pace, featuring two weekly cycling sessions covering roughly 20 kilometres each, alongside complete abstinence from alcohol. Surgical past history includes a resolved childhood appendectomy and a minor arthroscopic knee intervention in 2018. Tobacco use ceased entirely in 2011, following a cumulative 27 pack-year exposure. The patient reports no unexplained weight fluctuations, skeletal discomfort, or haematuria."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: smooth and rubbery; symmetry: intact; nodularity: absent. The prostate demonstrates uniform enlargement. Vital parameters remain stable, recording a blood pressure of 135/64 mmHg and a regular pulse of 73 bpm. Abdominal and cardiovascular assessments yield no abnormalities, while peripheral lymph nodes and bony structures show no tenderness or enlargement."
+    }
+  ],
+  "occupation": "graphic designer",
+  "marital": "Married",
+  "living": "Lives with partner",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "GP practice nurse — flu vaccination"
+  ],
+  "alcohol": "0 units / week (alcohol-free)",
+  "exercise": "Cycling 2x/week, ~20 km",
+  "ipss": "IPSS score: 5/35 (mild LUTS)",
+  "admin": "Interpreter: not required. Consent for data use: signed.",
+  "mri_hospital": "Amsterdam UMC (location VUmc)",
+  "bx_isup": 1,
+  "bx_gl_prim": 3,
+  "bx_gl_sec": 3,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

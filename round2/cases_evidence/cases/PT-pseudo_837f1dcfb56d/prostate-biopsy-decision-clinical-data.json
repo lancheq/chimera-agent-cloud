@@ -1,0 +1,93 @@
+{
+  "radiology_report": "Subject: Multiparametric MRI Prostate | Facility: Catharina Ziekenhuis, Eindhoven | Date: 28 February 2025\n\nAssessment prompted by a 2.7 ng/mL PSA measurement and a previous PI-RADS 2 designation.\n\nGlandular dimensions register at 56.0 mL on volumetric analysis. T2 sequences reveal a uniformly textured organ with subtle central zone hypertrophy. An 8 mm hypointense focus occupies the right mid-gland peripheral zone, yet lacks diffusion restriction and demonstrates delayed enhancement kinetics, favoring a benign etiology such as a retention cyst or nodular hyperplasia. No focal abnormalities warrant concern. The seminal vesicles and neurovascular bundles maintain normal architecture. Pelvic imaging shows no extraprostatic spread or nodal enlargement.\n\nPI-RADS 2. Prostate volume 56.0 mL, PSA density 0.05 ng/mL/mL. csPCa predicted probability 0.48990974.",
+  "previous_notes": [
+    {
+      "date": "05 Mar 2024",
+      "author": "Dr. P. van Dijk (GP)",
+      "text": "A PSA reading of 2.9 ng/mL was recorded in June 2024, representing an increase from the 1.4 ng/mL baseline documented in October 2023. Motivated by the rising trajectory and the patient’s apprehension about invasive diagnostics, a referral to urology was initiated for targeted PSA assessment and multiparametric MRI scheduling. Antibacterial therapy was withheld due to absent infectious markers, while urinary complaints continue to be observed without pharmacological intervention."
+    }
+  ],
+  "psa_trend": [
+    {
+      "date": "Oct 2023",
+      "val": 2.3
+    },
+    {
+      "date": "Jun 2024",
+      "val": 1.1
+    },
+    {
+      "date": "Feb 2025",
+      "val": 2.7
+    }
+  ],
+  "laboratory_results": [
+    {
+      "name": "PSA",
+      "val": "2.7 ng/mL",
+      "date": "27 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Free PSA",
+      "val": "0.27 ng/mL",
+      "date": "27 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "%Free PSA",
+      "val": "10%",
+      "date": "27 Jan 2025",
+      "flag": "L"
+    },
+    {
+      "name": "Haemoglobin",
+      "val": "14.1 g/dL",
+      "date": "27 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "WBC",
+      "val": "7.3 x10^9/L",
+      "date": "27 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Platelets",
+      "val": "241 x10^9/L",
+      "date": "27 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Creatinine",
+      "val": "88 umol/L",
+      "date": "27 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "eGFR",
+      "val": ">60 mL/min/1.73m2",
+      "date": "27 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Testosterone",
+      "val": "12.8 nmol/L",
+      "date": "27 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Alkaline phosphatase",
+      "val": "66 U/L",
+      "date": "27 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "LDH",
+      "val": "197 U/L",
+      "date": "27 Jan 2025",
+      "flag": ""
+    }
+  ],
+  "family_history": "No"
+}

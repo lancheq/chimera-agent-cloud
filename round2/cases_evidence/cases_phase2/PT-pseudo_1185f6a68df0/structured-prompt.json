@@ -1,0 +1,57 @@
+{
+  "case_id": "PT-pseudo_1185f6a68df0",
+  "pid": "PT-pseudo_1185f6a68df0",
+  "age": 63,
+  "months": 2,
+  "psav": 1.09,
+  "dre": "Normal",
+  "bx": "None",
+  "medhx": "Atrial fibrillation",
+  "meds": "apixaban, metoprolol",
+  "pmhx": [
+    "Atrial fibrillation"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "101 kg",
+    "height": "179 cm",
+    "bmi": "31.5",
+    "bp": "100/66 mmHg",
+    "hr": "72 bpm",
+    "smoking": "Ex-smoker (22 pack-yr, quit 2021)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "22 Feb 2025",
+  "enc_ref": "Dr. P. van Dijk (GP)",
+  "enc_type": "Follow-up - PSA + MRI",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Escalating prostate-specific antigen measurements across a two-year span prompted a recent multiparametric magnetic resonance imaging study."
+    },
+    {
+      "s": "History",
+      "t": "At sixty-three years of age, this retired mechanical engineer first entered clinical evaluation in early 2023 due to a PSA elevation, which has since steadily ascended to 7.0 ng/mL. His urological documentation indicates a prior biopsy bucket of None. Lower urinary tract complaints remain minimal, characterized by slight hesitancy and a modest increase in nocturia, yielding an IPSS score of 7. He explicitly denies hematuria or pelvic discomfort. Physical activity persists through cycling roughly 30 kilometres three times weekly, although advancing joint stiffness necessitates a walking frame for extended distances. He shares his home with his wife, while their grown daughter handles administrative correspondence. His clinical background includes atrial fibrillation, managed with apixaban and metoprolol. A substantial smoking history of 22 pack-years was successfully abandoned in 2021. Aside from receiving a standard influenza vaccination last week and maintaining stable blood pressure readings, he reports feeling generally well, with no complaints of unexplained fatigue or weight reduction."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: smooth and uniformly firm; mobility: unrestricted; asymmetry: absent. General inspection reveals a well-nourished individual in no acute distress. Vital signs demonstrate a regular heart rate of 72 beats per minute alongside a blood pressure of 100/66 mmHg. Peripheral pulses remain palpable, and there is no clinical evidence of peripheral oedema or lymphadenopathy."
+    }
+  ],
+  "occupation": "retired mechanical engineer",
+  "marital": "Married",
+  "living": "Lives with partner",
+  "next_of_kin": "Adult daughter (primary contact)",
+  "recent_other": [
+    "GP practice nurse — flu vaccination"
+  ],
+  "alcohol": "5 units / week",
+  "exercise": "Cycling 3x/week, ~30 km",
+  "ipss": "IPSS score: 7/35 (mild LUTS)",
+  "admin": "Mobility limitation (frame); ground-floor consult room preferred.",
+  "mri_hospital": "Maastricht UMC+",
+  "ct": null,
+  "active_treatment_flag": 0
+}

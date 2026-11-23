@@ -1,0 +1,80 @@
+{
+  "case_id": "PT-pseudo_cac2563c222a",
+  "id": "pseudo_cac2563c222a",
+  "pid": "PT-pseudo_cac2563c222a",
+  "task": 1,
+  "psa": 4.53,
+  "age": 50,
+  "months": 3,
+  "pirads": "5",
+  "psad": 0.12,
+  "psav": 0.54,
+  "psap": 4.1,
+  "vol": 41.0,
+  "dre": "Normal",
+  "bx": "Positive",
+  "cspca": 0.84312165,
+  "medhx": "Not reported",
+  "meds": "None",
+  "notes": "PSA 4.53 ng/mL. PI-RADS 5. PSAD 0.12. Prostate volume 41 mL. csPCa 0.84.",
+  "pmhx": [],
+  "allergies": [
+    "NSAIDs"
+  ],
+  "vitals": {
+    "weight": "86 kg",
+    "height": "182 cm",
+    "bmi": "26.0",
+    "bp": "143/64 mmHg",
+    "hr": "64 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "28 Feb 2025",
+  "enc_ref": "Dr. F. de Boer (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Assessment requested to review a previous prostate biopsy alongside a steadily climbing PSA curve."
+    },
+    {
+      "s": "History",
+      "t": "A 50-year-old freelance translator residing with his wife came under scrutiny after a PSA elevation emerged in mid-2023. He denies any lower urinary tract complaints, recording an IPSS of 1 out of 35, and reports no pelvic discomfort or blood in the urine. A non-smoker, he drinks roughly 26 alcoholic units each week and stays physically active through weekend hiking excursions. Unrelated recent visits included a dermatology check for actinic keratosis monitoring and a routine flu shot given by the practice nurse. He has never undergone major operations, uses no daily prescriptions, and handles remote work using enlarged print because of mild vision loss. Despite some mild worry about the PSA curve, he feels otherwise healthy. The prior biopsy bucket is Positive."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: smooth and symmetrically normal; mobility: unrestricted; asymmetry: absent. General inspection shows stable vital signs, clear peripheral lymph nodes, and no skeletal tenderness. Abdominal palpation confirms a soft, non-tender cavity devoid of masses."
+    }
+  ],
+  "occupation": "freelance translator",
+  "marital": "Married",
+  "living": "Lives with partner",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Dermatology — actinic keratosis check",
+    "GP practice nurse — flu vaccination"
+  ],
+  "alcohol": "26 units / week",
+  "exercise": "Hiking on weekends",
+  "ipss": "IPSS score: 1/35 (mild LUTS)",
+  "admin": "Visual impairment: large-print correspondence requested.",
+  "mri_hospital": "Ziekenhuis Gelderse Vallei (Ede)",
+  "bx_isup": 1,
+  "bx_gl_prim": 3,
+  "bx_gl_sec": 3,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

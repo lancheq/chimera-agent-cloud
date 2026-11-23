@@ -1,0 +1,56 @@
+{
+  "case_id": "PT-pseudo_e1bb1e86b054",
+  "pid": "PT-pseudo_e1bb1e86b054",
+  "age": 70,
+  "months": 1,
+  "psav": 0.67,
+  "dre": "Normal",
+  "bx": "Positive",
+  "medhx": "Not reported",
+  "meds": "None",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "84 kg",
+    "height": "190 cm",
+    "bmi": "23.3",
+    "bp": "130/79 mmHg",
+    "hr": "66 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "20 Jan 2025",
+  "enc_ref": "Dr. C. Peters (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Return assessment for previously confirmed prostate malignancy alongside a new PSA elevation reaching 8.7 ng/mL."
+    },
+    {
+      "s": "History",
+      "t": "At age 70, this secondary school teacher first came to clinical attention in late 2023 due to an incidental PSA increase, which subsequently established an ISUP Grade Group 2 adenocarcinoma diagnosis. His biopsy history ultimately registers as Positive. He resides with his unmarried partner and leads a predominantly sedentary routine, punctuated by occasional recreational walks. Lower urinary tract complaints are moderate, scoring 13 on the IPSS questionnaire, driven mainly by nocturia and a diminished urinary stream; he explicitly denies pelvic discomfort or visible blood in the urine. Alcohol intake is abstinent, and he remains a non-smoker. He has undergone six physiotherapy visits recently to address chronic lumbar ache. Persistent daytime somnolence and loud snoring triggered a sleep clinic referral, raising suspicion for obstructive sleep apnoea. He maintains no regular pharmaceutical regimen, harbors no significant comorbidities, and reports zero drug allergies."
+    },
+    {
+      "s": "Physical examination",
+      "t": "On examination, the digital rectal assessment proves unremarkable, revealing a symmetrically enlarged prostate with a smooth, firm texture devoid of palpable nodules or asymmetry. General inspection shows no pallor, lymphadenopathy, or abdominal masses. Cardiorespiratory and abdominal surveys are stable. Vital parameters record a blood pressure of 130/79 mmHg and a heart rate of 66 bpm."
+    }
+  ],
+  "occupation": "secondary school teacher",
+  "marital": "Living with partner (unmarried)",
+  "living": "Lives with partner",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Sleep clinic — suspected obstructive sleep apnoea",
+    "Physiotherapy — lower back, six sessions"
+  ],
+  "alcohol": "0 units / week (alcohol-free)",
+  "exercise": "Sedentary lifestyle, occasional walking",
+  "ipss": "IPSS score: 13/35 (moderate LUTS)",
+  "admin": "Interpreter: not required. Consent for data use: signed.",
+  "mri_hospital": "Tergooi MC",
+  "ct": null,
+  "active_treatment_flag": 0
+}

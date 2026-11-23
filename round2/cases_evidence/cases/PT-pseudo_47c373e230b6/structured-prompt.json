@@ -1,0 +1,82 @@
+{
+  "case_id": "PT-pseudo_47c373e230b6",
+  "id": "pseudo_47c373e230b6",
+  "pid": "PT-pseudo_47c373e230b6",
+  "task": 1,
+  "psa": 10.0,
+  "age": 75,
+  "months": 1,
+  "pirads": "5",
+  "psad": 0.27,
+  "psav": 1.78,
+  "psap": 8.3,
+  "vol": 41.0,
+  "dre": "Normal",
+  "bx": "Positive",
+  "cspca": 0.7478973,
+  "medhx": "Hypertension, Hypercholesterolaemia, Benign prostatic hyperplasia",
+  "meds": "amlodipine, valsartan, lisinopril, metoprolol, atorvastatin, simvastatin, tamsulosin",
+  "notes": "PSA 10 ng/mL. PI-RADS 5. PSAD 0.27. Prostate volume 41 mL. csPCa 0.75.",
+  "pmhx": [
+    "Hypertension",
+    "Hypercholesterolaemia",
+    "Benign prostatic hyperplasia"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "66 kg",
+    "height": "180 cm",
+    "bmi": "20.4",
+    "bp": "122/66 mmHg",
+    "hr": "73 bpm",
+    "smoking": "Ex-smoker (18 pack-yr, quit 2006)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "09 Feb 2025",
+  "enc_ref": "Dr. P. van Dijk (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Ascending prostate-specific antigen readings and a history of a previously positive biopsy prompt this clinical assessment."
+    },
+    {
+      "s": "History",
+      "t": "A 75-year-old male, formerly employed as a warehouse manager, first entered the diagnostic pathway in late 2022 due to an elevated prostate-specific antigen level. His medical background includes hypertension and hypercholesterolaemia, alongside benign prostatic hyperplasia. Current pharmacotherapy comprises amlodipine, valsartan, lisinopril, metoprolol, atorvastatin, simvastatin, and tamsulosin to address bothersome lower urinary tract symptoms. Tobacco use ceased in 2006 after an 18 pack-year accumulation. He continues a weekly swimming regimen. Although widowed, he resides with his partner who offers daily assistance, while his adult children stop by each week to manage paperwork. Recent visits to ophthalmology for cataract surveillance and a standard chest radiograph returned normal results. He denies experiencing fresh urinary blockage, blood in the urine, or skeletal discomfort, maintaining a stable International Prostate Symptom Score of 12."
+    },
+    {
+      "s": "Physical examination",
+      "t": "Normal DRE: The gland demonstrates a smooth, firm consistency with symmetric enlargement and no palpable irregularities. Vital parameters remain stable: blood pressure registers at 122/66 mmHg with a regular cardiac rhythm of 73 bpm. General survey shows a well-nourished individual free of acute distress. Lung fields are clear, and abdominal palpation reveals a soft, non-tender contour."
+    }
+  ],
+  "occupation": "warehouse manager",
+  "marital": "Widowed",
+  "living": "Lives with partner; adult children visit weekly",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Ophthalmology — cataract review",
+    "Radiology — chest X-ray (routine)"
+  ],
+  "alcohol": "12 units / week",
+  "exercise": "Swimming 1x/week",
+  "ipss": "IPSS score: 12/35 (moderate LUTS)",
+  "admin": "Daughter manages communication; CC on letters with patient consent.",
+  "mri_hospital": "Antoni van Leeuwenhoek",
+  "bx_isup": 2,
+  "bx_gl_prim": 3,
+  "bx_gl_sec": 4,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

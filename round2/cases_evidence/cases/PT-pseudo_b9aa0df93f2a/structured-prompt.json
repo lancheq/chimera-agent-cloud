@@ -1,0 +1,79 @@
+{
+  "case_id": "PT-pseudo_b9aa0df93f2a",
+  "id": "pseudo_b9aa0df93f2a",
+  "pid": "PT-pseudo_b9aa0df93f2a",
+  "task": 1,
+  "psa": 5.5,
+  "age": 71,
+  "months": 1,
+  "pirads": "5",
+  "psad": 0.12,
+  "psav": 1.47,
+  "psap": 3.8,
+  "vol": 49.0,
+  "dre": "Normal",
+  "bx": "Positive",
+  "cspca": 0.8111057,
+  "medhx": "Hypertension",
+  "meds": "amlodipine, lisinopril, metoprolol",
+  "notes": "PSA 5.5 ng/mL. PI-RADS 5. PSAD 0.12. Prostate volume 49 mL. csPCa 0.81.",
+  "pmhx": [
+    "Hypertension"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "116 kg",
+    "height": "175 cm",
+    "bmi": "37.9",
+    "bp": "149/83 mmHg",
+    "hr": "65 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "2 yr ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "04 Feb 2025",
+  "enc_ref": "Dr. F. de Boer (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Assessment of a 5.5 ng/mL prostate-specific antigen elevation alongside a prior positive biopsy result."
+    },
+    {
+      "s": "History",
+      "t": "A married, 71-year-old warehouse manager who lives alone with his spouse listed as the primary contact. Initial workup began in late 2023 after an elevated prostate-specific antigen was detected. He experiences moderate lower urinary tract symptoms, scoring 15 on the IPSS, mainly due to nocturia and a diminished urinary stream, while explicitly denying haematuria or pelvic discomfort. His medical background includes well-managed hypertension treated with amlodipine, lisinopril, and metoprolol, plus an arthroscopic knee procedure in his forties. He stays physically active by cycling roughly 30 kilometres three times weekly, drinks about two units of alcohol each week, and reports no tobacco use. A recent audiology visit identified mild age-related presbycusis, currently managed with hearing aids. He has voiced significant apprehension about invasive interventions and insists on detailed explanations of every potential step prior to providing consent."
+    },
+    {
+      "s": "Physical examination",
+      "t": "Normal DRE: The prostate is symmetrically enlarged, smooth, and firm, with no palpable nodules or asymmetries. General inspection is unremarkable. Blood pressure measures 149/83 mmHg with a regular heart rate of 65 beats per minute. Abdominal palpation shows no suprapubic tenderness or distended bladder. Peripheral lymphadenopathy and bone tenderness are absent."
+    }
+  ],
+  "occupation": "warehouse manager",
+  "marital": "Married",
+  "living": "Lives alone",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Audiology — hearing test"
+  ],
+  "alcohol": "2 units / week",
+  "exercise": "Cycling 3x/week, ~30 km",
+  "ipss": "IPSS score: 15/35 (moderate LUTS)",
+  "admin": "Patient anxious about procedures — allocate extra consult time.",
+  "mri_hospital": "LUMC (Leiden)",
+  "bx_isup": 1,
+  "bx_gl_prim": 3,
+  "bx_gl_sec": 3,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

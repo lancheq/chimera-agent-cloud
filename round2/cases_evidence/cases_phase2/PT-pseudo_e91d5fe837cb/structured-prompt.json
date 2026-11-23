@@ -1,0 +1,61 @@
+{
+  "case_id": "PT-pseudo_e91d5fe837cb",
+  "pid": "PT-pseudo_e91d5fe837cb",
+  "age": 63,
+  "months": 1,
+  "psav": 0.89,
+  "dre": "Nodus",
+  "bx": "Positive",
+  "medhx": "Hypercholesterolaemia, Chronic kidney disease, Benign prostatic hyperplasia",
+  "meds": "atorvastatin, simvastatin, rosuvastatin, tamsulosin",
+  "pmhx": [
+    "Hypercholesterolaemia",
+    "Chronic kidney disease",
+    "Benign prostatic hyperplasia"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "77 kg",
+    "height": "180 cm",
+    "bmi": "23.8",
+    "bp": "105/87 mmHg",
+    "hr": "75 bpm",
+    "smoking": "Ex-smoker (40 pack-yr, quit 2009)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "18 Jan 2025",
+  "enc_ref": "Dr. R. van den Berg (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Ongoing monitoring required due to previously confirmed malignancy and steadily climbing PSA levels."
+    },
+    {
+      "s": "History",
+      "t": "At age 63, this retired warehouse worker first entered clinical scrutiny for prostate irregularities toward the end of 2022. Medical background includes hypercholesterolaemia and chronic kidney disease, currently treated with atorvastatin, simvastatin, rosuvastatin, and tamsulosin. A 40 pack-year smoking history is noted, though cessation occurred back in 2009. Lower urinary tract complaints remain minimal, reflected by an IPSS score of 1/35, and he explicitly denies pelvic discomfort or blood in the urine. Marital status is divorced, and he resides independently, relying on his grown son as his main point of contact. Daily habits include roughly 20 units of alcohol per week, while physical activity consists mainly of routine gardening instead of formal workouts. Commuting to the facility takes over an hour by rail. Recent outpatient visits covered routine thyroid evaluations, a surveillance colonoscopy under gastroenterology, and a vascular surgery assessment for varicose veins. He reports no unexplained weight reduction, skeletal pain, or systemic complaints, with his primary focus remaining strictly on prostate surveillance."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: moderately enlarged gland; right posterior peripheral zone contains a firm, discrete nodule; remainder presents as symmetrically smooth. General survey shows a well-nourished gentleman without signs of acute distress. Chest auscultation reveals clear breath sounds, and cardiovascular rhythm remains regular. Abdominal palpation yields a soft, non-tender cavity devoid of palpable masses or organ enlargement."
+    }
+  ],
+  "occupation": "retired warehouse worker",
+  "marital": "Divorced",
+  "living": "Lives alone",
+  "next_of_kin": "Adult son (primary contact)",
+  "recent_other": [
+    "Endocrine — thyroid screening",
+    "Gastroenterology — surveillance colonoscopy",
+    "Vascular surgery — varicose veins consult"
+  ],
+  "alcohol": "20 units / week",
+  "exercise": "Gardening, no structured exercise",
+  "ipss": "IPSS score: 1/35 (mild LUTS)",
+  "admin": "Patient travels 60+ min by train to clinic; allow buffer.",
+  "mri_hospital": "Maastricht UMC+",
+  "ct": null,
+  "active_treatment_flag": 0
+}

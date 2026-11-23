@@ -1,0 +1,56 @@
+{
+  "case_id": "PT-pseudo_37d8ae9b27f1",
+  "pid": "PT-pseudo_37d8ae9b27f1",
+  "age": 67,
+  "months": 3,
+  "psav": 0.39,
+  "dre": "Normal",
+  "bx": "Positive",
+  "medhx": "Not reported",
+  "meds": "None",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "76 kg",
+    "height": "180 cm",
+    "bmi": "23.5",
+    "bp": "120/76 mmHg",
+    "hr": "79 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "1 yr ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "18 Jan 2025",
+  "enc_ref": "Dr. S. de Vries (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Clinical attention sought due to a previous prostate cancer diagnosis coupled with a recent serum PSA rise to 4.8 ng/mL."
+    },
+    {
+      "s": "History",
+      "t": "At sixty-seven years of age, this widowed patient has a documented history of a prior positive biopsy confirming low-grade malignancy. Initial evaluation for an elevated PSA occurred in 2022. He experiences moderate lower urinary tract symptoms, scoring 16 on the IPSS questionnaire, dominated by nocturia and a diminished urinary stream that have not progressed recently. Occupational background includes work as a retired mechanical engineer. He resides independently. Lifestyle factors include being a Non-smoker, consuming six alcoholic units weekly, and participating in weekly swimming sessions. Past medical encounters involve standard audiology and vascular surgery visits for unrelated aging processes, with no other significant comorbidities or active medications reported. He explicitly denies bone discomfort, haematuria, or constitutional complaints."
+    },
+    {
+      "s": "Physical examination",
+      "t": "Normal DRE: Symmetrically enlarged gland exhibiting a uniform, smooth consistency without focal hardening or asymmetry. Systemic inspection shows stable hemodynamic parameters, clear lung fields, and absence of peripheral edema or palpable lymph nodes."
+    }
+  ],
+  "occupation": "retired mechanical engineer",
+  "marital": "Widowed",
+  "living": "Lives alone",
+  "next_of_kin": "Adult daughter (primary contact)",
+  "recent_other": [
+    "Audiology — hearing test",
+    "Vascular surgery — varicose veins consult"
+  ],
+  "alcohol": "6 units / week",
+  "exercise": "Swimming 1x/week",
+  "ipss": "IPSS score: 16/35 (moderate LUTS)",
+  "admin": "Lives >90 min from clinic; phone follow-up preferred where clinically safe.",
+  "mri_hospital": "Radboudumc",
+  "ct": null,
+  "active_treatment_flag": 0
+}

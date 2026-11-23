@@ -1,0 +1,100 @@
+{
+  "radiology_report": "Erasmus MC University Medical Center | Radiology Division | 20 Jan 2025 | multiparametric MRI prostate\n\nClinical context: Re-assessment of previously confirmed prostate malignancy. Current PSA value reads 4.8 ng/mL.\n\nFINDINGS:\nThe organ shows diffuse enlargement, totaling 95.0 mL in measured volume. T2 sequences highlight prominent central zone hyperplasia maintaining a uniform glandular pattern. Diffusion-weighted imaging lacks areas of restricted movement, while the ADC map remains consistently bright. Dynamic contrast phases show no early or focal enhancement. A minor benign-appearing region in the right mid-gland spans roughly 9 mm but demonstrates no suspicious traits. Capsular boundaries remain intact with seminal vesicle preservation. Pelvic lymphatic structures appear normal.\n\nIMPRESSION:\n1. Prostate volume 95.0 mL.\n2. PI-RADS: 2.\n3. PSA density 0.05 ng/mL/mL.\n4.",
+  "previous_notes": [
+    {
+      "date": "07 Aug 2023",
+      "author": "Dr. L. Smits (GP)",
+      "text": "Clinical update requested regarding PSA fluctuation, currently tracking at 3.5 ng/mL after initial identification twelve months prior. A systematic needle sampling was conducted, confirming a Gleason 3+4, ISUP GG 2 diagnosis. Ongoing urological monitoring has been in place. This summary accompanies the latest PSA reading of 4.8 ng/mL alongside the freshly completed mpMRI study for chart review."
+    }
+  ],
+  "psa_trend": [
+    {
+      "date": "Feb 2022",
+      "val": 0.9
+    },
+    {
+      "date": "Aug 2023",
+      "val": 3.7
+    },
+    {
+      "date": "Jan 2025",
+      "val": 4.8
+    }
+  ],
+  "laboratory_results": [
+    {
+      "name": "PSA",
+      "val": "4.8 ng/mL",
+      "date": "01 Jan 2025",
+      "flag": "H"
+    },
+    {
+      "name": "Free PSA",
+      "val": "1.05 ng/mL",
+      "date": "01 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "%Free PSA",
+      "val": "22%",
+      "date": "01 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Haemoglobin",
+      "val": "15.3 g/dL",
+      "date": "01 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "WBC",
+      "val": "5.6 x10^9/L",
+      "date": "01 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Platelets",
+      "val": "271 x10^9/L",
+      "date": "01 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Creatinine",
+      "val": "130 umol/L",
+      "date": "01 Jan 2025",
+      "flag": "H"
+    },
+    {
+      "name": "eGFR",
+      "val": "<60 mL/min/1.73m2",
+      "date": "01 Jan 2025",
+      "flag": "L"
+    },
+    {
+      "name": "Testosterone",
+      "val": "12.4 nmol/L",
+      "date": "01 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "Alkaline phosphatase",
+      "val": "64 U/L",
+      "date": "01 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "LDH",
+      "val": "187 U/L",
+      "date": "01 Jan 2025",
+      "flag": ""
+    },
+    {
+      "name": "HbA1c",
+      "val": "6.1 %",
+      "date": "01 Jan 2025",
+      "flag": ""
+    }
+  ],
+  "family_history": "Yes",
+  "cspca": 0.5376115
+}

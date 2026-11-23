@@ -1,0 +1,55 @@
+{
+  "case_id": "PT-pseudo_f80c073525b1",
+  "pid": "PT-pseudo_f80c073525b1",
+  "age": 71,
+  "months": 1,
+  "psav": 1.69,
+  "dre": "Nodus",
+  "bx": "None",
+  "medhx": "Not reported",
+  "meds": "None",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "65 kg",
+    "height": "171 cm",
+    "bmi": "22.2",
+    "bp": "135/71 mmHg",
+    "hr": "63 bpm",
+    "smoking": "Ex-smoker (20 pack-yr, quit 2015)",
+    "last_dental": "2 yr ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "01 Feb 2025",
+  "enc_ref": "Dr. E. Mulder (GP)",
+  "enc_type": "Follow-up - PSA + MRI",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Persistent prostatic antigen elevation alongside recent multiparametric imaging review drives the current urological consultation."
+    },
+    {
+      "s": "History",
+      "t": "At 71 years of age, the retired shopkeeper first entered clinical evaluation for prostatic antigen elevation in 2022, entering a period of standard observation. Prior biopsy bucket: None. Moderate lower urinary tract complaints surface, yielding an IPSS score of 17 driven by nocturia and a diminished stream; conservative management suffices. Nuptial status is married, yet daily residence is solitary, with an adult son living in close proximity who provides regular oversight. Physical activity remains robust, featuring three weekly runs covering five kilometres each, alongside total alcohol abstinence. Tobacco use ceased in 2015 after a cumulative 20 pack-year exposure. Surgical past includes a childhood appendectomy and a 2018 right knee arthroscopy, both recovered without complication. Recent activities encompass a routine cognitive screening at a memory clinic, a declined invitation to clinical research, and a two-week Portuguese vacation completed without event. Unexplained weight reduction, skeletal discomfort, and haematuria are categorically denied. Comorbid conditions are absent. Active pharmacotherapy is nil."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: moderately enlarged gland harboring a discrete, firm nodule within the left mid-gland sector; mobility: fixed; asymmetry: notable. Abdominal and cardiovascular surveys reveal no abnormalities, characterized by clear lung fields and regular cardiac rhythms. Hemodynamic parameters remain steady. Overall appearance reflects robust wellness, corresponding to an ECOG performance status of 0."
+    }
+  ],
+  "occupation": "retired shopkeeper",
+  "marital": "Married",
+  "living": "Lives alone; adult son nearby",
+  "next_of_kin": "Adult son (primary contact)",
+  "recent_other": [
+    "Memory clinic — baseline screening"
+  ],
+  "alcohol": "0 units / week (alcohol-free)",
+  "exercise": "Running 3x/week, 5 km",
+  "ipss": "IPSS score: 17/35 (moderate LUTS)",
+  "admin": "Patient declined research participation previously; respect for AS-related trials.",
+  "mri_hospital": "Amsterdam UMC (location VUmc)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

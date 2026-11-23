@@ -1,0 +1,79 @@
+{
+  "case_id": "PT-pseudo_ac1dc724676e",
+  "id": "pseudo_ac1dc724676e",
+  "pid": "PT-pseudo_ac1dc724676e",
+  "task": 1,
+  "psa": 7.0,
+  "age": 76,
+  "months": 3,
+  "pirads": "5",
+  "psad": 0.07,
+  "psav": 1.23,
+  "psap": 6.0,
+  "vol": 94.53,
+  "dre": "Nodus",
+  "bx": "Positive",
+  "cspca": 0.7873657,
+  "medhx": "Osteoarthritis",
+  "meds": "paracetamol PRN",
+  "notes": "PSA 7 ng/mL. PI-RADS 5. PSAD 0.07. Prostate volume 95 mL. DRE nodus. csPCa 0.79.",
+  "pmhx": [
+    "Osteoarthritis"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "96 kg",
+    "height": "175 cm",
+    "bmi": "31.3",
+    "bp": "115/66 mmHg",
+    "hr": "65 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "2 yr ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "26 Feb 2025",
+  "enc_ref": "Dr. P. van Dijk (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Clinical review requested after multiparametric MRI revealed a PI-RADS 5 lesion and earlier biopsy results returned Positive."
+    },
+    {
+      "s": "History",
+      "t": "Surveillance protocols and lower urinary tract symptom oversight have guided care for an extended period. He is a 76-year-old retired mechanical engineer, Widowed, and Lives with partner. A Non-smoker, he sustains a rigorous routine involving twenty-kilometre cycling sessions twice weekly, alongside a weekly alcohol intake of seven units. His lower urinary tract symptoms are pronounced, registering an IPSS score of 30 from 35. Concurrent osteoarthritis is managed with paracetamol PRN. Apart from a recent podiatry visit and a stable right knee, his systemic health remains unchanged with no new complaints reported."
+    },
+    {
+      "s": "Physical examination",
+      "t": "Nodus DRE: The prostate exhibits asymmetric enlargement with a firm, irregular nodule localized to the left peripheral zone. Abdominal and cardiovascular assessments yield normal results. Vital parameters remain steady at 115/66 mmHg, with a pulse of 65 beats per minute."
+    }
+  ],
+  "occupation": "retired mechanical engineer",
+  "marital": "Widowed",
+  "living": "Lives with partner",
+  "next_of_kin": "Sibling (brother)",
+  "recent_other": [
+    "Podiatry — routine foot care"
+  ],
+  "alcohol": "7 units / week",
+  "exercise": "Cycling 2x/week, ~20 km",
+  "ipss": "IPSS score: 30/35 (severe LUTS)",
+  "admin": "Interpreter: not required. Consent for data use: signed.",
+  "mri_hospital": "Ziekenhuis Gelderse Vallei (Ede)",
+  "bx_isup": 2,
+  "bx_gl_prim": 3,
+  "bx_gl_sec": 4,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

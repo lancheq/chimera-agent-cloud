@@ -1,0 +1,60 @@
+{
+  "case_id": "PT-pseudo_665cf811e172",
+  "pid": "PT-pseudo_665cf811e172",
+  "age": 60,
+  "months": 3,
+  "psav": 2.7,
+  "dre": "Normal",
+  "bx": "Positive",
+  "medhx": "Chronic kidney disease, Obesity (BMI >30), Benign prostatic hyperplasia",
+  "meds": "tamsulosin",
+  "pmhx": [
+    "Chronic kidney disease",
+    "Obesity (BMI >30)",
+    "Benign prostatic hyperplasia"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "68 kg",
+    "height": "180 cm",
+    "bmi": "21.0",
+    "bp": "93/82 mmHg",
+    "hr": "60 bpm",
+    "smoking": "Current smoker (44 pack-yr)",
+    "last_dental": "2 yr ago",
+    "flu_vax": "Oct 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "18 Feb 2025",
+  "enc_ref": "Dr. F. de Boer (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Re-evaluation driven by a prior biopsy marked as Positive and continuing PSA elevation."
+    },
+    {
+      "s": "History",
+      "t": "A 60-year-old graphic designer who is married and lives with his partner presents for evaluation. His prostate-specific antigen trajectory has ascended to 16.5 ng/mL, reflecting a calculated velocity of 2.7 ng/mL annually. He is a current smoker (44 pack-yr). Lower urinary tract symptoms are minimal, scoring 2 on the International Prostate Symptom Score, and he remains on tamsulosin. Sedentary routines dominate his daily life, punctuated only by occasional walks, while weekly alcohol consumption averages 11 units. Medical background includes Chronic kidney disease with a recent estimated glomerular filtration rate below 60 mL/min/1.73m2, alongside a recent sleep clinic attendance for suspected obstructive sleep apnoea and a standard chest radiograph. A remote knee arthroscopy performed in his late forties has not produced lingering complications. An Arabic interpreter is required for this consultation to facilitate clear communication about his ongoing care. Obesity (BMI >30) and Benign prostatic hyperplasia are noted in his clinical record."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE: Normal. Prostate feels symmetrically smooth without palpable nodules or asymmetry. General assessment shows stable vital parameters without signs of systemic disease or lymphadenopathy. Abdominal palpation yields a soft, non-tender cavity devoid of palpable masses."
+    }
+  ],
+  "occupation": "graphic designer",
+  "marital": "Married",
+  "living": "Lives with partner",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Radiology — chest X-ray (routine)",
+    "Sleep clinic — suspected obstructive sleep apnoea"
+  ],
+  "alcohol": "11 units / week",
+  "exercise": "Sedentary lifestyle, occasional walking",
+  "ipss": "IPSS score: 2/35 (mild LUTS)",
+  "admin": "Interpreter (Arabic) requested for next visit.",
+  "mri_hospital": "Radboudumc",
+  "ct": null,
+  "active_treatment_flag": 0
+}

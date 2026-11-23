@@ -1,0 +1,86 @@
+{
+  "case_id": "PT-pseudo_67728e41a2fa",
+  "id": "pseudo_67728e41a2fa",
+  "pid": "PT-pseudo_67728e41a2fa",
+  "task": 1,
+  "psa": 12.6,
+  "age": 77,
+  "months": 3,
+  "pirads": "5",
+  "psad": 0.13,
+  "psav": 1.49,
+  "psap": 14.2,
+  "vol": 104.0,
+  "dre": "Nodus",
+  "bx": "Positive",
+  "cspca": 0.80894667,
+  "medhx": "Hypercholesterolaemia, Chronic kidney disease, Osteoarthritis, Benign prostatic hyperplasia",
+  "meds": "atorvastatin, simvastatin, rosuvastatin, tamsulosin",
+  "notes": "PSA 12.6 ng/mL. PI-RADS 5. PSAD 0.13. Prostate volume 104 mL. DRE nodus. csPCa 0.81.",
+  "pmhx": [
+    "Hypercholesterolaemia",
+    "Chronic kidney disease",
+    "Osteoarthritis",
+    "Benign prostatic hyperplasia"
+  ],
+  "allergies": [
+    "Iodinated contrast (mild)"
+  ],
+  "vitals": {
+    "weight": "87 kg",
+    "height": "178 cm",
+    "bmi": "27.5",
+    "bp": "118/78 mmHg",
+    "hr": "61 bpm",
+    "smoking": "Ex-smoker (34 pack-yr, quit 2010)",
+    "last_dental": "2 yr ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "09 Feb 2025",
+  "enc_ref": "Dr. L. Smits (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Clinical reassessment seeks to address a previously confirmed low-grade prostate malignancy alongside a persistent upward PSA trajectory."
+    },
+    {
+      "s": "History",
+      "t": "Chronological age stands at 77 years, with professional background rooted in civil engineering prior to retirement. Initial evaluation for an elevated prostate-specific antigen occurred in 2022, culminating in an ISUP Grade Group 1 diagnosis. Current lower urinary tract complaints are managed via tamsulosin, yielding an International Prostate Symptom Score of 9. Comorbid conditions encompass hypercholesterolaemia, chronic kidney disease presenting with an estimated glomerular filtration rate under 60, and osteoarthritis. Pharmacological regimen includes atorvastatin, simvastatin, and rosuvastatin. Marital status is married, residing in an independent retirement community unit. A brother acts as the primary next of kin. Clinical attention also extends to a sleep medicine clinic for suspected obstructive sleep apnoea, alongside upcoming gastroenterology and dental visits. Lifestyle factors include a weekly swimming habit, a weekly alcohol intake of roughly 13 units, and ex-smoker status (34 pack-yr, quit 2010). A documented hypersensitivity to iodinated contrast media exists, and telephone consultations are preferred due to a residential distance exceeding 90 minutes from the primary clinic."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE: The prostate presents as asymmetrically enlarged, featuring a firm, discrete nodule localized to the left mid-gland area. Systemic assessment shows no abnormalities, with stable vital parameters and an absence of overt clinical deterioration."
+    }
+  ],
+  "occupation": "retired civil engineer",
+  "marital": "Married",
+  "living": "Lives in retirement community (independent unit)",
+  "next_of_kin": "Sibling (brother)",
+  "recent_other": [
+    "Sleep clinic — suspected obstructive sleep apnoea",
+    "Gastroenterology — surveillance colonoscopy",
+    "Dental — biannual check-up"
+  ],
+  "alcohol": "13 units / week",
+  "exercise": "Swimming 1x/week",
+  "ipss": "IPSS score: 9/35 (moderate LUTS)",
+  "admin": "Lives >90 min from clinic; phone follow-up preferred where clinically safe.",
+  "mri_hospital": "Antoni van Leeuwenhoek",
+  "bx_isup": 1,
+  "bx_gl_prim": 3,
+  "bx_gl_sec": 3,
+  "bx_gl_tert": null,
+  "bx_isup_pred": null,
+  "ct": null,
+  "cores_positive": null,
+  "cores_total": null,
+  "max_core_pct": null,
+  "growth_pattern": null,
+  "high_risk_patterns": null,
+  "pni": null,
+  "lvi": null,
+  "tumor_location": null,
+  "active_treatment_flag": 0
+}

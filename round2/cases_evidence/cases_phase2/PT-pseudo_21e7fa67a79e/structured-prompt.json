@@ -1,0 +1,55 @@
+{
+  "case_id": "PT-pseudo_21e7fa67a79e",
+  "pid": "PT-pseudo_21e7fa67a79e",
+  "age": 70,
+  "months": 3,
+  "psav": 2.49,
+  "dre": "Normal",
+  "bx": "Positive",
+  "medhx": "Not reported",
+  "meds": "None",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "100 kg",
+    "height": "183 cm",
+    "bmi": "29.9",
+    "bp": "123/79 mmHg",
+    "hr": "72 bpm",
+    "smoking": "Ex-smoker (29 pack-yr, quit 2007)",
+    "last_dental": "6 mo ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "01 Feb 2025",
+  "enc_ref": "Dr. N. Kuiper (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Assessment of a previously positive prostate biopsy alongside a steadily climbing PSA trajectory."
+    },
+    {
+      "s": "History",
+      "t": "First brought to clinical attention for a PSA elevation in late 2022, this 70-year-old gentleman has a previously positive prostate biopsy bucket recording Gleason 3+4 pathology. He endures severe lower urinary tract symptoms, scoring 34 on the IPSS, which heavily disrupts his daily activities despite a lack of prior surgical interventions. A retired postal worker who has never married, he resides alone with his adult daughter acting as primary contact and a longstanding friend listed as next of kin. His lifestyle includes cycling roughly 20 kilometres twice each week and drinking about five alcohol units weekly; he ceased smoking 29 pack-years ago back in 2007. Aside from a right knee arthroscopy in 2018 and a recent practice-nurse-administered influenza vaccine, his medical background remains clear. He explicitly denies unexplained weight loss, bone pain, or haematuria."
+    },
+    {
+      "s": "Physical examination",
+      "t": "Normal DRE: The prostate measures symmetrically enlarged, presenting a smooth capsule devoid of palpable nodules or asymmetry. General examination remains unremarkable, characterised by stable vital signs and an absence of systemic illness or lymphadenopathy."
+    }
+  ],
+  "occupation": "retired postal worker",
+  "marital": "Never married",
+  "living": "Lives alone; adult daughter is primary contact",
+  "next_of_kin": "Long-time friend (no close family)",
+  "recent_other": [
+    "GP practice nurse — flu vaccination"
+  ],
+  "alcohol": "5 units / week",
+  "exercise": "Cycling 2x/week, ~20 km",
+  "ipss": "IPSS score: 34/35 (severe LUTS)",
+  "admin": "Interpreter: not required. Consent for data use: signed.",
+  "mri_hospital": "LUMC (Leiden)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

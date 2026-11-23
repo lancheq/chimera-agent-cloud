@@ -1,0 +1,60 @@
+{
+  "case_id": "PT-pseudo_47d8b39fd07f",
+  "pid": "PT-pseudo_47d8b39fd07f",
+  "age": 60,
+  "months": 1,
+  "psav": 5.99,
+  "dre": "Normal",
+  "bx": "Negative",
+  "medhx": "Hypertension, COPD",
+  "meds": "amlodipine, valsartan, lisinopril, metoprolol, tiotropium, salbutamol PRN",
+  "pmhx": [
+    "Hypertension",
+    "COPD"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "78 kg",
+    "height": "186 cm",
+    "bmi": "22.5",
+    "bp": "140/82 mmHg",
+    "hr": "74 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "3 yr ago",
+    "flu_vax": "Sep 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "22 Jan 2025",
+  "enc_ref": "Dr. R. van den Berg (GP)",
+  "enc_type": "Re-evaluation - prior negative biopsy",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Rising PSA trajectory combined with intermediate mpMRI findings warrants specialist review following a previously Negative biopsy."
+    },
+    {
+      "s": "History",
+      "t": "The patient, a 60-year-old retired baker, initially presented for evaluation of PSA elevation in early 2022, with values climbing to 23.5 ng/mL before stabilizing at 21.0 ng/mL. He reports moderate lower urinary tract symptoms, chiefly nocturia and a weak stream, yielding an IPSS score of 17. A Non-smoker, his past medical history encompasses well-controlled hypertension and mild COPD, currently managed with amlodipine, valsartan, lisinopril, metoprolol, tiotropium, and salbutamol PRN. He maintains an active lifestyle, cycling to work five days weekly, and drinks roughly seven units of alcohol each week. Married, he resides in a multi-generational household with his wife and adult son, a setup he describes as highly supportive. Beyond urinary complaints, he notes stable right knee osteoarthritis that required six physiotherapy sessions last year, alongside occasional mild insomnia. He explicitly denies bone pain, haematuria, or unexplained weight loss. He has previously declined research study participation and wishes to maintain that position."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE: Normal exam. Prostate texture is symmetrically enlarged, smooth, and firm, lacking discrete nodules or asymmetry. General assessment remains unremarkable, recording blood pressure at 140/82 mmHg and heart rate at 74 bpm, with no peripheral lymphadenopathy or abdominal masses detected."
+    }
+  ],
+  "occupation": "retired baker",
+  "marital": "Married",
+  "living": "Lives with adult child (multi-generational household)",
+  "next_of_kin": "Adult son (primary contact)",
+  "recent_other": [
+    "GP practice nurse — flu vaccination",
+    "Physiotherapy — lower back, six sessions",
+    "Radiology — chest X-ray (routine)"
+  ],
+  "alcohol": "7 units / week",
+  "exercise": "Cycling 5x/week (commuter)",
+  "ipss": "IPSS score: 17/35 (moderate LUTS)",
+  "admin": "Patient declined research participation previously; respect for AS-related trials.",
+  "mri_hospital": "LUMC (Leiden)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

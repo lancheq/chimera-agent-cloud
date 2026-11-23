@@ -1,0 +1,103 @@
+{
+  "radiology_report": "Radiology Division | Catharina Ziekenhuis, Eindhoven | 15 Feb 2025 | Multiparametric MRI Prostate\n\nClinical context: 63-year-old male with escalating PSA trajectory (latest 6.1 ng/mL) and prior negative systematic biopsy. Re-evaluation for targeted sampling.\n\nFINDINGS:\nThe gland measures 73.0 mL in total volume. Within the left mid-gland posterior peripheral zone, a focal lesion (approximately 12 × 9 × 11 mm) demonstrates restricted diffusion alongside early contrast enhancement. T2-weighted sequences show low signal intensity, while high b-value DWI (b=1400) reveals marked hypointensity. Dynamic contrast imaging confirms a focal early enhancement pattern. The transition zone exhibits moderate benign prostatic hyperplasia with cystic degeneration, aligning with the patient’s age and lower urinary tract symptom profile. There is no evidence of extracapsular extension or seminal vesicle invasion. Pelvic lymph nodes appear normal in size and morphology. Skeletal survey shows no suspicious osseous lesions.\n\nIMPRESSION:\nPI-RADS: 4\nprostate volume: 73.0\nPSA density: 0.08",
+  "previous_notes": [
+    {
+      "date": "24 Jun 2024",
+      "author": "Dr. E. Mulder (GP)",
+      "text": "A January 2024 assay recorded a PSA of 4.6 ng/mL, marking a continued ascent from the 3.5 ng/mL value noted the previous June. Due to this persistent elevation coupled with mild lower urinary tract symptoms, a systematic transrectal ultrasound-guided biopsy was carried out in June 2024. Histological analysis returned entirely benign, with no signs of malignancy."
+    },
+    {
+      "date": "29 Aug 2023",
+      "author": "Dr. E. Mulder (GP)",
+      "text": "An initial screening measurement in June 2023 yielded 3.5 ng/mL. The individual experiences occasional nocturia and a diminished urinary stream, which have been addressed through conservative measures. Given his age alongside this borderline elevation, an assessment was initiated at the urology outpatient clinic to facilitate comprehensive risk stratification and further investigation."
+    }
+  ],
+  "psa_trend": [
+    {
+      "date": "Jun 2023",
+      "val": 1.4
+    },
+    {
+      "date": "Jan 2024",
+      "val": 2.3
+    },
+    {
+      "date": "Aug 2024",
+      "val": 3.7
+    },
+    {
+      "date": "Feb 2025",
+      "val": 6.1
+    }
+  ],
+  "laboratory_results": [
+    {
+      "name": "PSA",
+      "val": "6.1 ng/mL",
+      "date": "04 Feb 2025",
+      "flag": "H"
+    },
+    {
+      "name": "Free PSA",
+      "val": "1.30 ng/mL",
+      "date": "04 Feb 2025",
+      "flag": ""
+    },
+    {
+      "name": "%Free PSA",
+      "val": "21%",
+      "date": "04 Feb 2025",
+      "flag": ""
+    },
+    {
+      "name": "Haemoglobin",
+      "val": "15.1 g/dL",
+      "date": "04 Feb 2025",
+      "flag": ""
+    },
+    {
+      "name": "WBC",
+      "val": "5.5 x10^9/L",
+      "date": "04 Feb 2025",
+      "flag": ""
+    },
+    {
+      "name": "Platelets",
+      "val": "201 x10^9/L",
+      "date": "04 Feb 2025",
+      "flag": ""
+    },
+    {
+      "name": "Creatinine",
+      "val": "98 umol/L",
+      "date": "04 Feb 2025",
+      "flag": ""
+    },
+    {
+      "name": "eGFR",
+      "val": ">60 mL/min/1.73m2",
+      "date": "04 Feb 2025",
+      "flag": ""
+    },
+    {
+      "name": "Testosterone",
+      "val": "11.3 nmol/L",
+      "date": "04 Feb 2025",
+      "flag": ""
+    },
+    {
+      "name": "Alkaline phosphatase",
+      "val": "74 U/L",
+      "date": "04 Feb 2025",
+      "flag": ""
+    },
+    {
+      "name": "LDH",
+      "val": "226 U/L",
+      "date": "04 Feb 2025",
+      "flag": ""
+    }
+  ],
+  "family_history": "No",
+  "cspca": 0.81674135
+}

@@ -1,0 +1,16 @@
+{
+  "denominator_note": "fact counts are repeated candidate/fact rows, not records/patients or billable information units",
+  "candidate_rows": 66,
+  "fact_rows": 400,
+  "by_recovery_status": {
+    "existing_legal_tool_can_return": 256,
+    "original_material_or_external_verification_required": 142,
+    "currently_unadjudicable": 2
+  },
+  "MRI_density_units_absent": {
+    "flags": 10,
+    "case_version_records": 10,
+    "risk_groups": 5
+  },
+  "none_of_the_fields_certifies_truth_selection": true
+}

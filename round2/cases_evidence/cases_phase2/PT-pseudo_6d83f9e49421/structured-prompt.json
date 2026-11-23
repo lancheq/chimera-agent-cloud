@@ -1,0 +1,57 @@
+{
+  "case_id": "PT-pseudo_6d83f9e49421",
+  "pid": "PT-pseudo_6d83f9e49421",
+  "age": 59,
+  "months": 2,
+  "psav": 4.76,
+  "dre": "Normal",
+  "bx": "Negative",
+  "medhx": "Not reported",
+  "meds": "None",
+  "pmhx": [],
+  "allergies": [],
+  "vitals": {
+    "weight": "84 kg",
+    "height": "191 cm",
+    "bmi": "23.0",
+    "bp": "125/75 mmHg",
+    "hr": "94 bpm",
+    "smoking": "Ex-smoker (27 pack-yr, quit 2008)",
+    "last_dental": "1 yr ago",
+    "flu_vax": "Oct 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "12 Jan 2025",
+  "enc_ref": "Dr. R. van den Berg (GP)",
+  "enc_type": "Re-evaluation - prior negative biopsy",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Clinical review prompted by a previously negative biopsy and steadily increasing prostate-specific antigen measurements."
+    },
+    {
+      "s": "History",
+      "t": "A 59-year-old warehouse manager entered initial evaluation for an incidental PSA elevation in late 2023. Serum levels have climbed from 22.0 ng/mL to 35.0 ng/mL over the preceding twelve months, despite the earlier negative biopsy result. He is an ex-smoker (27 pack-yr, quit 2008). Alcohol consumption averages 28 units weekly. Physical activity remains largely sedentary, punctuated by occasional walks. He is married and lives in assisted-living facility, where his spouse serves as the primary contact. Hearing impairment is present, and he consistently prefers written clinical summaries. Recent non-urological appointments include a pain clinic visit for chronic shoulder discomfort, routine dental check-ups, and six physiotherapy sessions for lower back stiffness. He denies hematuria, bone pain, or unexplained weight loss. Comorbidities are none. Active medication is none. Normal DRE."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE — texture: firm and symmetrically enlarged; mobility: unrestricted; asymmetry: absent. General examination remains unremarkable, with stable vital signs and no palpable lymphadenopathy or bone tenderness."
+    }
+  ],
+  "occupation": "warehouse manager",
+  "marital": "Married",
+  "living": "Lives in assisted-living facility",
+  "next_of_kin": "Spouse / partner (primary contact)",
+  "recent_other": [
+    "Pain clinic — chronic shoulder pain",
+    "Dental — biannual check-up",
+    "Physiotherapy — lower back, six sessions"
+  ],
+  "alcohol": "28 units / week",
+  "exercise": "Sedentary lifestyle, occasional walking",
+  "ipss": "IPSS score: 2/35 (mild LUTS)",
+  "admin": "Hard of hearing — speak clearly; prefers written summaries.",
+  "mri_hospital": "Ziekenhuis Gelderse Vallei (Ede)",
+  "ct": null,
+  "active_treatment_flag": 0
+}

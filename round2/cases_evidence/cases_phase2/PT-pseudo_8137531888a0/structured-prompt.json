@@ -1,0 +1,62 @@
+{
+  "case_id": "PT-pseudo_8137531888a0",
+  "pid": "PT-pseudo_8137531888a0",
+  "age": 77,
+  "months": 1,
+  "psav": 1.07,
+  "dre": "Normal",
+  "bx": "Positive",
+  "medhx": "Hypertension, Hypercholesterolaemia, Chronic kidney disease, Benign prostatic hyperplasia",
+  "meds": "amlodipine, valsartan, lisinopril, atorvastatin, rosuvastatin",
+  "pmhx": [
+    "Hypertension",
+    "Hypercholesterolaemia",
+    "Chronic kidney disease",
+    "Benign prostatic hyperplasia"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "85 kg",
+    "height": "173 cm",
+    "bmi": "28.4",
+    "bp": "128/82 mmHg",
+    "hr": "56 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "3 yr ago",
+    "flu_vax": "Oct 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "28 Jan 2025",
+  "enc_ref": "Dr. L. Smits (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Clinical review initiated for previously confirmed prostate adenocarcinoma alongside contemporary imaging data."
+    },
+    {
+      "s": "History",
+      "t": "Seventy-seven-year-old male presents for continued monitoring of a previously documented prostate malignancy, prompted by a PSA increase to 4.8 ng/mL. Never married, he resides independently while his grown son lives in the vicinity. A retired carpenter by trade, his medical background includes hypertension, elevated cholesterol, chronic kidney disease with renal function tracking below sixty millilitres per minute, and benign prostatic enlargement. Current pharmacotherapy consists of amlodipine, valsartan, lisinopril, atorvastatin, and rosuvastatin. He identifies as a non-smoker. Lower urinary tract complaints score fifteen on the IPSS scale, accompanied by restricted physical activity limited to seated movements and a weekly alcohol consumption of eight units. Unrelated consultations included a pulmonary assessment for stable chronic obstructive disease, an initial cognitive evaluation, and standard thyroid hormone testing. He reports no unexplained weight reduction, skeletal discomfort, or blood in the urine, noting only age-related tiredness without lifestyle alterations."
+    },
+    {
+      "s": "Physical examination",
+      "t": "Per rectum: gland exhibits uniform enlargement with a smooth contour, firm yet normal consistency, and absolutely no palpable irregularities or side-to-side differences. General survey reveals stable haemodynamics; cardiac rhythm measures fifty-six beats per minute without arrhythmia. Examination of the abdomen shows no organomegaly or palpable masses, while peripheral lymphatic chains remain clinically silent."
+    }
+  ],
+  "occupation": "retired carpenter",
+  "marital": "Never married",
+  "living": "Lives alone; adult son nearby",
+  "next_of_kin": "Adult son (primary contact)",
+  "recent_other": [
+    "Pulmonary function test — known COPD follow-up",
+    "Memory clinic — baseline screening",
+    "Endocrine — thyroid screening"
+  ],
+  "alcohol": "8 units / week",
+  "exercise": "Limited mobility — chair-based exercises only",
+  "ipss": "IPSS score: 15/35 (moderate LUTS)",
+  "admin": "Daughter manages communication; CC on letters with patient consent.",
+  "mri_hospital": "Erasmus MC",
+  "ct": null,
+  "active_treatment_flag": 0
+}

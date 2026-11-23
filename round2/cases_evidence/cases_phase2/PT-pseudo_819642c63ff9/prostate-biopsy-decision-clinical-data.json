@@ -1,0 +1,99 @@
+{
+  "radiology_report": "Subject: Prostate Imaging Review | Institution: Ziekenhuis Gelderse Vallei, Ede | Date: 10 Jan 2025 | Modality: Multiparametric MRI Prostate\n\nClinical Indication: Assessment requested after previous prostate cancer diagnosis. Presenting serum prostate-specific antigen registers at 5.7 ng/mL.\n\nFINDINGS:\nThe glandular organ spans a total volume of 42.59 mL. T2-weighted sequences highlight a sharply demarcated, hypointense focus within the right peripheral zone at the mid-gland level, measuring roughly 14 × 11 × 10 mm. Diffusion-weighted imaging shows pronounced restriction, mirrored by low ADC signal. Dynamic contrast phases demonstrate early, rapid focal enhancement compared to adjacent parenchyma. Capsular integrity remains intact without extracapsular spread or seminal vesicle involvement. Neurovascular bundles are unremarkable. Pelvic lymph nodes show no suspicious enlargement.\n\nIMPRESSION:\nPI-RADS 5 lesion in the right mid peripheral zone, highly suspicious for clinically significant prostate cancer.\nProstate volume: 42.59 mL.\nPSA density: 0.134 ng/mL/mL.",
+  "previous_notes": [
+    {
+      "date": "23 Jan 2023",
+      "author": "Dr. S. de Vries (GP)",
+      "text": "The consultation addressed routine wellness and recent prostate-specific antigen elevation. Aside from mild hesitancy, the patient denies urinary symptoms. The biomarker trajectory was reviewed, a specialist referral was initiated, and advanced imaging was ordered. Current lifestyle measures were maintained throughout the visit."
+    },
+    {
+      "date": "22 Jul 2023",
+      "author": "Dr. S. de Vries (GP)",
+      "text": "A follow-up session examined recent laboratory data. A prostate-specific antigen reading of 2.4 ng/mL prompted a repeat assay and urology referral for definitive evaluation. Guidance on subsequent actions was provided, and an outpatient appointment was secured. No acute concerns emerged. Independent living continues, supported by his brother."
+    }
+  ],
+  "psa_trend": [
+    {
+      "date": "Nov 2023",
+      "val": 2.4
+    },
+    {
+      "date": "Jun 2024",
+      "val": 3.7
+    },
+    {
+      "date": "Jan 2025",
+      "val": 5.7
+    }
+  ],
+  "laboratory_results": [
+    {
+      "name": "PSA",
+      "val": "5.7 ng/mL",
+      "date": "13 Dec 2024",
+      "flag": "H"
+    },
+    {
+      "name": "Free PSA",
+      "val": "1.12 ng/mL",
+      "date": "13 Dec 2024",
+      "flag": ""
+    },
+    {
+      "name": "%Free PSA",
+      "val": "20%",
+      "date": "13 Dec 2024",
+      "flag": ""
+    },
+    {
+      "name": "Haemoglobin",
+      "val": "12.8 g/dL",
+      "date": "13 Dec 2024",
+      "flag": "L"
+    },
+    {
+      "name": "WBC",
+      "val": "5.0 x10^9/L",
+      "date": "13 Dec 2024",
+      "flag": ""
+    },
+    {
+      "name": "Platelets",
+      "val": "246 x10^9/L",
+      "date": "13 Dec 2024",
+      "flag": ""
+    },
+    {
+      "name": "Creatinine",
+      "val": "89 umol/L",
+      "date": "13 Dec 2024",
+      "flag": ""
+    },
+    {
+      "name": "eGFR",
+      "val": ">60 mL/min/1.73m2",
+      "date": "13 Dec 2024",
+      "flag": ""
+    },
+    {
+      "name": "Testosterone",
+      "val": "10.9 nmol/L",
+      "date": "13 Dec 2024",
+      "flag": ""
+    },
+    {
+      "name": "Alkaline phosphatase",
+      "val": "89 U/L",
+      "date": "13 Dec 2024",
+      "flag": ""
+    },
+    {
+      "name": "LDH",
+      "val": "186 U/L",
+      "date": "13 Dec 2024",
+      "flag": ""
+    }
+  ],
+  "family_history": "Yes",
+  "cspca": 0.8136245
+}

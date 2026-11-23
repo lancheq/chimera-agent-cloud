@@ -1,0 +1,60 @@
+{
+  "case_id": "PT-pseudo_95d3fd02d5e0",
+  "pid": "PT-pseudo_95d3fd02d5e0",
+  "age": 63,
+  "months": 3,
+  "psav": 0.77,
+  "dre": "Normal",
+  "bx": "Positive",
+  "medhx": "Type 2 diabetes, Coronary artery disease",
+  "meds": "metformin, empagliflozin, aspirin 80 mg",
+  "pmhx": [
+    "Type 2 diabetes",
+    "Coronary artery disease"
+  ],
+  "allergies": [],
+  "vitals": {
+    "weight": "88 kg",
+    "height": "181 cm",
+    "bmi": "26.9",
+    "bp": "160/82 mmHg",
+    "hr": "66 bpm",
+    "smoking": "Non-smoker",
+    "last_dental": "2 yr ago",
+    "flu_vax": "Nov 2024"
+  },
+  "enc_dept": "Urology - outpatient",
+  "enc_date": "16 Feb 2025",
+  "enc_ref": "Dr. K. Bakker (GP)",
+  "enc_type": "Re-evaluation - prior PCa diagnosis",
+  "note_sections": [
+    {
+      "s": "Chief complaint",
+      "t": "Clinical assessment required due to persistently elevated prostate-specific antigen levels and a previous biopsy confirming malignancy."
+    },
+    {
+      "s": "History",
+      "t": "A 63-year-old retired bus driver initially entered investigation in mid-2023 after PSA markers began climbing. He abstains from tobacco and alcohol entirely. His medical background includes type 2 diabetes, currently controlled with metformin and empagliflozin, alongside coronary artery disease managed via daily aspirin 80 mg. Severe lower urinary tract symptoms have persisted for years, yielding an IPSS score of 28 out of 35. He covers roughly 20 kilometres on his bicycle twice weekly. Quarterly consultations with a diabetes nurse remain routine, complemented by a recently finished six-session physiotherapy regimen for mechanical lower back pain. Chronic shoulder discomfort is also monitored through a specialized pain clinic. Widowed, he shares a home with his partner and maintains a flexible timetable that easily accommodates his outpatient visits."
+    },
+    {
+      "s": "Physical examination",
+      "t": "DRE: Examination reveals a normal prostate profile; the gland is symmetrically enlarged with a smooth, firm consistency and lacks any palpable nodules or asymmetry. Vital parameters remain stable; blood pressure reads 160/82 mmHg while the cardiac rhythm is regular at 66 beats per minute. General observation notes a well-nourished individual free of acute distress, with clear pulmonary fields and consistent heart sounds upon auscultation."
+    }
+  ],
+  "occupation": "retired bus driver",
+  "marital": "Widowed",
+  "living": "Lives with partner",
+  "next_of_kin": "Adult son (primary contact)",
+  "recent_other": [
+    "Diabetes nurse — quarterly review",
+    "Physiotherapy — lower back, six sessions",
+    "Pain clinic — chronic shoulder pain"
+  ],
+  "alcohol": "0 units / week (alcohol-free)",
+  "exercise": "Cycling 2x/week, ~20 km",
+  "ipss": "IPSS score: 28/35 (severe LUTS)",
+  "admin": "Patient self-employed; flexible appointment slots requested.",
+  "mri_hospital": "Maastricht UMC+",
+  "ct": null,
+  "active_treatment_flag": 0
+}
