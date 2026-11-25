@@ -56,7 +56,8 @@ embedding 模型路径 `resources/embedding_model`，维度 768；reranker 路�
 
 | 报告里提到的路径 | 实际情况 |
 |---|---|
-| `02_extract_eau_pdf.py` / `03_merge_normalize.py` / `04_extract_qa.py` | **找到了**，在 `guideline_dataset/scripts/`（01~05 共 5 个）。本轮只同步了 rechunk 系列，旧的 5 个抽取脚本尚未推——因它们产出的是旧库，价值次之 |
+| `02_extract_eau_pdf.py` / `03_merge_normalize.py` / `04_extract_qa.py` | **已同步**至 `guideline_dataset/scripts/`（01~05 共 5 个 + README） |
+| 428 条 QA 的生成脚本 | **仍未找到**。`resources/guideline_qa.jsonl` 有 428 行、10 个字段，但 `guideline_dataset/scripts/04_extract_qa.py` 只产出 20 条、字段更少。428 条来自另一条未入库的流程 |
 | `rechunk_eau.py` | **服务器上不存在**，实际在本地 `chimera-c/` 工作目录，已同步 |
 | `configs/experiment/` 之外的其他实验预设 | `p01_prod_candidate_v1.lock.json` 已推；其他 arm 专属 config 未逐一排查 |
 | 38 个候选病例筛选程序 | 未定位到独立脚本；疑似由 `prepare_shared_plan_study.py` 与 `build_eligibility.py` 内含逻辑完成 |

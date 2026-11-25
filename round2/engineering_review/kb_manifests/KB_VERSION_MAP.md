@@ -12,9 +12,12 @@
 | **996** | v1 **编码入库的向量数** | `rechunk_20261124/merge_summary.json` → `shape[0]`；`index_summary.json` → `indexed` | 向量编码完成 |
 | **1372** | v2 切分产出的**记录总数** | `rechunk_20261124_v2/summary_v2.json` → `total` | v2 重切分 |
 | **983** | v2r1 中**复用（不重新编码）的向量数**，不是记录单元数 | `rechunk_20261124_v2r1/summary_r1.json` → `vectors_reused` | v2r1 表修复 |
-| **1037** | v2r1 处理后的**核心单元数**（1080 → 1037） | 同上 → `core_units_after` | v2r1 表修复 |
+| **1080** | v2 **实际向量单元数**（`vectors.npy` shape[0]，已读文件确认） | mmap 读取 `rechunk_20261124_v2/vectors.npy` | v2 编码 |
+| **1037** | v2r1 处理后的**核心单元数**与向量数（1080 → 1037，`records_r1.jsonl` 行数同为 1037） | 同上 → `core_units_after` | v2r1 表修复 |
 
 **1288 与 996 的差 292**，正好等于 `stats.json` 里的 `sections`（292）——即 `section_full` 类记录在编码阶段被合并，未逐条生成独立向量。这不是丢数据，是设计。
+
+**这个 292 在两代里都成立**：v2 的 `1372 − 1080 = 292`，与 v1 的 `1288 − 996 = 292` 完全相同。说明 `section_full` 这一类在两次重切分中都没有逐条编码，`vectors.npy` 的 shape 才是该版本真实的检索单元数。判断"新库到底多少条可检索单元"应看 vectors shape，不是 records 行数。
 
 **983 出现在检索报告里被当作"单元数"引用，属于口径误用**：它是 v2r1 复用向量的计数，与"记录数"不是同一个量。
 
@@ -87,7 +90,7 @@ section_confidence: high 21 / medium 8 / unknown 25
 `records*.jsonl`、`vectors*.npy`、`chroma.sqlite3` 含指南正文或完整向量，未上传。它们的规模与结构已由上述 summary 完整刻画：
 
 - `records.jsonl` / `records_v2.jsonl` / `records_r1.jsonl`：行数见上表记录数
-- `vectors.npy`：`996 × 768`（v1）、`1372 × 768`（v2，待核）、`vectors_r1.npy` 3.19 MB（v2r1）
+- `vectors.npy`：`996 × 768`（v1）、`1080 × 768`（v2）、`vectors_r1.npy` `1037 × 768`（v2r1），均为 float32，已用 mmap 实测 shape
 - `vec/shard_*.npy`：21 个（v1）、23 个（v2）
 
 需要逐条对应关系时，可用 `round2/scripts/c_line/probes/probe_a.py` 在读权限内复现。

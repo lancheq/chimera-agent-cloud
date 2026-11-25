@@ -22,6 +22,21 @@ plan_bound → tool:req/ret → model:req/ret → policy_decision
 
 这解释了为什么 adaptive 的 `policy_calls_adaptive = 288`（对应 91 例）而固定臂没有：每一轮取证都多一次决策调用。
 
+### 但两臂不是逐例一致
+
+`accounting.json` 的分组是：
+
+| 分组 | 数量 | 含义 |
+|---|---:|---|
+| both_right | 61 | 两臂都对 |
+| only_adaptive | 3 | 只有 adaptive 对 |
+| only_fixed | 3 | 只有 fixed 对 |
+| both_wrong | 24 | 两臂都错 |
+
+两臂各 64/91 正确（70.33%），混淆矩阵同为 `TP55 / FN1 / FP26 / TN9`——**矩阵相同是因为 3 例自适应独对与 3 例固定独对互相抵消，不是因为每一例答案都一样。** 有 6 组病例的最终判定在两臂之间发生了翻转。
+
+所以"正收益消失"的准确表述是：**净准确率回到与固定臂相同，但个体决策有 6 例互换**。这比"完全一致"更值得注意——它说明 adaptive 的策略确实改变了部分病例的取证路径，只是收益与损失相抵。
+
 ## 二、这推翻了报告里的功能链假设
 
 报告假设的顺序是「Planning → 状态控制 → ReAct 循环 → 工具调用 → …」。实测顺序是：
@@ -82,15 +97,23 @@ Return ONLY JSON {"additionalProperties": false, "properties": {"actions": {
 
 ## 五、91 例这个数字怎么来的
 
-`candidate_execution_config.json`：
+**91 是配对样本数（91 组病例，每组 Fixed/Adaptive 各跑一次），对应 182 份事件账本。**
 
-```json
-"cases": 46,
-"arm_instances": 92,
-"actual_llm_calls": 0
-```
+这台机器上跑了两个 worker，各自的 resolved config 分别记录：
 
-**46 例 × 2 臂 = 92 次实例**，其中 91 次有完整记录——"91 例"不是 91 个病人，是 92 个臂实例里有效的那 91 个。`accounting.json` 的 `risk_groups: 91` 与 `holdout_eligibility.json` 的 `t1_cases: 91` 同源。
+| worker | `cases` | `arm_instances` | `base_url` | `runtime_cohort_sha256` |
+|---|---:|---:|---|---|
+| worker0 | 46 | 92 | `127.0.0.1:8765` | `68cd2aff…` |
+| worker1 | 45 | 90 | `127.0.0.1:8766` | `e4418620…` |
+| **合计** | **91** | **182** | — | 两批病例不同 |
+
+目录实测一致：`worker0/{fixed,adaptive}/task1/` 各 46 个案例目录，`worker1/` 各 45 个，去重后共 91 个 case_id。
+
+> **一处需要更正的历史表述**：`candidate_execution_config.json` 里的 `cases: 46 / arm_instances: 92` 只是 **worker0 的**配置（其 `paths.output_dir` 明确指向 `worker0`），不是整个实验的配置。把 92 理解成"全部运行实例数"是误读——实际是 182。
+
+`accounting.json` 的 `risk_groups: 91` 与 `holdout_eligibility.json` 的 `t1_cases: 91` 都指这 91 组配对。
+
+**这 91 组是否对应 91 个独立患者，目前无法确认。** `holdout_eligibility.json` 自己写明 `"patient_identity_confirmed": false`，且 `limitation` 字段提示保守传递风险簇可能过度合并——即"无匹配"不等于"独立"。
 
 ## 六、`actual_llm_calls: 0` 的含义（已澄清）
 

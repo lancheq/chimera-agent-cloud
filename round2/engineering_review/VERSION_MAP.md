@@ -52,7 +52,7 @@
 
 | 项 | 值 | 来源 |
 |---|---|---|
-| 推理后端 | llama.cpp `llama-server`，SHA `5e8d6905...` | `host_smoke.py` |
+| 推理后端 | llama.cpp `llama-server`，`host_smoke.py` 记录 SHA `5e8d6905…`（对应 `~/llama-build/`，09-12 编译）**但实际进程用的是 `~/llama-build-avx2/` 的 `90eae07a…`（11-19 编译）** | `ps aux` + `sha256sum` 实测 |
 | 主模型 | `Qwen3.6-35B-A3B-UD-Q4_K_M.gguf`，SHA `ac0e2c11...` | 同上 |
 | tool parser | `gemma4` | `candidate_execution_config.json` |
 | 上下文 | `context_limit: 16384`，`context_reserve: 128` | `initial_plan.json` |

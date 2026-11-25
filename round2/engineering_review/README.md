@@ -17,6 +17,10 @@
 | C 线每个脚本干什么 | `../scripts/c_line/README.md` |
 | 哪些文件没上传、为什么 | `MISSING_FILES.md` |
 | 实验对应哪个代码版本 | `VERSION_MAP.md` |
+| 每个实验的入口脚本在哪 | `EXPERIMENT_ARTIFACT_INDEX.md` |
+| 模型/embedding/reranker 到底是什么 | `RESOURCE_MANIFEST.md` |
+| 新旧检索算法差在哪、新库切流了吗 | `c_line_analysis/C_LINE_RETRIEVAL_DIVERGENCE.md` |
+| 旧库是怎么建出来的 | `../guideline_dataset/scripts/README.md` + 五个脚本 |
 
 ## 目录
 
@@ -37,6 +41,8 @@ engineering_review/
 ├── FILE_MANIFEST.md                源码/配置同步清单与哈希
 ├── TRACE_INDEX.md                  轨迹索引
 ├── VERSION_MAP.md                  实验↔代码↔资源版本对应
+├── EXPERIMENT_ARTIFACT_INDEX.md    每个实验的入口、配置、产物
+├── RESOURCE_MANIFEST.md            主模型/embedding/reranker/环境身份
 └── MISSING_FILES.md                未同步清单及原因
 ```
 
@@ -46,7 +52,7 @@ engineering_review/
 
 **二、代码里的常量比文档可信。** 报告会写"分析前先填表"，`graph.py` 的实际调用顺序才作数。本轮已发现报告与实测顺序不一致（见 A_LINE_EXECUTION_ORDER 第二节）。
 
-**三、数字冲突先查口径，不要先怀疑笔误。** 1288 / 996 / 983 三个数曾被认为是三份报告互相矛盾，实际是三个不同阶段的量。同类问题还有 236 vs 238（GT 条目 vs 有效评估条目）、91（不是病例数，是 92 个臂实例里有效的 91 个）。
+**三、数字冲突先查口径，不要先怀疑笔误。** 1288 / 996 / 983 三个数曾被认为是三份报告互相矛盾，实际是三个不同阶段的量。同类问题还有 236 vs 238（GT 条目 vs 有效评估条目）；91 是**配对样本数**（worker0 46 + worker1 45），对应 182 份两臂账本，而单个 `candidate_execution_config.json` 里的 `cases: 46` 只是 worker0 的配置。
 
 ## 同步边界
 
