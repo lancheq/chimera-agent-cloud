@@ -52,9 +52,13 @@ class ChatOpenAICompat(ChatOpenAI):
 
     def _get_request_payload(self, *args, **kwargs):
         from chimera_agent_baseline.runtime_audit import current_runtime, RuntimeFatal
-        from chimera_agent_baseline.models.request_meter import MeteredEndpoint
+        from chimera_agent_baseline.models.request_meter import ChatRoot, MeteredEndpoint
         if current_runtime() and (not isinstance(self.client, MeteredEndpoint)
-                                  or not isinstance(self.async_client, MeteredEndpoint)):
+                                  or not isinstance(self.async_client, MeteredEndpoint)
+                                  or not isinstance(self.root_client, ChatRoot)
+                                  or not isinstance(self.root_async_client, ChatRoot)
+                                  or self.root_client.chat.completions.boundary is not self.client.boundary
+                                  or self.root_async_client.chat.completions.boundary is not self.async_client.boundary):
             raise RuntimeFatal("Active private runtime requires metered SDK clients")
         return super()._get_request_payload(*args, **kwargs)
 

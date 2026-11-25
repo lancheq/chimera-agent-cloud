@@ -80,7 +80,7 @@ def verify_profile(cfg, config_path: Path, *, registry=None):
     return profile
 
 
-def verify_identity(profile, cfg, config_path):
+def verify_identity(profile, cfg, config_path, *, host_smoke=False, case_pilot=False):
     path = Path(config_path).resolve()
     if str(path) != profile.config_path or hashlib.sha256(path.read_bytes()).hexdigest() != profile.config_sha256:
         raise RuntimeFatal('Entry configuration path/SHA mismatch')
@@ -88,7 +88,11 @@ def verify_identity(profile, cfg, config_path):
         raise RuntimeFatal('Effective entry configuration mismatch')
     if effective_environment() != profile.environment:
         raise RuntimeFatal('Effective runtime switches mismatch')
-    if profile.purpose != 'synthetic_test_only':
+    if host_smoke and case_pilot:
+        raise RuntimeFatal('Entry scopes are mutually exclusive')
+    expected_purpose = ('adaptive_case_pilot' if case_pilot else
+                        'adaptive_host_smoke' if host_smoke else 'synthetic_test_only')
+    if profile.purpose != expected_purpose:
         raise RuntimeFatal('No real-generation/submission profile approved')
     if type(profile.max_attempts) is not int or profile.max_attempts < 0 or type(profile.max_reserved_tokens) is not int or profile.max_reserved_tokens < 0:
         raise RuntimeFatal('Invalid finite request budget')

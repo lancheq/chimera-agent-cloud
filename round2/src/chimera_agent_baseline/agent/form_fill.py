@@ -173,6 +173,7 @@ def make_form_fill_node(
     self_refine: bool = False,
     atomic_check: bool = False,
     postprocess: bool = True,
+    strict_output: bool = False,
 ):
     """Return a LangGraph node closure that captures the unbound *model*.
 
@@ -339,10 +340,16 @@ def make_form_fill_node(
                         pass
                 # --- 补缺必要字段（扁平输出时 wrapper 字段可能缺失或为 None）---
                 # P6: decision 缺失时先 salvage raw_json，失败才走默认值（warning 区分）
-                if authority is None:
+                if strict_output:
+                    from chimera_agent_baseline.agent.reflection_contract import judgment_label
+                    if (judgment_label(task, judgment) is None
+                            or task in (1, 2) and judgment.get("confidence") is None
+                            or len((judgment.get("free_text") or "").strip()) < 40):
+                        raise ValueError("Missing model decision, confidence or rationale")
+                elif authority is None:
                     _fill_missing_decision_fields(task, judgment, raw_json, warnings)
                 judgment.setdefault("repeat_test", None)
-                if authority is None and (not judgment.get("free_text") or len(judgment.get("free_text", "")) < 40):
+                if authority is None and not strict_output and (not judgment.get("free_text") or len(judgment.get("free_text", "")) < 40):
                     # P5: 从 transcript 尾部提取"最后一个非工具调用文本块"——
                     # 直接截尾部会抓到 ReAct 工具调用语法裸文本（<function=...>），
                     # 实测 14/91 case free_text 中毒、GEval 0.00-0.20。
@@ -352,7 +359,8 @@ def make_form_fill_node(
                     warnings.append("free_text fallback: final answer extracted")
                 break
             except Exception as exc:  # noqa: BLE001 — any parse/validation failure triggers a retry
-                judgment = None if authority is not None else judgment
+                if authority is not None or strict_output:
+                    judgment = None
                 warnings.append(f"attempt {attempt}: {type(exc).__name__}: {exc}")
                 log.warning("form_fill parse failed (attempt %d) for %s: %s", attempt, case_id, exc)
                 if attempt == max_retries:
@@ -363,6 +371,8 @@ def make_form_fill_node(
                 )
 
         if judgment is None:
+            if strict_output:
+                raise RuntimeFatal("Adaptive smoke form did not produce a valid model decision")
             if authority is not None:
                 consumption_event('reflection_selection', {}, {}, status='failed_no_valid_initial',
                                   task=task, case_id=case_id)

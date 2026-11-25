@@ -26,7 +26,14 @@ log = logging.getLogger(__name__)
 def load_model(cfg: DictConfig) -> BaseChatModel:
     """Instantiate the chat model selected by ``cfg.model.provider``."""
     from chimera_agent_baseline.runtime_audit import current_runtime, RuntimeFatal
-    if current_runtime() is not None:
+    runtime = current_runtime()
+    if runtime is not None:
+        pilot = getattr(runtime, 'case_pilot', None)
+        if pilot is not None and pilot.dry:
+            raise RuntimeFatal("Case pilot admission cannot initialize a model")
+        if getattr(runtime, 'host_smoke', False) or pilot is not None:
+            from chimera_agent_baseline.models.request_meter import meter_openai
+            return meter_openai(_load_openai(cfg, loopback_only=True))
         # G1A only approves synthetic test profiles; tests supply fake models.
         # No production model initialization/download or network is authorized.
         raise RuntimeFatal("Synthetic entry approval cannot load a real model")
@@ -80,7 +87,7 @@ def _load_vllm(cfg: DictConfig) -> BaseChatModel:
     return ChatVLLM(llm=llm, sampling_params=params, tool_parser=tool_parser)
 
 
-def _load_openai(cfg: DictConfig) -> BaseChatModel:
+def _load_openai(cfg: DictConfig, *, loopback_only=False) -> BaseChatModel:
     """Build a :class:`ChatOpenAI` pointing at any OpenAI-compatible server.
 
     Reads:
@@ -108,7 +115,13 @@ def _load_openai(cfg: DictConfig) -> BaseChatModel:
         raise ValueError("cfg.model.base_url is required when provider='openai'")
 
     api_key_env = cfg.model.get("api_key_env", "LLAMA_API_KEY")
-    api_key = os.environ.get(api_key_env) or os.environ.get("OPENAI_API_KEY") or "no-key"
+    api_key = "no-key" if loopback_only else (
+        os.environ.get(api_key_env) or os.environ.get("OPENAI_API_KEY") or "no-key")
+    transport_options = {}
+    if loopback_only:
+        import httpx
+        transport_options = dict(http_client=httpx.Client(trust_env=False),
+                                 http_async_client=httpx.AsyncClient(trust_env=False))
 
     log.info("Loading OpenAI-compatible model %s from %s", cfg.model.model_id, base_url)
 
@@ -128,6 +141,7 @@ def _load_openai(cfg: DictConfig) -> BaseChatModel:
         top_p=cfg.generation.top_p,
         timeout=cfg.model.get("request_timeout", 600),
         extra_body=extra_body or {},
+        **transport_options,
         **({"max_retries": cfg.model.max_retries} if cfg.model.get("max_retries") is not None else {}),
     )
 

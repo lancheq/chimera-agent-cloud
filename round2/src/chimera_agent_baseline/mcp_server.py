@@ -59,6 +59,9 @@ def create_server(
     baseline does not consume embeddings.
     """
     mcp = FastMCP(name)
+    if access_config is not None and 'pilot_tools' in access_config:
+        from chimera_agent_baseline.case_pilot import verify_child_isolation
+        verify_child_isolation(data_dir)
     access = InformationAccess.from_config(data_dir, access_config) if access_config is not None else None
     packager = None
     if access_config is not None and access_config.get('evidence_package') is not None:
@@ -68,6 +71,8 @@ def create_server(
         raise ValueError('Guarded image predictor needs verified modality authorization; cannot enable yet')
     store = BoundCaseDataStore(data_dir,access) if access is not None else CaseDataStore(data_dir)
     tools = tools if tools is not None else TASK1_TOOLS
+    if access_config is not None and 'pilot_tools' in access_config:
+        tools = [spec for spec in tools if spec.name in access.contract['tools']]
     if access is not None:
         for spec in tools:
             expected=access.contract['tools'].get(spec.name)

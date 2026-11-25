@@ -243,10 +243,18 @@ class PrivateRuntime:
             _ACTIVE.reset(token)
 
     @contextmanager
-    def wire(self, payload, *, backend):
+    def wire(self, payload, *, backend, sdk_payload_digest=None):
         with self.lock:
+            digest = content_digest(payload)
+            maximum = payload.get('max_completion_tokens', payload.get('max_tokens'))
+            boundary = {} if sdk_payload_digest is None else dict(
+                sdk_payload_digest=sdk_payload_digest, effective_output_max=maximum)
             preflight = self.emit('request_preflight', backend=backend, payload=payload,
-                                  payload_digest=content_digest(payload))
+                                  payload_digest=digest, **boundary)
+            if getattr(self, 'host_smoke', False) and self.attempts >= self.max_attempts:
+                self.emit('request_rejected', backend=backend, reason='attempt_limit_before_count',
+                          payload_digest=digest)
+                raise RuntimeFatal('All-request budget exhausted before exact count')
             if self.identity_check:
                 try:
                     self.identity_check()
@@ -260,26 +268,27 @@ class PrivateRuntime:
                 raise
             except Exception as exc:
                 self.emit('request_rejected', backend=backend, reason='exact_context_unavailable',
-                          payload_digest=content_digest(payload))
+                          payload_digest=digest)
                 raise RuntimeFatal('Exact full request context could not be verified') from exc
             if not isinstance(state, dict):
                 raise RuntimeFatal('Exact counter returned an invalid receipt')
             count = state.get('input_tokens')
-            maximum = payload.get('max_completion_tokens', payload.get('max_tokens'))
+            if sdk_payload_digest is not None and content_digest(payload) != digest:
+                raise RuntimeFatal('Exact counter modified the effective request')
             if type(count) is not int or count < 0 or type(maximum) is not int or maximum < 0 or not state.get('fits'):
                 raise RuntimeFatal('Invalid or exhausted exact context reservation')
             reserve = count + maximum
             if self.attempts >= self.max_attempts or self.reserved_tokens + reserve > self.max_reserved_tokens:
                 self.emit('request_rejected', backend=backend, reason='fatal_budget',
-                          payload_digest=content_digest(payload))
+                          payload_digest=digest)
                 raise RuntimeFatal('All-request budget exhausted before wire attempt')
             self.attempts += 1
             self.reserved_tokens += reserve
             attempt = self.attempts
             self.emit('wire_attempt', attempt=attempt, backend=backend, payload=payload,
                       preflight_digest=preflight['digest'], attempt_scope='sdk_submit_or_offline_chat',
-                      payload_digest=content_digest(payload), context=state,
-                      reserved_tokens=reserve, total_reserved_tokens=self.reserved_tokens)
+                          payload_digest=digest, context=state,
+                          reserved_tokens=reserve, total_reserved_tokens=self.reserved_tokens, **boundary)
         try:
             yield attempt
         except BaseException as exc:
@@ -310,7 +319,8 @@ class PrivateRuntime:
                 manifest[str(relative)] = hashlib.sha256(data).hexdigest()
         return self.emit('temporary_evidence_exported', files=manifest)
 
-    def finalize_sockets(self, task, case_id, prediction, paths, values, *, weight_keys=None):
+    def finalize_sockets(self, task, case_id, prediction, paths, values, *, weight_keys=None,
+                         authority='existing_projection_and_align_unreviewed_D05'):
         import hashlib
         with case_scope(task, case_id):
             files = {}
@@ -350,4 +360,4 @@ class PrivateRuntime:
                                    reflection_consumption=status,
                                    external_reflection_status=external,
                                    reflection_receipt=asdict(receipt) if receipt is not None else None,
-                                   authority='existing_projection_and_align_unreviewed_D05')
+                                   authority=authority)

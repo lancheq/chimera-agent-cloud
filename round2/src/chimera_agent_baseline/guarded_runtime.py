@@ -19,6 +19,9 @@ from chimera_agent_baseline.information_access import InformationAccess, AccessD
 from chimera_agent_baseline.agent.evidence_features import decode_payload
 from chimera_agent_baseline.tools.base import CASE_DATA_FILENAMES_BY_TASK
 
+REFERENCE_AUDIT_FIELDS = frozenset({'ground_truth', 'reference_label', 'reference_reasoning',
+                                    'data_quality_annotations'})
+
 
 def enabled(cfg):return bool(cfg.agent.get('information_access',{}).get('enabled',False))
 
@@ -59,10 +62,20 @@ def prepare_case(cfg,input_dir,task,query,case_output):
     source=Path(input_dir)/cid
     prompts=[source/n for n in ('prompt.json','structured-prompt.json') if (source/n).is_file()]
     if not prompts:raise ValueError('Missing upfront source')
-    raw=json.loads(prompts[0].read_text())
+    raw_bytes=prompts[0].read_bytes()
+    raw=json.loads(raw_bytes)
     if any(json.loads(p.read_text())!=raw for p in prompts[1:]):raise ValueError('Conflicting prompt aliases')
     if raw.get('case_id')!=cid or int(raw.get('task',task))!=task:raise ValueError('Upfront identity differs')
-    if set(raw)&{'ground_truth','reference_label','reference_reasoning','data_quality_annotations'}:raise ValueError('Reference/quality audit fields cannot be upfront')
+    if raw.keys() & REFERENCE_AUDIT_FIELDS:raise ValueError('Reference/quality audit fields cannot be upfront')
+    from chimera_agent_baseline.runtime_audit import current_runtime, RuntimeFatal
+    runtime = current_runtime()
+    initial_sha = hashlib.sha256(raw_bytes).hexdigest()
+    admission = None
+    if task == 3 and getattr(runtime, 'adaptive_smoke', False):
+        admission = getattr(runtime, 't3_upfront_admission', None)
+        if (admission is None or admission['task'] != task or admission['case_id'] != cid
+                or admission['projected_sha256'] != initial_sha):
+            raise RuntimeFatal('T3 guarded upfront does not match the admitted view')
     from chimera_agent_baseline.case_loader import render_baseline_prompt
     # Official release prompts may omit task. Bind routing metadata from the
     # task directory before rendering; otherwise Jinja selects biopsy for T2/T3.
@@ -90,10 +103,14 @@ def prepare_case(cfg,input_dir,task,query,case_output):
         'session_id':cfg.agent.information_access.run_id+':'+digest(profile), 'case_id':cid,'task':task,
         'snapshot_id':hashlib.sha256(clinical.read_bytes()).hexdigest(),
         'budget_units':cfg.agent.information_access.budget_units,'max_attempts':cfg.agent.information_access.max_attempts,
-        'initial_source_sha256':hashlib.sha256(prompts[0].read_bytes()).hexdigest()}
+        'initial_source_sha256':initial_sha}
     from chimera_agent_baseline.information_access import tool_contract
     fields={f for x in tool_contract(task)['tools'].values() for f in x['fields']}
     config['initial_sections']={k:raw[k] for k in fields if k in raw}
+    pilot = getattr(runtime, 'case_pilot', None)
+    if pilot is not None:
+        config['pilot_tools'] = list(pilot.tools)
+        pilot.verify_materialized(raw, clinical, task)
     knowledge_manifest=cfg.agent.information_access.get('knowledge_manifest')
     if knowledge_manifest:
         from chimera_agent_baseline.knowledge_access import load_manifest, sha
@@ -113,6 +130,14 @@ def prepare_case(cfg,input_dir,task,query,case_output):
     # Only the structured upfront file is exposed. No clinical/audit/reference
     # sidecar or image vector file is sent to any model stage.
     bound['context']=context+'\n\n[Complete supplied upfront record; not newly acquired clinical data]\n'+canonical(raw)
+    if admission is not None:
+        runtime.emit('t3_upfront_bound', admission_digest=admission['digest'],
+                     session_id=access.binding['session_id'], snapshot_id=access.binding['snapshot_id'],
+                     projected_sha256=initial_sha)
+    fixture = getattr(runtime, 'evidence_test', None)
+    if fixture is not None:
+        from chimera_agent_baseline.agent.evidence_reconciliation import EvidenceSession
+        access.evidence_session = EvidenceSession(fixture, runtime.run_id, access.binding, raw)
     return path,access,bound
 
 

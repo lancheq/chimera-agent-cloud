@@ -38,6 +38,11 @@ def canonical(x):return json.dumps(x,ensure_ascii=False,sort_keys=True,allow_nan
 def digest(x):return hashlib.sha256(canonical(x).encode()).hexdigest()
 
 
+def _file_identity(path):
+    stat = path.stat()
+    return stat.st_dev, stat.st_ino, stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns
+
+
 def tool_contract(task):
     tools={1:TASK1_TOOLS,2:TASK2_TOOLS,3:TASK3_TOOLS}[task]
     return {'schema_version':1,'task':task,'cost_unit':'research_new_section_unit_not_currency',
@@ -48,12 +53,18 @@ def tool_contract(task):
 
 class InformationAccess:
     def __init__(self,*,ledger_path,session_id,case_id,task,snapshot_id,budget_units,max_attempts,
-                 initial_sections=None,initial_source_sha256=None,knowledge_snapshot_id=None,evidence_package_id=None):
+                 initial_sections=None,initial_source_sha256=None,knowledge_snapshot_id=None,evidence_package_id=None,
+                 pilot_tools=None):
         for name,value in [('budget_units',budget_units),('max_attempts',max_attempts)]:
             if type(value) is not int or value<0:raise ValueError('Nonnegative integer '+name+' required')
         if type(task) is not int or task not in (1,2,3):raise ValueError('Invalid task')
         if not all(isinstance(v,str) and v for v in (session_id,case_id,snapshot_id)):raise ValueError('Session, case and snapshot binding required')
         self.contract=tool_contract(task);self.path=Path(ledger_path);self.path.parent.mkdir(parents=True,exist_ok=True)
+        if pilot_tools is not None:
+            if (type(pilot_tools) is not list or not all(type(name) is str for name in pilot_tools)
+                    or pilot_tools != sorted(set(pilot_tools)) or not set(pilot_tools) <= self.contract['tools'].keys()):
+                raise ValueError('Invalid pilot tool subset')
+            self.contract['tools'] = {name: self.contract['tools'][name] for name in pilot_tools}
         initial_sections=deepcopy(initial_sections or {})
         allowed={f for t in self.contract['tools'].values() for f in t['fields']}
         if not set(initial_sections)<=allowed:raise ValueError('Unknown initial section')
@@ -96,22 +107,32 @@ class InformationAccess:
             raise ValueError('Invalid bound case identifier')
         if options['task']!=infer_task_from_data_dir(root):raise ValueError('Wrong task binding')
         path=root/case/CASE_DATA_FILENAMES_BY_TASK[options['task']]
+        sources = {path: _file_identity(path)}
         if hashlib.sha256(path.read_bytes()).hexdigest()!=options['snapshot_id']:raise ValueError('Clinical input snapshot differs')
         if options.get('knowledge_snapshot_id'):
             if not knowledge_manifest:
                 raise ValueError('Guarded MCP knowledge resource manifest validation requires a pinned manifest')
             from chimera_agent_baseline.knowledge_access import load_manifest
+            manifest_path = Path(knowledge_manifest).resolve()
+            sources[manifest_path] = _file_identity(manifest_path)
             load_manifest(knowledge_manifest, options['knowledge_snapshot_id'], require_alignment=True)
         elif knowledge_manifest:
             raise ValueError('Knowledge manifest requires an immutable snapshot id')
         initial=options.get('initial_sections') or {}
         if initial:
             prompt=next((root/case/n for n in ('prompt.json','structured-prompt.json') if (root/case/n).is_file()),None)
-            if prompt is None or hashlib.sha256(prompt.read_bytes()).hexdigest()!=options.get('initial_source_sha256'):
+            if prompt is None:
+                raise ValueError('Initial source binding differs')
+            sources[prompt] = _file_identity(prompt)
+            if hashlib.sha256(prompt.read_bytes()).hexdigest()!=options.get('initial_source_sha256'):
                 raise ValueError('Initial source binding differs')
             raw=json.loads(prompt.read_text())
             if any(k not in raw or raw[k]!=v for k,v in initial.items()):raise ValueError('Initial section not actually upfront')
-        return cls(**options)
+        if any(_file_identity(source) != stamp for source, stamp in sources.items()):
+            raise ValueError('Source identity changed during verification')
+        access = cls(**options)
+        access._verified_sources = sources
+        return access
 
     @contextmanager
     def _tx(self):
@@ -153,35 +174,134 @@ class InformationAccess:
         if row is None:raise AccessDenied('unobserved_knowledge')
         return json.loads(row[0])
 
+    def _authorize_action(self, tool, case_id, query):
+        knowledge = tool == 'search_guidelines'
+        spec = self.contract['tools'].get(tool)
+        fields = [] if knowledge or spec is None else spec['fields']
+        if case_id != self.binding['case_id']:
+            return 'cross_case', knowledge, fields
+        if not knowledge and spec is None:
+            return 'unknown_or_disabled_tool', knowledge, []
+        if knowledge and not self.binding['knowledge_snapshot_id']:
+            return 'knowledge_snapshot_unverified', knowledge, []
+        if knowledge and (not isinstance(query, str) or not query.strip() or len(query) > 10000):
+            return 'invalid_query', knowledge, []
+        return None, knowledge, fields
+
+    def _action_keys(self, knowledge, fields, query):
+        if knowledge:
+            return ['knowledge:' + digest({'query': query, 'snapshot': self.binding['knowledge_snapshot_id']})]
+        return ['clinical:' + field for field in fields]
+
+    def _admission(self, db, before, knowledge, keys):
+        new = [key for key in keys if db.execute('SELECT 1 FROM cache WHERE key=?', (key,)).fetchone() is None]
+        units = 0 if knowledge else len(new)
+        pending = {key for row in db.execute('SELECT keys FROM pending') for key in json.loads(row[0])}
+        denial = None
+        if before['admitted_attempts'] >= self.binding['max_attempts']:
+            denial = 'attempt_budget_exhausted'
+        elif pending.intersection(keys):
+            denial = 'request_pending'
+        elif before['spent_units'] + before['reserved_units'] + units > self.binding['budget_units']:
+            denial = 'information_budget_exhausted'
+        return new, units, denial
+
+    @contextmanager
+    def _read_ledger(self):
+        sources = getattr(self, '_verified_sources', None)
+        if not sources or any(_file_identity(path) != stamp for path, stamp in sources.items()):
+            raise AccessDenied('unverified_acquisition_source')
+        db = sqlite3.connect(self.path.resolve().as_uri() + '?mode=ro', uri=True, timeout=10)
+        try:
+            db.execute('BEGIN')
+            yield db
+        finally:
+            db.close()
+
+    def _settled_view(self, db, prefix_events=None):
+        """Verify closed accounting and describe it without reading cached contents."""
+        if db.execute('SELECT binding FROM meta').fetchall() != [(canonical(self.binding),)]:
+            raise AccessDenied('acquisition_ledger_binding_differs')
+        state = self._state(db)
+        if db.execute('SELECT 1 FROM pending LIMIT 1').fetchone():
+            raise AccessDenied('unsettled_acquisition')
+        events = [json.loads(row[0]) for row in db.execute('SELECT event FROM events ORDER BY seq')]
+        if not events or events[0]['status'] != 'session_initialized':
+            raise AccessDenied('acquisition_ledger_history_missing')
+        admitted, spent, reservations = 0, 0, {}
+        visible = set(events[0]['initial_fields'])
+        for event in events:
+            if event['session_id'] != self.binding['session_id'] or event['case_id'] != self.binding['case_id']:
+                raise AccessDenied('acquisition_event_binding_differs')
+        for event in events[1:]:
+            status, tool = event['status'], event['tool']
+            if event.get('allowed') is not True:
+                raise AccessDenied('acquisition_history_has_a_refusal_or_failure')
+            if status in ('reserved', 'cache_returned'):
+                admitted += 1
+            if status == 'reserved':
+                reservations[event['request_id']] = tool
+            elif status in ('returned', 'no_section_returned'):
+                if reservations.pop(event['request_id'], None) != tool:
+                    raise AccessDenied('acquisition_settlement_differs')
+                allowed = self.contract['tools'].get(tool, {}).get('fields', [])
+                fields = event['fields']
+                if (event.get('success') is not True or len(set(fields)) != event['charged_units']
+                        or not set(fields) <= set(allowed) or visible.intersection(fields)):
+                    raise AccessDenied('acquisition_settlement_differs')
+                spent += event['charged_units']
+                visible.update(event['fields'])
+            elif status != 'cache_returned':
+                raise AccessDenied('acquisition_history_has_a_refusal_or_failure')
+        cached_fields = {key.removeprefix('clinical:') for (key,) in db.execute(
+            "SELECT key FROM cache WHERE key LIKE 'clinical:%'")}
+        if (reservations or visible != cached_fields or spent != state['spent_units']
+                or admitted != state['admitted_attempts'] or not 0 <= spent <= state['budget_units']
+                or not 0 <= admitted <= state['max_attempts'] or state['reserved_units'] != 0):
+            raise AccessDenied('settled_acquisition_accounting_differs')
+        view = dict(state, binding_sha256=digest(self.binding), pending_requests=0,
+                    visible_sections=sorted(visible), event_count=len(events), events_sha256=digest(events))
+        if prefix_events is not None:
+            view['prefix_sha256'] = digest(events[:prefix_events])
+            view['new_events'] = [{k: event.get(k) for k in ('status', 'tool', 'request_id')}
+                                  for event in events[prefix_events:]]
+        return view
+
+    def settled_view(self, *, prefix_events=None):
+        with self._read_ledger() as db:
+            return self._settled_view(db, prefix_events)
+
+    def preview_action(self, tool, case_id, *, query=None):
+        """Preflight a chosen action. Real admission still runs in execute()."""
+        denial, knowledge, fields = self._authorize_action(tool, case_id, query)
+        if denial or (not knowledge and query is not None):
+            raise AccessDenied(denial or 'invalid_query')
+        keys = self._action_keys(knowledge, fields, query)
+        with self._read_ledger() as db:
+            state = self._settled_view(db)
+            new, units, denial = self._admission(db, state, knowledge, keys)
+            return dict(ledger=state, required_units=units, missing_keys=new, denial=denial,
+                        remaining_units=state['budget_units'] - state['spent_units'],
+                        remaining_attempts=state['max_attempts'] - state['admitted_attempts'])
+
     def execute(self,tool,case_id,fetch,*,query=None):
         started=time.monotonic();token=uuid.uuid4().hex
-        knowledge=tool=='search_guidelines'
-        spec=self.contract['tools'].get(tool)
-        fields=spec['fields'] if spec else []
-        keys=['knowledge:'+digest({'query':query,'snapshot':self.binding['knowledge_snapshot_id']})] if knowledge else ['clinical:'+f for f in fields]
-        denial=None;cached=None
+        denial,knowledge,fields=self._authorize_action(tool,case_id,query)
+        keys=self._action_keys(knowledge,fields,query) if denial is None else []
+        cached=None
         with self._tx() as db:
             before=self._state(db)
-            if case_id!=self.binding['case_id']:denial='cross_case'
-            elif not knowledge and not spec:denial='unknown_or_disabled_tool'
-            elif knowledge and not self.binding['knowledge_snapshot_id']:denial='knowledge_snapshot_unverified'
-            elif knowledge and (not isinstance(query,str) or not query.strip() or len(query)>10000):denial='invalid_query'
-            elif before['admitted_attempts']>=self.binding['max_attempts']:denial='attempt_budget_exhausted'
-            else:
-                available={k:db.execute('SELECT payload FROM cache WHERE key=?',(k,)).fetchone() for k in keys}
-                new=[k for k,v in available.items() if v is None]
-                pending={k for row in db.execute('SELECT keys FROM pending') for k in json.loads(row[0])}
-                units=0 if knowledge else len(new)
-                if pending.intersection(keys):denial='request_pending'
-                elif before['spent_units']+before['reserved_units']+units>self.binding['budget_units']:denial='information_budget_exhausted'
+            if denial is None:
+                new,units,denial=self._admission(db,before,knowledge,keys)
+            if denial is None:
+                db.execute('UPDATE meta SET attempts=attempts+1')
+                if not new:
+                    available={key:json.loads(db.execute('SELECT payload FROM cache WHERE key=?',(key,)).fetchone()[0]) for key in keys}
+                    cached=available[keys[0]] if knowledge else {'case_id':case_id,**{f:available['clinical:'+f] for f in fields}}
+                    self._event(db,{'request_id':token,'tool':tool,'status':'cache_returned','allowed':True,'success':True,'before':before,'after':self._state(db),'charged_units':0,'fields':fields,'elapsed_seconds':time.monotonic()-started})
                 else:
-                    db.execute('UPDATE meta SET attempts=attempts+1')
-                    if not new:
-                        cached=json.loads(available[keys[0]][0]) if knowledge else {'case_id':case_id,**{f:json.loads(available['clinical:'+f][0]) for f in fields}}
-                        self._event(db,{'request_id':token,'tool':tool,'status':'cache_returned','allowed':True,'success':True,'before':before,'after':self._state(db),'charged_units':0,'fields':fields,'elapsed_seconds':time.monotonic()-started})
-                    else:
-                        db.execute('INSERT INTO pending VALUES (?,?,?)',(token,canonical(keys),units))
-                        self._event(db,{'request_id':token,'tool':tool,'status':'reserved','allowed':True,'success':None,'before':before,'after':self._state(db),'fields':fields,'query_digest':digest(query) if knowledge else None})
+                    db.execute('INSERT INTO pending VALUES (?,?,?)',(token,canonical(keys),units))
+                    self._event(db,{'request_id':token,'tool':tool,'status':'reserved','allowed':True,'success':None,'before':before,'after':self._state(db),'fields':fields,'query_digest':digest(query) if knowledge else None})
             if denial:self._event(db,{'request_id':token,'tool':tool,'status':denial,'allowed':False,'success':False,'before':before,'after':self._state(db),'fields':fields})
         if denial:raise AccessDenied(denial)
         if cached is not None:return cached

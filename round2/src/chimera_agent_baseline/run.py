@@ -307,7 +307,7 @@ def _mcp_args(cfg: DictConfig, input_dir: Path, registry: str) -> list[str]:
     return args
 
 
-async def _load_mcp_tools(cfg, input_dir, registry, task_int, access_path=None):
+async def _load_mcp_tools(cfg, input_dir, registry, task_int, access_path=None, *, evidence_session=None):
     log.info("Task %d: starting MCP server (data_dir=%s)", task_int, input_dir)
     client = MultiServerMCPClient(
         {
@@ -318,9 +318,15 @@ async def _load_mcp_tools(cfg, input_dir, registry, task_int, access_path=None):
                 "transport": "stdio",
                 "env": _mcp_environment(),
             },
-        }
+        },
+        **({"tool_interceptors": [evidence_session.attest_mcp_result]} if evidence_session is not None else {}),
     )
     tools = await client.get_tools()
+    from chimera_agent_baseline.runtime_audit import current_runtime
+    runtime = current_runtime()
+    pilot = getattr(runtime, 'case_pilot', None)
+    if pilot is not None:
+        pilot.verify_registry(tools, task_int, runtime)
     if access_path is not None:
         from chimera_agent_baseline.information_access import tool_contract
         allowed = set(tool_contract(task_int)["tools"])
@@ -363,6 +369,9 @@ async def _run_task_impl(
     task_summaries: list[dict] | None = None,
 ) -> int:
     """Run every case for one task; returns the number of predictions written."""
+    from chimera_agent_baseline.runtime_audit import current_runtime
+    runtime = current_runtime()
+    pilot = getattr(runtime, 'case_pilot', None)
     guarded_runtime.validate_options(cfg, predictor)
     registry = f"task{task_int}"
     queries = _filter_queries(load_cases(input_dir, task=task_int), cfg)
@@ -395,6 +404,7 @@ async def _run_task_impl(
         log.info("Task %d: predictor decision override ENABLED", task_int)
 
     guarded = guarded_runtime.enabled(cfg)
+    adaptive = cfg.agent.get("workflow") == "adaptive_v2_smoke"
     tools = [] if guarded else await _load_mcp_tools(cfg, input_dir, registry, task_int)
 
     # P0-2b: 成本对齐开关：predictor 只消费 LLM 已揭示的段落。
@@ -471,8 +481,15 @@ async def _run_task_impl(
             if guarded:
                 access_path, access, case_query = guarded_runtime.prepare_case(
                     cfg, input_dir, task_int, query, case_dir)
-                case_tools = await _load_mcp_tools(cfg, input_dir, registry, task_int, access_path)
-                graph = create_graph(case_tools, model, system_prompt, guarded_access=access, **graph_options)
+                evidence_session = getattr(access, 'evidence_session', None)
+                transport_options = {"evidence_session": evidence_session} if evidence_session is not None else {}
+                case_tools = await _load_mcp_tools(cfg, input_dir, registry, task_int, access_path,
+                                                  **transport_options)
+                if pilot is not None and pilot.dry:
+                    runtime.emit('case_pilot_dry_gate', ledger=access.snapshot())
+                    return 0
+                if not adaptive:
+                    graph = create_graph(case_tools, model, system_prompt, guarded_access=access, **graph_options)
             predictor_decision: dict[str, Any] = {}
             # P0-2b：默认改由「图内 predictor 节点」在 ReAct 之后计算（可启用成本对齐）。
             # CHIMERA_PREDICTOR_POST_REACT=0 时退回旧路径（图之前计算）。
@@ -512,7 +529,19 @@ async def _run_task_impl(
                 initial_state["information_access"] = access.snapshot()
             with case_scope(task_int, case_id):
                 consumption_event('graph_input', {}, initial_state, status='actual_input')
-                result = await graph.ainvoke(initial_state, {"recursion_limit": cfg.agent.max_iterations})
+                if adaptive:
+                    from chimera_agent_baseline import shared_plan
+                    runtime.emit("adaptive_dispatch", controller="shared_plan.acquire", version=2,
+                                 arm="adaptive", tools=[tool.name for tool in case_tools])
+                    # S4's optional legacy guard is not the wire authority. Every
+                    # invocation here reaches the G1T SDK meter under PrivateRuntime.
+                    def sdk_meter_only(*args, **kwargs):
+                        return {"authority": "G1T_post_serialization"}
+                    result, _, _ = await shared_plan.complete_case(
+                        cfg, "adaptive", query, case_dir, case_dir / "common_plan", access,
+                        case_query, case_tools, model, sdk_meter_only, strict_output=True)
+                else:
+                    result = await graph.ainvoke(initial_state, {"recursion_limit": cfg.agent.max_iterations})
                 consumption_event('graph_output', {}, result, status='observed')
 
             # form_fill is the single validation point: it parses the model's
@@ -582,6 +611,13 @@ async def run_agent(cfg: DictConfig) -> None:
     # A-2 补充（2026-10-28）：把批次输出目录透传给 form_fill，否则它的
     # trace / judgment_pre_calibration 会落到 cwd 下的 `output/`，与批次错位。
     guarded_runtime.validate_options(cfg)
+    if cfg.agent.get("workflow") == "adaptive_v2_smoke":
+        from chimera_agent_baseline import shared_plan
+        from chimera_agent_baseline.runtime_audit import current_runtime, RuntimeFatal
+        runtime = current_runtime()
+        if runtime is None or not getattr(runtime, "adaptive_smoke", False):
+            raise RuntimeFatal("Adaptive smoke workflow requires trusted formal-entry scope")
+        shared_plan.validate_config(cfg)
     os.environ["CHIMERA_OUTPUT_DIR"] = str(cfg.paths.output_dir)
 
     plan = _run_plan(cfg)
@@ -589,7 +625,9 @@ async def run_agent(cfg: DictConfig) -> None:
     _write_run_manifest(cfg, plan, status="running")
     task_summaries: list[dict] = []
     try:
-        model = load_model(cfg)
+        from chimera_agent_baseline.runtime_audit import current_runtime
+        pilot = getattr(current_runtime(), 'case_pilot', None)
+        model = None if pilot is not None and pilot.dry else load_model(cfg)
 
         # Deterministic predictor (decision from LLM 抽离). Loaded once, reused.
         predictor = None

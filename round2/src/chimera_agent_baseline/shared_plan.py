@@ -101,8 +101,11 @@ class Journal:
 class RecordedModel:
     def __init__(self, model, cfg, journal, token_guard):
         self.model, self.cfg, self.journal, self.token_guard = model, cfg, journal, token_guard
+        self.verify_closure = None
 
     def invoke(self, stage, request_id, messages, *, response_schema=None, final_only=False):
+        if self.verify_closure is not None:
+            self.verify_closure()
         options = self.cfg.agent.shared_plan
         limit = options[stage + '_max_tokens']
         configured=self.cfg.model.get('extra_body')
@@ -132,7 +135,9 @@ class RecordedModel:
                             stage=stage, messages=serialized, options=kwargs, context_budget=budget)
         started = time.monotonic()
         try:
-            response = self.model.invoke(messages, **kwargs)
+            from chimera_agent_baseline.runtime_audit import stage_scope
+            with stage_scope(stage):
+                response = self.model.invoke(messages, **kwargs)
         except Exception as exc:
             self.journal.append('model_error', request_id=request_id, stage=stage,
                 error_type=type(exc).__name__, elapsed_seconds=time.monotonic()-started)
@@ -336,22 +341,126 @@ def save_checkpoint(path, state):
     atomic_json(path,state)
 
 
+_BUDGET_STOPS = {
+    'attempt_budget_exhausted': 'tool_attempt_budget_before_dispatch',
+    'information_budget_exhausted': 'information_budget_before_dispatch',
+}
+
+
+def _formal_preview(action, request_id, tools, access, state, journal):
+    validate_actions([action], tools, 1)
+    prior = journal.find('tool_preflight', request_id)
+    if journal.find('tool_request', request_id):
+        if prior is None or prior['action'] != action.model_dump(mode='json'):
+            raise ValueError('Formal tool request is missing its matching preflight')
+        return prior['preview']
+    # A persisted request is handled by perform_action() without redispatching.
+    # If there is only a preflight, require exactly the same view before dispatch.
+    preview = access.preview_action(action.tool, access.binding['case_id'], query=action.query)
+    if preview['ledger']['admitted_attempts'] != state['requests'] - 1:
+        raise ValueError('Formal tool request count differs from settled ledger')
+    if prior:
+        if prior['preview'] != preview or prior['action'] != action.model_dump(mode='json'):
+            raise ValueError('Formal preflight differed before dispatch')
+    elif preview['denial'] is None:
+        journal.append('tool_preflight', request_id=request_id, action=action.model_dump(mode='json'),
+                       preview=preview)
+    return preview
+
+
+def _verify_formal_settlement(access, tool, preview):
+    before = preview['ledger']
+    after = access.settled_view(prefix_events=before['event_count'])
+    events = after['new_events']
+    statuses = [event['status'] for event in events]
+    if (after['prefix_sha256'] != before['events_sha256']
+            or after['admitted_attempts'] != before['admitted_attempts'] + 1
+            or not 0 <= after['spent_units'] - before['spent_units'] <= preview['required_units']
+            or statuses not in (['cache_returned'], ['reserved', 'returned'], ['reserved', 'no_section_returned'])
+            or any(event['tool'] != tool for event in events)):
+        raise ValueError('Formal tool settlement differs from preflight')
+
+
+def _formal_closure(state, access, journal, *, blocked=None):
+    from chimera_agent_baseline.runtime_audit import current_runtime
+    runtime = current_runtime()
+    if runtime is None:
+        raise ValueError('Formal acquisition closure needs private runtime')
+    ledger = access.settled_view()
+    if (state['pending_action'] is not None or ledger['admitted_attempts'] != state['requests']
+            or blocked is not None and blocked['preview']['ledger'] != ledger):
+        raise ValueError('Cannot seal acquisition with changed or unsettled accounting')
+    receipt = dict(run_id=runtime.run_id, phase='acquisition', checkpoint_binding=state['binding'],
+                   ledger=ledger, stopped_action=blocked, observations_sha256=digest(state['observations']))
+    budget = {key: ledger[key] for key in ('spent_units', 'reserved_units', 'admitted_attempts',
+                                         'budget_units', 'max_attempts', 'visible_sections')}
+    event = journal.append('acquisition_stop', arm='adaptive', reason=state['stop_reason'],
+                           explanation=state['stop_explanation'], requests=state['requests'],
+                           policy_turns=state['policy_turns'], budget=budget, closure=receipt)
+    state['closure_sha256'] = event['sha256']
+
+
+def _verify_formal_closure(state, access, journal):
+    from chimera_agent_baseline.runtime_audit import current_runtime
+    stops = [event for event in journal.events if event['kind'] == 'acquisition_stop']
+    runtime = current_runtime()
+    if len(stops) != 1 or runtime is None:
+        raise ValueError('Formal checkpoint needs a unique private closure')
+    event = stops[0]
+    receipt = event['closure']
+    if (state.get('closure_sha256') != event['sha256']
+            or state['phase'] not in ('diagnosis', 'form_fill', 'complete')
+            or state['pending_action'] is not None or receipt['run_id'] != runtime.run_id
+            or receipt['phase'] != 'acquisition'
+            or receipt['checkpoint_binding'] != state['binding']
+            or receipt['observations_sha256'] != digest(state['observations'])
+            or event['reason'] != state['stop_reason'] or event['explanation'] != state['stop_explanation']
+            or event['requests'] != state['requests'] or event['policy_turns'] != state['policy_turns']
+            or receipt['ledger'] != access.settled_view()):
+        raise ValueError('Formal closure does not match checkpoint and settled ledger')
+    return event['sha256']
+
+
 async def acquire(cfg, arm, artifact, context, tools, access, directory, recorded, journal, common_directory=None):
     path=directory/'candidate_checkpoint.json'
     expected=digest(dict(access=access.binding,plan_id=artifact['plan_id'],arm=arm))
+    formal = getattr(recorded, 'formal_smoke', False)
+    has_closure = formal and any(event['kind'] == 'acquisition_stop' for event in journal.events)
     if path.exists():
         state=json.loads(path.read_text())
         if state['binding']!=expected:raise ValueError('Candidate checkpoint binding differs')
     else:
+        if has_closure:
+            raise ValueError('Formal closure exists without a checkpoint')
         state=dict(binding=expected,arm=arm,phase='acquiring',remaining_plan=deepcopy(artifact['actions']),
             first_action_pending=bool(artifact['actions']),requests=0,policy_turns=0,observations=[],pending_action=None,
             stop_reason=None,stop_explanation=None)
         save_checkpoint(path,state)
+    if has_closure:
+        _verify_formal_closure(state, access, journal)
     guarded_runtime.verify_messages(access,messages_from_dict(state['observations']))
     by_name={t.name:t for t in tools}
     while state['phase']=='acquiring':
         if state['pending_action']:
-            message=await perform_action(Action(**state['pending_action']), 'tool:'+str(state['requests']), by_name, access, journal, cfg.agent.step_timeout)
+            action = Action(**state['pending_action'])
+            request_id = 'tool:' + str(state['requests'])
+            if formal:
+                preview = _formal_preview(action, request_id, tools, access, state, journal)
+                if preview['denial'] in _BUDGET_STOPS:
+                    state.update(phase='diagnosis', pending_action=None, requests=state['requests'] - 1,
+                                 stop_reason=_BUDGET_STOPS[preview['denial']], stop_explanation=None)
+                    _formal_closure(state, access, journal, blocked=dict(
+                        request_id=request_id, action=action.model_dump(mode='json'), preview=preview))
+                    save_checkpoint(path, state)
+                    break
+                if preview['denial'] is not None:
+                    raise ValueError('Invalid formal preflight denial')
+            message=await perform_action(action, request_id, by_name, access, journal, cfg.agent.step_timeout)
+            if formal:
+                if message.status == 'error':
+                    from chimera_agent_baseline.runtime_audit import RuntimeFatal
+                    raise RuntimeFatal('Adaptive smoke tool request was denied')
+                _verify_formal_settlement(access, action.tool, preview)
             if state['requests']==1 and not state['observations'] and common_directory is not None:
                 value=bind_common_first_observation(common_directory,artifact,message)
                 atomic_json(directory/'first_observation.json',value)
@@ -402,8 +511,13 @@ async def acquire(cfg, arm, artifact, context, tools, access, directory, recorde
             if isinstance(decision,PolicyPlan):
                 decision=decision.decision()
             state['policy_turns']+=1
+            previous_plan = state['remaining_plan']
             state['remaining_plan']=[x.model_dump(mode='json') for x in decision.remaining_plan]
-            journal.append('policy_decision',policy_turn=state['policy_turns'],decision=decision.model_dump(mode='json'))
+            journal_details = {}
+            if getattr(recorded, 'formal_smoke', False):
+                journal_details = dict(previous_plan=previous_plan, plan_replaced=previous_plan != state['remaining_plan'])
+            journal.append('policy_decision',policy_turn=state['policy_turns'],
+                           decision=decision.model_dump(mode='json'), **journal_details)
             if decision.action=='stop':
                 state.update(stop_reason='policy_stop',stop_explanation=decision.reason)
             else:
@@ -412,8 +526,11 @@ async def acquire(cfg, arm, artifact, context, tools, access, directory, recorde
                 save_checkpoint(path,state)
                 continue
         state['phase']='diagnosis'
-        journal.append('acquisition_stop',arm=arm,reason=state['stop_reason'],explanation=state['stop_explanation'],
-            requests=state['requests'],policy_turns=state['policy_turns'],budget=guarded_runtime.public_budget(access))
+        if formal:
+            _formal_closure(state, access, journal)
+        else:
+            journal.append('acquisition_stop',arm=arm,reason=state['stop_reason'],explanation=state['stop_explanation'],
+                requests=state['requests'],policy_turns=state['policy_turns'],budget=guarded_runtime.public_budget(access))
         save_checkpoint(path,state)
     return state
 
@@ -427,6 +544,75 @@ class FormModel:
     def invoke(self, messages):
         self.calls+=1
         return self.recorded.invoke('form_fill','form-fill:'+str(self.calls),messages)
+
+
+async def complete_case(cfg, arm, query, case, plan_directory, access, bound, tools, model,
+                        token_guard, *, strict_output=False):
+    """Run the same per-case controller and formatter used by the research arms."""
+    artifact,reused=load_or_generate_plan(cfg,access,bound['context'],tools,plan_directory,model,token_guard)
+    atomic_json(case/'initial_plan.json',artifact)
+    journal=Journal(case/'candidate_events.jsonl')
+    journal.append('initial_plan_bound',plan_id=artifact['plan_id'],shared_plan_reused=reused,
+        arm=arm,knowledge_snapshot_id=access.binding['knowledge_snapshot_id'])
+    recorded=RecordedModel(model,cfg,journal,token_guard)
+    recorded.formal_smoke = strict_output
+    state=await acquire(cfg,arm,artifact,bound['context'],tools,access,case,recorded,journal,common_directory=plan_directory)
+    observations=messages_from_dict(state['observations'])
+    guarded_runtime.verify_messages(access,observations)
+    if strict_output:
+        from chimera_agent_baseline.runtime_audit import RuntimeFatal, current_runtime
+        closure = _verify_formal_closure(state, access, journal)
+        current_runtime().emit('adaptive_acquisition_closed', closure_sha256=closure,
+                               reason=state['stop_reason'])
+
+        def verify_before_request():
+            try:
+                _verify_formal_closure(state, access, journal)
+            except Exception as error:
+                raise RuntimeFatal('Acquisition closure changed before model request') from error
+
+        recorded.verify_closure = verify_before_request
+    if state['phase']=='diagnosis':
+        messages=[SystemMessage(content=diagnostic_system(query['task'])),
+            HumanMessage(content='[COMMON_DIAGNOSIS]\n'+bound['context']+
+                '\nShared initial plan: '+canonical(artifact['actions'])+
+                '\nActual verified observations: '+canonical(observation_view(observations))+
+                '\nActual budget: '+canonical(guarded_runtime.public_budget(access))+
+                '\nProvide a concise clinical assessment using the observed evidence. Tool refusal/no data is not negative clinical evidence. Do not assume unseen results. Acquisition is finished; do not call tools.')]
+        response=recorded.diagnostic(messages)
+        state.update(phase='form_fill',diagnostic_draft=messages_to_dict([response]))
+        save_checkpoint(case/'candidate_checkpoint.json',state)
+    if state['phase']=='form_fill':
+        if strict_output:
+            _verify_formal_closure(state, access, journal)
+        import os
+        previous=os.environ.get('CHIMERA_OUTPUT_DIR')
+        os.environ['CHIMERA_OUTPUT_DIR']=str(cfg.paths.output_dir)
+        try:
+            fill=make_form_fill_node(FormModel(recorded),max_retries=cfg.agent.form_fill.max_retries,
+                decision_override=False,self_refine=False,atomic_check=False,postprocess=False,
+                strict_output=strict_output)
+            result=fill(dict(messages=[HumanMessage(content=bound['context']),*observations,
+                *messages_from_dict(state['diagnostic_draft'])],case_id=query['case_id'],task=query['task'],
+                patient={'psa':query.get('psa'),'age':query.get('age')},information_access=access.snapshot(),case_dir=None))
+        finally:
+            if previous is None:os.environ.pop('CHIMERA_OUTPUT_DIR',None)
+            else:os.environ['CHIMERA_OUTPUT_DIR']=previous
+        state.update(phase='complete',structured_response=result['structured_response'],
+            processing_stages=result['processing_stages'],form_fill_warnings=result['form_fill_warnings'])
+        save_checkpoint(case/'candidate_checkpoint.json',state)
+    if state['phase']!='complete':raise ValueError('Unknown candidate checkpoint phase')
+    if strict_output:
+        _verify_formal_closure(state, access, journal)
+    snapshot=access.snapshot()
+    if snapshot['pending_requests']:raise RuntimeError('Unsettled acquisition at completion')
+    result=dict(structured_response=state['structured_response'],processing_stages=state['processing_stages'],
+        form_fill_warnings=state['form_fill_warnings'],
+        messages=[HumanMessage(content=bound['context']),*observations,*messages_from_dict(state['diagnostic_draft'])],
+        disease_plan={'plan_id':artifact['plan_id'],'actions':artifact['actions']},
+        policy_model_turns=state['policy_turns'],policy_trace=[e for e in journal.events if e['kind'] in
+            ('tool_request','tool_return','policy_decision','acquisition_stop')],information_access=snapshot)
+    return result, state, artifact
 
 
 async def run_arm(cfg, arm, input_dir, query, output, common_directory, model, token_guard):
@@ -458,50 +644,9 @@ async def run_arm(cfg, arm, input_dir, query, output, common_directory, model, t
         try:
             session_path,access,bound=guarded_runtime.prepare_case(local,input_dir,query['task'],query,case)
             tools=await _load_mcp_tools(local,input_dir,f"task{query['task']}",query['task'],session_path)
-            artifact,reused=load_or_generate_plan(local,access,bound['context'],tools,plan_directory,model,token_guard)
-            atomic_json(case/'initial_plan.json',artifact)
-            journal=Journal(case/'candidate_events.jsonl')
-            journal.append('initial_plan_bound',plan_id=artifact['plan_id'],shared_plan_reused=reused,
-                arm=arm,knowledge_snapshot_id=access.binding['knowledge_snapshot_id'])
-            recorded=RecordedModel(model,local,journal,token_guard)
-            state=await acquire(local,arm,artifact,bound['context'],tools,access,case,recorded,journal,common_directory=plan_directory)
-            observations=messages_from_dict(state['observations'])
-            guarded_runtime.verify_messages(access,observations)
-            if state['phase']=='diagnosis':
-                messages=[SystemMessage(content=diagnostic_system(query['task'])),
-                    HumanMessage(content='[COMMON_DIAGNOSIS]\n'+bound['context']+
-                        '\nShared initial plan: '+canonical(artifact['actions'])+
-                        '\nActual verified observations: '+canonical(observation_view(observations))+
-                        '\nActual budget: '+canonical(guarded_runtime.public_budget(access))+
-                        '\nProvide a concise clinical assessment using the observed evidence. Tool refusal/no data is not negative clinical evidence. Do not assume unseen results. Acquisition is finished; do not call tools.')]
-                response=recorded.diagnostic(messages)
-                state.update(phase='form_fill',diagnostic_draft=messages_to_dict([response]))
-                save_checkpoint(case/'candidate_checkpoint.json',state)
-            if state['phase']=='form_fill':
-                import os
-                previous=os.environ.get('CHIMERA_OUTPUT_DIR')
-                os.environ['CHIMERA_OUTPUT_DIR']=str(output/arm)
-                try:
-                    fill=make_form_fill_node(FormModel(recorded),max_retries=cfg.agent.form_fill.max_retries,
-                        decision_override=False,self_refine=False,atomic_check=False,postprocess=False)
-                    result=fill(dict(messages=[HumanMessage(content=bound['context']),*observations,
-                        *messages_from_dict(state['diagnostic_draft'])],case_id=query['case_id'],task=query['task'],
-                        patient={'psa':query.get('psa'),'age':query.get('age')},information_access=access.snapshot(),case_dir=None))
-                finally:
-                    if previous is None:os.environ.pop('CHIMERA_OUTPUT_DIR',None)
-                    else:os.environ['CHIMERA_OUTPUT_DIR']=previous
-                state.update(phase='complete',structured_response=result['structured_response'],
-                    processing_stages=result['processing_stages'],form_fill_warnings=result['form_fill_warnings'])
-                save_checkpoint(case/'candidate_checkpoint.json',state)
-            if state['phase']!='complete':raise ValueError('Unknown candidate checkpoint phase')
-            snapshot=access.snapshot()
-            if snapshot['pending_requests']:raise RuntimeError('Unsettled acquisition at completion')
-            result=dict(structured_response=state['structured_response'],processing_stages=state['processing_stages'],
-                form_fill_warnings=state['form_fill_warnings'],
-                messages=[HumanMessage(content=bound['context']),*observations,*messages_from_dict(state['diagnostic_draft'])],
-                disease_plan={'plan_id':artifact['plan_id'],'actions':artifact['actions']},
-                policy_model_turns=state['policy_turns'],policy_trace=[e for e in journal.events if e['kind'] in
-                    ('tool_request','tool_return','policy_decision','acquisition_stop')],information_access=snapshot)
+            result, state, artifact = await complete_case(
+                local, arm, query, case, plan_directory, access, bound, tools, model, token_guard)
+            snapshot = result['information_access']
             atomic_json(case/'prediction.json',result['structured_response'])
             _save_trace(case,query['case_id'],query['task'],result,time.monotonic()-started)
             (case/'.failed').unlink(missing_ok=True)

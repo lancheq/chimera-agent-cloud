@@ -37,6 +37,13 @@ from chimera_agent_baseline.runtime_audit import content_digest
 
 log = logging.getLogger(__name__)
 
+# 纵向 PSA 证据块（试验开关，默认关闭）。
+# 未设置 CHIMERA_LONGITUDINAL 时本文件行为与基线逐字节一致。
+# E1=纯时间排序 / E2=+来源与冲突 / E3=+斜率与不确定性
+_LONGITUDINAL_LEVEL = os.environ.get("CHIMERA_LONGITUDINAL", "").strip().upper()
+if _LONGITUDINAL_LEVEL not in ("E1", "E2", "E3"):
+    _LONGITUDINAL_LEVEL = ""
+
 # T1 工具集瘦身（2026-10-30 起为**生产默认**）
 #   GT 的 T1 病理医师从不调病理工具（0/91）：T1 问"该不该活检"，病理报告是
 #   **本次活检的结果**，读它等于看答案。去掉后 197 例真跑：rank +0.0732，
@@ -537,6 +544,15 @@ def _make_plan_node(
                     log.info("plan_node: %s gray zone %s — search_guidelines already selected",
                              case_id, gray_features)
 
+        # 实验专用：强制工具集（默认不设 = planner 自行决定，行为与基线一致）。
+        # 理由：planner 选择在 temperature=0 下仍不稳定，不固定则 E0/E2 读到
+        # 不同 section，注入效应与信息量差异混在一起，无法归因。
+        _FORCED = os.environ.get("CHIMERA_FORCE_TOOLS", "").strip()
+        if _FORCED:
+            selected_tools = [t.strip() for t in _FORCED.split(",")
+                              if t.strip() in tool_by_name]
+            log.info("plan_node: %s tools forced to %s (experiment)", case_id, selected_tools)
+
         log.info("plan_node: %s plan generated (%d chars), selected tools: %s",
                  case_id, len(plan_text), selected_tools)
 
@@ -545,6 +561,7 @@ def _make_plan_node(
 
         new_messages: list = []
         executed_tools: list[str] = []
+        _tool_results: dict[str, Any] = {}
 
         import asyncio
         for tool_name in selected_tools:
@@ -579,6 +596,7 @@ def _make_plan_node(
                     name=tool_name,
                 ))
                 executed_tools.append(tool_name)
+                _tool_results[tool_name] = result
                 if tool_name == "search_guidelines" and gray_zone:
                     # Pass the raw result — build_rag_injection normalizes
                     # every adapter shape (JSON string / dict / hit list /
@@ -612,6 +630,24 @@ def _make_plan_node(
         # reference block, so the agent reasons over ready-made guideline text.
         if forced_rag_injection:
             new_messages.insert(1, SystemMessage(content=forced_rag_injection))
+
+        # === 纵向 PSA 证据块（试验，默认关闭）===
+        # 只读 agent 已付费揭示的工具结果，不碰 case 文件，不增加 cost unit。
+        # 任何异常都被吞掉：模块故障不得中断主链。
+        if _LONGITUDINAL_LEVEL and _tool_results:
+            try:
+                from chimera_agent_baseline.agent.longitudinal.inject import build_block
+                _block = build_block(_tool_results, case_id=case_id, task=task,
+                                     level=_LONGITUDINAL_LEVEL)
+                if _block:
+                    new_messages.insert(
+                        2 if forced_rag_injection else 1,
+                        SystemMessage(content=_block),
+                    )
+                    log.info("plan_node: %s longitudinal %s injected (%d chars)",
+                             case_id, _LONGITUDINAL_LEVEL, len(_block))
+            except Exception as _exc:  # noqa: BLE001
+                log.warning("plan_node: %s longitudinal skipped: %s", case_id, _exc)
 
         log.info("plan_node: %s executed %d tools: %s",
                  case_id, len(executed_tools), executed_tools)
@@ -765,6 +801,7 @@ def create_graph(
     ):
         raise ValueError("plan_context_chars must be null or a positive integer")
     model_with_tools = model.bind_tools(tools)
+    evidence_session = getattr(guarded_access, 'evidence_session', None)
 
     def agent(state: AgentState) -> dict[str, Any]:
         started = time.monotonic()
@@ -774,6 +811,11 @@ def create_graph(
         if guarded_access is not None:
             from chimera_agent_baseline.guarded_runtime import public_budget
             messages=[*messages,SystemMessage(content='[Actual information-access budget; missing information remains unknown]\n'+json.dumps(public_budget(guarded_access))) ]
+        if evidence_session is not None:
+            context = evidence_session.decision_context()
+            if context is not None:
+                messages = [*messages, SystemMessage(content=context)]
+            messages = evidence_session.sdk_messages(messages)
         response = model_with_tools.invoke(messages)
         calls = getattr(response, "tool_calls", []) or []
         turn = state.get("policy_model_turns", 0) + 1
@@ -797,10 +839,14 @@ def create_graph(
 
     async def execute_tools(state: AgentState) -> dict[str, Any]:
         started = time.monotonic()
+        before = guarded_access.snapshot()['events'] if evidence_session is not None else None
         update = await tool_node.ainvoke(state)
         if guarded_access is not None:
             from chimera_agent_baseline.guarded_runtime import verify_messages
             update['information_access']=verify_messages(guarded_access,update.get('messages',[]))
+            if evidence_session is not None:
+                evidence_session.observe(state['messages'][-1].tool_calls, update.get('messages', []),
+                                         before, update['information_access']['events'])
         update["policy_trace"] = [action_event(
             "tools", "observe_results", elapsed_seconds=time.monotonic() - started,
             # Duration is for the whole ToolNode batch, not an individual tool.
