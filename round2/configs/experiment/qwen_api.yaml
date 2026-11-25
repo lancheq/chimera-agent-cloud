@@ -1,0 +1,40 @@
+# @package _global_
+# =============================================================================
+# Experiment overlay — 开发期提效：经第三方聚合平台调用 Qwen（OpenAI 兼容）。
+#
+# 目的：用同款架构 API 替代本地 Q4_K_M 推理，加速 prompt/策略迭代。
+#       提交前仍须切 qwen_local 本地 Q4 复跑 L3 验证。
+#
+# ⚠️ blsc 无 qwen3.6-35b-a3b（本地同款），默认选 Qwen3.5-35B-A3B
+#    （同 35B/3B MoE 架构，迁移损失最小）。
+#    若用户拍板选 B(Qwen3.7-Plus/Qwen3.8-Max) 或 C(GLM-5.2)，
+#    改下方 model_id 即可。
+#
+# ⚠️ API 全精度与本地 Q4_K_M 仍有行为差（架构代差 + 量化），
+#    提交前必须切 qwen_local 本地复跑验证。
+#
+# ⚠️ 不把 LLMAPI_KEY 写进 yaml/git/日志；key 仅存云端 .env (chmod 600)。
+#    .env 已在 .gitignore 中，不会被 commit。
+#
+# ⚠️ generation 参数与 qwen_local.yaml 对齐（temp=0.3, max_new_tokens=8192），
+#    使 API 输出尽量贴近本地 Q4，减少 prompt 迁移时的行为漂移。
+#    qwen_local 用 extra_body.reasoning_budget_tokens=4096 限制 thinking 预算，
+#    但该参数为 llama.cpp 专有，blsc API 不识别 → 此处不设。
+#    若 API 默认开启 thinking 导致输出异常，再按 API 文档添加对应参数。
+#
+#     make run RUN_ARGS="+experiment=qwen_api agent.tasks=[1] agent.limit=2"
+# =============================================================================
+
+model:
+  provider: openai
+  # 选 A (Qwen3.5-35B-A3B)；选 B 改 Qwen3.7-Plus / Qwen3.8-Max；选 C 改 GLM-5.2
+  model_id: Qwen3.5-35B-A3B
+  base_url: https://llmapi.blsc.cn/v1
+  api_key_env: LLMAPI_KEY
+  request_timeout: 600
+
+generation:
+  # 与 qwen_local.yaml 对齐，减少 API↔本地 Q4 行为漂移
+  temperature: 0.3
+  max_new_tokens: 8192
+  top_p: 0.95

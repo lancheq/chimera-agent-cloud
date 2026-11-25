@@ -1,0 +1,8 @@
+# @package _global_
+# Planner-removal architecture arm (also removes its plan-only few-shot path).
+# Use a NEW paths.output_dir for every run.
+# Keep model, tool allowlist, predictor, RAG index and output calibration equal
+# to the paired planned_react baseline. Add a turn cap as a SEPARATE ablation.
+agent:
+  workflow: react
+  force_rag_grayzone: false

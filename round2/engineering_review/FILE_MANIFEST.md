@@ -52,6 +52,31 @@ GitHub 基线：`main` @ `6c2cc540c51fda549dd6be24f4f364c74f653ecd`
 - 真实病例数据/真值内容：**0 处**（`run.py` 中 `_GT_FILES` 仅为官方数据集文件名常量，不含路径或数据）
 - 已知注意项：`host_smoke.py:14` 硬编码本机路径 `/home/hedongze/...`，属构建环境事实而非凭据，保持原样以便环境可复现。
 
+
+## 配置与根级文件同步（第二批）
+
+| 文件 | 状态 | 说明 |
+|---|---|---|
+| `configs/experiment/round2_react.yaml` | NEW | 第二轮 ReAct 主实验预设 |
+| `configs/experiment/qwen_local.yaml` | NEW | 本地 llama.cpp Q4_K_M 推理预设（127.0.0.1:8765） |
+| `configs/experiment/qwen_api.yaml` | NEW | 第三方聚合平台 Qwen（`api_key_env: LLMAPI_KEY`，**key 不入库**） |
+| `configs/experiment/container_qwen.yaml` | NEW | 容器内 Qwen 预设 |
+| `configs/experiment/school_ollama.yaml` | NEW | 校内 Ollama 预设 |
+| `configs/experiment/school_ollama_smoke.yaml` | NEW | 校内 Ollama 冒烟预设 |
+| `configs/experiment/{t1,t2,t3}_override.yaml` | NEW | 三任务参数覆盖 |
+| `configs/p01_prod_candidate_v1.lock.json` | NEW | P01 生产候选锁（含源码哈希、预算与晋升门） |
+| `Makefile` | NEW | Round 2 缺，补入 |
+| `.dockerignore` | NEW | Round 2 缺，补入 |
+| `inference.py` | UPDATED | 与服务器一致化 |
+| `AGENTS.md` | UPDATED | 实验执行约定最新版 |
+
+校验：上述 10 个配置与 4 个根级文件已与服务器 SHA256 逐一比对通过。
+
+### 配置侧安全结论
+
+- 9 个 experiment 预设中 8 个指向 `127.0.0.1`（本地/容器），1 个（`qwen_api.yaml`）指向外部聚合平台，仅存 `base_url` 与**环境变量名**，无凭据。
+- `p01_prod_candidate_v1.lock.json` 为纯元数据（id/purpose/status/mechanisms/fields/assets/budget/promotion_gates），无绝对路径。
+
 ## 尚未同步
 
-见 `MISSING_FILES.md`（配置快照、C 线建库脚本、A 线历史版本、运行轨迹等按批次推进）。
+见 `MISSING_FILES.md`（C 线建库脚本、A 线历史版本与运行轨迹按批次推进）。

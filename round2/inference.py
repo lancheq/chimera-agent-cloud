@@ -29,8 +29,10 @@ This entrypoint is the thin adapter between the two worlds:
 """
 
 import asyncio
+import hashlib
 import json
 import logging
+import math
 import os
 import tempfile
 from pathlib import Path
@@ -132,7 +134,58 @@ def _detect_task(slug_to_path: dict[str, Path]) -> int:
     )
 
 
-def _materialise_case(task: int, slug_to_path: dict[str, Path], root: Path, case_id: str) -> None:
+def _t3_upfront_view(source: Path, runtime: PrivateRuntime) -> tuple[dict, dict]:
+    """Admit fields from the official T3 structured-prompt Socket."""
+    original = source.read_bytes()
+    archived = runtime.root / 't3-upfront-original.json'
+    with archived.open('xb') as stream:
+        os.fchmod(stream.fileno(), 0o600)
+        stream.write(original)
+        stream.flush()
+        os.fsync(stream.fileno())
+    provenance = dict(source_socket=STRUCTURED_PROMPT_SLUG, source_path=str(source),
+                      archived_file=archived.name, original_sha256=hashlib.sha256(original).hexdigest())
+    try:
+        data = json.loads(original)
+    except (ValueError, UnicodeError) as error:
+        runtime.emit('t3_upfront_source_rejected', reason='invalid_json', **provenance)
+        raise RuntimeFatal('Invalid T3 structured-prompt JSON') from error
+    if not isinstance(data, dict):
+        runtime.emit('t3_upfront_source_rejected', reason='expected_json_object', **provenance)
+        raise RuntimeFatal('T3 structured-prompt must be an object')
+    from chimera_agent_baseline.guarded_runtime import REFERENCE_AUDIT_FIELDS
+    if reference := data.keys() & REFERENCE_AUDIT_FIELDS:
+        runtime.emit('t3_upfront_source_rejected', reason='reference_audit_fields_in_input',
+                     rejected_fields=sorted(reference), **provenance)
+        raise RuntimeFatal('Reference/quality audit fields cannot be upfront')
+
+    field_checks = {
+        'age': lambda value: type(value) is int,
+        'psa': lambda value: type(value) is int or (type(value) is float and math.isfinite(value)),
+        'dre': lambda value: isinstance(value, str),
+        'active_treatment_prior_to_surgery': lambda value: value is None or isinstance(value, str),
+    }
+    view, rejected = {}, {}
+    for field, value in data.items():
+        if field in ('case_id', 'task'):
+            continue  # The adapter adds its own case and interface identity.
+        if field in field_checks:
+            if field_checks[field](value):
+                view[field] = value
+            else:
+                rejected[field] = 'not_an_allowed_scalar_for_field'
+        elif field == 'months':
+            rejected[field] = 'ambiguous_time_semantics'
+        elif field in ('event', 'months_to_recurrence', 'recurrence', 'last_follow_up', 'last_follow_up_months'):
+            rejected[field] = 'outcome_or_follow_up_not_an_upfront_field'
+        else:
+            rejected[field] = 'field_outside_official_t3_upfront'
+    return view, dict(provenance, retained_fields=sorted(view), rejected_fields=rejected,
+                      identity_authority='formal_entry_socket_and_case_adapter')
+
+
+def _materialise_case(task: int, slug_to_path: dict[str, Path], root: Path, case_id: str,
+                      *, t3_upfront_runtime: PrivateRuntime | None = None) -> None:
     """Write the ``task<N>/agent_input/<case>/`` tree the package expects."""
     case_dir = root / f"task{task}" / "agent_input" / case_id
     case_dir.mkdir(parents=True, exist_ok=True)
@@ -141,13 +194,24 @@ def _materialise_case(task: int, slug_to_path: dict[str, Path], root: Path, case
     # Jinja template; it must carry case_id + task (the Jinja ``show`` macro
     # tolerates any other missing field, rendering it as an em dash).
     prompt: dict[str, Any] = {}
-    if STRUCTURED_PROMPT_SLUG in slug_to_path:
+    if t3_upfront_runtime is not None:
+        source = slug_to_path.get(STRUCTURED_PROMPT_SLUG)
+        if task != 3 or source is None:
+            t3_upfront_runtime.emit('t3_upfront_source_rejected', reason='missing_t3_structured_prompt_socket')
+            raise RuntimeFatal('T3 admission requires the structured-prompt Socket')
+        prompt, admission = _t3_upfront_view(source, t3_upfront_runtime)
+    elif STRUCTURED_PROMPT_SLUG in slug_to_path:
         loaded = _load_json(slug_to_path[STRUCTURED_PROMPT_SLUG])
         if isinstance(loaded, dict):
             prompt = dict(loaded)
     prompt["case_id"] = case_id
     prompt["task"] = task
-    _write_json(case_dir / "prompt.json", prompt)
+    projected_path = case_dir / "prompt.json"
+    _write_json(projected_path, prompt)
+    if t3_upfront_runtime is not None:
+        t3_upfront_runtime.t3_upfront_admission = t3_upfront_runtime.emit(
+            't3_upfront_admitted', projected_sha256=hashlib.sha256(projected_path.read_bytes()).hexdigest(),
+            **admission)
 
     # clinical-data -> the per-task clinical filename + a legacy ``clinical.json``.
     #
@@ -203,7 +267,7 @@ def _decision_value(task: int, prediction: dict[str, Any]) -> Any:
     }
 
 
-def _reasoning_value(task: int, prediction: dict[str, Any]) -> Any:
+def _reasoning_value(task: int, prediction: dict[str, Any], *, align: bool = True) -> Any:
     """The ``reasoning`` result-socket value for a case.
 
     Tasks 1 & 2 emit an object carrying the free-text rationale, the overall
@@ -222,10 +286,11 @@ def _reasoning_value(task: int, prediction: dict[str, Any]) -> Any:
     """
     if task == 3:
         return prediction["free_text"]
-    aligned = align_reasoning(task, prediction)
-    consumption_event('reasoning_align', prediction, aligned, task=task, case_id=CASE_ID,
-                      authority='existing_align_D05_unreviewed')
-    prediction = aligned
+    if align:
+        aligned = align_reasoning(task, prediction)
+        consumption_event('reasoning_align', prediction, aligned, task=task, case_id=CASE_ID,
+                          authority='existing_align_D05_unreviewed')
+        prediction = aligned
     return {
         "free_text": prediction["free_text"],
         "confidence": prediction["confidence"],
@@ -412,8 +477,15 @@ def _load_config(data_root: Path, output_dir: Path, task: int):
     return cfg
 
 
-def run(*, _profile_registry=None, _token_counter=None, _reflection_test=None) -> int:
+def run(*, _profile_registry=None, _token_counter=None, _reflection_test=None, _evidence_test=None,
+        _host_smoke=None, _case_pilot=None) -> int:
     setup_logging("INFO")
+    if _case_pilot is not None:
+        from chimera_agent_baseline.case_pilot import CasePilotApproval
+        if (type(_case_pilot) is not CasePilotApproval or any(x is not None for x in
+                (_host_smoke, _profile_registry, _token_counter, _reflection_test, _evidence_test))):
+            raise RuntimeFatal('Case pilot requires its own isolated entry scope')
+        _case_pilot.verify_input(INPUT_PATH)
     slug_to_path = _socket_paths()
     task = _detect_task(slug_to_path)
     log.info("Detected interface for task %d", task)
@@ -422,62 +494,114 @@ def run(*, _profile_registry=None, _token_counter=None, _reflection_test=None) -
         tmp_root = Path(tmp)
         data_root = tmp_root / "input"
         output_dir = tmp_root / "output"
-        _materialise_case(task, slug_to_path, data_root, CASE_ID)
         cfg = _load_config(data_root, output_dir, task)
-        profile = verify_profile(cfg, CONFIG_PATH, registry=_profile_registry)
+        adaptive = cfg.agent.get('workflow') == 'adaptive_v2_smoke'
+        if _case_pilot is not None:
+            def identity_check():
+                _case_pilot.verify(cfg, CONFIG_PATH, INPUT_PATH, OUTPUT_PATH, task)
+            identity_check()
+            profile, token_counter = _case_pilot.profile, _case_pilot.count
+        elif _host_smoke is not None:
+            from chimera_agent_baseline.host_smoke import HostSmokeApproval
+            if (type(_host_smoke) is not HostSmokeApproval or not adaptive
+                    or any(x is not None for x in (_profile_registry, _token_counter, _reflection_test, _evidence_test))):
+                raise RuntimeFatal('Host smoke approval must use its own isolated entry scope')
+            _host_smoke.verify(cfg, CONFIG_PATH, INPUT_PATH, OUTPUT_PATH, task)
+            profile = _host_smoke.profile
+            token_counter = _host_smoke.count
+            identity_check = lambda: _host_smoke.verify(cfg, CONFIG_PATH, INPUT_PATH, OUTPUT_PATH, task,
+                                                         require_empty_output=False)
+        else:
+            profile = verify_profile(cfg, CONFIG_PATH, registry=_profile_registry)
+            token_counter = _token_counter
+            identity_check = lambda: verify_identity(profile, cfg, CONFIG_PATH)
+        if adaptive:
+            if (profile is None or _reflection_test is not None or _evidence_test is not None
+                    or not cfg.agent.information_access.enabled
+                    or cfg.agent.shared_plan.control_interface_version != 2):
+                raise RuntimeFatal('Adaptive smoke requires a scoped v2 profile and guarded sources')
+            if OUTPUT_PATH.exists() and any(OUTPUT_PATH.iterdir()):
+                raise RuntimeFatal('Adaptive smoke needs an empty output directory')
         if _reflection_test is not None:
             from chimera_agent_baseline.agent.reflection_contract import SyntheticReview
             if (type(_reflection_test) is not SyntheticReview or _profile_registry is None
                     or profile is None or profile.purpose != 'synthetic_test_only'):
                 raise RuntimeFatal('Reflection fixture requires a code-injected synthetic profile')
+        if _evidence_test is not None:
+            from chimera_agent_baseline.agent.evidence_reconciliation import SyntheticEvidence
+            from chimera_agent_baseline.guarded_runtime import enabled
+            if (type(_evidence_test) is not SyntheticEvidence or _profile_registry is None
+                    or profile is None or profile.purpose != 'synthetic_test_only'
+                    or _evidence_test.task != task or _evidence_test.case_id != CASE_ID
+                    or not enabled(cfg) or cfg.agent.workflow != 'react'):
+                raise RuntimeFatal('Evidence fixture requires a matched code-injected guarded ReAct profile')
         runtime = None
         if profile is not None:
             def refuse_unverified_counter(payload):
                 raise RuntimeFatal("No exact full-template counter approved")
-            # Only explicit code-injected synthetic tests supply a counter.
-            # Production registry is empty and load_model rejects this scope.
             runtime = PrivateRuntime(profile.audit_root,
                 max_attempts=profile.max_attempts,
                 max_reserved_tokens=profile.max_reserved_tokens,
-                token_counter=_token_counter or refuse_unverified_counter,
+                token_counter=token_counter or refuse_unverified_counter,
                 identity=dict(profile=profile.name, purpose=profile.purpose,
                               effective_config=effective_config(cfg), sources=profile.sources,
                               loaded_flags=profile.runtime_flags),
-                identity_check=lambda: verify_identity(profile, cfg, CONFIG_PATH))
+                identity_check=identity_check)
+            runtime.host_smoke = _host_smoke is not None
+            runtime.case_pilot = _case_pilot
+            runtime.adaptive_smoke = adaptive
             runtime.reflection_test = _reflection_test
+            runtime.evidence_test = _evidence_test
             if runtime.root.is_relative_to(tmp_root):
                 raise RuntimeFatal("Audit sink must survive temporary directory cleanup")
             stack.enter_context(runtime.activate())
         stack.enter_context(case_scope(task, CASE_ID))
+        paths = {key: OUTPUT_PATH / filename for key, filename in OUTPUT_SOCKETS[task].items()}
         try:
-            log.info("Starting agent inference (model=%s, task=%d)", cfg.model.model_id, task)
-            # A test approval never starts model services. The regular model
-            # loader refuses this scope unless replaced in the test process.
-            embed_svc = None if profile is not None else start_embedding_service(cfg.paths.embedding_model_dir)
             try:
-                asyncio.run(run_agent(cfg))
-            finally:
-                if embed_svc:
-                    embed_svc.stop()
-            prediction = _load_json(output_dir / f"task{task}" / CASE_ID / "prediction.json")
-            sockets = OUTPUT_SOCKETS[task]
-            values = dict(decision=_decision_value(task, prediction),
-                          reasoning=_reasoning_value(task, prediction))
-            paths = {key: OUTPUT_PATH / filename for key, filename in sockets.items()}
-            for key, path in paths.items():
-                _write_json(path, values[key])
-        finally:
-            if runtime is not None:
-                # Includes failure evidence, before TemporaryDirectory exits.
+                if adaptive and task == 3:
+                    _materialise_case(task, slug_to_path, data_root, CASE_ID, t3_upfront_runtime=runtime)
+                else:
+                    _materialise_case(task, slug_to_path, data_root, CASE_ID)
+                if adaptive:
+                    runtime.emit('adaptive_profile_scope', task=task, controller='shared_plan.v2',
+                                 c02='not_validated_no_approved_C02_source_or_consumer',
+                                 b='skipped_no_certified_time_source' if task == 3 else 'formal_policy_pending',
+                                 final_field_authority='model_form_plus_platform_projection')
+                log.info("Starting agent inference (model=%s, task=%d)", cfg.model.model_id, task)
+                embed_svc = None if profile is not None else start_embedding_service(cfg.paths.embedding_model_dir)
                 try:
-                    runtime.export_tree(tmp_root)
-                except OSError as error:
-                    raise RuntimeFatal('audit_persistence_failed') from error
-        if runtime is not None:
-            runtime.finalize_sockets(task, CASE_ID, prediction, paths, values,
-                                     weight_keys=_WEIGHT_KEYS_BY_TASK.get(task))
-            runtime.emit('run_completed', attempts=runtime.attempts,
-                         reserved_tokens=runtime.reserved_tokens, scope='synthetic_test_only')
+                    asyncio.run(run_agent(cfg))
+                finally:
+                    if embed_svc:
+                        embed_svc.stop()
+                if _case_pilot is not None and _case_pilot.dry:
+                    if runtime.attempts or any(OUTPUT_PATH.iterdir()):
+                        raise RuntimeFatal('Case pilot dry gate produced a side effect')
+                    return 0
+                prediction = _load_json(output_dir / f"task{task}" / CASE_ID / "prediction.json")
+                values = dict(decision=_decision_value(task, prediction),
+                              reasoning=_reasoning_value(task, prediction, align=not adaptive))
+                for key, path in paths.items():
+                    _write_json(path, values[key])
+            finally:
+                if runtime is not None:
+                    try:
+                        runtime.export_tree(tmp_root)
+                    except OSError as error:
+                        raise RuntimeFatal('audit_persistence_failed') from error
+            if runtime is not None:
+                authority = ('engineering_form_and_platform_projection' if adaptive else
+                             'existing_projection_and_align_unreviewed_D05')
+                runtime.finalize_sockets(task, CASE_ID, prediction, paths, values,
+                    weight_keys=_WEIGHT_KEYS_BY_TASK.get(task), authority=authority)
+                runtime.emit('run_completed', attempts=runtime.attempts,
+                             reserved_tokens=runtime.reserved_tokens, scope=profile.purpose)
+        except BaseException:
+            if adaptive:
+                for path in paths.values():
+                    path.unlink(missing_ok=True)
+            raise
     log.info("Wrote GC result sockets for task %d to %s", task, OUTPUT_PATH)
     return 0
 

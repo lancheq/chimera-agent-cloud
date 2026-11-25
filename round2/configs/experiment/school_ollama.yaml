@@ -1,0 +1,12 @@
+# @package _global_
+# 学校服务器：走 ollama OpenAI 兼容接口（qwen3.6 需 ollama >=0.30；v0.33.3 用户级服务在 11435）
+model:
+  provider: openai
+  model_id: qwen3.6:35b-a3b
+  base_url: http://127.0.0.1:11435/v1
+  api_key_env: LLAMA_API_KEY
+  request_timeout: 600
+generation:
+  temperature: 0.3
+  max_new_tokens: 4096
+  top_p: 0.95
