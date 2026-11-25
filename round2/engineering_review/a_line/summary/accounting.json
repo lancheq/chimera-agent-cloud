@@ -1,0 +1,50 @@
+{
+ "groups": {
+  "both_right": 61,
+  "only_adaptive": 3,
+  "both_wrong": 24,
+  "only_fixed": 3
+ },
+ "fixed_correct": 64,
+ "adaptive_correct": 64,
+ "information_units_fixed": 271,
+ "information_units_adaptive": 243,
+ "policy_calls_adaptive": 288,
+ "risk_groups": 91,
+ "only_adaptive": [
+  "PT-pseudo_0169468160c6",
+  "PT-pseudo_562159dc2cc6",
+  "PT-pseudo_d38917f87b35"
+ ],
+ "only_fixed": [
+  "PT-pseudo_1dc32184cab6",
+  "PT-pseudo_4f33b0253633",
+  "PT-pseudo_c39e94a13920"
+ ],
+ "both_wrong": [
+  "PT-pseudo_01b643727538",
+  "PT-pseudo_0615b2bd8504",
+  "PT-pseudo_079636ac5644",
+  "PT-pseudo_11345b8a7ab3",
+  "PT-pseudo_11fe9c6ca833",
+  "PT-pseudo_175e6ad47991",
+  "PT-pseudo_17f110c9e142",
+  "PT-pseudo_1a4e0cf3b927",
+  "PT-pseudo_20a7e91c494c",
+  "PT-pseudo_2b3ef1d3a505",
+  "PT-pseudo_2e4988b84112",
+  "PT-pseudo_34647958aba3",
+  "PT-pseudo_37d8ae9b27f1",
+  "PT-pseudo_3b6ea1920967",
+  "PT-pseudo_3cc88c81f35a",
+  "PT-pseudo_3ceacc9b660b",
+  "PT-pseudo_47d8b39fd07f",
+  "PT-pseudo_4b950525e6a8",
+  "PT-pseudo_4c6b2b2bbf94",
+  "PT-pseudo_590e7b237744",
+  "PT-pseudo_c55496c11421",
+  "PT-pseudo_cce5d47c05dd",
+  "PT-pseudo_d217629c323a",
+  "PT-pseudo_dcd61cf9b443"
+ ]
+}

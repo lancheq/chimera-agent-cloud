@@ -1,0 +1,206 @@
+{
+ "binding": {
+  "case_id": "PT-pseudo_47d8b39fd07f",
+  "task": 1,
+  "run_id": "s4-shared-plan-internal-t1-v2-r1-20261115",
+  "diagnostic_system_sha256": "6d01477e71c48460fbe12730a54e3d879b82bbf4e2d0631506a4e2630387fcb0",
+  "upfront_context_sha256": "ecd122d52d74861aac14859192e54f44285496c5718ad0b02cf861d2fbd90579",
+  "clinical_snapshot_id": "c16422002d3ca21a6ba7371d8141217b2e344a2eb2dd21fe86950061d5cbad42",
+  "knowledge_snapshot_id": "13fbd478a3c4f2f3fa2f2fe60a9b48c5c838df097f15eab83077a36fc41bb4da",
+  "budget_units": 3,
+  "max_attempts": 6,
+  "options": {
+   "control_interface_version": 2,
+   "diagnosis_attempts": 2,
+   "max_actions": 6,
+   "max_policy_turns": 5,
+   "control_format_retries": 2,
+   "max_consecutive_failed_pairs": 3,
+   "context_limit": 16384,
+   "context_reserve": 128,
+   "seed": 20261113,
+   "planner_max_tokens": 1024,
+   "planner_reasoning_tokens": 512,
+   "policy_max_tokens": 1024,
+   "policy_reasoning_tokens": 512,
+   "diagnosis_max_tokens": 4096,
+   "diagnosis_reasoning_tokens": 2048,
+   "form_fill_max_tokens": 4096,
+   "form_fill_reasoning_tokens": 2048
+  },
+  "model": {
+   "provider": "openai",
+   "model_id": "Qwen3.6-35B-A3B-UD-Q4_K_M.gguf",
+   "base_url": "http://127.0.0.1:8765/v1",
+   "extra_body": {
+    "reasoning_budget_tokens": 4096
+   },
+   "max_retries": 0
+  },
+  "generation": {
+   "temperature": 0.3,
+   "max_new_tokens": 8192,
+   "max_model_len": 32768,
+   "gpu_memory_utilization": 0.9,
+   "top_p": 0.95
+  },
+  "tools": [
+   {
+    "name": "get_psa_trend",
+    "description": "Retrieve the patient's prior PSA measurements as a time series (date + value). Reveals PSA velocity / trajectory beyond the single headline value already in the prompt.",
+    "args_schema": {
+     "properties": {
+      "case_id": {
+       "title": "Case Id",
+       "type": "string"
+      }
+     },
+     "required": [
+      "case_id"
+     ],
+     "title": "get_psa_trendArguments",
+     "type": "object"
+    }
+   },
+   {
+    "name": "get_lab_results",
+    "description": "Retrieve the full laboratory panel for the patient (PSA, free PSA, haematology, renal function, testosterone, alkaline phosphatase, LDH, etc.) as a list of {name, val, date, flag}.",
+    "args_schema": {
+     "properties": {
+      "case_id": {
+       "title": "Case Id",
+       "type": "string"
+      }
+     },
+     "required": [
+      "case_id"
+     ],
+     "title": "get_lab_resultsArguments",
+     "type": "object"
+    }
+   },
+   {
+    "name": "get_mri_report",
+    "description": "Retrieve the radiologist's full mpMRI report as free text. The headline imaging values (PI-RADS, prostate volume, PSA density, AI csPCa probability) are already in the prompt; this is the prose report behind them.",
+    "args_schema": {
+     "properties": {
+      "case_id": {
+       "title": "Case Id",
+       "type": "string"
+      }
+     },
+     "required": [
+      "case_id"
+     ],
+     "title": "get_mri_reportArguments",
+     "type": "object"
+    }
+   },
+   {
+    "name": "get_previous_notes",
+    "description": "Retrieve previous GP / urology consultation notes for this patient, as a list of {date, author, text}.",
+    "args_schema": {
+     "properties": {
+      "case_id": {
+       "title": "Case Id",
+       "type": "string"
+      }
+     },
+     "required": [
+      "case_id"
+     ],
+     "title": "get_previous_notesArguments",
+     "type": "object"
+    }
+   },
+   {
+    "name": "search_guidelines",
+    "description": "Search clinical guidelines and protocols relevant to the query.\n\n        Uses semantic similarity search over a knowledge base of clinical\n        guidelines (e.g. EAU prostate-cancer guidelines, NCCN protocols).\n        Returns the most relevant guideline passages. Free-text query;\n        phrase as a clinical question.\n        ",
+    "args_schema": {
+     "properties": {
+      "query": {
+       "title": "Query",
+       "type": "string"
+      }
+     },
+     "required": [
+      "query"
+     ],
+     "title": "search_guidelinesArguments",
+     "type": "object"
+    }
+   }
+  ],
+  "code": {
+   "__init__.py": "1403c07ce71b160be7edbfbc6d7047f654ab228244524547d6d1123050dc9f88",
+   "agent/__init__.py": "b9d4390a7b62cc6d1b7e8bd2e0686e145b04279f3b75bafe7eaa7ebbc312f55b",
+   "agent/assertion_card.py": "1b03964e8d3cf4abfd294bd26ca7bcd78c16fd0439052930a2f0918079fcfd38",
+   "agent/decision_gate.py": "daf95ff10ded0450f7dad1e5cb43ff2c1c77f4ca095256cf762ced74bdd6f467",
+   "agent/decision_question.py": "af4bf2184419e49235ac97f4669397f84ce8fd457ec41d51bdd914758296ee52",
+   "agent/evidence_features.py": "54942759c4ec682240697b710a7f790030ef086a3910f37e732d2fcdb0267376",
+   "agent/evidence_review.py": "3d45424f89e6280ef61ee451fcad8c502495c18ae8a88370bb93e73ba3252f97",
+   "agent/fact_check.py": "4fe9e0b732b1105410132072eecd86049faae586ceef31315c79fbf2f0f3fc90",
+   "agent/form_fill.py": "dfe8ea07f43acd6d5e87e39a2ebea62b73b203aa3f0209440ea80263ea6fe55e",
+   "agent/form_parsing.py": "257c9d9c1c8bb8408953059c8a095a06c9eb14e07343759dc70c3c02b44a9317",
+   "agent/graph.py": "986ae993105f657df50207645fd7df40e69e4af8a2a1cc3e04501e1f50436bff",
+   "agent/policy.py": "cdbf09c5cf43fa163e44222371b4011783decea8fd8bdda119049bef59b95224",
+   "agent/postprocess.py": "a781a91a533ba9c2ecd4b06b8db295e99bc4be0f097034c73eb8ab427a6ee0c5",
+   "agent/predictor_node.py": "d114c2e5e1b30a847a72e2aab4621e1b573ae8ed5f2cce04d4af2f88f8c21dbb",
+   "agent/prompts.py": "e00c8b828958a2e00046cf9203081612744edb9229d16c05052f98c63b903978",
+   "agent/self_refine.py": "4c95820d87aca7da2762bdca7719cfca66febf58459b8eaaeaf483fe2faaa999",
+   "case_loader.py": "badf40f48037c7ef9b0c470aaf27f4baf34c318bb6f22dc6e9fba52f08f7df09",
+   "control_schema.py": "435192575ea4664e8c8b8f5ac9461a72b390c175fb1c9ebd94e04e7bbad2da1c",
+   "features.py": "13282a751d7b00dfd8ede1ccfaf3872bb2278119aa210f50c3c81d03e6b684af",
+   "guarded_runtime.py": "ef7780a529f2b7da5f8835b3015f1f50c678564d07575314ab949778a89f6210",
+   "information_access.py": "729d6fcccc422f6a7078c7b099c3ceffbfedcea4a6681fa95762cdac4aa20854",
+   "knn_features.py": "89c4774db93429cb54968b6394d3639056af72ae4dc147ab70fa88478582096f",
+   "knowledge_access.py": "94956dbaec387da132b59200542608cb0b66ce37344c3d97fcd649e211d502f9",
+   "mcp_server.py": "c4e1ce3ac27c9f5d115c5d9c3476452e8c5e7b8046064a4e53d29f5079c89240",
+   "model_context.py": "2989be4dc33e081e17a624e2e027724d3c5ebdc507984c7c6583f6fc3fd957d4",
+   "models/__init__.py": "46968b21082062f75860b652630776a9a7383a098c5154c16c94a2b09a39278b",
+   "models/openai_compat.py": "bbdc3ac39b940cba765e99c85b60ef1dd9b654b5cac2fffdadd63238a1f56641",
+   "models/vllm_offline.py": "235d7f61c5645e0737d6cd740512de37cc85ac3f03f1e85130da84c5d1c9e40c",
+   "output/__init__.py": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+   "output/schema.py": "9c5b1bf7aa908fe16f938cf69323db8abab3f7bfac97b98503fe441df344a7ee",
+   "predictor.py": "f221445da1a9b18175dccfcbbfca2e7f0406325662fd4371c4b9876cba32736e",
+   "rag.py": "7a19c9a7354385d3e68e1ec717dd1680fc8cdf58037453233680e697a4d773a7",
+   "run.py": "dc81ef01fb7659115c26781208b1a23395528ff26bb827f4a1f24b38769ddd5a",
+   "runtime_audit.py": "fc65101b20bc2ebdc151d67abe18e4e4729e323799649faf7059696fc1d1ddc7",
+   "shared_plan.py": "71d153d146856b09c18a8dfa6d5c4ce67d38b9fad4eae01b464d628fdf6ffeff",
+   "tools/__init__.py": "c4efd5220499ff7ba1bf072708fcb22b09056421eeac4ae6b2d72480419281ae",
+   "tools/base.py": "4bd13deff86d4d6dedea16f1246ba91ad73d44cd70aca27f33a0f2b8632081bd",
+   "tools/definitions.py": "e1d6ab3485c42a12afa8786c59ccd1859fcef1bcd0be1496968e98c31cfe525d",
+   "tools/predictor.py": "605f057eb03840eb5b727597faaab8a3126bf6e7d8c892126a66d6f4a3bfe240",
+   "utils.py": "3018cde7ed5e802eb59b1b5ffc23c92c2606aa728e76e04d83dfc16b66797e7c"
+  }
+ },
+ "actions": [
+  {
+   "tool": "get_mri_report",
+   "query": null,
+   "purpose": "Retrieve detailed mpMRI findings and PI-RADS score to assess for suspicious lesions warranting biopsy."
+  },
+  {
+   "tool": "get_psa_trend",
+   "query": null,
+   "purpose": "Analyze the full PSA trajectory and velocity to determine the rate of rise and current risk level."
+  },
+  {
+   "tool": "get_previous_notes",
+   "query": null,
+   "purpose": "Review details of the prior negative biopsy, including sampling strategy and pathology specifics."
+  },
+  {
+   "tool": "get_lab_results",
+   "query": null,
+   "purpose": "Obtain current PSA values, free/total PSA ratio, and other relevant biomarkers."
+  },
+  {
+   "tool": "search_guidelines",
+   "query": "EAU guidelines re-biopsy after negative biopsy rising PSA intermediate MRI",
+   "purpose": "Determine standard of care for re-biopsy in the context of rising PSA, prior negative biopsy, and intermediate MRI findings."
+  }
+ ],
+ "plan_id": "54bb7ac21f34771a55a90f20dda63950d7a3f51a9f7f443da397dcddfe7e53ed",
+ "journal_sha256": "254b95f943d4d1e973036cc461c8d2f4697da1f5588f071a4dc1abf1e54e1ee7"
+}

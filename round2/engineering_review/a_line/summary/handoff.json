@@ -1,0 +1,53 @@
+{
+ "stage": "A_line_readonly_attribution_and_protocol_freeze",
+ "date": "2026-11-22",
+ "model_calls": 0,
+ "gpu_tasks": 0,
+ "shared_engineering_writes": 0,
+ "report": "reports/ROUND2_A_ATTRIBUTION_PROTOCOL_20261122.md",
+ "report_sha256": "0199bed36aed282e9ff322271c3807c193b9e90fdcfbbe27d3a53695b3383087",
+ "verification": {
+  "all_pass": true,
+  "checks": {
+   "n_cases_91": true,
+   "policy_calls_288": true,
+   "model_calls_470_182": true,
+   "groups_61_24_3_3": true,
+   "units_271_243": true,
+   "confirm_matrices_identical": true,
+   "labels_56_35": true,
+   "provable_zero": true,
+   "attempt_exhausted_zero": true,
+   "post_exhaustion_44_in_32": true,
+   "stop_explanation_91": true,
+   "both_wrong_all_no_and_yes": true,
+   "holdout_t1_groups_101": true
+  }
+ },
+ "candidate": {
+  "candidate": "控制器确定无合法非重复取证动作时跳过一次 Adaptive 策略生成",
+  "verdict": "NOT_SUPPORTED_ZERO_CASES",
+  "provable_cases": 0,
+  "post_exhaustion_real_actions": 44,
+  "budget_request": "WITHDRAWN"
+ },
+ "holdout": {
+  "excluded_groups": 91,
+  "remaining_groups": 324,
+  "remaining_pure_t1_groups": 101,
+  "patient_identity_confirmed": false
+ },
+ "artifacts_sha256": {
+  "accounting.json": "40479b81b7a11b1a18dfaba964bb20b5c74175384af1482349164ec18779de66",
+  "attribution_30.json": "6b70620e9351ef0884415ed1489119d89822300234fc9ce3b1c431f8547bfd4b",
+  "attribution_summary.json": "59dd990c35e30e14c3ca844fbfbd8f9bc80ff1b9a7e4c26cdb2830e0ff7e8a28",
+  "avoidable_policy_calls.json": "0bdabf1bd00bb7bcafb367fe506a64516f5e617e8d397399aaa179a7c2fe9d5a",
+  "build_attribution.py": "f5a2b5a5bb77d2114e1801bb04a0590401e84650c307a5867ed5a3c57a83868f",
+  "build_eligibility.py": "9c3bfc9787f9faa394dd04484348dda0803f7c725b454f7b28e3a3b2adf8afbf",
+  "build_ledger.py": "d3a4a1bb3a2e9f9809a5070895f9ed411b172a574113fa5cbada70bc3d2457a0",
+  "finalize.py": "284d466c76367122f57f54859968f6a97dadca0941ce18d61b5ebf2a864dea2c",
+  "holdout_eligibility.json": "78a2f90c33738390d8edd0dc719f437019b9a7087111fe91b633d62cdd1bb9de",
+  "ledger.json": "fe5259372f70c0adc0491dfd61d45593accb188f88e680b5817cba1e6b43ba9b",
+  "protocol_freeze_draft.json": "8ebd61718bb5cbb319869cb249cce28f561c08ea89dda1c09d40be0b24129438"
+ }
+}

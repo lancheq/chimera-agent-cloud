@@ -1,0 +1,27 @@
+{
+ "t1_cases": 91,
+ "t1_cases_without_pool_record": [],
+ "excluded_risk_groups": 91,
+ "excluded_group_records_total": 284,
+ "excluded_group_records_by_task": {
+  "1": 275,
+  "2": 9
+ },
+ "excluded_cross_task_groups": 3,
+ "total_pool_groups": 415,
+ "total_pool_records": 1275,
+ "remaining_records_after_group_exclusion": 991,
+ "remaining_records_by_task": {
+  "1": 312,
+  "2": 453,
+  "3": 226
+ },
+ "group_size_distribution_of_excluded": {
+  "3": 87,
+  "6": 3,
+  "5": 1
+ },
+ "t1_groups_shared_within_t1": 91,
+ "limitation": "Conservative transitive risk clusters may overmerge; no-match does not establish independence.",
+ "patient_identity_confirmed": false
+}

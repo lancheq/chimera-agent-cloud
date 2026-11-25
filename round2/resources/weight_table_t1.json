@@ -1,0 +1,61 @@
+{
+  "version": "t1_marginal_20261029",
+  "task": 1,
+  "source": "data/task1/agent_input/*/prostate-biopsy-decision-reasoning.json (n=91)",
+  "method": "每变量取众数档位；未揭示主段的变量由调用方掩码为 not_used",
+  "table": {
+    "fh": "noted",
+    "pirads": "decisive",
+    "dre": "noted",
+    "psa": "important",
+    "comorbidity": "noted",
+    "cspca": "not_used",
+    "vol": "noted",
+    "age": "important",
+    "psad": "noted",
+    "bx": "important"
+  },
+  "support": {
+    "fh": {
+      "mode": "noted",
+      "share": 0.703
+    },
+    "pirads": {
+      "mode": "decisive",
+      "share": 0.495
+    },
+    "dre": {
+      "mode": "noted",
+      "share": 0.703
+    },
+    "psa": {
+      "mode": "important",
+      "share": 0.56
+    },
+    "comorbidity": {
+      "mode": "noted",
+      "share": 0.692
+    },
+    "cspca": {
+      "mode": "not_used",
+      "share": 0.663
+    },
+    "vol": {
+      "mode": "noted",
+      "share": 0.758
+    },
+    "age": {
+      "mode": "important",
+      "share": 0.615
+    },
+    "psad": {
+      "mode": "noted",
+      "share": 0.571
+    },
+    "bx": {
+      "mode": "important",
+      "share": 0.505
+    }
+  },
+  "caveat": "这是该队列的边际分布，不是病例级规律：LOO=oracle=5折CV=0.7364（三者相同）；用病例特征预测集合成员的 CV 准确率全部低于常量基线。换队列/换标注人需重建。"
+}

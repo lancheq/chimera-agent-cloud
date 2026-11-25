@@ -1,0 +1,112 @@
+{
+  "study_id": "s4-shared-plan-internal-t1-v2-r1-20261115",
+  "status": "authorized_execution",
+  "cases": 46,
+  "arm_instances": 92,
+  "actual_llm_calls": 0,
+  "component_trained": null,
+  "runtime_cohort_sha256": "68cd2aff1d4772aa5ac6cfa4fb8625f9eaf83de40de4a4b8efe0f24667470df2",
+  "cfg": {
+    "defaults": [
+      "_self_"
+    ],
+    "paths": {
+      "data_root": "/home/hedongze/CHIMERA-agent/data",
+      "output_dir": "/home/hedongze/CHIMERA-agent/output/s4_shared_plan_performance_20261115_v2r1/worker0",
+      "resource_dir": "/home/hedongze/CHIMERA-agent/resources",
+      "model_dir": "/home/hedongze/CHIMERA-agent/model",
+      "embedding_model_dir": "/home/hedongze/CHIMERA-agent/resources/embedding_model"
+    },
+    "model": {
+      "provider": "openai",
+      "model_id": "Qwen3.6-35B-A3B-UD-Q4_K_M.gguf",
+      "tool_parser": "gemma4",
+      "base_url": "http://127.0.0.1:8765/v1",
+      "api_key_env": "LLAMA_API_KEY",
+      "request_timeout": 600,
+      "extra_body": {
+        "reasoning_budget_tokens": 4096
+      },
+      "max_retries": 0
+    },
+    "agent": {
+      "workflow": "planned_react",
+      "plan_context_chars": 500,
+      "max_model_turns": 5,
+      "max_iterations": 25,
+      "step_timeout": 900,
+      "tasks": [
+        1,
+        2,
+        3
+      ],
+      "pids": null,
+      "limit": null,
+      "retry_failed": false,
+      "information_access": {
+        "enabled": true,
+        "run_id": "s4-shared-plan-internal-t1-v2-r1-20261115",
+        "budget_units": 3,
+        "max_attempts": 6,
+        "knowledge_manifest": "/home/hedongze/CHIMERA-agent/output/s2_knowledge_snapshot_20261113_v4/manifest.json"
+      },
+      "skip_gt": false,
+      "force_rag_grayzone": false,
+      "form_fill": {
+        "max_retries": 3,
+        "self_refine": false,
+        "self_refine_max_iter": 2,
+        "atomic_check": false
+      },
+      "predictor": {
+        "t1_evidence_features": false,
+        "enabled": false,
+        "decision_override": false,
+        "decision_override_tasks": []
+      },
+      "shared_plan": {
+        "control_interface_version": 2,
+        "diagnosis_attempts": 2,
+        "arm": null,
+        "max_actions": 6,
+        "max_policy_turns": 5,
+        "control_format_retries": 2,
+        "max_consecutive_failed_pairs": 3,
+        "context_limit": 16384,
+        "context_reserve": 128,
+        "seed": 20261113,
+        "planner_max_tokens": 1024,
+        "planner_reasoning_tokens": 512,
+        "policy_max_tokens": 1024,
+        "policy_reasoning_tokens": 512,
+        "diagnosis_max_tokens": 4096,
+        "diagnosis_reasoning_tokens": 2048,
+        "form_fill_max_tokens": 4096,
+        "form_fill_reasoning_tokens": 2048
+      }
+    },
+    "logging": {
+      "level": "INFO"
+    },
+    "generation": {
+      "temperature": 0.3,
+      "max_new_tokens": 8192,
+      "max_model_len": 32768,
+      "gpu_memory_utilization": 0.9,
+      "top_p": 0.95
+    },
+    "hydra": {
+      "run": {
+        "dir": "."
+      },
+      "job": {
+        "chdir": false
+      }
+    }
+  },
+  "model_request_upper_bound": 1288,
+  "information_budget_per_arm": 3,
+  "tool_request_limit_per_arm": 6,
+  "source": "Runtime manifest only; reference labels and offline quality annotations are not accepted",
+  "server_context": 16384
+}

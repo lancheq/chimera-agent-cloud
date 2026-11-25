@@ -1,0 +1,83 @@
+{
+  "version": "t2_marginal_20261029",
+  "task": 2,
+  "source": "data/task2/agent_input/*/prostate-treatment-decision-reasoning.json (n=72)",
+  "method": "每变量取众数档位；未揭示主段的变量由调用方掩码为 not_used",
+  "table": {
+    "bx_gl_prim": "noted",
+    "pirads": "important",
+    "bx_isup": "important",
+    "ct": "noted",
+    "fh": "noted",
+    "comorbidity": "noted",
+    "psa": "important",
+    "bx_gl_sec": "noted",
+    "age": "important",
+    "psad": "noted",
+    "cspca": "noted"
+  },
+  "support": {
+    "bx_gl_prim": {
+      "mode": "noted",
+      "share": 0.442
+    },
+    "pirads": {
+      "mode": "important",
+      "share": 0.514
+    },
+    "bx_isup": {
+      "mode": "important",
+      "share": 0.538
+    },
+    "ct": {
+      "mode": "noted",
+      "share": 0.444
+    },
+    "fh": {
+      "mode": "noted",
+      "share": 0.708
+    },
+    "comorbidity": {
+      "mode": "noted",
+      "share": 0.611
+    },
+    "psa": {
+      "mode": "important",
+      "share": 0.597
+    },
+    "bx_gl_sec": {
+      "mode": "noted",
+      "share": 0.481
+    },
+    "age": {
+      "mode": "important",
+      "share": 0.625
+    },
+    "psad": {
+      "mode": "noted",
+      "share": 0.556
+    },
+    "cspca": {
+      "mode": "noted",
+      "share": 0.557
+    }
+  },
+  "caveat": "这是该队列的边际分布，不是病例级规律：LOO=oracle=5折CV=0.7364（三者相同）；用病例特征预测集合成员的 CV 准确率全部低于常量基线。换队列/换标注人需重建。",
+  "conditional": {
+    "bx_isup": {
+      "field": "bx_isup",
+      "rules": [
+        {
+          "max": 0,
+          "level": "not_used"
+        },
+        {
+          "min": 3,
+          "level": "decisive"
+        }
+      ],
+      "default": "important",
+      "evidence": "T2 72 例：ISUP=0 的 14 例全部不在 decisive 集合（0/14）；ISUP>=3 的 15 例全部在（15/15）；ISUP 1-2 约 80%。离线 factor：常量表 0.6582 → 加条件化 0.6756（逐例 13 胜 0 负）。"
+    }
+  }
+}

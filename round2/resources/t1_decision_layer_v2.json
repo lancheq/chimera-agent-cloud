@@ -1,0 +1,45 @@
+{
+  "version": "v2_simplified",
+  "feature_names": [
+    "margin",
+    "llm_yes"
+  ],
+  "coef": [
+    1.2618964659635294,
+    1.477101064868715
+  ],
+  "intercept": -1.3880261904795037,
+  "feature_codes": {
+    "margin": "predictor 概率差 p_yes - p_no（有符号）",
+    "llm_yes": "1[LLM 判 yes]"
+  },
+  "trained_at": "2026-10-16T07:00:14.065330Z",
+  "n_cases": 91,
+  "fit_on": "OOF 概率（10×5 折外）+ LLM 决策（与 v1 同口径）",
+  "honest_oof_50folds": {
+    "arm_rank": 0.606,
+    "baseline_v1_form_A_rank": 0.5703,
+    "delta_rank_vs_A": 0.0357,
+    "delta_se_vs_A": 3.38,
+    "wins": 27,
+    "losses": 11
+  },
+  "rejected_alternatives": {
+    "conditional_2vars (psad>=.15,isup>=3)": {
+      "rank": 0.6076,
+      "delta_se_vs_B": 0.19,
+      "verdict": "零增量，不采用"
+    },
+    "conditional_6vars": {
+      "rank": 0.577,
+      "delta_se_vs_B": -2.57,
+      "verdict": "显著更差"
+    },
+    "fold_inner_forward_selection_k3": {
+      "rank": 0.5819,
+      "delta_se_vs_B": -2.77,
+      "verdict": "选择是噪声源，更差"
+    }
+  },
+  "note": "T1 决策层的**去共线简化形式**。原 v1 用 [p_no,p_yes,|margin|,llm] 四特征，前三个共线 → OOF rank 0.5703；本件用两个正交特征 → 0.6060（配对 Δ/SE +3.38，27/11）。条件化变体（psad/isup）经 50 折配对检验为**零增量或更差**，已弃用。落地前仍需端到端 L2/L3 与平台验证。"
+}

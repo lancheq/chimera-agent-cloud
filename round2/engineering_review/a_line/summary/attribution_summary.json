@@ -1,0 +1,36 @@
+{
+ "n": 30,
+ "by_group": {
+  "only_adaptive": 3,
+  "only_fixed": 3,
+  "both_wrong": 24
+ },
+ "confusion_matrix_all91": {
+  "fixed": {
+   "TP": 55,
+   "FN": 1,
+   "FP": 26,
+   "TN": 9
+  },
+  "adaptive": {
+   "TP": 55,
+   "FN": 1,
+   "FP": 26,
+   "TN": 9
+  }
+ },
+ "label_distribution": {
+  "no": 35,
+  "yes": 56
+ },
+ "failure_buckets": {
+  "fixed:被判 decisive 的影像/化验变量未取对应栏目": 14,
+  "adaptive:栏目已取或不可负担，错在推理或输出层": 14,
+  "fixed:栏目已取或不可负担，错在推理或输出层": 12,
+  "adaptive:被判 decisive 的影像/化验变量未取对应栏目": 13,
+  "fixed:过早停止且停止时仍有可负担未取栏目": 1
+ },
+ "both_wrong_all_label_no": true,
+ "both_wrong_all_both_yes": true,
+ "cases_with_unsupported_tool_dependent": 17
+}
