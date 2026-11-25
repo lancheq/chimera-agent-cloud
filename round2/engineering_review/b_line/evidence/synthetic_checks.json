@@ -1,0 +1,138 @@
+{
+ "all_passed": true,
+ "count": 11,
+ "checks": [
+  {
+   "case": "psav_velocity_not_paired_with_level",
+   "passed": true,
+   "expected": {
+    "pairs_total": 0,
+    "case.psav.paired": false,
+    "case.psav.semantic": "velocity_or_level_unknown"
+   },
+   "actual": {
+    "pairs_total": 0,
+    "case.psav.paired": false,
+    "case.psav.semantic": "velocity_or_level_unknown"
+   }
+  },
+  {
+   "case": "enc_date_not_observation_date",
+   "passed": true,
+   "expected": {
+    "enc_date_in_pairs": false,
+    "pairs_total": 0
+   },
+   "actual": {
+    "enc_date_in_pairs": false,
+    "pairs_total": 0
+   }
+  },
+  {
+   "case": "reversed_order_single_pair",
+   "passed": true,
+   "expected": {
+    "pairs_total": 1
+   },
+   "actual": {
+    "pairs_total": 1
+   }
+  },
+  {
+   "case": "self_pair_forbidden",
+   "passed": true,
+   "expected": {
+    "pairs_total": 0
+   },
+   "actual": {
+    "pairs_total": 0
+   }
+  },
+  {
+   "case": "equal_values_not_merged",
+   "passed": true,
+   "expected": {
+    "pairs_total": 1,
+    "pairs_equal": 1,
+    "pairs_differing": 0
+   },
+   "actual": {
+    "pairs_total": 1,
+    "pairs_equal": 1,
+    "pairs_differing": 0
+   }
+  },
+  {
+   "case": "same_day_label_uncertified",
+   "passed": true,
+   "expected": {
+    "same_day_label_pairs": 1,
+    "pairs_differing": 1
+   },
+   "actual": {
+    "same_day_label_pairs": 1,
+    "pairs_differing": 1
+   }
+  },
+  {
+   "case": "month_precision_not_same_day",
+   "passed": true,
+   "expected": {
+    "date_relation_tally.same_month_label": 1,
+    "same_day_label_pairs": 0
+   },
+   "actual": {
+    "date_relation_tally.same_month_label": 1,
+    "same_day_label_pairs": 0
+   }
+  },
+  {
+   "case": "legitimate_known_dates_retained",
+   "passed": true,
+   "expected": {
+    "pairs_analyzable": 1,
+    "pairs_differing": 1
+   },
+   "actual": {
+    "pairs_analyzable": 1,
+    "pairs_differing": 1
+   }
+  },
+  {
+   "case": "limit_symbol_not_exact",
+   "passed": true,
+   "expected": {
+    "qualifier_kept": true,
+    "pairs_excluded": 1
+   },
+   "actual": {
+    "qualifier_kept": true,
+    "pairs_excluded": 1
+   }
+  },
+  {
+   "case": "free_psa_excluded_from_level",
+   "passed": true,
+   "expected": {
+    "case.lab_types.total_psa": 1,
+    "case.lab_types.free_psa": 1,
+    "pairs_total": 0
+   },
+   "actual": {
+    "case.lab_types.total_psa": 1,
+    "case.lab_types.free_psa": 1,
+    "pairs_total": 0
+   }
+  },
+  {
+   "case": "no_cutoff_stays_unknown",
+   "passed": true,
+   "expected": {
+    "used_as_observation_date": false
+   },
+   "actual": {
+    "used_as_observation_date": false
+   }
+  }
+ ]
+}

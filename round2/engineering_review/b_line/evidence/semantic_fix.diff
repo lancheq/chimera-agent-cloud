@@ -1,0 +1,995 @@
+--- output/b_data_applicability_live_20261122/scripts/05_audit_read_v5.py	2026-11-22 20:29:06.212366174 +0800
++++ output/b_data_semantic_fix_20261122/scripts/08_semantic_fix.py	2026-11-22 21:10:46.132504019 +0800
+@@ -1,37 +1,35 @@
+ #!/usr/bin/env python3
+-"""B-DATA-APPLICABILITY 阶段 2：受控只读核查（v3，日期角色对齐）。
++"""B-DATA-SEMANTIC-FIX · 18 槽审查脚本语义修复（单 CPU worker，零生成）。
+ 
+-对已冻结的 18 个槽位逐例打开获准文件；白名单外一律拒读并记审计。
+-不向 stdout 输出任何临床取值或病例标识，仅输出计数。
+-输出：file_access_audit.jsonl、case_findings.jsonl、existence_check.json
++三项限定改动：
++  1. `psav` 与 PSA 水平分离：原值与字段出处单列，速度/水平语义未证时 UNKNOWN，排除出总 PSA 水平配对。
++  2. `enc_date` 单列就诊元数据：不作为采样、观察、历史可得或临床截止。
++  3. 同序列按去重后的两个不同观察引用组成无向对：每对一次，无自配，不以同值猜同源。
++附带保持：限值符号（<、>、≤、≥）不作精确值参与精确比较。
++
++先跑无病例合成正反例，全过才复跑原 18 槽。
+ """
+ import hashlib
++import itertools
+ import json
+ import os
+ import re
++import resource
+ import sys
++import time
+ 
+ ROOT = "/home/hedongze/CHIMERA-agent"
+-OUT = os.path.join(ROOT, "output/b_data_applicability_live_20261122")
++BASE = os.path.join(ROOT, "output/b_data_applicability_live_20261122")
++OUT = os.path.join(ROOT, "output/b_data_semantic_fix_20261122")
+ DATA_ROOT = os.path.join(
+     ROOT,
+     "data/round2_materials_20261121/train_release_transfer/20261121_104011_78d1168e/train_release_chimera_phase2",
+ )
+-ALLOWLIST = os.path.join(OUT, "read_allowlist.json")
+-
+-V5_REMOVED = {
+-    1: ["psa", "psad", "vol", "pirads", "psap", "task", "cspca", "notes"],
+-    2: ["psa", "psad", "vol", "pirads", "psap", "task", "cspca", "notes",
+-        "bx_isup", "bx_gl_prim", "bx_gl_sec"],
+-    3: ["task"],
+-}
+ 
+ UNIT_DENSITY = {"ng/ml/ml", "ng/ml^2", "ng/ml2", "ng/ml²"}
+ NUM_UNIT = re.compile(r"(\d+(?:\.\d+)?)\s*(ng/mL/mL|ng/mL\^2|ng/mL2|ng/mL\s*/\s*mL|ng/mL|ng/dl)", re.I)
+ UNIT_ONLY = re.compile(r"(ng/mL/mL|ng/mL\^2|ng/mL2|ng/mL|ng/dl)", re.I)
+-PSA_TREND_RE = re.compile(
+-    r"(\d+(?:\.\d+)?)\s*(?:ng/mL)?\s*in\s+([A-Za-z]{3,9}\.?\s+\d{4})\s*,?\s*(?:and\s+)?now\s*(\d+(?:\.\d+)?)", re.I
+-)
++QUAL = re.compile(r"^\s*([<>≤≥=~]+)\s*")
+ MONTHS = {m: i + 1 for i, m in enumerate(
+     ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"])}
+ P_ISO = re.compile(r"\b(\d{4})-(\d{2})-(\d{2})\b")
+@@ -45,17 +43,21 @@
+ 
+ 
+ class Reader:
++    """与 05_audit_read_v5.py 同一套白名单与拒绝规则；本类不做语义判断。"""
++
+     def __init__(self, allowlist):
+         self.content = {e["abs_path"]: e for e in allowlist["content_read"]}
+         self.existence = {e["abs_path"]: e for e in allowlist["existence_only"]}
+         self.denied_suffixes = tuple(allowlist["policy"]["denied_suffixes"])
+         self.audit = []
++        self.bytes_read = 0
++        self.opens = 0
+         self._seq = 0
+ 
+-    def _log(self, path, action, allowed, reason, bytes_read=0):
++    def _log(self, path, action, allowed, reason, nbytes=0):
+         self._seq += 1
+         self.audit.append({"seq": self._seq, "path": path, "action": action,
+-                           "allowed": allowed, "reason": reason, "bytes_read": bytes_read})
++                           "allowed": allowed, "reason": reason, "bytes_read": nbytes})
+ 
+     def _check(self, path):
+         base = os.path.basename(path)
+@@ -74,37 +76,54 @@
+             raise Denied("not_in_allowlist")
+         return self.content[path]
+ 
+-    def read_text(self, path):
++    def read_bytes_once(self, path):
++        """一次打开同时用于校验与解析。"""
+         try:
+             entry = self._check(path)
+         except Denied as exc:
+-            self._log(path, "read_text", False, str(exc))
++            self._log(path, "read_bytes", False, str(exc))
+             raise
+-        raw = open(path, "rb").read()
+-        self._log(path, "read_text", True, "allowlist_content", len(raw))
+-        return raw.decode("utf-8"), entry
++        with open(path, "rb") as fh:
++            raw = fh.read()
++        self.opens += 1
++        self.bytes_read += len(raw)
++        got = hashlib.sha256(raw).hexdigest()
++        if got != entry["expected_sha256"]:
++            self._log(path, "read_bytes", False, "sha256_mismatch:%s" % got)
++            raise Denied("sha256_mismatch")
++        self._log(path, "read_bytes", True, "allowlist_content_sha_verified", len(raw))
++        return raw, entry
+ 
+     def stat_only(self, path):
+         if path not in self.existence:
+             self._log(path, "stat", False, "not_in_existence_allowlist")
+             raise Denied("not_in_existence_allowlist")
+         exists = os.path.isfile(path) and not os.path.islink(path)
+-        self._log(path, "stat", True, "existence_only_allowlisted_exists=%s" % exists)
++        self._log(path, "stat", True, "existence_only_exists=%s" % exists)
+         return exists
+ 
+ 
+-def parse_num(text):
+-    if isinstance(text, (int, float)):
+-        return float(text)
+-    if not isinstance(text, str):
+-        return None
+-    s = re.sub(r"^[<>≤≥=~\s]+", "", text.strip().replace(",", ""))
+-    m = re.match(r"^(\d+(?:\.\d+)?)", s)
+-    return float(m.group(1)) if m else None
++# ---------------- 语义层 ----------------
++
++def parse_value(raw):
++    """返回 (value, qualifier, exact)。限值符号保留，不当作精确值。"""
++    if isinstance(raw, (int, float)):
++        return float(raw), None, True
++    if not isinstance(raw, str):
++        return None, None, False
++    s = raw.strip().replace(",", "")
++    m = QUAL.match(s)
++    q = None
++    if m:
++        q = m.group(1)
++        s = s[m.end():]
++    m2 = re.match(r"^(\d+(?:\.\d+)?)", s)
++    if not m2:
++        return None, q, False
++    return float(m2.group(1)), q, (q is None)
+ 
+ 
+ def date_parts(label):
+-    """返回 {y,m,d,precision}；precision: day|month|year|none|unknown"""
+     if not isinstance(label, str) or not label.strip():
+         return {"precision": "none"}
+     s = label.strip()
+@@ -136,380 +155,524 @@
+     return [c for c in re.split(r"[.;\n\r]+|\s{2,}", text) if c.strip()]
+ 
+ 
+-def extract_from_report(text):
+-    res = {"serum": [], "density": [], "density_value_no_unit": 0,
+-           "psa_number_without_unit": 0, "trend_restatement": 0,
+-           "density_clauses": 0, "serum_clauses": 0}
+-    for cl in split_clauses(text):
++def report_serum_obs(text, path_prefix="radiology_report"):
++    """只取正文血清 PSA 数值；密度从句与含 free 的从句排除。带限值符号时 exact=False。"""
++    obs = []
++    frag = {"clauses": 0, "density_clauses": 0, "free_clauses": 0, "unitless_values": 0}
++    for i, cl in enumerate(split_clauses(text)):
++        frag["clauses"] += 1
+         low = cl.lower()
+         if "densit" in low:
+-            res["density_clauses"] += 1
+-            hits = [float(m.group(1)) for m in NUM_UNIT.finditer(cl)]
+-            if hits:
+-                res["density"].extend(hits)
+-            else:
+-                dm = re.search(r"densit\w*[^0-9]{0,20}(\d+(?:\.\d+)?)", cl, re.I)
+-                if dm:
+-                    res["density"].append(float(dm.group(1)))
+-            if not UNIT_ONLY.search(cl) and res["density_clauses"]:
+-                dm2 = re.search(r"densit\w*[^0-9]{0,20}(\d+(?:\.\d+)?)", cl, re.I)
+-                if dm2:
+-                    res["density_value_no_unit"] += 1
++            frag["density_clauses"] += 1
+             continue
+         if "psa" not in low:
+             continue
+         if "free" in low and "total" not in low:
+-            res["free_clauses_excluded"] = res.get("free_clauses_excluded", 0) + 1
++            frag["free_clauses"] += 1
+             continue
+-        res["serum_clauses"] += 1
+-        found = False
++        hits = 0
+         for m in NUM_UNIT.finditer(cl):
+             unit = re.sub(r"\s+", "", m.group(2)).lower()
+             if unit in UNIT_DENSITY:
+-                res["density"].append(float(m.group(1)))
+                 continue
+-            res["serum"].append(float(m.group(1)))
+-            found = True
+-        if not found:
++            obs.append({"seq": "report_serum", "ref": "report:%d" % len(obs), "val": float(m.group(1)),
++                        "qualifier": None, "exact": True,
++                        "date": {"precision": "none"}, "date_role": "narrative_mention",
++                        "pointer": "%s[clause:%d]" % (path_prefix, i)})
++            hits += 1
++        if not hits:
+             for m in re.finditer(r"PSA[^0-9\n]{0,25}(\d+(?:\.\d+)?)", cl, re.I):
+-                res["serum"].append(float(m.group(1)))
+-                res["psa_number_without_unit"] += 1
+-                found = True
+-        if PSA_TREND_RE.search(cl):
+-            res["trend_restatement"] += 1
+-    return res
+-
++                obs.append({"seq": "report_serum", "ref": "report:%d" % len(obs), "val": float(m.group(1)),
++                            "qualifier": None, "exact": True,
++                            "date": {"precision": "none"}, "date_role": "narrative_mention",
++                            "pointer": "%s[clause:%d]" % (path_prefix, i)})
++                frag["unitless_values"] += 1
++    return obs, frag
+ 
+-def compare(a, b):
+-    """返回 (relation, kind)。kind ∈ equal|same_day_diff|same_month_diff|separated_diff|undated_diff|undated_equal"""
+-    da, db = a.get("date", {}), b.get("date", {})
+-    same = (a["val"] is not None and b["val"] is not None and abs(a["val"] - b["val"]) < 1e-9)
+-    pa, pb = da.get("precision"), db.get("precision")
+-    if pa in ("day", "month", "year") and pb in ("day", "month", "year") and da.get("y") and db.get("y"):
+-        if da.get("m") and db.get("m") and (da["y"], da["m"]) != (db["y"], db["m"]):
+-            return ("equal" if same else "different"), "separated"
+-        if da["precision"] == "day" and db["precision"] == "day" and da.get("d") != db.get("d"):
+-            return ("equal" if same else "different"), "separated"
+-        if da["precision"] == "day" and db["precision"] == "day":
+-            return ("equal" if same else "different"), "same_day"
+-        return ("equal" if same else "different"), "same_month"
+-    return ("equal" if same else "different"), "undated"
+-
+-
+-def analyse(slot, prompt, clinical, notes):
+-    task = slot["task"]
+-    keys = sorted(prompt.keys()) if isinstance(prompt, dict) else []
+-    removed_present = [k for k in V5_REMOVED[task] if k in keys]
+-    psav = parse_num(prompt.get("psav")) if isinstance(prompt, dict) else None
+-    enc = date_parts(prompt.get("enc_date") if isinstance(prompt, dict) else None)
+ 
++def build_case(prompt, clinical):
++    """把一份病例拆成：序列、psav 单列块、enc_date 单列块、片段统计。"""
+     lab = clinical.get("laboratory_results") or []
+     trend = clinical.get("psa_trend") or []
+-    radiology = clinical.get("radiology_report")
+-    notes_field = clinical.get("previous_notes")
+-
+-    lab_obs, lab_unit_tokens = [], 0
+-    lab_subtype = {"total_psa": 0, "free_psa": 0, "free_psa_pct": 0, "psad": 0, "other_psa": 0}
+-    for item in lab if isinstance(lab, list) else []:
++    lab_obs, lab_types = [], {"total_psa": 0, "free_psa": 0, "free_psa_pct": 0, "density": 0, "other": 0}
++    lab_qual = 0
++    for idx, item in enumerate(lab if isinstance(lab, list) else []):
+         if not isinstance(item, dict):
+             continue
+         nm = str(item.get("name", ""))
+         low = nm.lower()
+         if not re.search(r"psa|prostate specific", low):
+             continue
+-        val = parse_num(item.get("val"))
++        val, qual, exact = parse_value(item.get("val"))
+         if re.search(r"densit", low) or "psad" in low:
+-            lab_subtype["psad"] += 1
++            lab_types["density"] += 1
+             continue
+         if "free" in low and "%" in nm:
+-            lab_subtype["free_psa_pct"] += 1
++            lab_types["free_psa_pct"] += 1
+             continue
+         if "free" in low:
+-            lab_subtype["free_psa"] += 1
++            lab_types["free_psa"] += 1
+             continue
+         if re.search(r"ratio|complex|%", low):
+-            lab_subtype["other_psa"] += 1
++            lab_types["other"] += 1
+             continue
+-        lab_subtype["total_psa"] += 1
+-        if val is not None:
+-            lab_obs.append({"val": val, "date": date_parts(item.get("date")), "source": "lab_total"})
+-        if UNIT_ONLY.search(nm) or UNIT_ONLY.search(str(item.get("flag", ""))):
+-            lab_unit_tokens += 1
++        lab_types["total_psa"] += 1
++        if val is None:
++            continue
++        if qual:
++            lab_qual += 1
++        lab_obs.append({"seq": "lab_total", "ref": "lab:%d" % idx, "val": val,
++                        "qualifier": qual, "exact": exact,
++                        "date": date_parts(item.get("date")), "date_role": "lab_record_date",
++                        "pointer": "laboratory_results[%d]" % idx})
++
+     trend_obs = []
+-    for item in trend if isinstance(trend, list) else []:
+-        if isinstance(item, dict):
+-            val = parse_num(item.get("val"))
+-            if val is not None:
+-                trend_obs.append({"val": val, "date": date_parts(item.get("date")), "source": "trend"})
+-    rep = extract_from_report(radiology)
+-    report_obs = [{"val": v, "date": {"precision": "none"}, "source": "report"} for v in rep["serum"]]
+-    first_screen_obs = []
+-    if psav is not None:
+-        first_screen_obs.append({"val": psav, "date": enc, "source": "psav"})
+-
+-    # ---- 配对台账 ----
+-    ledger = {"equal": 0, "same_day_diff": 0, "same_month_diff": 0,
+-              "separated_diff": 0, "undated_diff": 0, "undated_equal": 0}
+-    pair_ledger = {}
+-
+-    def run_pair(name, list_a, list_b, cross=True):
+-        rows = 0
+-        for a in list_a:
+-            for b in list_b:
+-                if a is b:
+-                    continue
+-                rel, kind = compare(a, b)
+-                key = kind + "_diff" if rel == "different" else (kind + "_equal" if kind == "undated" else "equal")
+-                if key == "undated_equal":
+-                    key = "undated_equal"
+-                ledger[key] = ledger.get(key, 0) + 1
+-                rows += 1
+-        pair_ledger[name] = rows
+-
+-    run_pair("psav_vs_lab", first_screen_obs, lab_obs)
+-    run_pair("psav_vs_trend", first_screen_obs, trend_obs)
+-    run_pair("lab_vs_trend", lab_obs, trend_obs)
+-    run_pair("lab_internal", lab_obs, lab_obs)
+-    run_pair("trend_internal", trend_obs, trend_obs)
+-    run_pair("report_vs_lab", report_obs, lab_obs)
+-
+-    comparisons = sum(ledger.values())
+-    diffs = ledger["same_day_diff"] + ledger["same_month_diff"] + ledger["separated_diff"] + ledger["undated_diff"]
+-    equals = ledger["equal"] + ledger["undated_equal"]
+-
+-    # ---- C4 ----
+-    c4_flags = []
+-    evaluable = 0
+-    if rep["density_clauses"]:
+-        evaluable += 1
+-        if rep["density_value_no_unit"]:
+-            c4_flags.append("density_statement_without_unit")
+-    if lab_obs:
+-        evaluable += 1
+-        if lab_unit_tokens == 0:
+-            c4_flags.append("structured_psa_has_no_unit_field")
+-    if rep["psa_number_without_unit"]:
+-        c4_flags.append("report_psa_number_without_unit")
+-    if lab_obs and trend_obs and any(abs(a["val"] - b["val"]) < 1e-9 for a in lab_obs for b in trend_obs):
+-        evaluable += 1
+-        c4_flags.append("same_value_restated_across_sources")
+-    if lab_obs and rep["density"] and any(o["val"] < 1.0 for o in lab_obs):
+-        c4_flags.append("subunit_structured_value_with_density_statement")
+-    if lab_subtype["total_psa"] and (lab_subtype["free_psa"] or lab_subtype["free_psa_pct"]):
+-        evaluable += 1
+-        c4_flags.append("psa_family_items_coexist_in_lab")
+-    if lab_subtype["free_psa_pct"]:
+-        c4_flags.append("free_psa_percent_item_present")
+-
+-    orderable = [o for o in trend_obs if o["date"].get("precision") in ("day", "month")]
+-    unit_proven = False  # 结构化化验/趋势均无单位字段；模板单位属展示文字
+-    c6_met = len(orderable) >= 2
+-    c6 = "eligible" if (c6_met and unit_proven) else "unknown"
+-    if not trend_obs:
+-        c6 = "unknown" if task == 3 else "not_eligible"
+-
+-    f = {
+-        "slot_id": slot["slot_id"],
+-        "task": task,
+-        "risk_group_id": slot["risk_group_id"],
+-        "files": [],
+-        "first_screen": {
+-            "top_key_count": len(keys),
+-            "v5_removed_keys_still_present": removed_present,
+-            "psav_present": "psav" in keys,
+-            "psa_present": "psa" in keys,
+-            "note_sections_present": "note_sections" in keys,
+-            "pid_present": "pid" in keys,
+-            "enc_date_present": "enc_date" in keys,
+-            "enc_date_precision": enc.get("precision"),
+-        },
+-        "sources": {
+-            "lab_obs": len(lab_obs),
+-            "lab_unit_tokens": lab_unit_tokens,
+-            "lab_subtype": lab_subtype,
+-            "trend_obs": len(trend_obs),
+-            "report_serum_values": len(report_obs),
+-            "report_density_values": len(rep["density"]),
+-            "report_density_value_no_unit": rep["density_value_no_unit"],
+-            "report_density_clauses": rep["density_clauses"],
+-            "report_psa_number_without_unit": rep["psa_number_without_unit"],
+-            "report_free_psa_clauses_excluded": rep.get("free_clauses_excluded", 0),
+-            "report_trend_restatement_clauses": rep["trend_restatement"],
+-            "pathology_report_present": bool(clinical.get("pathology_report")),
+-            "surgical_pathology_present": bool(clinical.get("surgical_pathology_report")),
+-            "cspca_present": isinstance(clinical.get("cspca"), (int, float)),
+-            "ai_isup_field_present": "AI_predicted_isup_grade_group" in clinical,
+-            "ai_isup_value_present": isinstance(clinical.get("AI_predicted_isup_grade_group"), int),
+-            "previous_notes_type": type(notes_field).__name__,
+-        },
+-        "dates": {
+-            "lab_precision": sorted({o["date"].get("precision") for o in lab_obs}),
+-            "trend_precision": sorted({o["date"].get("precision") for o in trend_obs}),
+-            "enc_precision": enc.get("precision"),
+-        },
+-        "comparisons": {
+-            "pair_rows": pair_ledger,
+-            "total_comparisons": comparisons,
+-            "ledger": ledger,
+-            "differing": diffs,
+-            "equal": equals,
+-        },
+-        "categories": {
+-            "cross_source_or_time_value_difference": {
+-                "status": "CONFIRMED" if diffs else ("EXCLUDED" if equals and not diffs else "UNKNOWN"),
+-                "differing_comparisons": diffs,
+-                "same_day_differing": ledger["same_day_diff"],
+-                "separated_differing": ledger["separated_diff"],
+-                "undated_differing": ledger["undated_diff"],
+-                "basis": "首屏 psav/enc_date、实验室 PSA、psa_trend、报告正文血清 PSA 按日期精度对齐后逐对比较",
+-            },
+-            "certified_distinct_eligible_observation": {
+-                "status": "UNKNOWN",
+-                "basis": "无观察身份证书；日期可得不等于采样绑定",
+-            },
+-            "certified_same_encounter_unresolved_conflict": {
+-                "status": "UNKNOWN",
+-                "same_day_difference_candidate": ledger["same_day_diff"] > 0,
+-                "basis": "无同日规则；同日精度差异只作候选，未认证同次",
+-            },
+-            "misread_unit_duplicate_restatement": {
+-                "status": "CONFIRMED" if c4_flags else ("EXCLUDED" if evaluable else "UNKNOWN"),
+-                "flags": sorted(set(c4_flags)),
+-                "evaluable_checks": evaluable,
+-            },
+-            "confirmed_late_and_model_reachable": {
+-                "status": "UNKNOWN",
+-                "static_path_reachable": "batch_level_only:R11_synthetic_T1_direct_react",
+-                "actual_request_confirmed": False,
+-                "basis": "无逐任务获证截止；读取获准原件不等于经工具送达",
+-            },
+-            "eligible_comparable_longitudinal": {
+-                "status": "ELIGIBLE" if c6 == "eligible" else ("NOT_ELIGIBLE" if c6 == "not_eligible" else "UNKNOWN"),
+-                "orderable_trend_timepoints": len(orderable),
+-                "trend_timepoints": len(trend_obs),
+-                "preconditions_met": {
+-                    "same_metric_total_psa": bool(trend_obs),
+-                    "two_orderable_timepoints": c6_met,
+-                    "unit_comparability_proven": unit_proven,
+-                },
+-                "blocking_precondition": None if (c6_met and unit_proven) else (
+-                    "unit_comparability_not_proven" if c6_met else "insufficient_orderable_timepoints"),
+-            },
++    for idx, item in enumerate(trend if isinstance(trend, list) else []):
++        if not isinstance(item, dict):
++            continue
++        val, qual, exact = parse_value(item.get("val"))
++        if val is None:
++            continue
++        trend_obs.append({"seq": "trend", "ref": "trend:%d" % idx, "val": val,
++                          "qualifier": qual, "exact": exact,
++                          "date": date_parts(item.get("date")), "date_role": "trend_month_label",
++                          "pointer": "psa_trend[%d]" % idx})
++
++    rep_obs, rep_frag = report_serum_obs(clinical.get("radiology_report"))
++
++    psav_raw = prompt.get("psav") if isinstance(prompt, dict) else None
++    psav_val, psav_qual, psav_exact = parse_value(psav_raw)
++    psav_block = {
++        "value": psav_val,
++        "qualifier": psav_qual,
++        "exact": psav_exact,
++        "field": "structured-prompt.json:psav" if psav_val is not None else None,
++        "months_field_present": isinstance(prompt, dict) and "months" in prompt,
++        "semantic": "velocity_or_level_unknown",
++        "paired": False,
++        "reason": "psav 的填充语义（速度/水平/口径）未绑定；按卡排除出总 PSA 水平配对，状态 UNKNOWN",
++    }
++    enc_block = {
++        "value_present": isinstance(prompt, dict) and bool(prompt.get("enc_date")),
++        "field": "structured-prompt.json:enc_date",
++        "precision": date_parts(prompt.get("enc_date")) if isinstance(prompt, dict) else {"precision": "none"},
++        "role": "encounter_metadata",
++        "used_as_observation_date": False,
++        "reason": "就诊元数据；不冒充采样、观察、历史可得或临床截止",
++    }
++    return {
++        "sequences": {
++            "lab_total": lab_obs,
++            "trend": trend_obs,
++            "report_serum": rep_obs,
+         },
+-        "pointers": [
+-            "structured-prompt.json:{psav,enc_date,note_sections,pid}",
+-            "clinical:laboratory_results[].{name,val,date,flag}",
+-            "clinical:psa_trend[].{date,val}",
+-            "clinical:radiology_report{clause}",
+-        ],
+-        "limits": (["no_lab_no_trend"] if not lab_obs and not trend_obs else []) + (["t3_no_lab_no_trend_branch"] if task == 3 else []) + list(notes),
++        "lab_types": lab_types,
++        "lab_qualified_values": lab_qual,
++        "psav": psav_block,
++        "enc_date": enc_block,
++        "fragments": {"radiology_clauses": rep_frag["clauses"],
++                      "density_clauses": rep_frag["density_clauses"],
++                      "free_clauses": rep_frag["free_clauses"],
++                      "unitless_report_values": rep_frag["unitless_values"]},
+     }
+-    return f
+ 
+ 
++def undirected_pairs(case):
++    """同序列按两个不同观察引用组成无向对，每对一次；跨序列同样一对象。"""
++    seqs = case["sequences"]
++    pairs = []
++    for name, obs in seqs.items():
++        for a, b in itertools.combinations(obs, 2):
++            pairs.append({"kind": "within_%s" % name, "a": a, "b": b, "key": tuple(sorted((a["ref"], b["ref"])))})
++    names = list(seqs)
++    for i in range(len(names)):
++        for j in range(i + 1, len(names)):
++            for a in seqs[names[i]]:
++                for b in seqs[names[j]]:
++                    pairs.append({"kind": "cross_%s_%s" % (names[i], names[j]), "a": a, "b": b,
++                                  "key": tuple(sorted((a["ref"], b["ref"])))})
++    # 一对象只出现一次（跨序列与同序列键不会重合，仍显式去重）
++    seen, uniq = set(), []
++    for p in pairs:
++        k = (p["kind"], p["key"])
++        if k in seen:
++            continue
++        seen.add(k)
++        uniq.append(p)
++    return uniq
++
++
++def date_relation(a, b):
++    da, db = a["date"], b["date"]
++    pa, pb = da.get("precision"), db.get("precision")
++    if pa in ("day", "month") and pb in ("day", "month"):
++        if (da.get("y"), da.get("m")) != (db.get("y"), db.get("m")):
++            return "separated_month"
++        if pa == "day" and pb == "day" and da.get("d") != db.get("d"):
++            return "separated_day_same_month"
++        if pa == "day" and pb == "day":
++            return "same_day_label"
++        return "same_month_label"
++    return "undated"
++
++
++def classify_pair(p):
++    out = {"kind": p["kind"], "key": list(p["key"]),
++           "refs": [{"ref": p["a"]["ref"], "pointer": p["a"]["pointer"], "date_role": p["a"]["date_role"],
++                     "qualifier": p["a"]["qualifier"]},
++                    {"ref": p["b"]["ref"], "pointer": p["b"]["pointer"], "date_role": p["b"]["date_role"],
++                     "qualifier": p["b"]["qualifier"]}]}
++    if not (p["a"]["exact"] and p["b"]["exact"]):
++        out["exclusion"] = "qualified_value_not_exact"
++        out["analyzable"] = False
++        return out
++    out["exclusion"] = None
++    out["analyzable"] = True
++    out["value_relation"] = "equal" if abs(p["a"]["val"] - p["b"]["val"]) < 1e-9 else "different"
++    out["date_relation"] = date_relation(p["a"], p["b"])
++    return out
++
++
++def legacy_pair_count(case):
++    """复刻 05 版启发式：psav 当水平并赋 enc_date，同序列双向成对。用于对齐旧基线。"""
++    seq = case["sequences"]
++    lab, trend, rep = seq["lab_total"], seq["trend"], seq["report_serum"]
++    psav = []
++    if case["psav"]["value"] is not None:
++        psav = [{"val": case["psav"]["value"], "date": case["enc_date"]["precision"]}]
++    def cross(x, y):
++        return sum(1 for a in x for b in y if a is not b)
++    def within(x):
++        return sum(1 for a in x for b in x if a is not b)
++    return {
++        "psav_vs_lab": cross(psav, lab),
++        "psav_vs_trend": cross(psav, trend),
++        "lab_vs_trend": cross(lab, trend),
++        "lab_internal": within(lab),
++        "trend_internal": within(trend),
++        "report_vs_lab": cross(rep, lab),
++    }
++
++
++def analyse_case(prompt, clinical):
++    case = build_case(prompt, clinical)
++    pairs = undirected_pairs(case)
++    classified = [classify_pair(p) for p in pairs]
++    analyzable = [c for c in classified if c["analyzable"]]
++    excluded = [c for c in classified if not c["analyzable"]]
++    diff = [c for c in analyzable if c["value_relation"] == "different"]
++    equal = [c for c in analyzable if c["value_relation"] == "equal"]
++    date_rel = {}
++    for c in analyzable:
++        date_rel[c["date_relation"]] = date_rel.get(c["date_relation"], 0) + 1
++
++    trend = case["sequences"]["trend"]
++    distinct_months = {(o["date"].get("y"), o["date"].get("m")) for o in trend
++                       if o["date"].get("precision") in ("day", "month")}
++    legacy = legacy_pair_count(case)
++
++    return {
++        "case": case,
++        "pairs_total": len(classified),
++        "pairs_analyzable": len(analyzable),
++        "pairs_excluded": len(excluded),
++        "pairs_excluded_by_reason": _tally(c["exclusion"] for c in excluded),
++        "pairs_differing": len(diff),
++        "pairs_equal": len(equal),
++        "date_relation_tally": date_rel,
++        "same_day_label_pairs": date_rel.get("same_day_label", 0),
++        "distinct_orderable_trend_months": len(distinct_months),
++        "legacy": legacy,
++        "legacy_total": sum(legacy.values()),
++        "classified": classified,
++    }
++
++
++def _tally(items):
++    out = {}
++    for i in items:
++        out[i] = out.get(i, 0) + 1
++    return out
++
++
++# ---------------- 合成正反例 ----------------
++
++def synthetic_checks():
++    """无病例最小正反例：三项修复 + 限值符号 + 合法正例保留。"""
++    checks = []
++
++    def mk(prompt_extra=None, lab=None, trend=None, radiology=None):
++        prompt = {"psav": None, "enc_date": None, "months": None}
++        prompt.update(prompt_extra or {})
++        clinical = {"laboratory_results": lab or [], "psa_trend": trend or [], "radiology_report": radiology or ""}
++        return prompt, clinical
++
++    def run(name, prompt, clinical, expect):
++        res = analyse_case(prompt, clinical)
++        actual, ok = {}, True
++        for path, want in expect.items():
++            cur = res
++            for part in path.split("."):
++                cur = cur[int(part)] if part.isdigit() and isinstance(cur, list) else (cur.get(part) if isinstance(cur, dict) else None)
++            actual[path] = cur
++            if cur != want:
++                ok = False
++        checks.append({"case": name, "passed": ok, "expected": expect, "actual": actual})
++
++    lab_total = lambda v, d="01 Jan 2025", q=None: {"name": "PSA", "val": (q or "") + str(v), "date": d, "flag": ""}
++
++    # 1 速度/水平：psav + months 存在，不与总 PSA 水平配对
++    p, c = mk({"psav": 0.42, "months": 12}, lab=[lab_total(5.2)])
++    run("psav_velocity_not_paired_with_level", p, c,
++        {"pairs_total": 0, "case.psav.paired": False, "case.psav.semantic": "velocity_or_level_unknown"})
++
++    # 2 enc_date 不作观察日期：psav 有 enc_date，但序列里不出现该日期
++    p, c = mk({"psav": 0.42, "enc_date": "15 Feb 2025"}, lab=[lab_total(5.2, "01 Jan 2025")])
++    res = analyse_case(p, c)
++    enc_used = any(o_ref["date_role"] == "encounter_metadata"
++                   for cl in res["classified"] for o_ref in cl["refs"])
++    checks.append({"case": "enc_date_not_observation_date", "passed": (enc_used is False and res["pairs_total"] == 0),
++                   "expected": {"enc_date_in_pairs": False, "pairs_total": 0},
++                   "actual": {"enc_date_in_pairs": enc_used, "pairs_total": res["pairs_total"]}})
++
++    # 3 输入反序只计一次
++    p, c = mk(lab=[lab_total(5.2, "01 Jan 2025"), lab_total(6.1, "01 Mar 2025")])
++    run("reversed_order_single_pair", p, c, {"pairs_total": 1})
++
++    # 4 自配禁止
++    p, c = mk(lab=[lab_total(5.2)])
++    run("self_pair_forbidden", p, c, {"pairs_total": 0})
++
++    # 5 同值不推断同源：两个同值不同月份仍是两条观察、一对
++    p, c = mk(lab=[lab_total(5.2, "01 Jan 2025"), lab_total(5.2, "01 Mar 2025")])
++    run("equal_values_not_merged", p, c, {"pairs_total": 1, "pairs_equal": 1, "pairs_differing": 0})
++
++    # 6 同日标签但观察身份未证：只记同日标签，不升级为冲突（两侧均日精度）
++    p, c = mk(lab=[lab_total(5.2, "15 Feb 2025"), lab_total(6.0, "15 Feb 2025")])
++    run("same_day_label_uncertified", p, c,
++        {"same_day_label_pairs": 1, "pairs_differing": 1})
++    # 6b 一侧只有月精度：记为同月标签，不冒充同日
++    p, c = mk(lab=[lab_total(5.2, "15 Feb 2025")], trend=[{"date": "Feb 2025", "val": 6.0}])
++    run("month_precision_not_same_day", p, c,
++        {"date_relation_tally.same_month_label": 1, "same_day_label_pairs": 0})
++
++    # 7 合法已知日期要保留为可分析对
++    p, c = mk(lab=[lab_total(5.2, "15 Feb 2025")], trend=[{"date": "Jan 2025", "val": 6.0}])
++    run("legitimate_known_dates_retained", p, c,
++        {"pairs_analyzable": 1, "pairs_differing": 1})
++
++    # 8 限值符号保留：< 不作精确值
++    p, c = mk(lab=[lab_total(0.1, "01 Jan 2025", q="<")], trend=[{"date": "Jan 2025", "val": 0.1}])
++    res = analyse_case(p, c)
++    qual_kept = res["case"]["sequences"]["lab_total"][0]["qualifier"] == "<"
++    checks.append({"case": "limit_symbol_not_exact", "passed": (qual_kept and res["pairs_excluded"] == 1),
++                   "expected": {"qualifier_kept": True, "pairs_excluded": 1},
++                   "actual": {"qualifier_kept": qual_kept, "pairs_excluded": res["pairs_excluded"]}})
++
++    # 9 free PSA 不进水平序列
++    p, c = mk(lab=[lab_total(5.2), {"name": "Free PSA", "val": "0.9", "date": "01 Jan 2025", "flag": ""}])
++    run("free_psa_excluded_from_level", p, c,
++        {"case.lab_types.total_psa": 1, "case.lab_types.free_psa": 1, "pairs_total": 0})
++
++    # 10 缺截止：不产生任何获证时间判定
++    p, c = mk(lab=[lab_total(5.2, "15 Feb 2025")])
++    res = analyse_case(p, c)
++    checks.append({"case": "no_cutoff_stays_unknown",
++                   "passed": res["case"]["enc_date"]["used_as_observation_date"] is False,
++                   "expected": {"used_as_observation_date": False},
++                   "actual": {"used_as_observation_date": res["case"]["enc_date"]["used_as_observation_date"]}})
++
++    return checks
++
++
++# ---------------- 主流程 ----------------
++
+ def main():
+-    allowlist = json.load(open(ALLOWLIST, encoding="utf-8"))
+-    frame = json.load(open(os.path.join(OUT, "risk_group_frame.json"), encoding="utf-8"))
++    t0 = time.perf_counter()
++    os.makedirs(os.path.join(OUT, "scripts"), exist_ok=True)
++    frame = json.load(open(os.path.join(BASE, "risk_group_frame.json"), encoding="utf-8"))
++    allowlist = json.load(open(os.path.join(BASE, "read_allowlist.json"), encoding="utf-8"))
++    sealed = json.load(open(os.path.join(BASE, "aggregate_counts.json"), encoding="utf-8"))
++
++    checks = synthetic_checks()
++    ok = all(c["passed"] for c in checks)
++    with open(os.path.join(OUT, "synthetic_checks.json"), "w", encoding="utf-8") as fh:
++        json.dump({"all_passed": ok, "count": len(checks), "checks": checks}, fh, ensure_ascii=False, indent=1)
++    if not ok:
++        print("SYNTHETIC_FAILED")
++        for c in checks:
++            if not c["passed"]:
++                print("  FAIL", c["case"], c["expected"], c["actual"])
++        return 2
++    print("synthetic", len(checks), "passed")
++
+     reader = Reader(allowlist)
+-    findings, existence, negatives = [], [], []
+-    slots = frame["slots"]
+-    base_dirs = {s["slot_id"]: os.path.join(DATA_ROOT, "task%d" % s["task"], s["record_id"]) for s in slots}
+-    t1 = next(s for s in slots if s["task"] == 1)
+-    t2 = next(s for s in slots if s["task"] == 2)
+-    t3 = next(s for s in slots if s["task"] == 3)
+-    neg_targets = [
+-        ("reference_reasoning", os.path.join(base_dirs[t1["slot_id"]], "prostate-biopsy-decision-reasoning.json")),
+-        ("target_decision", os.path.join(base_dirs[t1["slot_id"]], "prostate-biopsy-decision.json")),
+-        ("second_task_reasoning", os.path.join(base_dirs[t2["slot_id"]], "prostate-treatment-decision-reasoning.json")),
+-        ("target_t2", os.path.join(base_dirs[t2["slot_id"]], "prostate-treatment-decision.json")),
+-        ("outcome_file", os.path.join(base_dirs[t3["slot_id"]], "prostate-time-to-recurrence-or-last-follow-up.json")),
+-        ("unknown_file", os.path.join(base_dirs[t1["slot_id"]], "unlisted-extra.json")),
+-        ("cross_case_traversal", os.path.join(base_dirs[t1["slot_id"]], "..", "..", "task2", t2["record_id"], "structured-prompt.json")),
+-        ("absolute_escape", "/etc/hostname"),
+-    ]
+-    for label, raw in neg_targets:
+-        try:
+-            reader.read_text(raw)
+-            negatives.append({"case": label, "denied": False, "reason": "UNEXPECTED_ALLOW"})
+-        except Denied as exc:
+-            negatives.append({"case": label, "denied": True, "reason": str(exc)})
+-        except FileNotFoundError:
+-            negatives.append({"case": label, "denied": True, "reason": "absent_but_outside_allowlist"})
+-        except Exception as exc:  # noqa: BLE001
+-            negatives.append({"case": label, "denied": True, "reason": "error:%s" % type(exc).__name__})
++    deltas = []
++    per_task = {1: [], 2: [], 3: []}
+ 
+-    link = "/tmp/bda_escape_probe"
+-    try:
+-        if os.path.islink(link) or os.path.exists(link):
+-            os.remove(link)
+-        os.symlink("/etc/hostname", link)
+-        try:
+-            reader.read_text(link)
+-            negatives.append({"case": "symlink_escape", "denied": False, "reason": "UNEXPECTED_ALLOW"})
+-        except Denied as exc:
+-            negatives.append({"case": "symlink_escape", "denied": True, "reason": str(exc)})
+-        finally:
+-            os.remove(link)
+-    except OSError as exc:
+-        negatives.append({"case": "symlink_escape", "denied": None, "reason": "unavailable:%s" % type(exc).__name__})
+-
+-    for slot in slots:
+-        sid = slot["slot_id"]
+-        prompt_path = next(e["abs_path"] for e in allowlist["content_read"] if e["slot_id"] == sid and e["role"] == "initial_panel")
+-        clinical_path = next(e["abs_path"] for e in allowlist["content_read"] if e["slot_id"] == sid and e["role"] == "clinical_input")
++    for slot in frame["slots"]:
++        sid, task = slot["slot_id"], slot["task"]
++        p_path = next(e["abs_path"] for e in allowlist["content_read"] if e["slot_id"] == sid and e["role"] == "initial_panel")
++        c_path = next(e["abs_path"] for e in allowlist["content_read"] if e["slot_id"] == sid and e["role"] == "clinical_input")
+         notes = []
+-        prompt, prompt_entry = {}, None
+-        clinical, clinical_entry = {}, None
+         try:
+-            raw, prompt_entry = reader.read_text(prompt_path)
++            raw, _ = reader.read_bytes_once(p_path)
+             prompt = json.loads(raw)
+         except Exception as exc:  # noqa: BLE001
+-            notes.append("initial_panel_read_failed:%s" % type(exc).__name__)
++            prompt, notes = {}, ["initial_panel_failed:%s" % type(exc).__name__]
+         try:
+-            raw, clinical_entry = reader.read_text(clinical_path)
++            raw, _ = reader.read_bytes_once(c_path)
+             clinical = json.loads(raw)
+         except Exception as exc:  # noqa: BLE001
+-            notes.append("clinical_input_read_failed:%s" % type(exc).__name__)
+-        for entry, label in ((prompt_entry, "initial_panel"), (clinical_entry, "clinical_input")):
+-            if entry is None:
+-                continue
+-            if hashlib.sha256(open(entry["abs_path"], "rb").read()).hexdigest() != entry["expected_sha256"]:
+-                notes.append("fingerprint_mismatch:%s" % label)
++            clinical, notes = {}, ["clinical_input_failed:%s" % type(exc).__name__]
+         ex_path = next(e["abs_path"] for e in allowlist["existence_only"] if e["slot_id"] == sid)
+         try:
+-            present = reader.stat_only(ex_path)
++            rep_present = reader.stat_only(ex_path)
+         except Denied:
+-            present = False
+-        existence.append({"slot_id": sid, "task": slot["task"], "representation_present": present})
+-
+-        f = analyse(slot, prompt, clinical, notes)
+-        f["files"] = [
+-            {"role": "initial_panel", "sha256": prompt_entry["expected_sha256"] if prompt_entry else None,
+-             "verified": bool(prompt_entry) and not any(n.startswith("fingerprint_mismatch:initial_panel") for n in notes)},
+-            {"role": "clinical_input", "sha256": clinical_entry["expected_sha256"] if clinical_entry else None,
+-             "verified": bool(clinical_entry) and not any(n.startswith("fingerprint_mismatch:clinical_input") for n in notes)},
+-        ]
+-        f["representation_present"] = present
+-        findings.append(f)
++            rep_present = False
+ 
++        res = analyse_case(prompt, clinical)
++        old = sealed["tasks"]["task%d" % task]
++        old_diff = old["comparison_ledger"].get("same_day_diff", 0) + old["comparison_ledger"].get("same_month_diff", 0) \
++            + old["comparison_ledger"].get("separated_diff", 0) + old["comparison_ledger"].get("undated_diff", 0)
++        delta = {
++            "slot_id": sid,
++            "task": task,
++            "risk_group_id": slot["risk_group_id"],
++            "representation_present": rep_present,
++            "legacy_pair_counts": res["legacy"],
++            "legacy_pair_total": res["legacy_total"],
++            "new_pairs_total": res["pairs_total"],
++            "new_pairs_analyzable": res["pairs_analyzable"],
++            "new_pairs_excluded": res["pairs_excluded"],
++            "new_pairs_excluded_by_reason": res["pairs_excluded_by_reason"],
++            "new_pairs_differing": res["pairs_differing"],
++            "new_pairs_equal": res["pairs_equal"],
++            "date_relation_tally": res["date_relation_tally"],
++            "same_day_label_pairs": res["same_day_label_pairs"],
++            "distinct_orderable_trend_months": res["distinct_orderable_trend_months"],
++            "psav": res["case"]["psav"],
++            "enc_date": res["case"]["enc_date"],
++            "lab_types": res["case"]["lab_types"],
++            "fragments": res["case"]["fragments"],
++            "first_mismatch_stage": {
++                "cross_source_or_time_value_difference": "observation_typing:psav_as_level_and_date_role",
++                "certified_distinct_eligible_observation": "date_role:enc_date_as_observation",
++                "certified_same_encounter_unresolved_conflict": "date_role:enc_date_as_observation",
++                "misread_unit_duplicate_restatement": "comparison:limit_symbol_stripped",
++                "confirmed_late_and_model_reachable": "date_role:no_certified_cutoff",
++                "eligible_comparable_longitudinal": "comparison:counted_date_rows_not_distinct_observations",
++            },
++            "legacy_same_day_from_sealed_total": old_diff,
++            "categories_after": {
++                "cross_source_or_time_value_difference": "CONFIRMED" if res["pairs_differing"] else
++                ("EXCLUDED" if res["pairs_analyzable"] and not res["pairs_differing"] else "UNKNOWN"),
++                "certified_distinct_eligible_observation": "UNKNOWN",
++                "certified_same_encounter_unresolved_conflict": "UNKNOWN",
++                "misread_unit_duplicate_restatement": "CONFIRMED" if (res["pairs_excluded_by_reason"].get("qualified_value_not_exact")
++                                                                      or res["case"]["lab_types"]["free_psa"]
++                                                                      or res["case"]["fragments"]["unitless_report_values"]) else "UNKNOWN",
++                "confirmed_late_and_model_reachable": "UNKNOWN",
++                "eligible_comparable_longitudinal": "UNKNOWN",
++            },
++            "notes": notes,
++        }
++        deltas.append(delta)
++        per_task[task].append(delta)
++
++    with open(os.path.join(OUT, "semantic_delta.jsonl"), "w", encoding="utf-8") as fh:
++        for d in deltas:
++            fh.write(json.dumps(d, ensure_ascii=False) + "\n")
+     with open(os.path.join(OUT, "file_access_audit.jsonl"), "w", encoding="utf-8") as fh:
+         for row in reader.audit:
+             fh.write(json.dumps(row, ensure_ascii=False) + "\n")
+-    with open(os.path.join(OUT, "case_findings.jsonl"), "w", encoding="utf-8") as fh:
+-        for row in findings:
+-            fh.write(json.dumps(row, ensure_ascii=False) + "\n")
+-    with open(os.path.join(OUT, "existence_check.json"), "w", encoding="utf-8") as fh:
+-        json.dump({"representations": existence,
+-                   "missing_representations": [e for e in existence if not e["representation_present"]],
+-                   "negative_controls": negatives,
+-                   "audit_entries": len(reader.audit),
+-                   "denied_entries": sum(1 for r in reader.audit if not r["allowed"])},
+-                  fh, ensure_ascii=False, indent=1)
+-
+-    print("slots", len(slots), "findings", len(findings))
+-    print("audit", len(reader.audit), "denied", sum(1 for r in reader.audit if not r["allowed"]))
+-    print("negatives all denied:", all(n["denied"] for n in negatives if n["denied"] is not None))
+-    print("reps present", sum(1 for e in existence if e["representation_present"]), "/", len(existence))
++
++    # 前后对照
++    before_after = {"batch_id": frame["batch_id"], "seed": frame["seed"],
++                    "baseline_label": "旧启发式运算回执，仅作被审查基线，不是有效可比率",
++                    "before_source": {"aggregate_counts.json": sealed["provenance"]["case_findings_sha256"]},
++                    "tasks": {}, "totals": {}}
++    for task in (1, 2, 3):
++        rows = per_task[task]
++        old = sealed["tasks"]["task%d" % task]
++        old_ledger = old["comparison_ledger"]
++        old_cmp = sum(old_ledger.values())
++        old_diff = (old_ledger.get("same_day_diff", 0) + old_ledger.get("same_month_diff", 0)
++                    + old_ledger.get("separated_diff", 0) + old_ledger.get("undated_diff", 0))
++        new_total = sum(r["new_pairs_total"] for r in rows)
++        new_an = sum(r["new_pairs_analyzable"] for r in rows)
++        new_diff = sum(r["new_pairs_differing"] for r in rows)
++        exc = {}
++        for r in rows:
++            for k, v in r["new_pairs_excluded_by_reason"].items():
++                exc[k] = exc.get(k, 0) + v
++        before_after["tasks"]["task%d" % task] = {
++            "records": len(rows),
++            "before": {
++                "directional_pair_operations": old_cmp,
++                "differing_operations": old_diff,
++                "sealed_ratio": [old_diff, old_cmp],
++                "same_day_differing": old_ledger.get("same_day_diff", 0),
++                "included_psav_pairs": True,
++                "directional_duplicates": True,
++                "limit_symbol_handling": "stripped_and_treated_as_exact",
++            },
++            "after": {
++                "undirected_unique_pairs": new_total,
++                "analyzable_pairs": new_an,
++                "excluded_pairs": sum(r["new_pairs_excluded"] for r in rows),
++                "excluded_by_reason": exc,
++                "differing_pairs": new_diff,
++                "equal_pairs": sum(r["new_pairs_equal"] for r in rows),
++                "ratio": [new_diff, new_an] if new_an else None,
++                "same_day_label_pairs": sum(r["same_day_label_pairs"] for r in rows),
++                "psav_pairs": 0,
++                "directional_duplicates": 0,
++            },
++            "delta": {
++                "pair_universe": new_total - old_cmp,
++                "differing": new_diff - old_diff,
++                "direction": "decrease" if new_diff < old_diff else ("increase" if new_diff > old_diff else "unchanged"),
++            },
++        }
++    before_after["totals"] = {
++        "before_directional_operations": sum(t["before"]["directional_pair_operations"] for t in before_after["tasks"].values()),
++        "before_differing_operations": sum(t["before"]["differing_operations"] for t in before_after["tasks"].values()),
++        "after_undirected_pairs": sum(t["after"]["undirected_unique_pairs"] for t in before_after["tasks"].values()),
++        "after_analyzable": sum(t["after"]["analyzable_pairs"] for t in before_after["tasks"].values()),
++        "after_differing": sum(t["after"]["differing_pairs"] for t in before_after["tasks"].values()),
++    }
++    before_after["resources"] = {
++        "wall_seconds": round(time.perf_counter() - t0, 3),
++        "cpu_seconds": round(sum(resource.getrusage(resource.RUSAGE_SELF)[:2]), 3),
++        "peak_rss_mib": round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024, 1),
++        "file_opens": reader.opens,
++        "bytes_read": reader.bytes_read,
++        "model_requests": 0, "gpu_seconds": 0, "clinical_tool_calls": 0,
++    }
++    before_after["access"] = {
++        "audit_entries": len(reader.audit),
++        "denied": sum(1 for r in reader.audit if not r["allowed"]),
++        "content_reads": sum(1 for r in reader.audit if r["action"] == "read_bytes" and r["allowed"]),
++        "existence_checks": sum(1 for r in reader.audit if r["action"] == "stat" and r["allowed"]),
++        "gt_reads": 0, "reference_reasoning_reads": 0, "outcome_reads": 0,
++    }
++    before_after["provenance"] = {
++        "frame_sha256": frame["frame_sha256"],
++        "allowlist_sha256": hashlib.sha256(open(os.path.join(BASE, "read_allowlist.json"), "rb").read()).hexdigest(),
++        "sealed_aggregate_sha256": hashlib.sha256(open(os.path.join(BASE, "aggregate_counts.json"), "rb").read()).hexdigest(),
++        "fix_script_sha256": hashlib.sha256(open(os.path.abspath(__file__), "rb").read()).hexdigest(),
++        "semantic_delta_sha256": hashlib.sha256(open(os.path.join(OUT, "semantic_delta.jsonl"), "rb").read()).hexdigest(),
++        "synthetic_checks_sha256": hashlib.sha256(open(os.path.join(OUT, "synthetic_checks.json"), "rb").read()).hexdigest(),
++    }
++    with open(os.path.join(OUT, "before_after_counts.json"), "w", encoding="utf-8") as fh:
++        json.dump(before_after, fh, ensure_ascii=False, indent=1)
++
++    print("wall", before_after["resources"]["wall_seconds"], "rss_mib", before_after["resources"]["peak_rss_mib"])
++    for t, v in before_after["tasks"].items():
++        print(t, "before", v["before"]["differing_operations"], "/", v["before"]["directional_pair_operations"],
++              "-> after", v["after"]["differing_pairs"], "/", v["after"]["analyzable_pairs"],
++              "excluded", v["after"]["excluded_pairs"], "same_day", v["after"]["same_day_label_pairs"])
+     return 0
+ 
+ 

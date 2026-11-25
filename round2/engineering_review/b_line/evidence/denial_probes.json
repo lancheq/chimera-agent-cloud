@@ -1,0 +1,55 @@
+{
+ "probe_count": 6,
+ "all_denied": true,
+ "content_bytes_read": 0,
+ "probes": [
+  {
+   "seq": 1,
+   "probe": "reference_reasoning",
+   "path": "/home/hedongze/CHIMERA-agent/data/round2_materials_20261121/train_release_transfer/20261121_104011_78d1168e/train_release_chimera_phase2/task1/PT-pseudo_927456f47c99/prostate-biopsy-decision-reasoning.json",
+   "denied": true,
+   "reason": "denied_suffix:prostate-biopsy-decision-reasoning.json",
+   "bytes_read": 0
+  },
+  {
+   "seq": 2,
+   "probe": "target_decision",
+   "path": "/home/hedongze/CHIMERA-agent/data/round2_materials_20261121/train_release_transfer/20261121_104011_78d1168e/train_release_chimera_phase2/task1/PT-pseudo_927456f47c99/prostate-biopsy-decision.json",
+   "denied": true,
+   "reason": "denied_suffix:prostate-biopsy-decision.json",
+   "bytes_read": 0
+  },
+  {
+   "seq": 3,
+   "probe": "outcome_file",
+   "path": "/home/hedongze/CHIMERA-agent/data/round2_materials_20261121/train_release_transfer/20261121_104011_78d1168e/train_release_chimera_phase2/task3/T3-040/prostate-time-to-recurrence-or-last-follow-up.json",
+   "denied": true,
+   "reason": "denied_suffix:prostate-time-to-recurrence-or-last-follow-up.json",
+   "bytes_read": 0
+  },
+  {
+   "seq": 4,
+   "probe": "unknown_file",
+   "path": "/home/hedongze/CHIMERA-agent/data/round2_materials_20261121/train_release_transfer/20261121_104011_78d1168e/train_release_chimera_phase2/task1/PT-pseudo_927456f47c99/unlisted-extra.json",
+   "denied": true,
+   "reason": "not_in_allowlist",
+   "bytes_read": 0
+  },
+  {
+   "seq": 5,
+   "probe": "cross_case_traversal",
+   "path": "/home/hedongze/CHIMERA-agent/data/round2_materials_20261121/train_release_transfer/20261121_104011_78d1168e/train_release_chimera_phase2/task1/PT-pseudo_927456f47c99/../../task2/T2-042/structured-prompt.json",
+   "denied": true,
+   "reason": "traversal_segment",
+   "bytes_read": 0
+  },
+  {
+   "seq": 6,
+   "probe": "absolute_escape",
+   "path": "/etc/hostname",
+   "denied": true,
+   "reason": "outside_data_root",
+   "bytes_read": 0
+  }
+ ]
+}
