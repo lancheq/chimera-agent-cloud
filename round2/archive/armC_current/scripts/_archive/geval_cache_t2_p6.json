@@ -1,0 +1,1576 @@
+{
+  "task2_T2-001": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "Gleason_primary",
+      "ISUP_grade",
+      "age"
+    ],
+    "missing_points": [
+      "clinical_T_stage",
+      "cspca",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the low-risk features (ISUP GG 1, PI-RADS 2, low PSAD) supporting active surveillance. It mentions PSA and PSAD, but the reasoning is slightly flawed by referencing an unprovided PSA velocity (1.17 ng/mL/yr) instead of the provided PSA (4.7 ng/mL), which is a minor deduction. The core decision logic aligns with active surveillance.",
+    "case_id": "T2-001",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "The decision is driven by the patient's established low-risk pathology (ISUP GG 1, Gleason 3+3) combined with a negative PI-RADS 2 MRI and low PSAD of 0.14. Although PSA velocity is elevated at 1.17 ng/mL/yr, it does not yet cross the threshold for intervention without corresponding imaging or histo"
+  },
+  "task2_T2-002": {
+    "score": 0.9,
+    "covered_points": [
+      "PSA",
+      "ISUP_grade",
+      "PIRADS"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for active treatment (high PSA, high grade, and suspicious MRI findings). It is consistent with the ground truth. It could be improved by explicitly mentioning the high Gleason score (4+4) and the presence of seminal vesicle invasion (which implies advanced T-stage), as these are critical factors.",
+    "case_id": "T2-002",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "The decision for active treatment is driven by the markedly elevated PSA of 187 ng/mL, high-grade pathology (ISUP Group 4), and PI-RADS 5 MRI findings indicating seminal vesicle invasion."
+  },
+  "task2_T2-003": {
+    "score": 0.3,
+    "covered_points": [
+      "ISUP_grade"
+    ],
+    "missing_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "age",
+      "comorbidity",
+      "family_history",
+      "cspca"
+    ],
+    "rationale": "The rationale only mentions ISUP GG3, which is a key variable, but it fails to mention any other critical clinical variables (PSA, PIRADS, Gleason score, etc.) and does not provide causal reasoning to support the 'active_treatment' decision. It only states an intent to search guidelines.",
+    "case_id": "T2-003",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "I should search guidelines to confirm the standard of care for ISUP GG3 prostate cancer and determine whether surgery or radiotherapy would be preferred.\n</think>"
+  },
+  "task2_T2-004": {
+    "score": 0.9,
+    "covered_points": [
+      "PSA",
+      "PSAD",
+      "clinical_T_stage"
+    ],
+    "missing_points": [
+      "PIRADS",
+      "Gleason_primary",
+      "ISUP_grade",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the high PSA and PSAD as drivers for active treatment, consistent with the ground truth. It also mentions cT3a/extracapsular extension, which is a critical factor. However, it misses several key variables (PIRADS, Gleason, ISUP, age, CSPCA) that are relevant to prostate cancer decision-making, leading to a slightly lower score.",
+    "case_id": "T2-004",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "The massively elevated PSA of 160 ng/mL, extremely high PSAD of 2.635, and cT3a clinical stage with extracapsular extension unequivocally mandate active treatment over surveillance."
+  },
+  "task2_T2-005": {
+    "score": 0.8,
+    "covered_points": [
+      "ISUP_grade",
+      "PSA",
+      "PIRADS"
+    ],
+    "missing_points": [
+      "PSAD",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the low-risk features (ISUP Grade Group 1, low PSA) supporting active surveillance. It also mentions the PI-RADS 4 finding, which is relevant for monitoring. However, it misses several key variables and lacks depth in explaining why the low-risk features outweigh the suspicious imaging finding, which is crucial for a complete clinical justification.",
+    "case_id": "T2-005",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "The recommendation for active surveillance is driven by the confirmed ISUP Grade Group 1 pathology and low PSA levels. The presence of a PI-RADS 4 lesion alongside high AI prediction probability necessitates a strict monitoring protocol rather than immediate intervention."
+  },
+  "task2_T2-006": {
+    "score": 0.3,
+    "covered_points": [
+      "PSA",
+      "PIRADS",
+      "Gleason_primary",
+      "ISUP_grade"
+    ],
+    "missing_points": [
+      "PSAD",
+      "cspca",
+      "clinical_T_stage",
+      "age"
+    ],
+    "rationale": "The free text argues for active treatment (radical prostatectomy or radiotherapy), which contradicts the ground truth decision of active surveillance. While it mentions key variables (PSA, PIRADS, Gleason/ISUP), the reasoning is fundamentally incorrect regarding the final management plan.",
+    "case_id": "T2-006",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "This patient requires active treatment—either radical prostatectomy or radiotherapy—given the clear evidence of clinically significant disease that doesn't align with the initial biopsy results. The discordance between low-grade pathology and high-risk clinical features necessitates definitive inter"
+  },
+  "task2_T2-007": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "ISUP_grade",
+      "clinical_T_stage"
+    ],
+    "missing_points": [
+      "PSAD",
+      "Gleason_primary",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for escalating treatment (PSA rise, high PIRADS, and clinical stage) and aligns with the active treatment decision. It is strong but misses several specific variables available in the case facts.",
+    "case_id": "T2-007",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "Rapid PSA rise (doubling time <6 months), PI-RADS 4 lesion, and cT2a clinical stage indicate progression of ISUP GG2 disease, necessitating switch from surveillance to active treatment."
+  },
+  "task2_T2-008": {
+    "score": 0.4,
+    "covered_points": [
+      "ISUP_grade",
+      "PSA",
+      "PSAD",
+      "age"
+    ],
+    "missing_points": [
+      "PIRADS",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "cspca",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale mentions ISUP Grade Group 2, PSA, and PSAD, which are relevant. However, it incorrectly cites 'significant PSA fluctuation from 1.4 to 6.8 ng/mL' when the case facts only provide the current PSA (6.8 ng/mL) and no prior PSA value. Furthermore, it mentions 'coronary artery disease' (comorbidity) which is not present in the provided case facts. The reasoning is weak and contains factual errors regarding the case data.",
+    "case_id": "T2-008",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "continued_surveillance",
+    "pred_free_text": "The decision is driven by the patient's ISUP Grade Group 2 diagnosis, significant PSA fluctuation from 1.4 to 6.8 ng/mL, elevated PSA density of 0.2, and coronary artery disease which increases surgical risk."
+  },
+  "task2_T2-009": {
+    "score": 0.2,
+    "covered_points": [
+      "PSA",
+      "PSAD",
+      "ISUP_grade",
+      "PIRADS"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The free text suggests definitive therapy, which contradicts the ground truth decision of active surveillance. While it mentions relevant variables (PSA, PSAD, ISUP grade), the reasoning is misaligned with the correct clinical management strategy.",
+    "case_id": "T2-009",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "Rapid PSA progression, high PSA density (0.25), cribriform histology, and elevated AI grade prediction outweigh initial low-grade biopsy results, justifying definitive therapy despite comorbidities."
+  },
+  "task2_T2-010": {
+    "score": 0.3,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale mentions PI-RADS 5 and PSA, which are relevant, but it incorrectly claims 'rising PSA kinetics' (no trend data provided) and 'AI-predicted grade upgrade' (no such data or evidence provided). Crucially, it fails to incorporate the low-risk pathology findings (Gleason 3+3, ISUP 1) which strongly support the active surveillance decision, leading to an inconsistent and unsupported rationale.",
+    "case_id": "T2-010",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "The decision is driven primarily by the PI-RADS 5 lesion indicating high suspicion for clinically significant cancer, supported by rising PSA kinetics and AI-predicted grade upgrade."
+  },
+  "task2_T2-011": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "ISUP_grade",
+      "age"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "clinical_T_stage",
+      "cspca",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key factors supporting active surveillance (ISUP Grade Group 2, borderline PSA density, stable biopsies) despite the high-risk features (PI-RADS 4, rising PSA). It covers most relevant variables but misses specific details like Gleason score and other risk factors.",
+    "case_id": "T2-011",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "ISUP Grade Group 2 disease with borderline PSA density (0.10) and stable prior biopsies supports active surveillance despite a PI-RADS 4 lesion and rising PSA trend."
+  },
+  "task2_T2-012": {
+    "score": 0.3,
+    "covered_points": [
+      "PIRADS",
+      "ISUP_grade"
+    ],
+    "missing_points": [
+      "PSA",
+      "PSAD",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "age",
+      "comorbidity",
+      "family_history",
+      "cspca"
+    ],
+    "rationale": "The free_text focuses on specific pathological features (cribriform pattern, grade discordance) and general guidelines, but fails to incorporate or explain the role of critical quantitative variables (PSA, PSAD, CSPCA) or clinical staging/risk factors (T-stage, age) that drive the active surveillance decision. It lacks causal reasoning linking the data to the 'active_surveillance' outcome.",
+    "case_id": "T2-012",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "I need to search for guidelines regarding:\n- Management of cribriform pattern in prostate cancer\n- Active surveillance eligibility with cribriform features\n- Treatment decisions when there's discordance between biopsy grade and clinical trajectory"
+  },
+  "task2_T2-013": {
+    "score": 0.5,
+    "covered_points": [
+      "ISUP_grade",
+      "PSA"
+    ],
+    "missing_points": [
+      "PIRADS",
+      "PSAD",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "age",
+      "comorbidity",
+      "family_history",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk features (ISUP Grade Group 5, high PSA) leading to active treatment (radiation plus ADT). However, it fails to mention several critical variables present in the case (e.g., PIRADS 5, PSAD, specific clinical T-stage/invasion details) and incorrectly introduces 'atrial fibrillation on anticoagulation' as a comorbidity, which is not present in the provided case facts.",
+    "case_id": "T2-013",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "ISUP Grade Group 5 cancer, extremely high PSA (113 ng/mL), and atrial fibrillation on anticoagulation making surgery risky drove the recommendation for radiation therapy plus ADT."
+  },
+  "task2_T2-014": {
+    "score": 0.3,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "cspca",
+      "Gleason_primary",
+      "ISUP_grade"
+    ],
+    "missing_points": [
+      "clinical_T_stage",
+      "age",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale mentions high-risk factors (PI-RADS 5, rising PSA, high csPCa) and suggests a high-grade pathology (GG4), which contradicts the ground truth decision of active surveillance and the actual pathology report (GG1). The reasoning is inconsistent with the ground truth and misrepresents the clinical data.",
+    "case_id": "T2-014",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "The decision was driven primarily by the PI-RADS 5 lesion, rising PSA trajectory from 4.3 to 8.0 ng/mL, high csPCa probability (0.86), and AI-predicted Grade Group 4 pathology, which collectively outweigh the prior GG1 biopsy results."
+  },
+  "task2_T2-015": {
+    "score": 0.9,
+    "covered_points": [
+      "PSA",
+      "ISUP_grade",
+      "PIRADS",
+      "age"
+    ],
+    "missing_points": [
+      "PSAD",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk factors (high PSA, high-grade cancer, PI-RADS 5, young age) that support the 'active_treatment' decision. It provides causal reasoning by stating these factors 'strongly mandate' treatment. However, it misses several key variables like PSAD, Gleason score, and clinical T-stage, which are crucial for a complete clinical justification.",
+    "case_id": "T2-015",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "PSA of 190 ng/mL, ISUP Grade Group 3 with cribriform pattern, PI-RADS 5 lesion, and patient's young age strongly mandate active multimodal treatment."
+  },
+  "task2_T2-016": {
+    "score": 0.2,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "ISUP_grade"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The provided rationale incorrectly suggests that active surveillance is contraindicated when MRI suggests high-grade disease discordant with initial pathology. The case presents an ISUP Grade Group 1 diagnosis with a high-risk MRI (PI-RADS 5) and rising PSA, which typically warrants further investigation (like a repeat biopsy or careful monitoring) rather than immediate active treatment, aligning with the ground truth of active surveillance. The rationale is overly aggressive and misinterprets the clinical guidelines for this specific scenario.",
+    "case_id": "T2-016",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": " Guidelines on Prostate Cancer (2024/2025)**, patients with an initial GG1 diagnosis but high-risk MRI features (PI-RADS 4–5) and rising PSA kinetics should undergo confirmatory targeted biopsy to rule out csPCa. If csPCa is confirmed or highly suspected (as in this case), active treatment (radical "
+  },
+  "task2_T2-017": {
+    "score": 0.9,
+    "covered_points": [
+      "ISUP_grade",
+      "PIRADS",
+      "PSA",
+      "Gleason_primary"
+    ],
+    "missing_points": [
+      "PSAD",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for active treatment (ISUP Grade Group 2, rising PSA, PI-RADS 4) and provides causal reasoning consistent with the ground truth. It misses several other relevant variables like PSAD, age, and CSPCA.",
+    "case_id": "T2-017",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "The decision for active treatment is driven primarily by the ISUP Grade Group 2 diagnosis containing high-risk cribriform patterns, which elevates the risk of progression beyond standard surveillance criteria. Additionally, the rising PSA velocity (4.3 to 9.0 ng/mL) and PI-RADS 4 lesion support a mo"
+  },
+  "task2_T2-018": {
+    "score": 0.5,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk factors (PI-RADS 5, high PSA/PSAD) that necessitate further investigation (MRI-targeted biopsy), which aligns with the active surveillance approach (monitoring/investigating before definitive treatment). However, it fails to mention other key variables and does not explicitly state the final decision (active surveillance), focusing only on the next step (biopsy).",
+    "case_id": "T2-018",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "continued_surveillance",
+    "pred_free_text": "PI-RADS 5 imaging, markedly elevated PSA with high PSAD, and discordant prior negative systematic biopsy strongly mandate an MRI-targeted biopsy before any definitive treatment can be initiated."
+  },
+  "task2_T2-019": {
+    "score": 0.8,
+    "covered_points": [
+      "age",
+      "PSA",
+      "PSAD",
+      "PIRADS",
+      "ISUP_grade"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "clinical_T_stage",
+      "cspca",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly supports the active_treatment decision based on age, elevated PSA, high-risk imaging (PIRADS), and potential grade upgrade. However, it fails to explicitly mention the specific values for Gleason score, PSAD, or the clinical T-stage, relying instead on general terms like 'high-risk imaging features' and 'possible grade upgrade'.",
+    "case_id": "T2-019",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "The patient's relatively young age (67) with good life expectancy makes definitive treatment more favorable than surveillance. Given the combination of high-risk imaging features, elevated PSA density, and possible grade upgrade, active_treatment appears to be the most appropriate recommendation her"
+  },
+  "task2_T2-020": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "Gleason_primary",
+      "ISUP_grade",
+      "age",
+      "clinical_T_stage"
+    ],
+    "missing_points": [
+      "cspca",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for active treatment (PI-RADS 5, high PSAD, and clinical suspicion) and aligns with the ground truth. It covers most critical variables, though it incorrectly mentions a 'palpable cT2 nodule' which is not supported by the provided case facts (the case mentions a focal lesion, not a palpable nodule).",
+    "case_id": "T2-020",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "The decision for active treatment is driven primarily by the PI-RADS 5 lesion and markedly elevated PSA density (0.427), which together indicate a high burden of clinically significant prostate cancer despite stable ISUP GG2 histology on repeat biopsy. The rising PSA trajectory from 4.9 to 7.0 ng/mL"
+  },
+  "task2_T2-021": {
+    "score": 0.9,
+    "covered_points": [
+      "PSA",
+      "PSAD",
+      "PIRADS"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the low PSA and PSAD as favoring surveillance despite the PI-RADS 4 finding, aligning with the ground truth. However, it misses several key variables (e.g., Gleason score, clinical T-stage, CSPCA) that are relevant in prostate cancer decision-making.",
+    "case_id": "T2-021",
+    "task": 2,
+    "gt_decision": "continued_surveillance",
+    "pred_decision": "continued_surveillance",
+    "pred_free_text": "Extremely low PSA density (0.02) and very low absolute PSA (0.76 ng/mL) strongly outweigh the PI-RADS 4 lesion, favoring continued surveillance over immediate biopsy."
+  },
+  "task2_T2-022": {
+    "score": 0.8,
+    "covered_points": [
+      "PSA",
+      "PIRADS",
+      "Gleason_primary",
+      "ISUP_grade",
+      "age"
+    ],
+    "missing_points": [
+      "PSAD",
+      "clinical_T_stage",
+      "cspca",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly supports active surveillance based on stable disease and established low-grade pathology (GG1/3+3). It mentions PSA and PIRADS, but misses several key variables like PSAD and CSPCA. The reasoning is consistent with the ground truth.",
+    "case_id": "T2-022",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "The AI prediction discrepancy (GG3 vs confirmed GG1) needs clarification, but without histological confirmation of grade upgrade, the established pathology takes precedence. Given stable disease over two years with no clinical progression signs, active surveillance remains appropriate.\n</think>"
+  },
+  "task2_T2-023": {
+    "score": 0.8,
+    "covered_points": [
+      "PSA",
+      "PIRADS",
+      "ISUP_grade"
+    ],
+    "missing_points": [
+      "PSAD",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies key indicators (rising PSA, PI-RADS 5, ISUP grade upgrade) supporting the active treatment decision. However, it lacks specific quantitative data (e.g., PSAD, specific Gleason score) and other critical variables like T-stage or age, making the coverage incomplete.",
+    "case_id": "T2-023",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "Rapidly rising PSA kinetics (7.4 to 11.0 ng/mL in 3 months), PI-RADS 5 lesion on mpMRI, and AI-predicted ISUP grade group upgrade strongly indicate aggressive disease requiring definitive treatment rather than surveillance."
+  },
+  "task2_T2-024": {
+    "score": 0.5,
+    "covered_points": [
+      "PSA",
+      "PSAD",
+      "ISUP_grade",
+      "PIRADS",
+      "Gleason_primary",
+      "age"
+    ],
+    "missing_points": [
+      "clinical_T_stage",
+      "cspca",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The free text mentions several key variables (PSA, PSAD, ISUP grade, PIRADS, Gleason) and attempts to provide causal reasoning. However, the reasoning direction is inconsistent with the ground truth decision (active_surveillance). The text leans towards 'active_treatment' despite the ground truth being 'active_surveillance'.",
+    "case_id": "T2-024",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "rveillance, even though other markers like PSAD suggest lower risk. The suspicious DRE finding and concerning PSA trajectory add weight to intervention. While AS remains an option for ISUP GG2 disease with favorable characteristics, this case has enough worrisome elements—particularly the cribriform"
+  },
+  "task2_T2-025": {
+    "score": 0.9,
+    "covered_points": [
+      "ISUP_grade",
+      "age",
+      "PSA",
+      "cspca",
+      "PIRADS"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "PSAD",
+      "clinical_T_stage"
+    ],
+    "rationale": "The rationale correctly supports active surveillance based on low-grade pathology (ISUP GG1) and age, while mentioning PSA and csPCa. It implicitly addresses PIRADS by mentioning 'discordant high-risk MRI findings,' but misses specific variables like Gleason_primary and PSAD.",
+    "case_id": "T2-025",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "The recommendation for active surveillance is driven by the confirmed low-grade pathology (ISUP GG1) and young age, which outweigh the discordant high-risk MRI findings. Low PSA density further supports a conservative approach despite elevated csPCa probability."
+  },
+  "task2_T2-026": {
+    "score": 0.5,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies key risk factors (PI-RADS 4, high PSAD, rising PSA, prior negative biopsy) that necessitate further investigation (repeat biopsy), which aligns with the decision for continued surveillance/further monitoring. However, it lacks depth regarding the specific clinical context and does not fully address the decision-making process for surveillance versus immediate treatment.",
+    "case_id": "T2-026",
+    "task": 2,
+    "gt_decision": "continued_surveillance",
+    "pred_decision": "continued_surveillance",
+    "pred_free_text": "PI-RADS 4 lesion, high PSAD (0.31), rising PSA, and prior negative biopsy mandate repeat biopsy before treatment decision."
+  },
+  "task2_T2-027": {
+    "score": 0.7,
+    "covered_points": [
+      "PSAD",
+      "ISUP_grade",
+      "PIRADS",
+      "age"
+    ],
+    "missing_points": [
+      "PSA",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies low PSAD and ISUP Grade Group 1 as key factors favoring active surveillance, and mentions the PIRADS 4 lesion and age. However, it misses PSA, Gleason_primary, and cspca, and the causal reasoning is slightly weak by attributing low PSAD solely to BPH-related elevation without full context.",
+    "case_id": "T2-027",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "continued_surveillance",
+    "pred_free_text": "The decision is driven by the extremely low PSA density (0.01) indicating BPH-related PSA elevation, two prior biopsies confirming ISUP Grade Group 1 disease, and the patient's advanced age with active lifestyle, which collectively outweigh the PI-RADS 4 lesion and AI prediction."
+  },
+  "task2_T2-028": {
+    "score": 0.9,
+    "covered_points": [
+      "PSA",
+      "Gleason_primary",
+      "ISUP_grade",
+      "age"
+    ],
+    "missing_points": [
+      "PIRADS",
+      "PSAD",
+      "clinical_T_stage",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk features (elevated PSA, high-grade histology/cribriform pattern) leading to the active treatment decision. It mentions age and the need for definitive therapy. However, it misses several critical variables like PIRADS, PSAD, and the specific T-stage/risk stratification data, which are crucial for a complete clinical justification.",
+    "case_id": "T2-028",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "sease, markedly elevated PSA (70 ng/mL), rapid PSA velocity, and cribriform histology mandates definitive multimodal therapy rather than surveillance or watchful waiting. The patient's age (65) and functional status support curative-intent treatment. Immediate next steps should include systemic stag"
+  },
+  "task2_T2-029": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age"
+    ],
+    "missing_points": [
+      "comorbidity",
+      "family_history",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly supports active surveillance based on stable histology (ISUP Grade Group 1) and mentions key variables like PSA and MRI findings (PIRADS/T-stage), aligning with the ground truth. It provides strong causal reasoning regarding the need for continued surveillance rather than immediate treatment escalation.",
+    "case_id": "T2-029",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "ive surveillance with rising PSA or new MRI lesions, repeat systematic and targeted biopsy is indicated. If histology remains ISUP Grade Group 1 without progression markers, active surveillance should be continued with intensified follow-up rather than escalating to definitive treatment.\"\n\n**Confide"
+  },
+  "task2_T2-030": {
+    "score": 0.6,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage"
+    ],
+    "missing_points": [
+      "PSAD",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers (PI-RADS 5, PSA, and grade/T-stage) supporting active treatment. However, it incorrectly mentions a 'palpable cT2a nodule' (the case notes 'Nodus' for DRE, but the MRI describes a focal lesion, not necessarily a palpable nodule, and the DRE finding is ambiguous in the provided text), and it fails to mention PSAD, age, or CSPCA, which are relevant variables.",
+    "case_id": "T2-030",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "The decision to proceed with active treatment is driven primarily by the PI-RADS 5 lesion and palpable cT2a nodule, which strongly suggest clinically significant cancer despite prior GG1 biopsies. Rising PSA kinetics and AI-predicted grade upgrade further support definitive management over continued"
+  },
+  "task2_T2-031": {
+    "score": 0.4,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "Gleason_primary",
+      "ISUP_grade",
+      "age"
+    ],
+    "missing_points": [
+      "PSAD",
+      "clinical_T_stage",
+      "cspca",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale mentions the complexity of the decision and the presence of perineural invasion, which is a critical factor. However, it fails to explicitly mention or integrate the specific values of the key variables (e.g., PSA=6.0, Gleason 4+3/ISUP 2, PIRADS 4) and does not provide a clear causal explanation for why 'watchful waiting' (the ground truth) is appropriate despite the high-risk features mentioned. The reasoning is reflective rather than decisive.",
+    "case_id": "T2-031",
+    "task": 2,
+    "gt_decision": "watchful_waiting",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "I need to verify whether active surveillance is truly contraindicated here or if it could still be considered given his overall health status and life expectancy. The presence of perineural invasion on biopsy further complicates the decision, as this feature typically pushes toward treatment rather "
+  },
+  "task2_T2-032": {
+    "score": 0.3,
+    "covered_points": [
+      "PSA",
+      "PIRADS",
+      "ISUP_grade",
+      "age"
+    ],
+    "missing_points": [
+      "PSAD",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "cspca",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale is too generic and fails to cite specific clinical data (like PSA, PIRADS, or ISUP grade) to justify the watchful waiting decision. It only mentions 'intermediate-risk scenario' without providing the necessary causal reasoning based on the provided variables.",
+    "case_id": "T2-032",
+    "task": 2,
+    "gt_decision": "watchful_waiting",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "The patient's clinical presentation suggests a complex decision requiring careful risk stratification. Active surveillance seems most aligned with current evidence-based guidelines for this intermediate-risk scenario.\n</think>"
+  },
+  "task2_T2-033": {
+    "score": 0.8,
+    "covered_points": [
+      "ISUP_grade",
+      "PSA",
+      "PIRADS"
+    ],
+    "missing_points": [
+      "PSAD",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the key factors (stable low-grade pathology and low PSA density) supporting active surveillance. However, it misses several critical variables like PSAD, Gleason score, and clinical T-stage, which are important for a complete clinical justification.",
+    "case_id": "T2-033",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "continued_surveillance",
+    "pred_free_text": "The decision to continue surveillance is primarily driven by the stable ISUP Grade Group 1 pathology and very low PSA density, which suggest benign causes for the PSA rise. The PI-RADS 4 lesion warrants monitoring but does not justify active treatment without confirmed high-grade recurrence."
+  },
+  "task2_T2-034": {
+    "score": 0.5,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "age"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "cspca"
+    ],
+    "rationale": "The free text correctly identifies high clinical suspicion based on PI-RADS 4 and PSA, which supports the need for further investigation (biopsy), but it does not align with the ground truth decision of 'continued_surveillance'. The reasoning is focused on the need for biopsy, not surveillance.",
+    "case_id": "T2-034",
+    "task": 2,
+    "gt_decision": "continued_surveillance",
+    "pred_decision": "continued_surveillance",
+    "pred_free_text": "High clinical suspicion for csPCa driven by PI-RADS 4 lesion, palpable nodule (cT2a), and rising PSA velocity. Prior negative biopsy is superseded by new high-risk features. Biopsy is mandatory before treatment decisions."
+  },
+  "task2_T2-035": {
+    "score": 0.5,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "ISUP_grade",
+      "Gleason_primary",
+      "age"
+    ],
+    "missing_points": [
+      "PSAD",
+      "clinical_T_stage",
+      "cspca",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the conflict between low-grade biopsy results (ISUP GG1) and high-risk imaging/clinical features (PI-RADS 4, elevated PSA, abnormal DRE), suggesting a need for further investigation (repeat biopsy) rather than immediate treatment or surveillance. However, it fails to explicitly mention several key variables (PSAD, cspca, T-stage) and its conclusion (repeat biopsy) is not directly aligned with the ground truth decision (active_surveillance), although it supports the need for caution.",
+    "case_id": "T2-035",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "continued_surveillance",
+    "pred_free_text": "Decision driven by significant discordance between ISUP GG1 biopsy results and high-risk features (PI-RADS 4, rising PSA, abnormal DRE, AI prediction of higher grade). Active surveillance is unsafe without confirming low volume/grade, and active treatment cannot be justified on unconfirmed GG1. Repe"
+  },
+  "task2_T2-036": {
+    "score": 0.3,
+    "covered_points": [
+      "PSA"
+    ],
+    "missing_points": [
+      "PIRADS",
+      "PSAD",
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "comorbidity",
+      "family_history",
+      "cspca"
+    ],
+    "rationale": "The rationale is too vague and focuses on gathering more information (family history, PSA trend) rather than justifying the 'active_surveillance' decision based on the provided data. It fails to mention the key variables that support this decision (e.g., low-grade cancer, low PSA density, low PIRADS).",
+    "case_id": "T2-036",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "I'll investigate the family history and PSA trend to clarify the clinical picture. These additional details could significantly impact my treatment recommendation, potentially shifting from active surveillance to more aggressive management.\n</think>"
+  },
+  "task2_T2-037": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "ISUP_grade",
+      "Gleason_primary",
+      "age"
+    ],
+    "missing_points": [
+      "clinical_T_stage",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the key factors supporting active surveillance (ISUP GG1, low PSAD) despite equivocal findings (PI-RADS 3, rising PSA). It aligns with the ground truth decision. It mentions most key variables but omits specific values for PSAD and CSPCA, and does not explicitly state the clinical T-stage, although it is implied by the PI-RADS 3 finding.",
+    "case_id": "T2-037",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "The decision is driven primarily by the confirmed ISUP Grade Group 1 pathology (Gleason 3+3) combined with a low PSA density, which strongly supports active surveillance. The equivocal PI-RADS 3 lesion and rising PSA are counterbalanced by the low PSAD and indolent histology, though the cribriform p"
+  },
+  "task2_T2-038": {
+    "score": 0.0,
+    "covered_points": [],
+    "missing_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "comorbidity",
+      "family_history",
+      "cspca"
+    ],
+    "rationale": "The provided free_text is a vague statement about considering additional diagnostic information and suggests a clear path forward, but it fails to mention any specific clinical variables (like PSA, PIRADS, Gleason score, etc.) or provide any causal reasoning to support the 'active_treatment' ground truth decision.",
+    "case_id": "T2-038",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "I'm considering whether additional diagnostic information might refine my understanding, but the current clinical picture already suggests a clear path forward for intervention.\n</think>"
+  },
+  "task2_T2-039": {
+    "score": 0.6,
+    "covered_points": [
+      "PSA",
+      "PSAD",
+      "PIRADS",
+      "age"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies key factors (PSAD, PI-RADS, PSA volume effect, prior negative biopsy) that support continued surveillance. However, it fails to mention critical variables like the actual ISUP grade or the high PSA level (21.0) which are central to the decision-making process, leading to a moderate score.",
+    "case_id": "T2-039",
+    "task": 2,
+    "gt_decision": "continued_surveillance",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "Decision driven by borderline PSAD (0.19), PI-RADS 3 equivocal lesion, large prostate volume diluting PSA density, and prior negative biopsy despite AI prediction of higher grade."
+  },
+  "task2_T2-040": {
+    "score": 0.8,
+    "covered_points": [
+      "ISUP_grade",
+      "age"
+    ],
+    "missing_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "cspca",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high-grade nature (ISUP Grade Group 4) as the primary driver for active treatment, aligning with the ground truth. However, it fails to mention several critical variables present in the case (PIRADS, PSA, PSAD, clinical T-stage, etc.) and only vaguely mentions comorbidities without specific context.",
+    "case_id": "T2-040",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "The primary driver for active treatment is the biopsy-proven ISUP Grade Group 4 (Gleason 8) cancer. Active surveillance is contraindicated for high-grade disease. Comorbidities like CAD and diabetes influence the choice between surgery and radiation but do not preclude definitive therapy in a 70-yea"
+  },
+  "task2_T2-041": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "ISUP_grade",
+      "age"
+    ],
+    "missing_points": [
+      "PSA",
+      "PSAD",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "cspca",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk features (ISUP Grade Group 4 and PI-RADS 5) and the patient's age, supporting the active treatment decision. However, it is overly simplistic and omits several critical variables (PSA, PSAD, Gleason score, etc.) that contribute to the decision-making process.",
+    "case_id": "T2-041",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "ISUP Grade Group 4 pathology and PI-RADS 5 MRI findings mandate active treatment in this fit 60-year-old patient."
+  },
+  "task2_T2-042": {
+    "score": 0.2,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "comorbidity",
+      "family_history",
+      "cspca"
+    ],
+    "rationale": "The free text mentions high-risk indicators (PI-RADS 5, high PSAD) and suggests a high-risk diagnosis (ISUP Grade Group 3), which would typically lead to active management or biopsy, contradicting the ground truth of continued surveillance. Furthermore, the provided pathology reports explicitly state ISUP Grade Group 0, making the AI-predicted grade incorrect and misleading.",
+    "case_id": "T2-042",
+    "task": 2,
+    "gt_decision": "continued_surveillance",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "Decision driven by PI-RADS 5 lesion, high PSA density (0.35), and AI-predicted ISUP Grade Group 3, which outweigh the negative systematic biopsies likely due to sampling error."
+  },
+  "task2_T2-043": {
+    "score": 0.3,
+    "covered_points": [
+      "PSA",
+      "PSAD",
+      "ISUP_grade"
+    ],
+    "missing_points": [
+      "PIRADS",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale mentions PSA and PSAD, which are relevant, but it incorrectly interprets the data. It claims 'rapid PSA kinetics' (which is not supported by the provided data) and suggests surveillance, which contradicts the ground truth decision of 'active_treatment'. It also misses several key variables like PIRADS and the specific Gleason score.",
+    "case_id": "T2-043",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "continued_surveillance",
+    "pred_free_text": "The decision hinges on the conflict between rapid PSA kinetics (velocity >2.0 ng/mL/yr) and a very low PSA density (0.07), which strongly suggests benign prostatic hyperplasia rather than cancer progression. Stable ISUP GG1 histology across two biopsies further supports maintaining surveillance, whi"
+  },
+  "task2_T2-044": {
+    "score": 0.5,
+    "covered_points": [
+      "PSA",
+      "PIRADS",
+      "PSAD"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The provided rationale focuses on high PSA, PI-RADS 4, and PSAD to argue for active treatment, which contradicts the ground truth decision of continued surveillance. Furthermore, the rationale fails to incorporate the critical finding of benign histology (ISUP grade group 0) from the pathology report, which strongly supports the surveillance decision. The reasoning is inconsistent with the ground truth.",
+    "case_id": "T2-044",
+    "task": 2,
+    "gt_decision": "continued_surveillance",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "The decision for active treatment is driven by the very high PSA level (34.7 ng/mL), a PI-RADS 4 lesion on mpMRI indicating high risk of clinically significant cancer, and a high PSA density (0.352) which confirms the likelihood of malignancy despite the large prostate volume."
+  },
+  "task2_T2-045": {
+    "score": 0.5,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "cspca",
+      "age"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key factors (PIRADS 4, rising PSA, high CSPCA, borderline PSAD) that suggest cancer and support further investigation (MRI-targeted biopsy). However, the ground truth decision is 'continued_surveillance,' while the rationale strongly advocates for an 'MRI-targeted biopsy' (which is a different management strategy). Furthermore, it fails to mention the negative biopsy history or the current lack of definitive cancer diagnosis, which are crucial for supporting a surveillance decision.",
+    "case_id": "T2-045",
+    "task": 2,
+    "gt_decision": "continued_surveillance",
+    "pred_decision": "continued_surveillance",
+    "pred_free_text": "The decision is driven by the concordance of a palpable nodule (cT2a) and a PI-RADS 4 lesion with rising PSA, which strongly suggests clinically significant prostate cancer despite two prior negative systematic biopsies. The borderline PSAD (0.16) and high predicted probability (0.77) further suppor"
+  },
+  "task2_T2-046": {
+    "score": 0.9,
+    "covered_points": [
+      "PSA",
+      "PSAD",
+      "PIRADS"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the key factors (rising PSA, borderline PSAD, PI-RADS 3) leading to the conservative decision (continued surveillance). It provides good causal reasoning, although it omits several other relevant clinical variables listed in the key variables.",
+    "case_id": "T2-046",
+    "task": 2,
+    "gt_decision": "continued_surveillance",
+    "pred_decision": "continued_surveillance",
+    "pred_free_text": "The recommendation is driven by the combination of rising PSA velocity, a borderline PSAD of 0.16, and an equivocal PI-RADS 3 lesion on mpMRI, which collectively create clinical uncertainty that favors conservative monitoring over immediate intervention."
+  },
+  "task2_T2-047": {
+    "score": 0.5,
+    "covered_points": [
+      "PSA",
+      "PIRADS"
+    ],
+    "missing_points": [
+      "PSAD",
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies high PSA and PI-RADS 5 as concerning factors, but it suggests a 'repeat targeted biopsy' as the next step, which contradicts the ground truth decision of 'continued_surveillance'. It fails to mention several key variables and does not provide a strong causal link to surveillance.",
+    "case_id": "T2-047",
+    "task": 2,
+    "gt_decision": "continued_surveillance",
+    "pred_decision": "continued_surveillance",
+    "pred_free_text": "High PSA density, rapidly rising PSA trajectory, and PI-RADS 5 lesion strongly suggest malignancy despite two negative biopsies, creating conflicting evidence that necessitates a repeat targeted biopsy for definitive diagnosis."
+  },
+  "task2_T2-048": {
+    "score": 0.6,
+    "covered_points": [
+      "PSAD",
+      "PIRADS",
+      "ISUP_grade",
+      "Gleason_primary"
+    ],
+    "missing_points": [
+      "PSA",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the conflict between low-grade pathology (ISUP GG1) and high-risk imaging/biomarker features (PI-RADS 4, PSAD >0.3), which supports the decision for active surveillance. However, it misses several key variables (PSA, age, etc.) and the explanation is slightly vague regarding the specific criteria for AS, focusing more on avoiding overtreatment.",
+    "case_id": "T2-048",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "Decision driven by the conflict between confirmed ISUP GG1 pathology (anchor for AS) and high-risk features including PSAD >0.3, PI-RADS 4 lesion, and AI-predicted GG4. Overtreatment is avoided pending histological confirmation of upgrade."
+  },
+  "task2_T2-049": {
+    "score": 0.6,
+    "covered_points": [
+      "PSAD",
+      "PIRADS",
+      "PSA"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale mentions key variables (PSAD, PI-RADS 4, PSA) that support a decision for active treatment. However, the ground truth is 'active_surveillance', not 'active treatment', leading to a directional inconsistency. Furthermore, it misses several other key variables like Gleason score and age.",
+    "case_id": "T2-049",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "High PSAD, PI-RADS 4 lesion, and rapidly rising PSA drive the decision for active treatment despite prior GG1 biopsy results."
+  },
+  "task2_T2-050": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "ISUP_grade",
+      "Gleason_primary",
+      "age"
+    ],
+    "missing_points": [
+      "PSA",
+      "PSAD",
+      "clinical_T_stage",
+      "cspca",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk features (ISUP Grade Group 4, PI-RADS 5) that support the active treatment decision. It mentions age, which is relevant for treatment planning. However, it omits several key variables (PSA, PSAD, clinical T-stage, etc.) and lacks detailed causal reasoning beyond stating that the findings 'mandate' curative-intent therapy.",
+    "case_id": "T2-050",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "ISUP Grade Group 4 pathology with cribriform architecture and PI-RADS 5 MRI findings mandate curative-intent therapy. Patient age and comorbidities do not contraindicate active treatment."
+  },
+  "task2_T2-051": {
+    "score": 0.9,
+    "covered_points": [
+      "PSAD",
+      "PIRADS",
+      "PSA",
+      "Gleason_primary",
+      "ISUP_grade"
+    ],
+    "missing_points": [
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the key factors supporting continued surveillance (low PSAD, low-risk imaging, negative biopsy history). It is highly consistent with the ground truth decision. It misses some key variables like age and CSPCA, but the core clinical reasoning is sound.",
+    "case_id": "T2-051",
+    "task": 2,
+    "gt_decision": "continued_surveillance",
+    "pred_decision": "continued_surveillance",
+    "pred_free_text": "Decision driven by extremely low PSA density (0.03), PI-RADS 3 lesion lacking DCE enhancement, and two prior negative biopsies with stable benign histology."
+  },
+  "task2_T2-052": {
+    "score": 0.2,
+    "covered_points": [
+      "ISUP_grade"
+    ],
+    "missing_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "age",
+      "comorbidity",
+      "family_history",
+      "cspca"
+    ],
+    "rationale": "The rationale is extremely brief and only mentions the ISUP grade group (GG2), which is a key variable. It fails to mention any other critical clinical variables (PSA, PIRADS, T-stage, etc.) and provides no causal reasoning to support the 'active_treatment' decision, merely stating an intent to check guidelines.",
+    "case_id": "T2-052",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "**Guideline Check:**\nI should search EAU guidelines for ISUP GG2 treatment recommendations to confirm the standard of care."
+  },
+  "task2_T2-053": {
+    "score": 0.5,
+    "covered_points": [
+      "PSAD",
+      "PIRADS",
+      "PSA"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "comorbidity",
+      "family_history",
+      "cspca"
+    ],
+    "rationale": "The rationale mentions PSAD and PI-RADS 4, which are relevant, but it incorrectly references 'comorbidities' which are not present in the case facts. Crucially, it fails to mention the conflicting negative biopsy results or the high PSA (12.0), which are central to the decision for continued surveillance. The reasoning is incomplete and lacks depth.",
+    "case_id": "T2-053",
+    "task": 2,
+    "gt_decision": "continued_surveillance",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "High PSAD (0.23) and PI-RADS 4 lesion conflict with two prior negative biopsies, compounded by comorbidities."
+  },
+  "task2_T2-054": {
+    "score": 0.9,
+    "covered_points": [
+      "PSAD",
+      "PIRADS",
+      "ISUP_grade",
+      "PSA"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies high-risk factors (ISUP Grade Group 3, high PSAD, PI-RADS 5) leading to the active treatment decision. It is strong but misses several key variables like Gleason score and clinical T-stage, which are implied by the findings.",
+    "case_id": "T2-054",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "ISUP Grade Group 3 pathology combined with a markedly elevated PSAD of 0.567 and high-risk PI-RADS 5 lesion strongly indicate clinically significant cancer requiring curative intervention."
+  },
+  "task2_T2-055": {
+    "score": 0.5,
+    "covered_points": [
+      "PSA",
+      "PIRADS",
+      "ISUP_grade"
+    ],
+    "missing_points": [
+      "PSAD",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "age",
+      "comorbidity",
+      "family_history",
+      "cspca"
+    ],
+    "rationale": "The rationale mentions key indicators (Rising PSA, PI-RADS 5, grade upgrade) but incorrectly suggests that these factors favor definitive intervention, contradicting the ground truth decision of active surveillance. It also omits many critical variables.",
+    "case_id": "T2-055",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "Rising PSA (12.6 ng/mL), PI-RADS 5 lesion, and AI-predicted grade upgrade suggest disease progression despite prior ISUP GG 1 biopsy. Severe LUTS also favors definitive intervention over surveillance."
+  },
+  "task2_T2-056": {
+    "score": 0.3,
+    "covered_points": [
+      "PSA",
+      "PIRADS"
+    ],
+    "missing_points": [
+      "PSAD",
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "comorbidity",
+      "family_history",
+      "cspca"
+    ],
+    "rationale": "The rationale focuses on general guidelines for progression and treatment shift, mentioning PSA and MRI findings (PIRADS implicitly), but fails to incorporate specific patient data (Gleason, PSAD, age, etc.) or provide a causal explanation linking the specific case facts to the active surveillance decision.",
+    "case_id": "T2-056",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "I need to search for EAU guidelines on managing patients showing signs of progression while on active surveillance—specifically what triggers a shift from monitoring to definitive treatment when PSA velocity increases and MRI findings worsen, even without confirmed grade upgrade on biopsy.\n</think>"
+  },
+  "task2_T2-057": {
+    "score": 1.0,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "Gleason_primary",
+      "ISUP_grade",
+      "age",
+      "cspca"
+    ],
+    "missing_points": [
+      "clinical_T_stage",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk factors (ISUP Grade Group 5, PI-RADS 5, high csPCa) that support the active treatment decision, aligning with the ground truth.",
+    "case_id": "T2-057",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "The decision for active treatment is driven primarily by the confirmed ISUP Grade Group 5 pathology, the PI-RADS 5 MRI lesion, and a high csPCa probability of 0.867, which collectively rule out surveillance."
+  },
+  "task2_T2-058": {
+    "score": 0.1,
+    "covered_points": [],
+    "missing_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "comorbidity",
+      "family_history",
+      "cspca"
+    ],
+    "rationale": "The provided free text is a generic statement about preparing for treatment discussion and does not mention any specific clinical variables or provide causal reasoning for the 'active_treatment' decision.",
+    "case_id": "T2-058",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "The next steps involve discussing these treatment pathways with the patient, ensuring he understands the potential risks and benefits of each approach. I'll prepare a comprehensive summary that outlines both surgical and radiation options, highlighting their respective advantages and considerations "
+  },
+  "task2_T2-059": {
+    "score": 0.5,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies high-risk factors (PI-RADS 5, high PSA, high PSAD) but fails to address the complexity of the case, specifically the ISUP grade (0+0) and the high CSPCA, which typically argue against immediate aggressive treatment and support continued surveillance, aligning with the ground truth. The current text only supports active management, not surveillance.",
+    "case_id": "T2-059",
+    "task": 2,
+    "gt_decision": "continued_surveillance",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "The decision is driven by the combination of a PI-RADS 5 lesion, markedly elevated PSA (35 ng/mL), and high PSA density (0.43), which strongly indicate clinically significant prostate cancer despite the prior negative biopsy result."
+  },
+  "task2_T2-060": {
+    "score": 0.9,
+    "covered_points": [
+      "PSA",
+      "PIRADS",
+      "ISUP_grade",
+      "PSAD",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "age"
+    ],
+    "missing_points": [
+      "cspca",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the conflict between clinical suspicion (rising PSA, PI-RADS 4) and low-grade histology (ISUP GG 1), leading to the decision for active surveillance. It covers most key variables, though CSPCA and other risk factors are not mentioned.",
+    "case_id": "T2-060",
+    "task": 2,
+    "gt_decision": "active_surveillance",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "Decision driven by the conflict between rising PSA, PI-RADS 4 lesion, and cT2a nodule versus two biopsies confirming ISUP GG 1. Despite AI prediction of GG3, guidelines do not support active treatment without histological confirmation of higher-grade disease (GG >= 2). PSAD is borderline (0.12). Con"
+  },
+  "task2_T2-061": {
+    "score": 0.6,
+    "covered_points": [
+      "ISUP_grade",
+      "age"
+    ],
+    "missing_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the ISUP grade and age as drivers for active treatment, aligning with the ground truth. However, it fails to mention several critical variables (PSA, PSAD, PIRADS, etc.) that are essential for a comprehensive prostate cancer decision-making rationale.",
+    "case_id": "T2-061",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "The decision for active treatment is primarily driven by the confirmed ISUP Grade Group 4 pathology and the patient's relatively young age of 62, which supports curative-intent management over surveillance."
+  },
+  "task2_T2-101": {
+    "score": 0.8,
+    "covered_points": [
+      "ISUP_grade",
+      "PSA",
+      "PSAD",
+      "age"
+    ],
+    "missing_points": [
+      "PIRADS",
+      "Gleason_primary",
+      "clinical_T_stage",
+      "cspca",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies key indicators for active treatment (ISUP GG3, high PSAD, elevated PSA) and aligns with the ground truth. However, it misses several critical variables like PIRADS, Gleason score, and clinical T-stage, which are important for comprehensive prostate cancer decision-making.",
+    "case_id": "T2-101",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "Decision driven by ISUP GG3 histology, significant PSA velocity (7.4 to 19.0), and high PSAD (0.29) indicating aggressive disease progression. Age and comorbidities were weighed against active lifestyle."
+  },
+  "task2_T2-102": {
+    "score": 0.8,
+    "covered_points": [
+      "PSAD",
+      "PIRADS",
+      "PSA"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the key factors (low PSAD, PI-RADS 4, PSA) leading to the decision for continued surveillance. However, it fails to mention other relevant variables like the prior negative biopsy results (which confirm the lack of malignancy) or the specific clinical context (e.g., age/volume), leading to a slightly lower score.",
+    "case_id": "T2-102",
+    "task": 2,
+    "gt_decision": "continued_surveillance",
+    "pred_decision": "continued_surveillance",
+    "pred_free_text": "Decision driven by low PSA density (0.07) which strongly suggests benign prostatic hyperplasia despite PI-RADS 4 lesion and rising PSA, supported by prior negative biopsy. The palpable nodule warrants close monitoring rather than immediate invasive intervention."
+  },
+  "task2_T2-103": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "age",
+      "ISUP_grade",
+      "Gleason_primary"
+    ],
+    "missing_points": [
+      "PSAD",
+      "clinical_T_stage",
+      "cspca",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies high-risk factors (PI-RADS 5, high-risk pathology, PSA) leading to the 'active_treatment' decision, aligning with the ground truth. It covers key variables but misses several important ones like PSAD and clinical T-stage.",
+    "case_id": "T2-103",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "Rapid PSA velocity (1.8 ng/mL/yr), young age (57 years), PI-RADS 5 lesion, and high-risk pathological features (cribriform pattern, intraductal carcinoma) contraindicate active surveillance."
+  },
+  "task2_T2-104": {
+    "score": 0.6,
+    "covered_points": [
+      "PSAD",
+      "PIRADS",
+      "PSA"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies high PSAD and PI-RADS 4 as factors supporting active treatment, aligning with the ground truth. However, it fails to mention critical variables like Gleason score, ISUP grade, or PSA velocity (which is not explicitly calculated or provided in the case facts, though implied by the decision context), limiting the depth of the clinical reasoning.",
+    "case_id": "T2-104",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "The decision for active treatment is driven by the rapid PSA velocity (10.19 ng/mL/yr), high PSA density (0.217 ng/mL^2) indicating aggressive biology despite large prostate volume, and the presence of a PI-RADS 4 lesion."
+  },
+  "task2_T2-105": {
+    "score": 0.1,
+    "covered_points": [],
+    "missing_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "comorbidity",
+      "family_history",
+      "cspca"
+    ],
+    "rationale": "The provided free text is a placeholder stating a need for more information (overall health status/contraindications) but does not provide any clinical reasoning or mention any of the key variables that led to the 'active_treatment' decision.",
+    "case_id": "T2-105",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "I should verify whether additional clinical information might influence this recommendation, particularly around his overall health status and any contraindications to surgery.\n</think>"
+  },
+  "task2_T2-106": {
+    "score": 0.5,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "ISUP_grade",
+      "Gleason_primary"
+    ],
+    "missing_points": [
+      "PSAD",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale mentions key risk factors (PI-RADS 5, ISUP GG2, PSA) supporting active treatment, but it incorrectly introduces 'cribriform architecture' and 'severe LUTS' as drivers. While cribriform is mentioned in the pathology, it is not the primary driver for active treatment in this context, and LUTS is not mentioned in the case facts. The reasoning is partially consistent but lacks precision and completeness regarding the provided data.",
+    "case_id": "T2-106",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "The decision for active treatment was driven by the presence of cribriform architecture in ISUP GG2 disease, rising PSA on surveillance, a PI-RADS 5 lesion indicating high-risk features, and severe LUTS significantly impairing quality of life."
+  },
+  "task2_T2-107": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "Gleason_primary",
+      "ISUP_grade",
+      "age"
+    ],
+    "missing_points": [
+      "clinical_T_stage",
+      "cspca",
+      "comorbidity",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk factors (PI-RADS 5, high PSA, ISUP 3, Gleason 4) leading to the active treatment decision. It covers most key variables, though it omits PSAD and other prognostic factors like CSPCA and T-stage.",
+    "case_id": "T2-107",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "ISUP Grade Group 3 pathology with Gleason 4 primary pattern, significantly elevated and rising PSA of 15 ng/mL, and a PI-RADS 5 lesion strongly indicate active treatment over surveillance in this fit 73-year-old patient."
+  },
+  "task2_T2-108": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "ISUP_grade",
+      "PSAD",
+      "PSA"
+    ],
+    "missing_points": [
+      "Gleason_primary",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the low-risk factors (ISUP GG 1, PI-RADS 2, low PSAD) supporting continued surveillance. It is strong but misses mentioning the Gleason score and other key variables like age or PSA density (CSPCA) which are relevant in prostate cancer decision-making.",
+    "case_id": "T2-108",
+    "task": 2,
+    "gt_decision": "continued_surveillance",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "Recommendation driven by low-risk pathology (ISUP GG 1), benign imaging (PI-RADS 2), and low PSA density (0.1) despite rising absolute PSA."
+  },
+  "task2_T2-109": {
+    "score": 0.1,
+    "covered_points": [],
+    "missing_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "Gleason_primary",
+      "ISUP_grade",
+      "clinical_T_stage",
+      "age",
+      "comorbidity",
+      "family_history",
+      "cspca"
+    ],
+    "rationale": "The provided free text is a generic statement about investigating clinical nuances and risk profiles. It fails to mention any specific key clinical variables (PSA, Gleason score, PIRADS, etc.) and provides no causal reasoning to support the 'active_treatment' ground truth decision.",
+    "case_id": "T2-109",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_surveillance",
+    "pred_free_text": "I'll investigate the specific clinical nuances that might influence the treatment approach, focusing on the patient's unique risk profile and potential management strategies.\n</think>"
+  },
+  "task2_T2-110": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "ISUP_grade",
+      "PSA",
+      "Gleason_primary"
+    ],
+    "missing_points": [
+      "PSAD",
+      "clinical_T_stage",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk features (cribriform pattern leading to ISUP Grade Group 3, PI-RADS 5, and PSA) supporting the active treatment decision. However, it fails to mention several key variables like PSAD, clinical T-stage, age, and CSPCA, limiting the completeness of the evaluation.",
+    "case_id": "T2-110",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "The decision for active treatment is driven by the presence of a cribriform pattern in the biopsy, which upstages the disease to ISUP Grade Group 3 regardless of the primary Gleason score. This high-risk histology, combined with a PI-RADS 5 lesion on MRI and rapid PSA velocity, confirms clinically s"
+  },
+  "task2_T2-111": {
+    "score": 0.5,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "ISUP_grade"
+    ],
+    "missing_points": [
+      "PSAD",
+      "Gleason_primary",
+      "age",
+      "cspca"
+    ],
+    "rationale": "The rationale mentions PI-RADS 4, PSA, and ISUP Grade Group 2, which are relevant. However, it incorrectly cites 'PSA velocity' (which is not provided in the case facts) and fails to incorporate other critical variables like PSAD or the specific pathology findings (cribriform pattern) in a comprehensive manner. The reasoning is generally consistent with the active treatment decision, but the justification is weak and based on unprovided data.",
+    "case_id": "T2-111",
+    "task": 2,
+    "gt_decision": "active_treatment",
+    "pred_decision": "active_treatment",
+    "pred_free_text": "The decision for active treatment was driven by the significant PSA velocity (>0.9 ng/mL/yr), the presence of a PI-RADS 4 lesion on mpMRI, and the identification of a cribriform pattern within the prior ISUP Grade Group 2 pathology, all suggesting disease progression or undergrading."
+  }
+}

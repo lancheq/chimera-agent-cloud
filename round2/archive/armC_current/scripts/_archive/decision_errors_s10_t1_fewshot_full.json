@@ -1,0 +1,540 @@
+{
+  "task1": [
+    {
+      "case_id": "PT-pseudo_0169468160c6",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "Very High PSA.\nMost likely metastatic",
+      "pred_free_text": "Prior biopsy confirmed adenocarcinoma makes repeat biopsy unnecessary; rising PSA (187 ng/mL) and PI-RADS 5 lesion indicate progression requiring systemic staging and treatment rather than diagnostic sampling."
+    },
+    {
+      "case_id": "PT-pseudo_062a1125899d",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "PIRADS 4 lesion in 68 year old man with heavy comorbidity. Earlier negative biopsy.",
+      "pred_free_text": "\n\nSpecifically, an **MRI-targeted + systematic (template) biopsy** is indicated to characterize the PI-RADS 4 lesion and rule out concurrent disease missed by the prior sampling. Given his apixaban use for atrial fibrillation and CKD history, peri-procedural anticoagulation management should be coordinated with cardiology in advance, but this does not alter the diagnostic indication. Active surveillance or observation is not appropriate given the high-risk imaging phenotype and recent PSA surge."
+    },
+    {
+      "case_id": "PT-pseudo_06b319f42fcb",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "PIRADS 5 lesion in a man in active surveillance.",
+      "pred_free_text": "teria.\n\n### Recommendation\n**Yes, I strongly recommend proceeding with an MRI-targeted prostate biopsy (with systematic cores).** \n\nThe combination of a PI-RADS 5 lesion, rapid PSA velocity (~1.9 ng/mL/yr), and high PSAD (0.452) indicates a high likelihood of clinically significant prostate cancer (ISUP Grade Group ≥ 2) or higher-grade disease that was not captured on prior GG1 biopsies. Active surveillance should be temporarily paused pending histological results to guide definitive management."
+    },
+    {
+      "case_id": "PT-pseudo_079636ac5644",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "All depends if the lesion has grown in size since 2024. If stable no biopsy , if increased in size I will do a biopsy.",
+      "pred_free_text": "The recommendation is driven by three key factors: a prior positive biopsy confirming ISUP Grade Group 2 cancer, a sharp PSA velocity/rise from 3.5 to 6.8 ng/mL over six months indicating biochemical progression, and a new PI-RADS 4 lesion on mpMRI providing a high-yield anatomical target for tissue sampling."
+    },
+    {
+      "case_id": "PT-pseudo_0bd72f429a8b",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "PIRADS 4 in a young man with a rapid increasing PSA",
+      "pred_free_text": "cious DRE findings. The predicted csPCa probability (~0.40) further supports proceeding to tissue sampling rather than continued surveillance alone.\n\n### Recommendation\n**Yes, recommend an MRI-targeted (and systematic) prostate biopsy.** \nThe lesion is amenable to fusion/cocktail targeting given its size and location. Histological confirmation is required to determine ISUP grade group, assess for disease progression relative to his prior positive biopsy, and guide definitive management planning."
+    },
+    {
+      "case_id": "PT-pseudo_0cdfb9410718",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "Again missing earlier ISUP grading and if the PIRADS 4 lesion is stabile or growing",
+      "pred_free_text": "ocal disease elsewhere in the gland.\n\n**Action Plan:**\n- Schedule an MRI-fusion or cognitive-guided prostate biopsy (transperineal preferred for anterior mid-gland targeting).\n- Obtain full prior pathology report to confirm initial ISUP Grade Group and establish a baseline for comparing any upgrade/downgrade.\n- Counsel patient on biopsy risks, expected core count (~12 systematic + 4–6 targeted), and post-procedure monitoring given his ex-smoker status and cardiovascular risk factors (BP 143/64)."
+    },
+    {
+      "case_id": "PT-pseudo_138092c2a6be",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "I need information on initial ISUP and size of P4 lesion in initial scan.",
+      "pred_free_text": "ity makes the likelihood of clinically significant cancer very high. Systematic cores should be added to rule out additional non-MRI-visible foci, given his prior biopsy history. Ensure appropriate antibiotic prophylaxis (consider fluoroquinolone or aminoglycoside per local resistance patterns) and discuss rapid results turnaround to expedite shared decision-making on definitive treatment pathways (e.g., focal therapy vs. radical prostatectomy vs. ADT/radiation depending on final Gleason grade)."
+    },
+    {
+      "case_id": "PT-pseudo_175e6ad47991",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "P5 in 79 years old man with earlier negative biopsy. Need to discuss with patient.",
+      "pred_free_text": "The decision to biopsy is driven by the PI-RADS 5 lesion and rapidly rising PSA (28 ng/mL). High PSAD (0.28) confirms significant cancer risk despite large prostate volume, overriding prior negative biopsy results."
+    },
+    {
+      "case_id": "PT-pseudo_17f110c9e142",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Need to know if the P5 lesion has grown in size. If not no biopsy.",
+      "pred_free_text": "The decision to biopsy is driven by the rapid PSA velocity indicating progression on active surveillance, the presence of a PI-RADS 5 lesion on mpMRI, and a corresponding palpable nodule on DRE. These factors collectively mandate tissue sampling to rule out histological upgrading."
+    },
+    {
+      "case_id": "PT-pseudo_1a4e0cf3b927",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Most likely no biopsy . But very rapid growth in size might change the decision.",
+      "pred_free_text": "The recommendation for biopsy is driven by the concordant PI-RADS 5 lesion on mpMRI and a fixed, irregular nodule on DRE. These findings are compounded by a markedly elevated PSA density (0.427 ng/mL²) and a rising PSA trajectory, indicating a high probability of clinically significant prostate cancer recurrence or progression."
+    },
+    {
+      "case_id": "PT-pseudo_1dc32184cab6",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Low PSA with earlier negative biopsy. A change in P4 lesion size might trigger a biopsy.",
+      "pred_free_text": "The recommendation for biopsy is driven primarily by the PI-RADS 4 lesion on mpMRI and the history of prior negative biopsies, which raises suspicion for sampling error or interval development. While the very low PSAD (0.02) suggests a benign etiology such as BPH or inflammation, current guidelines support MRI-targeted biopsy for PI-RADS >=3 lesions in this context to rule out clinically significant cancer."
+    },
+    {
+      "case_id": "PT-pseudo_20a7e91c494c",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Man on active surveillance. MRI stabile and PSA moderately high.",
+      "pred_free_text": "Recommendation is driven by the patient's history of a prior positive biopsy combined with a new PI-RADS 4 lesion on MRI and a rising PSA trend."
+    },
+    {
+      "case_id": "PT-pseudo_25007bb807d7",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "P5 in 61 year patient",
+      "pred_free_text": " alongside targeted sampling to avoid missing non-MRI-visible, clinically significant tumors.\n\n### Clinical Next Steps\n- Schedule an MRI-ultrasound fusion-guided prostate biopsy targeting the right peripheral zone lesion, supplemented by a 12-core systematic template.\n- Pre-biopsy prophylactic antibiotics per local protocol; confirm coagulation status and hold anticoagulants if applicable (none currently reported).\n- Discuss findings with patient promptly given the high csPCa probability (~86%)."
+    },
+    {
+      "case_id": "PT-pseudo_2b3ef1d3a505",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Need to know if the lesion has grown or if it is stabile.",
+      "pred_free_text": "Biopsy recommended due to PI-RADS 5 lesion on MRI and suspicious fixed nodule on DRE. Prior positive biopsy history further increases risk. Low PSAD is overridden by high-risk imaging findings."
+    },
+    {
+      "case_id": "PT-pseudo_2e4988b84112",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "This patient has PCa and a very high PSA. start treatment and do a PSMA-PET .",
+      "pred_free_text": "The recommendation is driven by the dramatic PSA elevation to 70 ng/mL, the presence of a large PI-RADS 5 lesion on mpMRI, and the patient's history of prior positive biopsy requiring current grading for treatment planning."
+    },
+    {
+      "case_id": "PT-pseudo_2ef22b5dd08e",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "P4 in 66 year old patient.",
+      "pred_free_text": "ceed with **MRI-targeted and systematic (template) prostate biopsy**, ideally under transrectal or transperineal ultrasound guidance using MRI-fusion software to sample the left peripheral zone lesion.\n* Counsel the patient on standard biopsy risks (bleeding, infection, urinary retention) given his age and mild LUTS (IPSS 8).\n* No further EHR retrieval (`get_lab_results`, `get_family_history`) is required at this stage, as the imaging and PSA trajectory are already decisive for tissue diagnosis."
+    },
+    {
+      "case_id": "PT-pseudo_33c8cd4571fd",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "P5 in 71 years old patient with no major comorbidities",
+      "pred_free_text": "rasound fusion targeted biopsy** of the left peripheral zone lesion, combined with a **standard systematic template biopsy** (e.g., 12-core) to rule out multifocal disease not captured by the MRI target. \n\nGiven the high likelihood of csPCa (ISUP Grade Group ≥ 2), arrange prompt post-biopsy staging and Multidisciplinary Team (MDT) review to discuss definitive treatment pathways (active surveillance vs. curative-intent therapy) based on final Gleason score, patient comorbidities, and preferences."
+    },
+    {
+      "case_id": "PT-pseudo_37d8ae9b27f1",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Need to know initial MRI before decision",
+      "pred_free_text": "The decision to proceed with biopsy was driven by the definitive PI-RADS 4 lesion on mpMRI, a recent sharp rise in PSA levels, and a prior positive biopsy history indicating known malignancy."
+    },
+    {
+      "case_id": "PT-pseudo_3b6ea1920967",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Need initial ISUP grade and MRI in men on active surveillance.",
+      "pred_free_text": "The decision to biopsy is driven by the presence of a PI-RADS 4 lesion on mpMRI combined with a rapidly rising PSA trend (2.1 to 6.5 ng/mL) and a history of prior positive biopsy. These factors collectively indicate a high probability of clinically significant prostate cancer progression or recurrence, warranting immediate histological evaluation."
+    },
+    {
+      "case_id": "PT-pseudo_3cc88c81f35a",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Patient with low-risk cancer on active surveillance. Now normal MRI.",
+      "pred_free_text": "Recommendation driven by rising PSA (8.3 ng/mL), positive DRE finding (nodule in left peripheral zone) despite PI-RADS 2 MRI, and history of prior low-grade prostate cancer. The clinical suspicion outweighs the negative MRI findings."
+    },
+    {
+      "case_id": "PT-pseudo_3ceacc9b660b",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Need to know earlier MRI results. If stabile P3 lesion, no biopsy.",
+      "pred_free_text": "The recommendation is driven by the rapid PSA velocity (doubling in <1 year) and the history of a prior positive biopsy, which together create high clinical suspicion for disease progression despite the equivocal PI-RADS 3 MRI findings. The high AI-derived csPCa probability further corroborates the need for tissue sampling."
+    },
+    {
+      "case_id": "PT-pseudo_3f75ae876abe",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "PIRADS 5 needs biopsy",
+      "pred_free_text": "opsy is indicated.\n\n**4. Guideline Alignment & Next Steps**\n- Per EAU and NCCN prostate cancer guidelines, a PI-RADS ≥ 4 lesion with elevated PSA mandates a diagnostic biopsy. \n- **Recommended approach:** MRI-ultrasound fusion targeted biopsy of the right anterior mid-gland lesion + systematic 12-core template biopsy (to capture any non-MRI-visible disease or sampling error). Given the capsular bulging noted on MRI, careful assessment for extraprostatic extension during the procedure is advised."
+    },
+    {
+      "case_id": "PT-pseudo_47d8b39fd07f",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "No need for biopsy while higher PSA earlier with PIRADS 3 (unchanged?)",
+      "pred_free_text": "The decision to recommend biopsy was primarily driven by the markedly elevated PSA (21 ng/mL) with rapid velocity, an elevated PSA density of 0.19 which exceeds the 0.15 threshold for malignancy risk despite large prostate volume, and a history of prior negative biopsy necessitating repeat sampling."
+    },
+    {
+      "case_id": "PT-pseudo_48fb60dfd22f",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "PIRADS 5 needs biopsy",
+      "pred_free_text": "s on appropriate antibiotic prophylaxis per local protocol.\n* **Post-biopsy pathway:** Results will dictate staging (PSMA-PET/CT if ISUP ≥ 3 or PSA > 20) and treatment discussion (active surveillance unlikely given PSAD and velocity; definitive therapy vs. ADT + RT likely).\n\n**Bottom Line:** Delaying biopsy is not clinically justified. The imaging, biochemical, and kinetic data converge on a high probability of clinically significant prostate cancer requiring immediate histological confirmation."
+    },
+    {
+      "case_id": "PT-pseudo_4a2fa7bc3595",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "What was the result of the earlier positive biopsy and the MRI precluding that biopsy? Hard to determine what we are looking at here.",
+      "pred_free_text": "on targeted biopsy.** \nThe combination of a PI-RADS 5 lesion, elevated PSA density (0.257), rapidly rising PSA trajectory on the retrieved time-series, and a concordant palpable nodule leaves no clinical ambiguity. Targeted sampling of the right peripheral zone is indicated to obtain updated ISUP grade group data, assess tumor volume/foci, and definitively stage disease progression for treatment planning. Systematic cores should also be added per standard protocol to rule out multifocal disease."
+    },
+    {
+      "case_id": "PT-pseudo_4c6b2b2bbf94",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "PRADS 4 with low-PSA-density can be followed up, I need results of earlier biopsy to make a definite call",
+      "pred_free_text": "The recommendation for biopsy is driven by the combination of a PI-RADS 4 lesion on mpMRI, a history of a prior positive biopsy, and an elevated PSA trajectory. These factors collectively indicate a high probability of clinically significant prostate cancer requiring histological confirmation and staging."
+    },
+    {
+      "case_id": "PT-pseudo_4edb17f79e46",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "Again earlier MRI report is missing, If new PRADS 4 lesion biopsy is needed as PSA is rising as well",
+      "pred_free_text": "on, supplemented by standard systematic cores (e.g., 12-core template) to rule out multifocal disease or sampling gaps from the prior round.\n2. **Pre-biopsy optimization:** Ensure normal coagulation profile and screen for urinary tract infection given the recent PSA spike (though less likely to explain a PI-RADS 4 lesion).\n3. **Counseling:** Discuss biopsy risks, the high likelihood of csPCa based on current data, and the excellent prognosis if disease remains organ-confined as imaging suggests."
+    },
+    {
+      "case_id": "PT-pseudo_4f33b0253633",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "At what PSA level the prior biopsy was taken? If PIRADS 3 is new and PSA is significantly rising since last biopsy I would consider repeat biopsy an option",
+      "pred_free_text": "Recommendation driven by rapid PSA velocity (~1.0 ng/mL/yr), elevated PSAD (0.16) exceeding the 0.15 threshold for PI-RADS 3 lesions, and high csPCa probability (0.62)."
+    },
+    {
+      "case_id": "PT-pseudo_52213169f58b",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "Biopsy naive PIRADS 5 needs biopsy",
+      "pred_free_text": "I-TRUS fusion or cognitive-targeted biopsy** (preferably with systematic 12-core sampling to account for potential non-MRI-visible disease).\n2. Counsel the patient on biopsy risks (bleeding, infection, urinary retention) and benefits (definitive diagnosis guiding definitive treatment vs. active surveillance).\n3. Given his mobility limitation (walking frame), coordinate urology suite access for a ground-floor procedure room to minimize physical strain during the 15–20 minute outpatient procedure."
+    },
+    {
+      "case_id": "PT-pseudo_590e7b237744",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Stop checking PSA, no need for diagnostics",
+      "pred_free_text": "Recommendation driven by PI-RADS 4 lesion and rapid PSA acceleration (+3 ng/mL/year) in patient with prior low-grade PCa, warranting tissue sampling to rule out Gleason upgrade."
+    },
+    {
+      "case_id": "PT-pseudo_c55496c11421",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "80yr, low risk PC. Only biopsy if signs of high risk PC, no indication for active treatment otherwise. Biopsyfinding congruent with MRI finding is reassuring.",
+      "pred_free_text": "PI-RADS 4 lesion, rapid PSA velocity, prior positive biopsy, and patient fitness."
+    },
+    {
+      "case_id": "PT-pseudo_cce5d47c05dd",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Young patient with elevated PSA (>10), elevated PSA density, PIRADS5 and ISUP GG2 disease -> low threshold for recommending curative treatment. IF patient does not want to go to curative treatment, low threshold for biopsy to exclude higher-risk disease.",
+      "pred_free_text": "Recommendation is driven by the combination of a rapidly rising PSA (1.8 to 12.0 ng/mL), a PI-RADS 5 lesion on mpMRI, and an elevated PSAD of 0.28 in a patient with prior ISUP Grade Group 2 cancer, indicating high suspicion for disease progression."
+    },
+    {
+      "case_id": "PT-pseudo_d217629c323a",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "stable MRi findings in 70yr with reasonably low PSA. prev biopsy finding without obvious indication for treatment. IF patient want to be very active in treatment, consider biopsy and treat if higher-risk biopsy findings.",
+      "pred_free_text": "The decision to proceed with a repeat biopsy is primarily driven by the rising PSA trend, the new PI-RADS 4 lesion on MRI, and the patient's prior positive biopsy showing Gleason 3+4 disease."
+    },
+    {
+      "case_id": "PT-pseudo_dcd61cf9b443",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "This person should discuss curative treatment (younger patient with palpable, MRI-visible high-risk disease incl Gleason 5 findings). If not curative treatment for any reason, a strategy for medical treatment should be set. Potentially reasonable already now, but could also be delayed (but to the risk of disease progression).",
+      "pred_free_text": "Strong recommendation for repeat biopsy driven by significant PSA surge (3.7 to 8.3 ng/mL), PI-RADS 5 lesion on MRI, high PSAD (0.215), and suspicious DRE in a patient with known prostate cancer on active surveillance."
+    },
+    {
+      "case_id": "PT-pseudo_dd011d696387",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "Intermediate risk disease in 75yr with some comorbidity. No targeted biopsy and unclear timing (when was diagnosis and prev biopsy). Unclear if PIRADS5 was biopsied (limited size lesion, unclear if new lesion while lack of previous MRI). Biopsy to exclude higher-risk disease, should include targeted cores.",
+      "pred_free_text": "d to determine ISUP grade group, guide definitive treatment planning (e.g., focal therapy vs. radical prostatectomy vs. ADT/radiation), or formally escalate from active surveillance.\n\n**Final Decision:** \nProceed with MRI-targeted prostate biopsy (plus systematic template cores) to secure definitive histopathology and staging. Family history anamnesis can be deferred until post-biopsy if genetic risk counseling becomes relevant, as it does not change the immediate indication for tissue sampling."
+    }
+  ],
+  "task2": [
+    {
+      "case_id": "T2-001",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-002",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-003",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-004",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-005",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-006",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-007",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-008",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-009",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-010",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-011",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-012",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-013",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-014",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-015",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-016",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-017",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-018",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-019",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-020",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-021",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-022",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-023",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-024",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-025",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-026",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-027",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-028",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-029",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-030",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-031",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-032",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-033",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-034",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-035",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-036",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-037",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-038",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-039",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-040",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-041",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-042",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-043",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-044",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-045",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-046",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-047",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-048",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-049",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-050",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-051",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-052",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-053",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-054",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-055",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-056",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-057",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-058",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-059",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-060",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-061",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-101",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-102",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-103",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-104",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-105",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-106",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-107",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-108",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-109",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-110",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-111",
+      "error": "prediction.json not found"
+    }
+  ],
+  "task3": []
+}

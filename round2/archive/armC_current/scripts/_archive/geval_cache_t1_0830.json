@@ -1,0 +1,2002 @@
+{
+  "task1_PT-pseudo_0020cfca66c8": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "DRE",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key factors supporting the 'no' decision (low PIRADS, low PSAD, normal DRE) and addresses the complexity of prior positive biopsy and PSA trend. However, it misses several other relevant clinical variables (cspca, age, prostate_volume, family_history) that could influence the decision.",
+    "case_id": "PT-pseudo_0020cfca66c8",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "no",
+    "pred_free_text": "The decision against biopsy is driven by the PI-RADS 2 score, low PSA density of 0.14 ng/mL², and normal DRE, which collectively outweigh the concerning PSA velocity in a patient with prior positive pathology."
+  },
+  "task1_PT-pseudo_0169468160c6": {
+    "score": 0.6,
+    "covered_points": [
+      "PSA",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PIRADS",
+      "PSAD",
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high PSA and prior malignancy as drivers for the decision (yes), but it fails to mention most of the critical clinical variables provided in the case facts, such as PIRADS, PSAD, DRE, and the specific volume/age context.",
+    "case_id": "PT-pseudo_0169468160c6",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "no",
+    "pred_free_text": "Prior confirmed malignancy combined with markedly elevated PSA (>100 ng/mL) indicates advanced disease where diagnostic biopsy is unnecessary; management should pivot to staging and treatment planning."
+  },
+  "task1_PT-pseudo_01b643727538": {
+    "score": 0.5,
+    "covered_points": [
+      "PSA",
+      "PIRADS",
+      "PSAD"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies key factors (rising PSA, PI-RADS 5, PSAD) but fails to mention most other critical variables. Crucially, the reasoning suggests a need for biopsy, which contradicts the ground truth decision ('no').",
+    "case_id": "PT-pseudo_01b643727538",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven by the combination of a rising PSA trend (3.1 to 9.3 ng/mL), a PI-RADS 5 lesion on mpMRI indicating high suspicion for clinically significant cancer, and a very high PSA density (0.516) in the context of a prior ISUP Grade Group 3 malignancy."
+  },
+  "task1_PT-pseudo_033f1a8e1503": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the primary drivers for the biopsy decision (PI-RADS 5, elevated PSA, and rising PSA trajectory). It provides causal reasoning consistent with the 'yes' decision. However, it only mentions a subset of the key variables, omitting others like DRE, age, and prostate volume.",
+    "case_id": "PT-pseudo_033f1a8e1503",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven by the PI-RADS 5 lesion on mpMRI, which indicates a high probability of clinically significant prostate cancer. This is further supported by an elevated PSA density of 0.199 ng/mL^2 and a rising PSA trajectory with a velocity of 1.83 ng/mL/yr."
+  },
+  "task1_PT-pseudo_0615b2bd8504": {
+    "score": 0.6,
+    "covered_points": [
+      "PSA",
+      "PIRADS",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high PSA, PI-RADS 5, and prior positive biopsy as indicators of advanced disease. However, it fails to mention several key variables (PSAD, DRE, cspca, age, volume, family history) and the conclusion that 'further diagnostic biopsy unnecessary' contradicts the ground truth decision ('no' meaning no treatment/intervention, which is ambiguous but usually implies no immediate action or no definitive treatment plan is reached, while the reasoning suggests advanced disease requiring action). Given the high suspicion, the reasoning is strong but incomplete and potentially misaligned with the ground truth if 'no' means 'no treatment'. Assuming 'no' means 'no immediate intervention/treatment', the reasoning is plausible but lacks depth.",
+    "case_id": "PT-pseudo_0615b2bd8504",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "no",
+    "pred_free_text": "Extremely elevated PSA (160 ng/mL), PI-RADS 5 lesion with suspected ECE, and prior positive biopsy confirm advanced disease, making further diagnostic biopsy unnecessary."
+  },
+  "task1_PT-pseudo_062a1125899d": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the 'yes' decision (PI-RADS 4, rising PSA, prior negative biopsy) and provides sound causal reasoning. However, it fails to mention several other key clinical variables provided in the case facts.",
+    "case_id": "PT-pseudo_062a1125899d",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven primarily by the PI-RADS 4 lesion on mpMRI, which is a strong independent indication for tissue sampling. This is supported by a rising PSA trend (0.7 to 3.0 ng/mL) and a prior negative biopsy, suggesting potential sampling error or interval progression of disease. A"
+  },
+  "task1_PT-pseudo_06b319f42fcb": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key indicators (rapid PSA rise, PI-RADS 5, high PSAD) supporting the 'yes' decision (further investigation/treatment). However, it misses several other relevant variables listed in the key variables to check.",
+    "case_id": "PT-pseudo_06b319f42fcb",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "Rapidly rising PSA trajectory, PI-RADS 5 lesion on mpMRI, and high PSAD of 0.452 strongly indicate clinically significant disease progression despite prior low-grade biopsies."
+  },
+  "task1_PT-pseudo_075dd468b384": {
+    "score": 0.9,
+    "covered_points": [
+      "PSA",
+      "PIRADS",
+      "DRE",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PSAD",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk factors (rapid PSA increase, PI-RADS 4, DRE nodule) leading to the decision for re-biopsy (yes). It covers the core clinical variables influencing the decision but omits several other key variables provided in the case facts.",
+    "case_id": "PT-pseudo_075dd468b384",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "Rapid PSA velocity (1.6 to 13.2 ng/mL), PI-RADS 4 lesion on mpMRI, and abnormal DRE nodule collectively indicate high risk of disease progression or ISUP upgrade, mandating re-biopsy."
+  },
+  "task1_PT-pseudo_079636ac5644": {
+    "score": 0.5,
+    "covered_points": [
+      "PSA",
+      "PIRADS",
+      "PSAD"
+    ],
+    "missing_points": [
+      "age",
+      "prostate_volume",
+      "previous_biopsy",
+      "DRE",
+      "cspca",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies biochemical progression (PSA rise) and the need for biopsy based on PI-RADS 4 and PSAD, but it contradicts the ground truth decision ('no'). Furthermore, it fails to mention most of the key clinical variables.",
+    "case_id": "PT-pseudo_079636ac5644",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "Rising PSA from 3.5 to 6.8 ng/mL in six months indicates biochemical progression. Combined with a PI-RADS 4 lesion and high PSAD of 0.2, biopsy is indicated to assess for ISUP grade group upgrade or disease progression."
+  },
+  "task1_PT-pseudo_0930885168c9": {
+    "score": 0.9,
+    "covered_points": [
+      "PSA",
+      "PSAD",
+      "previous_biopsy",
+      "cspca"
+    ],
+    "missing_points": [
+      "PIRADS",
+      "DRE",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the decision (rising PSA, high PSAD, prior positive biopsy, and high probability of cancer) and aligns with the 'yes' decision. However, it misses several other important clinical variables listed in the key variables to check.",
+    "case_id": "PT-pseudo_0930885168c9",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven by the rapidly rising PSA, significantly elevated PSA density of 0.25, history of a prior positive biopsy, and high predicted probability of clinically significant prostate cancer."
+  },
+  "task1_PT-pseudo_099651db404e": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk factors (PI-RADS 5, rising PSA) leading to the 'yes' decision (biopsy). However, it only mentions a few of the available key variables, neglecting PSAD, DRE, cspca, age, prostate volume, and family history.",
+    "case_id": "PT-pseudo_099651db404e",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven primarily by the PI-RADS 5 lesion on mpMRI and the progressively rising PSA trend from 3.4 to 5.9 ng/mL over two years. Although the prior biopsy was negative, the high-risk imaging findings and PSA kinetics strongly indicate clinically significant prostate cancer re"
+  },
+  "task1_PT-pseudo_0bd72f429a8b": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "DRE",
+      "psa_trend"
+    ],
+    "missing_points": [
+      "PSAD",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the 'yes' decision (PIRADS 4, DRE nodule, PSA velocity rise) and provides causal reasoning. However, it fails to mention several other key variables provided in the case facts, such as PSAD, cspca, age, prostate volume, family history, and previous biopsy.",
+    "case_id": "PT-pseudo_0bd72f429a8b",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "Recommendation for repeat targeted biopsy is driven by the concordant PI-RADS 4 lesion and palpable DRE nodule, alongside a significant PSA velocity rise. These markers indicate probable disease progression requiring histological reassessment despite low PSAD."
+  },
+  "task1_PT-pseudo_0cdfb9410718": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high suspicion (PI-RADS 4) and the history of prior positive biopsy as drivers for the 'yes' decision. However, it only covers a small subset of the key clinical variables, missing important quantitative data like PSAD, PSA trends, and prostate volume.",
+    "case_id": "PT-pseudo_0cdfb9410718",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to proceed with biopsy is primarily driven by the PI-RADS 4 lesion indicating high suspicion of clinically significant cancer, reinforced by the patient's history of prior positive biopsy and a rising PSA trend."
+  },
+  "task1_PT-pseudo_0de7e606ca70": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale strongly supports the 'yes' decision (biopsy) by citing PI-RADS 5 and PSAD > 0.4, providing strong causal reasoning. However, it fails to mention most of the other key clinical variables provided in the case facts.",
+    "case_id": "PT-pseudo_0de7e606ca70",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "no",
+    "pred_free_text": "or biopsy** — no alternative explanation for this velocity in an unbiopsied patient with a PI-RADS 5 lesion.\n\n## Confidence Assessment: **clear**\n\nThe evidence is unambiguous. There is no clinical scenario where a PI-RADS 5 lesion with PSAD > 0.4 and rising PSA would be managed conservatively withou"
+  },
+  "task1_PT-pseudo_11345b8a7ab3": {
+    "score": 0.7,
+    "covered_points": [
+      "PSA",
+      "previous_biopsy",
+      "PIRADS"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high PSA and previous biopsy as indicators of advanced disease, aligning with the 'no' decision (i.e., not recommending active surveillance/watchful waiting). However, it fails to mention most of the other key clinical variables provided in the case facts.",
+    "case_id": "PT-pseudo_11345b8a7ab3",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "no",
+    "pred_free_text": "Prior positive biopsy combined with markedly elevated PSA (>100 ng/mL) indicates advanced disease where diagnostic biopsy is redundant. PI-RADS 5 lesion confirms high suspicion but management shifts to staging and systemic therapy."
+  },
+  "task1_PT-pseudo_11574b12444b": {
+    "score": 1.0,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "cspca",
+      "prostate_volume"
+    ],
+    "missing_points": [
+      "DRE",
+      "age",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the 'yes' decision (PI-RADS 5, high PSA, high csPCa probability) and addresses the mitigating factor (low PSAD due to large volume). The reasoning is sound and consistent with the ground truth.",
+    "case_id": "PT-pseudo_11574b12444b",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The recommendation for biopsy is driven by the PI-RADS 5 lesion and significantly elevated PSA of 8.0 ng/mL. Despite a borderline low PSA density (0.13) due to large prostate volume, the high csPCa probability (0.857) mandates tissue sampling."
+  },
+  "task1_PT-pseudo_1185f6a68df0": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk PI-RADS 5 lesion and elevated PSAD as drivers for the biopsy decision, aligning with the ground truth. However, it fails to mention several other relevant clinical variables provided in the case facts.",
+    "case_id": "PT-pseudo_1185f6a68df0",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven by the high-risk PI-RADS 5 lesion identified on mpMRI and the elevated PSA density of 0.329 ng/mL², which exceeds standard thresholds for intervention."
+  },
+  "task1_PT-pseudo_11fe9c6ca833": {
+    "score": 0.8,
+    "covered_points": [
+      "PSA",
+      "previous_biopsy",
+      "PIRADS"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers (high PSA, prior positive biopsy, PIRADS 5) leading to the 'no' decision (i.e., no further local intervention like repeat biopsy). However, it fails to mention most of the other provided key clinical variables.",
+    "case_id": "PT-pseudo_11fe9c6ca833",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "no",
+    "pred_free_text": "Prior positive biopsy established diagnosis. Markedly elevated PSA (>100 ng/mL) indicates advanced/metastatic disease, shifting management to staging and systemic therapy rather than repeat biopsy. PI-RADS 5 lesion confirms local malignancy."
+  },
+  "task1_PT-pseudo_132e0000c0e0": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the primary drivers (PI-RADS 5 and rising PSA/PSAD) for the 'yes' decision (biopsy). However, it only mentions a subset of the key variables, missing several important factors like DRE, age, and prostate volume.",
+    "case_id": "PT-pseudo_132e0000c0e0",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "PI-RADS 5 lesion on mpMRI is the primary driver for biopsy, supported by rapidly rising PSA trajectory and elevated PSA density >0.15 ng/mL²."
+  },
+  "task1_PT-pseudo_138092c2a6be": {
+    "score": 0.9,
+    "covered_points": [
+      "PSA",
+      "PIRADS",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers (rapid PSA rise, PI-RADS 4, prior positive biopsy) leading to the 'yes' decision (further investigation/biopsy). However, it fails to mention several other relevant clinical variables provided in the case facts.",
+    "case_id": "PT-pseudo_138092c2a6be",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "Rapid PSA rise to 9.0 ng/mL combined with a PI-RADS 4 lesion on mpMRI and prior positive biopsy strongly indicates disease progression or missed high-grade cancer, necessitating immediate targeted biopsy."
+  },
+  "task1_PT-pseudo_152344add0f1": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk factors (PI-RADS 5, high PSAD, rising PSA) supporting the 'yes' decision. However, it only mentions a subset of the key variables, missing several important clinical factors.",
+    "case_id": "PT-pseudo_152344add0f1",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision is driven primarily by the PI-RADS 5 lesion identified on mpMRI and a high PSA density of 0.209 ng/mL^2. The rising PSA trend further supports the need for tissue diagnosis."
+  },
+  "task1_PT-pseudo_175e6ad47991": {
+    "score": 0.5,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale mentions key variables (PIRADS, PSA, PSAD, previous_biopsy) but fails to mention several other important variables (DRE, cspca, age, prostate_volume, family_history). Crucially, the rationale suggests a recommendation for biopsy, which is inconsistent with the ground truth decision ('no').",
+    "case_id": "PT-pseudo_175e6ad47991",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "The recommendation for biopsy is driven by the PI-RADS 5 lesion on mpMRI, markedly elevated PSA of 28 ng/mL, and high PSA density of 0.28 ng/mL², which collectively override the history of a prior negative biopsy."
+  },
+  "task1_PT-pseudo_17f110c9e142": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "DRE"
+    ],
+    "missing_points": [
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies high-risk factors (PI-RADS 5, rapid PSA increase, elevated PSAD, DRE nodule) that would typically lead to an aggressive management decision (e.g., active surveillance withdrawal or immediate treatment). However, it fails to mention several other key variables (cspca, age, prostate_volume, previous_biopsy) that are relevant to the overall clinical picture. Since the ground truth decision is 'no' (implying no immediate aggressive action or no need for further intervention based on the provided context, which is unusual given the high-risk factors), the reasoning direction is questionable, but the coverage of the most critical variables is strong.",
+    "case_id": "PT-pseudo_17f110c9e142",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "Decision driven by PI-RADS 5 lesion, rapid PSA velocity (0.7 to 6.9 ng/mL), elevated PSAD of 0.171, and palpable DRE nodule indicating high likelihood of clinically significant prostate cancer progression."
+  },
+  "task1_PT-pseudo_180352970ace": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE"
+    ],
+    "rationale": "The rationale correctly identifies the PI-RADS 5 lesion and rising PSA as the primary drivers for the biopsy decision (consistent with ground truth). It covers most key variables, although DRE is not explicitly mentioned.",
+    "case_id": "PT-pseudo_180352970ace",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The recommendation for biopsy is driven primarily by the PI-RADS 5 lesion on mpMRI, which mandates tissue sampling per EAU guidelines regardless of PSA density. This is further supported by a rising PSA trend over two years and a high predicted probability of clinically significant prostate cancer."
+  },
+  "task1_PT-pseudo_1a4e0cf3b927": {
+    "score": 0.7,
+    "covered_points": [
+      "PIRADS",
+      "DRE",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PSA",
+      "PSAD",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale mentions key clinical factors (PI-RADS 5, DRE, prior positive biopsy) that support a decision for further investigation (likely 'yes' or active surveillance/treatment), but it fails to mention other critical variables like PSA, PSAD, or age. Since the ground truth is 'no', the reasoning direction is inconsistent with the final decision, suggesting the LLM rationale is likely supporting a different outcome.",
+    "case_id": "PT-pseudo_1a4e0cf3b927",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "Recommendation driven by PI-RADS 5 lesion on mpMRI, fixed irregular nodule on DRE, and rising PSA trend in a patient with prior positive biopsy history."
+  },
+  "task1_PT-pseudo_1dc32184cab6": {
+    "score": 0.9,
+    "covered_points": [
+      "PSA",
+      "PSAD",
+      "previous_biopsy",
+      "age",
+      "prostate_volume"
+    ],
+    "missing_points": [
+      "PIRADS",
+      "DRE",
+      "cspca",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the low PSA and PSAD as the primary reasons for withholding biopsy, aligning with the 'no' decision. It also mentions the prior negative biopsy and slow PSA trajectory. However, it fails to explicitly mention PIRADS, DRE, cspca, and family history, which are key variables.",
+    "case_id": "PT-pseudo_1dc32184cab6",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "no",
+    "pred_free_text": "The decision to withhold biopsy is driven by the exceptionally low PSA density (0.02 ng/mL^2) and very low absolute PSA (0.76 ng/mL), which strongly suggest benign etiology despite the PI-RADS 4 lesion. This biochemical reassurance is further supported by a prior negative biopsy, slow PSA trajectory"
+  },
+  "task1_PT-pseudo_20a7e91c494c": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "prostate_volume",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the decision (PI-RADS 4, prior positive biopsy, PSA trend) and addresses the PSAD/volume relationship. However, it misses several key variables (DRE, cspca, age, family_history) and the reasoning direction is inconsistent with the ground truth (Ground Truth is 'no', but the text argues for biopsy).",
+    "case_id": "PT-pseudo_20a7e91c494c",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "The recommendation for biopsy is driven by the presence of a PI-RADS 4 lesion in a patient with a history of prior positive prostate cancer and a rising PSA trend. Although the PSA density is low (0.07), this is likely due to the large prostate volume (73 mL) and does not negate the high suspicion p"
+  },
+  "task1_PT-pseudo_20ba3f0f6ca0": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "DRE",
+      "PSA",
+      "cspca"
+    ],
+    "missing_points": [
+      "PSAD",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the 'yes' decision (PI-RADS 4, DRE, high probability) and provides causal reasoning. However, it only mentions PSA generally and fails to incorporate specific quantitative variables like PSAD, age, or prostate volume, which are important for a complete clinical justification.",
+    "case_id": "PT-pseudo_20ba3f0f6ca0",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to proceed with biopsy was driven by the PI-RADS 4 lesion on mpMRI, a concordant palpable nodule on DRE, and a high predicted probability of clinically significant prostate cancer. The low PSA density was overridden by these strong imaging and clinical findings."
+  },
+  "task1_PT-pseudo_21e7fa67a79e": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk PI-RADS 5 lesion and the significant PSA rise as drivers for the decision (consistent with 'yes'). However, it misses several key variables listed in the prompt, such as PSAD, DRE, cspca, age, and prostate volume.",
+    "case_id": "PT-pseudo_21e7fa67a79e",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to proceed with biopsy is driven by the presence of a high-risk PI-RADS 5 lesion on mpMRI, a significant rise in PSA from 5.2 to 11.0 ng/mL, and a prior history of prostate cancer (ISUP GG2), necessitating evaluation for disease progression."
+  },
+  "task1_PT-pseudo_249def42388a": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "DRE",
+      "cspca",
+      "prostate_volume",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "age",
+      "family_history"
+    ],
+    "rationale": "The rationale strongly supports the 'yes' decision by citing PI-RADS 5, high PSAD, DRE findings, and PSA trend. It covers most key variables, though it omits age and family history.",
+    "case_id": "PT-pseudo_249def42388a",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven primarily by the PI-RADS 5 lesion on mpMRI and a PSA density of 0.236, which significantly exceeds the 0.15 threshold for clinically significant cancer. Additionally, the presence of a palpable nodule on DRE corresponding to the MRI findings and a rapidly rising PSA "
+  },
+  "task1_PT-pseudo_25007bb807d7": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "DRE"
+    ],
+    "missing_points": [
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk factors (PI-RADS 5, elevated PSA/PSAD) leading to the 'yes' decision (biopsy). However, it fails to mention several other key variables provided in the case facts, such as CSPCA, age, and prostate volume.",
+    "case_id": "PT-pseudo_25007bb807d7",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The recommendation for biopsy is primarily driven by the PI-RADS 5 lesion on mpMRI, which indicates a high probability of clinically significant prostate cancer. This is strongly supported by a markedly elevated PSA density (0.462 ng/mL²) and a high absolute PSA level (17.0 ng/mL), despite a normal "
+  },
+  "task1_PT-pseudo_259484ae733f": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the 'yes' decision (PI-RADS 4 and prior positive biopsy) and mentions rising PSA. However, it fails to mention several other critical variables provided in the case facts (PSAD, DRE, cspca, age, prostate_volume, family_history), leading to a moderate score.",
+    "case_id": "PT-pseudo_259484ae733f",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to proceed with biopsy is primarily driven by the PI-RADS 4 lesion on mpMRI and the patient's history of a prior positive biopsy (ISUP GG2), which requires monitoring for progression. Rising PSA levels further support this indication, although the low PSA density introduces some ambigui"
+  },
+  "task1_PT-pseudo_2b3ef1d3a505": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "DRE",
+      "prostate_volume",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "cspca",
+      "age",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk factors (PI-RADS 5, DRE, previous biopsy) that would typically lead to a 'yes' decision (biopsy recommended), but the ground truth is 'no'. The reasoning is inconsistent with the ground truth decision, although it covers most key variables and provides strong causal reasoning.",
+    "case_id": "PT-pseudo_2b3ef1d3a505",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "The recommendation for biopsy is driven by the PI-RADS 5 lesion on mpMRI and the abnormal DRE findings, which together strongly indicate clinically significant prostate cancer. Although PSA density is low due to a large prostate volume, the focal high-risk imaging and palpable nodule override this f"
+  },
+  "task1_PT-pseudo_2cd88bcdf81c": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the primary drivers for the 'yes' decision (biopsy) using PI-RADS 4, elevated PSA, and PSAD, and acknowledges the prior negative biopsy. However, it misses several other relevant clinical variables (DRE, cspca, age, volume, family history) that could support or modify the decision.",
+    "case_id": "PT-pseudo_2cd88bcdf81c",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven by the PI-RADS 4 lesion on mpMRI, significantly elevated PSA of 12.0 ng/mL, and high PSA density of 0.313. These factors strongly indicate clinically significant prostate cancer despite a prior negative biopsy."
+  },
+  "task1_PT-pseudo_2e0346bce3b3": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "previous_biopsy",
+      "prostate_volume"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "cspca",
+      "age",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers (PI-RADS 4, rising PSA, prior positive biopsy) leading to the 'yes' decision (re-biopsy). It mentions the volume's impact on PSAD, which is relevant. However, it misses several other key variables listed in the prompt.",
+    "case_id": "PT-pseudo_2e0346bce3b3",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "Decision driven by PI-RADS 4 lesion in a patient with prior low-grade cancer and rising PSA. Although PSAD is very low due to large volume, the specific MRI finding and clinical history of known disease warrant re-biopsy to rule out progression."
+  },
+  "task1_PT-pseudo_2e4988b84112": {
+    "score": 0.8,
+    "covered_points": [
+      "PSA",
+      "PIRADS",
+      "PSAD"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the high PSA, PI-RADS 5, and high PSAD as drivers for the decision. However, it fails to mention several other key clinical variables (DRE, cspca, age, volume, etc.) that are relevant in prostate cancer decision-making, leading to a moderate score.",
+    "case_id": "PT-pseudo_2e4988b84112",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision is driven by the markedly elevated PSA of 70 ng/mL, a definitive PI-RADS 5 lesion on mpMRI, and a high PSAD of 0.67 indicating rapid disease progression requiring histological confirmation."
+  },
+  "task1_PT-pseudo_2eef4115a253": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "cspca"
+    ],
+    "missing_points": [
+      "DRE",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the 'yes' decision (PI-RADS 4, rising PSA, high csPCa) and provides causal reasoning. It is slightly penalized for omitting several other relevant clinical variables listed in the prompt.",
+    "case_id": "PT-pseudo_2eef4115a253",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "PI-RADS 4 lesion with marked diffusion restriction overrides the low PSA density. Rising PSA kinetics and high csPCa predicted probability further justify targeted biopsy despite PSAD <0.15."
+  },
+  "task1_PT-pseudo_2ef22b5dd08e": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "missing_points": [],
+    "rationale": "The rationale correctly identifies the key drivers for the 'yes' decision (biopsy) by citing PI-RADS 4 and high PSAD. It also incorporates the rapid PSA rise, which is a strong clinical indicator. While it mentions PSA and PSAD, it implicitly covers the other variables (age, volume, etc.) by providing a comprehensive clinical justification, though it doesn't explicitly list them all.",
+    "case_id": "PT-pseudo_2ef22b5dd08e",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven by the PI-RADS 4 lesion on mpMRI and the high PSA density of 0.296 ng/mL^2, which far exceeds the 0.15 threshold. The recent rapid rise in PSA from 4.4 to 9.3 ng/mL further supports active disease progression."
+  },
+  "task1_PT-pseudo_2fbb84505a45": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the 'yes' decision (PI-RADS 4 and elevated PSA/prior biopsy). It provides causal reasoning. However, it fails to mention most of the other key clinical variables provided in the case facts.",
+    "case_id": "PT-pseudo_2fbb84505a45",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "Biopsy is recommended due to the PI-RADS 4 lesion and significantly elevated PSA with rapid velocity. Although PSA density is low, the risk of disease progression or grade escalation in a patient with prior cancer warrants tissue sampling."
+  },
+  "task1_PT-pseudo_33c8cd4571fd": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers (PI-RADS 5, high PSAD, rising PSA) for the 'yes' decision. It covers most key variables, though DRE is omitted. The reasoning is sound and consistent with the ground truth.",
+    "case_id": "PT-pseudo_33c8cd4571fd",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to proceed with biopsy is primarily driven by the PI-RADS 5 lesion on mpMRI and a high PSA density of 0.411 ng/mL², which together provide strong evidence for clinically significant prostate cancer. Additionally, the rapidly rising PSA trajectory over two years reinforces this recommend"
+  },
+  "task1_PT-pseudo_34647958aba3": {
+    "score": 0.5,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "DRE"
+    ],
+    "missing_points": [
+      "PSAD",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale mentions key factors (PI-RADS 5, DRE, PSA velocity) that would typically support a 'yes' (biopsy) decision, which contradicts the ground truth 'no'. Furthermore, it misses several other important variables like PSAD, previous biopsy status, and age.",
+    "case_id": "PT-pseudo_34647958aba3",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "The recommendation for biopsy is primarily driven by the PI-RADS 5 lesion on mpMRI, a palpable nodule on DRE in the corresponding location, and a significant PSA velocity from 1.7 to 7.6 ng/mL."
+  },
+  "task1_PT-pseudo_3477ea7065bd": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "prostate_volume"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk factors (PI-RADS 4, elevated PSA, PSAD) leading to the 'yes' decision (biopsy). It covers the core variables influencing the decision. It is slightly penalized for omitting other key variables like DRE, age, and PSA velocity, although the rapid PSA increase is implied by the context.",
+    "case_id": "PT-pseudo_3477ea7065bd",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The recommendation for biopsy is driven by the high-risk PI-RADS 4 lesion on mpMRI combined with a significantly elevated PSA of 13.9 ng/mL and rapid velocity. The PSA density of 0.177 further supports malignancy risk despite the large prostate volume, confirming the need for tissue sampling."
+  },
+  "task1_PT-pseudo_3646e0a2ae13": {
+    "score": 0.8,
+    "covered_points": [
+      "PSA",
+      "PSAD",
+      "DRE",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PIRADS",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key factors supporting the 'no' decision (surveillance) based on negative imaging and low PSAD, but it fails to mention several critical variables like age, prostate volume, and the specific PSA trend/value, which are relevant to the overall risk assessment.",
+    "case_id": "PT-pseudo_3646e0a2ae13",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "no",
+    "pred_free_text": "Decision driven primarily by negative mpMRI (PI-RADS NA) and low PSAD (<0.15), which override the moderately elevated PSA trend. Normal DRE and absence of prior biopsy history support conservative surveillance rather than immediate invasive intervention."
+  },
+  "task1_PT-pseudo_36c92fb424ac": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "cspca",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the strong indicators (PI-RADS 4, rising PSA, high csPCa) supporting the 'yes' decision. It mentions the previous negative biopsy, which is relevant context. However, it fails to mention several other key variables (PSAD, DRE, age, volume, family history) that were provided in the case facts.",
+    "case_id": "PT-pseudo_36c92fb424ac",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The recommendation for biopsy is driven by the PI-RADS 4 lesion, rapid PSA velocity from 1.4 to 6.0 ng/mL, and high csPCa probability of 0.77. Low PSAD and prior negative biopsy were noted but did not override these strong indicators."
+  },
+  "task1_PT-pseudo_376de00c8131": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "prostate_volume",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the 'yes' decision (biopsy) based on PI-RADS 4 and elevated PSA. It also addresses the mitigating factors (low PSAD, prior negative biopsy). It is strong but misses several other key variables listed in the prompt.",
+    "case_id": "PT-pseudo_376de00c8131",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven primarily by the PI-RADS 4 lesion on mpMRI and the elevated PSA of 8.8 ng/mL with a rising trend. Although PSAD is low due to large prostate volume and prior biopsy was negative, the new suspicious MRI finding warrants tissue diagnosis."
+  },
+  "task1_PT-pseudo_37d8ae9b27f1": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "prostate_volume",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the low PSAD as the primary reason for withholding biopsy, aligning with the 'no' decision. It covers several key variables (PSAD, PIRADS, PSA, prostate_volume, previous_biopsy). However, it omits several other key variables (DRE, cspca, age, family_history) that could be relevant to the decision-making process.",
+    "case_id": "PT-pseudo_37d8ae9b27f1",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "no",
+    "pred_free_text": "The decision to withhold biopsy is primarily driven by the very low PSA density (0.053 ng/mL^2) despite a PI-RADS 4 lesion, which suggests benign etiology (BPH) rather than clinically significant cancer. The large prostate volume supports this interpretation. While the PI-RADS 4 score and rising PSA"
+  },
+  "task1_PT-pseudo_394e0b8dbeeb": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "DRE"
+    ],
+    "missing_points": [
+      "age",
+      "prostate_volume",
+      "cspca",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the primary drivers for the 'yes' decision (PI-RADS 4, elevated PSAD, DRE nodule). However, it fails to mention several other relevant clinical variables provided in the case facts, such as age, prostate volume, and the PSA trajectory/trend, which are important for comprehensive prostate cancer decision-making.",
+    "case_id": "PT-pseudo_394e0b8dbeeb",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to proceed with biopsy is driven by the PI-RADS 4 lesion, elevated PSA density above 0.15, and a palpable nodule on DRE."
+  },
+  "task1_PT-pseudo_3b6ea1920967": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "previous_biopsy",
+      "age",
+      "prostate_volume"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers (rising PSA, PI-RADS 4, prior positive biopsy) for the decision. It covers most key variables. However, it fails to mention DRE, cspca, and family_history. Crucially, the reasoning suggests proceeding with biopsy ('The decision to proceed with biopsy is driven...'), which contradicts the ground truth decision ('no').",
+    "case_id": "PT-pseudo_3b6ea1920967",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to proceed with biopsy is driven by the patient's rising PSA trajectory indicating potential disease progression during active surveillance, combined with a PI-RADS 4 lesion on mpMRI. The prior positive biopsy establishes the need for monitoring, and while PSAD is low, the kinetic chang"
+  },
+  "task1_PT-pseudo_3cc88c81f35a": {
+    "score": 0.6,
+    "covered_points": [
+      "PSAD",
+      "DRE",
+      "PIRADS",
+      "PSA",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies key factors (DRE, PSAD, PSA, prior biopsy) that would support a decision for further investigation/biopsy, but it fails to mention several key variables (cspca, age, prostate_volume, family_history). Crucially, the reasoning presented (supporting biopsy) is inconsistent with the ground truth decision ('no').",
+    "case_id": "PT-pseudo_3cc88c81f35a",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy was driven by the combination of a palpable DRE nodule and high PSA density (0.206), which override the reassuring PI-RADS 2 MRI findings. The rising PSA trajectory and history of prior positive biopsy further support tissue sampling to rule out clinically significant disease."
+  },
+  "task1_PT-pseudo_3ceacc9b660b": {
+    "score": 0.6,
+    "covered_points": [
+      "PSA",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PIRADS",
+      "PSAD",
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the rapid PSA increase and prior positive biopsy as key factors. However, it fails to mention most of the other critical variables (e.g., PSAD, PIRADS, volume) and the conclusion drawn (likely progression) is inconsistent with the 'no' ground truth decision, suggesting the LLM is arguing for active surveillance or watchful waiting, which aligns with the ground truth.",
+    "case_id": "PT-pseudo_3ceacc9b660b",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "Rapid PSA velocity (1.2 to 6.0 ng/mL) and prior positive biopsy history indicate likely progression, overriding the equivocal PI-RADS 3 findings."
+  },
+  "task1_PT-pseudo_3f75ae876abe": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the primary drivers for the biopsy (PI-RADS 5, elevated PSA, rapid PSA velocity, and no prior biopsy). It provides strong causal reasoning consistent with the 'yes' decision. However, it fails to mention several other key clinical variables listed in the prompt (DRE, cspca, age, prostate_volume, family_history).",
+    "case_id": "PT-pseudo_3f75ae876abe",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven by the PI-RADS 5 lesion on mpMRI, a markedly elevated PSA density of 0.846 ng/mL^2, and rapid PSA velocity from 2.8 to 16.8 ng/mL over 15 months. The absence of prior biopsy history further necessitates tissue diagnosis."
+  },
+  "task1_PT-pseudo_41ca49bed13d": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "DRE"
+    ],
+    "missing_points": [
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the biopsy decision (PI-RADS 4, elevated PSA/PSAD, DRE findings) and provides causal reasoning. However, it misses several other relevant clinical variables listed in the key variables to check, such as CSPCA, age, and prostate volume.",
+    "case_id": "PT-pseudo_41ca49bed13d",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven by the PI-RADS 4 lesion on mpMRI, a markedly elevated PSA density of 0.734 ng/mL^2, rapidly rising PSA kinetics (velocity ~2.8 ng/mL/yr), and a concordant firm nodule detected on digital rectal examination."
+  },
+  "task1_PT-pseudo_47c373e230b6": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the primary drivers for the 'yes' decision (PI-RADS 5, high/rising PSA, PSAD, and prior positive biopsy). It provides strong causal reasoning. It misses several other key variables, but the core clinical justification is sound and aligns with the ground truth.",
+    "case_id": "PT-pseudo_47c373e230b6",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "Biopsy is recommended due to the PI-RADS 5 lesion, markedly elevated and rising PSA (10.0 ng/mL), high PSA density (0.27), and prior positive biopsy history suggesting potential progression."
+  },
+  "task1_PT-pseudo_47d8b39fd07f": {
+    "score": 0.8,
+    "covered_points": [
+      "PSA",
+      "PSAD",
+      "PIRADS",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies key indicators (high PSA, elevated PSAD, PI-RADS 3, prior negative biopsy) that would typically lead to a 'yes' decision (biopsy/treatment). However, the ground truth decision is 'no', indicating the LLM's reasoning direction is inconsistent with the provided ground truth. The rationale also misses several key variables like DRE, cspca, age, and prostate volume.",
+    "case_id": "PT-pseudo_47d8b39fd07f",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "High PSA (21 ng/mL) and elevated PSAD (0.19) strongly indicate clinically significant prostate cancer despite PI-RADS 3 lesion and prior negative biopsy. The rapid PSA velocity and low free PSA percentage further support proceeding with a biopsy to rule out sampling error or progression."
+  },
+  "task1_PT-pseudo_48fb60dfd22f": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the primary drivers for the biopsy decision (PI-RADS 5, high PSAD, and rising PSA). However, it fails to mention several other key clinical variables provided in the case facts, such as DRE, age, and prostate volume.",
+    "case_id": "PT-pseudo_48fb60dfd22f",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy was driven by the PI-RADS 5 lesion on mpMRI, a markedly elevated PSA density of 0.986 ng/mL^2 which far exceeds the 0.15 threshold, and a rapidly rising PSA trajectory reaching 24.0 ng/mL."
+  },
+  "task1_PT-pseudo_4a2fa7bc3595": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "DRE",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PSAD",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the 'yes' decision (high-risk features like PI-RADS 5, elevated PSA, DRE finding, and prior positive biopsy). However, it misses several other important variables provided in the case data (PSAD, cspca, age, prostate volume, family history), leading to a slight reduction in the score.",
+    "case_id": "PT-pseudo_4a2fa7bc3595",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "Recommendation driven by rapid PSA doubling time (<3 years), PI-RADS 5 lesion on mpMRI, and palpable nodule on DRE in a patient with prior positive biopsy indicating disease progression."
+  },
+  "task1_PT-pseudo_4a4fedfc1f51": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "DRE",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the primary drivers for the biopsy decision (PI-RADS 5, high PSAD, DRE, no prior biopsy) and provides sound causal reasoning. It misses several key variables (cspca, age, prostate_volume, family_history) but the core clinical justification is strong and aligns with the 'yes' decision.",
+    "case_id": "PT-pseudo_4a4fedfc1f51",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven primarily by the PI-RADS 5 lesion on mpMRI, which indicates a high probability of clinically significant prostate cancer. This is strongly corroborated by a high PSA density (0.368 ng/mL2) and a palpable nodule on DRE in the corresponding location. The absence of pri"
+  },
+  "task1_PT-pseudo_4b950525e6a8": {
+    "score": 0.5,
+    "covered_points": [
+      "PSA",
+      "PIRADS"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the importance of the rising PSA and PI-RADS 5 finding, but it fails to mention most of the other key clinical variables. Furthermore, the reasoning suggests a need for tissue confirmation (biopsy/treatment), which contradicts the 'no' ground truth decision (implying no immediate aggressive action or treatment is warranted based on the provided context/decision).",
+    "case_id": "PT-pseudo_4b950525e6a8",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "Rapidly rising PSA trajectory from 6.3 to 19.0 ng/mL combined with a PI-RADS 5 lesion on mpMRI strongly indicates disease progression requiring tissue confirmation."
+  },
+  "task1_PT-pseudo_4bfd4ec864d8": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "DRE",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk factors (PI-RADS 5, elevated PSA/PSAD, DRE finding) supporting the 'yes' decision (biopsy). It covers several key variables but omits age, prostate volume, cspca, and family history.",
+    "case_id": "PT-pseudo_4bfd4ec864d8",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy was driven by the combination of a PI-RADS 5 lesion on mpMRI, a markedly elevated PSA density of 0.35 ng/mL², and a palpable peripheral zone nodule on DRE that correlates with the imaging findings. Despite a prior negative biopsy, these high-risk features strongly indicate cli"
+  },
+  "task1_PT-pseudo_4c6b2b2bbf94": {
+    "score": 0.5,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "cspca",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies key risk factors (PI-RADS 4, elevated PSA, high csPCa) but fails to mention several other critical variables (PSAD, DRE, age, volume, family history). Crucially, the reasoning suggests proceeding with a biopsy/reassessment, which contradicts the ground truth decision ('no').",
+    "case_id": "PT-pseudo_4c6b2b2bbf94",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "PI-RADS 4 lesion combined with elevated PSA (>3 ng/mL) definitively meets EAU biopsy criteria. The prior positive biopsy indicates a surveillance context where new high-risk imaging findings warrant targeted reassessment to rule out grade progression. High csPCa probability (0.79) and low free PSA f"
+  },
+  "task1_PT-pseudo_4d54f04e26ae": {
+    "score": 0.9,
+    "covered_points": [
+      "PSA",
+      "PIRADS",
+      "PSAD",
+      "DRE"
+    ],
+    "missing_points": [
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the primary drivers for the 'yes' decision (biopsy) using high PSA, high-risk PIRADS 4, high PSAD, and DRE findings. However, it fails to mention several other relevant clinical variables provided in the case facts, such as CSPCA, age, and the history of previous negative biopsy.",
+    "case_id": "PT-pseudo_4d54f04e26ae",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The recommendation for biopsy is driven by the markedly elevated and rapidly rising PSA of 34.7 ng/mL, a high-risk PI-RADS 4 lesion on mpMRI, a significantly elevated PSA density of 0.352, and a palpable firm nodule on DRE."
+  },
+  "task1_PT-pseudo_4e545d350c5b": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the primary drivers for the biopsy decision (PI-RADS 5, high PSA, high PSAD) and is consistent with the ground truth. However, it fails to mention several other relevant clinical variables provided in the case facts.",
+    "case_id": "PT-pseudo_4e545d350c5b",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The recommendation for biopsy is primarily driven by the PI-RADS 5 lesion on mpMRI combined with a very high PSA density of 0.696 ng/mL² and an elevated PSA level of 22.0 ng/mL."
+  },
+  "task1_PT-pseudo_4edb17f79e46": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the 'yes' decision (PI-RADS 4, high PSAD, PSA rise) and addresses the prior negative biopsy. However, it fails to mention several other relevant clinical variables provided in the case facts (DRE, cspca, age, prostate_volume, family_history).",
+    "case_id": "PT-pseudo_4edb17f79e46",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The recommendation for biopsy is driven by the combination of a PI-RADS 4 lesion on mpMRI, a PSA density of 0.16 ng/mL² (exceeding the >0.15 threshold), and a significant recent rise in PSA levels. Although there was a prior negative biopsy, these new high-risk imaging and kinetic findings override "
+  },
+  "task1_PT-pseudo_4f33b0253633": {
+    "score": 0.5,
+    "covered_points": [
+      "PSAD",
+      "PSA",
+      "cspca",
+      "PIRADS"
+    ],
+    "missing_points": [
+      "DRE",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies key risk factors (PSAD, PSA, CSPCA, PIRADS) but fails to mention several other important variables (DRE, age, volume, etc.). Crucially, the reasoning leads to a 'Biopsy is recommended' decision, which contradicts the 'no' ground truth decision.",
+    "case_id": "PT-pseudo_4f33b0253633",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "Biopsy is recommended due to the combination of a PSA density exceeding the 0.15 ng/mL² threshold, significant PSA velocity, and high predicted probability of clinically significant prostate cancer (62%), which collectively outweigh the equivocal nature of the PI-RADS 3 lesion."
+  },
+  "task1_PT-pseudo_52213169f58b": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "cspca",
+      "prostate_volume"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "age",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly supports the 'yes' decision (biopsy) by citing PI-RADS 5 and high csPCa probability. It covers key variables like PSA and csPCa, but misses several other listed variables (PSAD, DRE, age, etc.).",
+    "case_id": "PT-pseudo_52213169f58b",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "no",
+    "pred_free_text": "psy recommended.** Proceed with MRI-targeted and systematic prostate biopsy to confirm histology and determine ISUP grade group. Given the lesion location (left peripheral zone) and size, targeted cores are essential. Active surveillance is not appropriate at this diagnostic stage without tissue con"
+  },
+  "task1_PT-pseudo_562159dc2cc6": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "prostate_volume",
+      "age"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly supports the 'no' decision by citing low-risk PI-RADS 2, large prostate volume, and a PSAD in the gray zone. It covers the main variables influencing the decision (PIRADS, PSA, PSAD, volume) and provides causal reasoning, although it omits several other key variables.",
+    "case_id": "PT-pseudo_562159dc2cc6",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "no",
+    "pred_free_text": "The decision against immediate biopsy is driven by the low-risk PI-RADS 2 MRI, large prostate volume explaining the PSA elevation, and a PSAD of 0.19 falling within the diagnostic gray zone despite the rising PSA trend."
+  },
+  "task1_PT-pseudo_575cb2819e96": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk factors (PI-RADS 5, high PSAD) and the need for further investigation (MRI-targeted biopsy) despite a previous negative biopsy, aligning with the 'yes' decision. However, it misses several other key clinical variables provided in the case facts.",
+    "case_id": "PT-pseudo_575cb2819e96",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "Recommendation driven by PI-RADS 5 lesion and high PSA density (0.25 ng/mL²). Prior negative systematic biopsy does not preclude MRI-targeted biopsy for new high-risk findings."
+  },
+  "task1_PT-pseudo_590e7b237744": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key factors (PI-RADS 4, high PSAD, rising PSA, prior history) that would typically lead to a 'yes' decision (active surveillance/treatment), which is inconsistent with the 'no' ground truth. However, it covers the most critical variables influencing the decision, making the coverage high despite the directional inconsistency.",
+    "case_id": "PT-pseudo_590e7b237744",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "Decision driven by PI-RADS 4 lesion with PSAD >0.15 ng/mL2 and rising PSA kinetics in a patient with prior prostate cancer history."
+  },
+  "task1_PT-pseudo_b9aa0df93f2a": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk factors (PI-RADS 5, rising PSA, prior positive biopsy) supporting the 'yes' decision (biopsy). However, it fails to mention several other key variables provided in the case facts.",
+    "case_id": "PT-pseudo_b9aa0df93f2a",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven primarily by the PI-RADS 5 lesion on mpMRI, which carries a high probability of clinically significant prostate cancer. This is reinforced by the sharp recent rise in PSA levels (from ~1.2 to 5.5 ng/mL) and the patient's history of a prior positive biopsy, necessitat"
+  },
+  "task1_PT-pseudo_b9f0b7018502": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the decision (PI-RADS 5, rising PSA, previous positive biopsy) and aligns with the 'yes' decision (repeat biopsy). However, it fails to mention most of the other available clinical variables.",
+    "case_id": "PT-pseudo_b9f0b7018502",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "Prior ISUP GG 4 malignancy combined with rising PSA trajectory and a new PI-RADS 5 lesion on mpMRI necessitates repeat biopsy for accurate staging and treatment planning."
+  },
+  "task1_PT-pseudo_c03b1168ff4d": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key factors (PI-RADS 4, low PSAD, rapid PSA rise, prior positive biopsy) supporting the 'yes' decision. It provides strong causal reasoning. However, it misses several other relevant clinical variables listed in the key variables to check.",
+    "case_id": "PT-pseudo_c03b1168ff4d",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "PI-RADS 4 lesion on mpMRI combined with a PSA density of 0.165 ng/mL² and rapid PSA rise in a patient with prior positive biopsy strongly indicate clinically significant prostate cancer requiring histological confirmation."
+  },
+  "task1_PT-pseudo_c12bcf838ec8": {
+    "score": 0.8,
+    "covered_points": [
+      "PSA",
+      "PSAD",
+      "PIRADS",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key factors (low PSAD, PI-RADS 3, prior negative biopsy) supporting the 'no' decision (withholding biopsy). However, it misses several other relevant clinical variables listed in the key variables to check.",
+    "case_id": "PT-pseudo_c12bcf838ec8",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "no",
+    "pred_free_text": "The decision to withhold biopsy is primarily driven by the extremely low PSA density of 0.05 ng/mL², which strongly suggests benign etiology despite the PI-RADS 3 lesion and rising PSA. The prior negative biopsy further supports active surveillance."
+  },
+  "task1_PT-pseudo_c13fda040310": {
+    "score": 1.0,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "cspca",
+      "prostate_volume",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "age",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the 'yes' decision (targeted biopsy) by citing the PI-RADS 4 lesion, rising PSA trend, high csPCa, and prior negative biopsy, while acknowledging the large prostate volume.",
+    "case_id": "PT-pseudo_c13fda040310",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven primarily by the PI-RADS 4 lesion on mpMRI and the rapidly rising PSA trend. Although PSA density is low due to large prostate volume, the high csPCa probability and prior negative biopsy history necessitate a targeted biopsy to rule out clinically significant cancer"
+  },
+  "task1_PT-pseudo_c39e94a13920": {
+    "score": 0.9,
+    "covered_points": [
+      "PSA",
+      "previous_biopsy",
+      "cspca",
+      "PIRADS"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the 'yes' decision (rapid PSA rise, prior positive biopsy, high csPCa) and provides causal reasoning. It mentions PIRADS and PSA, but omits several other key variables listed in the prompt.",
+    "case_id": "PT-pseudo_c39e94a13920",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "Rapid PSA velocity from 2.2 to 12.4 ng/mL over 17 months, prior positive biopsy history, and elevated csPCa probability outweigh the low PSA density and equivocal PI-RADS 3 lesion, warranting a targeted MRI-TRUS fusion biopsy."
+  },
+  "task1_PT-pseudo_c55496c11421": {
+    "score": 0.5,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "age",
+      "prostate_volume",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "cspca",
+      "family_history"
+    ],
+    "rationale": "The rationale mentions key factors like PI-RADS 4, rising PSA, and age, but it fails to incorporate or address critical variables such as PSAD, DRE, or CSPCA. Crucially, the reasoning suggests a need for tissue confirmation (biopsy), which contradicts the ground truth decision ('no').",
+    "case_id": "PT-pseudo_c55496c11421",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven primarily by the new PI-RADS 4 lesion on mpMRI combined with a rapidly rising PSA trajectory and high predicted probability of clinically significant cancer. Although the patient's age, comorbidities, and low PSA density suggest caution, the evolving clinical picture"
+  },
+  "task1_PT-pseudo_c7277954c60f": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "prostate_volume"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the low PIRADS and low PSAD as reasons to withhold biopsy, consistent with the 'no' decision. It also mentions the large prostate volume contributing to the low PSAD. However, it misses several key variables (DRE, cspca, age, etc.) and does not address the elevated PSA (9.8) or the PSA trend, which are significant factors in this case.",
+    "case_id": "PT-pseudo_c7277954c60f",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "no",
+    "pred_free_text": "The decision to withhold biopsy is driven by the low PI-RADS score of 2, which indicates clinically significant cancer is very unlikely. Furthermore, the PSA density is well below the 0.15 threshold at 0.073 ng/mL^2, largely due to the markedly enlarged prostate volume of 134 mL consistent with beni"
+  },
+  "task1_PT-pseudo_c9d31197c533": {
+    "score": 0.5,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "DRE"
+    ],
+    "missing_points": [
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale mentions key variables (PI-RADS 5, high PSAD, rapid PSA velocity, DRE) that suggest a high risk for cancer, which would typically lead to an 'yes' (treatment/further investigation) decision, contradicting the 'no' ground truth. It fails to mention most other relevant variables.",
+    "case_id": "PT-pseudo_c9d31197c533",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "Recommendation driven by PI-RADS 5 lesion with high PSAD (0.26), rapid PSA velocity (>1 ng/mL/yr), and a concordant palpable DRE nodule in a treatment-naïve patient."
+  },
+  "task1_PT-pseudo_cac2563c222a": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "age",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "cspca",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the 'yes' decision (biopsy) based on PI-RADS 5 and rising PSA in a young patient with prior positive biopsy. However, it fails to mention several other relevant clinical variables provided in the case facts.",
+    "case_id": "PT-pseudo_cac2563c222a",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven primarily by the presence of a PI-RADS 5 lesion and a rising PSA trend (4.1 to 4.53 ng/mL) in a young patient (50 years old). The prior positive biopsy suggests either disease progression on active surveillance or incomplete initial characterization, necessitating ti"
+  },
+  "task1_PT-pseudo_cce5d47c05dd": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk features (PI-RADS 5, elevated PSAD, rapid PSA kinetics/progression) that would typically lead to an active surveillance decision (or treatment), which is inconsistent with the 'no' ground truth decision. However, it covers the most critical variables (PIRADS, PSA, PSAD, previous biopsy) and provides causal reasoning, thus scoring high despite the inconsistency with the ground truth.",
+    "case_id": "PT-pseudo_cce5d47c05dd",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "Rapid PSA kinetics (doubling time <3 years), high-risk PI-RADS 5 lesion with elevated PSAD, and prior ISUP GG2 diagnosis indicating disease progression on surveillance."
+  },
+  "task1_PT-pseudo_d217629c323a": {
+    "score": 0.9,
+    "covered_points": [
+      "previous_biopsy",
+      "PSA",
+      "PIRADS",
+      "DRE"
+    ],
+    "missing_points": [
+      "PSAD",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key clinical factors (prior positive biopsy, rising PSA, PI-RADS 4, DRE nodule) that would typically lead to an aggressive management decision (e.g., active surveillance cessation or treatment initiation). However, since the ground truth decision is 'no' (implying no immediate aggressive action or treatment), the reasoning direction is inconsistent. The rationale is strong in covering the variables it mentions, but the missing variables are numerous and important for a complete assessment.",
+    "case_id": "PT-pseudo_d217629c323a",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "Decision driven by prior positive biopsy (Gleason 3+4), rapid PSA rise from 0.6 to 3.8 ng/mL, presence of a PI-RADS 4 lesion on mpMRI, and a palpable nodule on DRE indicating potential disease progression."
+  },
+  "task1_PT-pseudo_d38917f87b35": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies high-risk factors (PI-RADS 5, high PSA, high PSAD, previous positive biopsy) suggesting aggressive disease, which aligns with the 'no' decision (i.e., not recommending immediate treatment/intervention based on the current data, likely suggesting active surveillance or further staging). However, it misses several key variables like DRE, cspca, age, and prostate volume.",
+    "case_id": "PT-pseudo_d38917f87b35",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "PI-RADS 5 lesion with high PSAD (0.4) and significantly rising PSA (28.3 ng/mL) indicate progressive high-grade disease; prior positive biopsy without definitive treatment necessitates re-biopsy for staging."
+  },
+  "task1_PT-pseudo_d3d6b421d0aa": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "DRE",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key indicators for the 'yes' decision (prior positive biopsy, PI-RADS 5, elevated PSAD, DRE nodule). However, it misses several other relevant clinical variables provided in the case facts (cspca, age, prostate_volume, family_history).",
+    "case_id": "PT-pseudo_d3d6b421d0aa",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven by the patient's history of a prior positive prostate cancer biopsy combined with current high-risk findings: a PI-RADS 5 lesion on mpMRI, an elevated PSA density of 0.202 ng/mL^2, and a palpable nodule on DRE."
+  },
+  "task1_PT-pseudo_d3e975d025e6": {
+    "score": 0.95,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "missing_points": [],
+    "rationale": "The rationale strongly supports the 'yes' decision by citing PI-RADS 5, elevated PSAD, and DRE findings. While it mentions PSA and PSAD, it implicitly covers the other variables (age, volume, etc.) by providing a comprehensive clinical justification for the high suspicion, although it doesn't explicitly list all of them.",
+    "case_id": "PT-pseudo_d3e975d025e6",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven by the PI-RADS 5 lesion on mpMRI and a significantly elevated PSA density of 0.318 ng/mL^2. These are corroborated by a rapidly rising PSA trend (velocity ~6 ng/mL/yr) and a palpable nodule on DRE, creating an unambiguous indication for tissue diagnosis."
+  },
+  "task1_PT-pseudo_d49b896a09e6": {
+    "score": 0.8,
+    "covered_points": [
+      "PSA",
+      "PIRADS",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the decision (rising PSA, PI-RADS 4, and prior biopsy history). However, it misses several other relevant clinical variables provided in the case facts, such as PSAD, DRE, and specific volume/age details.",
+    "case_id": "PT-pseudo_d49b896a09e6",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "Decision to biopsy is driven by the combination of a rising PSA trend, a new PI-RADS 4 lesion on mpMRI indicating potential disease progression, and the patient's history of prior Gleason 6 prostate cancer requiring re-staging."
+  },
+  "task1_PT-pseudo_d5ceb6b4204f": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "cspca"
+    ],
+    "missing_points": [
+      "PSAD",
+      "DRE",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers for the 'yes' decision (PI-RADS 4, rising PSA, high CSPCA). However, it fails to mention several other important clinical variables provided in the case facts, such as PSAD, DRE, age, and previous biopsy status.",
+    "case_id": "PT-pseudo_d5ceb6b4204f",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "Decision driven by PI-RADS 4 lesion on mpMRI, rising PSA trajectory from 3.3 to 4.1 ng/mL, and high predicted probability of clinically significant prostate cancer (0.80)."
+  },
+  "task1_PT-pseudo_d7d26761c714": {
+    "score": 0.7,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies key factors (PI-RADS 3, low PSAD, prior low-grade disease) supporting the 'no' decision (against immediate biopsy/further aggressive action). However, it misses several other key variables provided in the case (DRE, age, volume, etc.).",
+    "case_id": "PT-pseudo_d7d26761c714",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "no",
+    "pred_free_text": "The decision against immediate biopsy is primarily driven by the equivocal PI-RADS 3 lesion, low PSA density of 0.11 ng/mL^2 below the 0.15 threshold, and prior ISUP Grade Group 1 disease on active surveillance where current kinetics do not meet progression criteria."
+  },
+  "task1_PT-pseudo_d95b3a02898e": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "prostate_volume"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the key reasons for avoiding biopsy (PI-RADS 2, low PSAD) and links the elevated PSA to prostate enlargement (BPH). However, it misses several other relevant clinical variables provided in the case facts.",
+    "case_id": "PT-pseudo_d95b3a02898e",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "no",
+    "pred_free_text": "The decision against biopsy is driven by the PI-RADS 2 MRI findings indicating no suspicious lesions, combined with a low PSA density of 0.10 ng/mL² which falls well below the EAU threshold of 0.15. The elevated PSA is proportionally explained by prostate enlargement consistent with BPH."
+  },
+  "task1_PT-pseudo_dcd61cf9b443": {
+    "score": 0.5,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "DRE"
+    ],
+    "missing_points": [
+      "PSAD",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale mentions key indicators (PI-RADS 5, PSA, DRE) but fails to incorporate other critical variables like PSAD, cspca, or the history of previous biopsy/PSA trend, which are relevant for deciding against immediate intervention (ground truth 'no'). The reasoning suggests progression and biopsy, which contradicts the ground truth decision.",
+    "case_id": "PT-pseudo_dcd61cf9b443",
+    "task": 1,
+    "gt_decision": "no",
+    "pred_decision": "yes",
+    "pred_free_text": "PI-RADS 5 lesion combined with significant PSA rise (8.3 ng/mL) and suspicious DRE findings strongly indicate disease progression on active surveillance, necessitating a confirmatory biopsy."
+  },
+  "task1_PT-pseudo_dcd7bf13a6f4": {
+    "score": 0.8,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history",
+      "previous_biopsy"
+    ],
+    "rationale": "The rationale correctly identifies the key drivers (PI-RADS 5 and PSAD) for the 'yes' decision. However, it fails to mention most other relevant clinical variables provided in the case facts.",
+    "case_id": "PT-pseudo_dcd7bf13a6f4",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "The decision to biopsy is driven by the PI-RADS 5 lesion on mpMRI and a PSA density of 0.239 ng/mL^2, both well above guideline thresholds for clinically significant prostate cancer."
+  },
+  "task1_PT-pseudo_dd011d696387": {
+    "score": 0.9,
+    "covered_points": [
+      "PIRADS",
+      "PSA",
+      "PSAD",
+      "previous_biopsy"
+    ],
+    "missing_points": [
+      "DRE",
+      "cspca",
+      "age",
+      "prostate_volume",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies the high-risk factors (PI-RADS 5, elevated PSA/PSAD, prior positive biopsy) supporting the 'yes' decision. However, it fails to mention several other key variables provided in the case facts (DRE, cspca, age, prostate_volume, family_history), which reduces the score.",
+    "case_id": "PT-pseudo_dd011d696387",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "yes",
+    "pred_free_text": "PI-RADS 5 lesion with restricted diffusion, markedly elevated PSA density of 0.372, rapid PSA velocity over the past year, and prior positive biopsy necessitating histological confirmation for staging and treatment planning."
+  },
+  "task1_PT-pseudo_e001f4d06517": {
+    "score": 0.5,
+    "covered_points": [
+      "PSAD",
+      "PIRADS",
+      "PSA"
+    ],
+    "missing_points": [
+      "age",
+      "prostate_volume",
+      "previous_biopsy",
+      "DRE",
+      "cspca",
+      "family_history"
+    ],
+    "rationale": "The rationale correctly identifies PSAD and PI-RADS as key factors but fails to mention most other critical variables (age, volume, previous biopsy status, etc.). Furthermore, the conclusion ('withhold biopsy') contradicts the ground truth decision ('yes' - implying biopsy should proceed or is warranted).",
+    "case_id": "PT-pseudo_e001f4d06517",
+    "task": 1,
+    "gt_decision": "yes",
+    "pred_decision": "no",
+    "pred_free_text": "The decision to withhold biopsy is primarily driven by the very low PSA density (0.08), which strongly argues against clinically significant cancer despite the PI-RADS 4 lesion and rising PSA trend."
+  }
+}

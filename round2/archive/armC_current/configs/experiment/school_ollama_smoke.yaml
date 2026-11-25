@@ -1,0 +1,15 @@
+# @package _global_
+# 学校快跑冒烟:收紧迭代/生成长度,放宽步超时(qwen3.6 深度 reasoning 单步可能超15分钟)
+model:
+  provider: openai
+  model_id: qwen3.6:35b-a3b
+  base_url: http://127.0.0.1:11435/v1
+  api_key_env: LLAMA_API_KEY
+  request_timeout: 1800
+generation:
+  temperature: 0.3
+  max_new_tokens: 1024
+  top_p: 0.95
+agent:
+  max_iterations: 25
+  step_timeout: 1800

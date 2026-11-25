@@ -1,0 +1,108 @@
+{
+  "seed": 42,
+  "total": 19,
+  "classification_source": "decision_errors_final_20260827.json(task3,49FP)+GT rebuild",
+  "strata_available": {
+    "TP": 19,
+    "FP": 49,
+    "TN": 5,
+    "FN": 0
+  },
+  "cases": [
+    {
+      "pid": "T3-001",
+      "category": "TP",
+      "psa": 86.0
+    },
+    {
+      "pid": "T3-002",
+      "category": "TN",
+      "psa": 0.2
+    },
+    {
+      "pid": "T3-004",
+      "category": "FP",
+      "psa": 8.1
+    },
+    {
+      "pid": "T3-007",
+      "category": "FP",
+      "psa": 4.5
+    },
+    {
+      "pid": "T3-011",
+      "category": "FP",
+      "psa": 13.5
+    },
+    {
+      "pid": "T3-021",
+      "category": "TN",
+      "psa": 6.9
+    },
+    {
+      "pid": "T3-023",
+      "category": "TP",
+      "psa": 5.0
+    },
+    {
+      "pid": "T3-026",
+      "category": "FP",
+      "psa": 6.5
+    },
+    {
+      "pid": "T3-027",
+      "category": "TP",
+      "psa": 12.3
+    },
+    {
+      "pid": "T3-035",
+      "category": "FP",
+      "psa": 5.7
+    },
+    {
+      "pid": "T3-039",
+      "category": "TP",
+      "psa": 8.6
+    },
+    {
+      "pid": "T3-043",
+      "category": "FP",
+      "psa": 2.4
+    },
+    {
+      "pid": "T3-045",
+      "category": "TN",
+      "psa": 18.0
+    },
+    {
+      "pid": "T3-050",
+      "category": "TP",
+      "psa": 3.8
+    },
+    {
+      "pid": "T3-052",
+      "category": "TP",
+      "psa": 7.8
+    },
+    {
+      "pid": "T3-057",
+      "category": "TP",
+      "psa": 3.3
+    },
+    {
+      "pid": "T3-062",
+      "category": "FP",
+      "psa": 10.0
+    },
+    {
+      "pid": "T3-067",
+      "category": "TN",
+      "psa": 9.5
+    },
+    {
+      "pid": "T3-075",
+      "category": "TN",
+      "psa": 2.11
+    }
+  ]
+}

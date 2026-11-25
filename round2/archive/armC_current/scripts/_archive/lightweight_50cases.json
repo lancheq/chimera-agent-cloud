@@ -1,0 +1,717 @@
+{
+  "description": "Stratified 50-case sample",
+  "total": 50,
+  "pids": [
+    "PT-pseudo_132e0000c0e0",
+    "PT-pseudo_3f75ae876abe",
+    "PT-pseudo_41ca49bed13d",
+    "PT-pseudo_2eef4115a253",
+    "PT-pseudo_4bfd4ec864d8",
+    "PT-pseudo_575cb2819e96",
+    "PT-pseudo_d95b3a02898e",
+    "PT-pseudo_4c6b2b2bbf94",
+    "PT-pseudo_47d8b39fd07f",
+    "PT-pseudo_c55496c11421",
+    "PT-pseudo_3cc88c81f35a",
+    "PT-pseudo_c7277954c60f",
+    "PT-pseudo_d217629c323a",
+    "PT-pseudo_180352970ace",
+    "PT-pseudo_c03b1168ff4d",
+    "PT-pseudo_21e7fa67a79e",
+    "PT-pseudo_2fbb84505a45",
+    "PT-pseudo_37d8ae9b27f1",
+    "PT-pseudo_01b643727538",
+    "PT-pseudo_3b6ea1920967",
+    "T2-002",
+    "T2-015",
+    "T2-043",
+    "T2-057",
+    "T2-028",
+    "T2-056",
+    "T2-049",
+    "T2-060",
+    "T2-048",
+    "T2-051",
+    "T2-032",
+    "T2-031",
+    "T2-012",
+    "T2-019",
+    "T2-108",
+    "T3-071",
+    "T3-060",
+    "T3-017",
+    "T3-050",
+    "T3-001",
+    "T3-047",
+    "T3-062",
+    "T3-064",
+    "T3-056",
+    "T3-067",
+    "T3-010",
+    "T3-026",
+    "T3-039",
+    "T3-023",
+    "T3-036"
+  ],
+  "by_task": {
+    "task1": [
+      "PT-pseudo_132e0000c0e0",
+      "PT-pseudo_3f75ae876abe",
+      "PT-pseudo_41ca49bed13d",
+      "PT-pseudo_2eef4115a253",
+      "PT-pseudo_4bfd4ec864d8",
+      "PT-pseudo_575cb2819e96",
+      "PT-pseudo_d95b3a02898e",
+      "PT-pseudo_4c6b2b2bbf94",
+      "PT-pseudo_47d8b39fd07f",
+      "PT-pseudo_c55496c11421",
+      "PT-pseudo_3cc88c81f35a",
+      "PT-pseudo_c7277954c60f",
+      "PT-pseudo_d217629c323a",
+      "PT-pseudo_180352970ace",
+      "PT-pseudo_c03b1168ff4d",
+      "PT-pseudo_21e7fa67a79e",
+      "PT-pseudo_2fbb84505a45",
+      "PT-pseudo_37d8ae9b27f1",
+      "PT-pseudo_01b643727538",
+      "PT-pseudo_3b6ea1920967"
+    ],
+    "task2": [
+      "T2-002",
+      "T2-015",
+      "T2-043",
+      "T2-057",
+      "T2-028",
+      "T2-056",
+      "T2-049",
+      "T2-060",
+      "T2-048",
+      "T2-051",
+      "T2-032",
+      "T2-031",
+      "T2-012",
+      "T2-019",
+      "T2-108"
+    ],
+    "task3": [
+      "T3-071",
+      "T3-060",
+      "T3-017",
+      "T3-050",
+      "T3-001",
+      "T3-047",
+      "T3-062",
+      "T3-064",
+      "T3-056",
+      "T3-067",
+      "T3-010",
+      "T3-026",
+      "T3-039",
+      "T3-023",
+      "T3-036"
+    ]
+  },
+  "details": {
+    "task1": [
+      {
+        "case_id": "PT-pseudo_132e0000c0e0",
+        "task": 1,
+        "category": "positive",
+        "sub_category": "positive",
+        "diagnosed": false,
+        "decision": "yes",
+        "psa": 13.6,
+        "pirads": 5,
+        "psad": null
+      },
+      {
+        "case_id": "PT-pseudo_3f75ae876abe",
+        "task": 1,
+        "category": "positive",
+        "sub_category": "positive",
+        "diagnosed": false,
+        "decision": "yes",
+        "psa": 16.8,
+        "pirads": 5,
+        "psad": 0.846
+      },
+      {
+        "case_id": "PT-pseudo_41ca49bed13d",
+        "task": 1,
+        "category": "positive",
+        "sub_category": "positive",
+        "diagnosed": false,
+        "decision": "yes",
+        "psa": 14.0,
+        "pirads": 4,
+        "psad": 0.734
+      },
+      {
+        "case_id": "PT-pseudo_2eef4115a253",
+        "task": 1,
+        "category": "positive",
+        "sub_category": "positive",
+        "diagnosed": false,
+        "decision": "yes",
+        "psa": 2.11,
+        "pirads": 4,
+        "psad": null
+      },
+      {
+        "case_id": "PT-pseudo_4bfd4ec864d8",
+        "task": 1,
+        "category": "positive",
+        "sub_category": "positive",
+        "diagnosed": false,
+        "decision": "yes",
+        "psa": 11.0,
+        "pirads": 5,
+        "psad": 0.35
+      },
+      {
+        "case_id": "PT-pseudo_575cb2819e96",
+        "task": 1,
+        "category": "positive",
+        "sub_category": "positive",
+        "diagnosed": false,
+        "decision": "yes",
+        "psa": 7.4,
+        "pirads": 5,
+        "psad": 0.25
+      },
+      {
+        "case_id": "PT-pseudo_d95b3a02898e",
+        "task": 1,
+        "category": "negative",
+        "sub_category": "negative",
+        "diagnosed": false,
+        "decision": "no",
+        "psa": 5.0,
+        "pirads": 2,
+        "psad": null
+      },
+      {
+        "case_id": "PT-pseudo_4c6b2b2bbf94",
+        "task": 1,
+        "category": "negative",
+        "sub_category": "negative",
+        "diagnosed": false,
+        "decision": "no",
+        "psa": 4.7,
+        "pirads": 4,
+        "psad": null
+      },
+      {
+        "case_id": "PT-pseudo_47d8b39fd07f",
+        "task": 1,
+        "category": "negative",
+        "sub_category": "negative",
+        "diagnosed": false,
+        "decision": "no",
+        "psa": 21.0,
+        "pirads": 3,
+        "psad": 0.19
+      },
+      {
+        "case_id": "PT-pseudo_c55496c11421",
+        "task": 1,
+        "category": "negative",
+        "sub_category": "negative",
+        "diagnosed": false,
+        "decision": "no",
+        "psa": 7.5,
+        "pirads": 4,
+        "psad": null
+      },
+      {
+        "case_id": "PT-pseudo_3cc88c81f35a",
+        "task": 1,
+        "category": "negative",
+        "sub_category": "negative",
+        "diagnosed": false,
+        "decision": "no",
+        "psa": 8.3,
+        "pirads": 2,
+        "psad": 0.206
+      },
+      {
+        "case_id": "PT-pseudo_c7277954c60f",
+        "task": 1,
+        "category": "grey_zone",
+        "sub_category": "grey_zone",
+        "diagnosed": false,
+        "decision": "no",
+        "psa": 9.8,
+        "pirads": 3,
+        "psad": null
+      },
+      {
+        "case_id": "PT-pseudo_d217629c323a",
+        "task": 1,
+        "category": "grey_zone",
+        "sub_category": "grey_zone",
+        "diagnosed": false,
+        "decision": "no",
+        "psa": 3.8,
+        "pirads": 4,
+        "psad": 0.126
+      },
+      {
+        "case_id": "PT-pseudo_180352970ace",
+        "task": 1,
+        "category": "grey_zone",
+        "sub_category": "grey_zone",
+        "diagnosed": false,
+        "decision": "yes",
+        "psa": 3.7,
+        "pirads": 5,
+        "psad": 0.116
+      },
+      {
+        "case_id": "PT-pseudo_c03b1168ff4d",
+        "task": 1,
+        "category": "positive",
+        "sub_category": "positive+diagnosed",
+        "diagnosed": true,
+        "decision": "yes",
+        "psa": 7.8,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "PT-pseudo_21e7fa67a79e",
+        "task": 1,
+        "category": "positive",
+        "sub_category": "positive+diagnosed",
+        "diagnosed": true,
+        "decision": "yes",
+        "psa": 11.0,
+        "pirads": 5,
+        "psad": null
+      },
+      {
+        "case_id": "PT-pseudo_2fbb84505a45",
+        "task": 1,
+        "category": "positive",
+        "sub_category": "positive+diagnosed",
+        "diagnosed": true,
+        "decision": "yes",
+        "psa": 8.4,
+        "pirads": 4,
+        "psad": null
+      },
+      {
+        "case_id": "PT-pseudo_37d8ae9b27f1",
+        "task": 1,
+        "category": "negative",
+        "sub_category": "negative+diagnosed",
+        "diagnosed": true,
+        "decision": "no",
+        "psa": 4.8,
+        "pirads": 4,
+        "psad": null
+      },
+      {
+        "case_id": "PT-pseudo_01b643727538",
+        "task": 1,
+        "category": "negative",
+        "sub_category": "negative+diagnosed",
+        "diagnosed": true,
+        "decision": "no",
+        "psa": 9.3,
+        "pirads": 5,
+        "psad": 0.516
+      },
+      {
+        "case_id": "PT-pseudo_3b6ea1920967",
+        "task": 1,
+        "category": "grey_zone",
+        "sub_category": "grey_zone+diagnosed",
+        "diagnosed": true,
+        "decision": "no",
+        "psa": 6.5,
+        "pirads": 4,
+        "psad": 0.11
+      }
+    ],
+    "task2": [
+      {
+        "case_id": "T2-002",
+        "task": 2,
+        "category": "positive",
+        "sub_category": "positive+diagnosed",
+        "diagnosed": true,
+        "decision": "active_treatment",
+        "psa": 187.0,
+        "pirads": 5,
+        "psad": 3.26
+      },
+      {
+        "case_id": "T2-015",
+        "task": 2,
+        "category": "positive",
+        "sub_category": "positive+diagnosed",
+        "diagnosed": true,
+        "decision": "active_treatment",
+        "psa": 190.0,
+        "pirads": 5,
+        "psad": 4.097
+      },
+      {
+        "case_id": "T2-043",
+        "task": 2,
+        "category": "positive",
+        "sub_category": "positive+diagnosed",
+        "diagnosed": true,
+        "decision": "active_treatment",
+        "psa": 4.7,
+        "pirads": 4,
+        "psad": 0.07
+      },
+      {
+        "case_id": "T2-057",
+        "task": 2,
+        "category": "positive",
+        "sub_category": "positive+diagnosed",
+        "diagnosed": true,
+        "decision": "active_treatment",
+        "psa": 6.22,
+        "pirads": 5,
+        "psad": null
+      },
+      {
+        "case_id": "T2-028",
+        "task": 2,
+        "category": "positive",
+        "sub_category": "positive+diagnosed",
+        "diagnosed": true,
+        "decision": "active_treatment",
+        "psa": 70.0,
+        "pirads": 5,
+        "psad": null
+      },
+      {
+        "case_id": "T2-056",
+        "task": 2,
+        "category": "intermediate",
+        "sub_category": "intermediate+diagnosed",
+        "diagnosed": true,
+        "decision": "active_surveillance",
+        "psa": 5.8,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T2-049",
+        "task": 2,
+        "category": "intermediate",
+        "sub_category": "intermediate+diagnosed",
+        "diagnosed": true,
+        "decision": "active_surveillance",
+        "psa": 11.7,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T2-060",
+        "task": 2,
+        "category": "intermediate",
+        "sub_category": "intermediate+diagnosed",
+        "diagnosed": true,
+        "decision": "active_surveillance",
+        "psa": 8.2,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T2-048",
+        "task": 2,
+        "category": "intermediate",
+        "sub_category": "intermediate+diagnosed",
+        "diagnosed": true,
+        "decision": "active_surveillance",
+        "psa": 9.1,
+        "pirads": 4,
+        "psad": 0.338
+      },
+      {
+        "case_id": "T2-051",
+        "task": 2,
+        "category": "intermediate",
+        "sub_category": "intermediate+diagnosed",
+        "diagnosed": true,
+        "decision": "continued_surveillance",
+        "psa": 0.5,
+        "pirads": 3,
+        "psad": 0.03
+      },
+      {
+        "case_id": "T2-032",
+        "task": 2,
+        "category": "negative",
+        "sub_category": "negative+diagnosed",
+        "diagnosed": true,
+        "decision": "watchful_waiting",
+        "psa": 8.8,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T2-031",
+        "task": 2,
+        "category": "negative",
+        "sub_category": "negative+diagnosed",
+        "diagnosed": true,
+        "decision": "watchful_waiting",
+        "psa": 6.0,
+        "pirads": null,
+        "psad": 0.08
+      },
+      {
+        "case_id": "T2-012",
+        "task": 2,
+        "category": "grey_zone",
+        "sub_category": "grey_zone+diagnosed",
+        "diagnosed": true,
+        "decision": "active_surveillance",
+        "psa": 5.2,
+        "pirads": null,
+        "psad": 0.151
+      },
+      {
+        "case_id": "T2-019",
+        "task": 2,
+        "category": "grey_zone",
+        "sub_category": "grey_zone+diagnosed",
+        "diagnosed": true,
+        "decision": "active_treatment",
+        "psa": 6.9,
+        "pirads": 5,
+        "psad": 0.171
+      },
+      {
+        "case_id": "T2-108",
+        "task": 2,
+        "category": "grey_zone",
+        "sub_category": "grey_zone+diagnosed",
+        "diagnosed": true,
+        "decision": "continued_surveillance",
+        "psa": 5.3,
+        "pirads": 3,
+        "psad": 0.1
+      }
+    ],
+    "task3": [
+      {
+        "case_id": "T3-071",
+        "task": 3,
+        "category": "positive",
+        "sub_category": "positive+diagnosed",
+        "diagnosed": true,
+        "decision": {
+          "event": 1,
+          "months": 1.3
+        },
+        "psa": null,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T3-060",
+        "task": 3,
+        "category": "positive",
+        "sub_category": "positive+diagnosed",
+        "diagnosed": true,
+        "decision": {
+          "event": 1,
+          "months": 60.4
+        },
+        "psa": null,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T3-017",
+        "task": 3,
+        "category": "positive",
+        "sub_category": "positive+diagnosed",
+        "diagnosed": true,
+        "decision": {
+          "event": 1,
+          "months": 11.4
+        },
+        "psa": null,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T3-050",
+        "task": 3,
+        "category": "positive",
+        "sub_category": "positive+diagnosed",
+        "diagnosed": true,
+        "decision": {
+          "event": 1,
+          "months": 10.9
+        },
+        "psa": null,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T3-001",
+        "task": 3,
+        "category": "positive",
+        "sub_category": "positive+diagnosed",
+        "diagnosed": true,
+        "decision": {
+          "event": 1,
+          "months": 1.8
+        },
+        "psa": null,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T3-047",
+        "task": 3,
+        "category": "positive",
+        "sub_category": "positive+diagnosed",
+        "diagnosed": true,
+        "decision": {
+          "event": 1,
+          "months": 1.3
+        },
+        "psa": null,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T3-062",
+        "task": 3,
+        "category": "negative",
+        "sub_category": "negative+diagnosed",
+        "diagnosed": true,
+        "decision": {
+          "event": 0,
+          "months": 38
+        },
+        "psa": null,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T3-064",
+        "task": 3,
+        "category": "negative",
+        "sub_category": "negative+diagnosed",
+        "diagnosed": true,
+        "decision": {
+          "event": 0,
+          "months": 38.4
+        },
+        "psa": null,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T3-056",
+        "task": 3,
+        "category": "negative",
+        "sub_category": "negative+diagnosed",
+        "diagnosed": true,
+        "decision": {
+          "event": 0,
+          "months": 43.1
+        },
+        "psa": null,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T3-067",
+        "task": 3,
+        "category": "negative",
+        "sub_category": "negative+diagnosed",
+        "diagnosed": true,
+        "decision": {
+          "event": 0,
+          "months": 34.7
+        },
+        "psa": null,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T3-010",
+        "task": 3,
+        "category": "negative",
+        "sub_category": "negative+diagnosed",
+        "diagnosed": true,
+        "decision": {
+          "event": 0,
+          "months": 22.6
+        },
+        "psa": null,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T3-026",
+        "task": 3,
+        "category": "negative",
+        "sub_category": "negative+diagnosed",
+        "diagnosed": true,
+        "decision": {
+          "event": 0,
+          "months": 39.5
+        },
+        "psa": null,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T3-039",
+        "task": 3,
+        "category": "grey_zone",
+        "sub_category": "grey_zone+diagnosed",
+        "diagnosed": true,
+        "decision": {
+          "event": 1,
+          "months": 14.9
+        },
+        "psa": null,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T3-023",
+        "task": 3,
+        "category": "grey_zone",
+        "sub_category": "grey_zone+diagnosed",
+        "diagnosed": true,
+        "decision": {
+          "event": 1,
+          "months": 19.2
+        },
+        "psa": null,
+        "pirads": null,
+        "psad": null
+      },
+      {
+        "case_id": "T3-036",
+        "task": 3,
+        "category": "grey_zone",
+        "sub_category": "grey_zone+diagnosed",
+        "diagnosed": true,
+        "decision": {
+          "event": 1,
+          "months": 14.9
+        },
+        "psa": null,
+        "pirads": null,
+        "psad": null
+      }
+    ]
+  }
+}

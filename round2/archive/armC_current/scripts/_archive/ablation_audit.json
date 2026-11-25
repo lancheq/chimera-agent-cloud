@@ -1,0 +1,1123 @@
+{
+  "stats": {
+    "timestamp": "2026-08-26T23:38:01.737616",
+    "total_cases": 30,
+    "completed_cases": 29,
+    "thinking_contamination": {
+      "critique_contaminated": 30,
+      "baseline_plan_contaminated": 1,
+      "selfrefine_plan_contaminated": 0,
+      "baseline_agent_contaminated": 1,
+      "selfrefine_agent_contaminated": 1,
+      "refined_contaminated": 1
+    },
+    "refine_execution": {
+      "refine_triggered": 0,
+      "no_issues": 30,
+      "no_critique_file": 0,
+      "total_issues_found": 0
+    },
+    "decision_changes": {
+      "changed": 11,
+      "unchanged": 18,
+      "unknown": 1
+    },
+    "confidence_changes": {
+      "changed": 14,
+      "unchanged": 15
+    },
+    "failures": {
+      "baseline": 0,
+      "selfrefine": 1
+    },
+    "confidence_distribution": {
+      "baseline": {
+        "uncertain": 6,
+        "borderline": 9,
+        "clear": 7,
+        "MISSING": 8
+      },
+      "selfrefine": {
+        "clear": 6,
+        "uncertain": 9,
+        "borderline": 6,
+        "null": 1,
+        "MISSING": 8
+      }
+    },
+    "decision_change_details": [
+      {
+        "case_id": "PT-pseudo_4a2fa7bc3595",
+        "task": 1,
+        "baseline": "no",
+        "selfrefine": "yes",
+        "baseline_conf": "uncertain",
+        "selfrefine_conf": "clear",
+        "refine_executed": false,
+        "thinking_contaminated": true
+      },
+      {
+        "case_id": "PT-pseudo_20ba3f0f6ca0",
+        "task": 1,
+        "baseline": "no",
+        "selfrefine": "yes",
+        "baseline_conf": "uncertain",
+        "selfrefine_conf": "clear",
+        "refine_executed": false,
+        "thinking_contaminated": true
+      },
+      {
+        "case_id": "PT-pseudo_0cdfb9410718",
+        "task": 1,
+        "baseline": "yes",
+        "selfrefine": "no",
+        "baseline_conf": "borderline",
+        "selfrefine_conf": "uncertain",
+        "refine_executed": false,
+        "thinking_contaminated": true
+      },
+      {
+        "case_id": "PT-pseudo_0020cfca66c8",
+        "task": 1,
+        "baseline": "yes",
+        "selfrefine": "no",
+        "baseline_conf": "borderline",
+        "selfrefine_conf": "uncertain",
+        "refine_executed": false,
+        "thinking_contaminated": true
+      },
+      {
+        "case_id": "PT-pseudo_4bfd4ec864d8",
+        "task": 1,
+        "baseline": "yes",
+        "selfrefine": "no",
+        "baseline_conf": "clear",
+        "selfrefine_conf": "uncertain",
+        "refine_executed": false,
+        "thinking_contaminated": true
+      },
+      {
+        "case_id": "PT-pseudo_c55496c11421",
+        "task": 1,
+        "baseline": "no",
+        "selfrefine": "yes",
+        "baseline_conf": "uncertain",
+        "selfrefine_conf": "clear",
+        "refine_executed": false,
+        "thinking_contaminated": true
+      },
+      {
+        "case_id": "PT-pseudo_152344add0f1",
+        "task": 1,
+        "baseline": "yes",
+        "selfrefine": "no",
+        "baseline_conf": "clear",
+        "selfrefine_conf": "uncertain",
+        "refine_executed": false,
+        "thinking_contaminated": true
+      },
+      {
+        "case_id": "T2-111",
+        "task": 2,
+        "baseline": "active_surveillance",
+        "selfrefine": "active_treatment",
+        "baseline_conf": "uncertain",
+        "selfrefine_conf": "borderline",
+        "refine_executed": false,
+        "thinking_contaminated": true
+      },
+      {
+        "case_id": "T2-021",
+        "task": 2,
+        "baseline": "continued_surveillance",
+        "selfrefine": "active_surveillance",
+        "baseline_conf": "borderline",
+        "selfrefine_conf": "uncertain",
+        "refine_executed": false,
+        "thinking_contaminated": true
+      },
+      {
+        "case_id": "T2-032",
+        "task": 2,
+        "baseline": "active_surveillance",
+        "selfrefine": "active_treatment",
+        "baseline_conf": "borderline",
+        "selfrefine_conf": "borderline",
+        "refine_executed": false,
+        "thinking_contaminated": true
+      },
+      {
+        "case_id": "T2-019",
+        "task": 2,
+        "baseline": "active_treatment",
+        "selfrefine": "active_surveillance",
+        "baseline_conf": "borderline",
+        "selfrefine_conf": "uncertain",
+        "refine_executed": false,
+        "thinking_contaminated": true
+      }
+    ]
+  },
+  "per_case": [
+    {
+      "case_id": "PT-pseudo_4a2fa7bc3595",
+      "task": 1,
+      "baseline_decision": "no",
+      "selfrefine_decision": "yes",
+      "decision_changed": true,
+      "baseline_confidence": "uncertain",
+      "selfrefine_confidence": "clear",
+      "confidence_changed": true,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 10244,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "PT-pseudo_376de00c8131",
+      "task": 1,
+      "baseline_decision": "yes",
+      "selfrefine_decision": "yes",
+      "decision_changed": false,
+      "baseline_confidence": "borderline",
+      "selfrefine_confidence": "uncertain",
+      "confidence_changed": true,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 59971,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "PT-pseudo_394e0b8dbeeb",
+      "task": 1,
+      "baseline_decision": "yes",
+      "selfrefine_decision": "yes",
+      "decision_changed": false,
+      "baseline_confidence": "clear",
+      "selfrefine_confidence": "clear",
+      "confidence_changed": false,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": true,
+      "baseline_agent_contaminated": true,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 3486,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "PT-pseudo_20ba3f0f6ca0",
+      "task": 1,
+      "baseline_decision": "no",
+      "selfrefine_decision": "yes",
+      "decision_changed": true,
+      "baseline_confidence": "uncertain",
+      "selfrefine_confidence": "clear",
+      "confidence_changed": true,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 10265,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "PT-pseudo_1dc32184cab6",
+      "task": 1,
+      "baseline_decision": "no",
+      "selfrefine_decision": "no",
+      "decision_changed": false,
+      "baseline_confidence": "borderline",
+      "selfrefine_confidence": "borderline",
+      "confidence_changed": false,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 5756,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "PT-pseudo_175e6ad47991",
+      "task": 1,
+      "baseline_decision": "yes",
+      "selfrefine_decision": "yes",
+      "decision_changed": false,
+      "baseline_confidence": "clear",
+      "selfrefine_confidence": "clear",
+      "confidence_changed": false,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 2141,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "PT-pseudo_d95b3a02898e",
+      "task": 1,
+      "baseline_decision": "no",
+      "selfrefine_decision": "no",
+      "decision_changed": false,
+      "baseline_confidence": "clear",
+      "selfrefine_confidence": "clear",
+      "confidence_changed": false,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 3152,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "PT-pseudo_0cdfb9410718",
+      "task": 1,
+      "baseline_decision": "yes",
+      "selfrefine_decision": "no",
+      "decision_changed": true,
+      "baseline_confidence": "borderline",
+      "selfrefine_confidence": "uncertain",
+      "confidence_changed": true,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 2103,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "PT-pseudo_0020cfca66c8",
+      "task": 1,
+      "baseline_decision": "yes",
+      "selfrefine_decision": "no",
+      "decision_changed": true,
+      "baseline_confidence": "borderline",
+      "selfrefine_confidence": "uncertain",
+      "confidence_changed": true,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 3141,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "PT-pseudo_4bfd4ec864d8",
+      "task": 1,
+      "baseline_decision": "yes",
+      "selfrefine_decision": "no",
+      "decision_changed": true,
+      "baseline_confidence": "clear",
+      "selfrefine_confidence": "uncertain",
+      "confidence_changed": true,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 8936,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "PT-pseudo_c55496c11421",
+      "task": 1,
+      "baseline_decision": "no",
+      "selfrefine_decision": "yes",
+      "decision_changed": true,
+      "baseline_confidence": "uncertain",
+      "selfrefine_confidence": "clear",
+      "confidence_changed": true,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 5526,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "PT-pseudo_152344add0f1",
+      "task": 1,
+      "baseline_decision": "yes",
+      "selfrefine_decision": "no",
+      "decision_changed": true,
+      "baseline_confidence": "clear",
+      "selfrefine_confidence": "uncertain",
+      "confidence_changed": true,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": true,
+      "refined_transcript_len": 4717,
+      "refined_contaminated": true,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "T2-002",
+      "task": 2,
+      "baseline_decision": "active_treatment",
+      "selfrefine_decision": "active_treatment",
+      "decision_changed": false,
+      "baseline_confidence": "clear",
+      "selfrefine_confidence": "uncertain",
+      "confidence_changed": true,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 8771,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "T2-111",
+      "task": 2,
+      "baseline_decision": "active_surveillance",
+      "selfrefine_decision": "active_treatment",
+      "decision_changed": true,
+      "baseline_confidence": "uncertain",
+      "selfrefine_confidence": "borderline",
+      "confidence_changed": true,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 5745,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "T2-107",
+      "task": 2,
+      "baseline_decision": "active_treatment",
+      "selfrefine_decision": "active_treatment",
+      "decision_changed": false,
+      "baseline_confidence": "clear",
+      "selfrefine_confidence": "uncertain",
+      "confidence_changed": true,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 2208,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "T2-033",
+      "task": 2,
+      "baseline_decision": "active_surveillance",
+      "selfrefine_decision": "active_surveillance",
+      "decision_changed": false,
+      "baseline_confidence": "borderline",
+      "selfrefine_confidence": "borderline",
+      "confidence_changed": false,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 2285,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "T2-021",
+      "task": 2,
+      "baseline_decision": "continued_surveillance",
+      "selfrefine_decision": "active_surveillance",
+      "decision_changed": true,
+      "baseline_confidence": "borderline",
+      "selfrefine_confidence": "uncertain",
+      "confidence_changed": true,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 2157,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "T2-039",
+      "task": 2,
+      "baseline_decision": "continued_surveillance",
+      "selfrefine_decision": null,
+      "decision_changed": null,
+      "baseline_confidence": "uncertain",
+      "selfrefine_confidence": null,
+      "confidence_changed": null,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": null,
+      "refined_transcript_len": 2113,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": true
+    },
+    {
+      "case_id": "T2-032",
+      "task": 2,
+      "baseline_decision": "active_surveillance",
+      "selfrefine_decision": "active_treatment",
+      "decision_changed": true,
+      "baseline_confidence": "borderline",
+      "selfrefine_confidence": "borderline",
+      "confidence_changed": false,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 2509,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "T2-001",
+      "task": 2,
+      "baseline_decision": "active_surveillance",
+      "selfrefine_decision": "active_surveillance",
+      "decision_changed": false,
+      "baseline_confidence": "uncertain",
+      "selfrefine_confidence": "borderline",
+      "confidence_changed": true,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 2120,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "T2-019",
+      "task": 2,
+      "baseline_decision": "active_treatment",
+      "selfrefine_decision": "active_surveillance",
+      "decision_changed": true,
+      "baseline_confidence": "borderline",
+      "selfrefine_confidence": "uncertain",
+      "confidence_changed": true,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 2254,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "T2-007",
+      "task": 2,
+      "baseline_decision": "active_treatment",
+      "selfrefine_decision": "active_treatment",
+      "decision_changed": false,
+      "baseline_confidence": "borderline",
+      "selfrefine_confidence": "borderline",
+      "confidence_changed": false,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 61231,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "T3-047",
+      "task": 3,
+      "baseline_decision": 1,
+      "selfrefine_decision": 1,
+      "decision_changed": false,
+      "baseline_confidence": "MISSING",
+      "selfrefine_confidence": "MISSING",
+      "confidence_changed": false,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 1893,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "T3-033",
+      "task": 3,
+      "baseline_decision": 1,
+      "selfrefine_decision": 1,
+      "decision_changed": false,
+      "baseline_confidence": "MISSING",
+      "selfrefine_confidence": "MISSING",
+      "confidence_changed": false,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 4429,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "T3-059",
+      "task": 3,
+      "baseline_decision": 1,
+      "selfrefine_decision": 1,
+      "decision_changed": false,
+      "baseline_confidence": "MISSING",
+      "selfrefine_confidence": "MISSING",
+      "confidence_changed": false,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 1982,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "T3-069",
+      "task": 3,
+      "baseline_decision": 1,
+      "selfrefine_decision": 1,
+      "decision_changed": false,
+      "baseline_confidence": "MISSING",
+      "selfrefine_confidence": "MISSING",
+      "confidence_changed": false,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 1713,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "T3-016",
+      "task": 3,
+      "baseline_decision": 1,
+      "selfrefine_decision": 1,
+      "decision_changed": false,
+      "baseline_confidence": "MISSING",
+      "selfrefine_confidence": "MISSING",
+      "confidence_changed": false,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 3287,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "T3-005",
+      "task": 3,
+      "baseline_decision": 1,
+      "selfrefine_decision": 1,
+      "decision_changed": false,
+      "baseline_confidence": "MISSING",
+      "selfrefine_confidence": "MISSING",
+      "confidence_changed": false,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 13079,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "T3-023",
+      "task": 3,
+      "baseline_decision": 1,
+      "selfrefine_decision": 1,
+      "decision_changed": false,
+      "baseline_confidence": "MISSING",
+      "selfrefine_confidence": "MISSING",
+      "confidence_changed": false,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 4403,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    },
+    {
+      "case_id": "T3-028",
+      "task": 3,
+      "baseline_decision": 1,
+      "selfrefine_decision": 1,
+      "decision_changed": false,
+      "baseline_confidence": "MISSING",
+      "selfrefine_confidence": "MISSING",
+      "confidence_changed": false,
+      "critique_files": [
+        {
+          "iteration": 1,
+          "issues_count": 0,
+          "severity": "see raw",
+          "contaminated": true
+        }
+      ],
+      "refine_executed": false,
+      "thinking_contaminated": true,
+      "total_critique_issues": 0,
+      "baseline_plan_contaminated": false,
+      "baseline_agent_contaminated": false,
+      "selfrefine_plan_contaminated": false,
+      "selfrefine_agent_contaminated": false,
+      "refined_transcript_len": 1765,
+      "refined_contaminated": false,
+      "reflect_warnings": [
+        "self_refine: no issues found (1 iteration)"
+      ],
+      "baseline_failed": false,
+      "selfrefine_failed": false
+    }
+  ]
+}

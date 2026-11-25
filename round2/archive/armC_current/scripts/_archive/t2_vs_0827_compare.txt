@@ -1,0 +1,56 @@
+pids=72  OLD MISSING=1  NEW MISSING=0
+口径注记: 同代码（含 _enforce_treatment_floor），双关闭（predictor/self_refine/atomic 均关），per-task prompt + P5 free_text 修复
+
+== 0827 final (output.final_20260826) ==
+  acc: 68.1%  (49/72)
+  active_surveillance: tp=14 gt=25 pred=21 F1=0.609
+  active_treatment: tp=26 gt=31 pred=38 F1=0.765
+  continued_surveillance: tp=9 gt=14 pred=12 F1=0.692
+  watchful_waiting: tp=0 gt=2 pred=0 F1=0.000
+  macroF1: 0.516
+  混淆(0827 final (output.final_20260826)): active_surveillance:14/7/11 active_treatment:26/12/4 continued_surveillance:9/3/5 watchful_waiting:0/0/2
+
+== 0830 T2 full v2 (output.t2_full_v2_20260830) ==
+  acc: 61.1%  (44/72)
+  active_surveillance: tp=16 gt=25 pred=31 F1=0.571
+  active_treatment: tp=20 gt=31 pred=31 F1=0.645
+  continued_surveillance: tp=8 gt=14 pred=10 F1=0.667
+  watchful_waiting: tp=0 gt=2 pred=0 F1=0.000
+  macroF1: 0.471
+  混淆(0830 T2 full v2 (output.t2_full_v2_20260830)): active_surveillance:16/15/9 active_treatment:20/11/11 continued_surveillance:8/2/6 watchful_waiting:0/0/2
+
+Δacc: -6.9%   ΔmacroF1: -0.046
+翻转 33 case: 修对 13 / 修错 18
+  T2-004: active_treatment -> active_surveillance  GT=active_treatment  [修错]
+  T2-007: MISSING -> active_treatment  GT=active_treatment  [修对]
+  T2-011: active_surveillance -> active_treatment  GT=active_surveillance  [修错]
+  T2-012: active_treatment -> active_surveillance  GT=active_surveillance  [修对]
+  T2-015: active_treatment -> active_surveillance  GT=active_treatment  [修错]
+  T2-018: active_surveillance -> continued_surveillance  GT=active_surveillance  [修错]
+  T2-019: active_treatment -> active_surveillance  GT=active_treatment  [修错]
+  T2-020: active_treatment -> active_surveillance  GT=active_treatment  [修错]
+  T2-024: active_treatment -> active_surveillance  GT=active_surveillance  [修对]
+  T2-026: continued_surveillance -> active_treatment  GT=continued_surveillance  [修错]
+  T2-029: continued_surveillance -> active_surveillance  GT=active_surveillance  [修对]
+  T2-030: active_surveillance -> continued_surveillance  GT=active_treatment  [修错]
+  T2-034: continued_surveillance -> active_treatment  GT=continued_surveillance  [修错]
+  T2-037: active_surveillance -> active_treatment  GT=active_surveillance  [修错]
+  T2-038: active_treatment -> active_surveillance  GT=active_treatment  [修错]
+  T2-039: continued_surveillance -> active_surveillance  GT=continued_surveillance  [修错]
+  T2-042: active_treatment -> continued_surveillance  GT=continued_surveillance  [修对]
+  T2-043: continued_surveillance -> active_treatment  GT=active_treatment  [修对]
+  T2-044: active_surveillance -> continued_surveillance  GT=continued_surveillance  [修对]
+  T2-046: continued_surveillance -> active_surveillance  GT=continued_surveillance  [修错]
+  T2-049: active_surveillance -> active_treatment  GT=active_surveillance  [修错]
+  T2-051: active_surveillance -> continued_surveillance  GT=continued_surveillance  [修对]
+  T2-055: active_treatment -> active_surveillance  GT=active_surveillance  [修对]
+  T2-056: active_treatment -> active_surveillance  GT=active_surveillance  [修对]
+  T2-057: active_treatment -> active_surveillance  GT=active_treatment  [修错]
+  T2-059: active_treatment -> active_surveillance  GT=continued_surveillance  [修错]
+  T2-060: continued_surveillance -> active_surveillance  GT=active_surveillance  [修对]
+  T2-061: active_surveillance -> active_treatment  GT=active_treatment  [修对]
+  T2-103: active_treatment -> active_surveillance  GT=active_treatment  [修错]
+  T2-104: active_treatment -> active_surveillance  GT=active_treatment  [修错]
+  T2-109: active_treatment -> active_surveillance  GT=active_treatment  [修错]
+  T2-110: active_treatment -> active_surveillance  GT=active_treatment  [修错]
+  T2-111: active_surveillance -> active_treatment  GT=active_treatment  [修对]

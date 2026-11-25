@@ -1,0 +1,638 @@
+{
+  "task1": [
+    {
+      "case_id": "PT-pseudo_0169468160c6",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "Very High PSA.\nMost likely metastatic",
+      "pred_free_text": "The decision against biopsy is driven by the established diagnosis from a prior positive biopsy, markedly elevated PSA of 187 ng/mL indicating high disease burden, and PI-RADS 5 imaging findings. Repeat histology would not alter management, which should instead focus on staging and systemic treatment."
+    },
+    {
+      "case_id": "PT-pseudo_01b643727538",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "He has a ISUP3 cancer diagnosis already and he should be recommended treatment",
+      "pred_free_text": "Recommendation driven by PI-RADS 5 lesion on mpMRI, significant PSA rise to 9.3 ng/mL, and history of prior ISUP GG 3 prostate cancer requiring histological confirmation for staging."
+    },
+    {
+      "case_id": "PT-pseudo_062a1125899d",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "PIRADS 4 lesion in 68 year old man with heavy comorbidity. Earlier negative biopsy.",
+      "pred_free_text": "t:** Patient is on apixaban for atrial fibrillation with CAD/CKD history. Coordinate with cardiology/GP to hold apixaban ~48 hours pre-biopsy (adjust based on renal clearance) and manage bridging/hold strategy to minimize bleeding risk while maintaining stroke prevention.\n* **Counseling:** Discuss the small size of the target lesion requiring precise fusion targeting, standard biopsy risks (hematuria/hematospermia, infection, urinary retention), and clear follow-up pathway for pathology results."
+    },
+    {
+      "case_id": "PT-pseudo_06b319f42fcb",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "PIRADS 5 lesion in a man in active surveillance.",
+      "pred_free_text": "s systematic prostate biopsy.** \n\nThe combination of a PI-RADS 5 lesion, rapidly rising PSA trajectory, and prior GG1 history makes progression to clinically significant prostate cancer (ISUP Grade Group ≥2) highly likely. Histological confirmation is required immediately to guide definitive treatment planning (e.g., radical prostatectomy or radiotherapy). Given his CKD stage 3, ensure adequate hydration and review medication protocols peri-procedure, but this does not contraindicate the biopsy."
+    },
+    {
+      "case_id": "PT-pseudo_079636ac5644",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "All depends if the lesion has grown in size since 2024. If stable no biopsy , if increased in size I will do a biopsy.",
+      "pred_free_text": "The recommendation for a targeted biopsy is driven primarily by the PI-RADS 4 lesion on mpMRI, which strongly suggests clinically significant progression. This is compounded by a rising PSA trend (6.8 ng/mL) and the patient's prior ISUP GG2 diagnosis, necessitating tissue sampling to rule out grade migration from active surveillance."
+    },
+    {
+      "case_id": "PT-pseudo_0bd72f429a8b",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "PIRADS 4 in a young man with a rapid increasing PSA",
+      "pred_free_text": "shold for immediate tissue diagnosis.\n\n### Final Recommendation\n**Strongly recommend prostate biopsy.** \nProceed with **MRI-targeted cores** (focusing on the left peripheral zone base/mid lesion) plus **systematic sextant/extended sampling**. This approach will confirm csPCa, establish the current Gleason pattern/ISUP grade group, and determine whether to continue active surveillance or escalate to definitive local therapy. No further imaging or laboratory workup is required prior to scheduling."
+    },
+    {
+      "case_id": "PT-pseudo_0cdfb9410718",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "Again missing earlier ISUP grading and if the PIRADS 4 lesion is stabile or growing",
+      "pred_free_text": "I will call `get_pathology_report`.\nThen I will synthesize the recommendation.\nProceed. \nActually, let's look at the PSA trend: 3.0 -> 2.5 -> 5.2. The drop to 2.5 might have been due to antibiotics or just variation, but the jump to 5.2 is significant.\nPI-RADS 4 lesion in anterior mid-gland. Anterior lesions can be harder to detect on TRUS biopsy, often requiring MRI-TRUS fusion or transperineal approach.\nPrior positive biopsy: need Gleason score."
+    },
+    {
+      "case_id": "PT-pseudo_11345b8a7ab3",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Patient has a verified PCa with PSA 113. Start treatment and do I PSMA-PET for further workup.",
+      "pred_free_text": "The recommendation for biopsy is driven by the markedly elevated PSA of 113 ng/mL, the presence of a PI-RADS 5 lesion on mpMRI, and a palpable irregular nodule on DRE. These factors collectively indicate high-risk disease requiring immediate tissue sampling to determine current Gleason grade."
+    },
+    {
+      "case_id": "PT-pseudo_152344add0f1",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "P5 with rapid increasing PSA",
+      "pred_free_text": "ombination of a **PI-RADS 5 lesion** and high **PSA density (0.21)** makes the indication for biopsy absolute. Delaying or opting for active surveillance without tissue diagnosis is not clinically appropriate at this stage.\n\n**Action Plan:** Schedule an **MRI-targeted fusion biopsy** focusing on the left peripheral zone lesion. Standard systematic sampling may also be performed depending on institutional protocol to rule out non-MRI visible disease, but targeting the PI-RADS 5 area is mandatory."
+    },
+    {
+      "case_id": "PT-pseudo_17f110c9e142",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Need to know if the P5 lesion has grown in size. If not no biopsy.",
+      "pred_free_text": "Decision driven by rapid PSA velocity (0.7 to 6.9 ng/mL), PI-RADS 5 lesion on mpMRI, palpable nodule on DRE, and history of prior positive biopsy."
+    },
+    {
+      "case_id": "PT-pseudo_180352970ace",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "P5 in 63 year old man.",
+      "pred_free_text": "oup ≥ 2 disease.\n\n### Procedural Next Steps\n- Schedule a **fusion-guided MRI-targeted biopsy** (transperineal preferred given infection risk profile and modern practice standards) targeting the right mid peripheral zone lesion.\n- Consider adding systematic 10–12 core sampling per institutional protocol, though targeted cores alone are increasingly accepted for PI-RADS 5 lesions with high predicted probability.\n- Arrange the requested Arabic interpreter prior to consent and procedural counseling."
+    },
+    {
+      "case_id": "PT-pseudo_1dc32184cab6",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Low PSA with earlier negative biopsy. A change in P4 lesion size might trigger a biopsy.",
+      "pred_free_text": "The decision to biopsy is driven primarily by the PI-RADS 4 lesion on mpMRI, which carries a high risk of clinically significant cancer. The patient's prior negative systematic biopsy makes MRI-targeted sampling essential to avoid false negatives. While the low PSA and PSAD suggest indolent disease biology, they do not preclude the need for tissue diagnosis in the presence of a suspicious focal lesion."
+    },
+    {
+      "case_id": "PT-pseudo_20a7e91c494c",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Man on active surveillance. MRI stabile and PSA moderately high.",
+      "pred_free_text": "Recommendation driven by PI-RADS 4 lesion, significant PSA velocity (+2.5 ng/mL in <1 year), and prior positive biopsy history indicating probable recurrence."
+    },
+    {
+      "case_id": "PT-pseudo_21e7fa67a79e",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_249def42388a",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_25007bb807d7",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_259484ae733f",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2b3ef1d3a505",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2cd88bcdf81c",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2e0346bce3b3",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2e4988b84112",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2eef4115a253",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2ef22b5dd08e",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2fbb84505a45",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_33c8cd4571fd",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_34647958aba3",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_3477ea7065bd",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_3646e0a2ae13",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_36c92fb424ac",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_376de00c8131",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_37d8ae9b27f1",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_394e0b8dbeeb",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_3b6ea1920967",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_3cc88c81f35a",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_3ceacc9b660b",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_3f75ae876abe",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_41ca49bed13d",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_47c373e230b6",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_47d8b39fd07f",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_48fb60dfd22f",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4a2fa7bc3595",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4a4fedfc1f51",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4b950525e6a8",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4bfd4ec864d8",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4c6b2b2bbf94",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4d54f04e26ae",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4e545d350c5b",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4edb17f79e46",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4f33b0253633",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_52213169f58b",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_562159dc2cc6",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_575cb2819e96",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_590e7b237744",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_b9aa0df93f2a",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_b9f0b7018502",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c03b1168ff4d",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c12bcf838ec8",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c13fda040310",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c39e94a13920",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c55496c11421",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c7277954c60f",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c9d31197c533",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_cac2563c222a",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_cce5d47c05dd",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d217629c323a",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d38917f87b35",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d3d6b421d0aa",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d3e975d025e6",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d49b896a09e6",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d5ceb6b4204f",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d7d26761c714",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d95b3a02898e",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_dcd61cf9b443",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_dcd7bf13a6f4",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_dd011d696387",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_e001f4d06517",
+      "error": "prediction.json not found"
+    }
+  ],
+  "task2": [
+    {
+      "case_id": "T2-001",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-002",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-003",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-004",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-005",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-006",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-007",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-008",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-009",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-010",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-011",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-012",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-013",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-014",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-015",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-016",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-017",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-018",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-019",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-020",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-021",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-022",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-023",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-024",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-025",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-026",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-027",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-028",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-029",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-030",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-031",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-032",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-033",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-034",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-035",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-036",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-037",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-038",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-039",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-040",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-041",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-042",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-043",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-044",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-045",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-046",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-047",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-048",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-049",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-050",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-051",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-052",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-053",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-054",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-055",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-056",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-057",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-058",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-059",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-060",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-061",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-101",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-102",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-103",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-104",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-105",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-106",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-107",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-108",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-109",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-110",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-111",
+      "error": "prediction.json not found"
+    }
+  ],
+  "task3": []
+}

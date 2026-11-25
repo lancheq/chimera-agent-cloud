@@ -1,0 +1,1849 @@
+{
+  "task1": {
+    "PT-pseudo_598f1d8f4e08": {
+      "case_id": "PT-pseudo_598f1d8f4e08",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.794137135935642,
+        "yes": 0.2058628640643581
+      }
+    },
+    "PT-pseudo_5af00f9153c2": {
+      "case_id": "PT-pseudo_5af00f9153c2",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.33029271519982584,
+        "yes": 0.6697072848001742
+      }
+    },
+    "PT-pseudo_5dc2eb70fbd7": {
+      "case_id": "PT-pseudo_5dc2eb70fbd7",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.49210690802196233,
+        "yes": 0.5078930919780377
+      }
+    },
+    "PT-pseudo_5f263f325019": {
+      "case_id": "PT-pseudo_5f263f325019",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.38469200629859024,
+        "yes": 0.6153079937014098
+      }
+    },
+    "PT-pseudo_62c93b0c3dba": {
+      "case_id": "PT-pseudo_62c93b0c3dba",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.19716158889753077,
+        "yes": 0.8028384111024692
+      }
+    },
+    "PT-pseudo_6457372f9532": {
+      "case_id": "PT-pseudo_6457372f9532",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.6959556689382002,
+        "yes": 0.30404433106179984
+      }
+    },
+    "PT-pseudo_665cf811e172": {
+      "case_id": "PT-pseudo_665cf811e172",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.35978438475454433,
+        "yes": 0.6402156152454557
+      }
+    },
+    "PT-pseudo_668c2a174afc": {
+      "case_id": "PT-pseudo_668c2a174afc",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.1437510044961665,
+        "yes": 0.8562489955038335
+      }
+    },
+    "PT-pseudo_67728e41a2fa": {
+      "case_id": "PT-pseudo_67728e41a2fa",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.5922737644323007,
+        "yes": 0.40772623556769927
+      }
+    },
+    "PT-pseudo_6a100adb6ac3": {
+      "case_id": "PT-pseudo_6a100adb6ac3",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.7568791442397463,
+        "yes": 0.2431208557602537
+      }
+    },
+    "PT-pseudo_6b6ee002f75d": {
+      "case_id": "PT-pseudo_6b6ee002f75d",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.3421814961832912,
+        "yes": 0.6578185038167088
+      }
+    },
+    "PT-pseudo_6c8ef835ea42": {
+      "case_id": "PT-pseudo_6c8ef835ea42",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.285505872004182,
+        "yes": 0.714494127995818
+      }
+    },
+    "PT-pseudo_6d2ecb82cc52": {
+      "case_id": "PT-pseudo_6d2ecb82cc52",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.2943642465855596,
+        "yes": 0.7056357534144404
+      }
+    },
+    "PT-pseudo_6d6abf7f6fb5": {
+      "case_id": "PT-pseudo_6d6abf7f6fb5",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.19621296852876724,
+        "yes": 0.8037870314712328
+      }
+    },
+    "PT-pseudo_6d83f9e49421": {
+      "case_id": "PT-pseudo_6d83f9e49421",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.18216262509261305,
+        "yes": 0.817837374907387
+      }
+    },
+    "PT-pseudo_6dc747db3e7d": {
+      "case_id": "PT-pseudo_6dc747db3e7d",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.25037908860599967,
+        "yes": 0.7496209113940003
+      }
+    },
+    "PT-pseudo_6df4f23de04a": {
+      "case_id": "PT-pseudo_6df4f23de04a",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.6738673666502376,
+        "yes": 0.3261326333497624
+      }
+    },
+    "PT-pseudo_723f490ff7ce": {
+      "case_id": "PT-pseudo_723f490ff7ce",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.7075368720395225,
+        "yes": 0.2924631279604774
+      }
+    },
+    "PT-pseudo_7423d1c19560": {
+      "case_id": "PT-pseudo_7423d1c19560",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.2935068896016141,
+        "yes": 0.7064931103983859
+      }
+    },
+    "PT-pseudo_76bfeeb8b8b8": {
+      "case_id": "PT-pseudo_76bfeeb8b8b8",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.5310241982932062,
+        "yes": 0.4689758017067937
+      }
+    },
+    "PT-pseudo_7bcbfa157137": {
+      "case_id": "PT-pseudo_7bcbfa157137",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.2994647206619723,
+        "yes": 0.7005352793380277
+      }
+    },
+    "PT-pseudo_7be89ab28e92": {
+      "case_id": "PT-pseudo_7be89ab28e92",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.8896692095845848,
+        "yes": 0.11033079041541514
+      }
+    },
+    "PT-pseudo_7dbdcd6f9064": {
+      "case_id": "PT-pseudo_7dbdcd6f9064",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.7441111596555077,
+        "yes": 0.2558888403444923
+      }
+    },
+    "PT-pseudo_7dd989c35f87": {
+      "case_id": "PT-pseudo_7dd989c35f87",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.3567680141593139,
+        "yes": 0.6432319858406861
+      }
+    },
+    "PT-pseudo_7efca1668c87": {
+      "case_id": "PT-pseudo_7efca1668c87",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.5440832239414257,
+        "yes": 0.45591677605857434
+      }
+    },
+    "PT-pseudo_7f85fe245d6c": {
+      "case_id": "PT-pseudo_7f85fe245d6c",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.6637130470346343,
+        "yes": 0.3362869529653657
+      }
+    },
+    "PT-pseudo_80d551b63772": {
+      "case_id": "PT-pseudo_80d551b63772",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.7975165473230997,
+        "yes": 0.2024834526769003
+      }
+    },
+    "PT-pseudo_8137531888a0": {
+      "case_id": "PT-pseudo_8137531888a0",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.9019896674416661,
+        "yes": 0.09801033255833388
+      }
+    },
+    "PT-pseudo_8192345b35fa": {
+      "case_id": "PT-pseudo_8192345b35fa",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.4371631701119332,
+        "yes": 0.5628368298880668
+      }
+    },
+    "PT-pseudo_819642c63ff9": {
+      "case_id": "PT-pseudo_819642c63ff9",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.31495213929731314,
+        "yes": 0.6850478607026869
+      }
+    },
+    "PT-pseudo_825bc8328913": {
+      "case_id": "PT-pseudo_825bc8328913",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.11159007284481304,
+        "yes": 0.888409927155187
+      }
+    },
+    "PT-pseudo_837f1dcfb56d": {
+      "case_id": "PT-pseudo_837f1dcfb56d",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.8982708202318568,
+        "yes": 0.10172917976814322
+      }
+    },
+    "PT-pseudo_83f690a06c81": {
+      "case_id": "PT-pseudo_83f690a06c81",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.3421127023138464,
+        "yes": 0.6578872976861536
+      }
+    },
+    "PT-pseudo_84ce0e4a9eed": {
+      "case_id": "PT-pseudo_84ce0e4a9eed",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.5639216258799,
+        "yes": 0.4360783741200999
+      }
+    },
+    "PT-pseudo_8636aa471ef7": {
+      "case_id": "PT-pseudo_8636aa471ef7",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.8016249952601779,
+        "yes": 0.19837500473982203
+      }
+    },
+    "PT-pseudo_8654c4ff4d10": {
+      "case_id": "PT-pseudo_8654c4ff4d10",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.49095815866992576,
+        "yes": 0.5090418413300742
+      }
+    },
+    "PT-pseudo_87cbc2052e90": {
+      "case_id": "PT-pseudo_87cbc2052e90",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.6374832781234754,
+        "yes": 0.36251672187652456
+      }
+    },
+    "PT-pseudo_8967e0df17fc": {
+      "case_id": "PT-pseudo_8967e0df17fc",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.6386461061247328,
+        "yes": 0.3613538938752671
+      }
+    },
+    "PT-pseudo_9187d18278f9": {
+      "case_id": "PT-pseudo_9187d18278f9",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.05798577880913869,
+        "yes": 0.9420142211908613
+      }
+    },
+    "PT-pseudo_926c37508fe2": {
+      "case_id": "PT-pseudo_926c37508fe2",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.9155473678971001,
+        "yes": 0.08445263210289984
+      }
+    },
+    "PT-pseudo_927456f47c99": {
+      "case_id": "PT-pseudo_927456f47c99",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.3009182674647075,
+        "yes": 0.6990817325352925
+      }
+    },
+    "PT-pseudo_938ba8a478e6": {
+      "case_id": "PT-pseudo_938ba8a478e6",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.4046316743126359,
+        "yes": 0.5953683256873641
+      }
+    },
+    "PT-pseudo_93c180f13bd8": {
+      "case_id": "PT-pseudo_93c180f13bd8",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.543189138684256,
+        "yes": 0.45681086131574394
+      }
+    },
+    "PT-pseudo_945da5c635c4": {
+      "case_id": "PT-pseudo_945da5c635c4",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.3817980696066898,
+        "yes": 0.6182019303933102
+      }
+    },
+    "PT-pseudo_956f2054a1ea": {
+      "case_id": "PT-pseudo_956f2054a1ea",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.3877519119025722,
+        "yes": 0.6122480880974278
+      }
+    },
+    "PT-pseudo_958f2377f288": {
+      "case_id": "PT-pseudo_958f2377f288",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.7147458095858248,
+        "yes": 0.2852541904141752
+      }
+    },
+    "PT-pseudo_95d3fd02d5e0": {
+      "case_id": "PT-pseudo_95d3fd02d5e0",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.561781735533533,
+        "yes": 0.43821826446646694
+      }
+    },
+    "PT-pseudo_97a7a14b3c3d": {
+      "case_id": "PT-pseudo_97a7a14b3c3d",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.9689610132163605,
+        "yes": 0.031038986783639463
+      }
+    },
+    "PT-pseudo_9835e080606c": {
+      "case_id": "PT-pseudo_9835e080606c",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.3332063835209653,
+        "yes": 0.6667936164790347
+      }
+    },
+    "PT-pseudo_98f71f146763": {
+      "case_id": "PT-pseudo_98f71f146763",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.2339162240097059,
+        "yes": 0.7660837759902941
+      }
+    },
+    "PT-pseudo_9988c23725e6": {
+      "case_id": "PT-pseudo_9988c23725e6",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.16654770824311804,
+        "yes": 0.833452291756882
+      }
+    },
+    "PT-pseudo_99e3dc40a451": {
+      "case_id": "PT-pseudo_99e3dc40a451",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.3307687852081893,
+        "yes": 0.6692312147918107
+      }
+    },
+    "PT-pseudo_9ac935d9650f": {
+      "case_id": "PT-pseudo_9ac935d9650f",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.17735059467144776,
+        "yes": 0.8226494053285522
+      }
+    },
+    "PT-pseudo_9df1617405c1": {
+      "case_id": "PT-pseudo_9df1617405c1",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.776886050973647,
+        "yes": 0.223113949026353
+      }
+    },
+    "PT-pseudo_9ff22a71b795": {
+      "case_id": "PT-pseudo_9ff22a71b795",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.3694101240271367,
+        "yes": 0.6305898759728633
+      }
+    },
+    "PT-pseudo_a2ed5cd06259": {
+      "case_id": "PT-pseudo_a2ed5cd06259",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.5881372465939605,
+        "yes": 0.41186275340603956
+      }
+    },
+    "PT-pseudo_a32d7e3c3cdf": {
+      "case_id": "PT-pseudo_a32d7e3c3cdf",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.7104207377022852,
+        "yes": 0.2895792622977148
+      }
+    },
+    "PT-pseudo_a37319c14573": {
+      "case_id": "PT-pseudo_a37319c14573",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.2602054735564605,
+        "yes": 0.7397945264435395
+      }
+    },
+    "PT-pseudo_a424617e164e": {
+      "case_id": "PT-pseudo_a424617e164e",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.651983298682231,
+        "yes": 0.34801670131776896
+      }
+    },
+    "PT-pseudo_a4f6e7273fc3": {
+      "case_id": "PT-pseudo_a4f6e7273fc3",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.4756389381319751,
+        "yes": 0.5243610618680249
+      }
+    },
+    "PT-pseudo_a5292377e539": {
+      "case_id": "PT-pseudo_a5292377e539",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.2120073974686335,
+        "yes": 0.7879926025313665
+      }
+    },
+    "PT-pseudo_a62fdda714c0": {
+      "case_id": "PT-pseudo_a62fdda714c0",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.5099230221941391,
+        "yes": 0.49007697780586085
+      }
+    },
+    "PT-pseudo_a64ead56f586": {
+      "case_id": "PT-pseudo_a64ead56f586",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.2679800616006758,
+        "yes": 0.7320199383993242
+      }
+    },
+    "PT-pseudo_a9a20522674d": {
+      "case_id": "PT-pseudo_a9a20522674d",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.4748205560618599,
+        "yes": 0.5251794439381401
+      }
+    },
+    "PT-pseudo_a9acda639666": {
+      "case_id": "PT-pseudo_a9acda639666",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.45824877682278253,
+        "yes": 0.5417512231772175
+      }
+    },
+    "PT-pseudo_ac05cda1a88a": {
+      "case_id": "PT-pseudo_ac05cda1a88a",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.4274447377084014,
+        "yes": 0.5725552622915986
+      }
+    },
+    "PT-pseudo_ac1dc724676e": {
+      "case_id": "PT-pseudo_ac1dc724676e",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.41364151305701813,
+        "yes": 0.5863584869429819
+      }
+    },
+    "PT-pseudo_acad53162dba": {
+      "case_id": "PT-pseudo_acad53162dba",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.3608399310616426,
+        "yes": 0.6391600689383574
+      }
+    },
+    "PT-pseudo_acc7bae9e286": {
+      "case_id": "PT-pseudo_acc7bae9e286",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.43654103103348774,
+        "yes": 0.5634589689665123
+      }
+    },
+    "PT-pseudo_aed2e170b8e6": {
+      "case_id": "PT-pseudo_aed2e170b8e6",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.3386231790188793,
+        "yes": 0.6613768209811207
+      }
+    },
+    "PT-pseudo_af12e08190bd": {
+      "case_id": "PT-pseudo_af12e08190bd",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.7867671589291421,
+        "yes": 0.213232841070858
+      }
+    },
+    "PT-pseudo_afbc5ebc0d4e": {
+      "case_id": "PT-pseudo_afbc5ebc0d4e",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.872570406293536,
+        "yes": 0.12742959370646403
+      }
+    },
+    "PT-pseudo_b00a553261d2": {
+      "case_id": "PT-pseudo_b00a553261d2",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.22907309643958418,
+        "yes": 0.7709269035604158
+      }
+    },
+    "PT-pseudo_b0321645a5de": {
+      "case_id": "PT-pseudo_b0321645a5de",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.4275392290686829,
+        "yes": 0.5724607709313171
+      }
+    },
+    "PT-pseudo_b28f2ad6069e": {
+      "case_id": "PT-pseudo_b28f2ad6069e",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.6724106786366822,
+        "yes": 0.32758932136331775
+      }
+    },
+    "PT-pseudo_b414d3d849a7": {
+      "case_id": "PT-pseudo_b414d3d849a7",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.7457187039633957,
+        "yes": 0.2542812960366043
+      }
+    },
+    "PT-pseudo_b477d3bd8246": {
+      "case_id": "PT-pseudo_b477d3bd8246",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.2895317531642563,
+        "yes": 0.7104682468357437
+      }
+    },
+    "PT-pseudo_b59dce24e94a": {
+      "case_id": "PT-pseudo_b59dce24e94a",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.42467281998465134,
+        "yes": 0.5753271800153487
+      }
+    },
+    "PT-pseudo_b63dfe0f311e": {
+      "case_id": "PT-pseudo_b63dfe0f311e",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.9331945529362181,
+        "yes": 0.0668054470637819
+      }
+    },
+    "PT-pseudo_b69f6fab2a86": {
+      "case_id": "PT-pseudo_b69f6fab2a86",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.780703535782046,
+        "yes": 0.21929646421795396
+      }
+    },
+    "PT-pseudo_b6db06db35d7": {
+      "case_id": "PT-pseudo_b6db06db35d7",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.25526565525860523,
+        "yes": 0.7447343447413948
+      }
+    },
+    "PT-pseudo_b8115e954c12": {
+      "case_id": "PT-pseudo_b8115e954c12",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.727117598788543,
+        "yes": 0.27288240121145707
+      }
+    },
+    "PT-pseudo_e1bb1e86b054": {
+      "case_id": "PT-pseudo_e1bb1e86b054",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.6087779540716582,
+        "yes": 0.3912220459283418
+      }
+    },
+    "PT-pseudo_e288564d7111": {
+      "case_id": "PT-pseudo_e288564d7111",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.5521227869820923,
+        "yes": 0.4478772130179077
+      }
+    },
+    "PT-pseudo_e5104a16c8bb": {
+      "case_id": "PT-pseudo_e5104a16c8bb",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.3156429945345708,
+        "yes": 0.6843570054654292
+      }
+    },
+    "PT-pseudo_e91d5fe837cb": {
+      "case_id": "PT-pseudo_e91d5fe837cb",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.8050036135308767,
+        "yes": 0.19499638646912337
+      }
+    },
+    "PT-pseudo_e9fbcdc890f2": {
+      "case_id": "PT-pseudo_e9fbcdc890f2",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.6282814498035344,
+        "yes": 0.3717185501964656
+      }
+    },
+    "PT-pseudo_ee512fea9006": {
+      "case_id": "PT-pseudo_ee512fea9006",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.3097877762639246,
+        "yes": 0.6902122237360754
+      }
+    },
+    "PT-pseudo_ef2309676161": {
+      "case_id": "PT-pseudo_ef2309676161",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.656864785496653,
+        "yes": 0.3431352145033471
+      }
+    },
+    "PT-pseudo_ef66ca71e996": {
+      "case_id": "PT-pseudo_ef66ca71e996",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.8573583622175098,
+        "yes": 0.14264163778249017
+      }
+    },
+    "PT-pseudo_ef8ea220bdc6": {
+      "case_id": "PT-pseudo_ef8ea220bdc6",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.8716710049560634,
+        "yes": 0.1283289950439366
+      }
+    },
+    "PT-pseudo_f1083e2e01d8": {
+      "case_id": "PT-pseudo_f1083e2e01d8",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.7090246505073872,
+        "yes": 0.2909753494926128
+      }
+    },
+    "PT-pseudo_f2ec9a9b4d4a": {
+      "case_id": "PT-pseudo_f2ec9a9b4d4a",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.5313506921943927,
+        "yes": 0.4686493078056074
+      }
+    },
+    "PT-pseudo_f3a2af65a42f": {
+      "case_id": "PT-pseudo_f3a2af65a42f",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.9211155608946616,
+        "yes": 0.0788844391053384
+      }
+    },
+    "PT-pseudo_f41131a1bc0b": {
+      "case_id": "PT-pseudo_f41131a1bc0b",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.30300969644164355,
+        "yes": 0.6969903035583564
+      }
+    },
+    "PT-pseudo_f4ea752ca1bb": {
+      "case_id": "PT-pseudo_f4ea752ca1bb",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.44956758516895046,
+        "yes": 0.5504324148310495
+      }
+    },
+    "PT-pseudo_f80c073525b1": {
+      "case_id": "PT-pseudo_f80c073525b1",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.15073424637179067,
+        "yes": 0.8492657536282093
+      }
+    },
+    "PT-pseudo_f87b704d91af": {
+      "case_id": "PT-pseudo_f87b704d91af",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.4151723184897127,
+        "yes": 0.5848276815102873
+      }
+    },
+    "PT-pseudo_f99f0627e536": {
+      "case_id": "PT-pseudo_f99f0627e536",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.5184038809229561,
+        "yes": 0.48159611907704386
+      }
+    },
+    "PT-pseudo_fa31cd663f5a": {
+      "case_id": "PT-pseudo_fa31cd663f5a",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.4272931292029606,
+        "yes": 0.5727068707970394
+      }
+    },
+    "PT-pseudo_fa4a71ae9a34": {
+      "case_id": "PT-pseudo_fa4a71ae9a34",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.5251817567676688,
+        "yes": 0.47481824323233124
+      }
+    },
+    "PT-pseudo_fab43a43b7e6": {
+      "case_id": "PT-pseudo_fab43a43b7e6",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.23473263388821541,
+        "yes": 0.7652673661117846
+      }
+    },
+    "PT-pseudo_fc6cf5262222": {
+      "case_id": "PT-pseudo_fc6cf5262222",
+      "task": 1,
+      "decision": "no",
+      "probabilities": {
+        "no": 0.8838232256889254,
+        "yes": 0.11617677431107465
+      }
+    },
+    "PT-pseudo_fdd4ff09679e": {
+      "case_id": "PT-pseudo_fdd4ff09679e",
+      "task": 1,
+      "decision": "yes",
+      "probabilities": {
+        "no": 0.2867111110680718,
+        "yes": 0.7132888889319282
+      }
+    }
+  },
+  "task2": {
+    "T2-062": {
+      "case_id": "T2-062",
+      "task": 2,
+      "decision": "watchful_waiting",
+      "probabilities": {
+        "active_surveillance": 0.21095430022409986,
+        "active_treatment": 0.11208445724609678,
+        "continued_surveillance": 0.01113812812108805,
+        "watchful_waiting": 0.6658231144087153
+      }
+    },
+    "T2-063": {
+      "case_id": "T2-063",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.32391111499134095,
+        "active_treatment": 0.6261181558945774,
+        "continued_surveillance": 0.04627278892368031,
+        "watchful_waiting": 0.0036979401904012497
+      }
+    },
+    "T2-064": {
+      "case_id": "T2-064",
+      "task": 2,
+      "decision": "watchful_waiting",
+      "probabilities": {
+        "active_surveillance": 0.0014856524261424844,
+        "active_treatment": 0.0324988762320836,
+        "continued_surveillance": 8.646344018079572e-06,
+        "watchful_waiting": 0.9660068249977558
+      }
+    },
+    "T2-065": {
+      "case_id": "T2-065",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.04397002261373899,
+        "active_treatment": 0.9459993002968816,
+        "continued_surveillance": 0.00032226997928575093,
+        "watchful_waiting": 0.009708407110093664
+      }
+    },
+    "T2-066": {
+      "case_id": "T2-066",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.5817939302260553,
+        "active_treatment": 0.3538126974672428,
+        "continued_surveillance": 0.028626524098737033,
+        "watchful_waiting": 0.035766848207964774
+      }
+    },
+    "T2-067": {
+      "case_id": "T2-067",
+      "task": 2,
+      "decision": "watchful_waiting",
+      "probabilities": {
+        "active_surveillance": 0.17531656000355506,
+        "active_treatment": 0.041608625422455636,
+        "continued_surveillance": 0.13761733491982173,
+        "watchful_waiting": 0.6454574796541674
+      }
+    },
+    "T2-068": {
+      "case_id": "T2-068",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.05793861146426962,
+        "active_treatment": 0.9383230334763518,
+        "continued_surveillance": 0.0032297795185624537,
+        "watchful_waiting": 0.0005085755408160803
+      }
+    },
+    "T2-069": {
+      "case_id": "T2-069",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.19432118974392182,
+        "active_treatment": 0.7948475542618814,
+        "continued_surveillance": 0.006167912845378208,
+        "watchful_waiting": 0.004663343148818687
+      }
+    },
+    "T2-070": {
+      "case_id": "T2-070",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.05688593675543598,
+        "active_treatment": 0.9323574382616099,
+        "continued_surveillance": 0.004871675635084468,
+        "watchful_waiting": 0.005884949347869718
+      }
+    },
+    "T2-071": {
+      "case_id": "T2-071",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.3939289540684568,
+        "active_treatment": 0.5375040704341966,
+        "continued_surveillance": 0.010871243540405518,
+        "watchful_waiting": 0.0576957319569411
+      }
+    },
+    "T2-072": {
+      "case_id": "T2-072",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.08077443680387053,
+        "active_treatment": 0.9141803754695931,
+        "continued_surveillance": 0.004222376405068854,
+        "watchful_waiting": 0.0008228113214674955
+      }
+    },
+    "T2-073": {
+      "case_id": "T2-073",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.6873665440004075,
+        "active_treatment": 0.14522921827132854,
+        "continued_surveillance": 0.0674298515158757,
+        "watchful_waiting": 0.09997438621238833
+      }
+    },
+    "T2-074": {
+      "case_id": "T2-074",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.21900484130154932,
+        "active_treatment": 0.6775019843351651,
+        "continued_surveillance": 0.01864992448898599,
+        "watchful_waiting": 0.08484324987429967
+      }
+    },
+    "T2-075": {
+      "case_id": "T2-075",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.4307130916316955,
+        "active_treatment": 0.5497200581915609,
+        "continued_surveillance": 0.01784164532373283,
+        "watchful_waiting": 0.001725204853010736
+      }
+    },
+    "T2-076": {
+      "case_id": "T2-076",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.6924600071067801,
+        "active_treatment": 0.12278311173065692,
+        "continued_surveillance": 0.14291748984681224,
+        "watchful_waiting": 0.041839391315750596
+      }
+    },
+    "T2-077": {
+      "case_id": "T2-077",
+      "task": 2,
+      "decision": "watchful_waiting",
+      "probabilities": {
+        "active_surveillance": 0.01978875242726155,
+        "active_treatment": 0.02532756003343037,
+        "continued_surveillance": 0.0007787006818146825,
+        "watchful_waiting": 0.9541049868574933
+      }
+    },
+    "T2-078": {
+      "case_id": "T2-078",
+      "task": 2,
+      "decision": "continued_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.17069343212924734,
+        "active_treatment": 0.0006899087081540469,
+        "continued_surveillance": 0.8220926562402033,
+        "watchful_waiting": 0.006524002922395345
+      }
+    },
+    "T2-079": {
+      "case_id": "T2-079",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.2715780578284452,
+        "active_treatment": 0.6459567748974253,
+        "continued_surveillance": 0.005396994583648609,
+        "watchful_waiting": 0.07706817269048089
+      }
+    },
+    "T2-080": {
+      "case_id": "T2-080",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.03398857445966968,
+        "active_treatment": 0.9624866943045591,
+        "continued_surveillance": 0.0007682854609510542,
+        "watchful_waiting": 0.002756445774819923
+      }
+    },
+    "T2-081": {
+      "case_id": "T2-081",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.39896716430358764,
+        "active_treatment": 0.36922985900061733,
+        "continued_surveillance": 0.024850870276900788,
+        "watchful_waiting": 0.20695210641889425
+      }
+    },
+    "T2-082": {
+      "case_id": "T2-082",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.6963928369998226,
+        "active_treatment": 0.2475494499417649,
+        "continued_surveillance": 0.04421787295312039,
+        "watchful_waiting": 0.011839840105292248
+      }
+    },
+    "T2-083": {
+      "case_id": "T2-083",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.2858111345086618,
+        "active_treatment": 0.6983070486429674,
+        "continued_surveillance": 0.009275062403040728,
+        "watchful_waiting": 0.006606754445329968
+      }
+    },
+    "T2-084": {
+      "case_id": "T2-084",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.18854265383924435,
+        "active_treatment": 0.7856025763928874,
+        "continued_surveillance": 0.02490525548616148,
+        "watchful_waiting": 0.000949514281706675
+      }
+    },
+    "T2-085": {
+      "case_id": "T2-085",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.2563927923657333,
+        "active_treatment": 0.6974350008464448,
+        "continued_surveillance": 0.020899597628302576,
+        "watchful_waiting": 0.025272609159519243
+      }
+    },
+    "T2-086": {
+      "case_id": "T2-086",
+      "task": 2,
+      "decision": "continued_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.0912660292899339,
+        "active_treatment": 0.009575599226336974,
+        "continued_surveillance": 0.8986164370370858,
+        "watchful_waiting": 0.0005419344466431552
+      }
+    },
+    "T2-087": {
+      "case_id": "T2-087",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.5828601135411446,
+        "active_treatment": 0.08051081982123183,
+        "continued_surveillance": 0.3332635652587664,
+        "watchful_waiting": 0.0033655013788572124
+      }
+    },
+    "T2-088": {
+      "case_id": "T2-088",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.47164377500279836,
+        "active_treatment": 0.4669456267516711,
+        "continued_surveillance": 0.04850934399962974,
+        "watchful_waiting": 0.012901254245900773
+      }
+    },
+    "T2-089": {
+      "case_id": "T2-089",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.2624592026342974,
+        "active_treatment": 0.7234126535285804,
+        "continued_surveillance": 0.011810496563040361,
+        "watchful_waiting": 0.002317647274081752
+      }
+    },
+    "T2-090": {
+      "case_id": "T2-090",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.07323142389198374,
+        "active_treatment": 0.8809477196874586,
+        "continued_surveillance": 0.0017642969806891903,
+        "watchful_waiting": 0.04405655943986857
+      }
+    },
+    "T2-091": {
+      "case_id": "T2-091",
+      "task": 2,
+      "decision": "continued_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.03829637790667107,
+        "active_treatment": 0.00036254558562533396,
+        "continued_surveillance": 0.961047447301822,
+        "watchful_waiting": 0.00029362920588158533
+      }
+    },
+    "T2-092": {
+      "case_id": "T2-092",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.08417851364231776,
+        "active_treatment": 0.9130827868690077,
+        "continued_surveillance": 0.0025952805285938186,
+        "watchful_waiting": 0.00014341896008079983
+      }
+    },
+    "T2-093": {
+      "case_id": "T2-093",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.48613864165169807,
+        "active_treatment": 0.4813496242894873,
+        "continued_surveillance": 0.0075090936803298616,
+        "watchful_waiting": 0.025002640378484632
+      }
+    },
+    "T2-094": {
+      "case_id": "T2-094",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.248836281750594,
+        "active_treatment": 0.6755490455521178,
+        "continued_surveillance": 0.06050515587552116,
+        "watchful_waiting": 0.015109516821767055
+      }
+    },
+    "T2-095": {
+      "case_id": "T2-095",
+      "task": 2,
+      "decision": "continued_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.12639162328580966,
+        "active_treatment": 0.003410387920330957,
+        "continued_surveillance": 0.8696254462520123,
+        "watchful_waiting": 0.0005725425418471692
+      }
+    },
+    "T2-096": {
+      "case_id": "T2-096",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.03734573679930181,
+        "active_treatment": 0.9601028598100579,
+        "continued_surveillance": 0.0005775649100975436,
+        "watchful_waiting": 0.0019738384805427496
+      }
+    },
+    "T2-097": {
+      "case_id": "T2-097",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.09132629599577227,
+        "active_treatment": 0.7243040123996626,
+        "continued_surveillance": 0.005237799327384209,
+        "watchful_waiting": 0.17913189227718096
+      }
+    },
+    "T2-098": {
+      "case_id": "T2-098",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.25823116387865513,
+        "active_treatment": 0.7224873849611539,
+        "continued_surveillance": 0.010759066373700622,
+        "watchful_waiting": 0.008522384786490264
+      }
+    },
+    "T2-099": {
+      "case_id": "T2-099",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.0052272190597183405,
+        "active_treatment": 0.9945184704409534,
+        "continued_surveillance": 3.516314664492909e-05,
+        "watchful_waiting": 0.00021914735268340556
+      }
+    },
+    "T2-100": {
+      "case_id": "T2-100",
+      "task": 2,
+      "decision": "continued_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.07939269189442306,
+        "active_treatment": 0.0013884721199995482,
+        "continued_surveillance": 0.9191288027507735,
+        "watchful_waiting": 9.003323480379735e-05
+      }
+    },
+    "T2-112": {
+      "case_id": "T2-112",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.46252828387684575,
+        "active_treatment": 0.4900457351975165,
+        "continued_surveillance": 0.01457195862181757,
+        "watchful_waiting": 0.0328540223038202
+      }
+    },
+    "T2-113": {
+      "case_id": "T2-113",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.14044965339949642,
+        "active_treatment": 0.8312201944629731,
+        "continued_surveillance": 0.002627839366803048,
+        "watchful_waiting": 0.025702312770727376
+      }
+    },
+    "T2-114": {
+      "case_id": "T2-114",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.6866719450848681,
+        "active_treatment": 0.24627197152614955,
+        "continued_surveillance": 0.05223904153814815,
+        "watchful_waiting": 0.014817041850834267
+      }
+    },
+    "T2-115": {
+      "case_id": "T2-115",
+      "task": 2,
+      "decision": "continued_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.06345530080430246,
+        "active_treatment": 0.0001793215962284579,
+        "continued_surveillance": 0.9360850463002552,
+        "watchful_waiting": 0.00028033129921382823
+      }
+    },
+    "T2-116": {
+      "case_id": "T2-116",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.6023902090447855,
+        "active_treatment": 0.3732360539532886,
+        "continued_surveillance": 0.012276428860053045,
+        "watchful_waiting": 0.012097308141872796
+      }
+    },
+    "T2-117": {
+      "case_id": "T2-117",
+      "task": 2,
+      "decision": "watchful_waiting",
+      "probabilities": {
+        "active_surveillance": 0.10192361323970736,
+        "active_treatment": 0.021789279253040996,
+        "continued_surveillance": 0.010243901601927978,
+        "watchful_waiting": 0.8660432059053237
+      }
+    },
+    "T2-118": {
+      "case_id": "T2-118",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.5564580365657342,
+        "active_treatment": 0.25006321775096974,
+        "continued_surveillance": 0.03538091748048006,
+        "watchful_waiting": 0.158097828202816
+      }
+    },
+    "T2-119": {
+      "case_id": "T2-119",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.17004646024385597,
+        "active_treatment": 0.8214461568169785,
+        "continued_surveillance": 0.0019609218437323735,
+        "watchful_waiting": 0.006546461095432924
+      }
+    },
+    "T2-120": {
+      "case_id": "T2-120",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.692920969916976,
+        "active_treatment": 0.252702935285674,
+        "continued_surveillance": 0.04365342757504298,
+        "watchful_waiting": 0.010722667222306916
+      }
+    },
+    "T2-121": {
+      "case_id": "T2-121",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.41800438168021903,
+        "active_treatment": 0.5286809341858364,
+        "continued_surveillance": 0.006685192717154817,
+        "watchful_waiting": 0.046629491416789674
+      }
+    },
+    "T2-122": {
+      "case_id": "T2-122",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.23278762914708595,
+        "active_treatment": 0.7161369888394947,
+        "continued_surveillance": 0.04325437548663731,
+        "watchful_waiting": 0.007821006526782012
+      }
+    },
+    "T2-123": {
+      "case_id": "T2-123",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.1402282655841731,
+        "active_treatment": 0.856643744819321,
+        "continued_surveillance": 0.0003876680289323816,
+        "watchful_waiting": 0.002740321567573402
+      }
+    },
+    "T2-124": {
+      "case_id": "T2-124",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.31132997685081876,
+        "active_treatment": 0.6817372747546158,
+        "continued_surveillance": 0.006292724210907847,
+        "watchful_waiting": 0.0006400241836576498
+      }
+    },
+    "T2-125": {
+      "case_id": "T2-125",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.4307877439122076,
+        "active_treatment": 0.45261585601081655,
+        "continued_surveillance": 0.09020148519910799,
+        "watchful_waiting": 0.026394914877867857
+      }
+    },
+    "T2-126": {
+      "case_id": "T2-126",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.2593626470838287,
+        "active_treatment": 0.7220917371216092,
+        "continued_surveillance": 0.01281398481830998,
+        "watchful_waiting": 0.005731630976252024
+      }
+    },
+    "T2-127": {
+      "case_id": "T2-127",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.40131202275161015,
+        "active_treatment": 0.13296254413012085,
+        "continued_surveillance": 0.24794869004159312,
+        "watchful_waiting": 0.2177767430766759
+      }
+    },
+    "T2-128": {
+      "case_id": "T2-128",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.16880245252517737,
+        "active_treatment": 0.8239816318803578,
+        "continued_surveillance": 0.0043298492471568,
+        "watchful_waiting": 0.002886066347307994
+      }
+    },
+    "T2-129": {
+      "case_id": "T2-129",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.1115910698479791,
+        "active_treatment": 0.8853145175125539,
+        "continued_surveillance": 0.0029475906999198564,
+        "watchful_waiting": 0.0001468219395472651
+      }
+    },
+    "T2-130": {
+      "case_id": "T2-130",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.37044753954960646,
+        "active_treatment": 0.5345194635962631,
+        "continued_surveillance": 0.0051376798413337605,
+        "watchful_waiting": 0.08989531701279663
+      }
+    },
+    "T2-131": {
+      "case_id": "T2-131",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.47672539460818697,
+        "active_treatment": 0.4889101373163675,
+        "continued_surveillance": 0.02634749299657299,
+        "watchful_waiting": 0.00801697507887245
+      }
+    },
+    "T2-132": {
+      "case_id": "T2-132",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.7871189422459399,
+        "active_treatment": 0.18203631448286595,
+        "continued_surveillance": 0.020645379657760258,
+        "watchful_waiting": 0.010199363613433736
+      }
+    },
+    "T2-133": {
+      "case_id": "T2-133",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.242743554354418,
+        "active_treatment": 0.7308194867024098,
+        "continued_surveillance": 0.015389594661709142,
+        "watchful_waiting": 0.011047364281462933
+      }
+    },
+    "T2-134": {
+      "case_id": "T2-134",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.32951215532707345,
+        "active_treatment": 0.6334930835935679,
+        "continued_surveillance": 0.03152212647921722,
+        "watchful_waiting": 0.005472634600141476
+      }
+    },
+    "T2-135": {
+      "case_id": "T2-135",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.05900995913972686,
+        "active_treatment": 0.9403964407965232,
+        "continued_surveillance": 0.00033706642121883863,
+        "watchful_waiting": 0.0002565336425310986
+      }
+    },
+    "T2-136": {
+      "case_id": "T2-136",
+      "task": 2,
+      "decision": "continued_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.029444623516076785,
+        "active_treatment": 0.0003646016679206005,
+        "continued_surveillance": 0.9695051589123999,
+        "watchful_waiting": 0.0006856159036025962
+      }
+    },
+    "T2-137": {
+      "case_id": "T2-137",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.6757566190339727,
+        "active_treatment": 0.020545601288868096,
+        "continued_surveillance": 0.30230559035283194,
+        "watchful_waiting": 0.0013921893243273116
+      }
+    },
+    "T2-138": {
+      "case_id": "T2-138",
+      "task": 2,
+      "decision": "continued_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.06322803681140662,
+        "active_treatment": 0.00026303638094646623,
+        "continued_surveillance": 0.9358653273945855,
+        "watchful_waiting": 0.0006435994130615482
+      }
+    },
+    "T2-139": {
+      "case_id": "T2-139",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.7620919057974697,
+        "active_treatment": 0.14702105889781544,
+        "continued_surveillance": 0.041078960705998785,
+        "watchful_waiting": 0.04980807459871602
+      }
+    },
+    "T2-140": {
+      "case_id": "T2-140",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.03831355262704601,
+        "active_treatment": 0.9611149048051786,
+        "continued_surveillance": 0.0005212183203739764,
+        "watchful_waiting": 5.0324247401238616e-05
+      }
+    },
+    "T2-141": {
+      "case_id": "T2-141",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.5808524604238952,
+        "active_treatment": 0.35365431719994544,
+        "continued_surveillance": 0.02679519953734359,
+        "watchful_waiting": 0.03869802283881573
+      }
+    },
+    "T2-142": {
+      "case_id": "T2-142",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.39064318935346387,
+        "active_treatment": 0.5834612399980895,
+        "continued_surveillance": 0.010631593769640402,
+        "watchful_waiting": 0.015263976878806089
+      }
+    },
+    "T2-143": {
+      "case_id": "T2-143",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.32173658628309626,
+        "active_treatment": 0.4749804210047722,
+        "continued_surveillance": 0.17626870610675066,
+        "watchful_waiting": 0.02701428660538063
+      }
+    },
+    "T2-144": {
+      "case_id": "T2-144",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.038584747231229906,
+        "active_treatment": 0.961142049013164,
+        "continued_surveillance": 0.00022906450772520394,
+        "watchful_waiting": 4.4139247880977265e-05
+      }
+    },
+    "T2-145": {
+      "case_id": "T2-145",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.7577724111088545,
+        "active_treatment": 0.052102693580828655,
+        "continued_surveillance": 0.1064367387115701,
+        "watchful_waiting": 0.08368815659874694
+      }
+    },
+    "T2-146": {
+      "case_id": "T2-146",
+      "task": 2,
+      "decision": "active_treatment",
+      "probabilities": {
+        "active_surveillance": 0.11473354407181324,
+        "active_treatment": 0.6792421946068029,
+        "continued_surveillance": 0.0021613652631618926,
+        "watchful_waiting": 0.2038628960582219
+      }
+    },
+    "T2-147": {
+      "case_id": "T2-147",
+      "task": 2,
+      "decision": "continued_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.013648860771977736,
+        "active_treatment": 3.832390330174341e-05,
+        "continued_surveillance": 0.9845289326441473,
+        "watchful_waiting": 0.0017838826805732487
+      }
+    },
+    "T2-148": {
+      "case_id": "T2-148",
+      "task": 2,
+      "decision": "watchful_waiting",
+      "probabilities": {
+        "active_surveillance": 0.22436171357697368,
+        "active_treatment": 0.03177426924071632,
+        "continued_surveillance": 0.02871665060371173,
+        "watchful_waiting": 0.7151473665785982
+      }
+    },
+    "T2-149": {
+      "case_id": "T2-149",
+      "task": 2,
+      "decision": "continued_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.029196645254471954,
+        "active_treatment": 9.831251213487654e-05,
+        "continued_surveillance": 0.9706200238876944,
+        "watchful_waiting": 8.501834569872928e-05
+      }
+    },
+    "T2-150": {
+      "case_id": "T2-150",
+      "task": 2,
+      "decision": "continued_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.0071924175460679075,
+        "active_treatment": 1.827329641922048e-05,
+        "continued_surveillance": 0.9923907613731209,
+        "watchful_waiting": 0.00039854778439190865
+      }
+    },
+    "T2-151": {
+      "case_id": "T2-151",
+      "task": 2,
+      "decision": "continued_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.06665072795666525,
+        "active_treatment": 8.1893300579745e-05,
+        "continued_surveillance": 0.8802487503471557,
+        "watchful_waiting": 0.05301862839559925
+      }
+    },
+    "T2-152": {
+      "case_id": "T2-152",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.5109883646159155,
+        "active_treatment": 0.024768340540806465,
+        "continued_surveillance": 0.23378880983753453,
+        "watchful_waiting": 0.23045448500574353
+      }
+    },
+    "T2-153": {
+      "case_id": "T2-153",
+      "task": 2,
+      "decision": "active_surveillance",
+      "probabilities": {
+        "active_surveillance": 0.5849533791729914,
+        "active_treatment": 0.03248446546446504,
+        "continued_surveillance": 0.3624709783092403,
+        "watchful_waiting": 0.020091177053303245
+      }
+    }
+  },
+  "task3": {
+    "T3-006": {
+      "case_id": "T3-006",
+      "task": 3,
+      "event": 0,
+      "p_event": 0.04381489543848249,
+      "months_to_recurrence": null
+    },
+    "T3-009": {
+      "case_id": "T3-009",
+      "task": 3,
+      "event": 0,
+      "p_event": 0.04381489543848249,
+      "months_to_recurrence": null
+    }
+  }
+}

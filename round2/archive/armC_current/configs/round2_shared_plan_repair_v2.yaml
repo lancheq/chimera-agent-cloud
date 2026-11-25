@@ -1,0 +1,39 @@
+# Explicit v2 overlay. Keep the original v1 overlay and clinical results intact.
+model:
+  max_retries: 0
+agent:
+  max_model_turns: 5
+  predictor:
+    enabled: false
+    decision_override: false
+    decision_override_tasks: []
+    t1_evidence_features: false
+  form_fill:
+    self_refine: false
+    atomic_check: false
+    max_retries: 3
+  information_access:
+    enabled: true
+    run_id: round2-shared-plan-repair-v2-20261114
+    budget_units: 3
+    max_attempts: 6
+    knowledge_manifest: /home/hedongze/CHIMERA-agent/output/s2_knowledge_snapshot_20261113_v4/manifest.json
+  shared_plan:
+    control_interface_version: 2
+    diagnosis_attempts: 2
+    arm: null
+    max_actions: 6
+    max_policy_turns: 5
+    control_format_retries: 2
+    max_consecutive_failed_pairs: 3
+    context_limit: 16384
+    context_reserve: 128
+    seed: 20261113
+    planner_max_tokens: 1024
+    planner_reasoning_tokens: 512
+    policy_max_tokens: 1024
+    policy_reasoning_tokens: 512
+    diagnosis_max_tokens: 4096
+    diagnosis_reasoning_tokens: 2048
+    form_fill_max_tokens: 4096
+    form_fill_reasoning_tokens: 2048

@@ -1,0 +1,712 @@
+{
+  "task1": [
+    {
+      "case_id": "PT-pseudo_0169468160c6",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "Very High PSA.\nMost likely metastatic",
+      "pred_free_text": "The user wants me to decide whether to recommend a biopsy for this patient.\n\nLet's analyze the provided data:\n- 75-year-old male\n- PSA: 187.0 ng/mL (extremely high)\n- mpMRI: PI-RADS 5, PSAD 3.26\n- Prior biopsy: Positive\n- DRE: Nodus palpable\n- csPCa predicted probability: 0.964853\n\nWait, the task is \"Task 1\" which usually means a biopsy decision. But the prompt says \"Prior biopsy: Positive\". The p"
+    },
+    {
+      "case_id": "PT-pseudo_01b643727538",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "He has a ISUP3 cancer diagnosis already and he should be recommended treatment",
+      "pred_free_text": "The recommendation for repeat biopsy is driven by the PI-RADS 5 lesion and very high PSA density (0.516), which together with rising PSA strongly suggest disease progression or grade upgrade from the prior ISUP GG3 diagnosis."
+    },
+    {
+      "case_id": "PT-pseudo_0615b2bd8504",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Start treating the patent. It does not make sense to not treat this man initially.",
+      "pred_free_text": "Massive PSA velocity (160 ng/mL), PI-RADS 5 lesion with suspected ECE, prior positive biopsy confirming csPCa, and cT3a DRE findings collectively drive the recommendation for re-biopsy to update staging and grade."
+    },
+    {
+      "case_id": "PT-pseudo_075dd468b384",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "There is no information on ISUP in the earlier cancer diagnosis and missing also size of earlier PIRADS 4 lesion",
+      "pred_free_text": "The user wants me to make a biopsy decision for this patient. Let me analyze the data I have:\n\n**Patient Data:**\n- 66-year-old male\n- PSA: 13.2 ng/mL (rising from 10.2 previously, and trend shows 1.6 → 3.2 → 6.5 → 13.2)\n- PI-RADS 4 lesion in left mid-gland peripheral zone (12 x 8 mm focus with restricted diffusion and early enhancement)\n- PSA density: 1.000 ng/mL² (PSA/prostate volume = 13.2/96 = 0"
+    },
+    {
+      "case_id": "PT-pseudo_079636ac5644",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "All depends if the lesion has grown in size since 2024. If stable no biopsy , if increased in size I will do a biopsy.",
+      "pred_free_text": "The decision to biopsy is driven by the combination of a PI-RADS 4 lesion on mpMRI, a significant rise in PSA from 3.5 to 6.8 ng/mL over six months, and a prior history of positive biopsy (ISUP Grade Group 2), which together indicate a high risk of disease progression or grade upgrade requiring tissue sampling."
+    },
+    {
+      "case_id": "PT-pseudo_11345b8a7ab3",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Patient has a verified PCa with PSA 113. Start treatment and do I PSMA-PET for further workup.",
+      "pred_free_text": "The recommendation for biopsy is driven by the markedly elevated PSA (113 ng/mL), PI-RADS 5 MRI lesion, high PSAD (2.61), and palpable DRE nodule, all indicating aggressive disease progression or high-volume cancer requiring immediate tissue sampling."
+    },
+    {
+      "case_id": "PT-pseudo_11fe9c6ca833",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Patient with a clear PCa diagnosis. Do PSMA-PET and start hormontreatment",
+      "pred_free_text": "The decision to biopsy is driven by the extremely high PSA (190 ng/mL), PI-RADS 5 lesion on mpMRI, massively elevated PSAD (>4.0), and a prior positive biopsy with rising PSA trajectory."
+    },
+    {
+      "case_id": "PT-pseudo_175e6ad47991",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "P5 in 79 years old man with earlier negative biopsy. Need to discuss with patient.",
+      "pred_free_text": "The decision to biopsy is driven by the PI-RADS 5 lesion on mpMRI, a markedly elevated PSA density of 0.28 ng/mL² despite large prostate volume, and rapid PSA velocity."
+    },
+    {
+      "case_id": "PT-pseudo_17f110c9e142",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Need to know if the P5 lesion has grown in size. If not no biopsy.",
+      "pred_free_text": "The decision is driven by the PI-RADS 5 MRI finding, PSAD exceeding the 0.15 threshold, a palpable DRE nodule, and rising PSA kinetics, all pointing to high-risk disease requiring confirmation."
+    },
+    {
+      "case_id": "PT-pseudo_1a4e0cf3b927",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Most likely no biopsy . But very rapid growth in size might change the decision.",
+      "pred_free_text": "The recommendation for biopsy is based on the convergence of a PI-RADS 5 lesion, markedly elevated PSA density (0.427), and a prior history of ISUP Grade Group 2 prostate cancer."
+    },
+    {
+      "case_id": "PT-pseudo_2b3ef1d3a505",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Need to know if the lesion has grown or if it is stabile.",
+      "pred_free_text": "The recommendation for biopsy is driven primarily by the PI-RADS 5 lesion and the abnormal DRE nodule, which together strongly suggest clinically significant prostate cancer despite a low PSA density. The rising PSA trend and prior Grade Group 1 history further support targeted sampling to rule out disease progression."
+    },
+    {
+      "case_id": "PT-pseudo_34647958aba3",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Again, man on Active Surveillance. Need initial ISUP and MRI.",
+      "pred_free_text": "Biopsy recommended due to PI-RADS 5 lesion, rising PSA trend, and abnormal DRE nodule. Low PSAD does not outweigh strong MRI findings."
+    },
+    {
+      "case_id": "PT-pseudo_36c92fb424ac",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "P4 lesion in 67 year old patient.",
+      "pred_free_text": "Let me analyze this case systematically.\n\n**Key Clinical Data:**\n- 67-year-old male\n- PSA: 6.0 ng/mL (current)\n- Prior PSA: 5.4 ng/mL, then dropped to 2.5 in Nov 2023, then rose to 1.4 in Jun 2024, now 6.0 in Jan 2025 - this is a concerning trajectory with significant fluctuation\n- mpMRI: PI-RADS 4 lesion (right peripheral zone mid-gland, ~18mm)\n- PSA density: 1.000 ng/mL² (PSA/prostate volume = 6/"
+    },
+    {
+      "case_id": "PT-pseudo_376de00c8131",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "P4 in 52 Y old patient.",
+      "pred_free_text": "Low PSA density (0.09) and large prostate volume (98 mL) strongly suggest benign prostatic hyperplasia as the cause of elevated PSA, outweighing the suspicion from the PI-RADS 4 lesion. Prior negative biopsy supports a conservative approach with MRI surveillance rather than immediate invasive biopsy."
+    },
+    {
+      "case_id": "PT-pseudo_37d8ae9b27f1",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Need to know initial MRI before decision",
+      "pred_free_text": "The decision to proceed with biopsy is driven by the high-risk PI-RADS 4 lesion and rising PSA trend, which override the low PSA density in a patient with prior prostate cancer history."
+    },
+    {
+      "case_id": "PT-pseudo_3b6ea1920967",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Need initial ISUP grade and MRI in men on active surveillance.",
+      "pred_free_text": "The recommendation for biopsy is driven by the patient's history of a prior positive prostate cancer biopsy combined with significant PSA velocity (rising from 2.1 to 6.5 ng/mL) and a high-suspicion PI-RADS 4 lesion on mpMRI, necessitating re-evaluation for disease progression or grade upgrade."
+    },
+    {
+      "case_id": "PT-pseudo_3cc88c81f35a",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Patient with low-risk cancer on active surveillance. Now normal MRI.",
+      "pred_free_text": "Biopsy is recommended due to a palpable nodule on DRE despite PI-RADS 2 MRI. This clinical finding is strongly supported by rapidly rising PSA levels (8.3 ng/mL), high PSA density (0.206), and prior positive biopsy history."
+    },
+    {
+      "case_id": "PT-pseudo_3ceacc9b660b",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Need to know earlier MRI results. If stabile P3 lesion, no biopsy.",
+      "pred_free_text": "The decision to biopsy is driven by the rapid PSA velocity (rising from 1.2 to 6.0 ng/mL in <1 year) and a history of prior positive pathology, which outweighs the equivocal PI-RADS 3 findings."
+    },
+    {
+      "case_id": "PT-pseudo_47c373e230b6",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "New(? -> no old MRI report included) PIRADS 5 and rising PSA makes biopsy necessary",
+      "pred_free_text": "The user wants me to make a biopsy decision for this patient.\n\nLet's review the provided data:\n- 75-year-old male\n- PSA: 10.0 ng/mL (current)\n- Prior PSA: 8.3 ng/mL (in structured record, but trend shows Nov 2022: 9.1, Aug 2023: 2.8, May 2024: 6.3, Feb 2025: 10.0)\n- mpMRI: PI-RADS 5 (left mid-gland peripheral zone, 14 mm focus)\n- PSA density: 0.27 ng/mL²\n- Prior biopsy: Positive\n- csPCa probabilit"
+    },
+    {
+      "case_id": "PT-pseudo_48fb60dfd22f",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "PIRADS 5 needs biopsy",
+      "pred_free_text": "The user wants me to make a biopsy decision for this patient.\n\nLet's review the data provided:\n- Age: 68\n- PSA: 24.0 ng/mL (prior was 16.9, trend shows Sep 2022: 11.8, Dec 2023: 9.8, Feb 2025: 24.0)\n- mpMRI: PI-RADS 5\n- PSA density: 0.986 ng/mL² (very high, > 0.15 threshold)\n- Prior biopsy: None\n- csPCa predicted probability: ~0.86\n\nThe MRI report confirms a PI-RADS 5 lesion in the right mid-perip"
+    },
+    {
+      "case_id": "PT-pseudo_4b950525e6a8",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Patient needs treatment without repeat biopsy as earlier biopsy showed ISUP4",
+      "pred_free_text": "PI-RADS 5 lesion, rapidly rising PSA (19.0 ng/mL), high PSAD (0.37), and prior positive biopsy indicate high-risk disease requiring targeted biopsy for accurate grading."
+    },
+    {
+      "case_id": "PT-pseudo_4c6b2b2bbf94",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "PRADS 4 with low-PSA-density can be followed up, I need results of earlier biopsy to make a definite call",
+      "pred_free_text": "Decision driven by PI-RADS 4 lesion and prior positive biopsy history indicating need to assess for disease progression. Rising PSA trend supports further investigation despite low PSA density attributed to large prostate volume."
+    },
+    {
+      "case_id": "PT-pseudo_4d54f04e26ae",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "New (? -> no earlier MRI report available) PIRADS 4 with high PSA-density needs biopsy",
+      "pred_free_text": "The user is asking for a biopsy decision (Task 1) based on the provided patient case.\n\n**Patient Summary:**\n- **Age:** 66 years old.\n- **PSA:** 34.7 ng/mL (Current), rising from ~5.0 in Feb 2023 to 34.7 in Feb 2025.\n- **Prior Biopsy:** Negative.\n- **mpMRI:** PI-RADS 4 lesion in the right mid-gland peripheral zone.\n- **PSA Density (PSAD):** 0.352 ng/mL² (Prostate volume 99.5 mL).\n- **DRE:** Nodus ("
+    },
+    {
+      "case_id": "PT-pseudo_4edb17f79e46",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "Again earlier MRI report is missing, If new PRADS 4 lesion biopsy is needed as PSA is rising as well",
+      "pred_free_text": "The user wants a biopsy recommendation for this patient.\nLet's analyze the provided data:\n- Age: 54\n- PSA: 9.2 ng/mL (current)\n- Prior PSA trend: May 2023: 8.4, Oct 2023: 2.6, Apr 2024: 3.4, Sep 2024: 4.7, Feb 2025: 9.2\n- Prior biopsy: Negative (May 2023 presumably)\n- mpMRI PI-RADS: 4\n- PSA density: 0.16 ng/mL²\n- Prostate volume: 57 mL\n- csPCa probability: 0.77\n\nI have already retrieved the MRI re"
+    },
+    {
+      "case_id": "PT-pseudo_c9d31197c533",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Advocate for curative treatment while unfavorable intermediate risk pc in young patient without significant comorbidity. IF he is cautious toward curative treatment, repeat biopsy to exclude higher-risk disease.",
+      "pred_free_text": "Biopsy recommended due to PI-RADS 5 lesion, rising PSA kinetics (10.92 ng/mL), palpable nodule on DRE, and prior csPCa diagnosis indicating likely progression requiring staging confirmation."
+    },
+    {
+      "case_id": "PT-pseudo_cce5d47c05dd",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Young patient with elevated PSA (>10), elevated PSA density, PIRADS5 and ISUP GG2 disease -> low threshold for recommending curative treatment. IF patient does not want to go to curative treatment, low threshold for biopsy to exclude higher-risk disease.",
+      "pred_free_text": "Decision driven by PI-RADS 5 lesion, markedly elevated PSA density (0.28), rapid PSA kinetics, and history of prior positive biopsy requiring staging update."
+    },
+    {
+      "case_id": "PT-pseudo_dcd61cf9b443",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "This person should discuss curative treatment (younger patient with palpable, MRI-visible high-risk disease incl Gleason 5 findings). If not curative treatment for any reason, a strategy for medical treatment should be set. Potentially reasonable already now, but could also be delayed (but to the risk of disease progression).",
+      "pred_free_text": "The decision to proceed with biopsy is driven by the patient's known prostate cancer on active surveillance, combined with a significant PSA rise from 3.7 to 8.3 ng/mL, a PI-RADS 5 lesion on MRI, and suspicious DRE findings indicating likely disease progression or grade upgrade."
+    },
+    {
+      "case_id": "PT-pseudo_dd011d696387",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "Intermediate risk disease in 75yr with some comorbidity. No targeted biopsy and unclear timing (when was diagnosis and prev biopsy). Unclear if PIRADS5 was biopsied (limited size lesion, unclear if new lesion while lack of previous MRI). Biopsy to exclude higher-risk disease, should include targeted cores.",
+      "pred_free_text": "The user wants me to decide whether to recommend a biopsy for this patient.\n\nLet's review the provided data:\n- 75-year-old male\n- PSA: 10.0 ng/mL (up from 2.9 in Nov 2023, then 1.2, 4.6, 8.7, now 10.0) -> Rapid rise recently.\n- mpMRI: PI-RADS 5 lesion in left peripheral zone, ~14 mm.\n- PSA density: 0.372 ng/mL² (high, >0.15 threshold)\n- Prior biopsy: Positive (previously confirmed prostate maligna"
+    },
+    {
+      "case_id": "PT-pseudo_e001f4d06517",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "Favourable risk intermediate risk PC in 73 yr old. Unclear when previous MRI+bx was performed. Reasonable to recommend another biopsy approx 2yrs after the first, especially if only 1 bx procedure before. Should probably only be treated if detected high-risk disease.",
+      "pred_free_text": "The user wants me to make a biopsy decision for this patient. Let me analyze the information provided:\n\n**Patient Data:**\n- 73-year-old male\n- PSA: 4.5 ng/mL (rising from 2.7 in Feb 2024)\n- mpMRI: PI-RADS 4 lesion in right mid-gland posterior peripheral zone, ~18mm\n- PSA density: 0.08 ng/mL² (low - prostate volume is large at 56 mL)\n- Prior biopsy: Positive\n- csPCa predicted probability: 0.79\n\n**K"
+    }
+  ],
+  "task2": [
+    {
+      "case_id": "T2-006",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "patient with comorbidity, 3+3 on systematic core, an MRI showing a PIRADS 5 lesion. Stay on active surveillance but repeat Biopsy with target cores before further decisions",
+      "pred_free_text": "The decision is driven by the PI-RADS 5 MRI lesion, markedly elevated PSA density (0.452), rapid PSA trajectory doubling in 9 months, and palpable DRE nodule, all indicating clinically significant disease progression."
+    },
+    {
+      "case_id": "T2-007",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-008",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "Patient with a previous biopsy from 2022. MRI shows a PIRADS 4 lesion. Need confirmatory biopsy",
+      "pred_free_text": "The decision for active treatment is driven by the combination of a PI-RADS 4 lesion indicating high-risk imaging features, a significantly elevated PSA density of 0.2 ng/mL^2 suggesting aggressive disease volume, and an ISUP Grade Group 2 diagnosis in a young (60-year-old) fit patient where surveillance criteria are not met."
+    },
+    {
+      "case_id": "T2-009",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "Patient with comorbidities, low suspicion on MRI. evaluate treatment for LUTS and repeat PSA",
+      "pred_free_text": "Rapid PSA velocity, high PSAD (0.25), and cribriform architecture on biopsy indicate clinically significant disease progression despite initial GG1 classification."
+    },
+    {
+      "case_id": "T2-012",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "Dowgrading from intermediate risk to low risk PCa",
+      "pred_free_text": "The presence of cribriform architecture on biopsy, which upgrades the disease to ISUP GG3 per EAU guidelines, combined with a PI-RADS 4 lesion and rising PSA kinetics, mandates active treatment over surveillance."
+    },
+    {
+      "case_id": "T2-016",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "Patient on Active surveillance with a new MRI showing PIRADS 5. should undergo biopsy",
+      "pred_free_text": "PI-RADS 5 lesion and rapidly rising PSA indicate high-risk disease despite prior low-grade biopsy, warranting active treatment."
+    },
+    {
+      "case_id": "T2-024",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "low volume, favourable intermediate risk PCa.",
+      "pred_free_text": "The decision for active treatment is primarily driven by the presence of cribriform architecture in an ISUP Grade Group 2 tumor, a high csPCa probability of 0.79, and a PI-RADS 4 lesion on mpMRI."
+    },
+    {
+      "case_id": "T2-029",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "continued_surveillance",
+      "gt_reasoning": "Low risk PCa on a confirmatory biopsy",
+      "pred_free_text": "Low PSA density (0.1) strongly suggests benign prostatic hyperplasia rather than cancer progression, despite rising PSA and PI-RADS 4 findings. Prior ISUP Grade Group 1 pathology supports a conservative approach over immediate active treatment."
+    },
+    {
+      "case_id": "T2-030",
+      "gt_decision": "active_treatment",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "Patient with low risk PCa but high probability of upgrade, severe lower urinary tract symptoms, with an IPSS score of 33/35. Discuss radical prostectomy vs active surveillance and treatment for LUTS",
+      "pred_free_text": "Decision driven by significant discordance between high-risk imaging (PI-RADS 5, cT2a) and low-grade histology (ISUP GG1). Rising PSA velocity supports suspicion of sampling error. Conservative management with active surveillance is maintained pending repeat biopsy confirmation to avoid overtreatment of indolent disease."
+    },
+    {
+      "case_id": "T2-031",
+      "gt_decision": "watchful_waiting",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "Patient with 2 negative biopsies. Low PSA, 77 yo",
+      "pred_free_text": "The recommendation for active surveillance is primarily driven by the patient's advanced age (77) and significant comorbidities (COPD, AFib on apixaban), which increase surgical risk. Additionally, the low PSA density (0.08) suggests lower tumor volume despite the ISUP Grade Group 2 diagnosis, supporting a conservative approach."
+    },
+    {
+      "case_id": "T2-032",
+      "gt_decision": "watchful_waiting",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "patient with 2 negative Biopsy, low PSA denisty, continue psa monitoring",
+      "pred_free_text": "The decision for active treatment was driven by the significant PSA rise from 1.3 to 8.8 ng/mL, the presence of a PI-RADS 4 lesion on mpMRI, and the ISUP Grade Group 2 pathology indicating clinically significant disease with progression."
+    },
+    {
+      "case_id": "T2-042",
+      "gt_decision": "continued_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "rising PSA and a new PI-RADS 5 lesion on MRI despite two prior negative biopsy results",
+      "pred_free_text": "High-risk MRI (PI-RADS 5) and elevated PSAD (0.35) strongly suggest csPCa, but two consecutive negative biopsies indicate likely sampling error. Rapid PSA velocity reinforces suspicion. Definitive treatment is contraindicated without histological confirmation; repeat targeted biopsy is mandatory."
+    },
+    {
+      "case_id": "T2-043",
+      "gt_decision": "active_treatment",
+      "pred_decision": "continued_surveillance",
+      "gt_reasoning": "Patient with Severe LUTS, low risk PCa. Discuss continue surveillance and LUTS treatment vs Radical Prostatectomy with nerve sparing",
+      "pred_free_text": "Low PSA density (0.07) and consistent ISUP Grade Group 1 pathology on two biopsies strongly support continued surveillance despite rising PSA trajectory and PI-RADS 4 lesion."
+    },
+    {
+      "case_id": "T2-044",
+      "gt_decision": "continued_surveillance",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "PSA rise (34.7 ng/mL) and PI-RADS 4 lesion, negative biopsy. Treat LUTS",
+      "pred_free_text": "The user wants a treatment recommendation for this patient (Task 2).\n\nLet's analyze the case:\n- Age: 66\n- PSA: 34.7 ng/mL (very high)\n- PI-RADS: 4 lesion in right peripheral zone, mid-gland (12 mm)\n- PSAD: 0.352 ng/mL² (high, >0.15 threshold)\n- Prior biopsy: Negative (ISUP 0)\n- csPCa probability: 0.864\n- Clinical stage: cT1c\n- Symptoms: Severe LUTS (IPSS 29), benign on prior biopsy but discordant "
+    },
+    {
+      "case_id": "T2-048",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "Low risk PCa on a confirmatory biopsy.",
+      "pred_free_text": "The decision to proceed with active treatment is driven by the discordance between human pathology (GG1) and AI prediction (GG4), combined with a PI-RADS 4 lesion and markedly elevated PSAD of 0.338 in a young, fit patient."
+    },
+    {
+      "case_id": "T2-051",
+      "gt_decision": "continued_surveillance",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "NO cancer. PSA 2 years",
+      "pred_free_text": "Let me analyze this case carefully.\n\n**Key clinical data:**\n- 68-year-old male\n- PSA: 0.44 ng/mL (very low)\n- Prior PSA: 0.5 ng/mL (stable, essentially unchanged)\n- PI-RADS 3 lesion in right mid-peripheral zone (equivocal)\n- PSA density: 0.015 ng/mL² (extremely low - well below the 0.15 threshold)\n- Prostate volume: 29 mL (small)\n- Prior biopsy: Negative (two negative biopsies, both ISUP GG 0)\n- cs"
+    },
+    {
+      "case_id": "T2-055",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "ISUP1 in 69 year old patient",
+      "pred_free_text": "The decision for active treatment was driven by the rapidly rising PSA trajectory, a PI-RADS 5 lesion on mpMRI indicating high-risk disease, and significant discordance with prior low-grade biopsy results suggesting potential upstaging."
+    },
+    {
+      "case_id": "T2-056",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "ISUP 1 in 66 year old man",
+      "pred_free_text": "Rapid PSA velocity (1.1 to 5.8 ng/mL in 5 months), PI-RADS 4 lesion, and elevated PSA density (0.192) strongly suggest clinically significant prostate cancer (ISUP >= 2) despite prior GG 1 biopsy, warranting active treatment."
+    },
+    {
+      "case_id": "T2-059",
+      "gt_decision": "continued_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "Rebiopsy",
+      "pred_free_text": "Markedly elevated PSA of 35 ng/mL, PI-RADS 5 MRI lesion, and high PSA density of 0.43 strongly indicate clinically significant prostate cancer despite prior negative biopsy, warranting immediate active treatment."
+    },
+    {
+      "case_id": "T2-060",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "continued_surveillance",
+      "gt_reasoning": "ISUP 1 in 62 year old man",
+      "pred_free_text": "The decision is driven by the discordance between high-risk clinical features (PSA velocity 3.12 ng/mL/yr, PI-RADS 4 lesion, DRE nodule) and low-risk histology (ISUP GG1 on two biopsies). Guidelines mandate histological confirmation of grade progression before switching from AS to active treatment. Therefore, continued surveillance with a plan for targeted re-biopsy is the safest course."
+    },
+    {
+      "case_id": "T2-061",
+      "gt_decision": "active_treatment",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "ISUP 4 in a young patient",
+      "pred_free_text": "The user wants a treatment recommendation for this patient.\nLet's analyze the case:\n- 62-year-old male\n- PSA: 6.4 ng/mL (rising from 4.0 in Aug 2023)\n- mpMRI: PI-RADS 4, left peripheral zone base lesion, 12mm. No ECE/SVI. PSAD 0.154.\n- Prior biopsy (Jun 2024): Gleason 3+5 = ISUP Grade Group 4.\n- DRE: Suspicious nodule. cT1c.\n- Clinical stage: cT1c\n- csPCa probability: 0.805\n- Task: Treatment decis"
+    },
+    {
+      "case_id": "T2-108",
+      "gt_decision": "continued_surveillance",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "Active surveillance improves QoL - I would prioritise it until progression",
+      "pred_free_text": "The decision for active surveillance is driven by the confirmed ISUP Grade Group 1 pathology, very low PSA density (0.1), reassuring PI-RADS 2 MRI findings, and stable biopsy results over time despite a modest PSA rise."
+    },
+    {
+      "case_id": "T2-111",
+      "gt_decision": "active_treatment",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "Active surveillance could be considered after careful shared decision-making\nHowever the life expectancy of the patient is quite long (no comorbidity) and therefore shared decision-making regarding prostatectomy vs radiation therapy would be important.",
+      "pred_free_text": "Low PSA density (0.09) and confirmed ISUP Grade Group 2 pathology strongly support active surveillance, despite the rising PSA and PI-RADS 4 lesion which warrant close monitoring."
+    }
+  ],
+  "task3": [
+    {
+      "case_id": "T3-003",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 31.4,
+      "pred_months": 24.0
+    },
+    {
+      "case_id": "T3-004",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 63.1,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-005",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 57.1,
+      "pred_months": 18.0
+    },
+    {
+      "case_id": "T3-007",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 18.1,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-008",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 35.5,
+      "pred_months": 18.0
+    },
+    {
+      "case_id": "T3-010",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 22.6,
+      "pred_months": 24.0
+    },
+    {
+      "case_id": "T3-011",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 56.4,
+      "pred_months": 6.0
+    },
+    {
+      "case_id": "T3-012",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 36.3,
+      "pred_months": 18.0
+    },
+    {
+      "case_id": "T3-013",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 37,
+      "pred_months": 6.0
+    },
+    {
+      "case_id": "T3-014",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 62.5,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-015",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 47.1,
+      "pred_months": 36.0
+    },
+    {
+      "case_id": "T3-016",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 22.8,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-019",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 37.9,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-020",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 61.5,
+      "pred_months": 24.0
+    },
+    {
+      "case_id": "T3-022",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 59,
+      "pred_months": 24.0
+    },
+    {
+      "case_id": "T3-024",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 60.6,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-026",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 39.5,
+      "pred_months": 24.0
+    },
+    {
+      "case_id": "T3-028",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 38,
+      "pred_months": 24.0
+    },
+    {
+      "case_id": "T3-029",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 60.9,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-030",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 38.5,
+      "pred_months": 18.0
+    },
+    {
+      "case_id": "T3-031",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 57.8,
+      "pred_months": 6.0
+    },
+    {
+      "case_id": "T3-034",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 54.1,
+      "pred_months": 30.0
+    },
+    {
+      "case_id": "T3-035",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 47.7,
+      "pred_months": 24.0
+    },
+    {
+      "case_id": "T3-037",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 61.7,
+      "pred_months": 18.0
+    },
+    {
+      "case_id": "T3-038",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 48.9,
+      "pred_months": 24.0
+    },
+    {
+      "case_id": "T3-040",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 35.4,
+      "pred_months": 18.0
+    },
+    {
+      "case_id": "T3-041",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 23.7,
+      "pred_months": 6.0
+    },
+    {
+      "case_id": "T3-042",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 55.4,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-043",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 59.9,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-044",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 110,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-046",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 52.4,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-048",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 42.3,
+      "pred_months": 24.0
+    },
+    {
+      "case_id": "T3-049",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 62.6,
+      "pred_months": 24.0
+    },
+    {
+      "case_id": "T3-051",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 49.6,
+      "pred_months": 24.0
+    },
+    {
+      "case_id": "T3-054",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 48.5,
+      "pred_months": 24.0
+    },
+    {
+      "case_id": "T3-055",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 63.1,
+      "pred_months": 24.0
+    },
+    {
+      "case_id": "T3-056",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 43.1,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-058",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 35.2,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-061",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 80.2,
+      "pred_months": 18.0
+    },
+    {
+      "case_id": "T3-062",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 38,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-063",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 36.4,
+      "pred_months": 6.0
+    },
+    {
+      "case_id": "T3-064",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 38.4,
+      "pred_months": 18.0
+    },
+    {
+      "case_id": "T3-065",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 37.8,
+      "pred_months": 30.0
+    },
+    {
+      "case_id": "T3-066",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 4.8,
+      "pred_months": 6.0
+    },
+    {
+      "case_id": "T3-068",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 67.6,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-069",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 56.1,
+      "pred_months": 24.0
+    },
+    {
+      "case_id": "T3-072",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 60.8,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-073",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 61.1,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-074",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 62.3,
+      "pred_months": 18.0
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+#!/bin/bash
+# ===========================================================================
+# 启动 Qwen3.6-35B-A3B Q4 LLM 服务 (llama.cpp OpenAI 兼容接口)
+#
+# 对应配置: configs/experiment/qwen_local.yaml
+#   model.provider = openai
+#   model.base_url = http://127.0.0.1:8765/v1
+#   model.api_key_env = LLAMA_API_KEY
+#
+# 用法:
+#   前台运行:  bash scripts/start_qwen_server.sh
+#   后台运行:  nohup bash scripts/start_qwen_server.sh > qwen_server.log 2>&1 &
+#   停止服务:  pkill -f llama_server
+#   健康检查:  curl http://127.0.0.1:8765/v1/models
+# ===========================================================================
+set -e
+
+# 定位项目目录 (脚本在 scripts/ 下)
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+PROJECT_DIR=$(dirname "$SCRIPT_DIR")
+cd "$PROJECT_DIR"
+
+MODEL_FILE="model/Qwen3.6-35B-A3B-UD-Q4_K_M.gguf"
+PORT="${QWEN_PORT:-8765}"
+N_GPU_LAYERS="${N_GPU_LAYERS:--1}"   # -1 = 全部层进 GPU (MoE 模型, 23GB 显存)
+
+if [ ! -f "$MODEL_FILE" ]; then
+    echo "错误: 模型不存在: $MODEL_FILE"
+    echo "请先运行部署脚本下载: bash deploy_cloud.sh (或手动下载 unsloth/Qwen3.6-35B-A3B-GGUF 的 UD-Q4_K_M.gguf)"
+    exit 1
+fi
+
+# 激活虚拟环境
+if [ -f .venv/bin/activate ]; then
+    source .venv/bin/activate
+fi
+
+# 找 llama-server 可执行文件 (优先 llama_cpp 自带 CLI, 其次系统 PATH)
+LLAMA_BIN=""
+if command -v llama-server &> /dev/null; then
+    LLAMA_BIN="llama-server"
+elif [ -f .venv/bin/llama-server ]; then
+    LLAMA_BIN=".venv/bin/llama-server"
+elif command -v llama_server &> /dev/null; then
+    LLAMA_BIN="llama_server"
+fi
+
+echo "=== 启动 Qwen3.6-35B-A3B Q4 ==="
+echo "模型: $MODEL_FILE"
+echo "端口: $PORT"
+echo ""
+
+if [ -n "$LLAMA_BIN" ]; then
+    echo "使用 llama-server 二进制: $LLAMA_BIN"
+    exec "$LLAMA_BIN" \
+        -m "$MODEL_FILE" \
+        --host 127.0.0.1 \
+        --port "$PORT" \
+        -ngl "$N_GPU_LAYERS" \
+        --ctx-size 16384 \
+        --parallel 1 \
+        --api-key no-key
+else
+    echo "未找到 llama-server, 回退用 llama-cpp-python 的 OpenAI 兼容服务..."
+    # llama-cpp-python 需要完整 API key 处理, 设置一个占位
+    export LLAMA_API_KEY="${LLAMA_API_KEY:-no-key}"
+    exec python -m llama_cpp.server \
+        --model "$MODEL_FILE" \
+        --host 127.0.0.1 \
+        --port "$PORT" \
+        --n_gpu_layers "$N_GPU_LAYERS" \
+        --n_ctx 16384
+fi

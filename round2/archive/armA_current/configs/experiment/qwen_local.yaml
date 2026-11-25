@@ -1,0 +1,43 @@
+# @package _global_
+# =============================================================================
+# Experiment overlay — Qwen 3.6 35B-A3B served via llama.cpp's OpenAI server.
+#
+# Demonstrates that the orchestration is provider-neutral: any
+# OpenAI-compatible HTTP endpoint can stand in for the in-process vLLM
+# backend. Start a llama.cpp server somewhere reachable, then:
+#
+#     make run RUN_ARGS="+experiment=qwen_local agent.limit=10"
+#
+# Bearer token is read from $LLAMA_API_KEY (any non-empty string for
+# llama.cpp). Falls back to "no-key" when unset.
+#
+# Thinking traces:
+#   We KEEP Qwen's <think> reasoning enabled. llama.cpp emits the chain of
+#   thought into a separate `reasoning_content` field, which
+#   langchain_openai surfaces on AIMessage.additional_kwargs. The ReAct
+#   router only inspects `tool_calls`, so the loop keeps working; the
+#   trace is captured when persisting predictions in run.py.
+# =============================================================================
+
+model:
+  provider: openai
+  # llama.cpp echoes whatever name is sent — it only serves whatever single
+  # GGUF was loaded — but we put the basename here for observability.
+  model_id: Qwen3.6-35B-A3B-UD-Q4_K_M.gguf
+  base_url: http://127.0.0.1:8765/v1
+  api_key_env: LLAMA_API_KEY
+  request_timeout: 600
+  # Cap thinking at 4k tokens per call. llama-server enforces this via a
+  # soft end-of-thinking injection after the budget is exceeded — the
+  # model will wrap up its <think> block within ~10% of this number,
+  # leaving the rest of `max_new_tokens` for the actual answer + tool
+  # calls. -1 = unrestricted; 0 = disable thinking entirely (same effect
+  # as `chat_template_kwargs.enable_thinking: false`).
+  extra_body:
+    reasoning_budget_tokens: 4096
+
+generation:
+  temperature: 0.3
+  # Big budget so thinking + final answer fit in one response.
+  max_new_tokens: 8192
+  top_p: 0.95

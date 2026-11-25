@@ -1,0 +1,31 @@
+# @package _global_
+# =============================================================================
+# Container experiment overlay — Qwen3.6-35B-A3B via embedded llama_cpp.server
+# (Grand Challenge container path, 用户已拍板「方案 1」).
+#
+# 容器推理路径（方案 1）：
+#   docker/start_server.sh 启动内置 llama_cpp.server（127.0.0.1:8765）
+#   → 就绪后 exec python3 inference.py
+#   → inference.py 的 config 用本 overlay：provider=openai 指向 localhost:8765
+#
+# 注意：
+#   - provider=openai：tool_parser 仅 vLLM 用，openai 路径不需要 → 不设
+#   - n_ctx=16384 由 start_server.sh 的 --n_ctx 控制（不在此配置）
+#   - model_id 仅可观测性标识（llama.cpp 回显原样）
+#   - reasoning_budget_tokens=4096 与本地 qwen_local.yaml 对齐，
+#     防 thinking 耗尽 max_new_tokens 导致 JSON 截断
+# =============================================================================
+
+model:
+  provider: openai
+  model_id: Qwen3.6-35B-A3B-UD-Q4_K_M.gguf
+  base_url: http://127.0.0.1:8765/v1
+  api_key_env: LLAMA_API_KEY
+  request_timeout: 600
+  extra_body:
+    reasoning_budget_tokens: 4096
+
+generation:
+  temperature: 0.3
+  max_new_tokens: 8192
+  top_p: 0.95

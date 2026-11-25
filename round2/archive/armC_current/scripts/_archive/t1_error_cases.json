@@ -1,0 +1,1524 @@
+{
+  "meta": {
+    "task": "T1 L1 offline audit",
+    "date": "2026-08-29",
+    "scope": "read-only: test/output.final_20260826/task1, data/task1/agent_input, test/output.ablation_A_atomic_20260829/task1, src/",
+    "inference": 0,
+    "source_run": "output.final_20260826 (0827 全量 91 case, 纯 LLM 无 self_refine/atomic_check)",
+    "note_decision_errors_json": "scripts/decision_errors.json 为旧版(lightweight_0826)误差集 23 条, 与 0827 final 29 条不符, 本文件以 final run 为准"
+  },
+  "confusion_matrix": {
+    "TP": 46,
+    "FN": 10,
+    "FP": 19,
+    "TN": 16,
+    "total": 91,
+    "macro_f1": 0.6425,
+    "f1_yes": 0.7603,
+    "f1_no": 0.5246,
+    "no_recall": 0.4571,
+    "accuracy": 0.6813,
+    "consistency_with_local": "一致: TP=46/FN=10/FP=19/TN=16, macro F1 0.642, no recall 45.7%",
+    "official_report": "scripts/eval_train_gt_report_final_20260827.md: 62/91=68.1%, macro F1 0.642"
+  },
+  "fp_cases": [
+    {
+      "case_id": "PT-pseudo_01b643727538",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "clear",
+      "feats": {
+        "psa": 9.3,
+        "age": 71,
+        "pirads": "5",
+        "psad": 0.516,
+        "psav": -0.41,
+        "vol": 18.03,
+        "dre": "Normal",
+        "bx": "Positive",
+        "cspca": 0.85247576,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "He has a ISUP3 cancer diagnosis already and he should be recommended treatment",
+      "free_text": "The recommendation for repeat biopsy is driven by the PI-RADS 5 lesion and very high PSA density (0.516), which together with rising PSA strongly suggest disease progression or grade upgrade from the prior ISUP GG3 diagnosis.",
+      "cal_phrases": []
+    },
+    {
+      "case_id": "PT-pseudo_0615b2bd8504",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "clear",
+      "feats": {
+        "psa": 160.0,
+        "age": 63,
+        "pirads": "5",
+        "psad": 2.635,
+        "psav": 35.73,
+        "vol": 60.71,
+        "dre": "Abnormal",
+        "bx": "Positive",
+        "cspca": 0.95889634,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Start treating the patent. It does not make sense to not treat this man initially.",
+      "free_text": "Massive PSA velocity (160 ng/mL), PI-RADS 5 lesion with suspected ECE, prior positive biopsy confirming csPCa, and cT3a DRE findings collectively drive the recommendation for re-biopsy to update staging and grade.",
+      "cal_phrases": []
+    },
+    {
+      "case_id": "PT-pseudo_079636ac5644",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "clear",
+      "feats": {
+        "psa": 6.8,
+        "age": 62,
+        "pirads": "4",
+        "psad": 0.2,
+        "psav": 1.2,
+        "vol": 36.0,
+        "dre": "Normal",
+        "bx": "Positive",
+        "cspca": 0.82952833,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "All depends if the lesion has grown in size since 2024. If stable no biopsy , if increased in size I will do a biopsy.",
+      "free_text": "The decision to biopsy is driven by the combination of a PI-RADS 4 lesion on mpMRI, a significant rise in PSA from 3.5 to 6.8 ng/mL over six months, and a prior history of positive biopsy (ISUP Grade Group 2), which together indicate a high risk of disease progression or grade upgrade requiring tissue sampling.",
+      "cal_phrases": []
+    },
+    {
+      "case_id": "PT-pseudo_11345b8a7ab3",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "clear",
+      "feats": {
+        "psa": 113.0,
+        "age": 67,
+        "pirads": "5",
+        "psad": 2.61,
+        "psav": 13.27,
+        "vol": 43.0,
+        "dre": "Nodus",
+        "bx": "Positive",
+        "cspca": 0.94776064,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Patient has a verified PCa with PSA 113. Start treatment and do I PSMA-PET for further workup.",
+      "free_text": "The recommendation for biopsy is driven by the markedly elevated PSA (113 ng/mL), PI-RADS 5 MRI lesion, high PSAD (2.61), and palpable DRE nodule, all indicating aggressive disease progression or high-volume cancer requiring immediate tissue sampling.",
+      "cal_phrases": []
+    },
+    {
+      "case_id": "PT-pseudo_11fe9c6ca833",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "clear",
+      "feats": {
+        "psa": 190.0,
+        "age": 66,
+        "pirads": "5",
+        "psad": 4.097,
+        "psav": 41.57,
+        "vol": 46.38,
+        "dre": "Nodus",
+        "bx": "Positive",
+        "cspca": 0.9718793,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Patient with a clear PCa diagnosis. Do PSMA-PET and start hormontreatment",
+      "free_text": "The decision to biopsy is driven by the extremely high PSA (190 ng/mL), PI-RADS 5 lesion on mpMRI, massively elevated PSAD (>4.0), and a prior positive biopsy with rising PSA trajectory.",
+      "cal_phrases": []
+    },
+    {
+      "case_id": "PT-pseudo_175e6ad47991",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "clear",
+      "feats": {
+        "psa": 28.0,
+        "age": 79,
+        "pirads": "5",
+        "psad": 0.28,
+        "psav": 2.75,
+        "vol": 100.0,
+        "dre": "Normal",
+        "bx": "Negative",
+        "cspca": 0.3807473,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "P5 in 79 years old man with earlier negative biopsy. Need to discuss with patient.",
+      "free_text": "The decision to biopsy is driven by the PI-RADS 5 lesion on mpMRI, a markedly elevated PSA density of 0.28 ng/mL² despite large prostate volume, and rapid PSA velocity.",
+      "cal_phrases": []
+    },
+    {
+      "case_id": "PT-pseudo_17f110c9e142",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "clear",
+      "feats": {
+        "psa": 6.9,
+        "age": 67,
+        "pirads": "5",
+        "psad": 0.171,
+        "psav": 0.72,
+        "vol": 40.33,
+        "dre": "Nodus",
+        "bx": "Positive",
+        "cspca": 0.8314881,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Need to know if the P5 lesion has grown in size. If not no biopsy.",
+      "free_text": "The decision is driven by the PI-RADS 5 MRI finding, PSAD exceeding the 0.15 threshold, a palpable DRE nodule, and rising PSA kinetics, all pointing to high-risk disease requiring confirmation.",
+      "cal_phrases": []
+    },
+    {
+      "case_id": "PT-pseudo_1a4e0cf3b927",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "clear",
+      "feats": {
+        "psa": 7.0,
+        "age": 74,
+        "pirads": "5",
+        "psad": 0.427,
+        "psav": 1.15,
+        "vol": 16.4,
+        "dre": "Nodus",
+        "bx": "Positive",
+        "cspca": 0.8631027,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Most likely no biopsy . But very rapid growth in size might change the decision.",
+      "free_text": "The recommendation for biopsy is based on the convergence of a PI-RADS 5 lesion, markedly elevated PSA density (0.427), and a prior history of ISUP Grade Group 2 prostate cancer.",
+      "cal_phrases": []
+    },
+    {
+      "case_id": "PT-pseudo_2b3ef1d3a505",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "borderline",
+      "feats": {
+        "psa": 4.2,
+        "age": 67,
+        "pirads": "5",
+        "psad": 0.06,
+        "psav": 0.66,
+        "vol": 69.0,
+        "dre": "Nodus",
+        "bx": "Positive",
+        "cspca": 0.81166416,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Need to know if the lesion has grown or if it is stabile.",
+      "free_text": "The recommendation for biopsy is driven primarily by the PI-RADS 5 lesion and the abnormal DRE nodule, which together strongly suggest clinically significant prostate cancer despite a low PSA density. The rising PSA trend and prior Grade Group 1 history further support targeted sampling to rule out disease progression.",
+      "cal_phrases": [
+        "low_psad"
+      ]
+    },
+    {
+      "case_id": "PT-pseudo_34647958aba3",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "clear",
+      "feats": {
+        "psa": 7.6,
+        "age": 65,
+        "pirads": "5",
+        "psad": 0.121,
+        "psav": 2.45,
+        "vol": 63.0,
+        "dre": "Nodus",
+        "bx": "Positive",
+        "cspca": 0.0,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Again, man on Active Surveillance. Need initial ISUP and MRI.",
+      "free_text": "Biopsy recommended due to PI-RADS 5 lesion, rising PSA trend, and abnormal DRE nodule. Low PSAD does not outweigh strong MRI findings.",
+      "cal_phrases": []
+    },
+    {
+      "case_id": "PT-pseudo_37d8ae9b27f1",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "borderline",
+      "feats": {
+        "psa": 4.8,
+        "age": 67,
+        "pirads": "4",
+        "psad": 0.053,
+        "psav": 0.39,
+        "vol": 90.82,
+        "dre": "Normal",
+        "bx": "Positive",
+        "cspca": 0.46945655,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Need to know initial MRI before decision",
+      "free_text": "The decision to proceed with biopsy is driven by the high-risk PI-RADS 4 lesion and rising PSA trend, which override the low PSA density in a patient with prior prostate cancer history.",
+      "cal_phrases": [
+        "low_psad"
+      ]
+    },
+    {
+      "case_id": "PT-pseudo_3b6ea1920967",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "clear",
+      "feats": {
+        "psa": 6.5,
+        "age": 64,
+        "pirads": "4",
+        "psad": 0.11,
+        "psav": 1.22,
+        "vol": 59.14,
+        "dre": "Normal",
+        "bx": "Positive",
+        "cspca": 0.7465537,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Need initial ISUP grade and MRI in men on active surveillance.",
+      "free_text": "The recommendation for biopsy is driven by the patient's history of a prior positive prostate cancer biopsy combined with significant PSA velocity (rising from 2.1 to 6.5 ng/mL) and a high-suspicion PI-RADS 4 lesion on mpMRI, necessitating re-evaluation for disease progression or grade upgrade.",
+      "cal_phrases": []
+    },
+    {
+      "case_id": "PT-pseudo_3cc88c81f35a",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "clear",
+      "feats": {
+        "psa": 8.3,
+        "age": 66,
+        "pirads": "2",
+        "psad": 0.206,
+        "psav": 0.78,
+        "vol": 40.2,
+        "dre": "Nodus",
+        "bx": "Positive",
+        "cspca": 0.69907415,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Patient with low-risk cancer on active surveillance. Now normal MRI.",
+      "free_text": "Biopsy is recommended due to a palpable nodule on DRE despite PI-RADS 2 MRI. This clinical finding is strongly supported by rapidly rising PSA levels (8.3 ng/mL), high PSA density (0.206), and prior positive biopsy history.",
+      "cal_phrases": []
+    },
+    {
+      "case_id": "PT-pseudo_3ceacc9b660b",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "borderline",
+      "feats": {
+        "psa": 6.0,
+        "age": 58,
+        "pirads": "3",
+        "psad": 0.13,
+        "psav": 0.34,
+        "vol": 49.0,
+        "dre": "Normal",
+        "bx": "Positive",
+        "cspca": 0.7948016,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Need to know earlier MRI results. If stabile P3 lesion, no biopsy.",
+      "free_text": "The decision to biopsy is driven by the rapid PSA velocity (rising from 1.2 to 6.0 ng/mL in <1 year) and a history of prior positive pathology, which outweighs the equivocal PI-RADS 3 findings.",
+      "cal_phrases": [
+        "equivocal"
+      ]
+    },
+    {
+      "case_id": "PT-pseudo_4b950525e6a8",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "clear",
+      "feats": {
+        "psa": 19.0,
+        "age": 65,
+        "pirads": "5",
+        "psad": 0.37,
+        "psav": 2.0,
+        "vol": 51.0,
+        "dre": "Normal",
+        "bx": "Positive",
+        "cspca": 0.88825184,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Patient needs treatment without repeat biopsy as earlier biopsy showed ISUP4",
+      "free_text": "PI-RADS 5 lesion, rapidly rising PSA (19.0 ng/mL), high PSAD (0.37), and prior positive biopsy indicate high-risk disease requiring targeted biopsy for accurate grading.",
+      "cal_phrases": []
+    },
+    {
+      "case_id": "PT-pseudo_4c6b2b2bbf94",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "borderline",
+      "feats": {
+        "psa": 4.7,
+        "age": 59,
+        "pirads": "4",
+        "psad": 0.07,
+        "psav": 1.47,
+        "vol": 56.0,
+        "dre": "Normal",
+        "bx": "Positive",
+        "cspca": 0.78553134,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "PRADS 4 with low-PSA-density can be followed up, I need results of earlier biopsy to make a definite call",
+      "free_text": "Decision driven by PI-RADS 4 lesion and prior positive biopsy history indicating need to assess for disease progression. Rising PSA trend supports further investigation despite low PSA density attributed to large prostate volume.",
+      "cal_phrases": [
+        "low_psad"
+      ]
+    },
+    {
+      "case_id": "PT-pseudo_c9d31197c533",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "clear",
+      "feats": {
+        "psa": 10.92,
+        "age": 61,
+        "pirads": "5",
+        "psad": 0.26,
+        "psav": 1.16,
+        "vol": 42.0,
+        "dre": "Nodus",
+        "bx": "Positive",
+        "cspca": 0.8727174,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Advocate for curative treatment while unfavorable intermediate risk pc in young patient without significant comorbidity. IF he is cautious toward curative treatment, repeat biopsy to exclude higher-risk disease.",
+      "free_text": "Biopsy recommended due to PI-RADS 5 lesion, rising PSA kinetics (10.92 ng/mL), palpable nodule on DRE, and prior csPCa diagnosis indicating likely progression requiring staging confirmation.",
+      "cal_phrases": []
+    },
+    {
+      "case_id": "PT-pseudo_cce5d47c05dd",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "clear",
+      "feats": {
+        "psa": 12.0,
+        "age": 61,
+        "pirads": "5",
+        "psad": 0.28,
+        "psav": 3.98,
+        "vol": 42.0,
+        "dre": "Normal",
+        "bx": "Positive",
+        "cspca": 0.8442586,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Young patient with elevated PSA (>10), elevated PSA density, PIRADS5 and ISUP GG2 disease -> low threshold for recommending curative treatment. IF patient does not want to go to curative treatment, low threshold for biopsy to exclude higher-risk disease.",
+      "free_text": "Decision driven by PI-RADS 5 lesion, markedly elevated PSA density (0.28), rapid PSA kinetics, and history of prior positive biopsy requiring staging update.",
+      "cal_phrases": []
+    },
+    {
+      "case_id": "PT-pseudo_dcd61cf9b443",
+      "gt": "no",
+      "pred": "yes",
+      "conf": "clear",
+      "feats": {
+        "psa": 8.3,
+        "age": 66,
+        "pirads": "5",
+        "psad": 0.215,
+        "psav": 1.64,
+        "vol": 38.54,
+        "dre": "Suspicious",
+        "bx": "Positive",
+        "cspca": 0.86351734,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "This person should discuss curative treatment (younger patient with palpable, MRI-visible high-risk disease incl Gleason 5 findings). If not curative treatment for any reason, a strategy for medical treatment should be set. Potentially reasonable already now, but could also be delayed (but to the risk of disease progression).",
+      "free_text": "The decision to proceed with biopsy is driven by the patient's known prostate cancer on active surveillance, combined with a significant PSA rise from 3.7 to 8.3 ng/mL, a PI-RADS 5 lesion on MRI, and suspicious DRE findings indicating likely disease progression or grade upgrade.",
+      "cal_phrases": [
+        "surveillance"
+      ]
+    }
+  ],
+  "fn_cases": [
+    {
+      "case_id": "PT-pseudo_0169468160c6",
+      "gt": "yes",
+      "pred": "no",
+      "conf": "uncertain",
+      "feats": {
+        "psa": 187.0,
+        "age": 75,
+        "pirads": "5",
+        "psad": 3.26,
+        "psav": 38.28,
+        "vol": 57.28,
+        "dre": "Nodus",
+        "bx": "Positive",
+        "cspca": 0.964853,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Very High PSA.\nMost likely metastatic",
+      "free_text": "The user wants me to decide whether to recommend a biopsy for this patient.\n\nLet's analyze the provided data:\n- 75-year-old male\n- PSA: 187.0 ng/mL (extremely high)\n- mpMRI: PI-RADS 5, PSAD 3.26\n- Prior biopsy: Positive\n- DRE: Nodus palpable\n- csPCa predicted probability: 0.964853\n\nWait, the task is \"Task 1\" which usually means a biopsy decision. But the prompt says \"Prior biopsy: Positive\". The p",
+      "cal_phrases": [],
+      "think_phrases": [
+        "wait",
+        "let_me",
+        "task_is"
+      ]
+    },
+    {
+      "case_id": "PT-pseudo_075dd468b384",
+      "gt": "yes",
+      "pred": "no",
+      "conf": "uncertain",
+      "feats": {
+        "psa": 13.2,
+        "age": 66,
+        "pirads": "4",
+        "psad": 0.14,
+        "psav": 2.7,
+        "vol": 96.0,
+        "dre": "Nodus",
+        "bx": "Positive",
+        "cspca": 0.6351894,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "There is no information on ISUP in the earlier cancer diagnosis and missing also size of earlier PIRADS 4 lesion",
+      "free_text": "The user wants me to make a biopsy decision for this patient. Let me analyze the data I have:\n\n**Patient Data:**\n- 66-year-old male\n- PSA: 13.2 ng/mL (rising from 10.2 previously, and trend shows 1.6 → 3.2 → 6.5 → 13.2)\n- PI-RADS 4 lesion in left mid-gland peripheral zone (12 x 8 mm focus with restricted diffusion and early enhancement)\n- PSA density: 1.000 ng/mL² (PSA/prostate volume = 13.2/96 = 0",
+      "cal_phrases": [],
+      "think_phrases": [
+        "let_me",
+        "task_is"
+      ]
+    },
+    {
+      "case_id": "PT-pseudo_36c92fb424ac",
+      "gt": "yes",
+      "pred": "no",
+      "conf": "uncertain",
+      "feats": {
+        "psa": 6.0,
+        "age": 67,
+        "pirads": "4",
+        "psad": 0.08,
+        "psav": 1.32,
+        "vol": 79.0,
+        "dre": "Normal",
+        "bx": "Negative",
+        "cspca": 0.7697653,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "P4 lesion in 67 year old patient.",
+      "free_text": "Let me analyze this case systematically.\n\n**Key Clinical Data:**\n- 67-year-old male\n- PSA: 6.0 ng/mL (current)\n- Prior PSA: 5.4 ng/mL, then dropped to 2.5 in Nov 2023, then rose to 1.4 in Jun 2024, now 6.0 in Jan 2025 - this is a concerning trajectory with significant fluctuation\n- mpMRI: PI-RADS 4 lesion (right peripheral zone mid-gland, ~18mm)\n- PSA density: 1.000 ng/mL² (PSA/prostate volume = 6/",
+      "cal_phrases": [],
+      "think_phrases": [
+        "let_me"
+      ]
+    },
+    {
+      "case_id": "PT-pseudo_376de00c8131",
+      "gt": "yes",
+      "pred": "no",
+      "conf": "uncertain",
+      "feats": {
+        "psa": 8.8,
+        "age": 52,
+        "pirads": "4",
+        "psad": 0.09,
+        "psav": 0.65,
+        "vol": 98.0,
+        "dre": "Normal",
+        "bx": "Negative",
+        "cspca": 0.61692226,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "P4 in 52 Y old patient.",
+      "free_text": "Low PSA density (0.09) and large prostate volume (98 mL) strongly suggest benign prostatic hyperplasia as the cause of elevated PSA, outweighing the suspicion from the PI-RADS 4 lesion. Prior negative biopsy supports a conservative approach with MRI surveillance rather than immediate invasive biopsy.",
+      "cal_phrases": [
+        "prior_neg",
+        "conservative",
+        "surveillance",
+        "bph",
+        "low_psad"
+      ],
+      "think_phrases": []
+    },
+    {
+      "case_id": "PT-pseudo_47c373e230b6",
+      "gt": "yes",
+      "pred": "no",
+      "conf": "uncertain",
+      "feats": {
+        "psa": 10.0,
+        "age": 75,
+        "pirads": "5",
+        "psad": 0.27,
+        "psav": 1.78,
+        "vol": 41.0,
+        "dre": "Normal",
+        "bx": "Positive",
+        "cspca": 0.7478973,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "New(? -> no old MRI report included) PIRADS 5 and rising PSA makes biopsy necessary",
+      "free_text": "The user wants me to make a biopsy decision for this patient.\n\nLet's review the provided data:\n- 75-year-old male\n- PSA: 10.0 ng/mL (current)\n- Prior PSA: 8.3 ng/mL (in structured record, but trend shows Nov 2022: 9.1, Aug 2023: 2.8, May 2024: 6.3, Feb 2025: 10.0)\n- mpMRI: PI-RADS 5 (left mid-gland peripheral zone, 14 mm focus)\n- PSA density: 0.27 ng/mL²\n- Prior biopsy: Positive\n- csPCa probabilit",
+      "cal_phrases": [],
+      "think_phrases": [
+        "let_me",
+        "task_is"
+      ]
+    },
+    {
+      "case_id": "PT-pseudo_48fb60dfd22f",
+      "gt": "yes",
+      "pred": "no",
+      "conf": "uncertain",
+      "feats": {
+        "psa": 24.0,
+        "age": 68,
+        "pirads": "5",
+        "psad": 0.986,
+        "psav": 3.9,
+        "vol": 24.35,
+        "dre": "Normal",
+        "bx": "None",
+        "cspca": 0.8596296,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "PIRADS 5 needs biopsy",
+      "free_text": "The user wants me to make a biopsy decision for this patient.\n\nLet's review the data provided:\n- Age: 68\n- PSA: 24.0 ng/mL (prior was 16.9, trend shows Sep 2022: 11.8, Dec 2023: 9.8, Feb 2025: 24.0)\n- mpMRI: PI-RADS 5\n- PSA density: 0.986 ng/mL² (very high, > 0.15 threshold)\n- Prior biopsy: None\n- csPCa predicted probability: ~0.86\n\nThe MRI report confirms a PI-RADS 5 lesion in the right mid-perip",
+      "cal_phrases": [],
+      "think_phrases": [
+        "let_me",
+        "task_is"
+      ]
+    },
+    {
+      "case_id": "PT-pseudo_4d54f04e26ae",
+      "gt": "yes",
+      "pred": "no",
+      "conf": "uncertain",
+      "feats": {
+        "psa": 34.7,
+        "age": 66,
+        "pirads": "4",
+        "psad": 0.352,
+        "psav": 0.68,
+        "vol": 99.5,
+        "dre": "Nodus",
+        "bx": "Negative",
+        "cspca": 0.739,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "New (? -> no earlier MRI report available) PIRADS 4 with high PSA-density needs biopsy",
+      "free_text": "The user is asking for a biopsy decision (Task 1) based on the provided patient case.\n\n**Patient Summary:**\n- **Age:** 66 years old.\n- **PSA:** 34.7 ng/mL (Current), rising from ~5.0 in Feb 2023 to 34.7 in Feb 2025.\n- **Prior Biopsy:** Negative.\n- **mpMRI:** PI-RADS 4 lesion in the right mid-gland peripheral zone.\n- **PSA Density (PSAD):** 0.352 ng/mL² (Prostate volume 99.5 mL).\n- **DRE:** Nodus (",
+      "cal_phrases": [],
+      "think_phrases": []
+    },
+    {
+      "case_id": "PT-pseudo_4edb17f79e46",
+      "gt": "yes",
+      "pred": "no",
+      "conf": "uncertain",
+      "feats": {
+        "psa": 9.2,
+        "age": 54,
+        "pirads": "4",
+        "psad": 0.16,
+        "psav": 1.51,
+        "vol": 57.0,
+        "dre": "Normal",
+        "bx": "Negative",
+        "cspca": 0.7709042,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Again earlier MRI report is missing, If new PRADS 4 lesion biopsy is needed as PSA is rising as well",
+      "free_text": "The user wants a biopsy recommendation for this patient.\nLet's analyze the provided data:\n- Age: 54\n- PSA: 9.2 ng/mL (current)\n- Prior PSA trend: May 2023: 8.4, Oct 2023: 2.6, Apr 2024: 3.4, Sep 2024: 4.7, Feb 2025: 9.2\n- Prior biopsy: Negative (May 2023 presumably)\n- mpMRI PI-RADS: 4\n- PSA density: 0.16 ng/mL²\n- Prostate volume: 57 mL\n- csPCa probability: 0.77\n\nI have already retrieved the MRI re",
+      "cal_phrases": [],
+      "think_phrases": [
+        "let_me",
+        "already",
+        "task_is"
+      ]
+    },
+    {
+      "case_id": "PT-pseudo_dd011d696387",
+      "gt": "yes",
+      "pred": "no",
+      "conf": "uncertain",
+      "feats": {
+        "psa": 10.0,
+        "age": 75,
+        "pirads": "5",
+        "psad": 0.372,
+        "psav": 0.55,
+        "vol": 26.91,
+        "dre": "Normal",
+        "bx": "Positive",
+        "cspca": 0.8577571,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Intermediate risk disease in 75yr with some comorbidity. No targeted biopsy and unclear timing (when was diagnosis and prev biopsy). Unclear if PIRADS5 was biopsied (limited size lesion, unclear if new lesion while lack of previous MRI). Biopsy to exclude higher-risk disease, should include targeted cores.",
+      "free_text": "The user wants me to decide whether to recommend a biopsy for this patient.\n\nLet's review the provided data:\n- 75-year-old male\n- PSA: 10.0 ng/mL (up from 2.9 in Nov 2023, then 1.2, 4.6, 8.7, now 10.0) -> Rapid rise recently.\n- mpMRI: PI-RADS 5 lesion in left peripheral zone, ~14 mm.\n- PSA density: 0.372 ng/mL² (high, >0.15 threshold)\n- Prior biopsy: Positive (previously confirmed prostate maligna",
+      "cal_phrases": [],
+      "think_phrases": [
+        "let_me",
+        "task_is"
+      ]
+    },
+    {
+      "case_id": "PT-pseudo_e001f4d06517",
+      "gt": "yes",
+      "pred": "no",
+      "conf": "uncertain",
+      "feats": {
+        "psa": 4.5,
+        "age": 73,
+        "pirads": "4",
+        "psad": 0.08,
+        "psav": 0.21,
+        "vol": 56.09,
+        "dre": "Normal",
+        "bx": "Positive",
+        "cspca": 0.7867544,
+        "fh": null,
+        "active_treatment_flag": 0
+      },
+      "gt_reasoning": "Favourable risk intermediate risk PC in 73 yr old. Unclear when previous MRI+bx was performed. Reasonable to recommend another biopsy approx 2yrs after the first, especially if only 1 bx procedure before. Should probably only be treated if detected high-risk disease.",
+      "free_text": "The user wants me to make a biopsy decision for this patient. Let me analyze the information provided:\n\n**Patient Data:**\n- 73-year-old male\n- PSA: 4.5 ng/mL (rising from 2.7 in Feb 2024)\n- mpMRI: PI-RADS 4 lesion in right mid-gland posterior peripheral zone, ~18mm\n- PSA density: 0.08 ng/mL² (low - prostate volume is large at 56 mL)\n- Prior biopsy: Positive\n- csPCa predicted probability: 0.79\n\n**K",
+      "cal_phrases": [],
+      "think_phrases": [
+        "let_me",
+        "task_is"
+      ]
+    }
+  ],
+  "thinking_pollution": {
+    "n": 19,
+    "cases": [
+      {
+        "case_id": "PT-pseudo_0169468160c6",
+        "quad": "FN",
+        "phrases": [
+          "wait",
+          "let_me",
+          "task_is"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_075dd468b384",
+        "quad": "FN",
+        "phrases": [
+          "let_me",
+          "task_is"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_11574b12444b",
+        "quad": "TP",
+        "phrases": [
+          "proceed"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_1185f6a68df0",
+        "quad": "TP",
+        "phrases": [
+          "proceed"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_20a7e91c494c",
+        "quad": "TN",
+        "phrases": [
+          "let_me",
+          "task_is"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_2eef4115a253",
+        "quad": "TP",
+        "phrases": [
+          "proceed"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_36c92fb424ac",
+        "quad": "FN",
+        "phrases": [
+          "let_me"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_37d8ae9b27f1",
+        "quad": "FP",
+        "phrases": [
+          "proceed"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_47c373e230b6",
+        "quad": "FN",
+        "phrases": [
+          "let_me",
+          "task_is"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_47d8b39fd07f",
+        "quad": "TN",
+        "phrases": [
+          "let_me"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_48fb60dfd22f",
+        "quad": "FN",
+        "phrases": [
+          "let_me",
+          "task_is"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_4edb17f79e46",
+        "quad": "FN",
+        "phrases": [
+          "let_me",
+          "already",
+          "task_is"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_590e7b237744",
+        "quad": "TN",
+        "phrases": [
+          "let_me",
+          "task_is"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_b9aa0df93f2a",
+        "quad": "TP",
+        "phrases": [
+          "proceed"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_c55496c11421",
+        "quad": "TN",
+        "phrases": [
+          "let_me",
+          "task_is"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_d217629c323a",
+        "quad": "TN",
+        "phrases": [
+          "let_me",
+          "task_is"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_dcd61cf9b443",
+        "quad": "FP",
+        "phrases": [
+          "proceed"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_dd011d696387",
+        "quad": "FN",
+        "phrases": [
+          "let_me",
+          "task_is"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_e001f4d06517",
+        "quad": "FN",
+        "phrases": [
+          "let_me",
+          "task_is"
+        ]
+      }
+    ]
+  },
+  "free_text_fallback": {
+    "n": 14,
+    "by_quadrant": {
+      "FN": 9,
+      "TN": 5,
+      "TP": 0,
+      "FP": 0
+    },
+    "cases": [
+      "PT-pseudo_0169468160c6",
+      "PT-pseudo_075dd468b384",
+      "PT-pseudo_20a7e91c494c",
+      "PT-pseudo_36c92fb424ac",
+      "PT-pseudo_47c373e230b6",
+      "PT-pseudo_47d8b39fd07f",
+      "PT-pseudo_48fb60dfd22f",
+      "PT-pseudo_4d54f04e26ae",
+      "PT-pseudo_4edb17f79e46",
+      "PT-pseudo_590e7b237744",
+      "PT-pseudo_c55496c11421",
+      "PT-pseudo_d217629c323a",
+      "PT-pseudo_dd011d696387",
+      "PT-pseudo_e001f4d06517"
+    ]
+  },
+  "calibration_by_quadrant": {
+    "FN": [
+      {
+        "case_id": "PT-pseudo_376de00c8131",
+        "phrases": [
+          "prior_neg",
+          "conservative",
+          "surveillance",
+          "bph",
+          "low_psad"
+        ]
+      }
+    ],
+    "FP": [
+      {
+        "case_id": "PT-pseudo_2b3ef1d3a505",
+        "phrases": [
+          "low_psad"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_37d8ae9b27f1",
+        "phrases": [
+          "low_psad"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_3ceacc9b660b",
+        "phrases": [
+          "equivocal"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_4c6b2b2bbf94",
+        "phrases": [
+          "low_psad"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_dcd61cf9b443",
+        "phrases": [
+          "surveillance"
+        ]
+      }
+    ],
+    "TN": [
+      {
+        "case_id": "PT-pseudo_0020cfca66c8",
+        "phrases": [
+          "surveillance",
+          "low_psad"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_1dc32184cab6",
+        "phrases": [
+          "prior_neg",
+          "low_psad"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_3646e0a2ae13",
+        "phrases": [
+          "low_psad"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_47d8b39fd07f",
+        "phrases": [
+          "equivocal"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_4f33b0253633",
+        "phrases": [
+          "prior_neg",
+          "conservative",
+          "equivocal",
+          "surveillance"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_562159dc2cc6",
+        "phrases": [
+          "conservative"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_c12bcf838ec8",
+        "phrases": [
+          "prior_neg",
+          "equivocal",
+          "low_psad",
+          "equiv_pirads3"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_c7277954c60f",
+        "phrases": [
+          "bph",
+          "low_psad"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_d7d26761c714",
+        "phrases": [
+          "equivocal",
+          "surveillance",
+          "bph",
+          "equiv_pirads3"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_d95b3a02898e",
+        "phrases": [
+          "conservative",
+          "bph",
+          "low_psad"
+        ]
+      }
+    ],
+    "TP": [
+      {
+        "case_id": "PT-pseudo_0930885168c9",
+        "phrases": [
+          "equivocal"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_099651db404e",
+        "phrases": [
+          "prior_neg"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_11574b12444b",
+        "phrases": [
+          "prior_neg"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_132e0000c0e0",
+        "phrases": [
+          "prior_neg"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_20ba3f0f6ca0",
+        "phrases": [
+          "low_psad"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_2cd88bcdf81c",
+        "phrases": [
+          "prior_neg"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_2e0346bce3b3",
+        "phrases": [
+          "bph"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_2eef4115a253",
+        "phrases": [
+          "low_psad"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_394e0b8dbeeb",
+        "phrases": [
+          "prior_neg"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_575cb2819e96",
+        "phrases": [
+          "prior_neg"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_c13fda040310",
+        "phrases": [
+          "prior_neg"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_c39e94a13920",
+        "phrases": [
+          "equivocal",
+          "low_psad"
+        ]
+      },
+      {
+        "case_id": "PT-pseudo_cac2563c222a",
+        "phrases": [
+          "low_psad"
+        ]
+      }
+    ]
+  },
+  "ablation_A": {
+    "config": "self_refine=false, atomic_check=true, decision_override_tasks=[] (scripts/overnight_stage2_ablation_A_report.md)",
+    "n_evaluated": 11,
+    "n_failed": 1,
+    "correct": 7,
+    "error_rate": 0.36363636363636365,
+    "macro_f1": 0.633,
+    "error_cases": [
+      "PT-pseudo_0cdfb9410718",
+      "PT-pseudo_175e6ad47991",
+      "PT-pseudo_20ba3f0f6ca0",
+      "PT-pseudo_376de00c8131"
+    ],
+    "failed_case": {
+      "case_id": "PT-pseudo_4bfd4ec864d8",
+      "error": "ValidationError: 1 validation error for Task1Output\n_fact_check_flags\n  Extra inputs are not permitted [type=extra_forbidden, input_value=[{'text': 'a PSA density ...category': 'threshold'}], input_type=list]"
+    },
+    "comparison": [
+      {
+        "case_id": "PT-pseudo_0020cfca66c8",
+        "gt": "no",
+        "final_dec": "no",
+        "final_conf": "borderline",
+        "abla_dec": "no",
+        "abla_conf": "uncertain",
+        "abla_ft": "Let me analyze this case systematically.\n\n**Patient Summary:**\n- 67-year-old male\n- PSA: 4.7 ng/mL (recently increased from 4.4, but the trend shows a dramatic drop to 0.6 in Jan 2024 then back up to 4.7)\n- PI-RADS 2 on mpMRI\n- PSA density: 0.14 ng/mL²\n- Prior biopsy: Positive (but we need details - what was the ISUP grade?)\n- Family history: Yes (first-degree relative with prostate cancer)\n- DRE:",
+        "final_ft": "PI-RADS 2 imaging findings and low PSA density (<0.15) strongly argue against immediate biopsy despite the recent PSA elevation and history of positive pathology, favoring active surveillance with close monitoring.",
+        "feats": {
+          "psa": 4.7,
+          "age": 67,
+          "pirads": "2",
+          "psad": 0.14,
+          "psav": 0.48,
+          "vol": 33.46,
+          "dre": "Normal",
+          "bx": "Positive",
+          "cspca": 0.59620297,
+          "fh": null,
+          "active_treatment_flag": 0
+        },
+        "trace": {
+          "status": "success",
+          "error_type": null,
+          "error_message": "",
+          "form_fill_warnings": [
+            "free_text fallback: 从 transcript 截取",
+            "atomic: variable 'bx' rated 'important' but no mention in transcript",
+            "weight calibrated: pirads decisive→important (GT decisive prob=0.29)"
+          ],
+          "reflect_warnings": []
+        },
+        "flip": "no_change"
+      },
+      {
+        "case_id": "PT-pseudo_0cdfb9410718",
+        "gt": "yes",
+        "final_dec": "yes",
+        "final_conf": "clear",
+        "abla_dec": "no",
+        "abla_conf": "uncertain",
+        "abla_ft": "The user wants me to make a biopsy decision for this patient.\nLet's review the provided data:\n- 68-year-old male\n- PSA: 5.2 ng/mL (rising from 4.2, trend shows 3.0 -> 2.5 -> 5.2)\n- mpMRI: PI-RADS 4 in right anterior mid-gland\n- PSAD: 0.151 ng/mL²\n- Prior biopsy: Positive\n- csPCa predicted probability: ~0.56\n\nI have already retrieved the MRI report and PSA trend from the prompt's tool outputs (or t",
+        "final_ft": "Biopsy is recommended due to the PI-RADS 4 lesion on MRI, PSAD > 0.15, and history of prior positive biopsy with rising PSA.",
+        "feats": {
+          "psa": 5.2,
+          "age": 68,
+          "pirads": "4",
+          "psad": 0.151,
+          "psav": 1.62,
+          "vol": 34.49,
+          "dre": "Normal",
+          "bx": "Positive",
+          "cspca": 0.5618297,
+          "fh": null,
+          "active_treatment_flag": 0
+        },
+        "trace": {
+          "status": "success",
+          "error_type": null,
+          "error_message": "",
+          "form_fill_warnings": [
+            "free_text fallback: 从 transcript 截取",
+            "atomic: variable 'bx' rated 'important' but no mention in transcript",
+            "weight calibrated: pirads decisive→important (GT decisive prob=0.29)"
+          ],
+          "reflect_warnings": []
+        },
+        "flip": "yes->no"
+      },
+      {
+        "case_id": "PT-pseudo_152344add0f1",
+        "gt": "yes",
+        "final_dec": "yes",
+        "final_conf": "clear",
+        "abla_dec": "yes",
+        "abla_conf": "clear",
+        "abla_ft": "Biopsy is strongly indicated due to the combination of a PI-RADS 5 lesion on mpMRI, elevated PSA (11.4 ng/mL) with an upward trend, and high PSA density (0.209), all pointing to clinically significant prostate cancer.",
+        "final_ft": "Recommendation for biopsy is driven by the PI-RADS 5 lesion, significantly elevated PSA of 11.4 ng/mL, and high PSAD of 0.209, all pointing to a high probability of clinically significant prostate cancer.",
+        "feats": {
+          "psa": 11.4,
+          "age": 70,
+          "pirads": "5",
+          "psad": 0.209,
+          "psav": 2.78,
+          "vol": 54.66,
+          "dre": "Normal",
+          "bx": "None",
+          "cspca": 0.44734785,
+          "fh": null,
+          "active_treatment_flag": 0
+        },
+        "trace": {
+          "status": "success",
+          "error_type": null,
+          "error_message": "",
+          "form_fill_warnings": [
+            "weight calibrated: psa decisive→important (GT decisive prob=0.09)"
+          ],
+          "reflect_warnings": []
+        },
+        "flip": "no_change"
+      },
+      {
+        "case_id": "PT-pseudo_175e6ad47991",
+        "gt": "no",
+        "final_dec": "yes",
+        "final_conf": "clear",
+        "abla_dec": "yes",
+        "abla_conf": "clear",
+        "abla_ft": "The decision to proceed with biopsy is driven by the markedly elevated PSA of 28.0 ng/mL, a PI-RADS 5 lesion on MRI, and a high PSA density of 0.28 ng/mL². The prior negative biopsy likely represented sampling error given the large prostate volume.",
+        "final_ft": "The decision to biopsy is driven by the PI-RADS 5 lesion on mpMRI, a markedly elevated PSA density of 0.28 ng/mL² despite large prostate volume, and rapid PSA velocity.",
+        "feats": {
+          "psa": 28.0,
+          "age": 79,
+          "pirads": "5",
+          "psad": 0.28,
+          "psav": 2.75,
+          "vol": 100.0,
+          "dre": "Normal",
+          "bx": "Negative",
+          "cspca": 0.3807473,
+          "fh": null,
+          "active_treatment_flag": 0
+        },
+        "trace": {
+          "status": "success",
+          "error_type": null,
+          "error_message": "",
+          "form_fill_warnings": [
+            "atomic: variable 'bx' rated 'important' but no mention in transcript",
+            "weight calibrated: psa decisive→important (GT decisive prob=0.09)"
+          ],
+          "reflect_warnings": []
+        },
+        "flip": "no_change"
+      },
+      {
+        "case_id": "PT-pseudo_1dc32184cab6",
+        "gt": "no",
+        "final_dec": "no",
+        "final_conf": "borderline",
+        "abla_dec": "no",
+        "abla_conf": "borderline",
+        "abla_ft": "The decision to withhold biopsy is primarily driven by the exceptionally low PSA density (0.02 ng/mL²) and very low absolute PSA level, which strongly mitigate the concern raised by the PI-RADS 4 lesion and prior negative biopsy.",
+        "final_ft": "The decision against biopsy is driven by the extremely low PSA density (0.02) and very low absolute PSA (0.76 ng/mL), which strongly outweigh the suspicious PI-RADS 4 MRI finding, especially given a prior negative biopsy.",
+        "feats": {
+          "psa": 0.76,
+          "age": 60,
+          "pirads": "4",
+          "psad": 0.02,
+          "psav": 0.17,
+          "vol": 36.0,
+          "dre": "Normal",
+          "bx": "Negative",
+          "cspca": 0.39141726,
+          "fh": null,
+          "active_treatment_flag": 0
+        },
+        "trace": {
+          "status": "success",
+          "error_type": null,
+          "error_message": "",
+          "form_fill_warnings": [
+            "atomic: variable 'bx' rated 'important' but no mention in transcript",
+            "weight calibrated: psa decisive→noted (GT decisive prob=0.14)",
+            "weight calibrated: psad decisive→noted (GT decisive prob=0.00)"
+          ],
+          "reflect_warnings": []
+        },
+        "flip": "no_change"
+      },
+      {
+        "case_id": "PT-pseudo_20ba3f0f6ca0",
+        "gt": "yes",
+        "final_dec": "yes",
+        "final_conf": "clear",
+        "abla_dec": "no",
+        "abla_conf": "uncertain",
+        "abla_ft": "Let me analyze this case step by step.\n\n**Key clinical data:**\n- 65-year-old male\n- PSA: 4.8 ng/mL (current)\n- Prior PSA: 3.8 ng/mL (but trend shows more history)\n- mpMRI: PI-RADS 4 in right peripheral zone mid-gland\n- PSA density: 1.000 ng/mL² (PSA/prostate volume = 4.8/56 = 0.086)\n- Prostate volume: 56 mL\n- DRE: Nodus palpable in right mid-gland peripheral zone\n- Prior biopsy: None\n- csPCa predi",
+        "final_ft": "PI-RADS 4 lesion on mpMRI combined with a palpable nodule on DRE in the same location strongly indicates targeted biopsy despite low PSA density.",
+        "feats": {
+          "psa": 4.8,
+          "age": 65,
+          "pirads": "4",
+          "psad": 0.086,
+          "psav": 0.35,
+          "vol": 56.0,
+          "dre": "Nodus",
+          "bx": "None",
+          "cspca": 0.7257912,
+          "fh": null,
+          "active_treatment_flag": 0
+        },
+        "trace": {
+          "status": "success",
+          "error_type": null,
+          "error_message": "",
+          "form_fill_warnings": [
+            "free_text fallback: 从 transcript 截取",
+            "numeric corrections: PSAD 0.086→1.000",
+            "weight calibrated: pirads decisive→important (GT decisive prob=0.29)"
+          ],
+          "reflect_warnings": []
+        },
+        "flip": "yes->no"
+      },
+      {
+        "case_id": "PT-pseudo_376de00c8131",
+        "gt": "yes",
+        "final_dec": "no",
+        "final_conf": "uncertain",
+        "abla_dec": "no",
+        "abla_conf": "borderline",
+        "abla_ft": "Low PSA density (0.09) and large prostate volume (98 mL) significantly mitigate the malignancy risk of the PI-RADS 4 lesion, especially given a prior negative biopsy. Conservative management with surveillance is preferred over immediate invasive procedures.",
+        "final_ft": "Low PSA density (0.09) and large prostate volume (98 mL) strongly suggest benign prostatic hyperplasia as the cause of elevated PSA, outweighing the suspicion from the PI-RADS 4 lesion. Prior negative biopsy supports a conservative approach with MRI surveillance rather than immediate invasive biopsy.",
+        "feats": {
+          "psa": 8.8,
+          "age": 52,
+          "pirads": "4",
+          "psad": 0.09,
+          "psav": 0.65,
+          "vol": 98.0,
+          "dre": "Normal",
+          "bx": "Negative",
+          "cspca": 0.61692226,
+          "fh": null,
+          "active_treatment_flag": 0
+        },
+        "trace": {
+          "status": "success",
+          "error_type": null,
+          "error_message": "",
+          "form_fill_warnings": [
+            "atomic: variable 'bx' rated 'important' but no mention in transcript",
+            "weight calibrated: psad decisive→not_used (GT decisive prob=0.00)"
+          ],
+          "reflect_warnings": []
+        },
+        "flip": "no_change"
+      },
+      {
+        "case_id": "PT-pseudo_394e0b8dbeeb",
+        "gt": "yes",
+        "final_dec": "yes",
+        "final_conf": "clear",
+        "abla_dec": "yes",
+        "abla_conf": "clear",
+        "abla_ft": "The decision to biopsy is driven by the PI-RADS 4 lesion on mpMRI, which indicates a high probability of clinically significant prostate cancer. This is strongly supported by an elevated PSA density (0.17 ng/mL^2) exceeding the 0.15 threshold and a palpable nodule detected on DRE in the corresponding location. Additionally, the rising PSA trend despite a prior negative biopsy further justifies pro",
+        "final_ft": "The decision to biopsy is driven by the PI-RADS 4 lesion and elevated PSA density (>0.15), reinforced by a palpable nodule on DRE and a prior negative biopsy history indicating potential sampling error.",
+        "feats": {
+          "psa": 9.2,
+          "age": 71,
+          "pirads": "4",
+          "psad": 0.17,
+          "psav": 1.1,
+          "vol": 53.0,
+          "dre": "Nodus",
+          "bx": "Negative",
+          "cspca": 0.78939086,
+          "fh": null,
+          "active_treatment_flag": 0
+        },
+        "trace": {
+          "status": "success",
+          "error_type": null,
+          "error_message": "",
+          "form_fill_warnings": [
+            "atomic: variable 'bx' rated 'important' but no mention in transcript"
+          ],
+          "reflect_warnings": []
+        },
+        "flip": "no_change"
+      },
+      {
+        "case_id": "PT-pseudo_4a2fa7bc3595",
+        "gt": "yes",
+        "final_dec": "yes",
+        "final_conf": "clear",
+        "abla_dec": "yes",
+        "abla_conf": "clear",
+        "abla_ft": "The decision to biopsy is driven by the PI-RADS 5 lesion on mpMRI and the rapidly rising PSA trajectory (2.3 to 6.9 ng/mL). The high PSAD of 0.257 further confirms significant cancer probability, while the palpable DRE nodule corroborates the imaging findings.",
+        "final_ft": "The decision to recommend biopsy is driven by the convergence of a PI-RADS 5 lesion on mpMRI, a significantly elevated PSA density (0.257 ng/mL²), a rising PSA trajectory from 2.3 to 6.9 ng/mL over two years, and a discrete palpable nodule on DRE. These factors strongly indicate clinically significant prostate cancer requiring histological confirmation for treatment planning.",
+        "feats": {
+          "psa": 6.9,
+          "age": 67,
+          "pirads": "5",
+          "psad": 0.257,
+          "psav": -0.62,
+          "vol": 26.9,
+          "dre": "Nodus",
+          "bx": "Positive",
+          "cspca": 0.84531116,
+          "fh": null,
+          "active_treatment_flag": 0
+        },
+        "trace": {
+          "status": "success",
+          "error_type": null,
+          "error_message": "",
+          "form_fill_warnings": [
+            "atomic: variable 'bx' rated 'important' but no mention in transcript",
+            "weight calibrated: psa decisive→important (GT decisive prob=0.09)"
+          ],
+          "reflect_warnings": []
+        },
+        "flip": "no_change"
+      },
+      {
+        "case_id": "PT-pseudo_4bfd4ec864d8",
+        "gt": "yes",
+        "final_dec": "yes",
+        "final_conf": "clear",
+        "abla_dec": null,
+        "abla_conf": null,
+        "abla_ft": null,
+        "final_ft": "The decision to biopsy is driven by the PI-RADS 5 lesion on mpMRI, a high PSA density of 0.35 ng/mL², a rapidly rising PSA trajectory, and a palpable DRE nodule concordant with imaging findings.",
+        "feats": {
+          "psa": 11.0,
+          "age": 72,
+          "pirads": "5",
+          "psad": 0.35,
+          "psav": 1.56,
+          "vol": 31.6,
+          "dre": "Nodus",
+          "bx": "Negative",
+          "cspca": 0.833,
+          "fh": null,
+          "active_treatment_flag": 0
+        },
+        "trace": {
+          "status": "failed",
+          "error_type": "ValidationError",
+          "error_message": "1 validation error for Task1Output\n_fact_check_flags\n  Extra inputs are not permitted [type=extra_forbidden, input_value=[{'text': 'a PSA density ...category': 'threshold'}], input_type=list]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden",
+          "form_fill_warnings": [],
+          "reflect_warnings": []
+        },
+        "flip": "ablation_failed"
+      },
+      {
+        "case_id": "PT-pseudo_c55496c11421",
+        "gt": "no",
+        "final_dec": "no",
+        "final_conf": "uncertain",
+        "abla_dec": "no",
+        "abla_conf": "borderline",
+        "abla_ft": "Biopsy is not recommended due to advanced age (82) and low PSA density (0.11 ng/mL^2), which strongly suggests benign prostatic hyperplasia as the cause of PSA elevation despite the PI-RADS 4 lesion; conservative management is preferred over invasive diagnostics in this life-expectancy context.",
+        "final_ft": "The user wants me to make a biopsy decision for this patient.\nLet's review the provided data:\n- Age: 82\n- PSA: 7.5 ng/mL (rising from 4.2 previously, trend shows 1.5 -> 2.6 -> 4.4 -> 7.5 over ~18 months)\n- PI-RADS: 4 (left basal peripheral zone, 14x11 mm)\n- PSA density: 0.11 ng/mL²\n- Prior biopsy: Positive (ISUP Grade Group 1)\n- csPCa predicted probability: 0.71\n- DRE: Normal\n- Medical history: Hy",
+        "feats": {
+          "psa": 7.5,
+          "age": 82,
+          "pirads": "4",
+          "psad": 0.11,
+          "psav": 2.31,
+          "vol": 68.0,
+          "dre": "Normal",
+          "bx": "Positive",
+          "cspca": 0.71243304,
+          "fh": null,
+          "active_treatment_flag": 0
+        },
+        "trace": {
+          "status": "success",
+          "error_type": null,
+          "error_message": "",
+          "form_fill_warnings": [
+            "weight calibrated: age decisive→important (GT decisive prob=0.06)",
+            "weight calibrated: psad decisive→noted (GT decisive prob=0.00)"
+          ],
+          "reflect_warnings": []
+        },
+        "flip": "no_change"
+      },
+      {
+        "case_id": "PT-pseudo_d95b3a02898e",
+        "gt": "no",
+        "final_dec": "no",
+        "final_conf": "clear",
+        "abla_dec": "no",
+        "abla_conf": "uncertain",
+        "abla_ft": "The decision against biopsy is primarily driven by the reassuring PI-RADS 2 MRI findings, low PSA density (0.1 ng/mL²), patient age of 75+, and significant comorbidities (CKD, COPD) which limit life expectancy and favor watchful waiting.",
+        "final_ft": "The decision to withhold biopsy is driven primarily by the PI-RADS 2 MRI findings, which indicate a low probability of clinically significant cancer. This is strongly supported by a low PSA density (0.1 ng/mL^2), suggesting the elevated PSA is due to BPH rather than malignancy. The patient's age and comorbidities further support a conservative management approach.",
+        "feats": {
+          "psa": 5.0,
+          "age": 77,
+          "pirads": "2",
+          "psad": 0.1,
+          "psav": 0.65,
+          "vol": 48.92,
+          "dre": "Normal",
+          "bx": "None",
+          "cspca": 0.8184269,
+          "fh": null,
+          "active_treatment_flag": 0
+        },
+        "trace": {
+          "status": "success",
+          "error_type": null,
+          "error_message": "",
+          "form_fill_warnings": [
+            "confidence: clear → uncertain (3 unverified claims)",
+            "weight calibrated: age decisive→important (GT decisive prob=0.06)",
+            "weight calibrated: comorbidity decisive→noted (GT decisive prob=0.00)"
+          ],
+          "reflect_warnings": []
+        },
+        "flip": "no_change"
+      }
+    ]
+  }
+}

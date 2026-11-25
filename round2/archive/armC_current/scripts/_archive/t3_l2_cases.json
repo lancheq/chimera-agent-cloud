@@ -1,0 +1,7 @@
+{
+  "C1_downgrade": "T3-045",
+  "C2_none_fallback": "T3-004",
+  "C3_tp_stay": "T3-001",
+  "C4_upgrade": null,
+  "C5_nochange": "T3-002"
+}

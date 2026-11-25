@@ -1,0 +1,546 @@
+{
+  "task1": [
+    {
+      "case_id": "PT-pseudo_0020cfca66c8",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_0169468160c6",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_01b643727538",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_033f1a8e1503",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_0615b2bd8504",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_062a1125899d",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_06b319f42fcb",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_075dd468b384",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_079636ac5644",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_0930885168c9",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_099651db404e",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_0bd72f429a8b",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_0cdfb9410718",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_0de7e606ca70",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_11345b8a7ab3",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_11574b12444b",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_1185f6a68df0",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_11fe9c6ca833",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_132e0000c0e0",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_138092c2a6be",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_152344add0f1",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_175e6ad47991",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_17f110c9e142",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_180352970ace",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_1a4e0cf3b927",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_1dc32184cab6",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_20a7e91c494c",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_20ba3f0f6ca0",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_21e7fa67a79e",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_249def42388a",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_25007bb807d7",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_259484ae733f",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2b3ef1d3a505",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2cd88bcdf81c",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2e0346bce3b3",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2e4988b84112",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2eef4115a253",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2ef22b5dd08e",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2fbb84505a45",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_33c8cd4571fd",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_34647958aba3",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_3477ea7065bd",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_3646e0a2ae13",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_36c92fb424ac",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_376de00c8131",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_37d8ae9b27f1",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_394e0b8dbeeb",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_3b6ea1920967",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_3cc88c81f35a",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_3ceacc9b660b",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_3f75ae876abe",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_41ca49bed13d",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_47c373e230b6",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_47d8b39fd07f",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_48fb60dfd22f",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4a2fa7bc3595",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4a4fedfc1f51",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4b950525e6a8",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4bfd4ec864d8",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4c6b2b2bbf94",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4d54f04e26ae",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4e545d350c5b",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4edb17f79e46",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4f33b0253633",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_52213169f58b",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_562159dc2cc6",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_575cb2819e96",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_590e7b237744",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_b9aa0df93f2a",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_b9f0b7018502",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c03b1168ff4d",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c12bcf838ec8",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c13fda040310",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c39e94a13920",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c55496c11421",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c7277954c60f",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c9d31197c533",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_cac2563c222a",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_cce5d47c05dd",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d217629c323a",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d38917f87b35",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d3d6b421d0aa",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d3e975d025e6",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d49b896a09e6",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d5ceb6b4204f",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d7d26761c714",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d95b3a02898e",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_dcd61cf9b443",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_dcd7bf13a6f4",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_dd011d696387",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_e001f4d06517",
+      "error": "prediction.json not found"
+    }
+  ],
+  "task2": [
+    {
+      "case_id": "T2-003",
+      "gt_decision": "active_treatment",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "Patient with localized intermediate unfavorable PCa.",
+      "pred_free_text": "I should search guidelines to confirm the standard of care for ISUP GG3 prostate cancer and determine whether surgery or radiotherapy would be preferred.\n</think>"
+    },
+    {
+      "case_id": "T2-008",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "continued_surveillance",
+      "gt_reasoning": "Patient with a previous biopsy from 2022. MRI shows a PIRADS 4 lesion. Need confirmatory biopsy",
+      "pred_free_text": "The decision is driven by the patient's ISUP Grade Group 2 diagnosis, significant PSA fluctuation from 1.4 to 6.8 ng/mL, elevated PSA density of 0.2, and coronary artery disease which increases surgical risk."
+    },
+    {
+      "case_id": "T2-009",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "Patient with comorbidities, low suspicion on MRI. evaluate treatment for LUTS and repeat PSA",
+      "pred_free_text": "Rapid PSA progression, high PSA density (0.25), cribriform histology, and elevated AI grade prediction outweigh initial low-grade biopsy results, justifying definitive therapy despite comorbidities."
+    },
+    {
+      "case_id": "T2-010",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "60 yo Patient with a negative biopsy and a PIRADS 5 lesion.",
+      "pred_free_text": "The decision is driven primarily by the PI-RADS 5 lesion indicating high suspicion for clinically significant cancer, supported by rising PSA kinetics and AI-predicted grade upgrade."
+    },
+    {
+      "case_id": "T2-014",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "Patient with a negative biopsy and PIRADS 5. Continue monitoring, treatment for BPH",
+      "pred_free_text": "The decision was driven primarily by the PI-RADS 5 lesion, rising PSA trajectory from 4.3 to 8.0 ng/mL, high csPCa probability (0.86), and AI-predicted Grade Group 4 pathology, which collectively outweigh the prior GG1 biopsy results."
+    },
+    {
+      "case_id": "T2-018",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "continued_surveillance",
+      "gt_reasoning": "Patient with high clinical risk based on the MRI and PSA but a negative biopsy. Prostate is 100 ml, would treat LUTS and repeat PSA. If it is going up repeat MRI or PSMA-PET and eventually biopsy",
+      "pred_free_text": "PI-RADS 5 imaging, markedly elevated PSA with high PSAD, and discordant prior negative systematic biopsy strongly mandate an MRI-targeted biopsy before any definitive treatment can be initiated."
+    },
+    {
+      "case_id": "T2-019",
+      "gt_decision": "active_treatment",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "Patient with favourable intermediate risk, rising PSA, palpable nodule. would discuss focal therapy given the concordance between MRI and Biopsy findings",
+      "pred_free_text": "The patient's relatively young age (67) with good life expectancy makes definitive treatment more favorable than surveillance. Given the combination of high-risk imaging features, elevated PSA density, and possible grade upgrade, active_treatment appears to be the most appropriate recommendation here.\n</think>"
+    },
+    {
+      "case_id": "T2-027",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "continued_surveillance",
+      "gt_reasoning": "Patient with low risk pca on confirmatory biopsy.",
+      "pred_free_text": "The decision is driven by the extremely low PSA density (0.01) indicating BPH-related PSA elevation, two prior biopsies confirming ISUP Grade Group 1 disease, and the patient's advanced age with active lifestyle, which collectively outweigh the PI-RADS 4 lesion and AI prediction."
+    },
+    {
+      "case_id": "T2-031",
+      "gt_decision": "watchful_waiting",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "Patient with 2 negative biopsies. Low PSA, 77 yo",
+      "pred_free_text": "I need to verify whether active surveillance is truly contraindicated here or if it could still be considered given his overall health status and life expectancy. The presence of perineural invasion on biopsy further complicates the decision, as this feature typically pushes toward treatment rather than observation.\n</think>"
+    },
+    {
+      "case_id": "T2-032",
+      "gt_decision": "watchful_waiting",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "patient with 2 negative Biopsy, low PSA denisty, continue psa monitoring",
+      "pred_free_text": "The patient's clinical presentation suggests a complex decision requiring careful risk stratification. Active surveillance seems most aligned with current evidence-based guidelines for this intermediate-risk scenario.\n</think>"
+    },
+    {
+      "case_id": "T2-033",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "continued_surveillance",
+      "gt_reasoning": "low risk pca on suirveillance biopsies, continue surveillance",
+      "pred_free_text": "The decision to continue surveillance is primarily driven by the stable ISUP Grade Group 1 pathology and very low PSA density, which suggest benign causes for the PSA rise. The PI-RADS 4 lesion warrants monitoring but does not justify active treatment without confirmed high-grade recurrence."
+    },
+    {
+      "case_id": "T2-035",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "continued_surveillance",
+      "gt_reasoning": "Patient with low risk PCa on confirmatory biopsy",
+      "pred_free_text": "Decision driven by significant discordance between ISUP GG1 biopsy results and high-risk features (PI-RADS 4, rising PSA, abnormal DRE, AI prediction of higher grade). Active surveillance is unsafe without confirming low volume/grade, and active treatment cannot be justified on unconfirmed GG1. Repeat targeted biopsy is mandatory."
+    },
+    {
+      "case_id": "T2-038",
+      "gt_decision": "active_treatment",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "56 yo Patient with intermediate risk PCa, PSA 10,",
+      "pred_free_text": "I'm considering whether additional diagnostic information might refine my understanding, but the current clinical picture already suggests a clear path forward for intervention.\n</think>"
+    },
+    {
+      "case_id": "T2-039",
+      "gt_decision": "continued_surveillance",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "Patient with high PSA with fluctuation. Low suspicious MRI, negative biopsy. Repeat PSA in 3 months",
+      "pred_free_text": "Decision driven by borderline PSAD (0.19), PI-RADS 3 equivocal lesion, large prostate volume diluting PSA density, and prior negative biopsy despite AI prediction of higher grade."
+    },
+    {
+      "case_id": "T2-042",
+      "gt_decision": "continued_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "rising PSA and a new PI-RADS 5 lesion on MRI despite two prior negative biopsy results",
+      "pred_free_text": "Decision driven by PI-RADS 5 lesion, high PSA density (0.35), and AI-predicted ISUP Grade Group 3, which outweigh the negative systematic biopsies likely due to sampling error."
+    },
+    {
+      "case_id": "T2-043",
+      "gt_decision": "active_treatment",
+      "pred_decision": "continued_surveillance",
+      "gt_reasoning": "Patient with Severe LUTS, low risk PCa. Discuss continue surveillance and LUTS treatment vs Radical Prostatectomy with nerve sparing",
+      "pred_free_text": "The decision hinges on the conflict between rapid PSA kinetics (velocity >2.0 ng/mL/yr) and a very low PSA density (0.07), which strongly suggests benign prostatic hyperplasia rather than cancer progression. Stable ISUP GG1 histology across two biopsies further supports maintaining surveillance, while comorbidities like CKD favor avoiding immediate invasive treatment."
+    },
+    {
+      "case_id": "T2-044",
+      "gt_decision": "continued_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "PSA rise (34.7 ng/mL) and PI-RADS 4 lesion, negative biopsy. Treat LUTS",
+      "pred_free_text": "The decision for active treatment is driven by the very high PSA level (34.7 ng/mL), a PI-RADS 4 lesion on mpMRI indicating high risk of clinically significant cancer, and a high PSA density (0.352) which confirms the likelihood of malignancy despite the large prostate volume."
+    },
+    {
+      "case_id": "T2-049",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "Low risk PCa on a confirmatory biopsy. continue surveillance",
+      "pred_free_text": "High PSAD, PI-RADS 4 lesion, and rapidly rising PSA drive the decision for active treatment despite prior GG1 biopsy results."
+    },
+    {
+      "case_id": "T2-052",
+      "gt_decision": "active_treatment",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "70 year patient with ISUP2 cancer.",
+      "pred_free_text": "**Guideline Check:**\nI should search EAU guidelines for ISUP GG2 treatment recommendations to confirm the standard of care."
+    },
+    {
+      "case_id": "T2-053",
+      "gt_decision": "continued_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "No cancer, continue PSA surveillance in 2 years",
+      "pred_free_text": "High PSAD (0.23) and PI-RADS 4 lesion conflict with two prior negative biopsies, compounded by comorbidities."
+    },
+    {
+      "case_id": "T2-055",
+      "gt_decision": "active_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "ISUP1 in 69 year old patient",
+      "pred_free_text": "Rising PSA (12.6 ng/mL), PI-RADS 5 lesion, and AI-predicted grade upgrade suggest disease progression despite prior ISUP GG 1 biopsy. Severe LUTS also favors definitive intervention over surveillance."
+    },
+    {
+      "case_id": "T2-059",
+      "gt_decision": "continued_surveillance",
+      "pred_decision": "active_treatment",
+      "gt_reasoning": "Rebiopsy",
+      "pred_free_text": "The decision is driven by the combination of a PI-RADS 5 lesion, markedly elevated PSA (35 ng/mL), and high PSA density (0.43), which strongly indicate clinically significant prostate cancer despite the prior negative biopsy result."
+    },
+    {
+      "case_id": "T2-105",
+      "gt_decision": "active_treatment",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "Staging recommended with PET-PSMA\nalternative Radiation therapy + ADT (2y)\nShared decision-making recommended",
+      "pred_free_text": "I should verify whether additional clinical information might influence this recommendation, particularly around his overall health status and any contraindications to surgery.\n</think>"
+    },
+    {
+      "case_id": "T2-108",
+      "gt_decision": "continued_surveillance",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "Active surveillance improves QoL - I would prioritise it until progression",
+      "pred_free_text": "Recommendation driven by low-risk pathology (ISUP GG 1), benign imaging (PI-RADS 2), and low PSA density (0.1) despite rising absolute PSA."
+    },
+    {
+      "case_id": "T2-109",
+      "gt_decision": "active_treatment",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "Shared decision-making regarding radical prostatectomy vs radiotherapy",
+      "pred_free_text": "I'll investigate the specific clinical nuances that might influence the treatment approach, focusing on the patient's unique risk profile and potential management strategies.\n</think>"
+    }
+  ],
+  "task3": []
+}

@@ -1,0 +1,12 @@
+{
+  "retrieved_on": "2026-11-10",
+  "repository": "DIAGNijmegen/CHIMERA-agent",
+  "source_url": "https://github.com/DIAGNijmegen/CHIMERA-agent/blob/main/evaluation/evaluate.py",
+  "evaluate_path": "evaluation/evaluate.py",
+  "evaluate_git_blob_sha": "adfee366f64942ea8a38a038aaf19afcc1901bcc",
+  "evaluate_sha256": "8684b9c4104d227bd08325fbef3c67ccd826e2836155db10f571f6eb16316a99",
+  "mapping_path": "evaluation/ground_truth/section_variable_mapping.json",
+  "mapping_git_blob_sha": "a38b6793014de0545fa81a6721d4177dbdaf67b8",
+  "mapping_sha256": "6f434193d178f6b22f5dc23ae74180a2d5e8244c8bc345e924ac925afb64344f",
+  "note": "Content pin, not a commit SHA. Snapshot is stored under output/round2_20261110/official_evaluator; keep the original bytes."
+}

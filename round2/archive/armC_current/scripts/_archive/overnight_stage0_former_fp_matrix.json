@@ -1,0 +1,2292 @@
+{
+  "analysis": "Stage 0B former-FP flip matrix attribution",
+  "baseline_dir": "test/output.final_20260826/task3.prefix_backup",
+  "fixed_dir": "test/output.t3_full_20260828/task3",
+  "total_common_cases": 73,
+  "baseline_confusion": {
+    "TP": 19,
+    "FP": 49,
+    "TN": 5,
+    "FN": 0
+  },
+  "fixed_confusion": {
+    "TP": 16,
+    "FP": 28,
+    "TN": 26,
+    "FN": 3
+  },
+  "summary": {
+    "former_fp": {
+      "total": 49,
+      "flipped_to_TN": 22,
+      "remained_FP": 27
+    },
+    "former_tp": {
+      "total": 19,
+      "retained_TP": 16,
+      "degraded_to_FN": 3
+    },
+    "former_tn": {
+      "total": 5,
+      "stable_TN": 4,
+      "flipped_to_FP": 1
+    }
+  },
+  "former_fp_flip_matrix": {
+    "T3-003": {
+      "case_id": "T3-003",
+      "gt_event": 0,
+      "gt_months": 31.4,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 36.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 4.0,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient underwent radical prostatectomy for ISUP Grade Group 1 disease (Gleason 3+3) with organ-confined staging (pT2c). Despite the low-grade pathology and favorable PSA density (0.07 ng/mL/cc), the presence of positive surgical margins significantly elevates the risk of biochemical recurrence.",
+      "fixed_free_text_excerpt": "Patient has ISUP Grade Group 1 prostate cancer (Gleason 3+3) with pT2c stage and positive surgical margins. Despite the margin status, the low-grade pathology suggests a lower risk of immediate biochemical recurrence. Without documented post-treatment PSA values exceeding the BCR threshold of 0.2 ng",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-004": {
+      "case_id": "T3-004",
+      "gt_event": 0,
+      "gt_months": 63.1,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 8.1,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient underwent radical prostatectomy for pT3a Gleason 3+4 disease. Biochemical recurrence is defined as PSA > 0.2 ng/mL post-RP. The current PSA of 8.1 ng/mL significantly exceeds this threshold, confirming event=1. Given the pathological stage pT3a with extraprostatic extension and high curr",
+      "fixed_free_text_excerpt": "Patient underwent radical prostatectomy for pT3a disease with negative margins and ISUP Grade Group 2. While extraprostatic extension increases recurrence risk, the absence of positive surgical margins is a strong favorable prognostic factor. Given the intermediate-grade pathology and clear margins,",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-005": {
+      "case_id": "T3-005",
+      "gt_event": 0,
+      "gt_months": 57.1,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 18.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 3.9,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is predicted given the post-prostatectomy PSA of 3.9 ng/mL, which significantly exceeds the 0.2 ng/mL threshold. The prediction is driven by high-risk pathological features including stage pT3a with extraprostatic extension and positive surgical margins.",
+      "fixed_free_text_excerpt": "The patient has high-risk features including pT3a stage, positive surgical margins, and ISUP Grade Group 2 pathology with tertiary pattern 5. These factors significantly increase the risk of biochemical recurrence following radical prostatectomy. Given the extraprostatic extension and margin involve",
+      "flip_status": "remained_FP"
+    },
+    "T3-007": {
+      "case_id": "T3-007",
+      "gt_event": 0,
+      "gt_months": 18.1,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 4.5,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed as post-prostatectomy PSA (4.5 ng/mL) exceeds the threshold of 0.2 ng/mL. Factors driving this prediction include the elevated current PSA level, radical prostatectomy treatment modality, and pathological stage pT2 with Grade Group 2.",
+      "fixed_free_text_excerpt": "The patient has favorable pathological features following radical prostatectomy: organ-confined disease (pT2), negative surgical margins, no seminal vesicle invasion, and ISUP Grade Group 2 (Gleason 3+4). Additionally, the baseline PSA was relatively low (4.5 ng/mL) with a very low PSA density (0.08",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-008": {
+      "case_id": "T3-008",
+      "gt_event": 0,
+      "gt_months": 35.5,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 18.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 7.93,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has undergone radical prostatectomy and currently presents with a markedly elevated PSA of 7.93 ng/mL, far exceeding the post-RP BCR threshold of >=0.2 ng/mL. Key factors driving this prediction include the high current PSA level, positive surgical margins on pathology (pT2, ISUP GG2), a",
+      "fixed_free_text_excerpt": "Patient underwent radical prostatectomy with positive surgical margins and ISUP Grade Group 2 disease. Positive margins are a strong predictor of biochemical recurrence. Although post-treatment PSA values were not provided in the prompt, the pathological features place this patient at intermediate-h",
+      "flip_status": "remained_FP"
+    },
+    "T3-010": {
+      "case_id": "T3-010",
+      "gt_event": 0,
+      "gt_months": 22.6,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 12.0,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": false,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has high-risk pathological features including ISUP Grade Group 5 (Gleason 9) and pT3a stage with extraprostatic extension. Although surgical margins were negative, the combination of high grade and locally advanced disease significantly increases the risk of biochemical recurrence compar",
+      "fixed_free_text_excerpt": "The patient has high-risk pathological features (ISUP Grade Group 5, pT3a with extraprostatic extension) and a pre-treatment PSA of 12 ng/mL. These factors significantly increase the risk of biochemical recurrence after radical prostatectomy. Although post-treatment PSA values are not explicitly pro",
+      "flip_status": "remained_FP"
+    },
+    "T3-011": {
+      "case_id": "T3-011",
+      "gt_event": 0,
+      "gt_months": 56.4,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 6.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 13.5,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed by a post-prostatectomy PSA of 13.5 ng/mL, which significantly exceeds the standard threshold of 0.2 ng/mL. Although surgical pathology was favorable (pT2c, ISUP Grade Group 2, negative margins), the markedly elevated PSA suggests persistent disease or early failu",
+      "fixed_free_text_excerpt": "The patient underwent radical prostatectomy for pT2c disease with negative margins and no extracapsular extension or seminal vesicle invasion. Although the baseline PSA was elevated at 13.5 ng/mL, the pathological findings indicate organ-confined disease with complete resection. ISUP Grade Group 2 r",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-012": {
+      "case_id": "T3-012",
+      "gt_event": 0,
+      "gt_months": 36.3,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 18.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 48.0,
+      "psa_ng_ml": 6.0,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed given the post-prostatectomy PSA of 6 ng/mL, which far exceeds the >0.2 ng/mL threshold. Key risk factors include pT3a stage with extraprostatic extension and ISUP Grade Group 2 pathology, which strongly predict early recurrence within approximately 18 months of s",
+      "fixed_free_text_excerpt": "The patient has intermediate-risk features (CAPRA score 5) due to pathological stage pT3a (extraprostatic extension). However, strong protective factors include negative surgical margins, ISUP Grade Group 2 histology, and low PSA density (0.091 ng/mL/cc). The combination of negative margins and lowe",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-013": {
+      "case_id": "T3-013",
+      "gt_event": 0,
+      "gt_months": 37,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 6.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 6.0,
+      "psa_ng_ml": 4.1,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has a post-radical prostatectomy PSA of 4.1 ng/mL, which is well above the 0.2 ng/mL threshold for biochemical recurrence. Pathological findings indicate high-risk features including positive surgical margins and lymph node metastasis, strongly predicting early disease progression.",
+      "fixed_free_text_excerpt": "Prediction of biochemical recurrence is driven by high-risk pathological features: positive surgical margins and the presence of lymph node metastasis (despite pT2 primary staging). These factors significantly increase the risk of early recurrence. Serial PSA monitoring is recommended.",
+      "flip_status": "remained_FP"
+    },
+    "T3-014": {
+      "case_id": "T3-014",
+      "gt_event": 0,
+      "gt_months": 62.5,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 18.0,
+      "psa_ng_ml": 8.3,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": false,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed with a post-prostatectomy PSA of 8.3 ng/mL, well above the 0.2 ng/mL threshold. High-risk pathological features (pT3a stage, positive surgical margins, ISUP Grade Group 2) strongly predict early recurrence. The estimated time to recurrence reflects the aggressive ",
+      "fixed_free_text_excerpt": "The patient has high-risk pathological features including extraprostatic extension (pT3a) and positive surgical margins. Combined with a baseline PSA density of 0.206 ng/mL/cc, these factors significantly increase the risk of biochemical recurrence despite intermediate-grade disease (ISUP GG2). The ",
+      "flip_status": "remained_FP"
+    },
+    "T3-015": {
+      "case_id": "T3-015",
+      "gt_event": 0,
+      "gt_months": 47.1,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 36.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 48.0,
+      "psa_ng_ml": 11.0,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Analysis indicates high risk for biochemical recurrence despite favorable pathological stage (pT2) and negative surgical margins. The primary drivers are the aggressive histology (ISUP Grade Group 4 / Gleason 4+3) and elevated pre-treatment PSA (11 ng/mL). While organ-confined disease with clear mar",
+      "fixed_free_text_excerpt": "The patient has favorable pathological features including organ-confined disease (pT2), negative surgical margins, and absence of lymphovascular invasion. Although pre-treatment PSA was elevated (11 ng/mL) and the tumor is high-grade (ISUP GG4/Gleason 4+3), the complete resection with clear margins ",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-016": {
+      "case_id": "T3-016",
+      "gt_event": 0,
+      "gt_months": 22.8,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 4.3,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed as the post-prostatectomy PSA of 4.3 ng/mL significantly exceeds the standard threshold of 0.2 ng/mL. The presence of positive surgical margins and ISUP Grade Group 2 pathology are significant risk factors driving this early recurrence prediction.",
+      "fixed_free_text_excerpt": "The patient has a high risk of biochemical recurrence primarily due to positive surgical margins found on the radical prostatectomy specimen. Although the disease was organ-confined (pT2c) and of intermediate grade group (GG2), positive margins are an independent predictor of PSA failure. The baseli",
+      "flip_status": "remained_FP"
+    },
+    "T3-019": {
+      "case_id": "T3-019",
+      "gt_event": 0,
+      "gt_months": 37.9,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 5.3,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed given the post-prostatectomy PSA of 5.3 ng/mL, which significantly exceeds the standard threshold of 0.2 ng/mL. The prediction of early recurrence (estimated at 12 months) is driven by the high current PSA level despite negative margins and organ-confined disease ",
+      "fixed_free_text_excerpt": "The patient had a radical prostatectomy for organ-confined (pT2) prostate cancer with ISUP Grade Group 2 histology. Key favorable prognostic factors include negative surgical margins and the absence of extraprostatic extension or lymphovascular invasion. The PSA density is also low at 0.092 ng/mL/cc",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-020": {
+      "case_id": "T3-020",
+      "gt_event": 0,
+      "gt_months": 61.5,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 19.0,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": false,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient underwent radical prostatectomy for pT3a disease with positive margins. The current PSA of 19 ng/mL is significantly above the post-RP biochemical recurrence threshold of 0.2 ng/mL, confirming that biochemical recurrence has already occurred. Given the high-risk pathological features (pT",
+      "fixed_free_text_excerpt": "Biochemical recurrence is predicted due to high-risk pathological features: extraprostatic extension (pT3a), positive surgical margins, and elevated pre-treatment PSA density. These factors indicate a significant risk of residual disease or early recurrence following radical prostatectomy.",
+      "flip_status": "remained_FP"
+    },
+    "T3-022": {
+      "case_id": "T3-022",
+      "gt_event": 0,
+      "gt_months": 59,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 19.0,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": true
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed by a post-prostatectomy PSA of 19 ng/mL, which significantly exceeds the threshold of 0.2 ng/mL. The patient has ISUP Grade Group 3 pathology (Gleason 4+3), which carries an intermediate-high risk for recurrence despite organ-confined disease (pT2c) and negative m",
+      "fixed_free_text_excerpt": "Prediction of no biochemical recurrence based on favorable surgical pathology despite high baseline risk factors. Key factors: 1) Organ-confined disease (pT2c). 2) Negative surgical margins. 3) No extraprostatic extension or seminal vesicle invasion. Although baseline PSA was elevated (19 ng/mL) and",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-024": {
+      "case_id": "T3-024",
+      "gt_event": 0,
+      "gt_months": 60.6,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 48.0,
+      "psa_ng_ml": 15.0,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": false,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has already experienced biochemical recurrence with a PSA of 15 ng/mL post-prostatectomy (threshold >0.2). Key risk factors include pT3a stage (extraprostatic extension), ISUP Grade Group 2, and lymphovascular invasion. The high PSA level suggests aggressive disease, likely recurring wit",
+      "fixed_free_text_excerpt": "The patient has high-risk pathological features including pT3a stage (extraprostatic extension), lymphovascular invasion (LVI), and elevated pre-treatment PSA of 15 ng/mL. Despite negative surgical margins, the combination of LVI and extraprostatic extension places this patient at significant risk f",
+      "flip_status": "remained_FP"
+    },
+    "T3-026": {
+      "case_id": "T3-026",
+      "gt_event": 0,
+      "gt_months": 39.5,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 6.5,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": false,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is evident with a post-prostatectomy PSA of 6.5 ng/mL, exceeding the 0.2 ng/mL threshold. Risk factors include positive surgical margins and ISUP Grade Group 2 disease.",
+      "fixed_free_text_excerpt": "No biochemical recurrence predicted based on available records. While positive surgical margins and ISUP GG2 pathology are risk factors, the defining criterion for BCR (PSA >= 0.2 ng/mL) has not been met or documented in the provided pre-treatment and immediate post-op data. The patient is censored ",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-028": {
+      "case_id": "T3-028",
+      "gt_event": 0,
+      "gt_months": 38,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 60.0,
+      "psa_ng_ml": 4.8,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has confirmed biochemical recurrence post-radical prostatectomy with a PSA of 4.8 ng/mL, significantly exceeding the 0.2 ng/mL threshold. Surgical pathology indicated pT2 stage and ISUP Grade Group 2, placing the patient at intermediate risk for recurrence. Given the high current PSA lev",
+      "fixed_free_text_excerpt": "The patient has favorable pathological features following radical prostatectomy: organ-confined disease (pT2), negative surgical margins, and no extraprostatic extension or seminal vesicle invasion. Although the ISUP Grade Group is 2 (Gleason 3+4), the combination of low pre-operative PSA (4.8 ng/mL",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-029": {
+      "case_id": "T3-029",
+      "gt_event": 0,
+      "gt_months": 60.9,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 6.2,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient underwent radical prostatectomy. Current PSA is 6.2 ng/mL, which significantly exceeds the post-RP biochemical recurrence threshold of 0.2 ng/mL. This confirms event=1. The high PSA level suggests significant residual disease or early recurrence, likely detected at a standard follow-up i",
+      "fixed_free_text_excerpt": "Patient underwent radical prostatectomy for pT3a Gleason 3+4 (ISUP GG2) prostate cancer with extraprostatic extension but negative margins. Baseline PSA density was elevated at 0.269 ng/mL/cc and MRI showed a PI-RADS 4 lesion. Despite negative margins, the presence of EPE and high-grade features sig",
+      "flip_status": "remained_FP"
+    },
+    "T3-030": {
+      "case_id": "T3-030",
+      "gt_event": 0,
+      "gt_months": 38.5,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 18.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 5.8,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has a post-radical prostatectomy PSA of 5.8 ng/mL, which definitively exceeds the biochemical recurrence threshold of 0.2 ng/mL (event=1). The decision is driven by three key factors: 1) Current PSA level is significantly elevated; 2) Pathological stage pT3a indicates extraprostatic exte",
+      "fixed_free_text_excerpt": "The patient has high-risk features for biochemical recurrence following radical prostatectomy, specifically pathological stage pT3a and positive surgical margins. Additionally, the ISUP Grade Group 3 (Gleason 4+3) indicates aggressive tumor biology. These factors significantly increase the likelihoo",
+      "flip_status": "remained_FP"
+    },
+    "T3-031": {
+      "case_id": "T3-031",
+      "gt_event": 0,
+      "gt_months": 57.8,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 6.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 18.0,
+      "psa_ng_ml": 16.5,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has undergone radical prostatectomy and presents with a significantly elevated PSA of 16.5 ng/mL, which definitively indicates biochemical recurrence (threshold >= 0.2 ng/mL). The prediction is driven by the post-surgical context combined with high-risk pathological features: pT3a stage,",
+      "fixed_free_text_excerpt": "High-risk features including pT3a stage, positive surgical margins, ISUP grade group 3, and very high PSA density (0.567) strongly predict early biochemical recurrence post-prostatectomy.",
+      "flip_status": "remained_FP"
+    },
+    "T3-034": {
+      "case_id": "T3-034",
+      "gt_event": 0,
+      "gt_months": 54.1,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 30.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 12.0,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has a high risk of biochemical recurrence primarily due to positive surgical margins and an elevated pre-operative PSA (>10 ng/mL). Although the pathological stage is pT2 without extraprostatic extension, ISUP grade group 2 adds intermediate risk. These factors strongly suggest eventual ",
+      "fixed_free_text_excerpt": "The patient is at high risk for biochemical recurrence due to positive surgical margins, elevated baseline PSA (12 ng/mL), and ISUP Grade Group 2 disease. These pathological features are strong independent predictors of early recurrence after radical prostatectomy.",
+      "flip_status": "remained_FP"
+    },
+    "T3-035": {
+      "case_id": "T3-035",
+      "gt_event": 0,
+      "gt_months": 47.7,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 5.7,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has undergone radical prostatectomy and currently presents with a PSA of 5.7 ng/mL, which significantly exceeds the post-RP biochemical recurrence threshold of 0.2 ng/mL. Key factors driving this prediction include the elevated post-treatment PSA level, ISUP grade group 2 pathology (Glea",
+      "fixed_free_text_excerpt": "The patient underwent radical prostatectomy for ISUP Grade Group 2 (Gleason 3+4) organ-confined disease (pT2). Key favorable pathological features include negative surgical margins, absence of extraprostatic extension (EPE), and no seminal vesicle invasion. These factors collectively indicate a low ",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-037": {
+      "case_id": "T3-037",
+      "gt_event": 0,
+      "gt_months": 61.7,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 18.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 8.8,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient presents with high-risk pathological features following radical prostatectomy, most notably positive surgical margins and lymphovascular invasion (LVI). These factors are strong independent predictors of biochemical recurrence. Although the disease was organ-confined (pT2c), the presence",
+      "fixed_free_text_excerpt": "The patient underwent radical prostatectomy for pT2c Gleason 3+4 (ISUP GG2) disease. While adverse features such as positive surgical margins and lymphovascular invasion (LVI) are present, the tumor is organ-confined without extracapsular extension or seminal vesicle invasion. Baseline PSA was 8.8 n",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-038": {
+      "case_id": "T3-038",
+      "gt_event": 0,
+      "gt_months": 48.9,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 8.5,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has biochemical recurrence confirmed by a PSA of 8.5 ng/mL following radical prostatectomy, which is well above the 0.2 ng/mL threshold. The event is certain (event=1). The time to recurrence is estimated at 24 months given the significant PSA elevation.",
+      "fixed_free_text_excerpt": "Prediction of biochemical recurrence based on adverse pathological features: positive surgical margins and Gleason 3+4 (ISUP Grade Group 2) disease with a baseline PSA of 8.5 ng/mL. Although post-treatment PSA data was not retrieved to confirm current trajectory, the presence of positive margins is ",
+      "flip_status": "remained_FP"
+    },
+    "T3-040": {
+      "case_id": "T3-040",
+      "gt_event": 0,
+      "gt_months": 35.4,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 18.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 6.2,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient underwent radical prostatectomy for high-risk disease (pT3a, ISUP GG3 with extraprostatic extension). The current post-operative PSA is 6.2 ng/mL, which definitively exceeds the biochemical recurrence threshold of >=0.2 ng/mL, confirming event=1. Given the aggressive pathological feature",
+      "fixed_free_text_excerpt": "The patient has high-risk features including pathological stage pT3a (extraprostatic extension) and ISUP Grade Group 3 (Gleason 4+3). Although surgical margins were negative, the presence of extraprostatic extension and high-grade disease significantly increases the risk of biochemical recurrence. G",
+      "flip_status": "remained_FP"
+    },
+    "T3-041": {
+      "case_id": "T3-041",
+      "gt_event": 0,
+      "gt_months": 23.7,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 6.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 8.4,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has completed radical prostatectomy and currently presents with a PSA of 8.4 ng/mL. This value is significantly above the post-prostatectomy biochemical recurrence threshold of 0.2 ng/mL, confirming that recurrence has occurred (Event=1). While the exact time from surgery to this measure",
+      "fixed_free_text_excerpt": "The patient underwent radical prostatectomy with favorable pathological features: organ-confined disease (pT2), ISUP Grade Group 2 (Gleason 3+4), and negative surgical margins. There is no evidence of extraprostatic extension or seminal vesicle invasion. No post-operative PSA elevation (>0.2 ng/mL) ",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-042": {
+      "case_id": "T3-042",
+      "gt_event": 0,
+      "gt_months": 55.4,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 28.0,
+      "psa_ng_ml": 6.4,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed by a post-prostatectomy PSA of 6.4 ng/mL (threshold >0.2 ng/mL). The high-risk pathological features—pT3a stage, extraprostatic extension (EPE), and ISUP Grade Group 4 (Gleason 8)—strongly predict early recurrence. An estimated time to recurrence of 12 months is a",
+      "fixed_free_text_excerpt": "The patient has high-risk pathological features following radical prostatectomy: ISUP Grade Group 4 and pT3a stage. Although surgical margins were negative, the presence of extracapsular extension and high-grade disease strongly predisposes to biochemical recurrence.",
+      "flip_status": "remained_FP"
+    },
+    "T3-043": {
+      "case_id": "T3-043",
+      "gt_event": 0,
+      "gt_months": 59.9,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 2.4,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has undergone radical prostatectomy and presents with a post-treatment PSA of 2.4 ng/mL, which exceeds the biochemical recurrence threshold of >= 0.2 ng/mL. The prediction of recurrence is strongly supported by high-risk pathological features: extraprostatic extension (pT3a), positive su",
+      "fixed_free_text_excerpt": "The patient has significant adverse pathological features following radical prostatectomy, specifically extraprostatic extension (pT3a) and positive surgical margins. Although the baseline PSA was low (2.4 ng/mL) and ISUP Grade Group 2 is intermediate risk, the presence of positive margins significa",
+      "flip_status": "remained_FP"
+    },
+    "T3-044": {
+      "case_id": "T3-044",
+      "gt_event": 0,
+      "gt_months": 110,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 5.9,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": true
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed with a post-prostatectomy PSA of 5.9 ng/mL (threshold >=0.2 ng/mL). Pathology reveals pT2c Gleason 3+4 disease with negative margins. While the exact timeline from surgery to recurrence cannot be precisely determined due to missing longitudinal notes, the signific",
+      "fixed_free_text_excerpt": "Predicted no biochemical recurrence (Event 0) based on favorable surgical pathology: organ-confined disease (pT2c), ISUP Grade Group 2, and negative surgical margins. The absence of extraprostatic extension or seminal vesicle invasion further lowers the risk. Although pre-treatment PI-RADS was 5, th",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-046": {
+      "case_id": "T3-046",
+      "gt_event": 0,
+      "gt_months": 52.4,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 4.3,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed as post-prostatectomy PSA is 4.3 ng/mL, well above the >=0.2 ng/mL threshold. Pathology revealed ISUP Grade Group 2 (Gleason 3+4) pT2 disease with negative surgical margins and no extraprostatic extension or seminal vesicle invasion. Although pathological features",
+      "fixed_free_text_excerpt": "The patient underwent radical prostatectomy for ISUP Grade Group 2 (Gleason 3+4) prostate cancer. Key favorable pathological features include organ-confined disease (pT2), negative surgical margins, absence of seminal vesicle invasion, and no lymphovascular invasion. These factors are associated wit",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-048": {
+      "case_id": "T3-048",
+      "gt_event": 0,
+      "gt_months": 42.3,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 6.9,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": true
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed with a post-prostatectomy PSA of 6.9 ng/mL (threshold >0.2 ng/mL). The patient's pathology showed high-risk features including pT3a stage and ISUP Grade Group 2, despite negative surgical margins. Given the confirmed recurrence and absence of specific timeline dat",
+      "fixed_free_text_excerpt": "The patient has pT3a disease (extraprostatic extension) which increases recurrence risk, but surgical margins are negative and there is no seminal vesicle invasion or lymphovascular invasion. ISUP Grade Group 2 is intermediate risk. In the absence of positive margins or documented rising post-operat",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-049": {
+      "case_id": "T3-049",
+      "gt_event": 0,
+      "gt_months": 62.6,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 2.5,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is indicated by a post-prostatectomy PSA of 2.5 ng/mL, which exceeds the standard threshold of 0.2 ng/mL. Key factors include the elevated PSA level despite favorable surgical pathology (ISUP GG2, pT2, negative margins). The significant PSA elevation suggests persistent or rec",
+      "fixed_free_text_excerpt": "The patient underwent radical prostatectomy for cT2a disease with a baseline PSA of 2.5 ng/mL. Surgical pathology was favorable: organ-confined (pT2), negative surgical margins, and no extraprostatic extension or seminal vesicle invasion. The tumor grade was ISUP Grade Group 2 (Gleason 3+4=7). Addit",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-051": {
+      "case_id": "T3-051",
+      "gt_event": 0,
+      "gt_months": 49.6,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 48.0,
+      "psa_ng_ml": 11.4,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is definitively present as the post-prostatectomy PSA is 11.4 ng/mL, far exceeding the 0.2 ng/mL threshold. Key factors include the treatment modality (radical prostatectomy) and the current elevated PSA level. Although pathology was favorable (pT2, ISUP GG2, negative margins)",
+      "fixed_free_text_excerpt": "Post-prostatectomy risk assessment based on favorable pathology (pT2, ISUP GG2, negative margins) despite intermediate clinical features (PSA >10, PSAD >0.15). The absence of EPE and positive margins significantly lowers recurrence probability. Predicted censored at 48 months.",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-054": {
+      "case_id": "T3-054",
+      "gt_event": 0,
+      "gt_months": 48.5,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 4.7,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient underwent radical prostatectomy for high-risk disease (pT3a, positive surgical margins, ISUP GG2). The current post-operative PSA is 4.7 ng/mL, which significantly exceeds the biochemical recurrence threshold of >= 0.2 ng/mL. This confirms that biochemical recurrence has occurred. Given ",
+      "fixed_free_text_excerpt": "The patient presents with high-risk pathological features following radical prostatectomy, specifically pT3a stage and positive surgical margins. Although the baseline PSA was relatively low (4.7 ng/mL) and ISUP Grade Group 2 is intermediate risk, the presence of extraprostatic extension and positiv",
+      "flip_status": "remained_FP"
+    },
+    "T3-055": {
+      "case_id": "T3-055",
+      "gt_event": 0,
+      "gt_months": 63.1,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 8.6,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient exhibits multiple high-risk features for biochemical recurrence following radical prostatectomy: ISUP Grade Group 3 (Gleason 4+4), positive surgical margins, and the presence of lymphovascular invasion. These pathological findings are strongly associated with early disease progression.",
+      "fixed_free_text_excerpt": "The patient has multiple high-risk pathological features following radical prostatectomy, including ISUP grade group 3 (Gleason 4+4), positive surgical margins, and lymphovascular invasion. Combined with a baseline PSA of 8.6 ng/mL and elevated PSA density (0.32), these factors strongly indicate a h",
+      "flip_status": "remained_FP"
+    },
+    "T3-056": {
+      "case_id": "T3-056",
+      "gt_event": 0,
+      "gt_months": 43.1,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 10.0,
+      "psa_ng_ml": 7.8,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Post-prostatectomy PSA of 7.8 ng/mL exceeds the recurrence threshold of 0.2 ng/mL, confirming biochemical recurrence (Event=1). The patient had high-risk pathology (ISUP GG5, pT3b, positive margins), which strongly predicts early recurrence. The time to recurrence is estimated at 12 months based on ",
+      "fixed_free_text_excerpt": "The patient presents with exceptionally high-risk features post-radical prostatectomy: ISUP Grade Group 5 (Gleason 9), pathological stage pT3b with seminal vesicle invasion, positive surgical margins, and lymphovascular invasion. These aggressive pathological findings strongly predict early biochemi",
+      "flip_status": "remained_FP"
+    },
+    "T3-058": {
+      "case_id": "T3-058",
+      "gt_event": 0,
+      "gt_months": 35.2,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 18.0,
+      "psa_ng_ml": 27.0,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed as the post-radical prostatectomy PSA is 27 ng/mL, significantly exceeding the >0.2 ng/mL threshold. The prediction of early recurrence (estimated at ~12 months) is driven by: 1) Definitive biochemical failure indicated by high post-op PSA; 2) High-risk pathologic",
+      "fixed_free_text_excerpt": "The patient has multiple high-risk features for biochemical recurrence post-radical prostatectomy: elevated pre-treatment PSA (27 ng/mL), pathological stage pT3a with extraprostatic extension, positive surgical margins, and ISUP Grade Group 3 histology. These factors indicate a significant likelihoo",
+      "flip_status": "remained_FP"
+    },
+    "T3-061": {
+      "case_id": "T3-061",
+      "gt_event": 0,
+      "gt_months": 80.2,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 18.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 30.0,
+      "psa_ng_ml": 5.4,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": false,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has undergone radical prostatectomy and presents with a PSA of 5.4 ng/mL, which exceeds the biochemical recurrence threshold of >= 0.2 ng/mL for post-RP patients. Pathological features (pT3a, positive margins) indicate high risk. Recurrence is confirmed.",
+      "fixed_free_text_excerpt": "Prediction of biochemical recurrence is driven by high-risk pathological features: pT3a stage with extraprostatic extension and positive surgical margins. Despite a moderate baseline PSA (5.4 ng/mL) and PI-RADS 2 MRI, the presence of positive margins and advanced local stage post-prostatectomy signi",
+      "flip_status": "remained_FP"
+    },
+    "T3-062": {
+      "case_id": "T3-062",
+      "gt_event": 0,
+      "gt_months": 38,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 18.0,
+      "psa_ng_ml": 10.0,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has a post-prostatectomy PSA of 10 ng/mL, which definitively indicates biochemical recurrence (threshold >= 0.2 ng/mL). The surgical pathology reveals high-risk features including pT3b stage (seminal vesicle invasion), positive surgical margins, and lymph node metastasis. These aggressiv",
+      "fixed_free_text_excerpt": "The patient has high-risk pathological features following radical prostatectomy, including pT3b stage, seminal vesicle invasion, positive surgical margins, and lymph node metastasis. Additionally, the tumor is ISUP Grade Group 3 (Gleason 4+3 with tertiary pattern 5). These factors strongly indicate ",
+      "flip_status": "remained_FP"
+    },
+    "T3-063": {
+      "case_id": "T3-063",
+      "gt_event": 0,
+      "gt_months": 36.4,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 6.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 25.0,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has high-risk features including ISUP Grade Group 3 (Gleason 4+3), pathological stage pT3a with extraprostatic extension and positive surgical margins. The current PSA of 25 ng/mL confirms biochemical recurrence post-radical prostatectomy (threshold >0.2 ng/mL). Given the aggressive path",
+      "fixed_free_text_excerpt": "High risk of biochemical recurrence driven by elevated baseline PSA (25 ng/mL), pathological stage pT3a with extraprostatic extension, positive surgical margins, and ISUP Grade Group 3 disease. These adverse pathological features strongly predict early recurrence following radical prostatectomy.",
+      "flip_status": "remained_FP"
+    },
+    "T3-064": {
+      "case_id": "T3-064",
+      "gt_event": 0,
+      "gt_months": 38.4,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 18.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 18.0,
+      "psa_ng_ml": 7.0,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has high-risk pathological features including pT3b stage (seminal vesicle invasion), positive surgical margins, and ISUP Grade Group 3. Post-prostatectomy PSA is significantly elevated at 7 ng/mL, which is well above the biochemical recurrence threshold of 0.2 ng/mL. These factors strong",
+      "fixed_free_text_excerpt": "The patient presents with high-risk pathological features following radical prostatectomy, specifically pT3b stage (seminal vesicle invasion) and positive surgical margins. Combined with ISUP Grade Group 3 disease, these factors strongly predict a high likelihood of biochemical recurrence. The prese",
+      "flip_status": "remained_FP"
+    },
+    "T3-065": {
+      "case_id": "T3-065",
+      "gt_event": 0,
+      "gt_months": 37.8,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 30.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 11.7,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has significant risk factors for biochemical recurrence following radical prostatectomy. The primary drivers are the pathological stage pT3a (extraprostatic extension) and a pre-operative PSA of 11.7 ng/mL (>10 ng/mL). Although the tumor is ISUP Grade Group 1 with negative surgical margi",
+      "fixed_free_text_excerpt": "The patient has ISUP Grade Group 1 disease with negative surgical margins and no lymphovascular invasion. Although pathological stage is pT3a and pre-treatment PSA was elevated (11.7 ng/mL), the low histological grade strongly suggests indolent behavior. The risk of biochemical recurrence is mitigat",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-066": {
+      "case_id": "T3-066",
+      "gt_event": 0,
+      "gt_months": 4.8,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 6.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 9.3,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence has occurred as the post-prostatectomy PSA is 9.3 ng/mL, well above the >0.2 ng/mL threshold. The patient's pathology showed ISUP Grade Group 2 (Gleason 3+4) with positive surgical margins, which are significant risk factors for early recurrence. Given the high PSA and patholo",
+      "fixed_free_text_excerpt": "The patient underwent radical prostatectomy with pathological findings of pT2 disease, ISUP Grade Group 2 (Gleason 3+4), and positive surgical margins. Positive margins are a strong predictor of biochemical recurrence. Additionally, the pre-treatment PSA density was >0.5 ng/mL/cc and PI-RADS 5 imagi",
+      "flip_status": "remained_FP"
+    },
+    "T3-068": {
+      "case_id": "T3-068",
+      "gt_event": 0,
+      "gt_months": 67.6,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 6.6,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": false,
+        "gleason": false,
+        "baseline": true,
+        "rising": true
+      },
+      "baseline_free_text_excerpt": "The patient has undergone radical prostatectomy and presents with a current PSA of 6.6 ng/mL, which significantly exceeds the biochemical recurrence threshold of >=0.2 ng/mL (event=1). Pathology reveals high-risk features including pT3a stage with extraprostatic extension and ISUP Grade Group 2 (Gle",
+      "fixed_free_text_excerpt": "The patient has high-risk pathological features (pT3a, ISUP Group 2) following radical prostatectomy. However, the provided data only includes pre-treatment baseline PSA (6.6 ng/mL) and pathology results. There is no documented post-operative PSA value >= 0.2 ng/mL to confirm biochemical recurrence.",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-069": {
+      "case_id": "T3-069",
+      "gt_event": 0,
+      "gt_months": 56.1,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 4.6,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed with a post-prostatectomy PSA of 4.6 ng/mL, well above the 0.2 ng/mL threshold. Key risk factors influencing this outcome include positive surgical margins (pT2c) and ISUP Grade Group 3 pathology.",
+      "fixed_free_text_excerpt": "The patient underwent radical prostatectomy with pathological findings of pT2c disease, ISUP Grade Group 3 (Gleason 4+3), and positive surgical margins. Positive margins are a significant independent predictor of biochemical recurrence. Given the high-risk features (GG3 + PSM+) and lack of post-trea",
+      "flip_status": "remained_FP"
+    },
+    "T3-072": {
+      "case_id": "T3-072",
+      "gt_event": 0,
+      "gt_months": 60.8,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 6.9,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": true
+      },
+      "baseline_free_text_excerpt": "The patient presents with a post-prostatectomy PSA of 6.9 ng/mL, which is well above the biochemical recurrence threshold of 0.2 ng/mL. Despite favorable pathology (pT2, negative margins), this elevated PSA indicates established biochemical recurrence. The high PSA level suggests either persistent d",
+      "fixed_free_text_excerpt": "Prediction of no biochemical recurrence (Event=0) is based on favorable post-prostatectomy pathology features: organ-confined disease (pT2), negative surgical margins, and ISUP Grade Group 2 (Gleason 3+4). The low PSA density (0.121 ng/mL/cc) indicates a lower tumor burden. In the absence of documen",
+      "flip_status": "flipped_to_TN"
+    },
+    "T3-073": {
+      "case_id": "T3-073",
+      "gt_event": 0,
+      "gt_months": 61.1,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 11.0,
+      "baseline_cls": "FP",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient underwent radical prostatectomy for high-risk disease (ISUP Grade Group 5, pT2c). A post-operative PSA of 11 ng/mL is significantly above the threshold for biochemical recurrence (>0.2 ng/mL), indicating persistent or rapidly recurrent disease despite negative surgical margins and absenc",
+      "fixed_free_text_excerpt": "The prediction of biochemical recurrence is primarily driven by the aggressive pathological features, specifically ISUP Grade Group 5 and a baseline PSA of 11 ng/mL. Although the disease was organ-confined (pT2c) with negative margins, high-grade tumors carry a substantial risk of early PSA elevatio",
+      "flip_status": "remained_FP"
+    },
+    "T3-074": {
+      "case_id": "T3-074",
+      "gt_event": 0,
+      "gt_months": 62.3,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 18.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 5.2,
+      "baseline_cls": "FP",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has a post-prostatectomy PSA of 5.2 ng/mL, which exceeds the biochemical recurrence threshold of 0.2 ng/mL. This confirms the event (Event=1). The time to recurrence is estimated based on typical follow-up intervals for detected recurrence.",
+      "fixed_free_text_excerpt": "The patient underwent radical prostatectomy with favorable pathological findings: ISUP Grade Group 2, pT2c organ-confined disease, negative surgical margins, and no extraprostatic extension or seminal vesicle invasion. Baseline PSA was low (5.2 ng/mL). These factors strongly predict against biochemi",
+      "flip_status": "flipped_to_TN"
+    }
+  },
+  "former_tp_retention": {
+    "T3-001": {
+      "case_id": "T3-001",
+      "gt_event": 1,
+      "gt_months": 1.8,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 18.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 18.0,
+      "psa_ng_ml": 86.0,
+      "baseline_cls": "TP",
+      "fixed_cls": "TP",
+      "baseline_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has extremely high-risk features following radical prostatectomy, including pT4b stage, lymph node metastasis (N+), positive surgical margins, and ISUP Grade Group 3 disease. These factors strongly predict an imminent biochemical recurrence, likely within the first two years post-surgery",
+      "fixed_free_text_excerpt": "The patient has extremely high-risk pathological features post-radical prostatectomy: pT4b stage, lymph node metastasis (N+), positive surgical margins, and seminal vesicle invasion. Combined with a very high baseline PSA of 86 ng/mL and ISUP Grade Group 3 disease, the risk of biochemical recurrence",
+      "retention_status": "retained_TP"
+    },
+    "T3-017": {
+      "case_id": "T3-017",
+      "gt_event": 1,
+      "gt_months": 11.4,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 9.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 18.0,
+      "psa_ng_ml": 160.0,
+      "baseline_cls": "TP",
+      "fixed_cls": "TP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is unequivocal given the post-prostatectomy PSA of 160 ng/mL, which vastly exceeds the EAU threshold of >=0.2 ng/mL. The prediction of early recurrence (event=1) within approximately 9 months is driven by four key factors: 1) current PSA far above the BCR threshold, 2) patholo",
+      "fixed_free_text_excerpt": "The patient has multiple high-risk pathological features following radical prostatectomy, including pT4 stage, positive surgical margins, lymphovascular invasion (LVI), and ISUP Grade Group 3 disease. Combined with a markedly elevated baseline PSA of 160 ng/mL, these factors strongly indicate a high",
+      "retention_status": "retained_TP"
+    },
+    "T3-018": {
+      "case_id": "T3-018",
+      "gt_event": 1,
+      "gt_months": 1.8,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 18.0,
+      "psa_ng_ml": 5.8,
+      "baseline_cls": "TP",
+      "fixed_cls": "TP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": false,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed with a post-prostatectomy PSA of 5.8 ng/mL, significantly exceeding the 0.2 ng/mL threshold. High-risk pathological features include positive surgical margins and reported lymph node metastasis (despite pT2 organ-confined description), which strongly predict early",
+      "fixed_free_text_excerpt": "The patient underwent radical prostatectomy for high-risk disease characterized by positive surgical margins and lymph node metastasis. Although the primary tumor was organ-confined (pT2), the presence of nodal involvement and positive margins significantly increases the risk of biochemical recurren",
+      "retention_status": "retained_TP"
+    },
+    "T3-023": {
+      "case_id": "T3-023",
+      "gt_event": 1,
+      "gt_months": 19.2,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 60.0,
+      "psa_ng_ml": 5.0,
+      "baseline_cls": "TP",
+      "fixed_cls": "FN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has a history of radical prostatectomy for ISUP Grade Group 2 disease. The current post-operative PSA is 5 ng/mL, which is well above the standard threshold for biochemical recurrence (>= 0.2 ng/mL) following surgery. This strongly indicates recurrent disease.",
+      "fixed_free_text_excerpt": "The patient underwent radical prostatectomy with favorable pathological features including organ-confined disease (pT2), negative surgical margins, and ISUP Grade Group 2. Although the pre-treatment PSA was elevated at 5 ng/mL, the absence of extraprostatic extension, seminal vesicle invasion, or ly",
+      "retention_status": "degraded_to_FN"
+    },
+    "T3-025": {
+      "case_id": "T3-025",
+      "gt_event": 1,
+      "gt_months": 4.4,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 18.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 18.0,
+      "psa_ng_ml": 12.0,
+      "baseline_cls": "TP",
+      "fixed_cls": "TP",
+      "baseline_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has high-risk features including pathological stage pT3b with seminal vesicle invasion, positive surgical margins, and ISUP Grade Group 3 disease. These factors significantly increase the risk of biochemical recurrence following radical prostatectomy.",
+      "fixed_free_text_excerpt": "High-risk pathological features including pT3b stage, positive surgical margins, and ISUP Grade Group 3 significantly increase the risk of early biochemical recurrence following radical prostatectomy.",
+      "retention_status": "retained_TP"
+    },
+    "T3-027": {
+      "case_id": "T3-027",
+      "gt_event": 1,
+      "gt_months": 19.9,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 6.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 12.3,
+      "baseline_cls": "TP",
+      "fixed_cls": "TP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient presents with a PSA of 12.3 ng/mL following radical prostatectomy, which is well above the biochemical recurrence threshold of 0.2 ng/mL. This indicates that biochemical recurrence has already occurred or is actively present. Contributing factors include positive surgical margins and ISU",
+      "fixed_free_text_excerpt": "The patient presents with positive surgical margins and a baseline PSA >10 ng/mL, which are strong predictors of biochemical recurrence despite the organ-confined pT2 stage and ISUP Grade Group 2 pathology. These adverse factors suggest a high likelihood of disease progression within a few years pos",
+      "retention_status": "retained_TP"
+    },
+    "T3-032": {
+      "case_id": "T3-032",
+      "gt_event": 1,
+      "gt_months": 1.6,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 8.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 4.4,
+      "baseline_cls": "TP",
+      "fixed_cls": "FN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed given the post-prostatectomy PSA of 4.4 ng/mL, which exceeds the standard threshold of >0.2 ng/mL. The prediction of early recurrence (approx. 8 months) is driven by the aggressive pathological features: ISUP Grade Group 5 (Gleason 9) and positive surgical margins",
+      "fixed_free_text_excerpt": "Despite high-risk pathological features including ISUP Grade Group 5 and positive surgical margins, there is no documented post-prostatectomy PSA >= 0.2 ng/mL to confirm biochemical recurrence at this time. The patient should undergo close surveillance with serial PSA testing.",
+      "retention_status": "degraded_to_FN"
+    },
+    "T3-033": {
+      "case_id": "T3-033",
+      "gt_event": 1,
+      "gt_months": 1.8,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 18.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 18.0,
+      "psa_ng_ml": 16.8,
+      "baseline_cls": "TP",
+      "fixed_cls": "TP",
+      "baseline_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "High risk of biochemical recurrence due to adverse pathological features: pT4 stage, ISUP Grade Group 5, positive surgical margins, seminal vesicle invasion, and lymphovascular invasion. These factors strongly predict early disease progression following radical prostatectomy.",
+      "fixed_free_text_excerpt": "The patient presents with multiple high-risk pathological features including pT4 stage, positive surgical margins, and Gleason score 9 (Grade Group 4), compounded by a significantly elevated baseline PSA of 16.8 ng/mL. These factors collectively indicate a substantial risk for early biochemical recu",
+      "retention_status": "retained_TP"
+    },
+    "T3-036": {
+      "case_id": "T3-036",
+      "gt_event": 1,
+      "gt_months": 14.9,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 7.6,
+      "baseline_cls": "TP",
+      "fixed_cls": "TP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed as post-RP PSA is 7.6 ng/mL (threshold >= 0.2 ng/mL). High-risk features driving this outcome include ISUP Grade Group 3 (Gleason 4+3) and pathological stage pT3a. Given the significant PSA elevation, recurrence has already occurred; estimated time to event is app",
+      "fixed_free_text_excerpt": "The patient presents with high-risk pathological features post-radical prostatectomy, specifically extraprostatic extension (pT3a) and positive surgical margins. Combined with ISUP Grade Group 3 disease and elevated pre-treatment PSA/PSAD, these factors strongly predict a high likelihood of biochemi",
+      "retention_status": "retained_TP"
+    },
+    "T3-039": {
+      "case_id": "T3-039",
+      "gt_event": 1,
+      "gt_months": 14.9,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 18.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 8.6,
+      "baseline_cls": "TP",
+      "fixed_cls": "TP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed by the current PSA of 8.6 ng/mL, which significantly exceeds the post-RP threshold of 0.2 ng/mL. The prediction of event=1 is driven by high-risk pathological features: pT3a stage with extraprostatic extension, positive surgical margins (PSM), and ISUP Grade Group",
+      "fixed_free_text_excerpt": "The patient has multiple high-risk pathological features following radical prostatectomy: pT3a stage (extraprostatic extension), positive surgical margins, lymphovascular invasion (LVI), and aggressive histology (ISUP Grade Group 3 with tertiary pattern 5). These factors collectively confer a very h",
+      "retention_status": "retained_TP"
+    },
+    "T3-047": {
+      "case_id": "T3-047",
+      "gt_event": 1,
+      "gt_months": 1.3,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 18.0,
+      "psa_ng_ml": 8.3,
+      "baseline_cls": "TP",
+      "fixed_cls": "TP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed as the post-radical prostatectomy PSA is 8.3 ng/mL, significantly exceeding the threshold of 0.2 ng/mL. The event has already occurred.",
+      "fixed_free_text_excerpt": "High-risk pathological features including pT3b stage, positive surgical margins, lymph node metastasis, and tertiary Gleason pattern 5 strongly predict early biochemical recurrence within the first few years post-prostatectomy.",
+      "retention_status": "retained_TP"
+    },
+    "T3-050": {
+      "case_id": "T3-050",
+      "gt_event": 1,
+      "gt_months": 10.9,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 30.0,
+      "psa_ng_ml": 3.8,
+      "baseline_cls": "TP",
+      "fixed_cls": "TP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": true
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has undergone radical prostatectomy and currently presents with a PSA of 3.8 ng/mL. According to the definition for post-prostatectomy biochemical recurrence (BCR), a PSA level >= 0.2 ng/mL confirmed on repeat testing constitutes an event. Since the current PSA is well above this thresho",
+      "fixed_free_text_excerpt": "Biochemical recurrence is predicted due to positive surgical margins and ISUP Grade Group 2 pathology following radical prostatectomy. Positive margins significantly increase the risk of residual disease or early recurrence.",
+      "retention_status": "retained_TP"
+    },
+    "T3-052": {
+      "case_id": "T3-052",
+      "gt_event": 1,
+      "gt_months": 6.2,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 7.8,
+      "baseline_cls": "TP",
+      "fixed_cls": "TP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence (BCR) is confirmed as the post-radical prostatectomy PSA is 7.8 ng/mL, well above the threshold of >= 0.2 ng/mL. Key risk factors driving this prediction include ISUP Grade Group 3 pathology (Gleason 4+3) and positive surgical margins, which are associated with higher recurren",
+      "fixed_free_text_excerpt": "The patient presents with significant risk factors for biochemical recurrence following radical prostatectomy, specifically ISUP Grade Group 3 disease and positive surgical margins. Despite organ-confined pathology (pT2a), the high-grade features and margin involvement necessitate a prediction of re",
+      "retention_status": "retained_TP"
+    },
+    "T3-053": {
+      "case_id": "T3-053",
+      "gt_event": 1,
+      "gt_months": 52,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 18.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 4.8,
+      "baseline_cls": "TP",
+      "fixed_cls": "FN",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Patient underwent radical prostatectomy with high-risk features (ISUP Grade Group 4). Current post-operative PSA is 4.8 ng/mL, which exceeds the biochemical recurrence threshold of >=0.2 ng/mL. Recurrence has occurred.",
+      "fixed_free_text_excerpt": "The patient had radical prostatectomy for ISUP Grade Group 4 (Gleason 8) cancer. Key favorable factors include organ-confined disease (pT2), negative surgical margins, and absence of extraprostatic extension or lymph node involvement. Despite the high histological grade, the complete resection sugge",
+      "retention_status": "degraded_to_FN"
+    },
+    "T3-057": {
+      "case_id": "T3-057",
+      "gt_event": 1,
+      "gt_months": 36.7,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 18.0,
+      "psa_ng_ml": 3.3,
+      "baseline_cls": "TP",
+      "fixed_cls": "TP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has already met the criteria for biochemical recurrence (BCR) with a post-prostatectomy PSA of 3.3 ng/mL (threshold >= 0.2 ng/mL). Key risk factors include pN1 lymph node metastasis and ISUP Grade Group 3 (Gleason 4+3) pathology. Given the established recurrence, event is 1. The time to ",
+      "fixed_free_text_excerpt": "High-risk pathological features including ISUP Grade Group 3, lymphovascular invasion, and positive lymph nodes significantly increase the risk of biochemical recurrence following radical prostatectomy. Despite negative surgical margins, nodal involvement warrants close monitoring with serial PSA te",
+      "retention_status": "retained_TP"
+    },
+    "T3-059": {
+      "case_id": "T3-059",
+      "gt_event": 1,
+      "gt_months": 1.7,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 10.0,
+      "baseline_cls": "TP",
+      "fixed_cls": "TP",
+      "baseline_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has high-risk pathological features (pT3a, positive margins, LVI) following radical prostatectomy. The current PSA of 10 ng/mL confirms biochemical recurrence (PSA >= 0.2). Due to missing specific dates for surgery and follow-up in the record, the time to recurrence is estimated at 24 mo",
+      "fixed_free_text_excerpt": "Biochemical recurrence predicted due to high-risk pathological features: pT3a stage (indicating microscopic EPE), positive surgical margins, and lymphovascular invasion. These factors strongly outweigh the low ISUP Grade Group 1 histology.",
+      "retention_status": "retained_TP"
+    },
+    "T3-060": {
+      "case_id": "T3-060",
+      "gt_event": 1,
+      "gt_months": 60.4,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 3.7,
+      "baseline_cls": "TP",
+      "fixed_cls": "TP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": false,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has high-risk pathological features (ISUP Grade Group 5, pT3a with extraprostatic extension) and a current post-prostatectomy PSA of 3.7 ng/mL. This value significantly exceeds the biochemical recurrence threshold of 0.2 ng/mL, confirming that recurrence has occurred. While the exact tim",
+      "fixed_free_text_excerpt": "High-risk pathological features including extracapsular extension (pT3a) and ISUP Grade Group 5 disease significantly increase the probability of biochemical recurrence despite negative surgical margins. Close monitoring is warranted.",
+      "retention_status": "retained_TP"
+    },
+    "T3-070": {
+      "case_id": "T3-070",
+      "gt_event": 1,
+      "gt_months": 1.5,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 12.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 18.0,
+      "psa_ng_ml": 68.0,
+      "baseline_cls": "TP",
+      "fixed_cls": "TP",
+      "baseline_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has extremely high-risk features for biochemical recurrence following radical prostatectomy. Key factors include ISUP Grade Group 5 (Gleason 9), pathological stage pT3b with seminal vesicle invasion, positive surgical margins, lymphovascular invasion, and the presence of lymph node metas",
+      "fixed_free_text_excerpt": "The patient presents with extremely high-risk pathological features following radical prostatectomy, including pT3b stage (seminal vesicle invasion), lymph node metastasis (N1), Gleason Group 5 (4+5), and positive surgical margins. These factors collectively indicate a very high probability of bioch",
+      "retention_status": "retained_TP"
+    },
+    "T3-071": {
+      "case_id": "T3-071",
+      "gt_event": 1,
+      "gt_months": 1.3,
+      "baseline_pred_event": 1,
+      "baseline_pred_months": 24.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 18.0,
+      "psa_ng_ml": 190.0,
+      "baseline_cls": "TP",
+      "fixed_cls": "TP",
+      "baseline_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": false,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "Biochemical recurrence is confirmed given the PSA of 190 ng/mL post-prostatectomy (threshold >0.2). The patient has high-risk pathological features: pT3b stage, lymph node metastasis, positive margins, and seminal vesicle invasion. These factors are strongly associated with early biochemical recurre",
+      "fixed_free_text_excerpt": "High-risk pathology (pT3b, pN+, positive margins, tertiary Gleason 5) and markedly elevated baseline PSA of 190 ng/mL strongly predict early biochemical recurrence following radical prostatectomy. BCR threshold is >=0.2 ng/mL.",
+      "retention_status": "retained_TP"
+    }
+  },
+  "former_tn_stability": {
+    "T3-002": {
+      "case_id": "T3-002",
+      "gt_event": 0,
+      "gt_months": 65.7,
+      "baseline_pred_event": 0,
+      "baseline_pred_months": 36.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 0.2,
+      "baseline_cls": "TN",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient has favorable pathological features (ISUP Grade Group 1, pT2c) and an exceptionally low baseline PSA (0.2 ng/mL). Although positive surgical margins are present, the low tumor volume and grade suggest a low risk of biochemical recurrence within the follow-up period.",
+      "fixed_free_text_excerpt": "Prediction of no biochemical recurrence is based on the low-risk pathological features (ISUP Grade Group 1, pT2c) despite positive surgical margins. The provided data includes only pre-treatment PSA and pathology; without evidence of a post-operative PSA rise to >=0.2 ng/mL, there is no confirmation",
+      "stability_status": "stable_TN"
+    },
+    "T3-021": {
+      "case_id": "T3-021",
+      "gt_event": 0,
+      "gt_months": 63.1,
+      "baseline_pred_event": 0,
+      "baseline_pred_months": 48.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 6.9,
+      "baseline_cls": "TN",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": true
+      },
+      "baseline_free_text_excerpt": "The patient has favorable pathology features (ISUP Grade Group 1, pT2) despite positive surgical margins. The PSA of 6.9 ng/mL mentioned in the reasoning appears to be baseline/pre-treatment rather than post-operative; there is no confirmed post-RP PSA >= 0.2 ng/mL indicating recurrence. Given the l",
+      "fixed_free_text_excerpt": "The patient has favorable pathological features for prostate cancer prognosis: organ-confined disease (pT2) and low-grade histology (ISUP Grade Group 1, Gleason 3+3=6). Although positive surgical margins are present, which slightly elevates the risk of local recurrence or biochemical failure, the ov",
+      "stability_status": "stable_TN"
+    },
+    "T3-045": {
+      "case_id": "T3-045",
+      "gt_event": 0,
+      "gt_months": 24.2,
+      "baseline_pred_event": 0,
+      "baseline_pred_months": 60.0,
+      "fixed_pred_event": 1,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 18.0,
+      "baseline_cls": "TN",
+      "fixed_cls": "FP",
+      "baseline_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": true,
+        "margin": true,
+        "gleason": true,
+        "baseline": true,
+        "rising": true
+      },
+      "baseline_free_text_excerpt": "Prediction of no biochemical recurrence (event=0) within the 5-year follow-up window. Although the patient presents with high-risk clinical features including a baseline PSA of 18 ng/mL and ISUP Grade Group 3, the surgical pathology reveals organ-confined disease (pT2) with negative surgical margins",
+      "fixed_free_text_excerpt": "The patient underwent radical prostatectomy for pT2 disease with ISUP Grade Group 3 (Gleason 4+3) and a high baseline PSA of 18 ng/mL. Despite negative surgical margins and absence of extraprostatic extension or seminal vesicle invasion, the combination of high-grade pathology and elevated pre-treat",
+      "stability_status": "flipped_to_FP"
+    },
+    "T3-067": {
+      "case_id": "T3-067",
+      "gt_event": 0,
+      "gt_months": 34.7,
+      "baseline_pred_event": 0,
+      "baseline_pred_months": 60.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 36.0,
+      "psa_ng_ml": 9.5,
+      "baseline_cls": "TN",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient underwent radical prostatectomy for Gleason 4+3 (ISUP Grade Group 3) cancer. The pathological stage is pT2 with negative surgical margins and no lymphovascular invasion. While the ISUP grade group 3 histology represents an intermediate-high risk feature, the organ-confined nature of the ",
+      "fixed_free_text_excerpt": "The patient underwent radical prostatectomy for ISUP Grade Group 3 (Gleason 4+3) prostate cancer. Despite the intermediate-high grade, the pathological findings were favorable: organ-confined disease (pT2), negative surgical margins, and no evidence of extraprostatic extension (EPE), seminal vesicle",
+      "stability_status": "stable_TN"
+    },
+    "T3-075": {
+      "case_id": "T3-075",
+      "gt_event": 0,
+      "gt_months": 60.2,
+      "baseline_pred_event": 0,
+      "baseline_pred_months": 60.0,
+      "fixed_pred_event": 0,
+      "fixed_pred_months": 24.0,
+      "psa_ng_ml": 2.11,
+      "baseline_cls": "TN",
+      "fixed_cls": "TN",
+      "baseline_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "fixed_features": {
+        "psa_threshold": false,
+        "margin": true,
+        "gleason": true,
+        "baseline": false,
+        "rising": false
+      },
+      "baseline_free_text_excerpt": "The patient underwent radical prostatectomy for low-risk disease (ISUP Grade Group 1, pT2, negative margins). Pre-operative markers were favorable with a low PSA of 2.11 ng/mL and very low PSA density (0.058), indicating small tumor volume. Given the absence of adverse pathological features such as ",
+      "fixed_free_text_excerpt": "The patient underwent radical prostatectomy for ISUP Grade Group 1 (Gleason 3+3), organ-confined disease (pT2) with negative surgical margins and no adverse features such as EPE or SVI. The PSA density was low at 0.058 ng/mL/cc. These pathological factors strongly predict a very low risk of biochemi",
+      "stability_status": "stable_TN"
+    }
+  },
+  "free_text_features": {
+    "former_fp_baseline": {
+      "psa_threshold": {
+        "count": 43,
+        "rate": 0.8776
+      },
+      "margin": {
+        "count": 37,
+        "rate": 0.7551
+      },
+      "gleason": {
+        "count": 32,
+        "rate": 0.6531
+      },
+      "baseline": {
+        "count": 2,
+        "rate": 0.0408
+      },
+      "rising": {
+        "count": 1,
+        "rate": 0.0204
+      }
+    },
+    "former_fp_fixed": {
+      "psa_threshold": {
+        "count": 3,
+        "rate": 0.0612
+      },
+      "margin": {
+        "count": 47,
+        "rate": 0.9592
+      },
+      "gleason": {
+        "count": 41,
+        "rate": 0.8367
+      },
+      "baseline": {
+        "count": 27,
+        "rate": 0.551
+      },
+      "rising": {
+        "count": 4,
+        "rate": 0.0816
+      }
+    },
+    "former_tp_baseline": {
+      "psa_threshold": {
+        "count": 14,
+        "rate": 0.7368
+      },
+      "margin": {
+        "count": 13,
+        "rate": 0.6842
+      },
+      "gleason": {
+        "count": 15,
+        "rate": 0.7895
+      },
+      "baseline": {
+        "count": 1,
+        "rate": 0.0526
+      },
+      "rising": {
+        "count": 1,
+        "rate": 0.0526
+      }
+    },
+    "former_tp_fixed": {
+      "psa_threshold": {
+        "count": 2,
+        "rate": 0.1053
+      },
+      "margin": {
+        "count": 19,
+        "rate": 1.0
+      },
+      "gleason": {
+        "count": 18,
+        "rate": 0.9474
+      },
+      "baseline": {
+        "count": 8,
+        "rate": 0.4211
+      },
+      "rising": {
+        "count": 0,
+        "rate": 0.0
+      }
+    },
+    "former_tn_baseline": {
+      "psa_threshold": {
+        "count": 0,
+        "rate": 0.0
+      },
+      "margin": {
+        "count": 5,
+        "rate": 1.0
+      },
+      "gleason": {
+        "count": 5,
+        "rate": 1.0
+      },
+      "baseline": {
+        "count": 3,
+        "rate": 0.6
+      },
+      "rising": {
+        "count": 0,
+        "rate": 0.0
+      }
+    },
+    "former_tn_fixed": {
+      "psa_threshold": {
+        "count": 1,
+        "rate": 0.2
+      },
+      "margin": {
+        "count": 5,
+        "rate": 1.0
+      },
+      "gleason": {
+        "count": 5,
+        "rate": 1.0
+      },
+      "baseline": {
+        "count": 2,
+        "rate": 0.4
+      },
+      "rising": {
+        "count": 2,
+        "rate": 0.4
+      }
+    }
+  }
+}

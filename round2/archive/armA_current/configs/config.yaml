@@ -1,0 +1,82 @@
+# =============================================================================
+# Chimera Agent Baseline — default config.
+#
+# All parameters live here, not in code.
+# Override per-experiment with +experiment=name or bare key=value on the CLI.
+#
+#   make run                                                 # all tasks under data/
+#   make run RUN_ARGS="agent.tasks=[2]"                      # just task 2
+#   make run RUN_ARGS="+experiment=qwen_local"               # swap model
+#   make run RUN_ARGS="agent.limit=5"                        # first 5 cases per task
+# =============================================================================
+
+defaults:
+  - _self_
+
+# --- Paths ---
+# The agent walks <data_root>/task<N>/agent_input/<case>/ and writes
+# <output_dir>/task<N>/<case>/prediction.json. In the Grand Challenge container
+# these are overridden to /input and /output (same hierarchy).
+paths:
+  data_root: data
+  output_dir: test/output
+  resource_dir: resources
+  model_dir: model
+  embedding_model_dir: model/embedding_model
+
+# --- Model ---
+# provider=vllm   -- in-process inference via vLLM (the GC container path).
+# provider=openai -- any OpenAI-compatible HTTP endpoint (llama.cpp server,
+#                    vLLM OpenAI server, OpenAI itself). Set base_url and
+#                    optionally api_key_env.
+model:
+  provider: vllm
+  model_id: google/gemma-4-E2B-it
+  # vLLM tool-call parser — must match the model's function-calling format.
+  # Ignored when provider=openai (the server speaks the protocol natively).
+  # Common values: gemma4, hermes, llama, mistral, pythonic.
+  tool_parser: gemma4
+  # OpenAI-compatible server settings (used only when provider=openai).
+  base_url: null                # e.g. http://127.0.0.1:8765/v1
+  api_key_env: LLAMA_API_KEY    # env var holding the bearer token
+  request_timeout: 600
+
+# --- Agent ---
+agent:
+  max_iterations: 25             # max ReAct loop steps before stopping
+  step_timeout: 900              # seconds per graph step #old value 120
+  # Which tasks to run. Defaults to all; task dirs missing under data_root are
+  # skipped with a warning. Each task auto-selects its tool set and input dir.
+  tasks: [1, 2, 3]
+  # Optional case-subset filters (applied per task). ``pids`` wins over ``limit``.
+  pids: null
+  limit: null
+  # Form-fill node — terminal step that emits the structured submission.
+  form_fill:
+    max_retries: 3               # validation retries before raising
+  # Optional image-embedding predictor tool (default OFF). When enabled, the
+  # MCP server exposes `get_image_predictor`, which loads ALL of a patient's
+  # features.json embeddings (MRI / biopsy / prostatectomy) via FeatureStore
+  # and returns a compact score — never the raw vectors. Replace `run_predictor`
+  # in tools/predictor.py with your trained head (use one origin or fuse them).
+  predictor:
+    enabled: false
+
+# --- Logging ---
+logging:
+  level: INFO                    # DEBUG, INFO, WARNING, ERROR
+
+# --- Generation ---
+generation:
+  temperature: 1.0
+  max_new_tokens: 4096
+  max_model_len: 32768           # vLLM context window
+  gpu_memory_utilization: 0.9    # fraction of total VRAM vLLM may use (lower for consumer GPUs / shared desktops)
+  top_p: 0.95
+
+# --- Hydra settings ---
+hydra:
+  run:
+    dir: .
+  job:
+    chdir: false

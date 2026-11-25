@@ -1,0 +1,254 @@
+loaded 73 cases
+
+======================================================================
+A. FN 深挖（former-TP 降级 case）
+======================================================================
+FN 数=3  TP 数=16
+
+--- 3 个 FN 明细 ---
+
+[T3-023] pred_months=60.0  GT_months=19.2  psa=5.0  证据=['margin', 'gleason', 'baseline']
+  free_text: The patient underwent radical prostatectomy with favorable pathological features including organ-confined disease (pT2), negative surgical margins, and ISUP Grade Group 2. Although the pre-treatment PSA was elevated at 5 ng/mL, the absence of extraprostatic extension, seminal vesicle invasion, or lymph node metastasis significantly reduces the risk of biochemical recurrence. Based on these low-risk pathological findings, no recurrence is predicted within the standard follow-up period.
+
+[T3-032] pred_months=24.0  GT_months=1.6  psa=4.4  证据=['margin', 'gleason']
+  free_text: Despite high-risk pathological features including ISUP Grade Group 5 and positive surgical margins, there is no documented post-prostatectomy PSA >= 0.2 ng/mL to confirm biochemical recurrence at this time. The patient should undergo close surveillance with serial PSA testing.
+
+[T3-053] pred_months=36.0  GT_months=52  psa=4.8  证据=['margin', 'gleason']
+  free_text: The patient had radical prostatectomy for ISUP Grade Group 4 (Gleason 8) cancer. Key favorable factors include organ-confined disease (pT2), negative surgical margins, and absence of extraprostatic extension or lymph node involvement. Despite the high histological grade, the complete resection suggests a lower immediate risk of recurrence. No post-operative PSA values meeting the biochemical recurrence threshold (>=0.2 ng/mL) were documented in the provided records. The case is classified as censored with no observed recurrence by last follow-up.
+
+--- 证据分布对比 ---
+TP 证据分布: {'margin': 16, 'gleason': 15, 'baseline': 7}  (n=16)
+FN 证据分布: {'margin': 3, 'gleason': 3, 'baseline': 1}  (n=3)
+TP PSA: 中位=10.0 范围=[3.3,190.0]
+FN PSA: 中位=4.8 范围=[4.4,5.0]
+
+======================================================================
+B. margin-FP vs 保持TP 特征可分性（规则校准 v2 可行性）
+======================================================================
+FP 总数=28  margin-FP=27  TP=16
+
+引用率对比（margin-FP vs TP）:
+  margin-FP  n=27  margin=100% gleason=81% rising=4% baseline=59%
+  TP         n=16  margin=100% gleason=94% rising=0% baseline=44%
+  margin-FP PSA: 中位=7.93 范围=[2.4,27.0]
+  TP      PSA: 中位=10.0 范围=[3.3,190.0]
+
+规则v2拟议(仅margin单一证据→降级): 命中 margin-FP=1  误伤 TP=0
+
+======================================================================
+C. 基率匹配重切模拟（风险分=-months，top-k 判 event=1）
+======================================================================
+GT 基率: event=1 共 19/73 = 26.0%
+
+k     TP   FP   TN   FN   EventAcc  FP率     
+16    9    7    47   10   76.7      13.0    
+19    9    10   44   10   72.6      18.5      <- 基率(主结果)
+22    9    13   41   10   68.5      24.1    
+25    10   15   39   9    67.1      27.8    
+
+======================================================================
+D. predictor 融合模拟（LOOCV 诚实口径）
+======================================================================
+predictor C-index: LOOCV=0.664  全量自预测(上界)=0.922
+predictor event acc: LOOCV=60.3%  全量自预测=76.7%
+
+策略                      TP   FP   TN   FN   EventAcc  FP率     
+纯LLM(现状)                16   28   26   3    57.5      51.9    
+LLM∧predictor(LOOCV)    13   14   40   6    72.6      25.9    
+LLM∨predictor(LOOCV)    19   40   14   0    45.2      74.1    
+predictor直替(LOOCV)      16   26   28   3    60.3      48.1    
+predictor直替(全量自预测,泄漏上界) 19   17   37   0    76.7      31.5    
+
+=== 完成 ===
+
+======================================================================
+Step6a E1. 固定 τ 阈值模拟
+======================================================================
+
+months 缺失/异常 case（非数值）: 0
+τ₀ = 排序后第19位 = 24.0
+  months 排序前24: [6.0, 10.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 24.0, 24.0, 24.0, 24.0, 24.0, 24.0, 24.0, 24.0]
+  <τ₀ 计数: 16   ≤τ₀ 计数: 40  (=19 才能与 top-k 等价)
+
+等价性对比:
+  top-k=19             TP=9 FP=10 TN=44 FN=10  EventAcc=72.6%  FP率=18.5%
+  τ规则 months<τ₀        TP=9 FP=7 TN=47 FN=10  EventAcc=76.7%  FP率=13.0%
+  τ规则 months≤τ₀        TP=15 FP=25 TN=29 FN=4  EventAcc=60.3%  FP率=46.3%
+
+敏感性 τ 扫描:
+  τ       TP   FP   TN   FN   EventAcc  FP率     
+  τ=19.2  9    7    47   10   76.7      13.0    
+  τ=21.6  9    7    47   10   76.7      13.0    
+  τ=24.0  9    7    47   10   76.7      13.0     <- τ₀
+  τ=26.4  15   25   29   4    60.3      46.3    
+  τ=28.8  15   26   28   4    58.9      48.1    
+
+分布重叠度（预测 months 分位数）:
+  GT=1 (n=19): min=18.0 p10=18.0 p25=18.0 p50=24.0 p75=24.0 p90=36.0 max=60.0
+  GT=0 (n=54): min=6.0 p10=18.0 p25=24.0 p50=33.0 p75=36.0 p90=36.0 max=60.0
+  τ₀=24.0 位于 GT=1 的 p1.0...
+  GT=1 中 months<τ₀: 9/19   GT=0 中 months<τ₀: 7/54
+
+======================================================================
+Step6a E2. 重切降级 case free_text 一致性审计
+======================================================================
+降级 case 数 = 26 (LLM event=1 共 44 个，top19 保留 19)
+
+三级分布（降级 25）: {'强矛盾': 5, '弱矛盾': 12, '一致': 9}
+
+--- 降级 case 尾句摘录（pid | 分级 | 结论句） ---
+  T3-010 | 强矛盾 | These factors significantly increase the risk of biochemical recurrence after radical prostatectomy. | Although post-treatment PSA values are not explicitly provided to confirm the event, the high-risk profile predicts recurrence.
+  T3-016 | 强矛盾 | Although the disease was organ-confined (pT2c) and of intermediate grade group (GG2), positive margins are an independent predictor of PSA failure. | The baseline PSA was not elevated, but the pathological features strongly suggest a likelihood of recurrence within 2-3 years.
+  T3-020 | 弱矛盾 | Biochemical recurrence is predicted due to high-risk pathological features: extraprostatic extension (pT3a), positive surgical margins, and elevated pre-treatment PSA density. | These factors indicate a significant risk of residual disease or early recurrence following radical prostatectomy.
+  T3-024 | 弱矛盾 | Despite negative surgical margins, the combination of LVI and extraprostatic extension places this patient at significant risk for biochemical recurrence. | Clinical prediction models would classify this as high risk, warranting close surveillance with serum PSA testing.
+  T3-027 | 一致 | The patient presents with positive surgical margins and a baseline PSA >10 ng/mL, which are strong predictors of biochemical recurrence despite the organ-confined pT2 stage and ISUP Grade Group 2 pathology. | These adverse factors suggest a high likelihood of disease progression within a few years post-surgery.
+  T3-029 | 一致 | Despite negative margins, the presence of EPE and high-grade features significantly increase the risk of biochemical recurrence post-prostatectomy. | Given these pathological risk factors, I predict biochemical recurrence will occur within approximately 36 months.
+  T3-030 | 一致 | Additionally, the ISUP Grade Group 3 (Gleason 4+3) indicates aggressive tumor biology. | These factors significantly increase the likelihood of PSA rise post-surgery compared to organ-confined disease with negative margins.
+  T3-034 | 弱矛盾 | The patient is at high risk for biochemical recurrence due to positive surgical margins, elevated baseline PSA (12 ng/mL), and ISUP Grade Group 2 disease. | These pathological features are strong independent predictors of early recurrence after radical prostatectomy.
+  T3-036 | 弱矛盾 | The patient presents with high-risk pathological features post-radical prostatectomy, specifically extraprostatic extension (pT3a) and positive surgical margins. | Combined with ISUP Grade Group 3 disease and elevated pre-treatment PSA/PSAD, these factors strongly predict a high likelihood of biochemical recurrence.
+  T3-038 | 强矛盾 | Although post-treatment PSA data was not retrieved to confirm current trajectory, the presence of positive margins is a significant independent risk factor for recurrence. | Conservative management or adjuvant therapy consideration may be warranted.
+  T3-039 | 弱矛盾 | The patient has multiple high-risk pathological features following radical prostatectomy: pT3a stage (extraprostatic extension), positive surgical margins, lymphovascular invasion (LVI), and aggressive histology (ISUP Grade Group 3 with tertiary pattern 5). | These factors collectively confer a very high probability of biochemical recurrence, likely within the first two years post-surgery.
+  T3-040 | 一致 | Although surgical margins were negative, the presence of extraprostatic extension and high-grade disease significantly increases the risk of biochemical recurrence. | Given the aggressive pathology, recurrence is predicted to occur within a projected timeframe.
+  T3-042 | 弱矛盾 | The patient has high-risk pathological features following radical prostatectomy: ISUP Grade Group 4 and pT3a stage. | Although surgical margins were negative, the presence of extracapsular extension and high-grade disease strongly predisposes to biochemical recurrence.
+  T3-043 | 弱矛盾 | Although the baseline PSA was low (2.4 ng/mL) and ISUP Grade Group 2 is intermediate risk, the presence of positive margins significantly increases the probability of biochemical recurrence. | Given these high-risk factors, a recurrence event is predicted within a moderate timeframe.
+  T3-045 | 强矛盾 | Given these adverse pathological features, I predict recurrence will occur within approximately 36 months. | Regular PSA surveillance is recommended to monitor for rising values above the 0.2 ng/mL threshold.
+  T3-050 | 一致 | Biochemical recurrence is predicted due to positive surgical margins and ISUP Grade Group 2 pathology following radical prostatectomy. | Positive margins significantly increase the risk of residual disease or early recurrence.
+  T3-052 | 弱矛盾 | The patient presents with significant risk factors for biochemical recurrence following radical prostatectomy, specifically ISUP Grade Group 3 disease and positive surgical margins. | Despite organ-confined pathology (pT2a), the high-grade features and margin involvement necessitate a prediction of recurrence within the medium term.
+  T3-054 | 一致 | Although the baseline PSA was relatively low (4.7 ng/mL) and ISUP Grade Group 2 is intermediate risk, the presence of extraprostatic extension and positive margins significantly elevates the probability of biochemical recurrence. | The estimated time to recurrence is projected at approximately 3 years.
+  T3-055 | 弱矛盾 | The patient has multiple high-risk pathological features following radical prostatectomy, including ISUP grade group 3 (Gleason 4+4), positive surgical margins, and lymphovascular invasion. | Combined with a baseline PSA of 8.6 ng/mL and elevated PSA density (0.32), these factors strongly indicate a high probability of biochemical recurrence within the first few years post-surgery.
+  T3-059 | 弱矛盾 | Biochemical recurrence predicted due to high-risk pathological features: pT3a stage (indicating microscopic EPE), positive surgical margins, and lymphovascular invasion. | These factors strongly outweigh the low ISUP Grade Group 1 histology.
+  T3-060 | 一致 | High-risk pathological features including extracapsular extension (pT3a) and ISUP Grade Group 5 disease significantly increase the probability of biochemical recurrence despite negative surgical margins. | Close monitoring is warranted.
+  T3-061 | 弱矛盾 | Prediction of biochemical recurrence is driven by high-risk pathological features: pT3a stage with extraprostatic extension and positive surgical margins. | Despite a moderate baseline PSA (5.4 ng/mL) and PI-RADS 2 MRI, the presence of positive margins and advanced local stage post-prostatectomy significantly increases the probability of recurrence.
+  T3-063 | 一致 | High risk of biochemical recurrence driven by elevated baseline PSA (25 ng/mL), pathological stage pT3a with extraprostatic extension, positive surgical margins, and ISUP Grade Group 3 disease. | These adverse pathological features strongly predict early recurrence following radical prostatectomy.
+  T3-066 | 强矛盾 | While organ-confined disease without extraprostatic extension is favorable, the combination of positive margins and intermediate-grade pathology places this patient at significant risk for early recurrence within 1-3 years. | Post-operative PSA trends will be critical for confirmation.
+  T3-069 | 弱矛盾 | Positive margins are a significant independent predictor of biochemical recurrence. | Given the high-risk features (GG3 + PSM+) and lack of post-treatment PSA confirmation in the provided context, a recurrence is predicted within the typical median timeframe for this risk stratification.
+  T3-073 | 一致 | The prediction of biochemical recurrence is primarily driven by the aggressive pathological features, specifically ISUP Grade Group 5 and a baseline PSA of 11 ng/mL. | Although the disease was organ-confined (pT2c) with negative margins, high-grade tumors carry a substantial risk of early PSA elevation post-prostatectomy.
+
+--- TP 对照组（16）三级分布 ---
+{'一致': 10, '弱矛盾': 6}
+
+--- TP 尾句摘录 ---
+  T3-001 | 一致 | Combined with a very high baseline PSA of 86 ng/mL and ISUP Grade Group 3 disease, the risk of biochemical recurrence is nearly certain. | These factors strongly predict early recurrence.
+  T3-017 | 一致 | Combined with a markedly elevated baseline PSA of 160 ng/mL, these factors strongly indicate a high probability of early biochemical recurrence. | Close monitoring with serial PSA tests is warranted to detect recurrence promptly.
+  T3-018 | 一致 | Given these pathological factors, I predict biochemical recurrence will occur within approximately 18 months post-surgery. | Close monitoring with serial PSA tests is recommended.
+  T3-025 | 一致 | High-risk pathological features including pT3b stage, positive surgical margins, and ISUP Grade Group 3 significantly increase the risk of early biochemical recurrence following radical prostatectomy.
+  T3-027 | 一致 | The patient presents with positive surgical margins and a baseline PSA >10 ng/mL, which are strong predictors of biochemical recurrence despite the organ-confined pT2 stage and ISUP Grade Group 2 pathology. | These adverse factors suggest a high likelihood of disease progression within a few years post-surgery.
+  T3-033 | 弱矛盾 | The patient presents with multiple high-risk pathological features including pT4 stage, positive surgical margins, and Gleason score 9 (Grade Group 4), compounded by a significantly elevated baseline PSA of 16.8 ng/mL. | These factors collectively indicate a substantial risk for early biochemical recurrence following primary treatment.
+  T3-036 | 弱矛盾 | The patient presents with high-risk pathological features post-radical prostatectomy, specifically extraprostatic extension (pT3a) and positive surgical margins. | Combined with ISUP Grade Group 3 disease and elevated pre-treatment PSA/PSAD, these factors strongly predict a high likelihood of biochemical recurrence.
+  T3-039 | 弱矛盾 | The patient has multiple high-risk pathological features following radical prostatectomy: pT3a stage (extraprostatic extension), positive surgical margins, lymphovascular invasion (LVI), and aggressive histology (ISUP Grade Group 3 with tertiary pattern 5). | These factors collectively confer a very high probability of biochemical recurrence, likely within the first two years post-surgery.
+  T3-047 | 一致 | High-risk pathological features including pT3b stage, positive surgical margins, lymph node metastasis, and tertiary Gleason pattern 5 strongly predict early biochemical recurrence within the first few years post-prostatectomy.
+  T3-050 | 一致 | Biochemical recurrence is predicted due to positive surgical margins and ISUP Grade Group 2 pathology following radical prostatectomy. | Positive margins significantly increase the risk of residual disease or early recurrence.
+  T3-052 | 弱矛盾 | The patient presents with significant risk factors for biochemical recurrence following radical prostatectomy, specifically ISUP Grade Group 3 disease and positive surgical margins. | Despite organ-confined pathology (pT2a), the high-grade features and margin involvement necessitate a prediction of recurrence within the medium term.
+  T3-057 | 一致 | High-risk pathological features including ISUP Grade Group 3, lymphovascular invasion, and positive lymph nodes significantly increase the risk of biochemical recurrence following radical prostatectomy. | Despite negative surgical margins, nodal involvement warrants close monitoring with serial PSA testing.
+  T3-059 | 弱矛盾 | Biochemical recurrence predicted due to high-risk pathological features: pT3a stage (indicating microscopic EPE), positive surgical margins, and lymphovascular invasion. | These factors strongly outweigh the low ISUP Grade Group 1 histology.
+  T3-060 | 一致 | High-risk pathological features including extracapsular extension (pT3a) and ISUP Grade Group 5 disease significantly increase the probability of biochemical recurrence despite negative surgical margins. | Close monitoring is warranted.
+  T3-070 | 弱矛盾 | The patient presents with extremely high-risk pathological features following radical prostatectomy, including pT3b stage (seminal vesicle invasion), lymph node metastasis (N1), Gleason Group 5 (4+5), and positive surgical margins. | These factors collectively indicate a very high probability of biochemical recurrence.
+  T3-071 | 一致 | High-risk pathology (pT3b, pN+, positive margins, tertiary Gleason 5) and markedly elevated baseline PSA of 190 ng/mL strongly predict early biochemical recurrence following radical prostatectomy. | BCR threshold is >=0.2 ng/mL.
+
+======================================================================
+Step6a E4. T3-032 单 case 档案
+======================================================================
+status=success elapsed=44.33
+
+--- msg[0] human (prompt, 截断 1200) ---
+You are a senior urologist reviewing a patient with prostate cancer who has
+completed primary treatment. The structured record below is shown to you up
+front. The full documents (radiology / MRI report, biopsy pathology report,
+surgical pathology report, previous notes, and the family-history anamnesis)
+are not shown and must be pulled up via the available tools.
+
+Case ID: T3-032
+Task: 3
+
+Clinical data (read-only — values loaded from the record):
+  - 68-year-old male
+  - Baseline PSA (pre-treatment, at diagnosis): 4.4 ng/mL
+
+Physical examination (DRE): —
+
+Information you can request via tools (the masked "Extended EHR view"):
+  - radiology / MRI report
+  - biopsy pathology report
+  - surgical pathology report
+  - previous GP / urology consultation notes
+  - family history of prostate cancer (anamnesis)
+
+Question:
+Following primary treatment, predict this patient's time to biochemical recurrence, in months.
+
+Important:
+- Biochemical recurrence thresholds (apply to POST-treatment PSA only, NOT the baseline PSA shown above):
+  after radical prostatectomy: post-treatment PSA > 0.2 ng/mL (confirmed on repeat);
+  after radiation therapy: Phoenix criteria (PSA nadir + 2 ng/mL).
+- A single
+
+--- msg[1] system 截断 500 ---
+[Evidence Gathering Plan]
+The case is T3-032, Task 3 (prostate recurrence prediction).
+Clinical data provided: 68-year-old male, baseline PSA (pre-treatment... cut off). Wait, the prompt says "Baseline PSA (pre-treatm". It's truncated. But I know it's Task 3.
+According to the rules for Task 3:
+- Always: TOOLS: ["get_mri_report", "get_surgical_pathology_report", "get_psa_trend"]
+- If post-RP: TOOLS: ["get_surgical_pathology_report", "get_psa_trend", "get_lab_results"]
+- If post-RT: TOOLS: ["get_m
+
+--- msg[2] tool (plan_T3-032_get_mri_report) 截断 500 ---
+[{'type': 'text', 'text': '{"case_id": "T3-032", "radiology_report": "Prostate volume: 91.11 cc. PSA density: 0.048 ng/mL/cc. PI-RADS: 5. AI model-predicted probability of clinically significant prostate cancer (0\\u20131): 0.78277797."}', 'id': 'lc_4434f0f3-77cd-4da2-b443-d85893818026'}]
+
+--- msg[3] tool (plan_T3-032_get_surgical_pathology_report) 截断 500 ---
+[{'type': 'text', 'text': '{"case_id": "T3-032", "surgical_pathology_report": "The robot-assisted radical prostatectomy specimen showed Gleason 4+5 (ISUP grade group 5), pathological stage pT2c. There was no extraprostatic extension; surgical margins were positive; the seminal vesicles were not invaded; lymphovascular invasion was absent; there was no lymph node metastasis."}', 'id': 'lc_5f7fe688-721a-4032-abb6-4e62ed2bda88'}]
+
+--- msg[4] ai (截断 1500) ---
+I have some initial information from the tools:
+
+1. Radiology report shows:
+   - Prostate volume: 91.11 cc
+   - PSA density: 0.048 ng/mL/cc (very low)
+   - PI-RADS: 5 (high risk lesion)
+   - AI model-predicted probability of csPCa: 0.78
+
+2. Surgical pathology report shows:
+   - Robot-assisted radical prostatectomy specimen
+   - Gleason 4+5 (ISUP grade group 5) - this is high-grade cancer
+   - Pathological stage pT2c (confined to prostate, but bilateral involvement)
+   - Positive surgical margins
+   - No extraprostatic extension
+   - Seminal vesicles not invaded
+   - No lymphovascular invasion
+   - No lymph node metastasis
+
+This is a Task 3 case - predicting biochemical recurrence after primary treatment. The patient had a radical prostatectomy.
+
+For biochemical recurrence prediction after radical prostatectomy:
+- Threshold is PSA > 0.2 ng/mL (confirmed on repeat)
+- I need to know the POST-treatment PSA values and follow-up duration
+
+I should get more information:
+1. Previous notes - to see post-treatment PSA trends and follow-up duration
+2. Family history - might be relevant for risk stratification
+3. Biopsy pathology report - to confirm pre-treatment diagnosis
+
+Let me start by getting the previous notes, as these will likely contain the most critical information about post-treatment PSA values and follow-up duration.
+</think>
+
+<tool_call>
+<function=get_previous_notes>
+<parameter=case_id>
+T3-032
+</parameter>
+</function>
+</tool_call>
+
+--- T3-032 剩余消息 (5..4) ---
+
+--- trace 其他字段 ---
+keys: ['case_id', 'task', 'timestamp', 'elapsed_seconds', 'status', 'disease_plan', 'refined_transcript', 'reflect_warnings', 'form_fill_warnings', 'structured_response']
+  case_id: T3-032
+  task: 3
+  timestamp: 2026-08-28T12:34:19.031361
+  elapsed_seconds: 44.33
+  status: success
+  disease_plan: {'name': 'prostate_recurrence_prediction', 'evidence_order': ['get_mri_report', 'get_surgical_pathology_report', 'get_pathology_report', 'get_previous_notes', 'get_family_history'], 'thresholds': {'recurrence_rp': 'POST-treatment PSA>0.2 ng/mL (confirmed; NOT applicable to baseline PSA shown in data)', 'recurrence_rt': 'Phoenix: nadir+2 ng/mL'}, 'expert_priors': {'psa': 0.35, 'bx_isup': 0.2, 'pirads': 0.15, 'psad': 0.1, 'age': 0.05, 'ct': 0.05, 'cspca': 0.1}}
+  refined_transcript: None
+  reflect_warnings: []
+  form_fill_warnings: []
+  structured_response: {'schema_version': '1.0', 'task': 'urologist_recurrence_prognosis_cot', 'case_type': 'dataset', 'case_id': 'T3-032', 'patient': {'id': 'T3-032', 'psa_ng_ml': 4.4, 'age_years': 68.0}, 'event': 0, 'months_to_recurrence': 24.0, 'reveal_sequence': [{'page': 'decision', 'order': 1, 'key': 'section_s3-mri', 'label': 'Radiology / MRI report', 'value': 'section', 'via': 'tool_call', 'ts': '2026-08-28T04:34:19.024Z'}, {'page': 'decision', 'order': 2, 'key': 'section_s3-surgpath', 'label': 'Surgical patho

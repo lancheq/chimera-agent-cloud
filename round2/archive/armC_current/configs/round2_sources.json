@@ -1,0 +1,12 @@
+{
+  "sources": [
+    {
+      "name": "server_legacy",
+      "root": "../data",
+      "role": "legacy_exposed",
+      "identity_namespace": "chimera",
+      "label_provenance": "unknown_pending_release_manifest_review",
+      "patient_id_field": null
+    }
+  ]
+}

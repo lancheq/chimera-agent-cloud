@@ -1,0 +1,615 @@
+{
+  "task1": [
+    {
+      "case_id": "PT-pseudo_0020cfca66c8",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_0169468160c6",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_01b643727538",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "He has a ISUP3 cancer diagnosis already and he should be recommended treatment",
+      "pred_free_text": "The decision is driven by the combination of a PI-RADS 5 lesion, significantly elevated PSA density (0.516), and a sharp rise in PSA from 3.1 to 9.3 ng/mL. Given the prior confirmed ISUP Grade Group 3 malignancy, these findings strongly indicate disease progression or upgrading, necessitating a repeat biopsy to guide further management."
+    },
+    {
+      "case_id": "PT-pseudo_033f1a8e1503",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_0615b2bd8504",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_062a1125899d",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_06b319f42fcb",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_075dd468b384",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_079636ac5644",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_0930885168c9",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_099651db404e",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_0bd72f429a8b",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_0cdfb9410718",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_0de7e606ca70",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_11345b8a7ab3",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_11574b12444b",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_1185f6a68df0",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_11fe9c6ca833",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_138092c2a6be",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_152344add0f1",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_175e6ad47991",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_17f110c9e142",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_1a4e0cf3b927",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_1dc32184cab6",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_20a7e91c494c",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_20ba3f0f6ca0",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_249def42388a",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_25007bb807d7",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_259484ae733f",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2b3ef1d3a505",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2cd88bcdf81c",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2e0346bce3b3",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2e4988b84112",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_2eef4115a253",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "P4 and LUTS symptoms. Note , low PSA.",
+      "pred_free_text": "Let me analyze this case systematically.\n\n**Key Clinical Data:**\n- 59-year-old male\n- PSA: 2.11 ng/mL (recent)\n- Prior PSA: 2.1 ng/mL (essentially stable, slight increase from 1.9 in May 2024)\n- mpMRI: PI-RADS 4 lesion in left peripheral zone mid-gland (~12 mm)\n- PSA density: 0.058 ng/mL² (very low - well below the 0.15 threshold)\n- Prostate volume: 36.08 mL\n- csPCa predicted probability: 0.774 (h"
+    },
+    {
+      "case_id": "PT-pseudo_2ef22b5dd08e",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_33c8cd4571fd",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_34647958aba3",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_3477ea7065bd",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_3646e0a2ae13",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_36c92fb424ac",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_376de00c8131",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_394e0b8dbeeb",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_3b6ea1920967",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "Need initial ISUP grade and MRI in men on active surveillance.",
+      "pred_free_text": "The recommendation for a targeted repeat biopsy is driven by the patient's rising PSA trajectory, the presence of a PI-RADS 4 lesion on MRI, and his history of a prior positive prostate cancer biopsy indicating potential disease progression."
+    },
+    {
+      "case_id": "PT-pseudo_3ceacc9b660b",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_41ca49bed13d",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "PIRADS 4 with high PSA-density needs biopsy",
+      "pred_free_text": "The user wants me to make a biopsy decision for this patient.\n\nLet's review the provided data:\n- Age: 47\n- PSA: 14.0 ng/mL (rising from 2.3 in Aug 2022 -> 4.2 Jun 2023 -> 7.7 Apr 2024 -> 14.0 Feb 2025)\n- PI-RADS: 4\n- PSA density: 0.734 ng/mL² (very high, > 0.15 threshold)\n- DRE: Nodus (firm discrete nodule in right mid-gland)\n- Prior biopsy: None\n- csPCa predicted probability: 0.82\n\nI have already"
+    },
+    {
+      "case_id": "PT-pseudo_47c373e230b6",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_48fb60dfd22f",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4a2fa7bc3595",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4a4fedfc1f51",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4b950525e6a8",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4bfd4ec864d8",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "New PIRADS 5 following negative biopsies needs biopsy",
+      "pred_free_text": "Let me analyze this case systematically.\n\n**Key Clinical Data:**\n- 72-year-old male\n- PSA: 11.0 ng/mL (rising from 4.2 in Mar 2022 to 11.0 in Mar 2025)\n- PI-RADS 5 lesion on mpMRI\n- PSA density: 0.35 ng/mL² (very high - well above 0.15 threshold)\n- Prior biopsy: Negative (in 2023 when PSA was ~6.3)\n- DRE: Nodus (firm, discrete nodule in right peripheral zone)\n- csPCa predicted probability: 0.833\n\n"
+    },
+    {
+      "case_id": "PT-pseudo_4d54f04e26ae",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4e545d350c5b",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4edb17f79e46",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_4f33b0253633",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_52213169f58b",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_562159dc2cc6",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_590e7b237744",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_b9aa0df93f2a",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_b9f0b7018502",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c03b1168ff4d",
+      "gt_decision": "yes",
+      "pred_decision": "no",
+      "gt_reasoning": "Active surveillance of unfavorable intermediate risk disease, no previous re-biopsy. Likely biopsied index lesion on MRI, but note small tumor extension on biopsy (4mm) as compared with MRI lesion size (16mm). If biopsy with higher risk disease, likely recommendation on curative treatment. Plan talk to address LUTS/IPSS. If not curative treatment, potentially BPH treatment. 74yrs old will affect treatment plan.",
+      "pred_free_text": "The user wants me to make a biopsy decision for this patient. Let me review the available data:\n\n**Patient Summary:**\n- 74-year-old male\n- PSA: 7.8 ng/mL (rising from 6.3 in Sep 2023, and 1.5 in Jun 2022)\n- mpMRI: PI-RADS 4 lesion in left peripheral zone (base/mid), ~14 x 11 x 16 mm\n- PSA density: 0.165 ng/mL²\n- Prior biopsy: Positive (confirmed malignancy)\n- csPCa probability: 0.75\n- DRE: Normal\n"
+    },
+    {
+      "case_id": "PT-pseudo_c12bcf838ec8",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c13fda040310",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c39e94a13920",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_c55496c11421",
+      "gt_decision": "no",
+      "pred_decision": "yes",
+      "gt_reasoning": "80yr, low risk PC. Only biopsy if signs of high risk PC, no indication for active treatment otherwise. Biopsyfinding congruent with MRI finding is reassuring.",
+      "pred_free_text": "The decision to recommend biopsy is primarily driven by the PI-RADS 4 lesion on mpMRI, supported by rapidly rising PSA kinetics and a prior positive biopsy indicating potential disease progression."
+    },
+    {
+      "case_id": "PT-pseudo_c9d31197c533",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_cac2563c222a",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_cce5d47c05dd",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d38917f87b35",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d3d6b421d0aa",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d3e975d025e6",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d49b896a09e6",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d5ceb6b4204f",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_d7d26761c714",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_dcd61cf9b443",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_dcd7bf13a6f4",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_dd011d696387",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "PT-pseudo_e001f4d06517",
+      "error": "prediction.json not found"
+    }
+  ],
+  "task2": [
+    {
+      "case_id": "T2-001",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-003",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-004",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-005",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-006",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-007",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-008",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-009",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-010",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-011",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-013",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-014",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-016",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-017",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-018",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-020",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-021",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-022",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-023",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-024",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-025",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-026",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-027",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-029",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-030",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-032",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-033",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-034",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-035",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-036",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-037",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-038",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-039",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-040",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-041",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-042",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-043",
+      "gt_decision": "active_treatment",
+      "pred_decision": "active_surveillance",
+      "gt_reasoning": "Patient with Severe LUTS, low risk PCa. Discuss continue surveillance and LUTS treatment vs Radical Prostatectomy with nerve sparing",
+      "pred_free_text": "Decision driven by stable ISUP GG1 histology on two biopsies, low PSA density (0.07) indicating benign BPH contribution to rising PSA, and comorbidities limiting aggressive treatment options."
+    },
+    {
+      "case_id": "T2-044",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-045",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-046",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-047",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-050",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-052",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-053",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-054",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-055",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-058",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-059",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-061",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-101",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-102",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-103",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-104",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-105",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-106",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-107",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-109",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-110",
+      "error": "prediction.json not found"
+    },
+    {
+      "case_id": "T2-111",
+      "error": "prediction.json not found"
+    }
+  ],
+  "task3": [
+    {
+      "case_id": "T3-010",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 22.6,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-026",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 39.5,
+      "pred_months": 18.0
+    },
+    {
+      "case_id": "T3-056",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 43.1,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-062",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 38,
+      "pred_months": 12.0
+    },
+    {
+      "case_id": "T3-064",
+      "gt_event": 0,
+      "pred_event": 1,
+      "gt_months": 38.4,
+      "pred_months": 18.0
+    }
+  ]
+}

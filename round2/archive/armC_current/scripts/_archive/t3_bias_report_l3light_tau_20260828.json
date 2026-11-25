@@ -1,0 +1,355 @@
+{
+  "total_cases": 19,
+  "confusion_matrix": {
+    "TP": [
+      "T3-001",
+      "T3-057"
+    ],
+    "FP": [
+      "T3-062"
+    ],
+    "TN": [
+      "T3-002",
+      "T3-004",
+      "T3-007",
+      "T3-011",
+      "T3-021",
+      "T3-026",
+      "T3-035",
+      "T3-043",
+      "T3-045",
+      "T3-067",
+      "T3-075"
+    ],
+    "FN": [
+      "T3-023",
+      "T3-027",
+      "T3-039",
+      "T3-050",
+      "T3-052"
+    ]
+  },
+  "gt0_subset": {
+    "total": 12,
+    "fp": 1,
+    "fp_rate": 0.08333333333333333,
+    "pred1_months": [
+      {
+        "case_id": "T3-062",
+        "pred_months": 18.0,
+        "gt_months": 38
+      }
+    ]
+  },
+  "tau_triggers": [
+    {
+      "case_id": "T3-004",
+      "gt_event": 0,
+      "pred_event": 0,
+      "pred_months": 36.0,
+      "gt_months": 63.1,
+      "cm": "TN",
+      "matched_patterns": [
+        "不在早期复发窗口",
+        "[校准说明]"
+      ]
+    },
+    {
+      "case_id": "T3-026",
+      "gt_event": 0,
+      "pred_event": 0,
+      "pred_months": 24.0,
+      "gt_months": 39.5,
+      "cm": "TN",
+      "matched_patterns": [
+        "不在早期复发窗口",
+        "[校准说明]"
+      ]
+    },
+    {
+      "case_id": "T3-039",
+      "gt_event": 1,
+      "pred_event": 0,
+      "pred_months": 24.0,
+      "gt_months": 14.9,
+      "cm": "FN",
+      "matched_patterns": [
+        "不在早期复发窗口",
+        "[校准说明]"
+      ]
+    },
+    {
+      "case_id": "T3-052",
+      "gt_event": 1,
+      "pred_event": 0,
+      "pred_months": 24.0,
+      "gt_months": 6.2,
+      "cm": "FN",
+      "matched_patterns": [
+        "不在早期复发窗口",
+        "[校准说明]"
+      ]
+    }
+  ],
+  "per_case": [
+    {
+      "case_id": "T3-001",
+      "gt_event": 1,
+      "gt_months": 1.8,
+      "pred_event": 1,
+      "pred_months": 14.0,
+      "cm": "TP",
+      "tau_triggered": false,
+      "free_text_len": 1091,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-002",
+      "gt_event": 0,
+      "gt_months": 65.7,
+      "pred_event": 0,
+      "pred_months": 48.0,
+      "cm": "TN",
+      "tau_triggered": false,
+      "free_text_len": 442,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-004",
+      "gt_event": 0,
+      "gt_months": 63.1,
+      "pred_event": 0,
+      "pred_months": 36.0,
+      "cm": "TN",
+      "tau_triggered": true,
+      "free_text_len": 477,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-007",
+      "gt_event": 0,
+      "gt_months": 18.1,
+      "pred_event": 0,
+      "pred_months": 48.0,
+      "cm": "TN",
+      "tau_triggered": false,
+      "free_text_len": 378,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-011",
+      "gt_event": 0,
+      "gt_months": 56.4,
+      "pred_event": 0,
+      "pred_months": 36.0,
+      "cm": "TN",
+      "tau_triggered": false,
+      "free_text_len": 446,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-021",
+      "gt_event": 0,
+      "gt_months": 63.1,
+      "pred_event": 0,
+      "pred_months": 36.0,
+      "cm": "TN",
+      "tau_triggered": false,
+      "free_text_len": 355,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-023",
+      "gt_event": 1,
+      "gt_months": 19.2,
+      "pred_event": 0,
+      "pred_months": 48.0,
+      "cm": "FN",
+      "tau_triggered": false,
+      "free_text_len": 541,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-026",
+      "gt_event": 0,
+      "gt_months": 39.5,
+      "pred_event": 0,
+      "pred_months": 24.0,
+      "cm": "TN",
+      "tau_triggered": true,
+      "free_text_len": 563,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-027",
+      "gt_event": 1,
+      "gt_months": 19.9,
+      "pred_event": 0,
+      "pred_months": 60.0,
+      "cm": "FN",
+      "tau_triggered": false,
+      "free_text_len": 430,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-035",
+      "gt_event": 0,
+      "gt_months": 47.7,
+      "pred_event": 0,
+      "pred_months": 48.0,
+      "cm": "TN",
+      "tau_triggered": false,
+      "free_text_len": 407,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-039",
+      "gt_event": 1,
+      "gt_months": 14.9,
+      "pred_event": 0,
+      "pred_months": 24.0,
+      "cm": "FN",
+      "tau_triggered": true,
+      "free_text_len": 256,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-043",
+      "gt_event": 0,
+      "gt_months": 59.9,
+      "pred_event": 0,
+      "pred_months": 12.0,
+      "cm": "TN",
+      "tau_triggered": false,
+      "free_text_len": 429,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-045",
+      "gt_event": 0,
+      "gt_months": 24.2,
+      "pred_event": 0,
+      "pred_months": 60.0,
+      "cm": "TN",
+      "tau_triggered": false,
+      "free_text_len": 468,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-050",
+      "gt_event": 1,
+      "gt_months": 10.9,
+      "pred_event": 0,
+      "pred_months": 12.0,
+      "cm": "FN",
+      "tau_triggered": false,
+      "free_text_len": 247,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-052",
+      "gt_event": 1,
+      "gt_months": 6.2,
+      "pred_event": 0,
+      "pred_months": 24.0,
+      "cm": "FN",
+      "tau_triggered": true,
+      "free_text_len": 446,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-057",
+      "gt_event": 1,
+      "gt_months": 36.7,
+      "pred_event": 1,
+      "pred_months": 18.0,
+      "cm": "TP",
+      "tau_triggered": false,
+      "free_text_len": 249,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-062",
+      "gt_event": 0,
+      "gt_months": 38,
+      "pred_event": 1,
+      "pred_months": 18.0,
+      "cm": "FP",
+      "tau_triggered": false,
+      "free_text_len": 461,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-067",
+      "gt_event": 0,
+      "gt_months": 34.7,
+      "pred_event": 0,
+      "pred_months": 36.0,
+      "cm": "TN",
+      "tau_triggered": false,
+      "free_text_len": 403,
+      "has_reveal": true,
+      "has_free_text": true
+    },
+    {
+      "case_id": "T3-075",
+      "gt_event": 0,
+      "gt_months": 60.2,
+      "pred_event": 0,
+      "pred_months": 36.0,
+      "cm": "TN",
+      "tau_triggered": false,
+      "free_text_len": 531,
+      "has_reveal": true,
+      "has_free_text": true
+    }
+  ],
+  "tau_invariant": {
+    "event1_months_valid": true,
+    "event1_violations": [],
+    "reslice_upgrades": 0,
+    "reslice_upgrade_cases": [],
+    "event0_months_none_fallback": 0,
+    "event0_months_none_cases": [],
+    "summary": {
+      "invariant_pass": true,
+      "event1_count": 3,
+      "event1_months_valid": true,
+      "reslice_upgrades": 0,
+      "event0_none_fallback_count": 0
+    }
+  },
+  "summary": {
+    "TP": 2,
+    "FP": 1,
+    "TN": 11,
+    "FN": 5,
+    "GT0_total": 12,
+    "GT1_total": 7,
+    "FP_rate_gt0": 0.08333333333333333,
+    "tau_trigger_count": 4,
+    "tau_trigger_cases": [
+      "T3-004",
+      "T3-026",
+      "T3-039",
+      "T3-052"
+    ]
+  }
+}

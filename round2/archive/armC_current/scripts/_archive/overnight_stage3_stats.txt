@@ -1,0 +1,7 @@
+traces=30
+critique_executed=30
+polluted=0
+no_issues=30
+refined=0
+other=0
+30x self_refine: no issues found (1 iteration)
