@@ -1,0 +1,96 @@
+{
+  "A1": {
+    "case_score": 0.48,
+    "gate_pass": 0.7143,
+    "case_score_passed": 0.672,
+    "decision_acc": 0.7143,
+    "exact_acc": 0.7143,
+    "conf_kappa": 0.0121,
+    "weight_kappa": 0.4022,
+    "tool": 1.0,
+    "grounding": 0.1995,
+    "f1": 0.8
+  },
+  "A2": {
+    "case_score": 0.3849,
+    "gate_pass": 0.6389,
+    "case_score_passed": 0.6024,
+    "decision_acc": 0.5694,
+    "exact_acc": 0.5,
+    "conf_kappa": -0.0148,
+    "weight_kappa": 0.3701,
+    "tool": 1.0,
+    "grounding": 0.2235,
+    "f1": 0.3042,
+    "f1_weighted": 0.45
+  },
+  "A3": {
+    "case_score": 0.5873,
+    "gate_pass": 0,
+    "case_score_passed": 0,
+    "decision_acc": 0,
+    "exact_acc": 0,
+    "conf_kappa": 0,
+    "weight_kappa": 0,
+    "tool": 0,
+    "grounding": 0,
+    "c_index": 0.6399,
+    "event_acc": 0.7397,
+    "time_score": 0.4348,
+    "mae_event1": 13.35
+  },
+  "C1": {
+    "case_score": 0.4826,
+    "gate_pass": 0.7143,
+    "case_score_passed": 0.6756,
+    "decision_acc": 0.7143,
+    "exact_acc": 0.7143,
+    "conf_kappa": 0.0459,
+    "weight_kappa": 0.4245,
+    "tool": 1.0,
+    "grounding": 0.1977,
+    "f1": 0.8116
+  },
+  "C2": {
+    "case_score": 0.406,
+    "gate_pass": 0.625,
+    "case_score_passed": 0.6496,
+    "decision_acc": 0.6042,
+    "exact_acc": 0.5833,
+    "conf_kappa": -0.0728,
+    "weight_kappa": 0.3796,
+    "tool": 1.0,
+    "grounding": 0.2157,
+    "f1": 0.5361,
+    "f1_weighted": 0.56
+  },
+  "C3": {
+    "case_score": 0.6266,
+    "gate_pass": 0,
+    "case_score_passed": 0,
+    "decision_acc": 0,
+    "exact_acc": 0,
+    "conf_kappa": 0,
+    "weight_kappa": 0,
+    "tool": 0,
+    "grounding": 0,
+    "c_index": 0.6476,
+    "event_acc": 0.7123,
+    "time_score": 0.5408,
+    "mae_event1": 16.71
+  },
+  "A_ranking": {
+    "T1": 0.64,
+    "T2": 0.4174,
+    "T3": 0.6399,
+    "S": 0.551,
+    "S_macro_f1_variant": 0.5218
+  },
+  "C_ranking": {
+    "T1": 0.6471,
+    "T2": 0.483,
+    "T3": 0.6476,
+    "S": 0.5816,
+    "S_macro_f1_variant": 0.5768
+  }
+}

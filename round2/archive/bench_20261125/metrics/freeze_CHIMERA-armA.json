@@ -1,0 +1,29 @@
+{
+  "arm": "CHIMERA-armA",
+  "count": 23,
+  "files": {
+    "configs/config.yaml": "742d615ad32996d9741d2bd446d0b643dfd0da03bd759e0cfe517c5e33034393",
+    "inference.py": "07e011710a09f4a1f76712a474d1f71954fb25e397923a56bc70cfc8cb40770f",
+    "src/chimera_agent_baseline/__init__.py": "1403c07ce71b160be7edbfbc6d7047f654ab228244524547d6d1123050dc9f88",
+    "src/chimera_agent_baseline/agent/__init__.py": "b9d4390a7b62cc6d1b7e8bd2e0686e145b04279f3b75bafe7eaa7ebbc312f55b",
+    "src/chimera_agent_baseline/agent/form_fill.py": "f1805752c85caf9605d10afc6f9f61f7b61c75c79ca5d8f832426ff1ca2f3e10",
+    "src/chimera_agent_baseline/agent/graph.py": "5cee1c7257fc69661fb19e872e7e57593e5bc772b6534c6d2ca3fc4c701837d6",
+    "src/chimera_agent_baseline/agent/prompts.py": "37eaf98e2a250f73761dd400fb80911e983480cf2a6818757416da432a06c927",
+    "src/chimera_agent_baseline/bench_cost.py": "1c69d9bb55b4fb895bd76f9fcb8d69aa86fdb405cf44adf6da6c72012b952dba",
+    "src/chimera_agent_baseline/case_loader.py": "ea54a6d065eff869c8e65550f1714b9d812290020c7782800828c4e3bf82e2b6",
+    "src/chimera_agent_baseline/features.py": "13282a751d7b00dfd8ede1ccfaf3872bb2278119aa210f50c3c81d03e6b684af",
+    "src/chimera_agent_baseline/mcp_server.py": "9302bf63cec5d0d9f2786c6e4237bd73cda60983110ab4ca88d80c0b2092a252",
+    "src/chimera_agent_baseline/models/__init__.py": "b06e2dcfd2cd90880397563050fdb40f90324b979561f0bc6241041efc4c4234",
+    "src/chimera_agent_baseline/models/openai_compat.py": "7402b6e8f844cb94caa397271f013b004ee6cacae13ab01d4b9b3091e65e3aed",
+    "src/chimera_agent_baseline/models/vllm_offline.py": "235d7f61c5645e0737d6cd740512de37cc85ac3f03f1e85130da84c5d1c9e40c",
+    "src/chimera_agent_baseline/output/__init__.py": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+    "src/chimera_agent_baseline/output/schema.py": "33950ebb787a6abdd6509f27b6d5d1fe062bbf2aabbd64cfdf136987675de22b",
+    "src/chimera_agent_baseline/rag.py": "1231b134ce95d09d1008c49b8f930e41bdd5806542175cf31ca0dca55df3de31",
+    "src/chimera_agent_baseline/run.py": "0cc74ade28013bbe8a6bf07f6d98080c412504dcb842ecb72899b53f90629251",
+    "src/chimera_agent_baseline/tools/__init__.py": "c4efd5220499ff7ba1bf072708fcb22b09056421eeac4ae6b2d72480419281ae",
+    "src/chimera_agent_baseline/tools/base.py": "4bd13deff86d4d6dedea16f1246ba91ad73d44cd70aca27f33a0f2b8632081bd",
+    "src/chimera_agent_baseline/tools/definitions.py": "81b16a809cd2989259f6c7eea1620828a3f8f3df0b6f9f162ed938cabd995b0d",
+    "src/chimera_agent_baseline/tools/predictor.py": "605f057eb03840eb5b727597faaab8a3126bf6e7d8c892126a66d6f4a3bfe240",
+    "src/chimera_agent_baseline/utils.py": "3018cde7ed5e802eb59b1b5ffc23c92c2606aa728e76e04d83dfc16b66797e7c"
+  }
+}

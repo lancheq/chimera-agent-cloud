@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>CHIMERA 官方 Baseline vs Adaptive v2 候选 · N=6 冒烟对照</title>
+<style>
+  :root { --ink:#1b1e23; --muted:#5d6673; --line:#dfe3e8; --bg:#fbfbfa; --warn:#8a4b00; --ok:#1d6b3f; --bad:#a03030; }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:40px 24px; background:var(--bg); color:var(--ink);
+         font:15px/1.68 -apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; }
+  main { max-width: 880px; margin:0 auto; }
+  h1 { font-size:24px; margin:0 0 6px; letter-spacing:-.2px; }
+  .sub { color:var(--muted); font-size:13px; margin-bottom:28px; }
+  h2 { font-size:17px; margin:34px 0 10px; padding-bottom:6px; border-bottom:1px solid var(--line); }
+  h3 { font-size:14px; margin:20px 0 6px; color:var(--muted); font-weight:600; }
+  p { margin:8px 0; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13.5px; }
+  th,td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { background:#f2f4f6; font-weight:600; }
+  td.num { text-align:right; font-variant-numeric: tabular-nums; }
+  code { background:#eef0f2; padding:1px 5px; border-radius:3px; font-size:12.5px;
+         font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .verdict { border-left:3px solid var(--ink); padding:10px 14px; background:#fff; margin:14px 0; }
+  .risk { border-left:3px solid var(--warn); padding:10px 14px; background:#fffaf3; margin:12px 0; }
+  .ok { color:var(--ok); font-weight:600; }
+  .bad { color:var(--bad); font-weight:600; }
+  ul { padding-left:20px; margin:8px 0; }
+  li { margin:4px 0; }
+  .small { font-size:12.5px; color:var(--muted); }
+</style>
+</head>
+<body>
+<main>
+
+<h1>官方 Baseline vs Adaptive v2 候选：N=6 冒烟对照</h1>
+<div class="sub">2026-11-24 · A 臂官方原件 <code>1afa788</code> · C 臂 P01 生产候选 · 同一 GGUF、同一端点、同一评测器</div>
+
+<div class="verdict">
+<b>三句话结论。</b>
+① 两臂都能在真实病例上端到端跑通，输出合法、可被同一评测器打分、预算记账生效——<b>对照装置成立</b>。
+② 6 例上没有出现「当前候选全面优于官方」的证据：T1 平手 2/2，T2 候选 1/2 对官方 0/2，T3 事件全对而官方时间误差更小（10.5 对 28.6 月）。
+③ 这 6 例不足以支撑任何性能结论：T1 标签是伪标签、采样温度 0.3 单次运行方差极大（同一例两次跑，官方 T2-001 从对变错）。<b>本轮定性为内部基线校准，不是泛化证据。</b>
+</div>
+
+<h2>1. 实验条件（哪些统一了，哪些是真实差异）</h2>
+<table>
+<tr><th style="width:34%">维度</th><th>状态</th></tr>
+<tr><td>模型权重</td><td>同一 GGUF <code>Qwen3.6-35B-A3B-UD-Q4_K_M.gguf</code>，同一 llama-server 进程（pid 3287478，:8765，n_ctx 32768，4 slots）</td></tr>
+<tr><td>解释器与依赖</td><td>两臂同用 <code>venvs/chimera_access</code>（torch 2.6.0+cpu、transformers 4.57.6、openai 2.48.0）——与冻结知识清单的版本门完全一致</td></tr>
+<tr><td>采样参数</td><td>temperature 0.3、top_p 0.95、max_new_tokens 8192、reasoning_budget 4096（官方原默认是 1.0/4096，已统一到候选口径，属第 7 条统一项）</td></tr>
+<tr><td>指南语料</td><td>两臂同用候选冻结语料 2889 chunks + 428 QA（官方自带语料为 1501 chunks，已按第 7 条统一，属对官方的偏离，已记录）</td></tr>
+<tr><td>输入数据</td><td>同一 <code>data/taskN/agent_input/&lt;case&gt;</code>，同一 6 个病例</td></tr>
+<tr><td>评测器</td><td>同一个 <code>bench/score.py</code>，直接读两臂各自的产物格式，不经过两套评估器</td></tr>
+<tr><td class="bad">真实差异 1</td><td>官方无 cross-encoder 重排，候选有（RRF→重排）。这是候选的检索改进，保留不关</td></tr>
+<tr><td class="bad">真实差异 2</td><td>提示词不同：官方单条 SYSTEM_PROMPT，候选 <code>build_system_prompt(task)</code> + 阈值小节 + RAG 注入格式</td></tr>
+<tr><td class="bad">真实差异 3</td><td>候选多一层 Adaptive 控制器（planner/policy/diagnosis/form_fill 四阶段），官方是原生 ReAct 循环</td></tr>
+</table>
+
+<h2>2. 医学表现</h2>
+<table>
+<tr><th>任务</th><th>样本</th><th class="num">官方 A</th><th class="num">候选 C</th><th>备注</th></tr>
+<tr><td>T1 活检决策</td><td>PT-pseudo_48fb, 1523</td><td class="num">2/2</td><td class="num">2/2</td><td>平手；标签为伪标签</td></tr>
+<tr><td>T2 治疗决策</td><td>T2-001, T2-008</td><td class="num">0/2</td><td class="num">1/2</td><td>C 答对 T2-001；两臂都把 T2-008 判成非 <code>active_surveillance</code></td></tr>
+<tr><td>T3 复发时间（事件）</td><td>T3-034, T3-021</td><td class="num">2/2</td><td class="num">2/2</td><td>两例真值均为 event=0</td></tr>
+<tr><td>T3 时间误差</td><td>同上</td><td class="num">MAE 10.5 月</td><td class="num">MAE 28.6 月</td><td>A：42 vs 54.1、18 vs 63.1；C：48 vs 54.1、12 vs 63.1</td></tr>
+</table>
+
+<div class="risk">
+<b>必须同时读的三条限制。</b>
+<ul>
+<li><b>T1 没有真值。</b>本地 91 例「有标签」的病例全部是 <code>PT-pseudo_*</code>，标签文件是伪标签。<code>evaluation/ground_truth</code> 下只有 3 个 demo，<code>pathologist_forms</code> 为空。T1 的分数只能解释为「与伪标签一致率」。</li>
+<li><b>单次运行方差盖过差异。</b>官方 T2-001 在两次独立运行里一次对、一次错（temperature 0.3）。6 例 × 单次，不能分辨两臂。</li>
+<li><b>T3 只有 2 例且都是删失。</b>event 全对说明不了排序能力，MAE 由两例决定，10.5 与 28.6 的差距不构成结论。</li>
+</ul>
+</div>
+
+<h2>3. 信息与计算成本</h2>
+<table>
+<tr><th>任务 / 病例</th><th class="num">A 请求</th><th class="num">A token</th><th class="num">C 请求</th><th class="num">C token</th><th class="num">C 信息单元</th></tr>
+<tr><td>T1 PT-pseudo_48fb</td><td class="num">2</td><td class="num">6,834</td><td class="num">6</td><td class="num">30,256</td><td class="num">2 / 3</td></tr>
+<tr><td>T1 PT-pseudo_1523</td><td class="num">2</td><td class="num">7,866</td><td class="num">6</td><td class="num">28,647</td><td class="num">2 / 3</td></tr>
+<tr><td>T2 T2-001</td><td class="num">6</td><td class="num">35,933</td><td class="num">7</td><td class="num">36,242</td><td class="num">3 / 4</td></tr>
+<tr><td>T2 T2-008</td><td class="num">4</td><td class="num">21,566</td><td class="num">6</td><td class="num">26,616</td><td class="num">3 / 3</td></tr>
+<tr><td>T3 T3-034</td><td class="num">7</td><td class="num">26,661</td><td class="num">6</td><td class="num">18,451</td><td class="num">3 / 3</td></tr>
+<tr><td>T3 T3-021</td><td class="num">3</td><td class="num">10,121</td><td class="num">6</td><td class="num">18,402</td><td class="num">3 / 3</td></tr>
+<tr><th>合计</th><th class="num">24</th><th class="num">118,981</th><th class="num">37</th><th class="num">158,614</th><th class="num">16</th></tr>
+</table>
+<p class="small">请求数与 token 均来自服务端返回的 usage，两臂同一口径。C 臂另有逐例预算台账：spent_units ≤ 3、admitted_attempts ≤ 6、无 pending 请求。</p>
+<p><b>成本结构差异比总量更重要。</b>官方在 T1 几乎不取证（<code>called_tools=[]</code>，2 次请求就出结论）；候选在 T1 稳定花 6 次请求、2 个信息单元。到 T2/T3，官方自己也用 3–7 次请求和 4–6 个工具，两边请求数接近，候选反而在 T3-034 上更省 token。所以「候选一定更贵」不成立，贵在 T1 这一档。</p>
+
+<h2>4. 病例使用台账（决定这轮能不能算独立证据）</h2>
+<table>
+<tr><th>任务</th><th class="num">有标签病例</th><th class="num">历史跑过</th><th>结论</th></tr>
+<tr><td>T1</td><td class="num">91（全为伪标签）</td><td class="num">91 / 91</td><td class="bad">全部已接触，无独立确认集。不随机拆分充当独立证据</td></tr>
+<tr><td>T2</td><td class="num">72</td><td class="num">1（仅 T2-001）</td><td class="ok">71 例未接触，可作独立样本</td></tr>
+<tr><td>T3</td><td class="num">73</td><td class="num">1（仅 T3-001）</td><td class="ok">72 例未接触，可作独立样本</td></tr>
+</table>
+<p>这条台账改变了正式实验的重心：<b>真正干净的证据在 T2/T3（143 例），T1 的 91 例只能当内部基准。</b>把 T1 说成「性能提升」的证据是站不住的，把 T2/T3 说成内部基准又浪费了它们的独立性。</p>
+
+<h2>5. 冻结与补丁台账</h2>
+<h3>A 臂（官方原件）</h3>
+<ul>
+<li>来源 <code>DIAGNijmegen/chimera-agent-baseline</code> commit <code>1afa788</code>（2026-08-10），落盘 <code>~/CHIMERA-armA</code>，21 个模块，指纹 <code>output/bench/freeze_CHIMERA-armA.json</code>。</li>
+<li>补丁仅 2 处、共 32 行：① <code>models/openai_compat.py</code> 在拿到响应后追加一行 usage 记录；② <code>run.py</code> 给 MCP 子进程转发 <code>PYTHONPATH</code> 等白名单变量。补丁文件 <code>official_compat.patch</code>。</li>
+<li><b>为什么第 ② 条非改不可</b>：MCP SDK 的 stdio 只透传基础环境变量，丢掉 <code>PYTHONPATH</code> 后子进程会去 import <em>pip 安装的那一份包</em>（指向当前仓库）。第一次 A 臂运行就是这样被污染的——agent 主进程跑官方代码，工具与 RAG 子进程跑当前仓库代码，日志里冒出了只有当前仓库才有的 428 条 QA 与 reranker 加载。该次结果已作废，修复后工具数从 7 回到官方的 6，RAG 日志也回到官方形态。这条也说明：<b>「代码身份一致」必须用日志特征验证，不能假设。</b></li>
+</ul>
+<h3>C 臂（Adaptive v2 候选）</h3>
+<ul>
+<li>当前工作区未提交状态整体复制到 <code>~/CHIMERA-armC</code>（82 个模块），原工作区未改动。指纹 <code>output/bench/freeze_CHIMERA-armC.json</code>。</li>
+<li>按裁定关闭：predictor、reflection、few-shot、B/C 未成熟机制、<code>CHIMERA_WEIGHT_TABLE=0</code>。<code>reasoning_align</code> 在 adaptive 路径下本就以 <code>align=not adaptive</code> 关闭，无需额外改动。</li>
+<li>新增一段入口代码 <code>benchmark_entry.py</code>（约 230 行）：把「三份命名合成夹具」换成「一份预先登记的真实病例清单」，逐文件 SHA 绑定、私有空输出目录、逐例 12 次请求 / 195,072 token 预算、原生 <code>/v1/chat/completions/input_tokens</code> 计数。Adaptive 控制器、信息准入台账、审计日志一行未放松。</li>
+<li>准入链上另需放行两处：<code>entry_profile.verify_identity</code> 增加 benchmark 作用域分支；<code>models.load_model</code> 允许 benchmark 作用域加载真实模型（与 host smoke / case pilot 同级）。</li>
+</ul>
+
+<h2>6. 冒烟验收五项</h2>
+<table>
+<tr><th>验收项</th><th>结果</th></tr>
+<tr><td>输出合法性</td><td class="ok">6/6 例两臂均产出 GC 契约文件（decision + reasoning），JSON 可解析</td></tr>
+<tr><td>评估器可评分性</td><td class="ok">同一 score.py 读到 12/12 份产物，无缺文件</td></tr>
+<tr><td>预算记账</td><td class="ok">C 臂逐例台账 ×6 份；A 臂逐例 usage 日志 ×6 份</td></tr>
+<tr><td>实际运行版本</td><td class="ok">A：21 模块 / 官方 6 工具 / 无 QA 与 reranker 日志；C：82 模块 / 5 工具（T1 deny 掉病理与家族史）/ 重排加载成功</td></tr>
+<tr><td>A 臂补丁未改策略</td><td class="ok">补丁只动日志写入与子进程环境，未触提示词、工具白名单、停止条件、planner</td></tr>
+</table>
+
+<h2>7. 已知缺口</h2>
+<ul>
+<li>官方 <code>workflow=react</code> 开关未被用来冒充官方臂，B 臂（同底座 Direct ReAct）本轮未跑，按要求后置。</li>
+<li>A 臂 wall time 只统计了首末请求间隔，不含 RAG 初始化与 form_fill 收尾；正式配对需改用整例墙钟。</li>
+<li>C 臂首例曾用 tabpfn 环境跑，被冻结知识清单的版本门（torch 2.6.0+cpu）拦下；改用 <code>chimera_access</code> 后通过。<b>没有修改清单来绕过</b>，临时生成的修复版清单已废弃停用。</li>
+</ul>
+
+<p class="small">证据目录：<code>~/CHIMERA-armA/output/bench/</code>、<code>~/CHIMERA-armC/output/bench/</code>、<code>~/CHIMERA-armC/output/bench_work/</code>。</p>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,184 @@
+{
+  "1": {
+    "A": {
+      "n": 91,
+      "gt_hist": {
+        "clear": 58,
+        "borderline": 18,
+        "uncertain": 15
+      },
+      "pred_hist": {
+        "clear": 90,
+        "borderline": 1
+      },
+      "kappa": 0.0264,
+      "acc_by_pred": {
+        "clear": {
+          "n": 90,
+          "acc": 0.7222
+        },
+        "borderline": {
+          "n": 1,
+          "acc": 0.0
+        }
+      },
+      "acc_by_gt": {
+        "clear": {
+          "n": 58,
+          "acc": 0.7931
+        },
+        "borderline": {
+          "n": 18,
+          "acc": 0.5
+        },
+        "uncertain": {
+          "n": 15,
+          "acc": 0.6667
+        }
+      },
+      "reveal_by_pred": {
+        "clear": 1.07,
+        "borderline": 2.0
+      },
+      "same_level_share": 0.6484,
+      "off_by_one_share": 0.1868,
+      "off_by_two_share": 0.1648
+    },
+    "C": {
+      "n": 91,
+      "gt_hist": {
+        "clear": 58,
+        "borderline": 18,
+        "uncertain": 15
+      },
+      "pred_hist": {
+        "clear": 83,
+        "borderline": 8
+      },
+      "kappa": 0.0438,
+      "acc_by_pred": {
+        "clear": {
+          "n": 83,
+          "acc": 0.759
+        },
+        "borderline": {
+          "n": 8,
+          "acc": 0.25
+        }
+      },
+      "acc_by_gt": {
+        "clear": {
+          "n": 58,
+          "acc": 0.7931
+        },
+        "borderline": {
+          "n": 18,
+          "acc": 0.5
+        },
+        "uncertain": {
+          "n": 15,
+          "acc": 0.6667
+        }
+      },
+      "reveal_by_pred": {
+        "clear": 2.42,
+        "borderline": 2.75
+      },
+      "same_level_share": 0.6154,
+      "off_by_one_share": 0.2418,
+      "off_by_two_share": 0.1429
+    }
+  },
+  "2": {
+    "A": {
+      "n": 72,
+      "gt_hist": {
+        "clear": 58,
+        "borderline": 14
+      },
+      "pred_hist": {
+        "clear": 55,
+        "borderline": 12,
+        "uncertain": 5
+      },
+      "kappa": -0.0208,
+      "acc_by_pred": {
+        "clear": {
+          "n": 55,
+          "acc": 0.6
+        },
+        "borderline": {
+          "n": 12,
+          "acc": 0.3333
+        },
+        "uncertain": {
+          "n": 5,
+          "acc": 1.0
+        }
+      },
+      "acc_by_gt": {
+        "clear": {
+          "n": 58,
+          "acc": 0.5172
+        },
+        "borderline": {
+          "n": 14,
+          "acc": 0.8571
+        }
+      },
+      "reveal_by_pred": {
+        "clear": 3.49,
+        "borderline": 3.92,
+        "uncertain": 3.8
+      },
+      "same_level_share": 0.6389,
+      "off_by_one_share": 0.3056,
+      "off_by_two_share": 0.0556
+    },
+    "C": {
+      "n": 72,
+      "gt_hist": {
+        "clear": 58,
+        "borderline": 14
+      },
+      "pred_hist": {
+        "clear": 58,
+        "borderline": 13,
+        "uncertain": 1
+      },
+      "kappa": -0.0613,
+      "acc_by_pred": {
+        "clear": {
+          "n": 58,
+          "acc": 0.6034
+        },
+        "borderline": {
+          "n": 13,
+          "acc": 0.4615
+        },
+        "uncertain": {
+          "n": 1,
+          "acc": 1.0
+        }
+      },
+      "acc_by_gt": {
+        "clear": {
+          "n": 58,
+          "acc": 0.5172
+        },
+        "borderline": {
+          "n": 14,
+          "acc": 0.8571
+        }
+      },
+      "reveal_by_pred": {
+        "clear": 2.9,
+        "borderline": 2.92,
+        "uncertain": 3.0
+      },
+      "same_level_share": 0.6667,
+      "off_by_one_share": 0.3194,
+      "off_by_two_share": 0.0139
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "1": {
+    "A": {
+      "cases": 91,
+      "grounding": 0.307,
+      "mean_revealed": 1.08,
+      "zero_reveal_cases": 53,
+      "mean_weighted_vars": 6.44,
+      "mean_ungrounded": 2.42,
+      "ungrounded_free_cases": 28
+    },
+    "C": {
+      "cases": 91,
+      "grounding": 0.547,
+      "mean_revealed": 2.45,
+      "zero_reveal_cases": 2,
+      "mean_weighted_vars": 6.36,
+      "mean_ungrounded": 1.04,
+      "ungrounded_free_cases": 35
+    }
+  },
+  "2": {
+    "A": {
+      "cases": 72,
+      "grounding": 0.484,
+      "mean_revealed": 3.58,
+      "zero_reveal_cases": 0,
+      "mean_weighted_vars": 8.06,
+      "mean_ungrounded": 0.12,
+      "ungrounded_free_cases": 69
+    },
+    "C": {
+      "cases": 72,
+      "grounding": 0.507,
+      "mean_revealed": 2.9,
+      "zero_reveal_cases": 0,
+      "mean_weighted_vars": 8.5,
+      "mean_ungrounded": 0.58,
+      "ungrounded_free_cases": 61
+    }
+  }
+}

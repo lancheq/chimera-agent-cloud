@@ -1,0 +1,38 @@
+{
+  "1": {
+    "A": {
+      "cases": 91,
+      "confidence": 0.7418,
+      "variable_weights": 0.7287,
+      "important_factors": 0.6033,
+      "n_confidence": 91,
+      "n_weights": 91
+    },
+    "C": {
+      "cases": 91,
+      "confidence": 0.7363,
+      "variable_weights": 0.7354,
+      "important_factors": 0.6306,
+      "n_confidence": 91,
+      "n_weights": 91
+    }
+  },
+  "2": {
+    "A": {
+      "cases": 72,
+      "confidence": 0.7917,
+      "variable_weights": 0.7421,
+      "important_factors": 0.5851,
+      "n_confidence": 72,
+      "n_weights": 72
+    },
+    "C": {
+      "cases": 72,
+      "confidence": 0.8264,
+      "variable_weights": 0.7364,
+      "important_factors": 0.5483,
+      "n_confidence": 72,
+      "n_weights": 72
+    }
+  }
+}

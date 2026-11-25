@@ -1,0 +1,32 @@
+{
+  "1": {
+    "cases": 91,
+    "accuracy": 0.7912,
+    "errors": [],
+    "pred_dist": {
+      "no": 38,
+      "yes": 53
+    }
+  },
+  "2": {
+    "cases": 72,
+    "accuracy": 0.8611,
+    "errors": [],
+    "pred_dist": {
+      "active_surveillance": 25,
+      "active_treatment": 33,
+      "continued_surveillance": 14
+    }
+  },
+  "3": {
+    "cases": 73,
+    "event_acc": 0.8767,
+    "c_index": 0.7831,
+    "mae_months": 44.14,
+    "pred_events": {
+      "1": 10,
+      "0": 63
+    },
+    "errors": []
+  }
+}

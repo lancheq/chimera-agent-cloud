@@ -1,0 +1,16 @@
+{
+  "sha256": "8684b9c4104d227bd08325fbef3c67ccd826e2836155db10f571f6eb16316a99",
+  "lines": 2055,
+  "source": "https://raw.githubusercontent.com/DIAGNijmegen/CHIMERA-agent/main/evaluation/evaluate.py",
+  "upstream_commit": "192c39c5a73a",
+  "upstream_date": "2026-08-24T09:40:04Z",
+  "upstream_message": "weighing rationale higher",
+  "replaces": {
+    "sha256": "e2b768db9976e82f7dcdd457888ae9b6d9f69d354cfe210541ccc76c238ec379",
+    "lines": 1615,
+    "note": "项目内 vendored 快照，2026-09-27，非上游追踪；T2 给 0.5 部分分、reveal 只认 dict key"
+  },
+  "scored_under_this_pin": {
+    "gc_v2": "两臂 236 例，确定性 + Judge(qwen2.5:7b 替代)"
+  }
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>基线分析结项归档 · CHIMERA-agent</title>
+<style>
+  :root { --ink:#1b1e23; --muted:#5d6673; --line:#dfe3e8; --bg:#fbfbfa; --warn:#8a4b00; --ok:#1d6b3f; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:40px 24px; background:var(--bg); color:var(--ink);
+         font:15px/1.68 -apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; }
+  main { max-width:900px; margin:0 auto; }
+  h1 { font-size:23px; margin:0 0 6px; letter-spacing:-.2px; }
+  .sub { color:var(--muted); font-size:13px; margin-bottom:22px; }
+  h2 { font-size:17px; margin:30px 0 10px; padding-bottom:6px; border-bottom:1px solid var(--line); }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13.5px; }
+  th,td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); }
+  th { background:#f2f4f6; font-weight:600; }
+  td.num,th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  code { background:#eef0f2; padding:1px 5px; border-radius:3px; font-size:12.5px;
+         font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .verdict { border-left:3px solid var(--ink); padding:10px 14px; background:#fff; margin:14px 0; }
+  .bound { border-left:3px solid var(--warn); padding:10px 14px; background:#fffaf3; margin:10px 0; }
+  .ok { color:var(--ok); font-weight:600; }
+  ul,ol { padding-left:20px; margin:8px 0; }
+  li { margin:4px 0; }
+  .small { font-size:12.5px; color:var(--muted); }
+  .tag { display:inline-block; font-size:11.5px; padding:1px 7px; border-radius:10px;
+         background:#eef0f2; color:var(--muted); margin-right:6px; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>基线分析结项归档</h1>
+<div class="sub">2026-11-25 · 状态：已结项 · 手动派发制度保持 · 后续不再追加评价器或 Confidence 专项</div>
+
+<div class="verdict">
+<b>这一轮解决了三件事，并暴露出一个比"Adaptive 能不能提分"更有价值的问题。</b>
+评价器版本（本地副本陈旧，已换官方 main 并冻结）、Confidence 归因（两个任务病因不同，均不成立为此前那种强因果）、证据支撑分（差异来自取证覆盖，但评分集合不同，不宣称严格因果）。
+真正的发现是 <b>T1 与 T2 走了相反的优化路径</b>：T1 多取证但决策没变好，T2 少取证却决策变好。这一点已超出"Adaptive 是否提分"，值得作为 A 线下一阶段的核心问题。
+</div>
+
+<h2>1. 公共评价基线（冻结）</h2>
+<table>
+<tr><th>项</th><th>值</th></tr>
+<tr><td>版本</td><td>官方 main <code>evaluate.py</code>，SHA256 <code>8684b9c4…6316a99</code>，2055 行</td></tr>
+<tr><td>上游</td><td>commit <code>192c39c5a73a</code>，2026-08-24，「weighing rationale higher」</td></tr>
+<tr><td>被替换</td><td>项目内 vendored 副本 <code>e2b768db…</code>（1615 行，2026-09-27）：T2 给 0.5 部分分、reveal 只认 dict key</td></tr>
+<tr><td>冻结校验</td><td><code>output/bench/evaluator_official_main/evaluator_guard.py</code>：指纹不符即拒绝评分</td></tr>
+<tr><td>溯源</td><td><code>PIN.json</code>（含 replaces 与 scored_under_this_pin 两段）</td></tr>
+</table>
+<p class="small">未闭合：平台镜像构建使用哪个 commit，无法从本地证实。此项目前只能靠"上游文件自 2026-08-24 未再变更"间接支撑。</p>
+
+<h2>2. 核心结果（236 例，官方 main 口径）</h2>
+<table>
+<tr><th>臂</th><th class="num">T1</th><th class="num">T2</th><th class="num">T3</th><th class="num">Overall</th></tr>
+<tr><td>官方架构 A</td><td class="num">0.653</td><td class="num">0.390</td><td class="num">0.640</td><td class="num">0.545</td></tr>
+<tr><td>当前候选 C</td><td class="num">0.679</td><td class="num">0.465</td><td class="num">0.648</td><td class="num ok">0.587</td></tr>
+</table>
+<p class="small">权重按 0.4 / 0.4 / 0.2。T2 贡献约 71% 的总体提升。全部为内部样本观察：T1 的 91 例历史上全部跑过并被分析，T2/T3 相对干净但单次运行、温度 0.3，不构成独立泛化证据。</p>
+
+<h2>3. T1 与 T2 的相反路径（本轮最有价值的部分）</h2>
+<table>
+<tr><th>指标</th><th class="num">T1</th><th class="num">T2</th></tr>
+<tr><td>决策准确率</td><td class="num">持平</td><td class="num ok">+8.3pp</td></tr>
+<tr><td>信息揭示数量</td><td class="num">+126.9%（1.08 → 2.45）</td><td class="num">−19.0%（3.58 → 2.90）</td></tr>
+<tr><td>Token 成本</td><td class="num">+90%</td><td class="num ok">−9%</td></tr>
+<tr><td>段支撑分</td><td class="num">+0.335（0.430 → 0.765）</td><td class="num">−0.098（0.967 → 0.869）</td></tr>
+<tr><td>排名分数</td><td class="num">+0.026</td><td class="num">+0.075</td></tr>
+</table>
+<p><b>T1</b>：候选获取了更多证据，改善了证据支撑，但没有改善决策正确率。<br>
+<b>T2</b>：候选获取了更少的证据，却提高了决策正确率与类别识别能力，但部分变量的证据支撑有所下降。</p>
+<div class="bound">
+<b>边界</b>：A、C 之间存在多个组件差异（提示词、重排器、Adaptive 控制器、输出投影），本轮<b>不能</b>把上述变化直接归因于 Adaptive 本身。这是 A 线下一阶段要拆的问题，不是本轮结论。
+</div>
+
+<h2>4. 三条已闭合结论，及其边界</h2>
+<h3>T1 置信度</h3>
+<p>诊断文本中的犹豫表述<b>未能可靠区分专家置信度等级</b>：GT 非 clear 组 11/33（33.3%）、GT clear 组 17/58（29.3%），两者几乎相同；GT 非 clear 但最终输出 clear 的 29 例里，仅 7 例（24.1%）原文含犹豫表述，低于对照基线。</p>
+<div class="bound">
+可以排除「原文已表达犹豫、填表环节才压成 clear」这条路径。<b>不能</b>由关键词检测推断模型内部完全没有识别不确定性——只做了词汇层检测，未做隐状态实验，也未做 prompt 定义的受控比对。正式表述统一为：诊断文本未能可靠区分专家置信度等级。
+</div>
+<h3>T2 置信度</h3>
+<p>14 例 borderline 中 12 例为 active_treatment；模型判 AT 的比例在 clear 组 69.0%、borderline 组 71.4%（两臂均存在过度治疗倾向）。borderline 组 85.7% 的正确率是「AT 占 86% × AT 过判」的产物。</p>
+<div class="bound">
+只能说「专家置信度与模型正确率没有预期关系」。<b>不</b>归咎参考标注，<b>不</b>推断任何合理校准都会得到负 kappa。
+</div>
+<h3>段支撑分</h3>
+<p>T1 两臂加权变量数几乎相同（6.44 vs 6.36），差异全在是否揭示：官方 53/91 例零揭示，候选 2/91；T2 反向印证（揭示 3.58→2.90、加权 8.06→8.50、段支撑 0.967→0.869）。输出机制已排除（两臂 reveal 都被正确解析）。</p>
+<div class="bound">
+差异与<b>取证覆盖高度相关</b>，但段支撑分只在 gate 通过的病例上计算、两臂纳入集合不同（T1 各 65/91；T2 官方 36/72、候选 42/72），因此<b>不宣称已完成严格的因果归因</b>。
+</div>
+
+<h2>5. 明确不做的事</h2>
+<ul>
+<li>不做 Confidence 独立后处理研究：无规则覆写、无分布校准、无基于本批 GT 的调参。</li>
+<li>不改 Reveal 投影（官方 main 正确解析，投影格式无误）。</li>
+<li>不重跑现有基线，不新增 35B 调用，不改各线已批准的实验计划。</li>
+<li>不再围绕评分器做反复审查；不再寻找 Reflection / C 线的合成测试产物（真实产物不存在属正常现状）。</li>
+</ul>
+
+<h2>6. 交接到各研究线的评价指标</h2>
+<table>
+<tr><th>研究线</th><th>下一阶段重点验证</th><th>纳入的指标</th></tr>
+<tr><td>A：Adaptive</td><td>为什么 T1 增加取证却没提高正确率，而 T2 能减少取证并改善决策</td><td>决策准确率 + 加权/macro F1 + 揭示数 + token + 段支撑</td></tr>
+<tr><td>Reflection</td><td>决策纠正、理由纠正、不确定性识别及最终写回</td><td>上述全部 + 置信度三档分布与专家等级一致性（作为反思是否提高自我证据状态认知的检验）</td></tr>
+<tr><td>B：证据冲突</td><td>是否减少把未知/矛盾信息解释为确定性证据</td><td>同上 + 段支撑</td></tr>
+<tr><td>C：RAG</td><td>检索证据改善后，决策与推理质量是否同步改善</td><td>同上 + Rationale（GEval）</td></tr>
+<tr><td>D：外部数据</td><td>获得更可信的独立验证能力</td><td>沿用本套评分器，换独立样本</td></tr>
+<tr><td>Predictor</td><td>合法信息输入下的折外预测性能</td><td>LOOCV 口径（T2 RF 0.833 / T3 Cox 0.859）</td></tr>
+</table>
+
+<h2>7. 归档清单</h2>
+<table>
+<tr><th>内容</th><th>位置</th></tr>
+<tr><td>本结项报告</td><td><code>reports/CLOSEOUT_FINAL_20261125.html</code></td></tr>
+<tr><td>官方口径分数（两臂六项 + 排行榜投影）</td><td><code>gc_v2/eval/{armA,armC}/</code>、<code>gc/OFFICIAL_SCORES.json</code></td></tr>
+<tr><td>Confidence 归因与段支撑归因</td><td><code>gc_v2/BOUNDED_ANALYSIS.json</code>、<code>gc_v2/GROUNDING_DECOMP.json</code></td></tr>
+<tr><td>逐例配对数据（236 行）</td><td><code>reports/FINAL_CASES.csv</code></td></tr>
+<tr><td>评价器冻结</td><td><code>evaluator_official_main/</code>（<code>PIN.json</code> + <code>evaluator_guard.py</code>）</td></tr>
+<tr><td>两臂冻结指纹</td><td><code>bench/freeze_CHIMERA-armA.json</code>、<code>freeze_CHIMERA-armC.json</code></td></tr>
+<tr><td>转换与评分脚本</td><td><code>bench/build_gc_inputs_v2.py</code>、<code>bench/confidence_analysis.py</code>、<code>bench/grounding_decomp.py</code>、<code>bench/official_summary.py</code></td></tr>
+<tr><td>过程报告（按时间）</td><td><code>BENCH_SMOKE</code> → <code>BENCH_FULL</code> → <code>OFFICIAL_EVAL</code> → <code>EVAL_VERSION_AND_CONFIDENCE</code> → <code>CLOSEOUT_CONFIDENCE</code> → 本文件</td></tr>
+</table>
+<p class="small">前一份 <code>CLOSEOUT_CONFIDENCE_20261125.html</code> 中"模型自身没有识别出不确定性"一句已按结项口径改为"诊断文本未能可靠区分专家置信度等级"，两个文件现无口径冲突。</p>
+
+<p class="small">结项判断：已有足够信息确定方向，继续对这 236 例反复分析的边际收益下降。研究重心回到新机制的真实病例验证。</p>
+
+</main>
+</body>
+</html>

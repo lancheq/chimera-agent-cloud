@@ -1,0 +1,64 @@
+{
+  "generated": "2026-11-24 21:25:52",
+  "tasks": [
+    {
+      "task": 1,
+      "cases": 91,
+      "A": {
+        "correct": 65,
+        "accuracy": 0.7143,
+        "tokens": 1318577,
+        "requests": 283,
+        "completed": 91
+      },
+      "C": {
+        "correct": 65,
+        "accuracy": 0.7143,
+        "tokens": 2501131,
+        "requests": 542,
+        "completed": 91
+      },
+      "info_units_C": 223
+    },
+    {
+      "task": 2,
+      "cases": 72,
+      "A": {
+        "correct": 36,
+        "accuracy": 0.5,
+        "tokens": 2571235,
+        "requests": 430,
+        "completed": 72
+      },
+      "C": {
+        "correct": 42,
+        "accuracy": 0.5833,
+        "tokens": 2341075,
+        "requests": 460,
+        "completed": 72
+      },
+      "info_units_C": 209
+    },
+    {
+      "task": 3,
+      "cases": 73,
+      "A": {
+        "correct": 54,
+        "accuracy": 0.7397,
+        "tokens": 1152516,
+        "requests": 339,
+        "completed": 73,
+        "mae_months": 27.11
+      },
+      "C": {
+        "correct": 52,
+        "accuracy": 0.7123,
+        "tokens": 1381495,
+        "requests": 469,
+        "completed": 73,
+        "mae_months": 21.5
+      },
+      "info_units_C": 215
+    }
+  ]
+}

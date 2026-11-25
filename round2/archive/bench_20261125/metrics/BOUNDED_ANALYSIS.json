@@ -1,0 +1,111 @@
+{
+  "t1_chain": {
+    "gt_clear_n": 58,
+    "gt_unclear_n": 33,
+    "hedge_rate_gt_clear": 0.293,
+    "hedge_rate_gt_unclear": 0.333,
+    "gt_unclear_but_output_clear": 29,
+    "of_which_diagnosis_hedged": 7,
+    "examples_count": 5
+  },
+  "t2": {
+    "gt_confidence": {
+      "clear": 58,
+      "borderline": 14
+    },
+    "pred_confidence": {
+      "clear": 58,
+      "borderline": 13,
+      "uncertain": 1
+    },
+    "class_by_confidence": {
+      "active_surveillance / borderline": 1,
+      "active_surveillance / clear": 24,
+      "active_treatment / borderline": 12,
+      "active_treatment / clear": 19,
+      "continued_surveillance / borderline": 1,
+      "continued_surveillance / clear": 13,
+      "watchful_waiting / clear": 2
+    },
+    "accuracy_by_confidence": {
+      "clear": {
+        "n": 58,
+        "acc": 0.517
+      },
+      "borderline": {
+        "n": 14,
+        "acc": 0.857
+      }
+    },
+    "pred_active_treatment_share_by_confidence": {
+      "clear": {
+        "n": 58,
+        "pred_at": 40,
+        "share": 0.69
+      },
+      "borderline": {
+        "n": 14,
+        "pred_at": 10,
+        "share": 0.714
+      }
+    },
+    "borderline_summary": {
+      "cases": 14,
+      "gt_class": {
+        "active_treatment": 12,
+        "active_surveillance": 1,
+        "continued_surveillance": 1
+      },
+      "pred_class": {
+        "active_treatment": 10,
+        "active_surveillance": 2,
+        "watchful_waiting": 1,
+        "continued_surveillance": 1
+      },
+      "correct": 12
+    }
+  },
+  "grounding": {
+    "1": {
+      "A": {
+        "cases": 91,
+        "mean_revealed": 1.08,
+        "pct_zero_reveal": 58.2,
+        "mean_weighted_vars": 6.44,
+        "section_dependent_weighted": 471,
+        "ungrounded": 471,
+        "ungrounded_share_of_section_dep": 1.0
+      },
+      "C": {
+        "cases": 91,
+        "mean_revealed": 2.45,
+        "pct_zero_reveal": 2.2,
+        "mean_weighted_vars": 6.36,
+        "section_dependent_weighted": 467,
+        "ungrounded": 467,
+        "ungrounded_share_of_section_dep": 1.0
+      }
+    },
+    "2": {
+      "A": {
+        "cases": 72,
+        "mean_revealed": 3.58,
+        "pct_zero_reveal": 0.0,
+        "mean_weighted_vars": 8.06,
+        "section_dependent_weighted": 452,
+        "ungrounded": 452,
+        "ungrounded_share_of_section_dep": 1.0
+      },
+      "C": {
+        "cases": 72,
+        "mean_revealed": 2.9,
+        "pct_zero_reveal": 0.0,
+        "mean_weighted_vars": 8.5,
+        "section_dependent_weighted": 482,
+        "ungrounded": 482,
+        "ungrounded_share_of_section_dep": 1.0
+      }
+    }
+  },
+  "_note": "逐例明细（case_id、GT free_text、预测值）已按仓库公开策略剔除，仅保留聚合统计；原始逐例数据留在服务器。"
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>CHIMERA 官方评价器离线复评：两臂 236 例</title>
+<style>
+  :root { --ink:#1b1e23; --muted:#5d6673; --line:#dfe3e8; --bg:#fbfbfa; --warn:#8a4b00; --ok:#1d6b3f; --bad:#a03030; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:40px 24px; background:var(--bg); color:var(--ink);
+         font:15px/1.68 -apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; }
+  main { max-width:920px; margin:0 auto; }
+  h1 { font-size:24px; margin:0 0 6px; letter-spacing:-.2px; }
+  .sub { color:var(--muted); font-size:13px; margin-bottom:24px; }
+  h2 { font-size:17px; margin:32px 0 10px; padding-bottom:6px; border-bottom:1px solid var(--line); }
+  h3 { font-size:14px; margin:18px 0 6px; color:var(--muted); }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13.5px; }
+  th,td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); }
+  th { background:#f2f4f6; font-weight:600; }
+  td.num,th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  code { background:#eef0f2; padding:1px 5px; border-radius:3px; font-size:12.5px;
+         font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .verdict { border-left:3px solid var(--ink); padding:10px 14px; background:#fff; margin:14px 0; }
+  .risk { border-left:3px solid var(--warn); padding:10px 14px; background:#fffaf3; margin:12px 0; }
+  .good { border-left:3px solid var(--ok); padding:10px 14px; background:#f6fbf7; margin:12px 0; }
+  .ok { color:var(--ok); font-weight:600; }
+  .bad { color:var(--bad); font-weight:600; }
+  ul,ol { padding-left:20px; margin:8px 0; }
+  li { margin:4px 0; }
+  .small { font-size:12.5px; color:var(--muted); }
+</style>
+</head>
+<body>
+<main>
+
+<h1>官方评价器离线复评</h1>
+<div class="sub">2026-11-25 · 直接复用 <code>CHIMERA-agent/evaluation/evaluate.py</code> · A 臂官方 1afa788 / C 臂 Adaptive v2 候选 · 236 例，未重跑任何 35B 推理</div>
+
+<div class="verdict">
+<b>结论。</b>
+① 产物可直接离线复评：把两臂输出转成 <code>predictions.json</code>、把本地标注转成 <code>pathologist_response.json</code>，官方 evaluator 原样跑通，T1 决策准确率 0.714 与我们自己的评分器完全一致——口径对齐成立。
+② 换成官方口径后，C 在三个任务上都不是打平而是<b>小幅领先</b>：T1 0.483 对 0.480、T2 0.406 对 0.385、T3 0.627 对 0.587。
+③ 真正被准确率掩盖的是 <b>T2 的逐类质量</b>：准确率只差 8pp，但加权 F1 是 0.56 对 0.45、macro F1 是 0.54 对 0.30。差距几乎全部来自少数类——<code>continued_surveillance</code> F1 从 0.22 升到 0.55、<code>watchful_waiting</code> 从 0 升到 0.50。
+④ 排行榜口径投影：A 0.554 / C 0.586（启用 Judge）。这比只看 accuracy 得到的"净多 4 例"更接近官方会看到的差距。
+</div>
+
+<h2>1. 官方确定性分项（USE_RATIONALE_JUDGE=0）</h2>
+<table>
+<tr><th>任务</th><th>指标</th><th class="num">官方 A</th><th class="num">候选 C</th><th class="num">差</th></tr>
+<tr><td rowspan="7">T1<br>活检</td><td>Case Score（全部 91 例）</td><td class="num">0.480</td><td class="num">0.483</td><td class="num ok">+0.003</td></tr>
+<tr><td>Gate 通过率</td><td class="num">0.714</td><td class="num">0.714</td><td class="num">0</td></tr>
+<tr><td>门内 Case Score</td><td class="num">0.672</td><td class="num">0.676</td><td class="num ok">+0.004</td></tr>
+<tr><td>Biopsy F1（yes 类）</td><td class="num">0.800</td><td class="num">0.812</td><td class="num ok">+0.012</td></tr>
+<tr><td>Confidence 加权 kappa</td><td class="num">0.012</td><td class="num">0.046</td><td class="num ok">+0.034</td></tr>
+<tr><td>Variable Weight kappa</td><td class="num">0.402</td><td class="num">0.424</td><td class="num ok">+0.022</td></tr>
+<tr><td>Section Grounding</td><td class="num">0.199</td><td class="num">0.198</td><td class="num">−0.001</td></tr>
+<tr><td rowspan="8">T2<br>治疗</td><td>Case Score（全部 72 例）</td><td class="num">0.385</td><td class="num">0.406</td><td class="num ok">+0.021</td></tr>
+<tr><td>决策准确率（含半分）</td><td class="num">0.569</td><td class="num">0.604</td><td class="num ok">+0.035</td></tr>
+<tr><td><b>加权 F1</b></td><td class="num">0.450</td><td class="num">0.560</td><td class="num ok">+0.110</td></tr>
+<tr><td><b>Macro F1</b></td><td class="num">0.304</td><td class="num">0.536</td><td class="num ok">+0.232</td></tr>
+<tr><td>Gate 通过率</td><td class="num">0.639</td><td class="num">0.625</td><td class="num bad">−0.014</td></tr>
+<tr><td>Confidence 加权 kappa</td><td class="num">−0.015</td><td class="num">−0.073</td><td class="num bad">−0.058</td></tr>
+<tr><td>Variable Weight kappa</td><td class="num">0.370</td><td class="num">0.380</td><td class="num ok">+0.010</td></tr>
+<tr><td>Section Grounding</td><td class="num">0.224</td><td class="num">0.216</td><td class="num">−0.008</td></tr>
+<tr><td rowspan="5">T3<br>复发</td><td>Case Score</td><td class="num">0.587</td><td class="num">0.627</td><td class="num ok">+0.040</td></tr>
+<tr><td>Harrell C-index</td><td class="num">0.6399</td><td class="num">0.6476</td><td class="num ok">+0.008</td></tr>
+<tr><td>事件准确率</td><td class="num">0.740</td><td class="num">0.712</td><td class="num bad">−0.028</td></tr>
+<tr><td>时间吻合分（删失感知）</td><td class="num">0.435</td><td class="num">0.541</td><td class="num ok">+0.106</td></tr>
+<tr><td>event=1 的月份 MAE</td><td class="num">13.35</td><td class="num">16.71</td><td class="num bad">+3.36</td></tr>
+</table>
+
+<h2>2. T2 逐类：准确率掩盖的那部分</h2>
+<table>
+<tr><th>类别</th><th class="num">真值数</th><th class="num">A F1</th><th class="num">C F1</th><th class="num">A 召回</th><th class="num">C 召回</th></tr>
+<tr><td>active_surveillance</td><td class="num">25</td><td class="num">0.30</td><td class="num">0.43</td><td class="num">0.20</td><td class="num">0.32</td></tr>
+<tr><td>active_treatment</td><td class="num">31</td><td class="num">0.69</td><td class="num">0.67</td><td class="num">0.90</td><td class="num">0.87</td></tr>
+<tr><td>continued_surveillance</td><td class="num">14</td><td class="num bad">0.22</td><td class="num ok">0.55</td><td class="num">0.21</td><td class="num">0.43</td></tr>
+<tr><td>watchful_waiting</td><td class="num">2</td><td class="num bad">0.00</td><td class="num ok">0.50</td><td class="num">0.00</td><td class="num">0.50</td></tr>
+<tr><th>macro / weighted</th><th class="num">72</th><th class="num">0.30 / 0.45</th><th class="num">0.54 / 0.56</th><th class="num"></th><th class="num"></th></tr>
+</table>
+<p>两臂都严重过判 <code>active_treatment</code>（各 50 次，真值只有 31）。差别在于候选对少数组没有那么塌陷：continued_surveillance 的精确率从 0.23 升到 0.75。官方 T2 排名是「50% Case Score + 50% 加权 F1」，所以这 0.11 的加权 F1 直接进榜。</p>
+
+<h2>3. 推理质量（GEval，本地 Judge 替代）</h2>
+<table>
+<tr><th>指标</th><th class="num">官方 A</th><th class="num">候选 C</th></tr>
+<tr><td>T1 Rationale Score</td><td class="num">0.745</td><td class="num">0.755</td></tr>
+<tr><td>T2 Rationale Score</td><td class="num">0.637</td><td class="num">0.727</td></tr>
+<tr><td>T1 门内 Case Score（含 Judge）</td><td class="num">0.688</td><td class="num">0.692</td></tr>
+<tr><td>T2 门内 Case Score（含 Judge）</td><td class="num">0.612</td><td class="num">0.665</td></tr>
+</table>
+<p class="small">Judge 用本地 <code>qwen2.5:7b</code>（官方默认 <code>gemma4:e4b</code> 不在本机 Ollama 库）。两臂同判官，横向可比；绝对分不能与排行榜数字直接对齐。打分覆盖 gate 通过的 65/91（T1）与 45/72（T2）例，分数在 0.2–1.0 之间有正常离散。</p>
+
+<h2>4. 排行榜口径投影</h2>
+<table>
+<tr><th>臂</th><th class="num">T1（0.5 case + 0.5 BiopsyF1）</th><th class="num">T2（0.5 case + 0.5 加权F1）</th><th class="num">T3（C-index）</th><th class="num">S = 0.4/0.4/0.2</th></tr>
+<tr><td>官方 A</td><td class="num">0.646</td><td class="num">0.421</td><td class="num">0.640</td><td class="num">0.554</td></tr>
+<tr><td>候选 C</td><td class="num">0.653</td><td class="num">0.488</td><td class="num">0.648</td><td class="num ok">0.586</td></tr>
+<tr><td>差</td><td class="num">+0.007</td><td class="num">+0.067</td><td class="num">+0.008</td><td class="num">+0.032</td></tr>
+</table>
+<p class="small">不启用 Judge 时投影为 A 0.551 / C 0.582，结论方向一致。</p>
+
+<h2>5. 这次复评更正了哪些此前的说法</h2>
+<div class="risk">
+<ul>
+<li><b>T2 准确率不是 50.0% / 58.3%。</b>官方对 <code>active_surveillance ↔ continued_surveillance</code> 给 0.5 部分分，正确口径是 A 0.569 / C 0.604（A 有 10 例半分、C 有 3 例）。此前用二值口径低估了两臂。</li>
+<li><b>「净多 4 例」不足以描述差距。</b>按加权 F1，T2 的差距是 0.11；按 macro F1 是 0.23。准确率只差 0.035。</li>
+<li><b>T3 的「时间更准」要说清口径。</b>候选的删失感知时间吻合分更高（0.541 对 0.435），但 event=1 病例的月份 MAE 反而更大（16.7 对 13.4 月）。两者不矛盾：前者只罚"预测过早"，后者罚绝对误差。</li>
+</ul>
+</div>
+
+<h2>6. 三个必须声明的方法缺口</h2>
+<div class="risk">
+<ul>
+<li><b>T2 的工具效率分不可用。</b>本地 72 例 T2 标注的 <code>reveal_sequence</code> 全为空（官方 demo 有 5–6 条），而工具效率用 GT reveal 做分母期望，结果两臂都恒为 1.000，没有信息量。T1 的 GT reveal 齐全（89/91），该项可用。</li>
+<li><b>C 臂的段支撑分被投影压低。</b>官方 <code>_reveal_keys</code> 只认带 <code>key</code> 的字典；C 臂提交的 reveal_sequence 已按平台契约投影成段名（<code>radiology_report</code> 等字符串），因此读不到任何 key。两臂段支撑分都在 0.2 左右，对 C 不公平——这是投影层的真实代价，申报时应说明。</li>
+<li><b>Judge 是替代品。</b><code>gemma4:e4b</code> 本地不存在，用了 <code>qwen2.5:7b</code>。要拿到与官方可比的口径，需补该模型或直接走官方 Docker。</li>
+</ul>
+</div>
+
+<h2>7. 对四个研究方向的影响</h2>
+<ol>
+<li><b>决策层</b>：T1 仍无差异，T2 有小幅真实差异（加权 F1 +0.11），T3 基本持平。此前"净多 4 例"低估了 T2。</li>
+<li><b>推理层</b>：两臂 confidence kappa 都接近 0（T1 0.012 / 0.046，T2 为负）。confidence 占 case score 20%，这是<b>比决策更大的可优化空间</b>，且两臂都没做到。</li>
+<li><b>段支撑</b>：两臂都只有 0.2。若 reveal 契约能带上 section key，这一项（5% 权重）有确定性提升空间。</li>
+<li><b>Reflection / C 线</b>：本轮 C 臂这两条都是关闭的，所以这次复评<b>无法</b>验证"它们的收益体现在推理质量上"。但评价管线已经就绪，开启后可直接用同一套分数对比——这是下一步最该做的事。</li>
+</ol>
+
+<p class="small">产物：<code>output/bench/gc/OFFICIAL_SCORES.json</code>、<code>gc/eval/{armA,armC}/task{1,2,3}/</code>（metrics / aggregate / per_case CSV）、<code>gc/eval_judge/</code>。转换脚本 <code>bench/build_gc_inputs.py</code>，汇总 <code>bench/official_summary.py</code>，Judge 跑批 <code>bench/run_judge.sh</code>。</p>
+
+</main>
+</body>
+</html>

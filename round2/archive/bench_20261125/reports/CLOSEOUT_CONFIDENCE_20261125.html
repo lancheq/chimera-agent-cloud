@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>评价基线冻结 · Confidence 归因复核 · 段支撑归因</title>
+<style>
+  :root { --ink:#1b1e23; --muted:#5d6673; --line:#dfe3e8; --bg:#fbfbfa; --warn:#8a4b00; --ok:#1d6b3f; --bad:#a03030; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:40px 24px; background:var(--bg); color:var(--ink);
+         font:15px/1.68 -apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; }
+  main { max-width:900px; margin:0 auto; }
+  h1 { font-size:23px; margin:0 0 6px; letter-spacing:-.2px; }
+  .sub { color:var(--muted); font-size:13px; margin-bottom:22px; }
+  h2 { font-size:17px; margin:30px 0 10px; padding-bottom:6px; border-bottom:1px solid var(--line); }
+  h3 { font-size:14px; margin:16px 0 6px; color:var(--muted); }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13.5px; }
+  th,td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); }
+  th { background:#f2f4f6; font-weight:600; }
+  td.num,th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  code { background:#eef0f2; padding:1px 5px; border-radius:3px; font-size:12.5px;
+         font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .verdict { border-left:3px solid var(--ink); padding:10px 14px; background:#fff; margin:14px 0; }
+  .risk { border-left:3px solid var(--warn); padding:10px 14px; background:#fffaf3; margin:12px 0; }
+  .good { border-left:3px solid var(--ok); padding:10px 14px; background:#f6fbf7; margin:12px 0; }
+  .ok { color:var(--ok); font-weight:600; }
+  .bad { color:var(--bad); font-weight:600; }
+  ul,ol { padding-left:20px; margin:8px 0; }
+  li { margin:4px 0; }
+  .small { font-size:12.5px; color:var(--muted); }
+</style>
+</head>
+<body>
+<main>
+
+<h1>评价基线冻结 · Confidence 归因复核 · 段支撑归因</h1>
+<div class="sub">2026-11-25 结项 · 零新增 35B 调用 · 仅用已有 472 次轨迹 · 无后处理拟合</div>
+
+<div class="verdict">
+<b>结论。</b>
+① 官方 main 评价器已冻结为公共基线（<code>8684b9c4…</code>，上游 commit <code>192c39c5</code>），并加了守卫脚本，指纹不符即拒绝评分。
+② <b>撤回昨天的 T1 判断</b>：不是"模型知道不确定但填表压成 clear"。诊断原文的犹豫率在 GT clear 组 29.3%、GT 非 clear 组 33.3%，两者几乎相同——模型压根没区分出专家眼里的不确定。
+③ <b>撤回昨天的 T2 判断</b>：不是"标注与难度反向"。14 例 borderline 里 12 例是 active_treatment，而模型对 AT 的过判率在两组都是 ~70%，accuracy 差异是<b>类别构成 × 过判倾向</b>的产物，不是标注问题。
+④ 段支撑 0.430→0.765 来自<b>取证覆盖</b>，不是变量权重，也不是输出机制。
+</div>
+
+<h2>1. 评价基线冻结</h2>
+<table>
+<tr><th>项</th><th>值</th></tr>
+<tr><td>SHA256</td><td><code>8684b9c4104d227bd08325fbef3c67ccd826e2836155db10f571f6eb16316a99</code></td></tr>
+<tr><td>行数</td><td>2055</td></tr>
+<tr><td>上游 commit / 日期</td><td><code>192c39c5a73a</code> / 2026-08-24，「weighing rationale higher」</td></tr>
+<tr><td>被替换的项目副本</td><td><code>e2b768db…</code>（1615 行，2026-09-27 vendored；T2 有 0.5 部分分、reveal 只认 dict key）</td></tr>
+<tr><td>守卫</td><td><code>output/bench/evaluator_official_main/evaluator_guard.py</code>，指纹不符返回非零并拒绝评分</td></tr>
+</table>
+<p class="small">与本轮所有分数一一对应的记录在 <code>PIN.json</code>（含 replaces 与 scored_under_this_pin 两段）。目标 Phase 正式评价器的一致性仍待平台侧确认：上游该文件自 2026-08-24 未再变更，但「平台构建镜像用的是哪个 commit」我们无法从本地证实，这一点保留为未闭合项。</p>
+
+<h2>2. T1 Confidence：不是填表压的，是没识别</h2>
+<p>沿 C 臂审计轨迹把每例拆成 planner → policy → diagnosis → form_fill 四段原文（A 臂官方实现不落分阶段轨迹，只能看最终 free_text，故此项仅 C 臂可做）。</p>
+<table>
+<tr><th>指标</th><th class="num">值</th></tr>
+<tr><td>GT 非 clear 但最终输出 clear</td><td class="num">29 例</td></tr>
+<tr><td>其中诊断原文含明确不确定表述</td><td class="num">7 例（24.1%）</td></tr>
+<tr><td>对照：GT clear 组的诊断原文含不确定表述</td><td class="num">17/58（29.3%）</td></tr>
+<tr><td>GT 非 clear 组的诊断原文含不确定表述</td><td class="num">11/33（33.3%）</td></tr>
+</table>
+<div class="risk">
+<b>结论：填表环节无罪。</b>如果存在"原文说了不确定、填表压成 clear"的压制，那么 29 例里含犹豫表述的比例应显著高于对照组；实测 24.1% 对 29.3%，<b>反而略低</b>。同时 GT clear 与非 clear 两组的犹豫率几乎相同（29.3% vs 33.3%），说明模型文本层面的不确定表达与专家的置信度<b>没有对应关系</b>。
+因此更准确的表述是：<b>没有观察到模型在诊断文本中可靠地区分专家置信度等级</b>。关键词检测只能说明文本层面没有对应关系，不能证明模型内部完全没有识别不确定性。可以排除的是「原文已经表达犹豫、填表环节才压成 clear」这条路径。
+<p class="small">方法边界：这里测的是诊断原文的词汇层犹豫（uncertain / insufficient / equivocal / cannot exclude 等 20 个模式），不是模型的隐状态信念；A 臂无分阶段轨迹，无法做同样分解；prompt 里 confidence 的定义是否存在理解偏差，仅能靠文本比对，本轮未做受控实验，不下结论。</p>
+</div>
+
+<h2>3. T2 Confidence：类别构成 × 过判倾向</h2>
+<table>
+<tr><th>GT 置信度</th><th class="num">例数</th><th class="num">其中 active_treatment</th><th class="num">模型正确率</th><th class="num">模型判 AT 的比例</th></tr>
+<tr><td>clear</td><td class="num">58</td><td class="num">19（32.8%）</td><td class="num">51.7%</td><td class="num">69.0%</td></tr>
+<tr><td>borderline</td><td class="num">14</td><td class="num">12（85.7%）</td><td class="num">85.7%</td><td class="num">71.4%</td></tr>
+</table>
+<p>14 例 borderline 的类别构成：12 AT + 1 AS + 1 CS；模型在其中 12 例答对。</p>
+<div class="risk">
+<b>结论：不是标注错。</b>borderline 组 86% 是 active_treatment，而模型对 AT 有过判倾向（两组判 AT 的比例都约 70%）。在 AT 占绝对多数的子集里，这种倾向自动转化为高正确率。所谓"专家觉得容易的病例模型反而错得多"，实际是<b>专家 clear 组里 AS/CS 更多，正好撞上模型的 AT 偏差</b>。
+因此只能支持你提出的表述：<b>专家置信度与模型正确率没有预期关系</b>；不能推断标注有误，也不能推断"任何合理校准都会得到负 kappa"。
+</div>
+
+<h2>4. 段支撑 0.430 → 0.765 归因</h2>
+<table>
+<tr><th>任务 / 臂</th><th class="num">段支撑（官方聚合）</th><th class="num">平均揭示段数</th><th class="num">零揭示病例</th><th class="num">加权变量数</th></tr>
+<tr><td>T1 官方 A</td><td class="num">0.430</td><td class="num">1.08</td><td class="num">53 / 91</td><td class="num">6.44</td></tr>
+<tr><td>T1 候选 C</td><td class="num ok">0.765</td><td class="num">2.45</td><td class="num">2 / 91</td><td class="num">6.36</td></tr>
+<tr><td>T2 官方 A</td><td class="num">0.967</td><td class="num">3.58</td><td class="num">0 / 72</td><td class="num">8.06</td></tr>
+<tr><td>T2 候选 C</td><td class="num">0.869</td><td class="num">2.90</td><td class="num">0 / 72</td><td class="num">8.50</td></tr>
+</table>
+<div class="good">
+<b>归因：取证覆盖。</b>
+T1 的加权变量数两臂几乎相同（6.44 vs 6.36），差异全在"有没有揭示"——官方 A 有 53/91 例一段都没揭示（T1 它常常直接答），候选只有 2/91。
+T2 方向相反、结论一致：候选揭示更少（2.90 vs 3.58）、加权更多（8.50 vs 8.06），段支撑随之更低（0.869 vs 0.967）。
+<b>输出机制被排除</b>：两臂的 reveal 都被官方 main 正确解析（段名直读、原始 section id 经映射翻译），变量权重集合也没变。
+</div>
+
+<h2>5. 本轮不做的事</h2>
+<ul>
+<li>无置信度后处理：没有规则覆写、没有分布校准、没有基于本批 GT 的调参。</li>
+<li>无新增 35B 调用；未改动任何冻结产物。</li>
+<li>不把 Confidence 扩成独立研究线。它的定位是 Reflection 与证据冲突处理的一项评价指标。</li>
+<li>不再寻找 Reflection / C 线的合成测试产物——已确认真实病例级产物不存在，属正常现状。</li>
+</ul>
+
+<h2>6. 遗留与风险</h2>
+<div class="risk">
+<ul>
+<li><b>0.042 的总体提升是内部样本观察</b>，T1 那 91 例历史上全部跑过并被分析，不是独立泛化证据；T2/T3 相对干净但单次运行、温度 0.3。</li>
+<li><b>平台侧评价器版本未闭合</b>：上游文件自 2026-08-24 未变，但平台镜像构建用的 commit 无法本地证实。</li>
+<li><b>段支撑只在 gate 通过的病例上计算</b>：T1 两臂各 65/91；T2 官方 36/72、候选 42/72。0.430→0.765 与 0.967→0.869 都建立在这个子集口径上，不是全样本均值。</li>
+<li><b>T1 的链条分析只做了 C 臂</b>，官方 A 臂不落分阶段轨迹；要同口径比较需额外埋点。</li>
+</ul>
+</div>
+
+<p class="small">产物：<code>gc_v2/BOUNDED_ANALYSIS.json</code>、<code>gc_v2/GROUNDING_DECOMP.json</code>、<code>evaluator_official_main/PIN.json</code> + <code>evaluator_guard.py</code>。脚本：<code>bench/bounded_analysis.py</code>、<code>bench/grounding_decomp.py</code>。</p>
+
+</main>
+</body>
+</html>

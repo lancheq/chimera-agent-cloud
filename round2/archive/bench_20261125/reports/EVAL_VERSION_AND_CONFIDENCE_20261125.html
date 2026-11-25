@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>评价器版本核对 · Reveal 复核 · Confidence 归因</title>
+<style>
+  :root { --ink:#1b1e23; --muted:#5d6673; --line:#dfe3e8; --bg:#fbfbfa; --warn:#8a4b00; --ok:#1d6b3f; --bad:#a03030; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:40px 24px; background:var(--bg); color:var(--ink);
+         font:15px/1.68 -apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; }
+  main { max-width:900px; margin:0 auto; }
+  h1 { font-size:23px; margin:0 0 6px; letter-spacing:-.2px; }
+  .sub { color:var(--muted); font-size:13px; margin-bottom:24px; }
+  h2 { font-size:17px; margin:32px 0 10px; padding-bottom:6px; border-bottom:1px solid var(--line); }
+  h3 { font-size:14px; margin:18px 0 6px; color:var(--muted); }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13.5px; }
+  th,td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); }
+  th { background:#f2f4f6; font-weight:600; }
+  td.num,th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  code { background:#eef0f2; padding:1px 5px; border-radius:3px; font-size:12.5px;
+         font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .verdict { border-left:3px solid var(--ink); padding:10px 14px; background:#fff; margin:14px 0; }
+  .risk { border-left:3px solid var(--warn); padding:10px 14px; background:#fffaf3; margin:12px 0; }
+  .good { border-left:3px solid var(--ok); padding:10px 14px; background:#f6fbf7; margin:12px 0; }
+  .ok { color:var(--ok); font-weight:600; }
+  .bad { color:var(--bad); font-weight:600; }
+  ul,ol { padding-left:20px; margin:8px 0; }
+  li { margin:4px 0; }
+  .small { font-size:12.5px; color:var(--muted); }
+</style>
+</head>
+<body>
+<main>
+
+<h1>评价器版本核对 · Reveal 复核 · Confidence 归因</h1>
+<div class="sub">2026-11-25 · 新增 35B 调用 0 · 冻结产物未改动</div>
+
+<div class="verdict">
+<b>三条结论，其中两条推翻我之前的说法。</b>
+① 本地评价器确实是旧的：<code>e2b768db…</code>（1615 行，2026-09-27 vendored），官方 main 是 <code>8684b9c4…</code>（2055 行）。差异不只是 T2 半分和 reveal 解析，还多了 KM 删失时间分与文件式输入契约。<b>此前所有分数作废重算。</b>
+② Reveal 投影<b>没有缺陷</b>。官方 main 收的就是段名字符串，C 臂段支撑 0.765 对 A 臂 0.430。之前"两臂都 0.2"是旧解析器只认 dict <code>key</code> 造成的假象。
+③ Confidence 的 kappa≈0，T1 是<b>表达坍缩</b>、T2 是<b>参考标注与难度反向</b>，两者都不是后处理能修的。
+</div>
+
+<h2>1. 版本核对</h2>
+<table>
+<tr><th>项</th><th>项目内旧版</th><th>官方 main（已 pin）</th></tr>
+<tr><td>SHA256</td><td><code>e2b768db9976…</code></td><td><code>8684b9c4104d…</code></td></tr>
+<tr><td>行数 / 大小</td><td>1615 行 / 60,979 B（mtime 2026-09-27）</td><td>2055 行</td></tr>
+<tr><td>T2 决策比对</td><td>active↔continued 给 0.5 部分分</td><td class="bad">完全匹配，无部分分</td></tr>
+<tr><td>reveal 解析</td><td>只认 dict 的 <code>key</code>，且按 <code>order</code> 排序</td><td class="ok">认扁平段名字符串，并内置 <code>SECTION_KEY_TO_REVEAL_NAME</code> 把 <code>section_s3-*</code> 译成段名</td></tr>
+<tr><td>输入契约</td><td><code>predictions.json</code> 内联 value + pk 映射</td><td>文件式：<code>INPUT_DIRECTORY/&lt;pk&gt;/&lt;relative_path&gt;</code>，按输入 socket 集合路由</td></tr>
+<tr><td>新增能力</td><td>—</td><td><code>_censoring_km</code>/<code>_km_at</code>（KM 删失时间分）、<code>attach_kappa_fields</code></td></tr>
+</table>
+<p class="small">本地这份不是 git 追踪的上游代码（所在仓库 HEAD 是项目自己的 <code>33a961a</code>），属于 9 月拷贝进来的快照。官方 main 已 pin 到 <code>output/bench/evaluator_official_main/</code> 并记 <code>PINNED_SHA256.txt</code>，项目内旧版未改动。</p>
+
+<h2>2. 用官方 main 重算的结果</h2>
+<table>
+<tr><th>臂</th><th class="num">T1 ranking</th><th class="num">T2 ranking</th><th class="num">T3 ranking</th><th class="num">Overall</th></tr>
+<tr><td>官方 A</td><td class="num">0.653</td><td class="num">0.390</td><td class="num">0.640</td><td class="num">0.545</td></tr>
+<tr><td>候选 C</td><td class="num ok">0.679</td><td class="num ok">0.465</td><td class="num ok">0.648</td><td class="num ok">0.587</td></tr>
+</table>
+<h3>分项对比（旧口径 → 官方 main 口径）</h3>
+<table>
+<tr><th>指标</th><th class="num">A 旧</th><th class="num">A 新</th><th class="num">C 旧</th><th class="num">C 新</th></tr>
+<tr><td>T1 段支撑</td><td class="num">0.199</td><td class="num">0.430</td><td class="num">0.198</td><td class="num ok">0.765</td></tr>
+<tr><td>T1 工具效率</td><td class="num">1.000</td><td class="num">0.976</td><td class="num">1.000</td><td class="num">0.941</td></tr>
+<tr><td>T2 决策准确率</td><td class="num">0.569</td><td class="num">0.500</td><td class="num">0.604</td><td class="num">0.583</td></tr>
+<tr><td>T2 工具效率</td><td class="num">1.000</td><td class="num bad">0.000</td><td class="num">1.000</td><td class="num bad">0.000</td></tr>
+<tr><td>T1 / T2 / T3 case score</td><td class="num">.480/.385/.587</td><td class="num">.506/.333/.587</td><td class="num">.483/.406/.627</td><td class="num">.547/.373/.627</td></tr>
+</table>
+<p><b>T2 工具效率两臂同为 0</b>是本地 GT 缺 reveal（72/72 为空）造成的：官方 main 用 GT reveal 做分母期望，预测只要揭示任何段就算"多余"。这不是两臂差异，是标注缺口，两臂一起受损——但 C 揭示更多，实际吃亏更大。</p>
+
+<h2>3. Reveal 投影复核：不是缺陷</h2>
+<div class="good">
+<p>官方 main 的 <code>_reveal_keys</code> 明确接受扁平段名列表，文档写着「Names outside the recognised vocabulary are kept verbatim, so inventing a section still counts as an extra (penalised) reveal」。C 臂提交的 <code>["radiology_report", …]</code> 正是这个格式，且段支撑 0.765 显著高于 A 臂 0.430（A 揭示的是原始 section id，被 <code>SECTION_KEY_TO_REVEAL_NAME</code> 翻译后参与比对）。</p>
+<p>结论：<b>无需修复转换，也不应改动工具使用记录。</b>之前那条"两臂都 0.2、C 被投影压低"的判断是旧解析器造成的，已撤回。</p>
+</div>
+
+<h2>4. Confidence 归因</h2>
+<h3>T1（91 例）</h3>
+<table>
+<tr><th>项</th><th class="num">专家 GT</th><th class="num">A 预测</th><th class="num">C 预测</th></tr>
+<tr><td>clear / borderline / uncertain</td><td class="num">58 / 18 / 15</td><td class="num">90 / 1 / 0</td><td class="num">83 / 8 / 0</td></tr>
+<tr><td>加权 kappa（评测器口径）</td><td class="num">—</td><td class="num">0.012</td><td class="num">0.046</td></tr>
+<tr><td>同级占比</td><td class="num">—</td><td class="num">0.648</td><td class="num">0.615</td></tr>
+<tr><td>按专家等级看正确率</td><td class="num">clear .793 / border .500 / uncert .667</td><td class="num">—</td><td class="num">—</td></tr>
+<tr><td>按自身等级看正确率</td><td class="num">—</td><td class="num">clear .722 / border .000(n=1)</td><td class="num">clear .759 / border .250</td></tr>
+</table>
+<p><b>诊断：表达坍缩。</b>信号是有的——专家 confidence 与难度相关（borderline 只有 50% 正确），模型 confidence 也与自身正确率相关（C 的 borderline 只有 25% 正确）。但模型 91~99% 的病例都说 clear，边际分布压到一端，观测一致性 0.65 的同时期望一致性也被抬高，kappa 自然趋零。<b>这是"不肯说不确定"，不是"说不准"。</b></p>
+<h3>T2（72 例）</h3>
+<table>
+<tr><th>项</th><th class="num">专家 GT</th><th class="num">A 预测</th><th class="num">C 预测</th></tr>
+<tr><td>clear / borderline / uncertain</td><td class="num">58 / 14 / 0</td><td class="num">55 / 12 / 5</td><td class="num">58 / 13 / 1</td></tr>
+<tr><td>加权 kappa（评测器口径）</td><td class="num">—</td><td class="num">−0.015</td><td class="num">−0.073</td></tr>
+<tr><td>按专家等级看正确率</td><td class="num bad">clear .517 / border .857</td><td class="num">—</td><td class="num">—</td></tr>
+</table>
+<p><b>诊断：参考标注与难度反向。</b>专家标为 clear 的 58 例，模型只对 51.7%；标为 borderline 的 14 例反而对 85.7%。在这种标注上，任何按案例难度校准置信度的模型都会得到负 kappa。<b>T2 的 kappa 低，主因在标注侧，不在模型侧。</b></p>
+<h3>证据与冲突</h3>
+<ul>
+<li>T1：A 在 clear 时平均揭示 1.07 段、borderline 时 2.0 段；C 是 2.42 / 2.75。置信度与取证量有弱关联，方向正确但幅度小。</li>
+<li>T2：三档揭示数几乎持平（A 3.49/3.92/3.80，C 2.90/2.92/3.00）——候选在 T2 的置信度与取证量完全脱钩。</li>
+<li>冲突维度：本地没有可对齐的"证据冲突"标注字段，本轮无法定量，只能列为未测量项。</li>
+</ul>
+
+<h2>5. 未做与不能做</h2>
+<div class="risk">
+<ul>
+<li><b>没有做任何置信度后处理</b>：无固定规则覆写、无分布校准、无基于本批 GT 的调参。用户的裁定原本也是"先分析"。</li>
+<li><b>Reflection / C 线产物的复评做不了</b>：<code>output/p01_g1r_reflection_20261118</code> 里的 90 份 <code>prediction.json</code> 全在 <code>tests/</code> 下的合成验收用例（case_id 形如 <code>gc-case</code>、<code>test_partial_batch…</code>）；<code>c04_1_*</code> 系列目录里 <code>prediction.json</code> 数量为 0。真实病例级的 Reflection/C 线输出<b>不存在</b>，本轮无法复评，需要一次开启机制的运行才能产出。</li>
+</ul>
+</div>
+
+<h2>6. 下一步（按性质排序）</h2>
+<ol>
+<li><b>置信度表达</b>：T1 的目标不是"校准分数"，而是让模型在证据不足时真的说 borderline/uncertain。这属于 prompt/机制设计，可先在冻结产物上做离线诊断（哪些 GT=uncertain 的病例被说成 clear、它们缺哪一段证据），不改产出。</li>
+<li><b>T2 标注核查</b>：14 例 borderline 与难度反向，值得回查这批标注的来源与生成方式；在此之前的 T2 kappa 不应作为机制评价依据。</li>
+<li><b>T2 reveal 缺口</b>：本地 GT 缺 reveal 直接让工具效率归零，建议补齐后再评 T2，否则该项恒为 0。</li>
+<li>Reflection / C 线的复评等有真实产物再做，管线已就绪。</li>
+</ol>
+
+<p class="small">kappa 采用评测器 <code>metrics.json</code> 的口径；本地线性加权复核值（T1 0.026/0.044、T2 −0.021/−0.061）量级一致，不影响结论。</p>
+<p class="small">产物：<code>gc_v2/eval/{armA,armC}/</code>（metrics / aggregate / per_case CSV）、<code>gc_v2/CONFIDENCE_ANALYSIS.json</code>、<code>evaluator_official_main/PINNED_SHA256.txt</code>。脚本：<code>bench/build_gc_inputs_v2.py</code>、<code>bench/confidence_analysis.py</code>。</p>
+
+</main>
+</body>
+</html>

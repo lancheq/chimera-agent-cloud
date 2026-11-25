@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>CHIMERA 官方 Baseline vs Adaptive v2：236 例配对结果</title>
+<style>
+  :root { --ink:#1b1e23; --muted:#5d6673; --line:#dfe3e8; --bg:#fbfbfa; --warn:#8a4b00; --ok:#1d6b3f; --bad:#a03030; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:40px 24px; background:var(--bg); color:var(--ink);
+         font:15px/1.68 -apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; }
+  main { max-width:900px; margin:0 auto; }
+  h1 { font-size:24px; margin:0 0 6px; letter-spacing:-.2px; }
+  .sub { color:var(--muted); font-size:13px; margin-bottom:26px; }
+  h2 { font-size:17px; margin:34px 0 10px; padding-bottom:6px; border-bottom:1px solid var(--line); }
+  p { margin:8px 0; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13.5px; }
+  th,td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { background:#f2f4f6; font-weight:600; }
+  td.num,th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  code { background:#eef0f2; padding:1px 5px; border-radius:3px; font-size:12.5px;
+         font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .verdict { border-left:3px solid var(--ink); padding:10px 14px; background:#fff; margin:14px 0; }
+  .risk { border-left:3px solid var(--warn); padding:10px 14px; background:#fffaf3; margin:12px 0; }
+  .good { border-left:3px solid var(--ok); padding:10px 14px; background:#f6fbf7; margin:12px 0; }
+  .ok { color:var(--ok); font-weight:600; }
+  .bad { color:var(--bad); font-weight:600; }
+  ul { padding-left:20px; margin:8px 0; }
+  li { margin:4px 0; }
+  .small { font-size:12.5px; color:var(--muted); }
+</style>
+</head>
+<body>
+<main>
+
+<h1>官方 Baseline vs Adaptive v2 候选：236 例配对</h1>
+<div class="sub">2026-11-24 · A 臂官方 <code>1afa788</code> · C 臂 P01 候选 · 同一 GGUF／同一端点／同一解释器／同一语料／同一评分器</div>
+
+<div class="verdict">
+<b>四句话结论。</b>
+① 总量上候选略好但不显著：三任务合计 159/236（67.4%）对官方 155/236（65.7%），净多 4 例。
+② 增益全部集中在 T2（治疗决策）：58.3% 对 50.0%，净 +6 例，而且 <b>token 反而比官方少 9%</b>。
+③ 代价全部集中在 T1（活检决策）：准确率完全打平（65/91，配对差异 6 比 6），却花了 1.9 倍 token 和 223 个信息单元。
+④ T3 事件判断官方略好（74.0% 对 71.2%），候选时间误差更小（21.5 月对 27.1 月）。
+</div>
+
+<h2>1. 三任务结果</h2>
+<table>
+<tr><th>任务</th><th class="num">样本</th><th class="num">官方 A</th><th class="num">候选 C</th><th class="num">净值</th><th class="num">McNemar p</th></tr>
+<tr><td>T1 活检决策</td><td class="num">91</td><td class="num">65 (71.4%)</td><td class="num">65 (71.4%)</td><td class="num">0</td><td class="num">1.000</td></tr>
+<tr><td>T2 治疗决策</td><td class="num">72</td><td class="num">36 (50.0%)</td><td class="num">42 (58.3%)</td><td class="num ok">+6</td><td class="num">0.263</td></tr>
+<tr><td>T3 复发事件</td><td class="num">73</td><td class="num">54 (74.0%)</td><td class="num">52 (71.2%)</td><td class="num bad">−2</td><td class="num">0.815</td></tr>
+<tr><th>合计</th><th class="num">236</th><th class="num">155 (65.7%)</th><th class="num">159 (67.4%)</th><th class="num">+4</th><th class="num">—</th></tr>
+<tr><td>T3 时间误差（MAE）</td><td class="num">73</td><td class="num">27.1 月</td><td class="num ok">21.5 月</td><td class="num ok">−5.6 月</td><td class="num">—</td></tr>
+</table>
+
+<h3>配对交叉表（逐例，不看总数看方向）</h3>
+<table>
+<tr><th>任务</th><th class="num">仅 A 对</th><th class="num">仅 C 对</th><th class="num">都对</th><th class="num">都错</th></tr>
+<tr><td>T1</td><td class="num">6</td><td class="num">6</td><td class="num">59</td><td class="num">20</td></tr>
+<tr><td>T2</td><td class="num">7</td><td class="num">13</td><td class="num">29</td><td class="num">23</td></tr>
+<tr><td>T3</td><td class="num">10</td><td class="num">8</td><td class="num">44</td><td class="num">11</td></tr>
+</table>
+<p>T1 的 6 比 6 是严格对称——两臂在这批病例上交换了同样多的对错，净收益为零。T2 的 13 比 7 是有方向的，但 72 例样本撑不起显著性（p=0.263）。</p>
+
+<h2>2. 成本</h2>
+<table>
+<tr><th>任务</th><th class="num">A 请求</th><th class="num">A token</th><th class="num">C 请求</th><th class="num">C token</th><th class="num">C 信息单元</th><th class="num">token 变化</th></tr>
+<tr><td>T1</td><td class="num">283</td><td class="num">1,318,577</td><td class="num">542</td><td class="num">2,501,131</td><td class="num">223</td><td class="num bad">+90%</td></tr>
+<tr><td>T2</td><td class="num">430</td><td class="num">2,571,235</td><td class="num">460</td><td class="num">2,341,075</td><td class="num">209</td><td class="num ok">−9%</td></tr>
+<tr><td>T3</td><td class="num">339</td><td class="num">1,152,516</td><td class="num">469</td><td class="num">1,381,495</td><td class="num">215</td><td class="num">+20%</td></tr>
+<tr><th>合计</th><th class="num">1,052</th><th class="num">5,042,328</th><th class="num">1,471</th><th class="num">6,223,701</th><th class="num">647</th><th class="num">+23%</th></tr>
+</table>
+
+<div class="good">
+<b>最有行动价值的一条：T1 的取证机制是纯开销。</b>
+官方在 T1 平均 3.1 次请求 / 14.5k token 直接出结论（多数病例根本不调工具，判据都在前置字段里）；候选稳定走 planner+policy+diagnosis 四阶段、平均 6.0 次请求 / 27.5k token、每例买 2.45 个信息单元，换回来的准确率差值是 0。
+反过来 T2 上官方自己也要 6.0 次请求 / 35.7k token（ReAct 反复调工具但收敛差），候选 6.4 次 / 32.5k 且多对 6 例——<b>该开启取证的场景，候选既更准也更省；不该开启的场景，候选纯亏。</b>
+</div>
+
+<h2>3. 运行可靠性</h2>
+<ul>
+<li>候选臂 236/236 全部产出，零失败，无预算越界（每例 <code>spent_units ≤ 3</code>、<code>admitted_attempts ≤ 6</code>）。</li>
+<li>官方臂 T2 批次在 T2-049 上抛出 <code>GraphRecursionError</code>（25 步递归上限）并<b>中断整批</b>；官方 <code>run.py</code> 没有逐例异常隔离，重试从同一例重启，导致其后 23 例从未被执行。</li>
+<li>该例单独重跑时正常结束，说明是随机性非终止，不是确定性死锁。按 236 例观察，官方非终止风险约 0.4%，代价是整批作废。</li>
+<li>补跑 24 例全部成功，最终两臂都是 236/236 完整。</li>
+</ul>
+
+<h2>4. 必须同时读的限制</h2>
+<div class="risk">
+<ul>
+<li><b>T1 的标签是伪标签。</b>本地 91 例全部 <code>PT-pseudo_*</code>，<code>evaluation/ground_truth</code> 只有 3 个 demo。T1 的 71.4% 只能解释为「与伪标签一致率」，不能称医学正确率。T1 的结论（打平、成本翻倍）在配对口径上依然成立，但它衡量的是「与伪标签的一致性」。</li>
+<li><b>T1 没有独立样本。</b>这 91 例在 11 月的历史实验里全部跑过并被分析过，本轮是内部基准，不是泛化证据。</li>
+<li><b>T2/T3 是干净的。</b>历史只跑过 T2-001 和 T3-001，其余 143 例从未参与机制选择——这是本项目第一次拿到 T2/T3 的独立读数。</li>
+<li><b>单次运行，temperature 0.3。</b>冒烟阶段已实测同例两次跑会翻结论。T2 的 +6 落在噪声量级内（p=0.263），不能宣称「候选在 T2 显著更好」。</li>
+<li><b>语料已统一</b>到候选的冻结版本（2889 chunks），官方自带的 1501 chunks 未使用；<b>重排器</b>只有候选有。这两项让官方臂处于相对不利位置，属第 7 条统一要求，需在对外表述里声明。</li>
+<li><b>T3 事件判据曾算错</b>：收尾脚本一度用「事件+月份整体相等」判命中，导致两臂都显示 0/73。已改为事件一致（month 误差单列 MAE）并重建全部产物。</li>
+</ul>
+</div>
+
+<h2>5. 建议</h2>
+<ol>
+<li><b>按任务开关取证。</b>T1 关掉 Adaptive 取证（或退化为直接作答），预计省掉约 1.2M token / 91 例且不掉分；资源集中到 T2。</li>
+<li><b>T3 别动架构，动事件阈值。</b>候选事件判断略差但时间更准，说明分布被推向了「预测复发」，问题在阈值而非证据。</li>
+<li><b>要显著性就加重复。</b>T2 的 13:7 方向明确，再跑一到两次重复（约 72×2 例次、1.4M token）就能把 p 压到 0.05 附近；这是当前性价比最高的一步。</li>
+<li>B 臂（同底座 Direct ReAct）仍后置：现在有了 A/C 的绝对定位，B 才能回答「T2 的增益来自 Adaptive 还是来自提示词与重排」。</li>
+</ol>
+
+<p class="small">产物：<code>FINAL_RESULTS.json</code>、<code>FINAL_CASES.csv</code>（236 行逐例：真值、两臂答案、token、请求、信息单元）、<code>score_full_t1/t2/t3.json</code>、<code>status.jsonl</code>。目录 <code>~/CHIMERA-armC/output/bench/</code>。</p>
+
+</main>
+</body>
+</html>

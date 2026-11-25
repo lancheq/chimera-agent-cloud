@@ -2,6 +2,6 @@
 
 本目录是当前第二轮代码、配置、测试和公开过程报告的阶段快照。仓库根目录保留上轮发布代码，不能混称同一版本。
 
-[Chat讨论入口](../discussion/README.md) · [当前状态](../discussion/CURRENT.md) · [过程报告](reports/) · [总计划](docs/ROUND2_MASTER_PLAN_20261113.md)
+[Chat讨论入口](../discussion/README.md) · [当前状态](../discussion/CURRENT.md) · [过程报告](reports/) · [基线对照归档](archive/bench_20261125/) · [总计划](docs/ROUND2_MASTER_PLAN_20261113.md)
 
 过程报告为公开衍生版，逐例记录省略。原始证据、模型和数据留在服务器。代码必须结合相应冻结批次理解，工程检查不等于医学提分。
