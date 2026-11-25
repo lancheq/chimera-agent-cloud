@@ -1,0 +1,44 @@
+{
+  "task_id": "P01-G1R",
+  "status": "G1R_DELIVERED_AWAIT_PLANNING_REVIEW",
+  "finite_goal_completed": true,
+  "completed_beijing": "2026-11-18T12:25:37.842397+08:00",
+  "execution_model_requested": "gpt-6.2-sol/high",
+  "AUTHORIZED_STRUCTURED_CANDIDATE_ENGINEERING": "PASS",
+  "EXTERNAL_GRAPH_PRODUCER_AND_BOUND_REVIEW": "BLOCKED",
+  "REAL_MODEL_AND_CLINICAL_STATUS": "NOT_RUN",
+  "mechanism_status": "NOT_READY",
+  "production_reflection_enabled": false,
+  "real_generations": 0,
+  "background_jobs": 0,
+  "test_passes": {
+    "total_passed": 151,
+    "G1R_passed": 70,
+    "G1A_and_related_passed": 81,
+    "warnings": 7,
+    "duration_seconds": 54.36,
+    "by_file": {
+      "tests.test_p01_g1r_reflection": 70,
+      "tests.test_p01_g1a_runtime": 40,
+      "tests.test_refactor_runtime": 9,
+      "tests.test_run_completion": 5,
+      "tests.test_control_repair": 20,
+      "tests.test_shared_plan_runtime": 7
+    }
+  },
+  "unresolved": [
+    "External graph has no approved full candidate producer and independent binding review.",
+    "Legacy internal structured rewrite remains unaudited.",
+    "D05 postprocess authority and naturally triggered reflection, correctness and benefit unverified."
+  ],
+  "stop_after_handoff": true,
+  "files": {
+    "report": "reports/ROUND2_P01_G1R_REFLECTION_CONSUMPTION_20261118.md",
+    "diff": "output/p01_g1r_reflection_20261118/source_diff.patch",
+    "manifest": "output/p01_g1r_reflection_20261118/manifest.json",
+    "matrix": "output/p01_g1r_reflection_20261118/synthetic_regression_results.json",
+    "mapping": "output/p01_g1r_reflection_20261118/contract_mapping.md",
+    "entry_receipts": "output/p01_g1r_reflection_20261118/entry_receipts.json",
+    "execution_ledger": "output/p01_g1r_reflection_20261118/execution_ledger.json"
+  }
+}

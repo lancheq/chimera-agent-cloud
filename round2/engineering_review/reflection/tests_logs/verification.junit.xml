@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="48" time="8.926" timestamp="2026-11-18T12:18:09.440407+08:00" hostname="d208-PowerEdge-R740"><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S01-accepted_candidate]" time="0.005" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S02-audit_rejected]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S03-detected_no_executable_proposal]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S04-no_issue]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S05-executed_no_delta]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S06-accepted_candidate]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S07-audit_rejected]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S08-json-invalid_proposal]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S08-missing-invalid_proposal]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S08-null-invalid_proposal]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S08-type-invalid_proposal]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S09-error_fallback_initial]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S10-unknown-blocked_missing_authorization]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S10-not_requested-blocked_missing_authorization]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S10-missing-blocked_missing_authorization]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S10-no-authority-blocked_missing_authorization]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S17-weights-binding_or_authority_rejected]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S17-confidence-binding_or_authority_rejected]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S17-generated-opinion-binding_or_authority_rejected]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S17-unavailable-source-binding_or_authority_rejected]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S17-bad-quote-binding_or_authority_rejected]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S17-malformed-citation-binding_or_authority_rejected]" time="0.005" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S18-disabled-disabled]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S18-not_triggered-not_triggered]" time="0.003" /><testcase classname="tests.test_p01_g1r_reflection" name="test_selector_contract[S18-ambiguous-ambiguous_candidates]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[proposal-run_id]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[proposal-task]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[proposal-case_id]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[proposal-profile_digest]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[proposal-draft]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[proposal-base_digest]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[proposal-source_digest]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[proposal-process_digest]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[proposal-candidate_digest]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[verdict-run_id]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[verdict-task]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[verdict-case_id]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[verdict-profile_digest]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[verdict-draft]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[verdict-base_digest]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[verdict-source_digest]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[verdict-process_digest]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[verdict-candidate_digest]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[verdict-proposal_digest]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[verdict-mechanism]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S11_bindings_reject_stale_or_other_review[verdict-method]" time="0.004" /><testcase classname="tests.test_p01_g1r_reflection" name="test_S15_invalid_initial_cannot_be_rescued" time="0.003" /><testcase classname="tests.test_p01_g1r_reflection" name="test_real_entry_assigns_and_traces[1-S06]" time="2.803"><failure message="TypeError: unhashable type: 'dict'">task = 1, scenario = 'S06'
+tmp_path = PosixPath('/home/hedongze/CHIMERA-agent/output/p01_g1r_reflection_20261118/tests/verification_cases/test_real_entry_assigns_and_tr0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7e5b5ce0aed0&gt;
+
+    @pytest.mark.parametrize('task,scenario', [(1, 'S06'), (2, 'projection'), (3, 'S01'),
+        (3, 'S01-internal-authority'),
+        (3, 'S02'), (3, 'S03'), (3, 'S04'), (3, 'S05'), (3, 'S08'), (3, 'S09'), (3, 'S12'),
+        (3, 'S12-rationale'), (3, 'S14')])
+    def test_real_entry_assigns_and_traces(task, scenario, tmp_path, monkeypatch):
+        profile, requests = entry_fixture(tmp_path, monkeypatch, task)
+        rules = ()
+        if scenario == 'S14':
+            rules = (OverwriteRule('t3_time_calibration', '/event', '1', '0', 'synthetic-approved-tau-observation'),)
+    
+        def reviewer(context):
+            original = json.loads(context.initial_json)
+            candidate = new_candidate(task, original)
+            if scenario == 'S03':
+                return ReviewBatch('detected')
+            if scenario == 'S04':
+                return ReviewBatch('no_issue')
+            if scenario == 'S05':
+                candidate = original
+            if scenario == 'S06':
+                candidate['biopsy_decision'] = original['biopsy_decision']
+                candidate['variable_weights']['age'] = 'noted'
+            if scenario == 'S09':
+                raise TimeoutError('synthetic-only review timeout')
+            if scenario in ('S12', 'S14'):
+                candidate['months_to_recurrence'] = 24.0
+            if scenario == 'S12-rationale':
+                candidate['free_text'] = CANDIDATE_REASON
+            review = approved(context, candidate, status='rejected' if scenario == 'S02' else 'accepted',
+                              mechanism='internal_formfill' if scenario == 'S01-internal-authority'
+                              else 'external_graph')
+            if scenario == 'S08':
+                review = replace(review, proposal=replace(review.proposal, candidate_json='{'))
+            return ReviewBatch('detected', (review,))
+    
+        assert inference.run(_profile_registry={'synthetic': profile}, _token_counter=counter,
+                             _reflection_test=SyntheticReview(reviewer, rules)) == 0
+        root, rows = read_entry(tmp_path)
+        assert len(requests) == len([e for e in rows if e['kind'] == 'wire_attempt']) == 2
+        by_stage = {r['stage']: r for r in rows if r['kind'] == 'consumption'}
+        selection = by_stage['reflection_selection']
+        consumed = by_stage['reflection_formfill_consumed']
+        assert selection['after_digest'] == consumed['after_digest']
+        assert by_stage['atomic_verification']['before_digest'] == consumed['after_digest']
+        assert by_stage['formfill_input']['after']['transcript'] == 'Synthetic software draft with no clinical authority.'
+        final = by_stage['final_sockets']
+        assert final['status'] == 'finalized'
+        for socket in final['files'].values():
+            assert hashlib.sha256((tmp_path / 'sockets' / socket['file']).read_bytes()).hexdigest() == socket['sha256']
+        assert len(list((tmp_path / 'sockets').iterdir())) == 2
+        assert (root / 'temporary_evidence/output' / f'task{task}/gc-case/prediction.json').is_file()
+        assert rows[-1]['kind'] == 'run_completed'
+        fields = {x['field']: x for x in final['reflection_receipt']['fields']}
+        assert fields['/repeat_test']['status'] == 'internal_only' and fields['/repeat_test']['final_present']
+        expected = {'S02': 'audit_rejected', 'S03': 'detected_no_executable_proposal', 'S04': 'no_issue',
+                    'S05': 'executed_no_delta', 'S08': 'invalid_proposal', 'S09': 'error_fallback_initial'}
+        assert selection['status'] == expected.get(scenario, 'accepted_candidate')
+        if scenario in ('S02', 'S03', 'S04', 'S08', 'S09'):
+            assert consumed['after'] == base(task)
+            assert final['reflection_consumption'] == ('finalized_initial_with_error'
+                                                       if scenario in ('S08', 'S09') else 'finalized_initial')
+        if scenario in ('S12', 'S14'):
+            assert final['after']['decision']['event'] == 0
+            assert final['reflection_consumption'] == ('accepted_then_overridden' if scenario == 'S14' else 'consumption_contract_failed')
+            assert fields['/event']['history'][0]['stage'] == 't3_time_calibration'
+            assert fields['/event']['history'][0]['rule_id'] == (rules[0].rule_id if rules else None)
+        if scenario == 'S12-rationale':
+            assert final['reflection_consumption'] == 'consumption_contract_failed'
+            assert fields['/free_text']['history'][0]['stage'] == 't3_rationale_elements'
+            assert fields['/event']['status'] == fields['/months_to_recurrence']['status'] == 'retained'
+        if scenario.startswith('S01'):
+            assert final['reflection_consumption'] == 'finalized_retained'
+            assert final['after']['reasoning'] == CANDIDATE_REASON + T3_FIELD_NAMES
+            assert final['after']['decision'] == {'event': 1, 'months_to_recurrence': 18.0}
+        if scenario == 'S06':
+&gt;           assert selection['label_changed'] is False and set(selection['changed_fields']) == {'/free_text', '/variable_weights/age'}
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: unhashable type: 'dict'
+
+/home/hedongze/CHIMERA-agent/tests/test_p01_g1r_reflection.py:335: TypeError</failure></testcase></testsuite></testsuites>

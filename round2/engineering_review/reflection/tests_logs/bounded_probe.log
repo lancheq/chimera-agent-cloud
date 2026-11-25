@@ -1,0 +1,428 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+__________________ test_real_entry_assigns_and_traces[3-S14] ___________________
+
+task = 3, scenario = 'S14'
+tmp_path = PosixPath('/home/hedongze/CHIMERA-agent/output/p01_g1r_reflection_20261118/tests/bounded_probe_cases/test_real_entry_assigns_and_tr0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x72861c1787d0>
+
+    @pytest.mark.parametrize('task,scenario', [(1, 'S06'), (2, 'projection'), (3, 'S01'),
+        (3, 'S01-internal-authority'),
+        (3, 'S02'), (3, 'S03'), (3, 'S04'), (3, 'S05'), (3, 'S08'), (3, 'S09'), (3, 'S12'),
+        (3, 'S12-rationale'), (3, 'S14')])
+    def test_real_entry_assigns_and_traces(task, scenario, tmp_path, monkeypatch):
+        profile, requests = entry_fixture(tmp_path, monkeypatch, task)
+        rules = ()
+        if scenario == 'S14':
+            reviewed_reason = CANDIDATE_REASON + T3_FIELD_NAMES
+            expected_note = (
+                '\n\n[校准说明] 虽然上文推理识别出复发风险因素，但预测复发时间 (24.0 个月) 不在早期复发'
+                '窗口内（训练集基率校准阈值 τ=24.0 个月），按生化复发基率校准规则判定 event=0（观察期内无复发）。'
+            )
+            rules = (
+                OverwriteRule('t3_time_calibration', '/event', '1', '0', 'synthetic-tau-event'),
+                OverwriteRule('t3_time_calibration', '/free_text', canonical(reviewed_reason),
+                              canonical(reviewed_reason + expected_note), 'synthetic-tau-note'),
+            )
+    
+        def reviewer(context):
+            original = json.loads(context.initial_json)
+            candidate = new_candidate(task, original)
+            if scenario == 'S03':
+                return ReviewBatch('detected')
+            if scenario == 'S04':
+                return ReviewBatch('no_issue')
+            if scenario == 'S05':
+                candidate = original
+            if scenario == 'S06':
+                candidate['biopsy_decision'] = original['biopsy_decision']
+                candidate['variable_weights']['age'] = 'noted'
+            if scenario == 'S09':
+                raise TimeoutError('synthetic-only review timeout')
+            if scenario in ('S12', 'S14'):
+                candidate['months_to_recurrence'] = 24.0
+            if scenario == 'S12-rationale':
+                candidate['free_text'] = CANDIDATE_REASON
+            review = approved(context, candidate, status='rejected' if scenario == 'S02' else 'accepted',
+                              mechanism='internal_formfill' if scenario == 'S01-internal-authority'
+                              else 'external_graph')
+            if scenario == 'S08':
+                review = replace(review, proposal=replace(review.proposal, candidate_json='{'))
+            return ReviewBatch('detected', (review,))
+    
+>       assert inference.run(_profile_registry={'synthetic': profile}, _token_counter=counter,
+                             _reflection_test=SyntheticReview(reviewer, rules)) == 0
+
+/home/hedongze/CHIMERA-agent/tests/test_p01_g1r_reflection.py:304: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/hedongze/CHIMERA-agent/inference.py:458: in run
+    asyncio.run(run_agent(cfg))
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/runners.py:190: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_events.py:654: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/run.py:622: in run_agent
+    total += await _run_task(cfg, task_int, input_dir, model, system_prompt, predictor,
+/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/run.py:353: in _run_task
+    return await _run_task_impl(cfg, task_int, input_dir, model, system_prompt, predictor, task_summaries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/run.py:398: in _run_task_impl
+    tools = [] if guarded else await _load_mcp_tools(cfg, input_dir, registry, task_int)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/run.py:323: in _load_mcp_tools
+    tools = await client.get_tools()
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langchain_mcp_adapters/client.py:197: in get_tools
+    tools_list = await asyncio.gather(*load_mcp_tool_tasks)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langchain_mcp_adapters/tools.py:478: in load_mcp_tools
+    async with create_session(
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/contextlib.py:210: in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langchain_mcp_adapters/sessions.py:457: in create_session
+    async with _create_stdio_session(**params) as session:
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/contextlib.py:210: in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langchain_mcp_adapters/sessions.py:268: in _create_stdio_session
+    async with (
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/contextlib.py:210: in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/mcp/client/stdio/__init__.py:124: in stdio_client
+    process = await _create_platform_compatible_process(
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/mcp/client/stdio/__init__.py:251: in _create_platform_compatible_process
+    process = await anyio.open_process(
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/anyio/_core/_subprocesses.py:184: in open_process
+    return await get_async_backend().open_process(
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/anyio/_backends/_asyncio.py:2745: in open_process
+    transport, protocol = await loop.subprocess_exec(
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_events.py:1708: in subprocess_exec
+    transport = await self._make_subprocess_transport(
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/unix_events.py:212: in _make_subprocess_transport
+    watcher.add_child_handler(transp.get_pid(),
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <asyncio.unix_events.PidfdChildWatcher object at 0x7286ed327fd0>
+pid = 4015710
+callback = <bound method _UnixSelectorEventLoop._child_watcher_callback of <_UnixSelectorEventLoop running=False closed=True debug=False>>
+args = (<_UnixSubprocessTransport pid=4015710 running stdin=<_UnixWritePipeTransport fd=14 open>>,)
+
+    def add_child_handler(self, pid, callback, *args):
+        existing = self._callbacks.get(pid)
+        if existing is not None:
+            self._callbacks[pid] = existing[0], callback, args
+        else:
+>           pidfd = os.pidfd_open(pid)
+                    ^^^^^^^^^^^^^
+E           AttributeError: module 'os' has no attribute 'pidfd_open'
+
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/unix_events.py:955: AttributeError
+----------------------------- Captured stderr call -----------------------------
+2026-11-18 12:21:06,674 inference INFO Detected interface for task 3
+2026-11-18 12:21:06,724 inference INFO Starting agent inference (model=Qwen3.6-35B-A3B-UD-Q4_K_M.gguf, task=3)
+2026-11-18 12:21:06,725 chimera_agent_baseline.run INFO Run plan: tasks [3]
+2026-11-18 12:21:06,735 langchain_openai.chat_models._client_utils WARNING langchain-openai injected a custom httpx transport to apply `http_socket_options`, which disables httpx's proxy auto-detection (HTTPS_PROXY set in environment). Set `LANGCHAIN_OPENAI_TCP_KEEPALIVE=0` or pass `http_socket_options=()` to restore default proxy behavior, or supply `openai_proxy` / your own `http_client` / `http_async_client` to take full control.
+2026-11-18 12:21:07,407 chimera_agent_baseline.run INFO Task 3: starting MCP server (data_dir=/tmp/chimera-gc-eudi11zs/input/task3/agent_input)
+--------------------------- Captured stderr teardown ---------------------------
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/mcp_server.py", line 250, in <module>
+    main()
+  File "/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/mcp_server.py", line 238, in main
+    server = create_server(
+             ^^^^^^^^^^^^^^
+  File "/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/mcp_server.py", line 69, in create_server
+    store = BoundCaseDataStore(data_dir,access) if access is not None else CaseDataStore(data_dir)
+                                                                           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/tools/base.py", line 91, in __init__
+    self._load(Path(data_dir))
+  File "/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/tools/base.py", line 95, in _load
+    raise FileNotFoundError(f"Data dir {data_dir} is not a directory")
+FileNotFoundError: Data dir /tmp/chimera-gc-eudi11zs/input/task3/agent_input is not a directory
+_______ test_internal_graph_keeps_existing_unreviewed_form_fill_behavior _______
+
+tmp_path = PosixPath('/home/hedongze/CHIMERA-agent/output/p01_g1r_reflection_20261118/tests/bounded_probe_cases/test_internal_graph_keeps_exis0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x72861638c350>
+
+    def test_internal_graph_keeps_existing_unreviewed_form_fill_behavior(tmp_path, monkeypatch):
+        profile, requests = entry_fixture(tmp_path, monkeypatch, 3, internal=True)
+>       assert inference.run(_profile_registry={'synthetic': profile}, _token_counter=counter) == 0
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/home/hedongze/CHIMERA-agent/tests/test_p01_g1r_reflection.py:449: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/hedongze/CHIMERA-agent/inference.py:458: in run
+    asyncio.run(run_agent(cfg))
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/runners.py:190: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_events.py:654: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/run.py:622: in run_agent
+    total += await _run_task(cfg, task_int, input_dir, model, system_prompt, predictor,
+/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/run.py:353: in _run_task
+    return await _run_task_impl(cfg, task_int, input_dir, model, system_prompt, predictor, task_summaries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/run.py:398: in _run_task_impl
+    tools = [] if guarded else await _load_mcp_tools(cfg, input_dir, registry, task_int)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/run.py:323: in _load_mcp_tools
+    tools = await client.get_tools()
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langchain_mcp_adapters/client.py:197: in get_tools
+    tools_list = await asyncio.gather(*load_mcp_tool_tasks)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langchain_mcp_adapters/tools.py:478: in load_mcp_tools
+    async with create_session(
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/contextlib.py:210: in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langchain_mcp_adapters/sessions.py:457: in create_session
+    async with _create_stdio_session(**params) as session:
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/contextlib.py:210: in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langchain_mcp_adapters/sessions.py:268: in _create_stdio_session
+    async with (
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/contextlib.py:210: in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/mcp/client/stdio/__init__.py:124: in stdio_client
+    process = await _create_platform_compatible_process(
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/mcp/client/stdio/__init__.py:251: in _create_platform_compatible_process
+    process = await anyio.open_process(
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/anyio/_core/_subprocesses.py:184: in open_process
+    return await get_async_backend().open_process(
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/anyio/_backends/_asyncio.py:2745: in open_process
+    transport, protocol = await loop.subprocess_exec(
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_events.py:1708: in subprocess_exec
+    transport = await self._make_subprocess_transport(
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/unix_events.py:212: in _make_subprocess_transport
+    watcher.add_child_handler(transp.get_pid(),
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <asyncio.unix_events.PidfdChildWatcher object at 0x7286ed327fd0>
+pid = 4015712
+callback = <bound method _UnixSelectorEventLoop._child_watcher_callback of <_UnixSelectorEventLoop running=False closed=True debug=False>>
+args = (<_UnixSubprocessTransport pid=4015712 running stdin=<_UnixWritePipeTransport fd=15 open>>,)
+
+    def add_child_handler(self, pid, callback, *args):
+        existing = self._callbacks.get(pid)
+        if existing is not None:
+            self._callbacks[pid] = existing[0], callback, args
+        else:
+>           pidfd = os.pidfd_open(pid)
+                    ^^^^^^^^^^^^^
+E           AttributeError: module 'os' has no attribute 'pidfd_open'
+
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/unix_events.py:955: AttributeError
+----------------------------- Captured stderr call -----------------------------
+2026-11-18 12:21:08,083 inference INFO Detected interface for task 3
+2026-11-18 12:21:08,157 inference INFO Starting agent inference (model=Qwen3.6-35B-A3B-UD-Q4_K_M.gguf, task=3)
+2026-11-18 12:21:08,158 chimera_agent_baseline.run INFO Run plan: tasks [3]
+2026-11-18 12:21:08,193 chimera_agent_baseline.run INFO Task 3: starting MCP server (data_dir=/tmp/chimera-gc-_6fxdxk1/input/task3/agent_input)
+--------------------------- Captured stderr teardown ---------------------------
+2026-11-18 12:21:08,669 asyncio ERROR Future exception was never retrieved
+future: <Future finished exception=CancelledError()>
+Traceback (most recent call last):
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/_pytest/runner.py", line 361, in from_call
+    result: TResult | None = func()
+                             ^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/_pytest/runner.py", line 250, in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/pluggy/_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/pluggy/_callers.py", line 167, in _multicall
+    raise exception
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/pluggy/_callers.py", line 139, in _multicall
+    teardown.throw(exception)
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/_pytest/logging.py", line 865, in pytest_runtest_call
+    yield
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/pluggy/_callers.py", line 139, in _multicall
+    teardown.throw(exception)
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/_pytest/capture.py", line 900, in pytest_runtest_call
+    return (yield)
+            ^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/pluggy/_callers.py", line 139, in _multicall
+    teardown.throw(exception)
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/_pytest/skipping.py", line 268, in pytest_runtest_call
+    return (yield)
+            ^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/pluggy/_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/_pytest/runner.py", line 184, in pytest_runtest_call
+    item.runtest()
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/_pytest/python.py", line 1707, in runtest
+    self.ihook.pytest_pyfunc_call(pyfuncitem=self)
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/pluggy/_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/pluggy/_callers.py", line 167, in _multicall
+    raise exception
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/pluggy/_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/_pytest/python.py", line 167, in pytest_pyfunc_call
+    result = testfunction(**testargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/CHIMERA-agent/tests/test_p01_g1r_reflection.py", line 304, in test_real_entry_assigns_and_traces
+    assert inference.run(_profile_registry={'synthetic': profile}, _token_counter=counter,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/CHIMERA-agent/inference.py", line 458, in run
+    asyncio.run(run_agent(cfg))
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/run.py", line 622, in run_agent
+    total += await _run_task(cfg, task_int, input_dir, model, system_prompt, predictor,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/run.py", line 353, in _run_task
+    return await _run_task_impl(cfg, task_int, input_dir, model, system_prompt, predictor, task_summaries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/run.py", line 398, in _run_task_impl
+    tools = [] if guarded else await _load_mcp_tools(cfg, input_dir, registry, task_int)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/run.py", line 323, in _load_mcp_tools
+    tools = await client.get_tools()
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langchain_mcp_adapters/client.py", line 197, in get_tools
+    tools_list = await asyncio.gather(*load_mcp_tool_tasks)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langchain_mcp_adapters/tools.py", line 478, in load_mcp_tools
+    async with create_session(
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langchain_mcp_adapters/sessions.py", line 457, in create_session
+    async with _create_stdio_session(**params) as session:
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langchain_mcp_adapters/sessions.py", line 268, in _create_stdio_session
+    async with (
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 124, in stdio_client
+    process = await _create_platform_compatible_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/mcp/client/stdio/__init__.py", line 251, in _create_platform_compatible_process
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/anyio/_core/_subprocesses.py", line 184, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 2745, in open_process
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_events.py", line 1708, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/unix_events.py", line 212, in _make_subprocess_transport
+    watcher.add_child_handler(transp.get_pid(),
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/unix_events.py", line 955, in add_child_handler
+    pidfd = os.pidfd_open(pid)
+            ^^^^^^^^^^^^^
+AttributeError: module 'os' has no attribute 'pidfd_open'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_subprocess.py", line 168, in _connect_pipes
+    _, pipe = await loop.connect_read_pipe(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_events.py", line 1606, in connect_read_pipe
+    await waiter
+asyncio.exceptions.CancelledError
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/mcp_server.py", line 250, in <module>
+    main()
+  File "/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/mcp_server.py", line 238, in main
+    server = create_server(
+             ^^^^^^^^^^^^^^
+  File "/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/mcp_server.py", line 69, in create_server
+    store = BoundCaseDataStore(data_dir,access) if access is not None else CaseDataStore(data_dir)
+                                                                           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/tools/base.py", line 91, in __init__
+    self._load(Path(data_dir))
+  File "/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/tools/base.py", line 95, in _load
+    raise FileNotFoundError(f"Data dir {data_dir} is not a directory")
+FileNotFoundError: Data dir /tmp/chimera-gc-_6fxdxk1/input/task3/agent_input is not a directory
+=============================== warnings summary ===============================
+tests/test_p01_g1r_reflection.py::test_internal_graph_keeps_existing_unreviewed_form_fill_behavior
+  /home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/_pytest/unraisableexception.py:67: PytestUnraisableExceptionWarning: Exception ignored in: <function BaseSubprocessTransport.__del__ at 0x7286ec72fce0>
+  
+  Traceback (most recent call last):
+    File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_subprocess.py", line 126, in __del__
+      self.close()
+    File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_subprocess.py", line 104, in close
+      proto.pipe.close()
+    File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/unix_events.py", line 765, in close
+      self.write_eof()
+    File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/unix_events.py", line 751, in write_eof
+      self._loop.call_soon(self._call_connection_lost, None)
+    File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+      self._check_closed()
+    File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+      raise RuntimeError('Event loop is closed')
+  RuntimeError: Event loop is closed
+  
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+    warnings.warn(pytest.PytestUnraisableExceptionWarning(msg))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_p01_g1r_reflection.py::test_real_entry_assigns_and_traces[3-S14]
+FAILED tests/test_p01_g1r_reflection.py::test_internal_graph_keeps_existing_unreviewed_form_fill_behavior
+2 failed, 68 deselected, 1 warning in 7.77s
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/logging/__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+ValueError: I/O operation on closed file.
+Call stack:
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_events.py", line 1811, in call_exception_handler
+    self.default_exception_handler(context)
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_events.py", line 1785, in default_exception_handler
+    logger.error('\n'.join(log_lines), exc_info=exc_info)
+Message: 'Future exception was never retrieved\nfuture: <Future finished exception=CancelledError()>'
+Arguments: ()
+Exception ignored in: <function BaseSubprocessTransport.__del__ at 0x7286ec72fce0>
+Traceback (most recent call last):
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_subprocess.py", line 126, in __del__
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_subprocess.py", line 104, in close
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/unix_events.py", line 765, in close
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/unix_events.py", line 751, in write_eof
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_events.py", line 762, in call_soon
+  File "/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_events.py", line 520, in _check_closed
+RuntimeError: Event loop is closed

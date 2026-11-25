@@ -1,0 +1,282 @@
+{
+  "alignment_evidence": {
+    "report_path": "/home/hedongze/CHIMERA-agent/output/s2_knowledge_snapshot_20261113_v4/vector_compatibility.json",
+    "report_sha256": "62b6824a43271202e29ab9ef4824c0b75cdc424496f68cbe3f27e00c08008e9a",
+    "resource_binding": "c3aaefd16695e92cfb051b9d4ea5fd8a3366576eac7e2a393ebbbc71a0750975"
+  },
+  "channels": [
+    "dense",
+    "bm25",
+    "rrf",
+    "cross_encoder",
+    "qa_dense"
+  ],
+  "corpus": {
+    "files": {
+      "guideline_qa.embeddings.npy": {
+        "bytes": 1314944,
+        "sha256": "9dc8022479cf19d8e3b6dc91484377073b8d86ccb6fa7cf4971b9098734e91e6"
+      },
+      "guideline_qa.jsonl": {
+        "bytes": 334526,
+        "sha256": "0a1124c715ab02b1bc6856990915ebb8fbca13fd88d4743df8f302b725f5a179"
+      },
+      "guidelines_db/chroma.sqlite3": {
+        "bytes": 37523456,
+        "sha256": "ea2c7fa0f7a259c5e6ffc5e00d4d58c41813c709b1a721566619839a0f0fa49a"
+      },
+      "guidelines_db/e7408351-bb84-4a2e-86e1-8310c6edf0f9/data_level0.bin": {
+        "bytes": 9279468,
+        "sha256": "117d8f76beb37564730eaa30402fdadb1931a0c6fb36e026824fa3aa9c04b931"
+      },
+      "guidelines_db/e7408351-bb84-4a2e-86e1-8310c6edf0f9/header.bin": {
+        "bytes": 100,
+        "sha256": "318708224e4c9d79be546614c42f95b2f58c27cff477a237674b72a3d51f38fc"
+      },
+      "guidelines_db/e7408351-bb84-4a2e-86e1-8310c6edf0f9/index_metadata.pickle": {
+        "bytes": 121248,
+        "sha256": "b2ca383bd245af0c52e885c5d0b150a9a8ce372122b04858f5886412f6885aeb"
+      },
+      "guidelines_db/e7408351-bb84-4a2e-86e1-8310c6edf0f9/length.bin": {
+        "bytes": 11556,
+        "sha256": "ed8ce9ade1d83913353b1b1790af6e67f534501852dc6ad0620866e895e202b6"
+      },
+      "guidelines_db/e7408351-bb84-4a2e-86e1-8310c6edf0f9/link_lists.bin": {
+        "bytes": 25768,
+        "sha256": "1f0052c14abedd357100323811dc8def776be943d7ae4e2ed866a98fa611ef61"
+      }
+    },
+    "path": "/home/hedongze/CHIMERA-agent/output/s2_knowledge_snapshot_20261113_v4/corpus"
+  },
+  "encoder": {
+    "files": {
+      "1_Pooling/config.json": {
+        "bytes": 90,
+        "sha256": "8759bdf7c77efc7df7723f64856a593c8943b71ee38baf2a88771fbaf78438f9"
+      },
+      "2_Dense/config.json": {
+        "bytes": 229,
+        "sha256": "f585834f6414896d7074d50bc5d9210ea326d8feaa154fae1be3ba606cbf31b5"
+      },
+      "2_Dense/model.safetensors": {
+        "bytes": 9437272,
+        "sha256": "c327f2acb00149676ade24a75e11eb6ebbd367f9ee050267ba56829d2979f702"
+      },
+      "3_Dense/config.json": {
+        "bytes": 229,
+        "sha256": "1711e6a73831e3e87b3f0c84ecd7b2d57108204a15c6a2f221d5a55d1036ec4f"
+      },
+      "3_Dense/model.safetensors": {
+        "bytes": 9437272,
+        "sha256": "ffb6cc5162e11e2ce6bc2367e121ee3bbbc4e82e1ee26826bd7573d4948d81b8"
+      },
+      "README.md": {
+        "bytes": 18677,
+        "sha256": "e53702f564878ea87085742fe3f485872bef81317086e9ffe37125a81809772a"
+      },
+      "config.json": {
+        "bytes": 1637,
+        "sha256": "ae123db98c7cdd3bf119b390e274c7eea409897756f6f733a4224519f3c121db"
+      },
+      "config_sentence_transformers.json": {
+        "bytes": 992,
+        "sha256": "8a44e0177b3de7e8c2553f28e0cbb32810ce17cfebed03f2ebf5e0f90da5d8b2"
+      },
+      "model.safetensors": {
+        "bytes": 1211486072,
+        "sha256": "cbf5a78393b6a033e0b8a63a57549964f7ed5c6fbeb4ba0694214f36123f2fd2"
+      },
+      "modules.json": {
+        "bytes": 677,
+        "sha256": "a37ed4dc847563984177eae65c74b68ba004d3505b8bb980469fd612ba94611e"
+      },
+      "sentence_bert_config.json": {
+        "bytes": 241,
+        "sha256": "3084164002c0bca01b0259c5327123803fce32e660a57feb93184ffead186fc8"
+      },
+      "tokenizer.json": {
+        "bytes": 33385261,
+        "sha256": "3f797e7e336523ba3845bf09a648fd87c14bf357f26beb091d8284dff48ea27c"
+      },
+      "tokenizer_config.json": {
+        "bytes": 703,
+        "sha256": "774d129994a3f6700f8fdedc51ba6c0279853b18ae0d3d44df577a734ceb1e65"
+      }
+    },
+    "path": "/home/hedongze/CHIMERA-agent/resources/embedding_model"
+  },
+  "fallbacks_allowed": false,
+  "packages": {
+    "chromadb": "1.5.9",
+    "numpy": "2.4.6",
+    "rank-bm25": "0.2.2",
+    "sentence-transformers": "5.7.0",
+    "torch": "2.6.0+cpu",
+    "transformers": "4.57.6"
+  },
+  "pipeline": "existing_hybrid_strict_v1",
+  "reranker": {
+    "files": {
+      ".cache/huggingface/CACHEDIR.TAG": {
+        "bytes": 191,
+        "sha256": "f6572428f6d5e1575e73a1502895a8731f10757dfbb634909c6e154b849af91d"
+      },
+      ".cache/huggingface/download/README.md.lock": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      ".cache/huggingface/download/README.md.metadata": {
+        "bytes": 101,
+        "sha256": "b725a1b02e740b0d6050c6dad6ee5cac57d89d2b7dba76bb8d920296f86fd0bb"
+      },
+      ".cache/huggingface/download/config.json.lock": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      ".cache/huggingface/download/config.json.metadata": {
+        "bytes": 101,
+        "sha256": "9ef05211e490af28383b85d250ca8270b672c7bde57b5c038d6569e549b749c1"
+      },
+      ".cache/huggingface/download/model.safetensors.lock": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      ".cache/huggingface/download/model.safetensors.metadata": {
+        "bytes": 125,
+        "sha256": "439d6891545f7f402f78d2d2692381d932cbd91b63318f34f6ec65764dde282e"
+      },
+      ".cache/huggingface/download/onnx/model.onnx.lock": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      ".cache/huggingface/download/onnx/model.onnx.metadata": {
+        "bytes": 125,
+        "sha256": "9f16ec08cdbccf50f16af255b72447cc4319fd7844eb1cb0fd148d7d86cd3e6d"
+      },
+      ".cache/huggingface/download/pytorch_model.bin.lock": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      ".cache/huggingface/download/pytorch_model.bin.metadata": {
+        "bytes": 125,
+        "sha256": "10cf1adb69e27e9a34233017c3022d54357f807bd6b341d7aca7ef7e54be6ddc"
+      },
+      ".cache/huggingface/download/sentencepiece.bpe.model.lock": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      ".cache/huggingface/download/sentencepiece.bpe.model.metadata": {
+        "bytes": 125,
+        "sha256": "8da2b6b49a0eca04b9759351a6a94a8cfd51ced8cb82180820a2e48f6e38d284"
+      },
+      ".cache/huggingface/download/special_tokens_map.json.lock": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      ".cache/huggingface/download/special_tokens_map.json.metadata": {
+        "bytes": 101,
+        "sha256": "0203c74d55663d5a5e60ccbed06877afb6a100d7762c605fbaf0ba2071319f96"
+      },
+      ".cache/huggingface/download/tokenizer.json.lock": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      ".cache/huggingface/download/tokenizer.json.metadata": {
+        "bytes": 125,
+        "sha256": "e971cbbeb83237759490cac39abe09b44edaa0b28c49704a688e1e5c112e5dac"
+      },
+      ".cache/huggingface/download/tokenizer_config.json.lock": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      ".cache/huggingface/download/tokenizer_config.json.metadata": {
+        "bytes": 101,
+        "sha256": "ac9a30cd4d96766a5eeb7c72286ac262249d8b3ee38c884d2a0715938fcbdad8"
+      },
+      ".cache/huggingface/trees/2cfc18c9415c912f9d8155881c133215df768a70.json": {
+        "bytes": 2066,
+        "sha256": "652779610a8e26fed8dd8d75ee8da1b65d222f7e65fc667a12351660a55a2345"
+      },
+      "README.md": {
+        "bytes": 34111,
+        "sha256": "b4223c8c1e95538f8c79168afc501f8b2da06c63221f013b79b28af78b59366d"
+      },
+      "config.json": {
+        "bytes": 799,
+        "sha256": "289adf7ada1eb6b4afa7589a48a032d45a076cf2e46dcdb3b4cabc33be14f708"
+      },
+      "model.safetensors": {
+        "bytes": 1112206140,
+        "sha256": "ced967c45fd1902eb92716c9ceeca7c95a936770ea9db611f5a841b926e33fbd"
+      },
+      "sentencepiece.bpe.model": {
+        "bytes": 5069051,
+        "sha256": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865"
+      },
+      "special_tokens_map.json": {
+        "bytes": 279,
+        "sha256": "d5469a60db23249c7f8945013d78df30b44b6bf686c6bb4740f4223f77b1b535"
+      },
+      "tokenizer.json": {
+        "bytes": 17098107,
+        "sha256": "9eb652ac4e40cc093272bbbe0f55d521cf67570060227109b5cdc20945a4489e"
+      },
+      "tokenizer_config.json": {
+        "bytes": 443,
+        "sha256": "a1d6bc8734a6f635dc158508bef000f8e2e5a759c7d92f984b2c86e5ff53425b"
+      }
+    },
+    "path": "/home/hedongze/CHIMERA-agent/model/reranker_model"
+  },
+  "schema_version": 1,
+  "scope": "Knowledge resources only; authorization is not independent clinical guideline adjudication",
+  "sources": {
+    "guideline_qa.embeddings.npy": {
+      "files": {
+        "file": {
+          "bytes": 1314944,
+          "sha256": "9dc8022479cf19d8e3b6dc91484377073b8d86ccb6fa7cf4971b9098734e91e6"
+        }
+      },
+      "path": "/home/hedongze/CHIMERA-agent/output/s2_knowledge_vector_rebuild_20261113_v2/resources/guideline_qa.embeddings.npy"
+    },
+    "guideline_qa.jsonl": {
+      "files": {
+        "file": {
+          "bytes": 334526,
+          "sha256": "0a1124c715ab02b1bc6856990915ebb8fbca13fd88d4743df8f302b725f5a179"
+        }
+      },
+      "path": "/home/hedongze/CHIMERA-agent/output/s2_knowledge_vector_rebuild_20261113_v2/resources/guideline_qa.jsonl"
+    },
+    "guidelines_db": {
+      "files": {
+        "chroma.sqlite3": {
+          "bytes": 37523456,
+          "sha256": "ea2c7fa0f7a259c5e6ffc5e00d4d58c41813c709b1a721566619839a0f0fa49a"
+        },
+        "e7408351-bb84-4a2e-86e1-8310c6edf0f9/data_level0.bin": {
+          "bytes": 9279468,
+          "sha256": "117d8f76beb37564730eaa30402fdadb1931a0c6fb36e026824fa3aa9c04b931"
+        },
+        "e7408351-bb84-4a2e-86e1-8310c6edf0f9/header.bin": {
+          "bytes": 100,
+          "sha256": "318708224e4c9d79be546614c42f95b2f58c27cff477a237674b72a3d51f38fc"
+        },
+        "e7408351-bb84-4a2e-86e1-8310c6edf0f9/index_metadata.pickle": {
+          "bytes": 121248,
+          "sha256": "b2ca383bd245af0c52e885c5d0b150a9a8ce372122b04858f5886412f6885aeb"
+        },
+        "e7408351-bb84-4a2e-86e1-8310c6edf0f9/length.bin": {
+          "bytes": 11556,
+          "sha256": "ed8ce9ade1d83913353b1b1790af6e67f534501852dc6ad0620866e895e202b6"
+        },
+        "e7408351-bb84-4a2e-86e1-8310c6edf0f9/link_lists.bin": {
+          "bytes": 25768,
+          "sha256": "1f0052c14abedd357100323811dc8def776be943d7ae4e2ed866a98fa611ef61"
+        }
+      },
+      "path": "/home/hedongze/CHIMERA-agent/output/s2_knowledge_vector_rebuild_20261113_v2/resources/guidelines_db"
+    }
+  }
+}

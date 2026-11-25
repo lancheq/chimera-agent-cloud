@@ -1,0 +1,115 @@
+...............................................F
+=================================== FAILURES ===================================
+__________________ test_real_entry_assigns_and_traces[1-S06] ___________________
+
+task = 1, scenario = 'S06'
+tmp_path = PosixPath('/home/hedongze/CHIMERA-agent/output/p01_g1r_reflection_20261118/tests/verification_cases/test_real_entry_assigns_and_tr0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7e5b5ce0aed0>
+
+    @pytest.mark.parametrize('task,scenario', [(1, 'S06'), (2, 'projection'), (3, 'S01'),
+        (3, 'S01-internal-authority'),
+        (3, 'S02'), (3, 'S03'), (3, 'S04'), (3, 'S05'), (3, 'S08'), (3, 'S09'), (3, 'S12'),
+        (3, 'S12-rationale'), (3, 'S14')])
+    def test_real_entry_assigns_and_traces(task, scenario, tmp_path, monkeypatch):
+        profile, requests = entry_fixture(tmp_path, monkeypatch, task)
+        rules = ()
+        if scenario == 'S14':
+            rules = (OverwriteRule('t3_time_calibration', '/event', '1', '0', 'synthetic-approved-tau-observation'),)
+    
+        def reviewer(context):
+            original = json.loads(context.initial_json)
+            candidate = new_candidate(task, original)
+            if scenario == 'S03':
+                return ReviewBatch('detected')
+            if scenario == 'S04':
+                return ReviewBatch('no_issue')
+            if scenario == 'S05':
+                candidate = original
+            if scenario == 'S06':
+                candidate['biopsy_decision'] = original['biopsy_decision']
+                candidate['variable_weights']['age'] = 'noted'
+            if scenario == 'S09':
+                raise TimeoutError('synthetic-only review timeout')
+            if scenario in ('S12', 'S14'):
+                candidate['months_to_recurrence'] = 24.0
+            if scenario == 'S12-rationale':
+                candidate['free_text'] = CANDIDATE_REASON
+            review = approved(context, candidate, status='rejected' if scenario == 'S02' else 'accepted',
+                              mechanism='internal_formfill' if scenario == 'S01-internal-authority'
+                              else 'external_graph')
+            if scenario == 'S08':
+                review = replace(review, proposal=replace(review.proposal, candidate_json='{'))
+            return ReviewBatch('detected', (review,))
+    
+        assert inference.run(_profile_registry={'synthetic': profile}, _token_counter=counter,
+                             _reflection_test=SyntheticReview(reviewer, rules)) == 0
+        root, rows = read_entry(tmp_path)
+        assert len(requests) == len([e for e in rows if e['kind'] == 'wire_attempt']) == 2
+        by_stage = {r['stage']: r for r in rows if r['kind'] == 'consumption'}
+        selection = by_stage['reflection_selection']
+        consumed = by_stage['reflection_formfill_consumed']
+        assert selection['after_digest'] == consumed['after_digest']
+        assert by_stage['atomic_verification']['before_digest'] == consumed['after_digest']
+        assert by_stage['formfill_input']['after']['transcript'] == 'Synthetic software draft with no clinical authority.'
+        final = by_stage['final_sockets']
+        assert final['status'] == 'finalized'
+        for socket in final['files'].values():
+            assert hashlib.sha256((tmp_path / 'sockets' / socket['file']).read_bytes()).hexdigest() == socket['sha256']
+        assert len(list((tmp_path / 'sockets').iterdir())) == 2
+        assert (root / 'temporary_evidence/output' / f'task{task}/gc-case/prediction.json').is_file()
+        assert rows[-1]['kind'] == 'run_completed'
+        fields = {x['field']: x for x in final['reflection_receipt']['fields']}
+        assert fields['/repeat_test']['status'] == 'internal_only' and fields['/repeat_test']['final_present']
+        expected = {'S02': 'audit_rejected', 'S03': 'detected_no_executable_proposal', 'S04': 'no_issue',
+                    'S05': 'executed_no_delta', 'S08': 'invalid_proposal', 'S09': 'error_fallback_initial'}
+        assert selection['status'] == expected.get(scenario, 'accepted_candidate')
+        if scenario in ('S02', 'S03', 'S04', 'S08', 'S09'):
+            assert consumed['after'] == base(task)
+            assert final['reflection_consumption'] == ('finalized_initial_with_error'
+                                                       if scenario in ('S08', 'S09') else 'finalized_initial')
+        if scenario in ('S12', 'S14'):
+            assert final['after']['decision']['event'] == 0
+            assert final['reflection_consumption'] == ('accepted_then_overridden' if scenario == 'S14' else 'consumption_contract_failed')
+            assert fields['/event']['history'][0]['stage'] == 't3_time_calibration'
+            assert fields['/event']['history'][0]['rule_id'] == (rules[0].rule_id if rules else None)
+        if scenario == 'S12-rationale':
+            assert final['reflection_consumption'] == 'consumption_contract_failed'
+            assert fields['/free_text']['history'][0]['stage'] == 't3_rationale_elements'
+            assert fields['/event']['status'] == fields['/months_to_recurrence']['status'] == 'retained'
+        if scenario.startswith('S01'):
+            assert final['reflection_consumption'] == 'finalized_retained'
+            assert final['after']['reasoning'] == CANDIDATE_REASON + T3_FIELD_NAMES
+            assert final['after']['decision'] == {'event': 1, 'months_to_recurrence': 18.0}
+        if scenario == 'S06':
+>           assert selection['label_changed'] is False and set(selection['changed_fields']) == {'/free_text', '/variable_weights/age'}
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: unhashable type: 'dict'
+
+/home/hedongze/CHIMERA-agent/tests/test_p01_g1r_reflection.py:335: TypeError
+----------------------------- Captured stderr call -----------------------------
+2026-11-18 12:18:15,577 inference INFO Detected interface for task 1
+2026-11-18 12:18:15,635 inference INFO Starting agent inference (model=Qwen3.6-35B-A3B-UD-Q4_K_M.gguf, task=1)
+2026-11-18 12:18:15,636 chimera_agent_baseline.run INFO Run plan: tasks [1]
+2026-11-18 12:18:15,646 langchain_openai.chat_models._client_utils WARNING langchain-openai injected a custom httpx transport to apply `http_socket_options`, which disables httpx's proxy auto-detection (HTTPS_PROXY set in environment). Set `LANGCHAIN_OPENAI_TCP_KEEPALIVE=0` or pass `http_socket_options=()` to restore default proxy behavior, or supply `openai_proxy` / your own `http_client` / `http_async_client` to take full control.
+2026-11-18 12:18:16,329 chimera_agent_baseline.run INFO Task 1: starting MCP server (data_dir=/tmp/chimera-gc-tk25bck2/input/task1/agent_input)
+2026-11-18 12:18:16,889 chimera_agent_baseline.tools.base INFO Loaded 1 cases from /tmp/chimera-gc-tk25bck2/input/task1/agent_input
+2026-11-18 12:18:16,899 __main__ INFO Guidelines DB not found in /home/hedongze/CHIMERA-agent/output/p01_g1r_reflection_20261118/tests/verification_cases/test_real_entry_assigns_and_tr0/empty_resources — search_guidelines will return empty results
+2026-11-18 12:18:17,008 chimera_agent_baseline.run INFO Task 1: loaded 7 tools from MCP server
+2026-11-18 12:18:17,008 chimera_agent_baseline.run INFO Task 1: tool deny dropped ['get_pathology_report', 'get_family_history'] (remaining 5)
+2026-11-18 12:18:17,009 chimera_agent_baseline.run INFO Task 1: cost_align=True
+2026-11-18 12:18:17,051 chimera_agent_baseline.agent.graph INFO Compiled react+form_fill graph with 5 tools (max_model_turns=None)
+2026-11-18 12:18:17,051 chimera_agent_baseline.run INFO Task 1: processing case gc-case
+2026-11-18 12:18:17,222 chimera_agent_baseline.agent.form_fill INFO form_fill: case=gc-case task=1 called_tools=[] eligible_vars=['psa', 'age', 'dre', 'comorbidity', 'bx', 'pirads', 'psad', 'vol', 'cspca'] predictor=None self_refine=False atomic_check=False
+2026-11-18 12:18:17,541 chimera_agent_baseline.agent.form_fill WARNING T1 decision layer v2 skipped: predictor probabilities missing
+2026-11-18 12:18:17,622 chimera_agent_baseline.agent.form_fill INFO num_verify: enter task=1 ft_len=84
+2026-11-18 12:18:17,812 chimera_agent_baseline.agent.form_fill INFO Loaded weight table from /home/hedongze/CHIMERA-agent/resources/weight_table_t1.json
+2026-11-18 12:18:17,813 chimera_agent_baseline.agent.form_fill INFO conf_calib: enter task=1 confidence=clear
+2026-11-18 12:18:17,814 chimera_agent_baseline.agent.form_fill INFO Loaded weight calibration from /home/hedongze/CHIMERA-agent/resources/weight_calibration.json
+2026-11-18 12:18:18,000 chimera_agent_baseline.run INFO Task 1: case gc-case done in 0.9s
+2026-11-18 12:18:18,004 chimera_agent_baseline.run INFO Task 1: wrote 1 predictions (0 skipped, 0 failed) under /tmp/chimera-gc-tk25bck2/output/task1
+2026-11-18 12:18:18,004 chimera_agent_baseline.run INFO Done. Wrote 1 predictions across 1 task(s).
+2026-11-18 12:18:18,328 inference INFO Wrote GC result sockets for task 1 to /home/hedongze/CHIMERA-agent/output/p01_g1r_reflection_20261118/tests/verification_cases/test_real_entry_assigns_and_tr0/sockets
+=========================== short test summary info ============================
+FAILED tests/test_p01_g1r_reflection.py::test_real_entry_assigns_and_traces[1-S06]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 47 passed in 8.92s

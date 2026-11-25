@@ -1,0 +1,133 @@
+{
+  "head": "7301642d0eedda2f143ba44b93d42f948249d813",
+  "created_beijing": "2026-11-18T12:25:37.842397+08:00",
+  "scope": "P01-G1R local-only",
+  "source_changes": [
+    {
+      "path": "inference.py",
+      "before_sha256": "9d982c4ab7742d8e0a77122fa62e490832a9c2b5084ebbc8654c5ab91b815056",
+      "before_snapshot": "output/p01_g1r_reflection_20261118/before/inference.py",
+      "after_sha256": "fc18eba83ccc7791dd19c0d3bb767a9d2a0a265e8e97cc6165dde1f1007f9e4d"
+    },
+    {
+      "path": "src/chimera_agent_baseline/runtime_audit.py",
+      "before_sha256": "0083567c86fea850ea9e7cef89f4aaef0d7f9007aa280c0bab6a98c8391b0f9f",
+      "before_snapshot": "output/p01_g1r_reflection_20261118/before/src/chimera_agent_baseline/runtime_audit.py",
+      "after_sha256": "33644de90c20837bac8df9a75ce54ecc1a0e1b7d5d1d3d7da8882cb3e0b91356"
+    },
+    {
+      "path": "src/chimera_agent_baseline/run.py",
+      "before_sha256": "0a7cd5da0d182126b4067d060ae12393e63f190cdfc56fa1f66b6419636ab2d5",
+      "before_snapshot": "output/p01_g1r_reflection_20261118/before/src/chimera_agent_baseline/run.py",
+      "after_sha256": "1ff321452e5fad6fa815bb045c703fa751e558d53e594c2795540918aac62baf"
+    },
+    {
+      "path": "src/chimera_agent_baseline/agent/graph.py",
+      "before_sha256": "986ae993105f657df50207645fd7df40e69e4af8a2a1cc3e04501e1f50436bff",
+      "before_snapshot": "output/p01_g1r_reflection_20261118/before/src/chimera_agent_baseline/agent/graph.py",
+      "after_sha256": "dfed6d6cbbe636bee9d46467528beea36927d04d1489dd573737bc89fe966d16"
+    },
+    {
+      "path": "src/chimera_agent_baseline/agent/form_fill.py",
+      "before_sha256": "a282b0db122a8b8fbd28caf7df9b5fc8858fcf528cdaf82f02496fe6bade5cb5",
+      "before_snapshot": "output/p01_g1r_reflection_20261118/before/src/chimera_agent_baseline/agent/form_fill.py",
+      "after_sha256": "ca240dd46a4037d84fb5e1b67573286477a983472852ecdef0938bc8e39bfb13"
+    },
+    {
+      "path": "src/chimera_agent_baseline/agent/reflection_contract.py",
+      "before_sha256": null,
+      "before_snapshot": null,
+      "after_sha256": "823f4effedb7e2b834fc41efbed02fdb7f10f8e8b4d8151fe498582a4780a204"
+    },
+    {
+      "path": "tests/test_p01_g1r_reflection.py",
+      "before_sha256": null,
+      "before_snapshot": null,
+      "after_sha256": "589bac15b36a3eee159f14ee8f1e540042d59d91067470ca2b7e1cd33ec7d370"
+    },
+    {
+      "path": "tests/test_p01_g1a_runtime.py",
+      "before_sha256": "e0e1b0c37f0c1c35d8c863e3f10e9a6fcce1a6cc8ffda35ce09aae9e25b740a7",
+      "before_snapshot": "output/p01_g1r_reflection_20261118/before/tests/test_p01_g1a_runtime.py",
+      "after_sha256": "77d150086753892a09978b025a8af5de6f6ed729e55d8048e63d823fa9c9f3c5"
+    }
+  ],
+  "config_source_inputs": {
+    "configs/config.yaml": "fd372111531f20183fadc7288527f7616338d069c60a806f2110bfbe8c01b692",
+    ".codex/config.toml": "8b4364d8a07bcf6957bce25beeb407ed3e1c21ff9d7049e1e0a3613611f1658d",
+    "reasoning_align.py": "bc2c84835e22da6a12bf5afb84f24e3395b9e6881789c430a86cf52fc46cf024",
+    "templates/prompts/agent_prompt.j2": "179dadbe987421d65d8ed856e66ec72cf0eb398d62e3939b845a072ce492b7a4",
+    "resources/weight_calibration.json": "4306fd1e27c03b3e876c35534ba40e8a68e97bffba9b91a718ca659a29787586",
+    "resources/weight_table_t1.json": "7fabd026933f66290da83dce4851bc2020eb5823e99b97f3dc6e767479b4304d",
+    "resources/weight_table_t2.json": "5a5afc301f3c560f228799d825b6ccdb07dbee5043f02c68dfc9473cd00c87c8"
+  },
+  "artifacts": {
+    "reports/ROUND2_P01_G1R_REFLECTION_CONSUMPTION_20261118.md": "2dfed90d6aa76c464e59d2cfee7a12d17414e063b383747add923914c685e5bf",
+    "output/p01_g1r_reflection_20261118/baseline.json": "044bca209abb11cc470dae12016ead11a8f3a49e8104b3b56e0218c168dc7c1c",
+    "output/p01_g1r_reflection_20261118/after_status.txt": "322af1c30eedfaf3a93ae7892c97297fb620fc620cb0cf6cc71a9b710c603da0",
+    "output/p01_g1r_reflection_20261118/before/status.txt": "8fc420d00f27059f2db0f92f9c166cef3859d1550ec3634021cd473bfbbf98c7",
+    "output/p01_g1r_reflection_20261118/before/staged.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "output/p01_g1r_reflection_20261118/contract_mapping.md": "442c642e64bd979419f9280a7c0ba897aa4ad4ed6bb5e01a5275dd1028d85817",
+    "output/p01_g1r_reflection_20261118/synthetic_regression_results.json": "14e57c7baf38824d73628d42eba5b580f8a4278b74961366d37bd4e3cf284c98",
+    "output/p01_g1r_reflection_20261118/entry_receipts.json": "4dc2e90eaf9a1df859748ac34ff4f944385c59c81c5b5e40dcdadc04701f0a2d",
+    "output/p01_g1r_reflection_20261118/execution_ledger.json": "ff1cc42acb4d7222de30f2d730d07ae427dfdb319f28347282435ea27526dbdd",
+    "output/p01_g1r_reflection_20261118/handoff.json": "d98653eaeb8444fed2e3f90cc1a27e71c9cd7e9f9ea62b02248124c368bf7b75",
+    "output/p01_g1r_reflection_20261118/source_diff.patch": "603356f01dd0a46429c72dab26b909c193e98757d585d66b9cd30130457ef498",
+    "output/p01_g1r_reflection_20261118/tests/final.log": "75d91eeb0ecbcc2ca5c4c7da432e36250515faa159f560551bb647bf812f69fa",
+    "output/p01_g1r_reflection_20261118/tests/final.junit.xml": "1d94705bba992f920c7a52eab3390861949e0d480f96ffa65d9defa6ed79a455",
+    "output/p01_g1r_reflection_20261118/tests/final.resources.json": "0ed8593711a4eba0ae1aab0965b6b385960bbab2942884cc273b0adceed12748",
+    "output/p01_g1r_reflection_20261118/tests/run_bounded.py": "9e7cc6c1c75b0ff5cc0e3f2683360059ec0f72d160514974a8e46d934aa1f9ee",
+    "output/p01_g1r_reflection_20261118/tests/sample_workers.py": "e0c4eee593620420c6e35313c41f89798a913c2815cd3f1b9dcc7ad65b00db3c",
+    "output/p01_g1r_reflection_20261118/tests/acceptance_peak_sample.json": "813a0c4a83eac101745f831adda21df11418b70e77fc129ec0e2b04114462ef1",
+    "output/p01_g1r_reflection_20261118/tests/verification_limited_1.resources.json": "b387637fe1da81f5cb972c9404a2fcc27d0eae5aad37c06743f199acb59b4059",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_entry_fatal_has_no_finali0/private/42cfed610dcf4e6c9ef8fa087002c557/events.jsonl": "f009c70a76242fffae01929b857e80da343b9a8219127ddd309f10248b9d827d",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_entry_fatal_has_no_finali1/private/ef4e758f4af449d09641ad659313d623/events.jsonl": "cba691277d0280d7888a65bc01ea58a5027e645f1757bc23de513f5c74f4a3ca",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_entry_fatal_has_no_finali2/private/4b08183f2ef94221942e426464a3ce3e/events.jsonl": "ea0c434ed0b329aa1cc694bffd6586a479f70b734ba01dd473f256602dc1f44f",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_external_graph_artifact_r0/private/971cbc6d8e484358b1ad041d35b3f50f/events.jsonl": "eac230ca1fea9e744498117a487d2fbafbfc06ed4b36cf9a7a62e401335fd434",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_internal_graph_keeps_exis0/private/5ae12e386b8b46ffa7cb870036c04b1a/events.jsonl": "47614f20751ae09761872e4c3782d15eca71c05bc93abde08cc65cbab47f3ada",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr0/private/ef9deeba7ddd444c8dac1f5d0a47db3b/events.jsonl": "b0f1897e3cb40d22fd1086183928029b6e58809457a401c32741893aec56b581",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr1/private/b66b6f6bcb0c42c18ee5ef31bc422184/events.jsonl": "b1a8c06220999cc21ad97acd03c56377d0837636515270731b917c550935af3e",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr10/private/fa6e80407daa4b0f99142ce973b84077/events.jsonl": "16c1edde3ae8269aad5f5a2bf48e1fc3782cdbe0aa8fd33fc948dde129d136e0",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr11/private/24a8a8636c5e4e4e8db22f33789aea86/events.jsonl": "0054dbfc2dec026ed6b8e273fd0b473247cbfd79c27b0e7d43873d890e963747",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr12/private/68dfa818375f4b4fa3e5a2d8a740d689/events.jsonl": "d8b1bbbb07aad7512fa5ec36c8dcb214b4349cf7a1af8a158c1893447ed6d9a8",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr2/private/6d9552aebd4646cebdf2770b27efcfa8/events.jsonl": "291b5f40028f0cb45ccb7266c7c034d467232410cc14c52032b947a44e82952f",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr3/private/0bfe5ef3803b4b95a46a4e0a39da3a79/events.jsonl": "595411b1293ded9c0a6d0e9d361c86e4f6e4a88131d14af4cc4c169341bdf994",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr4/private/e6f5f5c0e1174851a19a94811ece439b/events.jsonl": "a1478e95cc581fa6c6d63403bb0d1fdb8a43c864c02ba941d928246fce4a0348",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr5/private/fc59d6ff2e8946d68edf9135c6d34fcf/events.jsonl": "d1edcce2b84d7bfb05faae4e23fef71d63bfa42d2d2107fada673d412c53a9fe",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr6/private/b69be1de297b4e1db366b4c259c22da2/events.jsonl": "9cbbca133a7dcdc534b232a7aedae2069ae987c9b067fca2b9cb62fa6fadfc35",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr7/private/f138446d8f804d9bad8b2f30b8b45dbd/events.jsonl": "de245a69d86a0d4df8c09a2e1bb325ae9d4f82324ecad31350eba20cb319024f",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr8/private/933e4cc2b2504242808ec1f3e7959e63/events.jsonl": "1f2133eaa96da0b093829817162b52a9a8fe9fda1ded5cd1cdf1f2f60bb57397",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr9/private/56d04a7706e44960be0dde2dd48aef73/events.jsonl": "b81081c97771ddc66edb55d96f4a28e8bd632487f07fa58a8d63eb07f0585ab6",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_external_graph_artifact_r0/sockets/prostate-time-to-recurrence-or-last-follow-up.json": "467a0c4e75c7946cdfbea1f2403034cf26ec21f0b1f4e75b743165d806f199c6",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_external_graph_artifact_r0/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_internal_graph_keeps_exis0/sockets/prostate-time-to-recurrence-or-last-follow-up.json": "41fde3ce6e33951fd7bcdc6700bd7b5d876566425e99830c1efa9e451044e243",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_internal_graph_keeps_exis0/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json": "3ec4561013d81be9d7444c7d1bed10defd026da3ecb7d431446437dedddb47d7",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr0/sockets/prostate-biopsy-decision.json": "04a06452677210a3cdaec376fd5ebbca1714cb7af9e62bf5cce1644310a9086a",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr0/sockets/prostate-biopsy-decision-reasoning.json": "883a92652ee8e367997a8050d4fa33d50f4465f99b47f9c534b8ae2395cf52cf",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr1/sockets/prostate-treatment-decision.json": "65cbc2053d93861d83bedfd37717de44cc93b8499add239731ce5e85b0c45a9e",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr1/sockets/prostate-treatment-decision-reasoning.json": "7eb48befd22a1ac6c6660dc1d5f27bcd1e8fc2d5c016119e6ec676c7528698cf",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr10/sockets/prostate-time-to-recurrence-or-last-follow-up.json": "28d2de62c08b9e45aa82c21c8f3d8a8a3eb99d110661937c9fd682610719b8ba",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr10/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json": "f702ddffe40175b59ee552a01d05eb5bc98e94957663f2a2769ee70782522ac0",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr11/sockets/prostate-time-to-recurrence-or-last-follow-up.json": "41fde3ce6e33951fd7bcdc6700bd7b5d876566425e99830c1efa9e451044e243",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr11/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json": "c3b5e30e28bc944a3ee738099e867ebb13d41fd3fa42453341c67a2f7c3ff0be",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr12/sockets/prostate-time-to-recurrence-or-last-follow-up.json": "28d2de62c08b9e45aa82c21c8f3d8a8a3eb99d110661937c9fd682610719b8ba",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr12/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json": "f702ddffe40175b59ee552a01d05eb5bc98e94957663f2a2769ee70782522ac0",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr2/sockets/prostate-time-to-recurrence-or-last-follow-up.json": "41fde3ce6e33951fd7bcdc6700bd7b5d876566425e99830c1efa9e451044e243",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr2/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json": "3ec4561013d81be9d7444c7d1bed10defd026da3ecb7d431446437dedddb47d7",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr3/sockets/prostate-time-to-recurrence-or-last-follow-up.json": "41fde3ce6e33951fd7bcdc6700bd7b5d876566425e99830c1efa9e451044e243",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr3/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json": "3ec4561013d81be9d7444c7d1bed10defd026da3ecb7d431446437dedddb47d7",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr4/sockets/prostate-time-to-recurrence-or-last-follow-up.json": "467a0c4e75c7946cdfbea1f2403034cf26ec21f0b1f4e75b743165d806f199c6",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr4/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr5/sockets/prostate-time-to-recurrence-or-last-follow-up.json": "467a0c4e75c7946cdfbea1f2403034cf26ec21f0b1f4e75b743165d806f199c6",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr5/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr6/sockets/prostate-time-to-recurrence-or-last-follow-up.json": "467a0c4e75c7946cdfbea1f2403034cf26ec21f0b1f4e75b743165d806f199c6",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr6/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr7/sockets/prostate-time-to-recurrence-or-last-follow-up.json": "467a0c4e75c7946cdfbea1f2403034cf26ec21f0b1f4e75b743165d806f199c6",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr7/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr8/sockets/prostate-time-to-recurrence-or-last-follow-up.json": "467a0c4e75c7946cdfbea1f2403034cf26ec21f0b1f4e75b743165d806f199c6",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr8/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr9/sockets/prostate-time-to-recurrence-or-last-follow-up.json": "467a0c4e75c7946cdfbea1f2403034cf26ec21f0b1f4e75b743165d806f199c6",
+    "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr9/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294"
+  },
+  "fixture_provenance": "Private, no patient data, no hidden labels; incidental pytest symlinks excluded."
+}

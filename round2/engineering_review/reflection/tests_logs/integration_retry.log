@@ -1,0 +1,279 @@
+.F
+=================================== FAILURES ===================================
+_______________ test_real_entry_assigns_and_traces[2-projection] _______________
+
+task = 2, scenario = 'projection'
+tmp_path = PosixPath('/home/hedongze/CHIMERA-agent/output/p01_g1r_reflection_20261118/tests/integration_retry/test_real_entry_assigns_and_tr1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x72bba1477610>
+
+    @pytest.mark.parametrize('task,scenario', [(1, 'S06'), (2, 'projection'), (3, 'S01'),
+        (3, 'S02'), (3, 'S03'), (3, 'S04'), (3, 'S05'), (3, 'S09'), (3, 'S12'),
+        (3, 'S14')])
+    def test_real_entry_assigns_and_traces(task, scenario, tmp_path, monkeypatch):
+        profile, requests = entry_fixture(tmp_path, monkeypatch, task)
+        rules = ()
+        if scenario == 'S14':
+            rules = (OverwriteRule('t3_time_calibration', '/event', '1', '0', 'synthetic-approved-tau-observation'),)
+    
+        def reviewer(context):
+            original = json.loads(context.initial_json)
+            candidate = new_candidate(task, original)
+            if scenario == 'S03':
+                return ReviewBatch('detected')
+            if scenario == 'S04':
+                return ReviewBatch('no_issue')
+            if scenario == 'S05':
+                candidate = original
+            if scenario == 'S06':
+                candidate['biopsy_decision'] = original['biopsy_decision']
+                candidate['variable_weights']['age'] = 'noted'
+            if scenario == 'S09':
+                raise TimeoutError('synthetic-only review timeout')
+            if scenario in ('S12', 'S14'):
+                candidate['months_to_recurrence'] = 24.0
+            return ReviewBatch('detected', (approved(context, candidate,
+                               status='rejected' if scenario == 'S02' else 'accepted'),))
+    
+>       assert inference.run(_profile_registry={'synthetic': profile}, _token_counter=counter,
+                             _reflection_test=SyntheticReview(reviewer, rules)) == 0
+
+/home/hedongze/CHIMERA-agent/tests/test_p01_g1r_reflection.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/hedongze/CHIMERA-agent/inference.py:458: in run
+    asyncio.run(run_agent(cfg))
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/runners.py:190: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/asyncio/base_events.py:654: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/run.py:622: in run_agent
+    total += await _run_task(cfg, task_int, input_dir, model, system_prompt, predictor,
+/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/run.py:353: in _run_task
+    return await _run_task_impl(cfg, task_int, input_dir, model, system_prompt, predictor, task_summaries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/run.py:515: in _run_task_impl
+    result = await graph.ainvoke(initial_state, {"recursion_limit": cfg.agent.max_iterations})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langgraph/pregel/main.py:4090: in ainvoke
+    async for chunk in self.astream(
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langgraph/pregel/main.py:3440: in astream
+    async for _ in runner.atick(
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langgraph/pregel/_runner.py:557: in atick
+    _panic_or_proceed(
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langgraph/pregel/_runner.py:687: in _panic_or_proceed
+    raise exc
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langgraph/pregel/_retry.py:744: in arun_with_retry
+    return await task.proc.ainvoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langgraph/_internal/_runnable.py:733: in ainvoke
+    input = await asyncio.create_task(
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langgraph/_internal/_runnable.py:501: in ainvoke
+    ret = await self.afunc(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langchain_core/runnables/config.py:707: in run_in_executor
+    return await asyncio.get_running_loop().run_in_executor(
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/concurrent/futures/thread.py:58: in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/langchain_core/runnables/config.py:698: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/runtime_audit.py:152: in wrapped
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+state = {'messages': [HumanMessage(content='You are a senior urologist reviewing a patient case. The structured clinical\nreco...details': {}, 'output_token_details': {}})], 'task': 2, 'case_id': 'gc-case', 'patient': {'psa': None, 'age': 65}, ...}
+
+    @audit_stage('form_fill')
+    def form_fill(state: dict[str, Any]) -> dict[str, Any]:
+        messages = state["messages"]
+        task = int(state.get("task", 1))
+        case_id = state.get("case_id", "unknown")
+        predictor_dec = state.get("predictor_decision") or {}
+        audit = ProcessingAudit(task, case_id)
+        guarded = state.get("information_access") is not None
+        runtime = current_runtime()
+        authority = runtime.reflection_test if runtime is not None else None
+        for message in messages:
+            if isinstance(message, ToolMessage) and (
+                getattr(message, "status", "success") == "error"
+                or isinstance(message.content, str) and message.content.startswith("Error:")
+            ):
+                denied = guarded and message.additional_kwargs.get("information_access_expected_denial", False)
+                audit.record("tool_execution", {}, {}, [],
+                             status="policy_denied" if denied else "fallback", required=not denied,
+                             reason=f"{message.name}: {message.content}",
+                             fallback=None if denied else "continue_without_tool_result")
+    
+        observed = [m for m in messages if not isinstance(m, ToolMessage) or
+                    m.additional_kwargs.get("information_access_clinical_success")] if guarded else messages
+        tool_order = _called_tools_in_order(observed)
+        called = set(tool_order)
+        transcript = _final_assistant_text(messages)
+        consumption_event('formfill_input', {}, dict(messages=messages, transcript=transcript,
+                          tool_order=tool_order, predictor_decision=predictor_dec),
+                          task=task, case_id=case_id, status='actual_input',
+                          reflection=dict(artifact=state.get('reflection_artifact'),
+                                          legacy_text_present=bool(state.get('refined_transcript')),
+                                          acceptance='not_selected_at_input',
+                                          consumed=False))
+        elig = eligible_variables(task, called) if task in VARIABLES_BY_TASK else []
+    
+        Dynamic = build_dynamic_model(task, called)
+        parser = PydanticOutputParser(pydantic_object=Dynamic)
+        skeleton = _build_skeleton_instructions(task, elig)
+    
+        log.info(
+            "form_fill: case=%s task=%d called_tools=%s eligible_vars=%s predictor=%s "
+            "self_refine=%s atomic_check=%s",
+            case_id,
+            task,
+            tool_order,
+            elig,
+            predictor_dec.get("decision") or predictor_dec.get("event"),
+            self_refine,
+            atomic_check,
+        )
+    
+        predictor_note = _predictor_note(task, predictor_dec)
+        base_user = _user_prompt(case_id, task, transcript, tool_order, elig) + predictor_note + "\n\n" + skeleton
+    
+        # Provider-agnostic retry loop. We keep the conversation flat — a
+        # single system + user pair, regenerated on retry — because small
+        # models can be derailed by long error-laden histories. The retry
+        # message names the missing/invalid fields explicitly.
+        warnings: list[str] = []
+        judgment: dict[str, Any] | None = None
+        retry_hint: str | None = None
+        raw = ""  # P6: initialized here so failure-path salvage can access it
+    
+        for attempt in range(1, max_retries + 1):
+            user_content = base_user if not retry_hint else f"{base_user}\n\n{retry_hint}"
+            raw = ""
+            consumption_event('formfill_request_input', {}, dict(system=_SYSTEM_PROMPT, user=user_content),
+                              task=task, case_id=case_id, attempt=attempt, status='prepared')
+            try:
+                # Try assistant prefill "{" to force JSON-first output.
+                try:
+                    response = model.invoke(
+                        [
+                            SystemMessage(content=_SYSTEM_PROMPT),
+                            HumanMessage(content=user_content),
+                            AIMessage(content="{"),
+                        ]
+                    )
+                    resp_text = response.content if isinstance(response.content, str) else json.dumps(response.content)
+                    raw = "{" + resp_text
+                except Exception as invoke_exc:
+                    log.warning("form_fill: assistant prefill failed (%s), falling back to no-prefill", invoke_exc)
+                    response = model.invoke(
+                        [
+                            SystemMessage(content=_SYSTEM_PROMPT),
+                            HumanMessage(content=user_content),
+                        ]
+                    )
+                    raw = response.content if isinstance(response.content, str) else json.dumps(response.content)
+                # === TRACE DUMP（不影响主流程，失败不报错）===
+                import os as _os, json as _json, time as _time
+                _trace_path = None
+                try:
+                    _trace_dir = _os.path.join(_os.environ.get("CHIMERA_OUTPUT_DIR", "output"), "trace", str(case_id))
+                    _os.makedirs(_trace_dir, exist_ok=True)
+                    _reasoning = ""
+                    try:
+                        _reasoning = (response.additional_kwargs.get("reasoning_content", "") or "")[:2000]
+                    except Exception:
+                        pass
+                    _trace_path = _os.path.join(_trace_dir, f"form_fill_attempt{attempt}.json")
+                    with open(_trace_path, "w") as f:
+                        _json.dump({
+                            "ts": _time.time(),
+                            "attempt": attempt,
+                            "user_content": user_content[:4000],
+                            "raw_response": raw[:4000],
+                            "reasoning_content": _reasoning,
+                            "parse_ok": False,  # 成功时改为 True
+                        }, f, ensure_ascii=False)
+                except Exception:
+                    pass
+                # --- 检测扁平输出：变量键直接在顶层而非 variable_weights 内 ---
+                raw_json = _extract_json_object(raw)
+                try:
+                    _tmp = json.loads(raw_json)
+                    if isinstance(_tmp, dict) and any(k in elig for k in _tmp):
+                        _weights = {k: _tmp.pop(k) for k in list(_tmp.keys()) if k in elig}
+                        _tmp.setdefault("variable_weights", {}).update(_weights)
+                        raw_json = json.dumps(_tmp)
+                except (json.JSONDecodeError, TypeError):
+                    pass
+                obj = parser.parse(raw_json)
+                judgment = obj.model_dump(mode="json")
+                if authority is not None:
+                    # Check the wire object, since Pydantic may supply missing fields.
+                    judgment = validate_judgment(task, Dynamic, json.loads(raw_json))
+                # === TRACE DUMP: 解析成功，回写 parse_ok=True ===
+                if _trace_path:
+                    try:
+                        with open(_trace_path, "r") as f:
+                            _trace = _json.load(f)
+                        _trace["parse_ok"] = True
+                        with open(_trace_path, "w") as f:
+                            _json.dump(_trace, f, ensure_ascii=False)
+                    except Exception:
+                        pass
+                # --- 补缺必要字段（扁平输出时 wrapper 字段可能缺失或为 None）---
+                # P6: decision 缺失时先 salvage raw_json，失败才走默认值（warning 区分）
+                if authority is None:
+                    _fill_missing_decision_fields(task, judgment, raw_json, warnings)
+                judgment.setdefault("repeat_test", None)
+                if authority is None and (not judgment.get("free_text") or len(judgment.get("free_text", "")) < 40):
+                    # P5: 从 transcript 尾部提取"最后一个非工具调用文本块"——
+                    # 直接截尾部会抓到 ReAct 工具调用语法裸文本（<function=...>），
+                    # 实测 14/91 case free_text 中毒、GEval 0.00-0.20。
+                    # 按消息边界切块 → 跳过工具调用块 → 取最后一段 >=100 字符
+                    # 的正文块 → 再取其 [-500:]。
+                    judgment["free_text"] = (_final_answer_tail(transcript) or "Reasoning not available.")[-500:]
+                    warnings.append("free_text fallback: final answer extracted")
+                break
+            except Exception as exc:  # noqa: BLE001 — any parse/validation failure triggers a retry
+                judgment = None if authority is not None else judgment
+                warnings.append(f"attempt {attempt}: {type(exc).__name__}: {exc}")
+                log.warning("form_fill parse failed (attempt %d) for %s: %s", attempt, case_id, exc)
+                if attempt == max_retries:
+                    break
+                retry_hint = (
+                    "Your previous attempt did not validate. "
+                    + _diagnose_parse_error(raw, exc)
+                )
+    
+        if judgment is None:
+            if authority is not None:
+                consumption_event('reflection_selection', {}, {}, status='failed_no_valid_initial',
+                                  task=task, case_id=case_id)
+>               raise RuntimeFatal('failed_no_valid_initial')
+E               chimera_agent_baseline.runtime_audit.RuntimeFatal: failed_no_valid_initial
+
+/home/hedongze/CHIMERA-agent/src/chimera_agent_baseline/agent/form_fill.py:369: RuntimeFatal
+----------------------------- Captured stderr call -----------------------------
+2026-11-18 12:12:11,566 inference INFO Detected interface for task 2
+2026-11-18 12:12:11,608 inference INFO Starting agent inference (model=Qwen3.6-35B-A3B-UD-Q4_K_M.gguf, task=2)
+2026-11-18 12:12:11,609 chimera_agent_baseline.run INFO Run plan: tasks [2]
+2026-11-18 12:12:11,641 chimera_agent_baseline.run INFO Task 2: starting MCP server (data_dir=/tmp/chimera-gc-ada4amhs/input/task2/agent_input)
+2026-11-18 12:12:12,188 chimera_agent_baseline.tools.base INFO Loaded 1 cases from /tmp/chimera-gc-ada4amhs/input/task2/agent_input
+2026-11-18 12:12:12,198 __main__ INFO Guidelines DB not found in /home/hedongze/CHIMERA-agent/output/p01_g1r_reflection_20261118/tests/integration_retry/test_real_entry_assigns_and_tr1/empty_resources — search_guidelines will return empty results
+2026-11-18 12:12:12,306 chimera_agent_baseline.run INFO Task 2: loaded 7 tools from MCP server
+2026-11-18 12:12:12,306 chimera_agent_baseline.run INFO Task 2: cost_align=True
+2026-11-18 12:12:12,340 chimera_agent_baseline.agent.graph INFO Compiled react+form_fill graph with 7 tools (max_model_turns=None)
+2026-11-18 12:12:12,340 chimera_agent_baseline.run INFO Task 2: processing case gc-case
+2026-11-18 12:12:12,542 chimera_agent_baseline.agent.form_fill INFO form_fill: case=gc-case task=2 called_tools=[] eligible_vars=['psa', 'age', 'ct', 'comorbidity', 'pirads', 'psad', 'cspca', 'bx_gl_prim', 'bx_gl_sec', 'bx_gl_tert', 'bx_isup'] predictor=None self_refine=False atomic_check=False
+2026-11-18 12:12:12,631 chimera_agent_baseline.agent.form_fill WARNING form_fill: assistant prefill failed (Connection error.), falling back to no-prefill
+2026-11-18 12:12:12,689 chimera_agent_baseline.agent.form_fill WARNING form_fill parse failed (attempt 1) for gc-case: Connection error.
+=========================== short test summary info ============================
+FAILED tests/test_p01_g1r_reflection.py::test_real_entry_assigns_and_traces[2-projection]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 1 passed, 48 deselected in 10.48s

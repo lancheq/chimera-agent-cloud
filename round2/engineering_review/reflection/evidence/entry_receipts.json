@@ -1,0 +1,2445 @@
+{
+  "scope": "no_patient_in_process_mock_responses_only",
+  "entries": [
+    {
+      "test_case": "test_entry_fatal_has_no_finalized_receipt[invalid_initial]",
+      "run_id": "42cfed610dcf4e6c9ef8fa087002c557",
+      "task": 1,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_entry_fatal_has_no_finali0/private/42cfed610dcf4e6c9ef8fa087002c557/events.jsonl",
+      "events_sha256": "f009c70a76242fffae01929b857e80da343b9a8219127ddd309f10248b9d827d",
+      "status": "run_failed",
+      "selection_status": "failed_no_valid_initial",
+      "label_changed": null,
+      "assignment_digest_matches": null,
+      "reflection_consumption": null,
+      "external_reflection_status": null,
+      "final_receipt": null,
+      "sockets": {},
+      "mock_sdk_attempts": 2,
+      "mock_reserved_tokens": 78,
+      "stages": {
+        "reflection_selection": {
+          "digest": "64025d543329e4cc096dc7ff56564393ebc1ea1aff92fa7e63d431a2cc49cf6c",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+        }
+      }
+    },
+    {
+      "test_case": "test_entry_fatal_has_no_finalized_receipt[review_fatal]",
+      "run_id": "ef4e758f4af449d09641ad659313d623",
+      "task": 3,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_entry_fatal_has_no_finali1/private/ef4e758f4af449d09641ad659313d623/events.jsonl",
+      "events_sha256": "cba691277d0280d7888a65bc01ea58a5027e645f1757bc23de513f5c74f4a3ca",
+      "status": "run_failed",
+      "selection_status": null,
+      "label_changed": null,
+      "assignment_digest_matches": null,
+      "reflection_consumption": null,
+      "external_reflection_status": null,
+      "final_receipt": null,
+      "sockets": {},
+      "mock_sdk_attempts": 2,
+      "mock_reserved_tokens": 78,
+      "stages": {
+        "parsed_judgment": {
+          "digest": "1711d6e14120b9f2d2605e76760ffec6b134d67cf556de35dbfaf99c5ef41800",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        }
+      }
+    },
+    {
+      "test_case": "test_entry_fatal_has_no_finalized_receipt[audit_persistence]",
+      "run_id": "4b08183f2ef94221942e426464a3ce3e",
+      "task": 3,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_entry_fatal_has_no_finali2/private/4b08183f2ef94221942e426464a3ce3e/events.jsonl",
+      "events_sha256": "ea0c434ed0b329aa1cc694bffd6586a479f70b734ba01dd473f256602dc1f44f",
+      "status": "run_failed",
+      "selection_status": "accepted_candidate",
+      "label_changed": true,
+      "assignment_digest_matches": true,
+      "reflection_consumption": null,
+      "external_reflection_status": null,
+      "final_receipt": null,
+      "sockets": {},
+      "mock_sdk_attempts": 2,
+      "mock_reserved_tokens": 78,
+      "stages": {
+        "parsed_judgment": {
+          "digest": "ea68aa8a54c7ea59dc2ec26a77de56626972a89b6b3aa65d4948613cbaf68d96",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_selection": {
+          "digest": "966bc232473f5798adf7c5511aca8e5dfce614cf299a46e8e48c349e5e7aee34",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1"
+        },
+        "reflection_formfill_consumed": {
+          "digest": "3593deea8e72812b199593eda867ad044da423a85c08800e2515ed4e8787fbfe",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1"
+        },
+        "atomic_verification": {
+          "digest": "9d9e0019f22a271c7407a2fdfd9b8f9a9015f8094c1eab06fb0ebd47202b0767",
+          "before_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1",
+          "after_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1"
+        },
+        "assembled_output": {
+          "digest": "cbadc1eaac52e8f00f3ce5f2ea1f9f2de695e8dd1a1c7360da385f41c26dced1",
+          "before_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1",
+          "after_digest": "c1863119041f55521698d5b744d54501485da78389e2ff1014141a36c060dbd1"
+        },
+        "graph_output": {
+          "digest": "57af73532b5e1de85c1079c2b7176774bea502a87490f2c71a8af9a7d21dee17",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "6dc648db0a12198eef57eabacee04301262d3a7cd553fc93821cf5d6d64e6050"
+        },
+        "prediction_file": {
+          "digest": "d475189dc985aab37cb57d45671fc2bf814b29c7e4fafc4189deed1bd7724c92",
+          "before_digest": "c1863119041f55521698d5b744d54501485da78389e2ff1014141a36c060dbd1",
+          "after_digest": "c1863119041f55521698d5b744d54501485da78389e2ff1014141a36c060dbd1"
+        }
+      }
+    },
+    {
+      "test_case": "test_external_graph_artifact_remains_blocked_without_bound_review",
+      "run_id": "971cbc6d8e484358b1ad041d35b3f50f",
+      "task": 3,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_external_graph_artifact_r0/private/971cbc6d8e484358b1ad041d35b3f50f/events.jsonl",
+      "events_sha256": "eac230ca1fea9e744498117a487d2fbafbfc06ed4b36cf9a7a62e401335fd434",
+      "status": "run_completed",
+      "selection_status": null,
+      "label_changed": null,
+      "assignment_digest_matches": null,
+      "reflection_consumption": "structured_candidate_not_requested",
+      "external_reflection_status": "detected_no_executable_proposal",
+      "final_receipt": null,
+      "sockets": {
+        "decision": {
+          "content_digest": "32e7336f3230c92437d7229070b11fe0b0de02515eb99506af385cc29ea9c32b",
+          "file": "prostate-time-to-recurrence-or-last-follow-up.json",
+          "sha256": "467a0c4e75c7946cdfbea1f2403034cf26ec21f0b1f4e75b743165d806f199c6",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_external_graph_artifact_r0/sockets/prostate-time-to-recurrence-or-last-follow-up.json"
+        },
+        "reasoning": {
+          "content_digest": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+          "file": "prostate-time-to-recurrence-or-last-follow-up-reasoning.json",
+          "sha256": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_external_graph_artifact_r0/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json"
+        }
+      },
+      "mock_sdk_attempts": 4,
+      "mock_reserved_tokens": 156,
+      "stages": {
+        "parsed_judgment": {
+          "digest": "0151e06d5fcb55563c467c07a7e5c1bed813c211253e9260961e44a5619a1092",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "atomic_verification": {
+          "digest": "af8471a6a5fb3558938fe25228359222dcf86c098e6f45eda4c225beb185df06",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "assembled_output": {
+          "digest": "91f07f7b8a03de2c8fbb0f33f250bc59bd69a0df0a18114043fd410e72521b61",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9"
+        },
+        "graph_output": {
+          "digest": "d02d0a31e19ec1a6542dc6b52448ae6ea7a8f171cc8b971d05e032153879dd0b",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "db32a74faa1643b24b515e264ec0104e808b5f2cd5f6ff9f12360827b7e25f83"
+        },
+        "prediction_file": {
+          "digest": "46008896e094a217624b46793b055540f43f3c832622dc766b774d6cf5eeb404",
+          "before_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9",
+          "after_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9"
+        },
+        "final_sockets": {
+          "digest": "2b15ee698be8fcdf06c2ddc93068a3abb0532e4f07a6343769705dfd8f6eccd4",
+          "before_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9",
+          "after_digest": "e07a01574aebf4ab1e80b0b001a85b9c35a130eb48b84e384d01be4276bdc494"
+        }
+      }
+    },
+    {
+      "test_case": "test_internal_graph_keeps_existing_unreviewed_form_fill_behavior",
+      "run_id": "5ae12e386b8b46ffa7cb870036c04b1a",
+      "task": 3,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_internal_graph_keeps_exis0/private/5ae12e386b8b46ffa7cb870036c04b1a/events.jsonl",
+      "events_sha256": "47614f20751ae09761872e4c3782d15eca71c05bc93abde08cc65cbab47f3ada",
+      "status": "run_completed",
+      "selection_status": null,
+      "label_changed": null,
+      "assignment_digest_matches": null,
+      "reflection_consumption": "structured_candidate_not_requested",
+      "external_reflection_status": "not_triggered",
+      "final_receipt": null,
+      "sockets": {
+        "decision": {
+          "content_digest": "e6bd1da076c87745919f64f64c61ef0befb6ad8e29130710df857a4d0ce3c438",
+          "file": "prostate-time-to-recurrence-or-last-follow-up.json",
+          "sha256": "41fde3ce6e33951fd7bcdc6700bd7b5d876566425e99830c1efa9e451044e243",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_internal_graph_keeps_exis0/sockets/prostate-time-to-recurrence-or-last-follow-up.json"
+        },
+        "reasoning": {
+          "content_digest": "3ec4561013d81be9d7444c7d1bed10defd026da3ecb7d431446437dedddb47d7",
+          "file": "prostate-time-to-recurrence-or-last-follow-up-reasoning.json",
+          "sha256": "3ec4561013d81be9d7444c7d1bed10defd026da3ecb7d431446437dedddb47d7",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_internal_graph_keeps_exis0/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json"
+        }
+      },
+      "mock_sdk_attempts": 4,
+      "mock_reserved_tokens": 156,
+      "stages": {
+        "parsed_judgment": {
+          "digest": "ae4ef013caff8d7bae394dd224890770c128c8340746864fdcad7afedeaa0f49",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "atomic_verification": {
+          "digest": "bd86d002992390cbab67aeb123ecf422d1001f5d2a58d8fefa39aeb8ad0c8c65",
+          "before_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1",
+          "after_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1"
+        },
+        "assembled_output": {
+          "digest": "86f7627fd3d5eb024d9f45168a44cdb760b930b760049152bb80b977a48e7e19",
+          "before_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1",
+          "after_digest": "c1863119041f55521698d5b744d54501485da78389e2ff1014141a36c060dbd1"
+        },
+        "graph_output": {
+          "digest": "3cf606a43a067120ab5f5ac9536408f516c1ff1d2136e025f75fd11a90c037a3",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "6646be3955d7162deae76b599e50d14d613c0360499d428466a56c03cca07f03"
+        },
+        "prediction_file": {
+          "digest": "2be80a8792f3b075da9f3e2205b06d94d3f946510bd98fa1b77f2b40bf95cec4",
+          "before_digest": "c1863119041f55521698d5b744d54501485da78389e2ff1014141a36c060dbd1",
+          "after_digest": "c1863119041f55521698d5b744d54501485da78389e2ff1014141a36c060dbd1"
+        },
+        "final_sockets": {
+          "digest": "a4d209422f8e5f14e7277be7df059205c59b8cce36c1787e7e980195b4707eba",
+          "before_digest": "c1863119041f55521698d5b744d54501485da78389e2ff1014141a36c060dbd1",
+          "after_digest": "bb54707e7ee76a05bb519da0bd3f6dc74dfc1a3ff0d1847814318335c026adc0"
+        }
+      }
+    },
+    {
+      "test_case": "test_real_entry_assigns_and_traces[1-S06]",
+      "run_id": "ef9deeba7ddd444c8dac1f5d0a47db3b",
+      "task": 1,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr0/private/ef9deeba7ddd444c8dac1f5d0a47db3b/events.jsonl",
+      "events_sha256": "b0f1897e3cb40d22fd1086183928029b6e58809457a401c32741893aec56b581",
+      "status": "run_completed",
+      "selection_status": "accepted_candidate",
+      "label_changed": false,
+      "assignment_digest_matches": true,
+      "reflection_consumption": "consumption_contract_failed",
+      "external_reflection_status": "not_triggered",
+      "final_receipt": {
+        "consumption_digest": "cc53c8374d5ac4e7f09381774502a8838e8d69245592ee3f73d75cf7b2512084",
+        "fields": [
+          {
+            "field": "/biopsy_decision",
+            "final": "no",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision"
+            ],
+            "selected": "no",
+            "status": "retained"
+          },
+          {
+            "field": "/confidence",
+            "final": "clear",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "reasoning",
+              "confidence"
+            ],
+            "selected": "clear",
+            "status": "retained"
+          },
+          {
+            "field": "/free_text",
+            "final": "The reviewed value is an invented software fixture accepted by the synthetic oracle.",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "reasoning",
+              "free_text"
+            ],
+            "selected": "The reviewed value is an invented software fixture accepted by the synthetic oracle.",
+            "status": "retained"
+          },
+          {
+            "field": "/repeat_test",
+            "final": null,
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": null,
+            "status": "internal_only"
+          },
+          {
+            "field": "/variable_weights/age",
+            "final": "important",
+            "final_present": true,
+            "history": [
+              {
+                "after": "important",
+                "after_present": true,
+                "before": "noted",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "weight_and_confidence_calibration",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "age"
+            ],
+            "selected": "noted",
+            "status": "unauthorized_overwrite"
+          },
+          {
+            "field": "/variable_weights/bx",
+            "final": "noted",
+            "final_present": true,
+            "history": [
+              {
+                "after": "important",
+                "after_present": true,
+                "before": "noted",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "weight_and_confidence_calibration",
+                "status": "unauthorized_overwrite"
+              },
+              {
+                "after": "noted",
+                "after_present": true,
+                "before": "important",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "reasoning_align",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "bx"
+            ],
+            "selected": "noted",
+            "status": "unauthorized_overwrite"
+          },
+          {
+            "field": "/variable_weights/comorbidity",
+            "final": "noted",
+            "final_present": true,
+            "history": [
+              {
+                "after": "not_used",
+                "after_present": true,
+                "before": "noted",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "weight_and_confidence_calibration",
+                "status": "unauthorized_overwrite"
+              },
+              {
+                "after": "noted",
+                "after_present": true,
+                "before": "not_used",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "reasoning_align",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "comorbidity"
+            ],
+            "selected": "noted",
+            "status": "unauthorized_overwrite"
+          },
+          {
+            "field": "/variable_weights/cspca",
+            "final": "not_used",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "cspca"
+            ],
+            "selected": "not_used",
+            "status": "retained"
+          },
+          {
+            "field": "/variable_weights/dre",
+            "final": "noted",
+            "final_present": true,
+            "history": [
+              {
+                "after": "not_used",
+                "after_present": true,
+                "before": "noted",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "weight_and_confidence_calibration",
+                "status": "unauthorized_overwrite"
+              },
+              {
+                "after": "noted",
+                "after_present": true,
+                "before": "not_used",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "reasoning_align",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "dre"
+            ],
+            "selected": "noted",
+            "status": "unauthorized_overwrite"
+          },
+          {
+            "field": "/variable_weights/pirads",
+            "final": "decisive",
+            "final_present": true,
+            "history": [
+              {
+                "after": "not_used",
+                "after_present": true,
+                "before": "decisive",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "weight_and_confidence_calibration",
+                "status": "unauthorized_overwrite"
+              },
+              {
+                "after": "decisive",
+                "after_present": true,
+                "before": "not_used",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "reasoning_align",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "pirads"
+            ],
+            "selected": "decisive",
+            "status": "unauthorized_overwrite"
+          },
+          {
+            "field": "/variable_weights/psa",
+            "final": "important",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "psa"
+            ],
+            "selected": "important",
+            "status": "retained"
+          },
+          {
+            "field": "/variable_weights/psad",
+            "final": "noted",
+            "final_present": true,
+            "history": [
+              {
+                "after": "not_used",
+                "after_present": true,
+                "before": "noted",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "weight_and_confidence_calibration",
+                "status": "unauthorized_overwrite"
+              },
+              {
+                "after": "noted",
+                "after_present": true,
+                "before": "not_used",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "reasoning_align",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "psad"
+            ],
+            "selected": "noted",
+            "status": "unauthorized_overwrite"
+          },
+          {
+            "field": "/variable_weights/vol",
+            "final": "noted",
+            "final_present": true,
+            "history": [
+              {
+                "after": "not_used",
+                "after_present": true,
+                "before": "noted",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "weight_and_confidence_calibration",
+                "status": "unauthorized_overwrite"
+              },
+              {
+                "after": "noted",
+                "after_present": true,
+                "before": "not_used",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "reasoning_align",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "vol"
+            ],
+            "selected": "noted",
+            "status": "unauthorized_overwrite"
+          }
+        ],
+        "selection_digest": "5897dc281e4fc6bf98408f06237c53871d6eeba7b4eae1698d4bc64027b79d4e",
+        "status": "consumption_contract_failed"
+      },
+      "sockets": {
+        "decision": {
+          "content_digest": "04a06452677210a3cdaec376fd5ebbca1714cb7af9e62bf5cce1644310a9086a",
+          "file": "prostate-biopsy-decision.json",
+          "sha256": "04a06452677210a3cdaec376fd5ebbca1714cb7af9e62bf5cce1644310a9086a",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr0/sockets/prostate-biopsy-decision.json"
+        },
+        "reasoning": {
+          "content_digest": "f566b11fb8ebf0357bea173264c35a882aeddc29e1b67cca899001878f3d5acd",
+          "file": "prostate-biopsy-decision-reasoning.json",
+          "sha256": "883a92652ee8e367997a8050d4fa33d50f4465f99b47f9c534b8ae2395cf52cf",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr0/sockets/prostate-biopsy-decision-reasoning.json"
+        }
+      },
+      "mock_sdk_attempts": 2,
+      "mock_reserved_tokens": 78,
+      "stages": {
+        "parsed_judgment": {
+          "digest": "2ebe178004c1dcdd03eb0a78db6032873e7fa3b877e02df7f7b72c3f1e1d743c",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "bed4772bcef6abba82ceac59dc80901a54f2349cf1b7e971f454436ed5e27027"
+        },
+        "reflection_selection": {
+          "digest": "5897dc281e4fc6bf98408f06237c53871d6eeba7b4eae1698d4bc64027b79d4e",
+          "before_digest": "bed4772bcef6abba82ceac59dc80901a54f2349cf1b7e971f454436ed5e27027",
+          "after_digest": "29a9acf5d3de2f00c0b02334213e303ca308769f270cbcdde98ada950676a087"
+        },
+        "reflection_formfill_consumed": {
+          "digest": "cc53c8374d5ac4e7f09381774502a8838e8d69245592ee3f73d75cf7b2512084",
+          "before_digest": "bed4772bcef6abba82ceac59dc80901a54f2349cf1b7e971f454436ed5e27027",
+          "after_digest": "29a9acf5d3de2f00c0b02334213e303ca308769f270cbcdde98ada950676a087"
+        },
+        "atomic_verification": {
+          "digest": "5fff9e53af2e69757a101f2842f04abad8136abf21650458dd94e38bc919f58e",
+          "before_digest": "29a9acf5d3de2f00c0b02334213e303ca308769f270cbcdde98ada950676a087",
+          "after_digest": "29a9acf5d3de2f00c0b02334213e303ca308769f270cbcdde98ada950676a087"
+        },
+        "assembled_output": {
+          "digest": "c757469ff5b4e107a30d71911e483efc4c66263627e70f6fbe191b339c29da08",
+          "before_digest": "d002173463387c5941ff4eda4a3c665f4b2da232b93a1653529f627387e82bba",
+          "after_digest": "27e0dba36c2e36443c747bf9efd0ee9228190f56e0a439bbb5333d4744c33a6d"
+        },
+        "graph_output": {
+          "digest": "d9ed4b6c34716168796af169a11b445a3f644d9165226050b2e9414975595c29",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "6fdfcdda0fc9714b554e3146b43b42857854c3b0d1ad09c8c092790dc134097d"
+        },
+        "prediction_file": {
+          "digest": "c642654c2fd7b5c3ce96aff095ccabdec987cef11f1ba56f070b6e1afa39ceba",
+          "before_digest": "27e0dba36c2e36443c747bf9efd0ee9228190f56e0a439bbb5333d4744c33a6d",
+          "after_digest": "27e0dba36c2e36443c747bf9efd0ee9228190f56e0a439bbb5333d4744c33a6d"
+        },
+        "reasoning_align": {
+          "digest": "cbb0b06aaa72f42608b7c03126fed30c75573bb909fe574ed6f9d2c11283d75c",
+          "before_digest": "27e0dba36c2e36443c747bf9efd0ee9228190f56e0a439bbb5333d4744c33a6d",
+          "after_digest": "1cf3e155da554913bb5b1d5e3cf97629bf5161d5b0c800d8c05dfc09d2a284ab"
+        },
+        "final_sockets": {
+          "digest": "571814103f052d2642104bc2e27f0032fbfc163ee28940328f99fe99fd30b6f4",
+          "before_digest": "27e0dba36c2e36443c747bf9efd0ee9228190f56e0a439bbb5333d4744c33a6d",
+          "after_digest": "b701b1f73c6a949cb23ac9742ca279068ddf4cef9fe4f8982b5fcf8a0fb95268"
+        }
+      }
+    },
+    {
+      "test_case": "test_real_entry_assigns_and_traces[2-projection]",
+      "run_id": "b66b6f6bcb0c42c18ee5ef31bc422184",
+      "task": 2,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr1/private/b66b6f6bcb0c42c18ee5ef31bc422184/events.jsonl",
+      "events_sha256": "b1a8c06220999cc21ad97acd03c56377d0837636515270731b917c550935af3e",
+      "status": "run_completed",
+      "selection_status": "accepted_candidate",
+      "label_changed": true,
+      "assignment_digest_matches": true,
+      "reflection_consumption": "consumption_contract_failed",
+      "external_reflection_status": "not_triggered",
+      "final_receipt": {
+        "consumption_digest": "1c75385be969f8aaade2cffdb7e7dd5292e992db31e42c7e16f593c249432352",
+        "fields": [
+          {
+            "field": "/confidence",
+            "final": "clear",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "reasoning",
+              "confidence"
+            ],
+            "selected": "clear",
+            "status": "retained"
+          },
+          {
+            "field": "/free_text",
+            "final": "The reviewed value is an invented software fixture accepted by the synthetic oracle.",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "reasoning",
+              "free_text"
+            ],
+            "selected": "The reviewed value is an invented software fixture accepted by the synthetic oracle.",
+            "status": "retained"
+          },
+          {
+            "field": "/repeat_test",
+            "final": null,
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": null,
+            "status": "internal_only"
+          },
+          {
+            "field": "/treatment_recommendation/as_protocol",
+            "final": null,
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": null,
+            "status": "internal_only"
+          },
+          {
+            "field": "/treatment_recommendation/as_trigger",
+            "final": null,
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": null,
+            "status": "internal_only"
+          },
+          {
+            "field": "/treatment_recommendation/detail",
+            "final": null,
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": null,
+            "status": "internal_only"
+          },
+          {
+            "field": "/treatment_recommendation/modalities",
+            "final": [],
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": [],
+            "status": "internal_only"
+          },
+          {
+            "field": "/treatment_recommendation/primary",
+            "final": "active_treatment",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision"
+            ],
+            "selected": "active_treatment",
+            "status": "retained"
+          },
+          {
+            "field": "/variable_weights/age",
+            "final": "important",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "age"
+            ],
+            "selected": "important",
+            "status": "retained"
+          },
+          {
+            "field": "/variable_weights/bx_gl_prim",
+            "final": "noted",
+            "final_present": true,
+            "history": [
+              {
+                "after": "not_used",
+                "after_present": true,
+                "before": "noted",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "weight_and_confidence_calibration",
+                "status": "unauthorized_overwrite"
+              },
+              {
+                "after": "noted",
+                "after_present": true,
+                "before": "not_used",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "reasoning_align",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "bx_gl_prim"
+            ],
+            "selected": "noted",
+            "status": "unauthorized_overwrite"
+          },
+          {
+            "field": "/variable_weights/bx_gl_sec",
+            "final": "noted",
+            "final_present": true,
+            "history": [
+              {
+                "after": "not_used",
+                "after_present": true,
+                "before": "noted",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "weight_and_confidence_calibration",
+                "status": "unauthorized_overwrite"
+              },
+              {
+                "after": "noted",
+                "after_present": true,
+                "before": "not_used",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "reasoning_align",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "bx_gl_sec"
+            ],
+            "selected": "noted",
+            "status": "unauthorized_overwrite"
+          },
+          {
+            "field": "/variable_weights/bx_gl_tert",
+            "final": "not_used",
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": "not_used",
+            "status": "internal_only"
+          },
+          {
+            "field": "/variable_weights/bx_isup",
+            "final": "important",
+            "final_present": true,
+            "history": [
+              {
+                "after": "not_used",
+                "after_present": true,
+                "before": "important",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "weight_and_confidence_calibration",
+                "status": "unauthorized_overwrite"
+              },
+              {
+                "after": "important",
+                "after_present": true,
+                "before": "not_used",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "reasoning_align",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "bx_isup"
+            ],
+            "selected": "important",
+            "status": "unauthorized_overwrite"
+          },
+          {
+            "field": "/variable_weights/comorbidity",
+            "final": "noted",
+            "final_present": true,
+            "history": [
+              {
+                "after": "not_used",
+                "after_present": true,
+                "before": "noted",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "weight_and_confidence_calibration",
+                "status": "unauthorized_overwrite"
+              },
+              {
+                "after": "noted",
+                "after_present": true,
+                "before": "not_used",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "reasoning_align",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "comorbidity"
+            ],
+            "selected": "noted",
+            "status": "unauthorized_overwrite"
+          },
+          {
+            "field": "/variable_weights/cspca",
+            "final": "noted",
+            "final_present": true,
+            "history": [
+              {
+                "after": "not_used",
+                "after_present": true,
+                "before": "noted",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "weight_and_confidence_calibration",
+                "status": "unauthorized_overwrite"
+              },
+              {
+                "after": "noted",
+                "after_present": true,
+                "before": "not_used",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "reasoning_align",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "cspca"
+            ],
+            "selected": "noted",
+            "status": "unauthorized_overwrite"
+          },
+          {
+            "field": "/variable_weights/ct",
+            "final": "noted",
+            "final_present": true,
+            "history": [
+              {
+                "after": "not_used",
+                "after_present": true,
+                "before": "noted",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "weight_and_confidence_calibration",
+                "status": "unauthorized_overwrite"
+              },
+              {
+                "after": "noted",
+                "after_present": true,
+                "before": "not_used",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "reasoning_align",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "ct"
+            ],
+            "selected": "noted",
+            "status": "unauthorized_overwrite"
+          },
+          {
+            "field": "/variable_weights/pirads",
+            "final": "important",
+            "final_present": true,
+            "history": [
+              {
+                "after": "not_used",
+                "after_present": true,
+                "before": "important",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "weight_and_confidence_calibration",
+                "status": "unauthorized_overwrite"
+              },
+              {
+                "after": "important",
+                "after_present": true,
+                "before": "not_used",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "reasoning_align",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "pirads"
+            ],
+            "selected": "important",
+            "status": "unauthorized_overwrite"
+          },
+          {
+            "field": "/variable_weights/psa",
+            "final": "important",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "psa"
+            ],
+            "selected": "important",
+            "status": "retained"
+          },
+          {
+            "field": "/variable_weights/psad",
+            "final": "noted",
+            "final_present": true,
+            "history": [
+              {
+                "after": "not_used",
+                "after_present": true,
+                "before": "noted",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "weight_and_confidence_calibration",
+                "status": "unauthorized_overwrite"
+              },
+              {
+                "after": "noted",
+                "after_present": true,
+                "before": "not_used",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "reasoning_align",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning",
+              "variable_weights",
+              "psad"
+            ],
+            "selected": "noted",
+            "status": "unauthorized_overwrite"
+          }
+        ],
+        "selection_digest": "6ec28679ab7c14c56ee15f88e441f0b49a68fd97e62ef46f30b3f83c44498e12",
+        "status": "consumption_contract_failed"
+      },
+      "sockets": {
+        "decision": {
+          "content_digest": "65cbc2053d93861d83bedfd37717de44cc93b8499add239731ce5e85b0c45a9e",
+          "file": "prostate-treatment-decision.json",
+          "sha256": "65cbc2053d93861d83bedfd37717de44cc93b8499add239731ce5e85b0c45a9e",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr1/sockets/prostate-treatment-decision.json"
+        },
+        "reasoning": {
+          "content_digest": "93531a5edf7530b4717be821d461684918534c98586e91779a845b39e98bf7ec",
+          "file": "prostate-treatment-decision-reasoning.json",
+          "sha256": "7eb48befd22a1ac6c6660dc1d5f27bcd1e8fc2d5c016119e6ec676c7528698cf",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr1/sockets/prostate-treatment-decision-reasoning.json"
+        }
+      },
+      "mock_sdk_attempts": 2,
+      "mock_reserved_tokens": 78,
+      "stages": {
+        "parsed_judgment": {
+          "digest": "f4a271468422f4165848c57c6eb351595180b8fd97b0e13d8c72fe05668b8001",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "5ddb6f061c7bd6aa18a56e0d57245afcca466d6cb8138b83b524ef3612183f48"
+        },
+        "reflection_selection": {
+          "digest": "6ec28679ab7c14c56ee15f88e441f0b49a68fd97e62ef46f30b3f83c44498e12",
+          "before_digest": "5ddb6f061c7bd6aa18a56e0d57245afcca466d6cb8138b83b524ef3612183f48",
+          "after_digest": "f3324f642626d39209f0aea52471a768df94ef8f851748afed047d21281a016f"
+        },
+        "reflection_formfill_consumed": {
+          "digest": "1c75385be969f8aaade2cffdb7e7dd5292e992db31e42c7e16f593c249432352",
+          "before_digest": "5ddb6f061c7bd6aa18a56e0d57245afcca466d6cb8138b83b524ef3612183f48",
+          "after_digest": "f3324f642626d39209f0aea52471a768df94ef8f851748afed047d21281a016f"
+        },
+        "atomic_verification": {
+          "digest": "cdfc09504b4c28038860269f697f3cfd3b0bb3faf947031cd4721f41d3bc8d35",
+          "before_digest": "f3324f642626d39209f0aea52471a768df94ef8f851748afed047d21281a016f",
+          "after_digest": "f3324f642626d39209f0aea52471a768df94ef8f851748afed047d21281a016f"
+        },
+        "assembled_output": {
+          "digest": "dbadce644420f0e20ac2b2e77edae7a62e37497925daef0e5d247ddd6be9f9ab",
+          "before_digest": "88eccf9d6a0b7f02cfc3b3060bb67858c3f4fd4bc93238bc11c33a7bb8176146",
+          "after_digest": "12e503a55d87ca2facdd432c92f3091aa3b817b3c09efdc6c3b7051d3c64ce42"
+        },
+        "graph_output": {
+          "digest": "8a4473b2d3bf8feb58fb55c0b2930bc7d254efa0b825f6d8b5d23310f9b86bc4",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "a0c68824151e5a668f90d8e96f935fc46f1b28b44ae7c07f7334cc5bc4b05772"
+        },
+        "prediction_file": {
+          "digest": "870ace33ea69b5078b7e89b9cbaef93e2cfe987cadf99b70ebba81db20d10eb8",
+          "before_digest": "12e503a55d87ca2facdd432c92f3091aa3b817b3c09efdc6c3b7051d3c64ce42",
+          "after_digest": "12e503a55d87ca2facdd432c92f3091aa3b817b3c09efdc6c3b7051d3c64ce42"
+        },
+        "reasoning_align": {
+          "digest": "541f12020031a2ed5632b7389ab4ade2466ed337a69596117400bc7c14f9b3d6",
+          "before_digest": "12e503a55d87ca2facdd432c92f3091aa3b817b3c09efdc6c3b7051d3c64ce42",
+          "after_digest": "72be2a7fb7b4e0136a3f594e06ebc0bb860e6aa666051267ab983e755e5da5ad"
+        },
+        "final_sockets": {
+          "digest": "3d505fe059ac4c3d4a4769df0be02c03e1eb06825f6d84c9fdaf1ca5b0010051",
+          "before_digest": "12e503a55d87ca2facdd432c92f3091aa3b817b3c09efdc6c3b7051d3c64ce42",
+          "after_digest": "6b93cbacaec0ab10aaa6ec257caadbda44d631429ca73c108a83e234ca5835e3"
+        }
+      }
+    },
+    {
+      "test_case": "test_real_entry_assigns_and_traces[3-S12]",
+      "run_id": "fa6e80407daa4b0f99142ce973b84077",
+      "task": 3,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr10/private/fa6e80407daa4b0f99142ce973b84077/events.jsonl",
+      "events_sha256": "16c1edde3ae8269aad5f5a2bf48e1fc3782cdbe0aa8fd33fc948dde129d136e0",
+      "status": "run_completed",
+      "selection_status": "accepted_candidate",
+      "label_changed": true,
+      "assignment_digest_matches": true,
+      "reflection_consumption": "consumption_contract_failed",
+      "external_reflection_status": "not_triggered",
+      "final_receipt": {
+        "consumption_digest": "7f69785a3d2a67f9e8ac33d3729030fa9995b2bd7fde8edb887baa321677744a",
+        "fields": [
+          {
+            "field": "/event",
+            "final": 0,
+            "final_present": true,
+            "history": [
+              {
+                "after": 0,
+                "after_present": true,
+                "before": 1,
+                "before_present": true,
+                "rule_id": null,
+                "stage": "t3_time_calibration",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "decision",
+              "event"
+            ],
+            "selected": 1,
+            "status": "unauthorized_overwrite"
+          },
+          {
+            "field": "/free_text",
+            "final": "The reviewed value is an invented software fixture accepted by the synthetic oracle. Gleason, margin and postoperative PSA are field names in this fixture.\n\n[校准说明] 虽然上文推理识别出复发风险因素，但预测复发时间 (24.0 个月) 不在早期复发窗口内（训练集基率校准阈值 τ=24.0 个月），按生化复发基率校准规则判定 event=0（观察期内无复发）。",
+            "final_present": true,
+            "history": [
+              {
+                "after": "The reviewed value is an invented software fixture accepted by the synthetic oracle. Gleason, margin and postoperative PSA are field names in this fixture.\n\n[校准说明] 虽然上文推理识别出复发风险因素，但预测复发时间 (24.0 个月) 不在早期复发窗口内（训练集基率校准阈值 τ=24.0 个月），按生化复发基率校准规则判定 event=0（观察期内无复发）。",
+                "after_present": true,
+                "before": "The reviewed value is an invented software fixture accepted by the synthetic oracle. Gleason, margin and postoperative PSA are field names in this fixture.",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "t3_time_calibration",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning"
+            ],
+            "selected": "The reviewed value is an invented software fixture accepted by the synthetic oracle. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "status": "unauthorized_overwrite"
+          },
+          {
+            "field": "/months_to_recurrence",
+            "final": 24.0,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "months_to_recurrence"
+            ],
+            "selected": 24.0,
+            "status": "retained"
+          },
+          {
+            "field": "/repeat_test",
+            "final": null,
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": null,
+            "status": "internal_only"
+          }
+        ],
+        "selection_digest": "1c7348db9c204eafef9197b27d112b53882b8a1b756fab19cf4edf3513ba8a0b",
+        "status": "consumption_contract_failed"
+      },
+      "sockets": {
+        "decision": {
+          "content_digest": "0461d273a506a77256be6bd7c0f3e61854a43275937fa338335423620f570619",
+          "file": "prostate-time-to-recurrence-or-last-follow-up.json",
+          "sha256": "28d2de62c08b9e45aa82c21c8f3d8a8a3eb99d110661937c9fd682610719b8ba",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr10/sockets/prostate-time-to-recurrence-or-last-follow-up.json"
+        },
+        "reasoning": {
+          "content_digest": "cc2be5a84a9cec52455ca83ef147e8923789eb82bdda43badd4feefea6c51955",
+          "file": "prostate-time-to-recurrence-or-last-follow-up-reasoning.json",
+          "sha256": "f702ddffe40175b59ee552a01d05eb5bc98e94957663f2a2769ee70782522ac0",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr10/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json"
+        }
+      },
+      "mock_sdk_attempts": 2,
+      "mock_reserved_tokens": 78,
+      "stages": {
+        "parsed_judgment": {
+          "digest": "911e652d69853dc4ee842b57b6e283264e8d773fc2faa1ae8391f68dc0545dc8",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_selection": {
+          "digest": "1c7348db9c204eafef9197b27d112b53882b8a1b756fab19cf4edf3513ba8a0b",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "0d4ecdaa1b8664bb51326594bcc5e9204d5de9c82d5788aac765bed3d01e2e0d"
+        },
+        "reflection_formfill_consumed": {
+          "digest": "7f69785a3d2a67f9e8ac33d3729030fa9995b2bd7fde8edb887baa321677744a",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "0d4ecdaa1b8664bb51326594bcc5e9204d5de9c82d5788aac765bed3d01e2e0d"
+        },
+        "atomic_verification": {
+          "digest": "f278442337742d896826b7d908c4e8c092987d5aac25cf37689a2269e8413621",
+          "before_digest": "0d4ecdaa1b8664bb51326594bcc5e9204d5de9c82d5788aac765bed3d01e2e0d",
+          "after_digest": "0d4ecdaa1b8664bb51326594bcc5e9204d5de9c82d5788aac765bed3d01e2e0d"
+        },
+        "assembled_output": {
+          "digest": "84bab2af269aa64885190ea981caecd8dd4534005ef1a763f84a8c710cf395f9",
+          "before_digest": "1a953ec1f3e9303cea55d609e01e58731d9a4c41eab105dc8462c9ba75dca4eb",
+          "after_digest": "05cfc16233ea99655aabf8661a9ddc4c0a490018797eb1c3d6d10bca3cf4bd67"
+        },
+        "graph_output": {
+          "digest": "fca3776fdb1eea59b8b3f1c3a9aa92798681a01b5a9177934d5915ba73c677a9",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "fad9108a1449f7945b80bd12d439e82a2c48fd836e727d5c13265098b191fd7c"
+        },
+        "prediction_file": {
+          "digest": "d56f2f6691b78521722deda05fb70bfd0486ba7b203e586414a0bc35f39f632a",
+          "before_digest": "05cfc16233ea99655aabf8661a9ddc4c0a490018797eb1c3d6d10bca3cf4bd67",
+          "after_digest": "05cfc16233ea99655aabf8661a9ddc4c0a490018797eb1c3d6d10bca3cf4bd67"
+        },
+        "final_sockets": {
+          "digest": "beb59262c9b8ba76d3d9e72ac45bcac38665602e14166b06e2ed6cc0121f46e6",
+          "before_digest": "05cfc16233ea99655aabf8661a9ddc4c0a490018797eb1c3d6d10bca3cf4bd67",
+          "after_digest": "ad780af9fee14bf52a17e0e9adb53b4e486047c09abf72ff1ca72caa96907786"
+        }
+      }
+    },
+    {
+      "test_case": "test_real_entry_assigns_and_traces[3-S12-rationale]",
+      "run_id": "24a8a8636c5e4e4e8db22f33789aea86",
+      "task": 3,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr11/private/24a8a8636c5e4e4e8db22f33789aea86/events.jsonl",
+      "events_sha256": "0054dbfc2dec026ed6b8e273fd0b473247cbfd79c27b0e7d43873d890e963747",
+      "status": "run_completed",
+      "selection_status": "accepted_candidate",
+      "label_changed": true,
+      "assignment_digest_matches": true,
+      "reflection_consumption": "consumption_contract_failed",
+      "external_reflection_status": "not_triggered",
+      "final_receipt": {
+        "consumption_digest": "9294042d2c72d7e997bea42bb9a0816d9a5ae7a6248f0e3d1ca52de181928c07",
+        "fields": [
+          {
+            "field": "/event",
+            "final": 1,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "event"
+            ],
+            "selected": 1,
+            "status": "retained"
+          },
+          {
+            "field": "/free_text",
+            "final": "The reviewed value is an invented software fixture accepted by the synthetic oracle. Gleason grade, surgical margin status and post-operative PSA trend were considered in the recurrence assessment.",
+            "final_present": true,
+            "history": [
+              {
+                "after": "The reviewed value is an invented software fixture accepted by the synthetic oracle. Gleason grade, surgical margin status and post-operative PSA trend were considered in the recurrence assessment.",
+                "after_present": true,
+                "before": "The reviewed value is an invented software fixture accepted by the synthetic oracle.",
+                "before_present": true,
+                "rule_id": null,
+                "stage": "t3_rationale_elements",
+                "status": "unauthorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning"
+            ],
+            "selected": "The reviewed value is an invented software fixture accepted by the synthetic oracle.",
+            "status": "unauthorized_overwrite"
+          },
+          {
+            "field": "/months_to_recurrence",
+            "final": 18.0,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "months_to_recurrence"
+            ],
+            "selected": 18.0,
+            "status": "retained"
+          },
+          {
+            "field": "/repeat_test",
+            "final": null,
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": null,
+            "status": "internal_only"
+          }
+        ],
+        "selection_digest": "d3d91979dad4c0936ec2c5a46d9960a0c228c09e2db31377547db54147f70834",
+        "status": "consumption_contract_failed"
+      },
+      "sockets": {
+        "decision": {
+          "content_digest": "e6bd1da076c87745919f64f64c61ef0befb6ad8e29130710df857a4d0ce3c438",
+          "file": "prostate-time-to-recurrence-or-last-follow-up.json",
+          "sha256": "41fde3ce6e33951fd7bcdc6700bd7b5d876566425e99830c1efa9e451044e243",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr11/sockets/prostate-time-to-recurrence-or-last-follow-up.json"
+        },
+        "reasoning": {
+          "content_digest": "c3b5e30e28bc944a3ee738099e867ebb13d41fd3fa42453341c67a2f7c3ff0be",
+          "file": "prostate-time-to-recurrence-or-last-follow-up-reasoning.json",
+          "sha256": "c3b5e30e28bc944a3ee738099e867ebb13d41fd3fa42453341c67a2f7c3ff0be",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr11/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json"
+        }
+      },
+      "mock_sdk_attempts": 2,
+      "mock_reserved_tokens": 78,
+      "stages": {
+        "parsed_judgment": {
+          "digest": "5606e5054bf4975c933bf19f65c8799a394963ed743980b50394b5ac1e9213e5",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_selection": {
+          "digest": "d3d91979dad4c0936ec2c5a46d9960a0c228c09e2db31377547db54147f70834",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "77c1dc3cea1495067dce9bb35e0079bc04fbdedc7a214d3a1fe45ea8388695bd"
+        },
+        "reflection_formfill_consumed": {
+          "digest": "9294042d2c72d7e997bea42bb9a0816d9a5ae7a6248f0e3d1ca52de181928c07",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "77c1dc3cea1495067dce9bb35e0079bc04fbdedc7a214d3a1fe45ea8388695bd"
+        },
+        "atomic_verification": {
+          "digest": "52a59278c93f35f7ab2c2043b2612df35220a6e6560874ed7fdb09a87b561bca",
+          "before_digest": "77c1dc3cea1495067dce9bb35e0079bc04fbdedc7a214d3a1fe45ea8388695bd",
+          "after_digest": "77c1dc3cea1495067dce9bb35e0079bc04fbdedc7a214d3a1fe45ea8388695bd"
+        },
+        "assembled_output": {
+          "digest": "c148b4df2ff586ad60aa4ef8799e72cf78404175e3726353c6ac1294c5d9ce2f",
+          "before_digest": "9991ce191041e1105053133b5a8868603d088305f845495780b985739f2a7af4",
+          "after_digest": "fdb7c66319f6b42c1ecad161982fb8d8ff08a206137241bbaf4b2866a841f5a7"
+        },
+        "graph_output": {
+          "digest": "e64917b790cb1623c84012dd1274942321e04dfd35916f0c949c9d3304af56a3",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "536dffda7ed7574405518da835ba3cb4d40dc8f35bdcaa201f5ca3e4dc60a528"
+        },
+        "prediction_file": {
+          "digest": "0838be0b890d688a4904ad8bd49bc633623c35abf6e61969d3d8fb86f3cdcdb0",
+          "before_digest": "fdb7c66319f6b42c1ecad161982fb8d8ff08a206137241bbaf4b2866a841f5a7",
+          "after_digest": "fdb7c66319f6b42c1ecad161982fb8d8ff08a206137241bbaf4b2866a841f5a7"
+        },
+        "final_sockets": {
+          "digest": "531154f8041f046330ccd9f341e62e52a4c796fbbb4592cb9a3d8aedf60b7ef1",
+          "before_digest": "fdb7c66319f6b42c1ecad161982fb8d8ff08a206137241bbaf4b2866a841f5a7",
+          "after_digest": "cd3775e87a2f8f20e9439d3b651e552c4ace3d52747a5123b10f527da0060843"
+        }
+      }
+    },
+    {
+      "test_case": "test_real_entry_assigns_and_traces[3-S14]",
+      "run_id": "68dfa818375f4b4fa3e5a2d8a740d689",
+      "task": 3,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr12/private/68dfa818375f4b4fa3e5a2d8a740d689/events.jsonl",
+      "events_sha256": "d8b1bbbb07aad7512fa5ec36c8dcb214b4349cf7a1af8a158c1893447ed6d9a8",
+      "status": "run_completed",
+      "selection_status": "accepted_candidate",
+      "label_changed": true,
+      "assignment_digest_matches": true,
+      "reflection_consumption": "accepted_then_overridden",
+      "external_reflection_status": "not_triggered",
+      "final_receipt": {
+        "consumption_digest": "9411f04e13fabf85c8c516472bf8c99e07ca5e4dd02c8608eb16a804dcc5dcbc",
+        "fields": [
+          {
+            "field": "/event",
+            "final": 0,
+            "final_present": true,
+            "history": [
+              {
+                "after": 0,
+                "after_present": true,
+                "before": 1,
+                "before_present": true,
+                "rule_id": "synthetic-tau-event",
+                "stage": "t3_time_calibration",
+                "status": "authorized_overwrite"
+              }
+            ],
+            "projection": [
+              "decision",
+              "event"
+            ],
+            "selected": 1,
+            "status": "authorized_overwrite"
+          },
+          {
+            "field": "/free_text",
+            "final": "The reviewed value is an invented software fixture accepted by the synthetic oracle. Gleason, margin and postoperative PSA are field names in this fixture.\n\n[校准说明] 虽然上文推理识别出复发风险因素，但预测复发时间 (24.0 个月) 不在早期复发窗口内（训练集基率校准阈值 τ=24.0 个月），按生化复发基率校准规则判定 event=0（观察期内无复发）。",
+            "final_present": true,
+            "history": [
+              {
+                "after": "The reviewed value is an invented software fixture accepted by the synthetic oracle. Gleason, margin and postoperative PSA are field names in this fixture.\n\n[校准说明] 虽然上文推理识别出复发风险因素，但预测复发时间 (24.0 个月) 不在早期复发窗口内（训练集基率校准阈值 τ=24.0 个月），按生化复发基率校准规则判定 event=0（观察期内无复发）。",
+                "after_present": true,
+                "before": "The reviewed value is an invented software fixture accepted by the synthetic oracle. Gleason, margin and postoperative PSA are field names in this fixture.",
+                "before_present": true,
+                "rule_id": "synthetic-tau-note",
+                "stage": "t3_time_calibration",
+                "status": "authorized_overwrite"
+              }
+            ],
+            "projection": [
+              "reasoning"
+            ],
+            "selected": "The reviewed value is an invented software fixture accepted by the synthetic oracle. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "status": "authorized_overwrite"
+          },
+          {
+            "field": "/months_to_recurrence",
+            "final": 24.0,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "months_to_recurrence"
+            ],
+            "selected": 24.0,
+            "status": "retained"
+          },
+          {
+            "field": "/repeat_test",
+            "final": null,
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": null,
+            "status": "internal_only"
+          }
+        ],
+        "selection_digest": "695e70b287cf50e9fa595e42e36f4839f9a411ae612e268a3ce50be2dbcad662",
+        "status": "accepted_then_overridden"
+      },
+      "sockets": {
+        "decision": {
+          "content_digest": "0461d273a506a77256be6bd7c0f3e61854a43275937fa338335423620f570619",
+          "file": "prostate-time-to-recurrence-or-last-follow-up.json",
+          "sha256": "28d2de62c08b9e45aa82c21c8f3d8a8a3eb99d110661937c9fd682610719b8ba",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr12/sockets/prostate-time-to-recurrence-or-last-follow-up.json"
+        },
+        "reasoning": {
+          "content_digest": "cc2be5a84a9cec52455ca83ef147e8923789eb82bdda43badd4feefea6c51955",
+          "file": "prostate-time-to-recurrence-or-last-follow-up-reasoning.json",
+          "sha256": "f702ddffe40175b59ee552a01d05eb5bc98e94957663f2a2769ee70782522ac0",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr12/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json"
+        }
+      },
+      "mock_sdk_attempts": 2,
+      "mock_reserved_tokens": 78,
+      "stages": {
+        "parsed_judgment": {
+          "digest": "de61c542bf76ef4a2f324c76f3e61c4102f7a039c0028a64f049bae9edeb28f4",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_selection": {
+          "digest": "695e70b287cf50e9fa595e42e36f4839f9a411ae612e268a3ce50be2dbcad662",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "0d4ecdaa1b8664bb51326594bcc5e9204d5de9c82d5788aac765bed3d01e2e0d"
+        },
+        "reflection_formfill_consumed": {
+          "digest": "9411f04e13fabf85c8c516472bf8c99e07ca5e4dd02c8608eb16a804dcc5dcbc",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "0d4ecdaa1b8664bb51326594bcc5e9204d5de9c82d5788aac765bed3d01e2e0d"
+        },
+        "atomic_verification": {
+          "digest": "69c91199bfc1b2eed0b6e2b4cf65513946d032cd1042fad360944756614c8abe",
+          "before_digest": "0d4ecdaa1b8664bb51326594bcc5e9204d5de9c82d5788aac765bed3d01e2e0d",
+          "after_digest": "0d4ecdaa1b8664bb51326594bcc5e9204d5de9c82d5788aac765bed3d01e2e0d"
+        },
+        "assembled_output": {
+          "digest": "5185c0f4bc65ef76849dbcaa94c94a8c302449d2743cc2563cb9750f509c70fe",
+          "before_digest": "1a953ec1f3e9303cea55d609e01e58731d9a4c41eab105dc8462c9ba75dca4eb",
+          "after_digest": "05cfc16233ea99655aabf8661a9ddc4c0a490018797eb1c3d6d10bca3cf4bd67"
+        },
+        "graph_output": {
+          "digest": "6b05ccaf7fcd8216eea9f13cf2049c91f2860cd4f81ccdb3e854d76658f3f137",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "6dc1717996f9b4ae80a1358ad9c8afbcc838b299902c42d14f3c971114dcd9f9"
+        },
+        "prediction_file": {
+          "digest": "9cdc499b8d8e92a9b9bc829a725b984aa836c2e5e3303da546d1ca4ccc9593a5",
+          "before_digest": "05cfc16233ea99655aabf8661a9ddc4c0a490018797eb1c3d6d10bca3cf4bd67",
+          "after_digest": "05cfc16233ea99655aabf8661a9ddc4c0a490018797eb1c3d6d10bca3cf4bd67"
+        },
+        "final_sockets": {
+          "digest": "260a05318ed3074eb1cedd1f30cce562dfd4b4a1ae53c9c41e4f16de73e659a2",
+          "before_digest": "05cfc16233ea99655aabf8661a9ddc4c0a490018797eb1c3d6d10bca3cf4bd67",
+          "after_digest": "ad780af9fee14bf52a17e0e9adb53b4e486047c09abf72ff1ca72caa96907786"
+        }
+      }
+    },
+    {
+      "test_case": "test_real_entry_assigns_and_traces[3-S01]",
+      "run_id": "6d9552aebd4646cebdf2770b27efcfa8",
+      "task": 3,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr2/private/6d9552aebd4646cebdf2770b27efcfa8/events.jsonl",
+      "events_sha256": "291b5f40028f0cb45ccb7266c7c034d467232410cc14c52032b947a44e82952f",
+      "status": "run_completed",
+      "selection_status": "accepted_candidate",
+      "label_changed": true,
+      "assignment_digest_matches": true,
+      "reflection_consumption": "finalized_retained",
+      "external_reflection_status": "not_triggered",
+      "final_receipt": {
+        "consumption_digest": "4c4d18a68bc6318001f352f1dd6bb98c2521541eb12e193ef3eadc6607d0709a",
+        "fields": [
+          {
+            "field": "/event",
+            "final": 1,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "event"
+            ],
+            "selected": 1,
+            "status": "retained"
+          },
+          {
+            "field": "/free_text",
+            "final": "The reviewed value is an invented software fixture accepted by the synthetic oracle. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "reasoning"
+            ],
+            "selected": "The reviewed value is an invented software fixture accepted by the synthetic oracle. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "status": "retained"
+          },
+          {
+            "field": "/months_to_recurrence",
+            "final": 18.0,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "months_to_recurrence"
+            ],
+            "selected": 18.0,
+            "status": "retained"
+          },
+          {
+            "field": "/repeat_test",
+            "final": null,
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": null,
+            "status": "internal_only"
+          }
+        ],
+        "selection_digest": "fd30ef3155463ac512f35b56211af3c3b17bd22eea6ceba5b0756c86ae36059d",
+        "status": "finalized_retained"
+      },
+      "sockets": {
+        "decision": {
+          "content_digest": "e6bd1da076c87745919f64f64c61ef0befb6ad8e29130710df857a4d0ce3c438",
+          "file": "prostate-time-to-recurrence-or-last-follow-up.json",
+          "sha256": "41fde3ce6e33951fd7bcdc6700bd7b5d876566425e99830c1efa9e451044e243",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr2/sockets/prostate-time-to-recurrence-or-last-follow-up.json"
+        },
+        "reasoning": {
+          "content_digest": "3ec4561013d81be9d7444c7d1bed10defd026da3ecb7d431446437dedddb47d7",
+          "file": "prostate-time-to-recurrence-or-last-follow-up-reasoning.json",
+          "sha256": "3ec4561013d81be9d7444c7d1bed10defd026da3ecb7d431446437dedddb47d7",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr2/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json"
+        }
+      },
+      "mock_sdk_attempts": 2,
+      "mock_reserved_tokens": 78,
+      "stages": {
+        "parsed_judgment": {
+          "digest": "451266816e14d9f5f5e98fdba18157ca42beb515d84d84fd88a641c3d017677a",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_selection": {
+          "digest": "fd30ef3155463ac512f35b56211af3c3b17bd22eea6ceba5b0756c86ae36059d",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1"
+        },
+        "reflection_formfill_consumed": {
+          "digest": "4c4d18a68bc6318001f352f1dd6bb98c2521541eb12e193ef3eadc6607d0709a",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1"
+        },
+        "atomic_verification": {
+          "digest": "199116aaa11b51a4ec9674a09e84a8f12ea9f2ae70653c33443d45bafe34e0fd",
+          "before_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1",
+          "after_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1"
+        },
+        "assembled_output": {
+          "digest": "35762f46aab6e90c8525954d85207114c0cb8d3cf8e94a45be68c842e7c2edbd",
+          "before_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1",
+          "after_digest": "c1863119041f55521698d5b744d54501485da78389e2ff1014141a36c060dbd1"
+        },
+        "graph_output": {
+          "digest": "50d09419acc59669bd91618edfeff5bb142d34c4eaf786c19a9aa8533404bfcd",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "8f1b93494cd507b457cbb71fcca72a480abb02d60a004c6a2a8a5587e059af06"
+        },
+        "prediction_file": {
+          "digest": "b9c59f26b09d57d81680b4bcbffaf35191aa588a49544ce494beeb8e72c610de",
+          "before_digest": "c1863119041f55521698d5b744d54501485da78389e2ff1014141a36c060dbd1",
+          "after_digest": "c1863119041f55521698d5b744d54501485da78389e2ff1014141a36c060dbd1"
+        },
+        "final_sockets": {
+          "digest": "40e7bdedab5a109da2c8130b1c13f33a982590b5500913b3a954148d825f8116",
+          "before_digest": "c1863119041f55521698d5b744d54501485da78389e2ff1014141a36c060dbd1",
+          "after_digest": "bb54707e7ee76a05bb519da0bd3f6dc74dfc1a3ff0d1847814318335c026adc0"
+        }
+      }
+    },
+    {
+      "test_case": "test_real_entry_assigns_and_traces[3-S01-internal-authority]",
+      "run_id": "0bfe5ef3803b4b95a46a4e0a39da3a79",
+      "task": 3,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr3/private/0bfe5ef3803b4b95a46a4e0a39da3a79/events.jsonl",
+      "events_sha256": "595411b1293ded9c0a6d0e9d361c86e4f6e4a88131d14af4cc4c169341bdf994",
+      "status": "run_completed",
+      "selection_status": "accepted_candidate",
+      "label_changed": true,
+      "assignment_digest_matches": true,
+      "reflection_consumption": "finalized_retained",
+      "external_reflection_status": "not_triggered",
+      "final_receipt": {
+        "consumption_digest": "56895d91a21f8d02c6bfe29cb259017f5064b84c4b31fb1b95107db74fe60fa5",
+        "fields": [
+          {
+            "field": "/event",
+            "final": 1,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "event"
+            ],
+            "selected": 1,
+            "status": "retained"
+          },
+          {
+            "field": "/free_text",
+            "final": "The reviewed value is an invented software fixture accepted by the synthetic oracle. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "reasoning"
+            ],
+            "selected": "The reviewed value is an invented software fixture accepted by the synthetic oracle. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "status": "retained"
+          },
+          {
+            "field": "/months_to_recurrence",
+            "final": 18.0,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "months_to_recurrence"
+            ],
+            "selected": 18.0,
+            "status": "retained"
+          },
+          {
+            "field": "/repeat_test",
+            "final": null,
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": null,
+            "status": "internal_only"
+          }
+        ],
+        "selection_digest": "c21c513766b1810ad48cc57bf1b76b2b50f50cd474329c7d39c9b877dd862fc7",
+        "status": "finalized_retained"
+      },
+      "sockets": {
+        "decision": {
+          "content_digest": "e6bd1da076c87745919f64f64c61ef0befb6ad8e29130710df857a4d0ce3c438",
+          "file": "prostate-time-to-recurrence-or-last-follow-up.json",
+          "sha256": "41fde3ce6e33951fd7bcdc6700bd7b5d876566425e99830c1efa9e451044e243",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr3/sockets/prostate-time-to-recurrence-or-last-follow-up.json"
+        },
+        "reasoning": {
+          "content_digest": "3ec4561013d81be9d7444c7d1bed10defd026da3ecb7d431446437dedddb47d7",
+          "file": "prostate-time-to-recurrence-or-last-follow-up-reasoning.json",
+          "sha256": "3ec4561013d81be9d7444c7d1bed10defd026da3ecb7d431446437dedddb47d7",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr3/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json"
+        }
+      },
+      "mock_sdk_attempts": 2,
+      "mock_reserved_tokens": 78,
+      "stages": {
+        "parsed_judgment": {
+          "digest": "920d8fc7a7cfd34131205a4dafb1bd3f00ddd4dcf89bc2ce131b700648aa9738",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_selection": {
+          "digest": "c21c513766b1810ad48cc57bf1b76b2b50f50cd474329c7d39c9b877dd862fc7",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1"
+        },
+        "reflection_formfill_consumed": {
+          "digest": "56895d91a21f8d02c6bfe29cb259017f5064b84c4b31fb1b95107db74fe60fa5",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1"
+        },
+        "atomic_verification": {
+          "digest": "239a66b9249fff53e99d5327f4d66752964c224a1a9068876118066378ba8d46",
+          "before_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1",
+          "after_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1"
+        },
+        "assembled_output": {
+          "digest": "5ff4c73e7c346ad406411a760e0fe151e2898785f7ffc5f732fac1a665fa60f7",
+          "before_digest": "f36091304e991551dd07be4d2ed5c8bf9028035855b1624b77ca8612c5ff13e1",
+          "after_digest": "c1863119041f55521698d5b744d54501485da78389e2ff1014141a36c060dbd1"
+        },
+        "graph_output": {
+          "digest": "dee8ce5de7e66672dbe83aa3d583168d5e4464b18dd1ab94d849444a33681861",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "51867cd304bf11d549c3f2da209c5582db033c6074b0f54f4e9b6731024d771e"
+        },
+        "prediction_file": {
+          "digest": "c41f36bff9bbdbc17961d22b41b220a9c7ce0386c9053292ffd314be2496ee96",
+          "before_digest": "c1863119041f55521698d5b744d54501485da78389e2ff1014141a36c060dbd1",
+          "after_digest": "c1863119041f55521698d5b744d54501485da78389e2ff1014141a36c060dbd1"
+        },
+        "final_sockets": {
+          "digest": "6d0c9715a42a8c3cef691d5b8c79af127e367d574aaabe7b4225ac1f806f8e4d",
+          "before_digest": "c1863119041f55521698d5b744d54501485da78389e2ff1014141a36c060dbd1",
+          "after_digest": "bb54707e7ee76a05bb519da0bd3f6dc74dfc1a3ff0d1847814318335c026adc0"
+        }
+      }
+    },
+    {
+      "test_case": "test_real_entry_assigns_and_traces[3-S02]",
+      "run_id": "e6f5f5c0e1174851a19a94811ece439b",
+      "task": 3,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr4/private/e6f5f5c0e1174851a19a94811ece439b/events.jsonl",
+      "events_sha256": "a1478e95cc581fa6c6d63403bb0d1fdb8a43c864c02ba941d928246fce4a0348",
+      "status": "run_completed",
+      "selection_status": "audit_rejected",
+      "label_changed": false,
+      "assignment_digest_matches": true,
+      "reflection_consumption": "finalized_initial",
+      "external_reflection_status": "not_triggered",
+      "final_receipt": {
+        "consumption_digest": "6d8eba409fc535a49a1a34b14d0d0dcad0eea32e415ca9ae289b22c18afa5146",
+        "fields": [
+          {
+            "field": "/event",
+            "final": 0,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "event"
+            ],
+            "selected": 0,
+            "status": "retained"
+          },
+          {
+            "field": "/free_text",
+            "final": "The original value is part of a fictional software-only acceptance fixture. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "reasoning"
+            ],
+            "selected": "The original value is part of a fictional software-only acceptance fixture. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "status": "retained"
+          },
+          {
+            "field": "/months_to_recurrence",
+            "final": 12.0,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "months_to_recurrence"
+            ],
+            "selected": 12.0,
+            "status": "retained"
+          },
+          {
+            "field": "/repeat_test",
+            "final": null,
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": null,
+            "status": "internal_only"
+          }
+        ],
+        "selection_digest": "e362859f35b2b34a6ec6cb4a5b08853d2f64cb0b12b0d51b34f202f222f83323",
+        "status": "finalized_initial"
+      },
+      "sockets": {
+        "decision": {
+          "content_digest": "32e7336f3230c92437d7229070b11fe0b0de02515eb99506af385cc29ea9c32b",
+          "file": "prostate-time-to-recurrence-or-last-follow-up.json",
+          "sha256": "467a0c4e75c7946cdfbea1f2403034cf26ec21f0b1f4e75b743165d806f199c6",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr4/sockets/prostate-time-to-recurrence-or-last-follow-up.json"
+        },
+        "reasoning": {
+          "content_digest": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+          "file": "prostate-time-to-recurrence-or-last-follow-up-reasoning.json",
+          "sha256": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr4/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json"
+        }
+      },
+      "mock_sdk_attempts": 2,
+      "mock_reserved_tokens": 78,
+      "stages": {
+        "parsed_judgment": {
+          "digest": "46d52cfbcf1404e77fd20056ec991c0e569d4e59405837d34fae834d6b1c4210",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_selection": {
+          "digest": "e362859f35b2b34a6ec6cb4a5b08853d2f64cb0b12b0d51b34f202f222f83323",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_formfill_consumed": {
+          "digest": "6d8eba409fc535a49a1a34b14d0d0dcad0eea32e415ca9ae289b22c18afa5146",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "atomic_verification": {
+          "digest": "aef4af753500010097d49f56bf552097ca1e7b113ab7f217255418cb25e93390",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "assembled_output": {
+          "digest": "a92c36212ab99492c76e74248f9f34a9d76ddb89c1d015f0ed0d6f6782c013f5",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9"
+        },
+        "graph_output": {
+          "digest": "fdede5432eed4a9dea8258940462ae1d6313a71cd7a955164863a1b8d096f2d6",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "9fbabced7094791dcd47dc661285aa1df86279d2f1bc22604e1d9694a38d18b7"
+        },
+        "prediction_file": {
+          "digest": "a482c09519adf33253dd2489ebb995682a3881102d4a00d0501e525a4b391c0e",
+          "before_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9",
+          "after_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9"
+        },
+        "final_sockets": {
+          "digest": "672f86607378cea5d6b20b7ef85b735426fcfc2cd5420361de508887f771aa07",
+          "before_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9",
+          "after_digest": "e07a01574aebf4ab1e80b0b001a85b9c35a130eb48b84e384d01be4276bdc494"
+        }
+      }
+    },
+    {
+      "test_case": "test_real_entry_assigns_and_traces[3-S03]",
+      "run_id": "fc59d6ff2e8946d68edf9135c6d34fcf",
+      "task": 3,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr5/private/fc59d6ff2e8946d68edf9135c6d34fcf/events.jsonl",
+      "events_sha256": "d1edcce2b84d7bfb05faae4e23fef71d63bfa42d2d2107fada673d412c53a9fe",
+      "status": "run_completed",
+      "selection_status": "detected_no_executable_proposal",
+      "label_changed": false,
+      "assignment_digest_matches": true,
+      "reflection_consumption": "finalized_initial",
+      "external_reflection_status": "not_triggered",
+      "final_receipt": {
+        "consumption_digest": "5081ccfde565d01dd8e2d05088989e336473bbaa8459935d2f4da6b41835c4d7",
+        "fields": [
+          {
+            "field": "/event",
+            "final": 0,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "event"
+            ],
+            "selected": 0,
+            "status": "retained"
+          },
+          {
+            "field": "/free_text",
+            "final": "The original value is part of a fictional software-only acceptance fixture. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "reasoning"
+            ],
+            "selected": "The original value is part of a fictional software-only acceptance fixture. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "status": "retained"
+          },
+          {
+            "field": "/months_to_recurrence",
+            "final": 12.0,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "months_to_recurrence"
+            ],
+            "selected": 12.0,
+            "status": "retained"
+          },
+          {
+            "field": "/repeat_test",
+            "final": null,
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": null,
+            "status": "internal_only"
+          }
+        ],
+        "selection_digest": "c92831e97496e5ce5ca33f5ceaca66053666d802465e5534bccf7f5e26d9ba39",
+        "status": "finalized_initial"
+      },
+      "sockets": {
+        "decision": {
+          "content_digest": "32e7336f3230c92437d7229070b11fe0b0de02515eb99506af385cc29ea9c32b",
+          "file": "prostate-time-to-recurrence-or-last-follow-up.json",
+          "sha256": "467a0c4e75c7946cdfbea1f2403034cf26ec21f0b1f4e75b743165d806f199c6",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr5/sockets/prostate-time-to-recurrence-or-last-follow-up.json"
+        },
+        "reasoning": {
+          "content_digest": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+          "file": "prostate-time-to-recurrence-or-last-follow-up-reasoning.json",
+          "sha256": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr5/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json"
+        }
+      },
+      "mock_sdk_attempts": 2,
+      "mock_reserved_tokens": 78,
+      "stages": {
+        "parsed_judgment": {
+          "digest": "25b36c45ef6bc02a7df34c9d97ed41729fe8c30b39d785dc3995034bce45f011",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_selection": {
+          "digest": "c92831e97496e5ce5ca33f5ceaca66053666d802465e5534bccf7f5e26d9ba39",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_formfill_consumed": {
+          "digest": "5081ccfde565d01dd8e2d05088989e336473bbaa8459935d2f4da6b41835c4d7",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "atomic_verification": {
+          "digest": "80c4df5b53917eb7b6afdac878c20efec16d72f4392f08163bc756f4b92ef680",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "assembled_output": {
+          "digest": "e2a4a115f04f5d5ea20ca0b39a3ebec55fd1b3175dd79399b38bf7dfed01c562",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9"
+        },
+        "graph_output": {
+          "digest": "9f57701628c6dd082a0f8217f9b7d7813ae65bd4d2d38e7149f0ae3526391db5",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "1d22c987cd312e59670a449e897af99993f3fd9b49ef12baf1fbe7b98d9580d6"
+        },
+        "prediction_file": {
+          "digest": "b94886e52fb3fab6d5258c4dffb827aa455e5cef6241aee06adcd7f0a88da6bd",
+          "before_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9",
+          "after_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9"
+        },
+        "final_sockets": {
+          "digest": "3991214f9fcbb6e32b0c8cb52665054fad07ae802ebf674b3348b783d42ed569",
+          "before_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9",
+          "after_digest": "e07a01574aebf4ab1e80b0b001a85b9c35a130eb48b84e384d01be4276bdc494"
+        }
+      }
+    },
+    {
+      "test_case": "test_real_entry_assigns_and_traces[3-S04]",
+      "run_id": "b69be1de297b4e1db366b4c259c22da2",
+      "task": 3,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr6/private/b69be1de297b4e1db366b4c259c22da2/events.jsonl",
+      "events_sha256": "9cbbca133a7dcdc534b232a7aedae2069ae987c9b067fca2b9cb62fa6fadfc35",
+      "status": "run_completed",
+      "selection_status": "no_issue",
+      "label_changed": false,
+      "assignment_digest_matches": true,
+      "reflection_consumption": "finalized_initial",
+      "external_reflection_status": "not_triggered",
+      "final_receipt": {
+        "consumption_digest": "789ff70a049f196483ae504e040f576278d0ca50f0c93775d8e432bb0da8ab8c",
+        "fields": [
+          {
+            "field": "/event",
+            "final": 0,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "event"
+            ],
+            "selected": 0,
+            "status": "retained"
+          },
+          {
+            "field": "/free_text",
+            "final": "The original value is part of a fictional software-only acceptance fixture. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "reasoning"
+            ],
+            "selected": "The original value is part of a fictional software-only acceptance fixture. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "status": "retained"
+          },
+          {
+            "field": "/months_to_recurrence",
+            "final": 12.0,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "months_to_recurrence"
+            ],
+            "selected": 12.0,
+            "status": "retained"
+          },
+          {
+            "field": "/repeat_test",
+            "final": null,
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": null,
+            "status": "internal_only"
+          }
+        ],
+        "selection_digest": "97586744c93cf824d01545e5a3bd175658e18717264c29b9e14325edbda73a02",
+        "status": "finalized_initial"
+      },
+      "sockets": {
+        "decision": {
+          "content_digest": "32e7336f3230c92437d7229070b11fe0b0de02515eb99506af385cc29ea9c32b",
+          "file": "prostate-time-to-recurrence-or-last-follow-up.json",
+          "sha256": "467a0c4e75c7946cdfbea1f2403034cf26ec21f0b1f4e75b743165d806f199c6",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr6/sockets/prostate-time-to-recurrence-or-last-follow-up.json"
+        },
+        "reasoning": {
+          "content_digest": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+          "file": "prostate-time-to-recurrence-or-last-follow-up-reasoning.json",
+          "sha256": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr6/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json"
+        }
+      },
+      "mock_sdk_attempts": 2,
+      "mock_reserved_tokens": 78,
+      "stages": {
+        "parsed_judgment": {
+          "digest": "4c10cbb74c776f493e54374d96ee6d2ee9b971b3e1c516cbd1f1a1bdd6aebfb4",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_selection": {
+          "digest": "97586744c93cf824d01545e5a3bd175658e18717264c29b9e14325edbda73a02",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_formfill_consumed": {
+          "digest": "789ff70a049f196483ae504e040f576278d0ca50f0c93775d8e432bb0da8ab8c",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "atomic_verification": {
+          "digest": "61ce5480f649c23a9e10a399ec3e7624b666b92ef9956724b98e40dfc3d2aa1a",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "assembled_output": {
+          "digest": "a7647953225a6c1b342cd8918306b8284fb7b577c29f0e4bb96283ed2d2e7ca8",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9"
+        },
+        "graph_output": {
+          "digest": "66a2ec0d9799cce4f8717141f5c8af65cca4d777bcfa3eb97e9504146901ec02",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "5078f2b23477859506c711b65947478b98bd5fb45d855d66e1e520a06302edaf"
+        },
+        "prediction_file": {
+          "digest": "0d9c6179d67f6a70e9c30d5dce3d49b53ad4b15971318a20faa43eee1e7ffe31",
+          "before_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9",
+          "after_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9"
+        },
+        "final_sockets": {
+          "digest": "492bb0242d00bf575f82c5fc096bdf500b68556e5c233b9196f62c2aeda2896f",
+          "before_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9",
+          "after_digest": "e07a01574aebf4ab1e80b0b001a85b9c35a130eb48b84e384d01be4276bdc494"
+        }
+      }
+    },
+    {
+      "test_case": "test_real_entry_assigns_and_traces[3-S05]",
+      "run_id": "f138446d8f804d9bad8b2f30b8b45dbd",
+      "task": 3,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr7/private/f138446d8f804d9bad8b2f30b8b45dbd/events.jsonl",
+      "events_sha256": "de245a69d86a0d4df8c09a2e1bb325ae9d4f82324ecad31350eba20cb319024f",
+      "status": "run_completed",
+      "selection_status": "executed_no_delta",
+      "label_changed": false,
+      "assignment_digest_matches": true,
+      "reflection_consumption": "finalized_retained",
+      "external_reflection_status": "not_triggered",
+      "final_receipt": {
+        "consumption_digest": "69dc327e3727e9a25ade617d0341e5804076a005a9d05df36c846adf69c6b48f",
+        "fields": [
+          {
+            "field": "/event",
+            "final": 0,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "event"
+            ],
+            "selected": 0,
+            "status": "retained"
+          },
+          {
+            "field": "/free_text",
+            "final": "The original value is part of a fictional software-only acceptance fixture. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "reasoning"
+            ],
+            "selected": "The original value is part of a fictional software-only acceptance fixture. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "status": "retained"
+          },
+          {
+            "field": "/months_to_recurrence",
+            "final": 12.0,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "months_to_recurrence"
+            ],
+            "selected": 12.0,
+            "status": "retained"
+          },
+          {
+            "field": "/repeat_test",
+            "final": null,
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": null,
+            "status": "internal_only"
+          }
+        ],
+        "selection_digest": "f4d2ca595be8cd8ec0dcd1fc4d96c22d685349b615397adf2759e74d429adbfb",
+        "status": "finalized_retained"
+      },
+      "sockets": {
+        "decision": {
+          "content_digest": "32e7336f3230c92437d7229070b11fe0b0de02515eb99506af385cc29ea9c32b",
+          "file": "prostate-time-to-recurrence-or-last-follow-up.json",
+          "sha256": "467a0c4e75c7946cdfbea1f2403034cf26ec21f0b1f4e75b743165d806f199c6",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr7/sockets/prostate-time-to-recurrence-or-last-follow-up.json"
+        },
+        "reasoning": {
+          "content_digest": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+          "file": "prostate-time-to-recurrence-or-last-follow-up-reasoning.json",
+          "sha256": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr7/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json"
+        }
+      },
+      "mock_sdk_attempts": 2,
+      "mock_reserved_tokens": 78,
+      "stages": {
+        "parsed_judgment": {
+          "digest": "99563479b6ae8c43b2f2ea8a90b37685578c2e3325d1676c7c96130f66e03d6a",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_selection": {
+          "digest": "f4d2ca595be8cd8ec0dcd1fc4d96c22d685349b615397adf2759e74d429adbfb",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_formfill_consumed": {
+          "digest": "69dc327e3727e9a25ade617d0341e5804076a005a9d05df36c846adf69c6b48f",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "atomic_verification": {
+          "digest": "128bbb37c7ad05d9eaa8d6ce3003f055838ea18bdc0fa8178131d1c7ab65b2a6",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "assembled_output": {
+          "digest": "d00e6926fc0a456c05df3e02769786f0b2bf2d903124df3e7b1d4d0c68598b12",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9"
+        },
+        "graph_output": {
+          "digest": "5500219694c217db346154349b937a1b1e7e1f8f08348f45f23501034ea38102",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "2b8a9a3c94296f90689c5d947fd09f5f73f35610bc95503400d5afe41c604576"
+        },
+        "prediction_file": {
+          "digest": "883005accbe54471337a6d70365e48210d0eea1be7bd2dc725f63fc8b865d9ff",
+          "before_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9",
+          "after_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9"
+        },
+        "final_sockets": {
+          "digest": "cc5c43274a4406412e20deba9f11ebc779ad5e59eca3545ec122a085b99dd97e",
+          "before_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9",
+          "after_digest": "e07a01574aebf4ab1e80b0b001a85b9c35a130eb48b84e384d01be4276bdc494"
+        }
+      }
+    },
+    {
+      "test_case": "test_real_entry_assigns_and_traces[3-S08]",
+      "run_id": "933e4cc2b2504242808ec1f3e7959e63",
+      "task": 3,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr8/private/933e4cc2b2504242808ec1f3e7959e63/events.jsonl",
+      "events_sha256": "1f2133eaa96da0b093829817162b52a9a8fe9fda1ded5cd1cdf1f2f60bb57397",
+      "status": "run_completed",
+      "selection_status": "invalid_proposal",
+      "label_changed": false,
+      "assignment_digest_matches": true,
+      "reflection_consumption": "finalized_initial_with_error",
+      "external_reflection_status": "not_triggered",
+      "final_receipt": {
+        "consumption_digest": "4756fad14a4d0200127c817482625a00274dd94fb082c40bafddd2aa23a6c8bd",
+        "fields": [
+          {
+            "field": "/event",
+            "final": 0,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "event"
+            ],
+            "selected": 0,
+            "status": "retained"
+          },
+          {
+            "field": "/free_text",
+            "final": "The original value is part of a fictional software-only acceptance fixture. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "reasoning"
+            ],
+            "selected": "The original value is part of a fictional software-only acceptance fixture. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "status": "retained"
+          },
+          {
+            "field": "/months_to_recurrence",
+            "final": 12.0,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "months_to_recurrence"
+            ],
+            "selected": 12.0,
+            "status": "retained"
+          },
+          {
+            "field": "/repeat_test",
+            "final": null,
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": null,
+            "status": "internal_only"
+          }
+        ],
+        "selection_digest": "f21ce6a1a8818abd6beff290e1ff916776b99383de709684639527da1edde6ff",
+        "status": "finalized_initial_with_error"
+      },
+      "sockets": {
+        "decision": {
+          "content_digest": "32e7336f3230c92437d7229070b11fe0b0de02515eb99506af385cc29ea9c32b",
+          "file": "prostate-time-to-recurrence-or-last-follow-up.json",
+          "sha256": "467a0c4e75c7946cdfbea1f2403034cf26ec21f0b1f4e75b743165d806f199c6",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr8/sockets/prostate-time-to-recurrence-or-last-follow-up.json"
+        },
+        "reasoning": {
+          "content_digest": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+          "file": "prostate-time-to-recurrence-or-last-follow-up-reasoning.json",
+          "sha256": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr8/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json"
+        }
+      },
+      "mock_sdk_attempts": 2,
+      "mock_reserved_tokens": 78,
+      "stages": {
+        "parsed_judgment": {
+          "digest": "7b4320f87cc8ff6e09de8fd796d4dae201a86ae1f18d1f3254d59385de5012a6",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_selection": {
+          "digest": "f21ce6a1a8818abd6beff290e1ff916776b99383de709684639527da1edde6ff",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_formfill_consumed": {
+          "digest": "4756fad14a4d0200127c817482625a00274dd94fb082c40bafddd2aa23a6c8bd",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "atomic_verification": {
+          "digest": "6f0f157a9fb790c8330ecc79856ff6d33cdef13fc530a1c0d9d53ccb2c64574f",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "assembled_output": {
+          "digest": "d2236640f46c964fe19e57e4567780c149057a486c5995424bedeafb1eda24db",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9"
+        },
+        "graph_output": {
+          "digest": "2a21b86b5dbc38be58a53388de1efa26186147a4c37396eddba0a3d9df8535f1",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "41897a6f8f20ce3475f246fc615bcb04d7a5f602216e047349337ee376f52046"
+        },
+        "prediction_file": {
+          "digest": "46498d465357065d3e1b2b0663f9acc41eb52f11e6e08ece585828e447b52c4f",
+          "before_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9",
+          "after_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9"
+        },
+        "final_sockets": {
+          "digest": "143d9e8d8f0595af62c1d2e7d6f6a714180258bacb6c1ddbea41cb8b09b528a8",
+          "before_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9",
+          "after_digest": "e07a01574aebf4ab1e80b0b001a85b9c35a130eb48b84e384d01be4276bdc494"
+        }
+      }
+    },
+    {
+      "test_case": "test_real_entry_assigns_and_traces[3-S09]",
+      "run_id": "56d04a7706e44960be0dde2dd48aef73",
+      "task": 3,
+      "events": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr9/private/56d04a7706e44960be0dde2dd48aef73/events.jsonl",
+      "events_sha256": "b81081c97771ddc66edb55d96f4a28e8bd632487f07fa58a8d63eb07f0585ab6",
+      "status": "run_completed",
+      "selection_status": "error_fallback_initial",
+      "label_changed": false,
+      "assignment_digest_matches": true,
+      "reflection_consumption": "finalized_initial_with_error",
+      "external_reflection_status": "not_triggered",
+      "final_receipt": {
+        "consumption_digest": "39ca9268c6d20519831e31e4a2016aff96df2db4483e607951b95a49680190e0",
+        "fields": [
+          {
+            "field": "/event",
+            "final": 0,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "event"
+            ],
+            "selected": 0,
+            "status": "retained"
+          },
+          {
+            "field": "/free_text",
+            "final": "The original value is part of a fictional software-only acceptance fixture. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "reasoning"
+            ],
+            "selected": "The original value is part of a fictional software-only acceptance fixture. Gleason, margin and postoperative PSA are field names in this fixture.",
+            "status": "retained"
+          },
+          {
+            "field": "/months_to_recurrence",
+            "final": 12.0,
+            "final_present": true,
+            "history": [],
+            "projection": [
+              "decision",
+              "months_to_recurrence"
+            ],
+            "selected": 12.0,
+            "status": "retained"
+          },
+          {
+            "field": "/repeat_test",
+            "final": null,
+            "final_present": true,
+            "history": [],
+            "projection": null,
+            "selected": null,
+            "status": "internal_only"
+          }
+        ],
+        "selection_digest": "64afef3eb891adc97d6f220449a011c6a31fa8c123aa8d41090c37ac99bbd854",
+        "status": "finalized_initial_with_error"
+      },
+      "sockets": {
+        "decision": {
+          "content_digest": "32e7336f3230c92437d7229070b11fe0b0de02515eb99506af385cc29ea9c32b",
+          "file": "prostate-time-to-recurrence-or-last-follow-up.json",
+          "sha256": "467a0c4e75c7946cdfbea1f2403034cf26ec21f0b1f4e75b743165d806f199c6",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr9/sockets/prostate-time-to-recurrence-or-last-follow-up.json"
+        },
+        "reasoning": {
+          "content_digest": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+          "file": "prostate-time-to-recurrence-or-last-follow-up-reasoning.json",
+          "sha256": "dfdf70ef1f2499df13c1d9ee71c142de88cedba0e21f058959e3d2bda9ec6294",
+          "path": "output/p01_g1r_reflection_20261118/tests/final_cases/test_real_entry_assigns_and_tr9/sockets/prostate-time-to-recurrence-or-last-follow-up-reasoning.json"
+        }
+      },
+      "mock_sdk_attempts": 2,
+      "mock_reserved_tokens": 78,
+      "stages": {
+        "parsed_judgment": {
+          "digest": "39a386c8a642ecaa6c3d282f0091b034c18fdc29f4f1487b7418f764e977e1f3",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_selection": {
+          "digest": "64afef3eb891adc97d6f220449a011c6a31fa8c123aa8d41090c37ac99bbd854",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "reflection_formfill_consumed": {
+          "digest": "39ca9268c6d20519831e31e4a2016aff96df2db4483e607951b95a49680190e0",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "atomic_verification": {
+          "digest": "27d754e34c8741e22a8b9ff8170aba31eaa61f844e61aba67133da6d87db639a",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad"
+        },
+        "assembled_output": {
+          "digest": "c3bc3244b5bb57ea118cae48c8ba121d893500f700db21db3bc496d1f0475928",
+          "before_digest": "116b8539f3b9d6a68fe357c87cb5cf620342f5e38c27eeb3f1245c9b80c6e6ad",
+          "after_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9"
+        },
+        "graph_output": {
+          "digest": "80f6bf4f743f8b5830c1609b5d130d12c6fe4bcc0bd2545ad23fb814dfcbc620",
+          "before_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "after_digest": "fb53e05a059a6a2c35a0d7e5b222eb229c992d56ecec9a4889195bf98569ae72"
+        },
+        "prediction_file": {
+          "digest": "5d162642392b28fb19fb1622516f94a145f0a12d619e587e2154df670d121ef7",
+          "before_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9",
+          "after_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9"
+        },
+        "final_sockets": {
+          "digest": "fbac34c171a005925a874e57ece8770555fc056354dbb2f7898756cc68cbc22d",
+          "before_digest": "ef212aeb99d690f6c042a33712639d10771595b5d6ed214dd8acc4894df1dcd9",
+          "after_digest": "e07a01574aebf4ab1e80b0b001a85b9c35a130eb48b84e384d01be4276bdc494"
+        }
+      }
+    }
+  ]
+}

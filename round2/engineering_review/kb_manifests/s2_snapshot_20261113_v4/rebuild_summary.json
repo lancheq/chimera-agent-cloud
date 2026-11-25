@@ -1,0 +1,15 @@
+{
+  "stage": "consistent_document_vector_rebuild",
+  "parent_manifest_sha256": "40dc7bd64f47c09125d0267d145b2f7b98be9160f6a82d65351b1d6e6f28acc6",
+  "chunks": 2889,
+  "qa": 428,
+  "shape": [
+    3317,
+    768
+  ],
+  "document_api": "SentenceTransformer.encode_document",
+  "elapsed_seconds": 956.2021645577624,
+  "original_resource_inventory_unchanged": true,
+  "actual_diagnostic_llm_calls": 0,
+  "note": "Run freeze in separate process; this working copy is not yet an authorized manifest"
+}

@@ -23,7 +23,7 @@
 "knowledge_snapshot_id":   "13fbd478..."
 ```
 
-`knowledge_snapshot_id = 13fbd478...` 与 `host_smoke.py` 的 `KNOWLEDGE_SHA` 一致，说明该实验使用的知识库就是 `kb_manifests/` 里记录的那一份。
+`knowledge_snapshot_id = 13fbd478...` 与 `host_smoke.py` 的 `KNOWLEDGE_SHA` 一致。**这个值等于 `output/s2_knowledge_snapshot_20261113_v4/manifest.json` 文件自身的 sha256**（已实测比对），即它是 11-13 冻结的生产知识库 manifest 的指纹，不是 11-24 构建的 v1 新库。A 线（11-15）用的就是这份 11-13 快照，从未接触新库。
 
 `candidate_execution_config.json` 另有 `runtime_cohort_sha256: 68cd2aff...`，可用于判定两次运行是否用了同一批病例。
 

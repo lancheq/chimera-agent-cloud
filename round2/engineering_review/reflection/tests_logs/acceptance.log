@@ -1,0 +1,171 @@
+...........................................................F........F... [ 47%]
+........................................................................ [ 95%]
+.......                                                                  [100%]
+=================================== FAILURES ===================================
+__________________ test_real_entry_assigns_and_traces[3-S14] ___________________
+
+task = 3, scenario = 'S14'
+tmp_path = PosixPath('/home/hedongze/CHIMERA-agent/output/p01_g1r_reflection_20261118/tests/acceptance_cases/test_real_entry_assigns_and_tr12')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7a44c57dfb10>
+
+    @pytest.mark.parametrize('task,scenario', [(1, 'S06'), (2, 'projection'), (3, 'S01'),
+        (3, 'S01-internal-authority'),
+        (3, 'S02'), (3, 'S03'), (3, 'S04'), (3, 'S05'), (3, 'S08'), (3, 'S09'), (3, 'S12'),
+        (3, 'S12-rationale'), (3, 'S14')])
+    def test_real_entry_assigns_and_traces(task, scenario, tmp_path, monkeypatch):
+        profile, requests = entry_fixture(tmp_path, monkeypatch, task)
+        rules = ()
+        if scenario == 'S14':
+            rules = (OverwriteRule('t3_time_calibration', '/event', '1', '0', 'synthetic-approved-tau-observation'),)
+    
+        def reviewer(context):
+            original = json.loads(context.initial_json)
+            candidate = new_candidate(task, original)
+            if scenario == 'S03':
+                return ReviewBatch('detected')
+            if scenario == 'S04':
+                return ReviewBatch('no_issue')
+            if scenario == 'S05':
+                candidate = original
+            if scenario == 'S06':
+                candidate['biopsy_decision'] = original['biopsy_decision']
+                candidate['variable_weights']['age'] = 'noted'
+            if scenario == 'S09':
+                raise TimeoutError('synthetic-only review timeout')
+            if scenario in ('S12', 'S14'):
+                candidate['months_to_recurrence'] = 24.0
+            if scenario == 'S12-rationale':
+                candidate['free_text'] = CANDIDATE_REASON
+            review = approved(context, candidate, status='rejected' if scenario == 'S02' else 'accepted',
+                              mechanism='internal_formfill' if scenario == 'S01-internal-authority'
+                              else 'external_graph')
+            if scenario == 'S08':
+                review = replace(review, proposal=replace(review.proposal, candidate_json='{'))
+            return ReviewBatch('detected', (review,))
+    
+        assert inference.run(_profile_registry={'synthetic': profile}, _token_counter=counter,
+                             _reflection_test=SyntheticReview(reviewer, rules)) == 0
+        root, rows = read_entry(tmp_path)
+        assert len(requests) == len([e for e in rows if e['kind'] == 'wire_attempt']) == 2
+        by_stage = {r['stage']: r for r in rows if r['kind'] == 'consumption'}
+        selection = by_stage['reflection_selection']
+        consumed = by_stage['reflection_formfill_consumed']
+        assert selection['after_digest'] == consumed['after_digest']
+        assert by_stage['atomic_verification']['before_digest'] == consumed['after_digest']
+        assert by_stage['formfill_input']['after']['transcript'] == 'Synthetic software draft with no clinical authority.'
+        final = by_stage['final_sockets']
+        assert final['status'] == 'finalized'
+        for socket in final['files'].values():
+            assert hashlib.sha256((tmp_path / 'sockets' / socket['file']).read_bytes()).hexdigest() == socket['sha256']
+        assert len(list((tmp_path / 'sockets').iterdir())) == 2
+        assert (root / 'temporary_evidence/output' / f'task{task}/gc-case/prediction.json').is_file()
+        assert rows[-1]['kind'] == 'run_completed'
+        fields = {x['field']: x for x in final['reflection_receipt']['fields']}
+        assert fields['/repeat_test']['status'] == 'internal_only' and fields['/repeat_test']['final_present']
+        expected = {'S02': 'audit_rejected', 'S03': 'detected_no_executable_proposal', 'S04': 'no_issue',
+                    'S05': 'executed_no_delta', 'S08': 'invalid_proposal', 'S09': 'error_fallback_initial'}
+        assert selection['status'] == expected.get(scenario, 'accepted_candidate')
+        if scenario in ('S02', 'S03', 'S04', 'S08', 'S09'):
+            assert consumed['after'] == base(task)
+            assert final['reflection_consumption'] == ('finalized_initial_with_error'
+                                                       if scenario in ('S08', 'S09') else 'finalized_initial')
+        if scenario in ('S12', 'S14'):
+            assert final['after']['decision']['event'] == 0
+>           assert final['reflection_consumption'] == ('accepted_then_overridden' if scenario == 'S14' else 'consumption_contract_failed')
+E           AssertionError: assert 'consumption_contract_failed' == 'accepted_then_overridden'
+E             
+E             - accepted_then_overridden
+E             + consumption_contract_failed
+
+/home/hedongze/CHIMERA-agent/tests/test_p01_g1r_reflection.py:323: AssertionError
+----------------------------- Captured stderr call -----------------------------
+2026-11-18 12:19:25,199 inference INFO Detected interface for task 3
+2026-11-18 12:19:25,248 inference INFO Starting agent inference (model=Qwen3.6-35B-A3B-UD-Q4_K_M.gguf, task=3)
+2026-11-18 12:19:25,250 chimera_agent_baseline.run INFO Run plan: tasks [3]
+2026-11-18 12:19:25,287 chimera_agent_baseline.run INFO Task 3: starting MCP server (data_dir=/tmp/chimera-gc-um6s52ie/input/task3/agent_input)
+2026-11-18 12:19:25,838 chimera_agent_baseline.tools.base INFO Loaded 1 cases from /tmp/chimera-gc-um6s52ie/input/task3/agent_input
+2026-11-18 12:19:25,847 __main__ INFO Guidelines DB not found in /home/hedongze/CHIMERA-agent/output/p01_g1r_reflection_20261118/tests/acceptance_cases/test_real_entry_assigns_and_tr12/empty_resources — search_guidelines will return empty results
+2026-11-18 12:19:25,957 chimera_agent_baseline.run INFO Task 3: loaded 6 tools from MCP server
+2026-11-18 12:19:25,957 chimera_agent_baseline.run INFO Task 3: cost_align=False
+2026-11-18 12:19:25,993 chimera_agent_baseline.agent.graph INFO Compiled react+form_fill graph with 6 tools (max_model_turns=None)
+2026-11-18 12:19:25,993 chimera_agent_baseline.run INFO Task 3: processing case gc-case
+2026-11-18 12:19:26,146 chimera_agent_baseline.agent.form_fill INFO form_fill: case=gc-case task=3 called_tools=[] eligible_vars=[] predictor=None self_refine=False atomic_check=False
+2026-11-18 12:19:26,474 chimera_agent_baseline.agent.form_fill INFO num_verify: enter task=3 ft_len=155
+2026-11-18 12:19:26,901 chimera_agent_baseline.run INFO Task 3: case gc-case done in 0.9s
+2026-11-18 12:19:26,904 chimera_agent_baseline.run INFO Task 3: wrote 1 predictions (0 skipped, 0 failed) under /tmp/chimera-gc-um6s52ie/output/task3
+2026-11-18 12:19:26,904 chimera_agent_baseline.run INFO Done. Wrote 1 predictions across 1 task(s).
+2026-11-18 12:19:27,196 inference INFO Wrote GC result sockets for task 3 to /home/hedongze/CHIMERA-agent/output/p01_g1r_reflection_20261118/tests/acceptance_cases/test_real_entry_assigns_and_tr12/sockets
+_______ test_internal_graph_keeps_existing_unreviewed_form_fill_behavior _______
+
+tmp_path = PosixPath('/home/hedongze/CHIMERA-agent/output/p01_g1r_reflection_20261118/tests/acceptance_cases/test_internal_graph_keeps_exis0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7a44c56743d0>
+
+    def test_internal_graph_keeps_existing_unreviewed_form_fill_behavior(tmp_path, monkeypatch):
+        profile, requests = entry_fixture(tmp_path, monkeypatch, 3, internal=True)
+        assert inference.run(_profile_registry={'synthetic': profile}, _token_counter=counter) == 0
+        _, rows = read_entry(tmp_path)
+        observation = next(x for x in rows if x['stage'] == 'internal_reflection')
+>       assert observation['artifact']['mechanism'] == 'internal_formfill'
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'artifact'
+
+/home/hedongze/CHIMERA-agent/tests/test_p01_g1r_reflection.py:444: KeyError
+----------------------------- Captured stderr call -----------------------------
+2026-11-18 12:19:34,844 inference INFO Detected interface for task 3
+2026-11-18 12:19:34,908 inference INFO Starting agent inference (model=Qwen3.6-35B-A3B-UD-Q4_K_M.gguf, task=3)
+2026-11-18 12:19:34,909 chimera_agent_baseline.run INFO Run plan: tasks [3]
+2026-11-18 12:19:34,940 chimera_agent_baseline.run INFO Task 3: starting MCP server (data_dir=/tmp/chimera-gc-g9c_u0yg/input/task3/agent_input)
+2026-11-18 12:19:35,487 chimera_agent_baseline.tools.base INFO Loaded 1 cases from /tmp/chimera-gc-g9c_u0yg/input/task3/agent_input
+2026-11-18 12:19:35,496 __main__ INFO Guidelines DB not found in /home/hedongze/CHIMERA-agent/output/p01_g1r_reflection_20261118/tests/acceptance_cases/test_internal_graph_keeps_exis0/empty_resources — search_guidelines will return empty results
+2026-11-18 12:19:35,604 chimera_agent_baseline.run INFO Task 3: loaded 6 tools from MCP server
+2026-11-18 12:19:35,605 chimera_agent_baseline.run INFO Task 3: cost_align=False
+2026-11-18 12:19:35,638 chimera_agent_baseline.agent.graph INFO Compiled react+form_fill graph with 6 tools (max_model_turns=None)
+2026-11-18 12:19:35,638 chimera_agent_baseline.run INFO Task 3: processing case gc-case
+2026-11-18 12:19:35,778 chimera_agent_baseline.agent.form_fill INFO form_fill: case=gc-case task=3 called_tools=[] eligible_vars=[] predictor=None self_refine=True atomic_check=False
+2026-11-18 12:19:36,024 chimera_agent_baseline.agent.form_fill INFO self_refine: gc-case critique found 1 issues:
+Synthetic detection only
+2026-11-18 12:19:36,108 chimera_agent_baseline.agent.form_fill INFO self_refine: gc-case judgment refined successfully
+2026-11-18 12:19:36,299 chimera_agent_baseline.agent.form_fill INFO num_verify: enter task=3 ft_len=155
+2026-11-18 12:19:36,932 chimera_agent_baseline.run INFO Task 3: case gc-case done in 1.3s
+2026-11-18 12:19:36,935 chimera_agent_baseline.run INFO Task 3: wrote 1 predictions (0 skipped, 0 failed) under /tmp/chimera-gc-g9c_u0yg/output/task3
+2026-11-18 12:19:36,935 chimera_agent_baseline.run INFO Done. Wrote 1 predictions across 1 task(s).
+2026-11-18 12:19:37,215 inference INFO Wrote GC result sockets for task 3 to /home/hedongze/CHIMERA-agent/output/p01_g1r_reflection_20261118/tests/acceptance_cases/test_internal_graph_keeps_exis0/sockets
+=============================== warnings summary ===============================
+tests/test_p01_g1a_runtime.py::test_prefill_transport_fallback_and_parse_retry_all_counted
+tests/test_p01_g1a_runtime.py::test_actual_entry_stub_exports_before_cleanup_and_links_final_sockets[1]
+tests/test_p01_g1a_runtime.py::test_optional_model_consumers_charge_and_propagate_fatal[internal_reflection]
+tests/test_p01_g1a_runtime.py::test_optional_model_consumers_charge_and_propagate_fatal[atomic_verification]
+tests/test_p01_g1a_runtime.py::test_successful_real_graph_stub_counts_plan_agent_and_formfill
+tests/test_refactor_runtime.py::test_verification_and_decision_layer_have_distinct_snapshots
+  /home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='psa', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='age', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='dre', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='comorbidity', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='bx', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='pirads', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='psad', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='vol', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='cspca', input_value='not_used', input_type=str])
+    return self.__pydantic_serializer__.to_python(
+
+tests/test_p01_g1a_runtime.py::test_actual_entry_stub_exports_before_cleanup_and_links_final_sockets[2]
+  /home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='psa', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='age', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='ct', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='comorbidity', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='pirads', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='psad', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='cspca', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='bx_gl_prim', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='bx_gl_sec', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='bx_gl_tert', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='bx_isup', input_value='not_used', input_type=str])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_p01_g1r_reflection.py::test_real_entry_assigns_and_traces[3-S14]
+FAILED tests/test_p01_g1r_reflection.py::test_internal_graph_keeps_existing_unreviewed_form_fill_behavior
+2 failed, 149 passed, 7 warnings in 55.26s

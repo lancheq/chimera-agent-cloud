@@ -111,18 +111,68 @@ XLM-R base 规模的 cross-encoder，与 `bge-reranker-base` 系同构。确切�
 | 文件 | `resources/guideline_qa.jsonl`（428 行） |
 | 向量 | `resources/guideline_qa.embeddings.npy`（1.3 MB） |
 | 字段 | `id, task, question, answer, decision, confidence, evidence_level, grounding, support_quote, _primary_grounding` |
-| 来源 | **未记录**。`guideline_dataset/qa/guideline_qa.jsonl` 只有 20 行、字段更少，不是同一份。428 条的生成脚本不在 `guideline_dataset/scripts/` 五个脚本中 |
+| 来源 | 文件时间戳 10-26 00:49，与 `rag_eval_20261025` 同期；向量由 `s2_knowledge_vector_rebuild_20261113_v2` 用 `encode_document` 重新编码（见第七节）。`guideline_dataset/qa/guideline_qa.jsonl` 只有 20 行且字段更少，**不是同一份** |
 
 ## 七、知识库身份
 
-| 代 | 路径 | records | vectors | knowledge_snapshot_id |
-|---|---|---:|---:|---|
-| 生产（旧） | `resources/guidelines_db`（ChromaDB） | 2889 分片 | — | — |
-| v1 | `guideline_dataset/rechunk_20261124/` | 1288 | 996×768 | `13fbd478…` |
-| v2 | `.../rechunk_20261124_v2/` | 1372 | **1080×768** | — |
-| v2r1 | `.../rechunk_20261124_v2r1/` | 1037 | 1037×768 | — |
+### `13fbd478…` 到底是什么（一处已更正的归属）
 
-`13fbd478…` 与 `host_smoke.py` 的 `KNOWLEDGE_SHA` 一致，说明 A 线实验用的是 v1 这一代的指纹。
+上一版把 `13fbd478…` 归为 11-24 构建的 v1 新库，**这是错的**。实测比对：
+
+```
+13fbd478a3c4f2f3fa2f2fe60a9b48c5c838df097f15eab83077a36fc41bb4da
+= sha256( output/s2_knowledge_snapshot_20261113_v4/manifest.json )
+```
+
+它是**某个 manifest 文件自身的哈希**，不是知识库内容指纹。`host_smoke.py:172` 的校验语句也证明了这一点：
+
+```python
+if info.budget_units != 3 or info.max_attempts != 6 or sha(info.knowledge_manifest) != KNOWLEDGE_SHA:
+```
+
+`sha(info.knowledge_manifest)` —— 校验的是 manifest 文件，不是库。
+
+时间线也对得上：A 线 s4 实验在 11-15，`s2_knowledge_snapshot_20261113_v4` 冻结于 11-13，而 rechunk v1 是 11-24 才建的。**A 线从头到尾用的都是 11-13 冻结的旧库，从未用过新库。**
+
+### 四代身份
+
+| 代 | 路径 | 检索单元 | 向量 | 身份标识 |
+|---|---|---:|---:|---|
+| 生产（旧）·11-13 冻结 | `output/s2_knowledge_snapshot_20261113_v4/` | 2889 chunks + 428 QA | 3317×768 | manifest 文件 sha256 = `13fbd478…` |
+| v1 新库·11-24 | `guideline_dataset/rechunk_20261124/` | 1288 records | 996×768 | 无 manifest 指纹 |
+| v2 | `.../rechunk_20261124_v2/` | 1372 records | **1080×768** | 无 |
+| v2r1 | `.../rechunk_20261124_v2r1/` | 1037 records | 1037×768 | 无 |
+
+### 旧库的构成（终于闭合）
+
+`output/s2_knowledge_vector_rebuild_20261113_v2/rebuild_summary.json`：
+
+```json
+"chunks": 2889,
+"qa": 428,
+"shape": [3317, 768],
+"document_api": "SentenceTransformer.encode_document",
+"elapsed_seconds": 956.2,
+"actual_diagnostic_llm_calls": 0
+```
+
+**2889 + 428 = 3317**，两路向量合在一起才是检索库的全貌。`guideline_qa.jsonl` 的时间戳是 10-26 00:49，与 `rag_eval_20261025` 同期——428 条 QA 是那批 RAG 评估工作产出的，不是 `guideline_dataset/scripts/04_extract_qa.py`（那个版本只产出 20 条、字段也不同）。
+
+主仓 `scripts/04_extract_qa.py`（12,497 B）与 `guideline_dataset/scripts/04_extract_qa.py`（26,010 B）哈希不同，是两版；两份都已同步（后者保留原名，前者加后缀 `__from_scripts_dir.py`）。
+
+### 11-13 快照记录的构建环境
+
+`manifest.json` 的 `packages` 字段：
+
+```json
+{"torch": "2.6.0+cpu", "transformers": "4.57.6",
+ "sentence-transformers": "5.7.0", "chromadb": "1.5.9",
+ "numpy": "2.4.6", "rank-bm25": "0.2.2"}
+```
+
+**与当前推理环境不同**（当前 torch 2.4.0+cu121 / transformers 4.51.3 / ST 5.6.1）。即"建库环境"与"推理环境"是两套，复现时不能混用。
+
+同一份 manifest 还记录 `pipeline: existing_hybrid_strict_v1`、`channels: [dense, bm25, rrf, cross_encoder, qa_dense]`（五条通道）、`fallbacks_allowed: false`。
 
 **生产仍加载旧库**，v1/v2/v2r1 均未切流，详见 `../c_line_analysis/C_LINE_RETRIEVAL_DIVERGENCE.md`。
 

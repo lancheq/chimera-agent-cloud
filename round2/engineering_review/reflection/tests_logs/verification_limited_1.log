@@ -1,0 +1,39 @@
+........................................................................ [ 47%]
+........................................................................ [ 95%]
+.......                                                                  [100%]
+=============================== warnings summary ===============================
+tests/test_p01_g1a_runtime.py::test_prefill_transport_fallback_and_parse_retry_all_counted
+tests/test_p01_g1a_runtime.py::test_actual_entry_stub_exports_before_cleanup_and_links_final_sockets[1]
+tests/test_p01_g1a_runtime.py::test_optional_model_consumers_charge_and_propagate_fatal[internal_reflection]
+tests/test_p01_g1a_runtime.py::test_optional_model_consumers_charge_and_propagate_fatal[atomic_verification]
+tests/test_p01_g1a_runtime.py::test_successful_real_graph_stub_counts_plan_agent_and_formfill
+tests/test_refactor_runtime.py::test_verification_and_decision_layer_have_distinct_snapshots
+  /home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='psa', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='age', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='dre', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='comorbidity', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='bx', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='pirads', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='psad', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='vol', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='cspca', input_value='not_used', input_type=str])
+    return self.__pydantic_serializer__.to_python(
+
+tests/test_p01_g1a_runtime.py::test_actual_entry_stub_exports_before_cleanup_and_links_final_sockets[2]
+  /home/hedongze/miniconda3/envs/chimera/lib/python3.11/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='psa', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='age', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='ct', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='comorbidity', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='pirads', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='psad', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='cspca', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='bx_gl_prim', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='bx_gl_sec', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='bx_gl_tert', input_value='not_used', input_type=str])
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='bx_isup', input_value='not_used', input_type=str])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+151 passed, 7 warnings in 53.96s

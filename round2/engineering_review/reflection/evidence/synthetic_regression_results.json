@@ -1,0 +1,293 @@
+{
+  "source": "output/planning_A02_reflection_20261117/synthetic_regression_matrix.json",
+  "source_sha256": "5e1512f2da0ded1e0d90efd3dfe4256e3afae21bbabee9ebc1fea3817efa39d1",
+  "status": "18/18_SYNTHETIC_SCENARIOS_VERIFIED",
+  "cases": [
+    {
+      "id": "S01",
+      "scenario": "接纳夹具正确提议",
+      "setup": "oracle要求B；合法候选、合法来源、绑定accepted审核、授权profile，末端不覆写",
+      "expected_selection": "accepted_candidate",
+      "selected": "candidate",
+      "expected_terminal": "finalized_retained",
+      "assert": "所有可提交字段等于候选，formfill_consumed与最终摘要对应",
+      "verified": true,
+      "test_cases": [
+        "test_selector_contract[S01-accepted_candidate]",
+        "test_real_entry_assigns_and_traces[3-S01]",
+        "test_real_entry_assigns_and_traces[3-S01-internal-authority]"
+      ]
+    },
+    {
+      "id": "S02",
+      "scenario": "拒绝夹具错误提议",
+      "setup": "oracle要求A；错误B提议由固定审核rejected并给blocking finding",
+      "expected_selection": "audit_rejected",
+      "selected": "J0",
+      "expected_terminal": "finalized_initial",
+      "assert": "错误建议完整不写回，不因文本自称correct覆盖审核",
+      "verified": true,
+      "test_cases": [
+        "test_selector_contract[S02-audit_rejected]",
+        "test_real_entry_assigns_and_traces[3-S02]"
+      ]
+    },
+    {
+      "id": "S03",
+      "scenario": "检测有但无可执行纠正",
+      "setup": "issues非空、draft_text非空、proposal=null",
+      "expected_selection": "detected_no_executable_proposal",
+      "selected": "J0",
+      "expected_terminal": "finalized_initial",
+      "assert": "detection=true、correction=false，文本不得成为诊断",
+      "verified": true,
+      "test_cases": [
+        "test_selector_contract[S03-detected_no_executable_proposal]",
+        "test_real_entry_assigns_and_traces[3-S03]",
+        "test_external_graph_artifact_remains_blocked_without_bound_review"
+      ]
+    },
+    {
+      "id": "S04",
+      "scenario": "合法无问题",
+      "setup": "合法解析issues=[]、proposal=null",
+      "expected_selection": "no_issue",
+      "selected": "J0",
+      "expected_terminal": "finalized_initial",
+      "assert": "无问题与disabled/parse_error有不同事件",
+      "verified": true,
+      "test_cases": [
+        "test_selector_contract[S04-no_issue]",
+        "test_real_entry_assigns_and_traces[3-S04]"
+      ]
+    },
+    {
+      "id": "S05",
+      "scenario": "执行但完整候选无变化",
+      "setup": "合法候选完整等于J0，绑定accepted审核",
+      "expected_selection": "executed_no_delta",
+      "selected": "J0-identical-candidate",
+      "expected_terminal": "finalized_retained",
+      "assert": "有真实执行/选择回执，不以delta=0说未运行",
+      "verified": true,
+      "test_cases": [
+        "test_selector_contract[S05-executed_no_delta]",
+        "test_real_entry_assigns_and_traces[3-S05]"
+      ]
+    },
+    {
+      "id": "S06",
+      "scenario": "标签不变而理由/权重修改被接纳",
+      "setup": "candidate.decision=A，reason/weights改变且审核接纳",
+      "expected_selection": "accepted_candidate",
+      "selected": "candidate",
+      "expected_terminal": "finalized_retained",
+      "assert": "label_changed=false与field_changed=true并存",
+      "verified": true,
+      "test_cases": [
+        "test_selector_contract[S06-accepted_candidate]",
+        "test_real_entry_assigns_and_traces[1-S06]",
+        "test_S06_same_label_keeps_reviewed_reason_and_weight_when_unmodified"
+      ]
+    },
+    {
+      "id": "S07",
+      "scenario": "有效格式但审核拒绝",
+      "setup": "候选schema合法但审核blocking_findings非空",
+      "expected_selection": "audit_rejected",
+      "selected": "J0",
+      "expected_terminal": "finalized_initial",
+      "assert": "结构合法不能越过语义拒绝，策略拒绝不重试",
+      "verified": true,
+      "test_cases": [
+        "test_selector_contract[S07-audit_rejected]"
+      ]
+    },
+    {
+      "id": "S08",
+      "scenario": "提议格式错误或必填null",
+      "setup": "损坏JSON/缺decision/decision=null三个参数分支",
+      "expected_selection": "invalid_proposal",
+      "selected": "J0",
+      "expected_terminal": "finalized_initial_with_error",
+      "assert": "解析失败不标no_issue；不猜decision",
+      "verified": true,
+      "test_cases": [
+        "test_selector_contract[S08-json-invalid_proposal]",
+        "test_selector_contract[S08-missing-invalid_proposal]",
+        "test_selector_contract[S08-null-invalid_proposal]",
+        "test_selector_contract[S08-type-invalid_proposal]",
+        "test_real_entry_assigns_and_traces[3-S08]"
+      ]
+    },
+    {
+      "id": "S09",
+      "scenario": "审核异常/超时",
+      "setup": "审核stub抛异常或timeout，合法J0存在",
+      "expected_selection": "error_fallback_initial",
+      "selected": "J0",
+      "expected_terminal": "finalized_initial_with_error",
+      "assert": "error非rejected非accepted；无隐式追加调用",
+      "verified": true,
+      "test_cases": [
+        "test_selector_contract[S09-error_fallback_initial]",
+        "test_real_entry_assigns_and_traces[3-S09]"
+      ]
+    },
+    {
+      "id": "S10",
+      "scenario": "审核未知或缺失",
+      "setup": "verdict=unknown/not_requested/null",
+      "expected_selection": "blocked_missing_authorization",
+      "selected": "J0",
+      "expected_terminal": "finalized_initial",
+      "assert": "未知不得转为accepted，缺省不能放行",
+      "verified": true,
+      "test_cases": [
+        "test_selector_contract[S10-unknown-blocked_missing_authorization]",
+        "test_selector_contract[S10-not_requested-blocked_missing_authorization]",
+        "test_selector_contract[S10-missing-blocked_missing_authorization]",
+        "test_selector_contract[S10-no-authority-blocked_missing_authorization]",
+        "test_external_graph_artifact_remains_blocked_without_bound_review",
+        "test_code_fixture_cannot_opt_in_legacy_entry"
+      ]
+    },
+    {
+      "id": "S11",
+      "scenario": "错身份、旧base或伪造审核摘要",
+      "setup": "case/task/base/candidate/source/profile digest逐项错配，含另一机制审核token",
+      "expected_selection": "binding_or_authority_rejected",
+      "selected": "J0",
+      "expected_terminal": "finalized_initial_with_error",
+      "assert": "每一种错配拒绝，不能跨患者/版本复用授权",
+      "verified": true,
+      "test_cases": [
+        "test_S11_bindings_reject_stale_or_other_review[proposal-run_id]",
+        "test_S11_bindings_reject_stale_or_other_review[proposal-task]",
+        "test_S11_bindings_reject_stale_or_other_review[proposal-case_id]",
+        "test_S11_bindings_reject_stale_or_other_review[proposal-profile_digest]",
+        "test_S11_bindings_reject_stale_or_other_review[proposal-draft]",
+        "test_S11_bindings_reject_stale_or_other_review[proposal-base_digest]",
+        "test_S11_bindings_reject_stale_or_other_review[proposal-source_digest]",
+        "test_S11_bindings_reject_stale_or_other_review[proposal-process_digest]",
+        "test_S11_bindings_reject_stale_or_other_review[proposal-candidate_digest]",
+        "test_S11_bindings_reject_stale_or_other_review[verdict-run_id]",
+        "test_S11_bindings_reject_stale_or_other_review[verdict-task]",
+        "test_S11_bindings_reject_stale_or_other_review[verdict-case_id]",
+        "test_S11_bindings_reject_stale_or_other_review[verdict-profile_digest]",
+        "test_S11_bindings_reject_stale_or_other_review[verdict-draft]",
+        "test_S11_bindings_reject_stale_or_other_review[verdict-base_digest]",
+        "test_S11_bindings_reject_stale_or_other_review[verdict-source_digest]",
+        "test_S11_bindings_reject_stale_or_other_review[verdict-process_digest]",
+        "test_S11_bindings_reject_stale_or_other_review[verdict-candidate_digest]",
+        "test_S11_bindings_reject_stale_or_other_review[verdict-proposal_digest]",
+        "test_S11_bindings_reject_stale_or_other_review[verdict-mechanism]",
+        "test_S11_bindings_reject_stale_or_other_review[verdict-method]"
+      ]
+    },
+    {
+      "id": "S12",
+      "scenario": "末端未授权覆写",
+      "setup": "已接纳B，postprocess或align将受保护字段改回A/常量",
+      "expected_selection": "accepted_candidate",
+      "selected": "candidate",
+      "expected_terminal": "consumption_contract_failed",
+      "assert": "记录实际覆写字段、before/after、首次断点；不可仍称最终接纳保留",
+      "verified": true,
+      "test_cases": [
+        "test_real_entry_assigns_and_traces[3-S12]",
+        "test_real_entry_assigns_and_traces[3-S12-rationale]"
+      ]
+    },
+    {
+      "id": "S13",
+      "scenario": "末端字段丢失或消费旧对象",
+      "setup": "formfill仍用J0、序列化丢reason、socket投影丢字段，逐层独立注入",
+      "expected_selection": "accepted_candidate",
+      "selected": "candidate",
+      "expected_terminal": "consumption_contract_failed",
+      "assert": "首次digest或字段映射失配可定位；两个socket分别检查",
+      "verified": true,
+      "test_cases": [
+        "test_S13_detects_first_missing_or_old_value[assignment]",
+        "test_S13_detects_first_missing_or_old_value[assembly]",
+        "test_S13_detects_first_missing_or_old_value[socket]"
+      ]
+    },
+    {
+      "id": "S14",
+      "scenario": "显式获批规则覆写",
+      "setup": "D05测试profile允许某字段align变更，其他字段不变",
+      "expected_selection": "accepted_candidate",
+      "selected": "candidate_then_profile_rule",
+      "expected_terminal": "accepted_then_overridden",
+      "assert": "原candidate审核不冒称覆盖变更后结果；保留真实最终值及rule_id",
+      "verified": true,
+      "test_cases": [
+        "test_real_entry_assigns_and_traces[3-S14]"
+      ]
+    },
+    {
+      "id": "S15",
+      "scenario": "无合法初始值且反思异常",
+      "setup": "J0非法/不存在，proposal异常",
+      "expected_selection": "failed_no_valid_initial",
+      "selected": null,
+      "expected_terminal": "failed_no_valid_initial",
+      "assert": "不制造default诊断，不写成功finalized",
+      "verified": true,
+      "test_cases": [
+        "test_S15_invalid_initial_cannot_be_rescued",
+        "test_entry_fatal_has_no_finalized_receipt[invalid_initial]"
+      ]
+    },
+    {
+      "id": "S16",
+      "scenario": "回执持久化失败",
+      "setup": "选择完成后audit sink抛I/O异常/临时目录过早清理",
+      "expected_selection": "accepted_candidate",
+      "selected": "candidate",
+      "expected_terminal": "audit_persistence_failed",
+      "assert": "验收失败、无finalized成功回执，不吞异常",
+      "verified": true,
+      "test_cases": [
+        "test_entry_fatal_has_no_finalized_receipt[review_fatal]",
+        "test_entry_fatal_has_no_finalized_receipt[audit_persistence]"
+      ]
+    },
+    {
+      "id": "S17",
+      "scenario": "字段覆盖不完整/来源越权",
+      "setup": "审核少weights或confidence；引用生成意见为患者事实；无permission receipt，逐项注入",
+      "expected_selection": "binding_or_authority_rejected",
+      "selected": "J0",
+      "expected_terminal": "finalized_initial_with_error",
+      "assert": "不得将引用可定位当医学正确；权限不因反思免费扩展",
+      "verified": true,
+      "test_cases": [
+        "test_selector_contract[S17-weights-binding_or_authority_rejected]",
+        "test_selector_contract[S17-confidence-binding_or_authority_rejected]",
+        "test_selector_contract[S17-generated-opinion-binding_or_authority_rejected]",
+        "test_selector_contract[S17-unavailable-source-binding_or_authority_rejected]",
+        "test_selector_contract[S17-bad-quote-binding_or_authority_rejected]",
+        "test_selector_contract[S17-malformed-citation-binding_or_authority_rejected]"
+      ]
+    },
+    {
+      "id": "S18",
+      "scenario": "开关关闭与多候选冲突",
+      "setup": "disabled分支；或external/internal基于不同base同时有候选而profile未定优先级",
+      "expected_selection": "disabled_or_ambiguous_candidates",
+      "selected": "J0",
+      "expected_terminal": "finalized_initial",
+      "assert": "开关默认保持；冲突显式记录，不拼字段、不静默偏好某机制",
+      "verified": true,
+      "test_cases": [
+        "test_selector_contract[S18-disabled-disabled]",
+        "test_selector_contract[S18-not_triggered-not_triggered]",
+        "test_selector_contract[S18-ambiguous-ambiguous_candidates]",
+        "test_code_fixture_cannot_opt_in_legacy_entry"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "manifest_sha256_before_authorization": "ac29f41674390c082a8fccac394a8fb6ada8eea61b277cb1dbcd231a3404b8ed",
+  "resource_binding": "c3aaefd16695e92cfb051b9d4ea5fd8a3366576eac7e2a393ebbbc71a0750975",
+  "chunk_sample_indices": [
+    0,
+    1444,
+    2888
+  ],
+  "chunk_cosines": [
+    0.999999996900287,
+    1.0000000269521727,
+    1.0000000037759893
+  ],
+  "qa_sample_indices": [
+    0,
+    214,
+    427
+  ],
+  "qa_cosines": [
+    1.0000001192092896,
+    1.0000001192092896,
+    1.0
+  ],
+  "elapsed_seconds": 29.05615985393524,
+  "criterion": "each deterministic sampled cosine >=0.999; this is a compatibility screen, not proof for every vector",
+  "passed": true,
+  "actual_llm_calls": 0
+}

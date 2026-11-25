@@ -21,6 +21,8 @@
 | 每个实验的入口脚本在哪 | `EXPERIMENT_ARTIFACT_INDEX.md` |
 | 模型/embedding/reranker 到底是什么 | `RESOURCE_MANIFEST.md` |
 | 新旧检索算法差在哪、新库切流了吗 | `c_line_analysis/C_LINE_RETRIEVAL_DIVERGENCE.md` |
+| Reflection 怎么验证的、会不会被覆盖 | `reflection/REFLECTION_EVIDENCE.md` |
+| Fact Check 到底调不调 LLM | `reflection/FACT_CHECK_NOTES.md` |
 | 旧库是怎么建出来的 | `../guideline_dataset/scripts/README.md` + 五个脚本 |
 
 ## 目录
@@ -38,6 +40,7 @@ engineering_review/
 │   ├── evidence/                   semantic_fix.diff 等汇总
 │   └── archive/                    修复前代码 + 回归基线代码快照
 ├── c_line_analysis/                C01 知识库重建审计（含 record_id 级追溯）
+├── reflection/                     Reflection 18 场景证据 + Fact Check 机制
 ├── kb_manifests/                   三代知识库 manifest + 版本映射
 ├── FILE_MANIFEST.md                源码/配置同步清单与哈希
 ├── TRACE_INDEX.md                  轨迹索引
