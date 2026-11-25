@@ -17,6 +17,7 @@
 | C 线每个脚本干什么 | `../scripts/c_line/README.md` |
 | 哪些文件没上传、为什么 | `MISSING_FILES.md` |
 | 实验对应哪个代码版本 | `VERSION_MAP.md` |
+| armA/armC 和主仓什么关系、v2 怎么接的 | `ARM_INTEGRATION.md` |
 | 每个实验的入口脚本在哪 | `EXPERIMENT_ARTIFACT_INDEX.md` |
 | 模型/embedding/reranker 到底是什么 | `RESOURCE_MANIFEST.md` |
 | 新旧检索算法差在哪、新库切流了吗 | `c_line_analysis/C_LINE_RETRIEVAL_DIVERGENCE.md` |
@@ -43,7 +44,11 @@ engineering_review/
 ├── VERSION_MAP.md                  实验↔代码↔资源版本对应
 ├── EXPERIMENT_ARTIFACT_INDEX.md    每个实验的入口、配置、产物
 ├── RESOURCE_MANIFEST.md            主模型/embedding/reranker/环境身份
+├── ARM_INTEGRATION.md              armA/armC 与主仓关系、v2 接入机制
 └── MISSING_FILES.md                未同步清单及原因
+
+../archive/armA_current/            armA 快照（25 py，非历史版本）
+../archive/armC_current/            armC 快照（135 py，非历史版本）
 ```
 
 ## 三条阅读原则
