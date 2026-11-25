@@ -1,0 +1,84 @@
+{
+  "files": {
+    "records_r1.jsonl": {
+      "sha256": "ac6835a02ef764bea79753f74cc83d9597abb67e5e7493d53fb34560abd553d1",
+      "bytes": 2529426
+    },
+    "vectors_r1.npy": {
+      "sha256": "d1cdb88a7109826254f1d29f4785fe6f30cb8236a70e149a5db020902a31fbfb",
+      "bytes": 3185792
+    },
+    "summary_r1.json": {
+      "sha256": "709f1c01019503238cfafefdf6c2d319200a8ca458fd3265fbbb62d7ab1a6e0e",
+      "bytes": 579
+    },
+    "table_audit.json": {
+      "sha256": "8009783e6c8a4d1f935ef601b53f54b01723eaf73f640aa1b87d3730477de150",
+      "bytes": 23672
+    },
+    "context_refine.json": {
+      "sha256": "c4982ff51b1c9a2a48c9069b23d1e8a41cbed82ff835308126d559526fbb981f",
+      "bytes": 2994
+    },
+    "fingerprint_head_tail": {
+      "sha256_head": "cb6692900894ec618a8b6d88afba38bf27d07e6b53da3b40efdb6a58dbf00927",
+      "sha256_tail": "f878e1d1a791b47f3e9d74abac999a6af3c7a91d9d5dd7f31bf0091e7cf03697"
+    }
+  },
+  "previous_v2": {
+    "records_v2.jsonl": {
+      "sha256": "ef5216171b65277ed236f64ef349f7b16eb24513bbfd2f8dbef900a35cd659ed",
+      "bytes": 4342917
+    },
+    "vectors.npy": {
+      "sha256": "d12a6ad2ee5bf3d10319a241736e4d578fd6979fee5e27ed2cd20c33b9cc4b26",
+      "bytes": 3317888
+    }
+  },
+  "config": {
+    "corpus": "rechunk_20261124_v2r1 (EAU 2025, 结构感知切分 + 表格跨页合并 + 场景标签保守修正)",
+    "retrievable_units": 1037,
+    "table_records": 54,
+    "embedding": "resources/embedding_model (embeddinggemma-300m), retrieval_text, max_seq 512",
+    "reranker": "resources/reranker_model, max_length 512",
+    "recall": {
+      "dense_top": 20,
+      "bm25_top": 20,
+      "rrf_k": 60,
+      "rrf_candidates": 30
+    },
+    "final_context": 5,
+    "p1_backfill": {
+      "enabled": true,
+      "section_cap": 2,
+      "order": "按首次命中的重排顺序",
+      "dedupe": "original_text 归一化去重",
+      "truncate": false
+    },
+    "generic_word_filter": "F6（三处同时去泛词）",
+    "clinical_context_filter": "关闭",
+    "vector_reuse": {
+      "reused": 983,
+      "reencoded": 54,
+      "note": "非表格记录按 id 原样复用 v2 向量；合并后的 54 条表格重新编码"
+    },
+    "frozen_at": "2026-11-25",
+    "differs_from_v2": {
+      "core_units": "1080 → 1037",
+      "tables": "97 → 54（24 组合并，减少 43 条）",
+      "table_section": {
+        "high": 21,
+        "unknown": 25,
+        "medium": 8
+      },
+      "context_relabeled": 76
+    },
+    "known_defects": [
+      "25/54 张表仍无章节归属（same-page 多小节且无共同父级），保留 UNKNOWN，不猜",
+      "章节归属基于正文标题页序列（295 个 page-section 对），表页本身无标题时向相邻页借证据的置信度为 low",
+      "18 张表超过重排 512 token 窗口，重排只看前 512 token；表进入正文时 token 波动大（单表最大 2497 token）",
+      "场景标签仍是 27 类粗粒度：6.2 子树已按标题关键词修正 76 条，其余未逐条复核",
+      "P1 在命中错误小节时会放大该错误（Q06 为例），本轮不做场景过滤"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "core_units_before": 1080,
+  "core_units_after": 1037,
+  "table_records_before": 97,
+  "table_records_after": 54,
+  "merged_groups": 24,
+  "merged_extra_removed": 43,
+  "vectors_reused": 983,
+  "vectors_reencoded": 54,
+  "section_confidence": {
+    "high": 21,
+    "unknown": 25,
+    "medium": 8
+  },
+  "table_context": {
+    "unknown": 31,
+    "active_surveillance_confirmed": 7,
+    "biochemical_recurrence": 5,
+    "treatment": 3,
+    "biopsy_indication_strategy": 2,
+    "epidemiology_background": 1,
+    "classification_staging": 1,
+    "diagnostic_evaluation": 1
+  }
+}

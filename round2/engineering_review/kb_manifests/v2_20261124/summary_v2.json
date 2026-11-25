@@ -1,0 +1,49 @@
+{
+ "total": 1372,
+ "by_kind": {
+  "narrative": 826,
+  "section_full": 292,
+  "recommendation": 157,
+  "table": 97
+ },
+ "by_doc_type": {
+  "narrative": 813,
+  "section_full": 284,
+  "nonclinical": 21,
+  "recommendation": 157,
+  "table": 97
+ },
+ "by_context": {
+  "unknown": 38,
+  "nonclinical_methodology": 21,
+  "epidemiology_background": 50,
+  "classification_staging": 24,
+  "tnm_staging": 5,
+  "early_detection_screening": 38,
+  "diagnostic_evaluation": 3,
+  "diagnostic_tools": 40,
+  "pathology_processing": 39,
+  "risk_assessment_pre_biopsy": 28,
+  "biopsy_indication_strategy": 33,
+  "mri_biopsy_decision": 11,
+  "biopsy_technique": 32,
+  "repeat_biopsy_prior_result": 11,
+  "repeat_biopsy_prior_negative": 3,
+  "clinical_staging": 49,
+  "treatment": 20,
+  "treatment_fitness_assessment": 29,
+  "active_surveillance_confirmed": 180,
+  "watchful_waiting_or_local_treatment": 148,
+  "biochemical_recurrence": 125,
+  "hormonal_therapy": 33,
+  "metastatic_crsPC": 74,
+  "castration_resistant": 122,
+  "metastatic_crpc": 28,
+  "follow_up": 81,
+  "quality_of_life": 107
+ },
+ "tables": 97,
+ "table_rows": 557,
+ "dup_groups_with_repeats": 2,
+ "retrieval_text_differs": 220
+}

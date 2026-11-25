@@ -1,0 +1,133 @@
+{
+  "changed_records": 76,
+  "by_transition": {
+    "active_surveillance_confirmed -> watchful_waiting_or_local_treatment": 72,
+    "watchful_waiting_or_local_treatment -> active_surveillance_confirmed": 4
+  },
+  "context_after": {
+    "watchful_waiting_or_local_treatment": 175,
+    "biochemical_recurrence": 109,
+    "active_surveillance_confirmed": 94,
+    "castration_resistant": 91,
+    "quality_of_life": 79,
+    "metastatic_crsPC": 60,
+    "follow_up": 52,
+    "epidemiology_background": 34,
+    "clinical_staging": 34,
+    "unknown": 33,
+    "diagnostic_tools": 28,
+    "early_detection_screening": 26
+  },
+  "sample": [
+    {
+      "id": "v2-00485",
+      "section": "6.2.2.3",
+      "title": "Surgical techniques",
+      "old": [
+        "active_surveillance_confirmed"
+      ],
+      "new": [
+        "watchful_waiting_or_local_treatment"
+      ]
+    },
+    {
+      "id": "v2-00486",
+      "section": "6.2.2.3",
+      "title": "Surgical techniques",
+      "old": [
+        "active_surveillance_confirmed"
+      ],
+      "new": [
+        "watchful_waiting_or_local_treatment"
+      ]
+    },
+    {
+      "id": "v2-00487",
+      "section": "6.2.2.3",
+      "title": "Surgical techniques",
+      "old": [
+        "active_surveillance_confirmed"
+      ],
+      "new": [
+        "watchful_waiting_or_local_treatment"
+      ]
+    },
+    {
+      "id": "v2-00488",
+      "section": "6.2.2.3",
+      "title": "Surgical techniques",
+      "old": [
+        "active_surveillance_confirmed"
+      ],
+      "new": [
+        "watchful_waiting_or_local_treatment"
+      ]
+    },
+    {
+      "id": "v2-00489",
+      "section": "6.2.2.3",
+      "title": "Surgical techniques",
+      "old": [
+        "active_surveillance_confirmed"
+      ],
+      "new": [
+        "watchful_waiting_or_local_treatment"
+      ]
+    },
+    {
+      "id": "v2-00490",
+      "section": "6.2.2.3",
+      "title": "Surgical techniques",
+      "old": [
+        "active_surveillance_confirmed"
+      ],
+      "new": [
+        "watchful_waiting_or_local_treatment"
+      ]
+    },
+    {
+      "id": "v2-00491",
+      "section": "6.2.2.3",
+      "title": "Surgical techniques",
+      "old": [
+        "active_surveillance_confirmed"
+      ],
+      "new": [
+        "watchful_waiting_or_local_treatment"
+      ]
+    },
+    {
+      "id": "v2-00492",
+      "section": "6.2.2.3",
+      "title": "Surgical techniques",
+      "old": [
+        "active_surveillance_confirmed"
+      ],
+      "new": [
+        "watchful_waiting_or_local_treatment"
+      ]
+    },
+    {
+      "id": "v2-00493",
+      "section": "6.2.2.3",
+      "title": "Surgical techniques",
+      "old": [
+        "active_surveillance_confirmed"
+      ],
+      "new": [
+        "watchful_waiting_or_local_treatment"
+      ]
+    },
+    {
+      "id": "v2-00494",
+      "section": "6.2.2.3",
+      "title": "Surgical techniques",
+      "old": [
+        "active_surveillance_confirmed"
+      ],
+      "new": [
+        "watchful_waiting_or_local_treatment"
+      ]
+    }
+  ]
+}
