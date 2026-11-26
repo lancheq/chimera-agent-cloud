@@ -177,7 +177,7 @@ def main() -> int:
     def _body_with_dump(payload, parse=False):
         try:
             return _orig_body(payload, parse=parse)
-        except BaseException:      # RuntimeFatal 继承 BaseException，必须一并捕获
+        except (RuntimeFatal, Exception):   # RuntimeFatal 继承 BaseException，需显式列出
             try:
                 (work / "rejected_payload.json").write_text(
                     json.dumps(payload, ensure_ascii=False, indent=2, default=str))

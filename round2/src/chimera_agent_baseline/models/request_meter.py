@@ -10,6 +10,7 @@ import httpx
 import openai
 from openai._base_client import AsyncHttpxClientWrapper, SyncHttpxClientWrapper
 
+from chimera_agent_baseline.message_norm import normalize_payload
 from chimera_agent_baseline.runtime_audit import RuntimeFatal, content_digest, current_runtime
 
 
@@ -256,6 +257,7 @@ class MeteredEndpoint:
         runtime = current_runtime()
         if runtime is None:
             return target(**payload)
+        payload = normalize_payload(payload)
         with self.boundary.submit(runtime, payload, parse=method == 'parse') as attempt:
             response = target(**payload)
         return record_response(response, attempt)
@@ -264,6 +266,7 @@ class MeteredEndpoint:
         runtime = current_runtime()
         if runtime is None:
             return await target(**payload)
+        payload = normalize_payload(payload)
         with self.boundary.submit(runtime, payload, parse=method == 'parse') as attempt:
             response = await target(**payload)
         return record_response(response, attempt)

@@ -1,6 +1,6 @@
 {
   "config_id": "C2_SINGLE_ROUND_DEV_V1",
-  "status": "BLOCKED_PROTOCOL_BUDGET",
+  "status": "ZERO_GEN_REGRESSION_PASS_BUDGET_FROZEN",
   "authorisation": {
     "cases": 3,
     "hard_cap_35b_calls": 12,
@@ -183,5 +183,53 @@
     "tool content 归一化",
     ".gitignore 的 output*/ 与 models/ 误伤源码包",
     "editable .pth 与 worktree 混用"
-  ]
+  ],
+  "zero_gen_regression": {
+    "tool": "tools/transport_probe.py",
+    "stub_boundary": "httpx.MockTransport inside real ChatOpenAI client (SDK + meter + validation all real)",
+    "requests": 7,
+    "meter_attempts": 7,
+    "sequence": [
+      "agent_tool_calls",
+      "agent_final",
+      "form_fill_prefill",
+      "critique",
+      "refine",
+      "medical",
+      "agent_tool_calls"
+    ],
+    "prediction_has_new_text": true,
+    "authority": "StructuredReflectionAuthority",
+    "budget_ledger_untouched": true
+  },
+  "normalisation": {
+    "module": "src/chimera_agent_baseline/message_norm.py",
+    "hook": "MeteredEndpoint._call/_acall before boundary.submit",
+    "tests": "tests/test_message_norm.py (12 passed)",
+    "semantic_errors_still_rejected": [
+      "missing tool_call_id",
+      "orphan tool result",
+      "tool_call without id",
+      "non-text block",
+      "unknown metadata",
+      "bad message order"
+    ]
+  },
+  "environment_guard": {
+    "module": "src/chimera_agent_baseline/run_guard.py",
+    "checks": [
+      "interpreter",
+      "sys.path",
+      "module __file__ under approved root",
+      "source sha256",
+      "config digest vs admission"
+    ],
+    "negative_control": "narrowed root -> modules loaded from outside approved root"
+  },
+  "next_budget_proposal": {
+    "raise_cap_to": 20,
+    "remaining_for_one_case": 12,
+    "estimated_calls_per_case": "7-8",
+    "approved": false
+  }
 }

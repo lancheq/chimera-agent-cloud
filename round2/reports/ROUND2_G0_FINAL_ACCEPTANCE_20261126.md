@@ -346,3 +346,98 @@ MCP 工具返回的是 `[{"type":"text","text":...}]` 块，LangChain 原样保�
 ### 12.6 判定
 
 C2a = `BLOCKED_PROTOCOL_BUDGET`。8/12 已用，剩 4。
+
+---
+
+## 13 B 轮：统一归一化 + 传输层零生成回归（本轮无真实调用）
+
+真实 35B 调用：**0 次**。预算账本保持 `used=8`，未动。
+
+### 13.1 归一化落在哪一层
+
+新增 `src/chimera_agent_baseline/message_norm.py`，挂载点是 `MeteredEndpoint._call/_acall` 进入 `boundary.submit()` **之前**：
+
+```
+LangGraph 消息对象 → 归一化 → request_meter 协议校验 → 计量 → 实际 HTTP body
+```
+
+因此校验与计量针对的是**归一化后真正要发出的 body**，而不是上游草稿。`request_meter` 的校验规则一字未改。
+
+只做表示格式转换：文本块数组 → 字符串（多块按原顺序以换行拼接，保留边界），工具调用 id 原样保留，`assistant.content=None + tool_calls` 原样保留。
+
+以下情形一律显式报错，不代 Agent 补全：
+
+| 情形 | 行为 |
+| --- | --- |
+| tool 结果缺 `tool_call_id` | `RuntimeFatal` |
+| tool 结果找不到对应 `assistant.tool_calls` | `RuntimeFatal` |
+| `assistant.tool_calls` 里某条缺 `id` | `RuntimeFatal` |
+| 非文本内容块（image/audio 等） | `RuntimeFatal`，不静默丢弃 |
+| 未知消息键 | `RuntimeFatal`，不静默剥离 |
+| 消息顺序错（声明后未跟结果） | `RuntimeFatal` |
+
+12 项正负对照全通过（`tests/test_message_norm.py`）。
+
+### 13.2 传输层桩：真实客户端 + 真实计量，只伪造 HTTP 响应
+
+`tools/transport_probe.py` 不替换 `model.invoke` 也不替换 `load_model`，而是把 `httpx.MockTransport` 装进真实 `ChatOpenAI` 的底层 client，再交给真实的 `meter_openai` 包装：
+
+- 真实：LangChain 消息对象、OpenAI SDK 序列化、统一归一化、`request_meter` 协议校验、`runtime.wire` 计量、Reflection authority、Producer/Consumer、Calibration、最终落盘
+- 伪造：只有 35B 的响应体
+
+实测一次完整用例（T3-001，`workflow: react`）：
+
+| 项 | 值 |
+| --- | --- |
+| SDK 调用 / transport 响应 | 7 / 7 |
+| `runtime.attempts`（计量层计数） | 7 |
+| 请求序列 | `agent_tool_calls` → `agent_final` → `form_fill_prefill` → `critique` → `refine` → `medical` → `agent_tool_calls` |
+| prediction 生成 | 是 |
+| prediction 含新理由 | **是**（旧理由已消失） |
+| authority | `StructuredReflectionAuthority` |
+
+即：**七个真实序列化的 HTTP 请求全部通过严格协议校验**，且 Reflection 的补丁在计量模式下被真实消费进最终输出。
+
+`agent_tool_calls` 出现两次，是因为第一次双工具调用后模型还有一次取数回合；不影响结论。
+
+### 13.3 包副本混用：加 fail-fast 守卫
+
+`src/chimera_agent_baseline/run_guard.py` 在发出第一个请求前检查：
+
+- 解释器路径、实际 `sys.path` 顺序落盘
+- 11 个关键模块的 `__file__` 必须全部位于批准根内，否则列出外来源并 `RuntimeFatal`
+- 关键源码 SHA256 可与冻结清单比对
+- 配置摘要与准入绑定比对
+
+正负对照：批准根收窄到 `src/chimera_agent_baseline/agent` 时正确报 `modules loaded from outside approved root`；正常根下通过并产出 `module_origin.json`。
+
+未修改其他会话使用的共享 conda 环境，只靠运行时 `PYTHONPATH` + 守卫。
+
+### 13.4 异常处理
+
+`RuntimeFatal` 继承自 `BaseException`（`runtime_audit.py:89`），不能靠 `except Exception` 捕获，也不应裸捕 `BaseException`（会吞掉中断）。两处已改为显式 `except RuntimeFatal:` / `except Exception:` 并列，失败时仍能落盘实际 payload。
+
+### 13.5 预算现状
+
+| 项 | 值 |
+| --- | --- |
+| 累计真实调用 | 8 / 12 |
+| 剩余 | 4（冻结，本轮未用） |
+| 账本 | `output/c2_budget_ledger.json`，`used=8` |
+| 传输层回归 | 使用独立 runtime（`max_attempts=40`），不写正式账本 |
+
+### 13.6 下一步的预算估算
+
+按本轮实测的 7 次请求序列，真实单例（`workflow: react`）预计：
+
+| 环节 | 次数 |
+| --- | --- |
+| ReAct 取数回合 | 2 |
+| Form Fill（J0） | 1 |
+| Critique | 1 |
+| Structured Refine | 1 |
+| Medical Review | 1 |
+| 余量（重试/额外回合） | 1–2 |
+| **合计** | **7–8** |
+
+建议把累计上限提到 20，为这一次留出 12 次余量（已用 8 + 12 = 20）。本轮不追加、不启动。
