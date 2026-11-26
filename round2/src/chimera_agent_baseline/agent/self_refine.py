@@ -355,3 +355,138 @@ def run_self_refine(
             break
 
     return current_transcript, warnings
+
+
+
+# ---------------------------------------------------------------------------
+# Structured Refine（opt-in）：字段级补丁替代自由文本重写
+# ---------------------------------------------------------------------------
+#
+import os  # noqa: E402  （本块独立使用，避免改动原文件导入区）
+
+# 默认不启用。run_self_refine 保持原样，历史行为不受影响；只有在调用方显式
+# 选择本函数时才走补丁路径。trace 产物与旧路径分开命名，避免 refined_iter
+# 那种「文件名表示输入、内容却是上一轮输出」的语义混淆。
+
+STRUCTURED_REFINE_ENV = "CHIMERA_STRUCTURED_REFINE"
+
+
+def structured_refine_enabled() -> bool:
+    """读取开关，默认关闭。"""
+    return os.environ.get(STRUCTURED_REFINE_ENV, "0").strip() in ("1", "true", "on")
+
+
+def run_structured_refine(model, task, case_id, transcript, j0, upfront, *,
+                          max_iterations: int = 2, write_trace: bool = True):
+    """Critique → 字段级补丁 → 确定性候选，逐轮推进，最终相对 J0 收敛。
+
+    与 run_self_refine 的区别：Refine 不再重写整段推理，只输出补丁；
+    J0 不可变，中间态仅作反思工作区；最终候选一律以 J0 为基准重建。
+
+    Returns:
+        (Outcome, warnings, meta)。Outcome 为 collapse_rounds 的结果。
+    """
+    from chimera_agent_baseline.agent.reflection_patch import (
+        STRUCTURED_REFINE_SYSTEM, PatchSet, apply_patches, collapse_rounds,
+        parse_patchset,
+    )
+    from chimera_agent_baseline.runtime_audit import content_digest
+
+    warnings: list[str] = []
+    rounds: list[PatchSet] = []
+    work = json.loads(json.dumps(j0))
+    snippet = transcript[:4000] if len(transcript) > 4000 else transcript
+    trace_dir = None
+    if write_trace:
+        try:
+            trace_dir = os.path.join(os.environ.get("CHIMERA_OUTPUT_DIR", "output"),
+                                     "trace", str(case_id))
+            os.makedirs(trace_dir, exist_ok=True)
+        except Exception:  # noqa: BLE001
+            trace_dir = None
+
+    def dump(name: str, payload) -> None:
+        if not trace_dir:
+            return
+        try:
+            with open(os.path.join(trace_dir, name), "w") as f:
+                json.dump(payload, f, ensure_ascii=False, indent=2)
+        except Exception:  # noqa: BLE001
+            pass
+
+    calls = 0
+    for iteration in range(1, max_iterations + 1):
+        critique_user = (
+            f"Case ID: {case_id} (Task {task})\n"
+            f"Preliminary decision: {work}\n\n"
+            f"Evidence + reasoning transcript:\n"
+            f'"""\n{snippet}\n"""\n\n'
+            "Audit this reasoning and output ONLY a JSON object with "
+            '"issues" (list of specific problems) and "severity". '
+            'If no issues, output {"issues": [], "severity": "low"}. '
+            "Do NOT restate these instructions."
+        )
+        try:
+            resp = model.invoke([SystemMessage(content=_CRITIQUE_SYSTEM),
+                                 HumanMessage(content=critique_user)])
+            calls += 1
+            text = resp.content if isinstance(resp.content, str) else json.dumps(resp.content)
+        except Exception as exc:  # noqa: BLE001
+            warnings.append(f"structured_refine iter {iteration}: critique failed: {type(exc).__name__}")
+            break
+        _, issues = _parse_critique_json(text)
+        dump(f"critique_iter{iteration}.json",
+             {"stage": "critique", "iteration": iteration, "issues": issues})
+
+        if not issues:
+            warnings.append(f"structured_refine: converged at iter {iteration}")
+            break
+
+        refine_user = (
+            f"Case ID: {case_id} (Task {task})\n\n"
+            f"Current judgment (verbatim, copy `before` from here):\n"
+            f"{json.dumps(work, ensure_ascii=False, indent=2)}\n\n"
+            f"Case record (verbatim, quote evidence from here):\n"
+            f'"""\n{upfront or ""}\n"""\n\n'
+            f"Auditor issues:\n" + "\n".join(f"  {i+1}. {x}" for i, x in enumerate(issues))
+        )
+        try:
+            resp = model.invoke([SystemMessage(content=STRUCTURED_REFINE_SYSTEM),
+                                 HumanMessage(content=refine_user)])
+            calls += 1
+            raw = resp.content if isinstance(resp.content, str) else json.dumps(resp.content)
+        except Exception as exc:  # noqa: BLE001
+            warnings.append(f"structured_refine iter {iteration}: refine failed: {type(exc).__name__}")
+            break
+
+        pset, rejects = parse_patchset(raw, task, case_id, content_digest(work))
+        dump(f"patch_iter{iteration}.json",
+             {"stage": "structured_refine", "iteration": iteration,
+              "raw": raw if isinstance(raw, str) else str(raw),
+              "parsed": None if pset is None else
+              [p.__dict__ for p in pset.patches],
+              "parse_rejects": list(rejects)})
+        if pset is None:
+            warnings.append(f"structured_refine iter {iteration}: patch parse failed {rejects}")
+            break
+
+        out = apply_patches(work, pset, upfront=upfront)
+        dump(f"apply_iter{iteration}.json",
+             {"stage": "apply", "iteration": iteration, "status": out.status,
+              "rejects": list(out.rejects), "field_report": list(out.field_report),
+              "collateral_rejected": out.collateral_rejected,
+              "changed_fields": list(out.changed_fields)})
+        if out.status != "ok":
+            warnings.append(f"structured_refine iter {iteration}: patches rejected {out.rejects}")
+            break
+        rounds.append(pset)
+        work = json.loads(out.candidate_json)
+
+    final = collapse_rounds(j0, rounds, upfront=upfront)
+    dump("run_manifest.json",
+         {"case_id": case_id, "task": task, "model_calls": calls,
+          "rounds": len(rounds), "final_status": final.status,
+          "changed_fields": list(final.changed_fields),
+          "collateral_rejected": final.collateral_rejected,
+          "trace_files": sorted(os.listdir(trace_dir)) if trace_dir else []})
+    return final, warnings, {"model_calls": calls, "rounds": len(rounds)}

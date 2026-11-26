@@ -1,0 +1,1953 @@
+{
+  "window_hours": 2,
+  "counts": {
+    "疑似污染": 73,
+    "确认污染": 34,
+    "可信": 58
+  },
+  "cases": [
+    {
+      "case": "BX_01.pre_e0",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-26",
+        "2026-10-15",
+        "2026-10-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_0020cfca66c8",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_0169468160c6",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.6,
+      "dir_dates": [
+        "2026-09-26",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_01b643727538",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_033f1a8e1503",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_0615b2bd8504",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_062a1125899d",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.6,
+      "dir_dates": [
+        "2026-09-26",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_06b319f42fcb",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.6,
+      "dir_dates": [
+        "2026-09-26",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_075dd468b384",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_079636ac5644",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.5,
+      "dir_dates": [
+        "2026-09-26",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_0930885168c9",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_099651db404e",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_0bd72f429a8b",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_0cdfb9410718",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_0de7e606ca70",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_11345b8a7ab3",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.6,
+      "dir_dates": [
+        "2026-09-26",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_11574b12444b",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_1185f6a68df0",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_11fe9c6ca833",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_132e0000c0e0",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_138092c2a6be",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_152344add0f1",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_175e6ad47991",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_17f110c9e142",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_180352970ace",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_1a4e0cf3b927",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_1dc32184cab6",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_20a7e91c494c",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_20ba3f0f6ca0",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_21e7fa67a79e",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_249def42388a",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_25007bb807d7",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_259484ae733f",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_2b3ef1d3a505",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_2cd88bcdf81c",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_2e0346bce3b3",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_2e4988b84112",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.6,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_2eef4115a253",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_2ef22b5dd08e",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_2fbb84505a45",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_33c8cd4571fd",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.6,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_34647958aba3",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_3477ea7065bd",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_3646e0a2ae13",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_36c92fb424ac",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.7,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_376de00c8131",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_37d8ae9b27f1",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.7,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_394e0b8dbeeb",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.7,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_3b6ea1920967",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.6,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_3cc88c81f35a",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_3ceacc9b660b",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_3f75ae876abe",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_41ca49bed13d",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_47c373e230b6",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_47d8b39fd07f",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_48fb60dfd22f",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_4a2fa7bc3595",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_4a4fedfc1f51",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.7,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_4b950525e6a8",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_4bfd4ec864d8",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.7,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_4c6b2b2bbf94",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_4d54f04e26ae",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_4e545d350c5b",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_4edb17f79e46",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_4f33b0253633",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_52213169f58b",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.7,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_562159dc2cc6",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_575cb2819e96",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.7,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_590e7b237744",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.7,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_b9aa0df93f2a",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_b9f0b7018502",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_c03b1168ff4d",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_c12bcf838ec8",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_c13fda040310",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.7,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_c39e94a13920",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_c55496c11421",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_c7277954c60f",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_c9d31197c533",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_cac2563c222a",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_cce5d47c05dd",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_d217629c323a",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_d38917f87b35",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_d3d6b421d0aa",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_d3e975d025e6",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_d49b896a09e6",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_d5ceb6b4204f",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_d7d26761c714",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.6,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_d95b3a02898e",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.6,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_dcd61cf9b443",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_dcd7bf13a6f4",
+      "class": "疑似污染",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_dd011d696387",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "PT-pseudo_e001f4d06517",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 27.6,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28",
+        "2026-10-27"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-001",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-002",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-003",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-004",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-005",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-006",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-007",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 10.4,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-008",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-009",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-010",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 10.4,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-011",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-012",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-013",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-014",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-015",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-016",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-017",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 10.4,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-018",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-019",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-020",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-021",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-022",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-023",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-024",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 10.5,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-025",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-026",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-027",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-028",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-029",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-030",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-031",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-032",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-033",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 10.5,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-034",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 10.4,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-035",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-036",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 10.4,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-037",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-038",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-039",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 10.4,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-040",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-041",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 10.4,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-042",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 10.4,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-043",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-044",
+      "class": "疑似污染",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-045",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-046",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-047",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-048",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-049",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 10.4,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-050",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-051",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-052",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-053",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-054",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 10.4,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-055",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-056",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-057",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-058",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-059",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-060",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-061",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-101",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-102",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-103",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-104",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-105",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-106",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-107",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-108",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 10.4,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-109",
+      "class": "可信",
+      "crit_files": 1,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-110",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T2-111",
+      "class": "确认污染",
+      "crit_files": 2,
+      "inverted": true,
+      "span_h": 10.4,
+      "dir_dates": [
+        "2026-09-27",
+        "2026-09-28"
+      ],
+      "refine_output_available": true
+    },
+    {
+      "case": "T3-001",
+      "class": "可信",
+      "crit_files": 2,
+      "inverted": false,
+      "span_h": 0.0,
+      "dir_dates": [
+        "2026-09-07"
+      ],
+      "refine_output_available": true
+    }
+  ]
+}

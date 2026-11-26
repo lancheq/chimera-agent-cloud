@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "frozen_at": "2026-11-25",
+  "scope": "G0 / C2 与 G1 首轮",
+  "reflection_priority": false,
+  "override_recording": "required",
+  "decision": "现有 Calibration 规则优先，不强制 Reflection 优先",
+  "rationale": "F4 不必然是缺陷；同时改动 Reflection 与 Calibration 两个变量会让归因失效",
+  "known_conflicts": [
+    {"case": "S12 T3 合成", "field": "/event", "observed": "accepted_then_overridden",
+     "rule": "t3_event_calibration", "status": "expected"}
+  ],
+  "default_fallbacks": [
+    {"field": "/months_to_recurrence", "value": 36.0, "trigger": "event=0 & months=None",
+     "source": "postprocess.py t3_months_fallback",
+     "note": "默认回退不等于有临床依据的预测，报告须区分"}
+  ],
+  "forbidden": ["reflection_priority_override", "silent_field_drop"],
+  "medical_judgement_deferred_to": "G2"
+}

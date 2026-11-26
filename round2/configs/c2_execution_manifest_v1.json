@@ -1,0 +1,33 @@
+{
+  "config_id": "C2_SINGLE_ROUND_DEV_V1",
+  "status": "NOT_STARTED",
+  "authorisation": {"cases": 3, "hard_cap_35b_calls": 12, "granted": true, "started": false},
+  "configuration": {
+    "reflection_rounds": 1,
+    "pipeline": ["Critique", "StructuredRefine", "Producer", "RuleReview", "MedicalReview", "Consumer", "Calibration"],
+    "note": "单轮属 C2 开发验证配置，不代表 G1/G2 正式配置变更"
+  },
+  "budget": {
+    "per_case_base": 3,
+    "three_cases_base": 9,
+    "reserved_for_new_j0": 1,
+    "reserved_for_retry": 2,
+    "planned_total": 12,
+    "excluded_from_cap": ["GEval judge", "human review"]
+  },
+  "cases": [
+    {"slot": 1, "purpose": "存在明确可修正错误 -> 测结构化候选生成", "case_id": "TBD", "j0_reusable": "TBD"},
+    {"slot": 2, "purpose": "初始决策正确 -> 测不必要修改能否正常退出", "case_id": "TBD", "j0_reusable": "TBD"},
+    {"slot": 3, "purpose": "多字段修改或 Calibration 冲突 -> 测消费与仲裁", "case_id": "TBD", "j0_reusable": "TBD"}
+  ],
+  "known_assets": {"t3_pilot_with_j0": 2, "source": "output/g2_case_pilot_20261119/remaining/live/T3"},
+  "preconditions": [
+    "B1 版本冻结产物齐备",
+    "G0-B1 生产入口接通（authority.review 可达）",
+    "G0-B2 医学审核实现并可拒绝",
+    "G0-B3 仲裁策略已冻结",
+    "零生成端到端与历史路径回归全通过"
+  ],
+  "stop_rules": ["超出 12 次调用", "出现未授权取证", "发现契约冲突需修改实验变量"],
+  "excluded_from_effect_evaluation": true
+}

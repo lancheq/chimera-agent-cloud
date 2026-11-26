@@ -1,0 +1,30 @@
+{
+  "A": "7301642",
+  "B": "606b6df",
+  "commits_A_to_B": 7,
+  "changed_files_between_heads": [
+    "src/chimera_agent_baseline/agent/graph.py",
+    "src/chimera_agent_baseline/agent/form_fill.py",
+    "src/chimera_agent_baseline/agent/reflection_contract.py",
+    "src/chimera_agent_baseline/run.py",
+    "inference.py",
+    "configs/config.yaml"
+  ],
+  "worktree_dirty_vs_B": [],
+  "untracked_by_top": {
+    ".codex": 1,
+    ".dockerignore": 1,
+    "AGENTS.md": 1,
+    "_run_e0.sh": 1,
+    "_run_e0_t1.sh": 1,
+    "_run_t1full.sh": 1,
+    "configs": 9,
+    "discussion": 1,
+    "guideline_dataset": 1,
+    "rag_eval_20261025": 1,
+    "reasoning_align.py": 1,
+    "reports": 127,
+    "tests": 1,
+    "tools": 66
+  }
+}
