@@ -198,3 +198,16 @@ class StructuredReflectionAuthority:
 def allowed_evidence_preview(upfront: str | None, limit: int = 120) -> str:
     """调试/日志用：只暴露 upfront 前若干字符，避免把工具返回混进证据视图。"""
     return (upfront or "")[:limit]
+
+
+def resolve_authority(runtime):
+    """选择 Reflection authority：合成注入优先，其次生产实现，否则 None。
+
+    合成注入仅用于测试，生产路径必须由 run.py 装配 runtime.reflection_authority。
+    """
+    if runtime is None:
+        return None
+    test = getattr(runtime, "reflection_test", None)
+    if test is not None:
+        return test
+    return getattr(runtime, "reflection_authority", None)

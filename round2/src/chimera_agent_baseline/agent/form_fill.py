@@ -51,6 +51,7 @@ from chimera_agent_baseline.agent.reflection_contract import (
     Context, DraftArtifact, ReflectionArtifact, ReviewBatch, Subject, draft_artifact,
     judgment_label, resolve, upfront_digest, upfront_record, validate_judgment,
 )
+from chimera_agent_baseline.agent.reflection_authority import resolve_authority as _resolve_authority
 from chimera_agent_baseline.runtime_audit import (
     ProcessingAudit, RuntimeFatal, audit_stage, canonical, consumption_event,
     content_digest, current_runtime, stage_scope,
@@ -210,7 +211,8 @@ def make_form_fill_node(
         audit = ProcessingAudit(task, case_id)
         guarded = state.get("information_access") is not None
         runtime = current_runtime()
-        authority = runtime.reflection_test if runtime is not None else None
+        # 合成注入优先；生产路径走 runtime.reflection_authority，两者互斥
+        authority = _resolve_authority(runtime)
         for message in messages:
             if isinstance(message, ToolMessage) and (
                 getattr(message, "status", "success") == "error"

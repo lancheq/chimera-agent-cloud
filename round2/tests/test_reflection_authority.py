@@ -174,3 +174,28 @@ def test_j0_digest_mismatch_refuses_to_review():
     auth = StructuredReflectionAuthority(model)
     assert auth.review(ctx).status == "error"
     assert model.calls == 0
+
+
+# --- 生产接线：authority 解析优先级 ---------------------------------------
+def test_resolve_authority_priority():
+    """合成注入优先于生产实现；两者都无则 None。"""
+    from chimera_agent_baseline.agent.reflection_authority import resolve_authority
+
+    assert resolve_authority(None) is None
+
+    class R:
+        reflection_test = None
+        reflection_authority = None
+
+    r = R()
+    assert resolve_authority(r) is None
+
+    sentinel_test, sentinel_prod = object(), object()
+    r.reflection_authority = sentinel_prod
+    assert resolve_authority(r) is sentinel_prod
+
+    r.reflection_test = sentinel_test
+    assert resolve_authority(r) is sentinel_test      # 合成注入优先
+
+    del r.reflection_test                              # 老 runtime 无该属性也不炸
+    assert resolve_authority(r) is sentinel_prod

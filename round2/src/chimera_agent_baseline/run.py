@@ -371,6 +371,14 @@ async def _run_task_impl(
     """Run every case for one task; returns the number of predictions written."""
     from chimera_agent_baseline.runtime_audit import current_runtime
     runtime = current_runtime()
+    if runtime is not None and getattr(runtime, "reflection_test", None) is None:
+        from chimera_agent_baseline.agent.self_refine import structured_refine_enabled
+        if structured_refine_enabled():
+            from chimera_agent_baseline.agent.reflection_authority import (
+                StructuredReflectionAuthority,
+            )
+            runtime.reflection_authority = StructuredReflectionAuthority(
+                model, max_iterations=1)
     pilot = getattr(runtime, 'case_pilot', None)
     guarded_runtime.validate_options(cfg, predictor)
     registry = f"task{task_int}"
