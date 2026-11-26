@@ -95,11 +95,11 @@ def frozen_view(cfg, approval: ReflectionPilotApproval) -> dict:
         "model_provider": str(getattr(cfg.model, "provider", "")),
         "model_id": str(getattr(cfg.model, "model_id", "")),
         "base_url": str(getattr(cfg.model, "base_url", "")),
-        "max_retries": int(getattr(cfg.model, "max_retries", 0) or 0),
         "structured_refine": True,
         "reflection_rounds": 1,
         "medical_reviewer": True,
         "calibration": "frozen_v1",
+        "workflow": str(getattr(getattr(cfg, "agent", object()), "workflow", "")),
         "predictor": "off",
     }
 

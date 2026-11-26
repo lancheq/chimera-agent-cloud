@@ -1,6 +1,6 @@
 {
   "config_id": "C2_SINGLE_ROUND_DEV_V1",
-  "status": "BLOCKED_PROTOCOL",
+  "status": "BLOCKED_PROTOCOL_BUDGET",
   "authorisation": {
     "cases": 3,
     "hard_cap_35b_calls": 12,
@@ -38,13 +38,13 @@
       "three_cases_base": 9
     },
     "finding": "真实宿主单例在桩模型下即 7 次调用（plan/agent/form_fill/fact_check 4 + 反射 3）；12 次硬上限最多支撑 1 例，原 3 例×3 次估算未计入宿主基线，属低估",
-    "real_calls_used": 3,
-    "real_calls_remaining": 9,
+    "real_calls_used": 8,
+    "real_calls_remaining": 4,
     "usage_breakdown": {
       "endpoint_probe": 1,
-      "run_1": 1,
-      "run_2": 1
-    }
+      "failed_runs": 7
+    },
+    "one_case_needs": 6
   },
   "cases": [
     {
@@ -151,5 +151,37 @@
       "A": "改用 workflow=react（改变实验变量）",
       "B": "修 planned_react 消息链（工程改动，风险较高）"
     }
-  }
+  },
+  "config_under_test": {
+    "workflow": "react",
+    "max_model_turns": 2,
+    "structured_refine": true,
+    "reflection_rounds": 1,
+    "medical_reviewer": true,
+    "max_retries": 0
+  },
+  "protocol_findings": [
+    {
+      "id": "P1",
+      "where": "request_meter.py:129-134",
+      "issue": "planned_react 的 tool 结果无对应 assistant.tool_calls",
+      "state": "绕过方式：改用 workflow=react"
+    },
+    {
+      "id": "P2",
+      "where": "request_meter.py:125-128",
+      "issue": "tool 消息 content 为 [{type:text,text:...}] 块数组，校验要求 str",
+      "state": "未修，为本轮硬阻塞"
+    }
+  ],
+  "reproducibility": {
+    "issue": "site-packages 的 _editable_impl .pth 把主仓挂进 sys.path，与 worktree 混用",
+    "fix": "运行时显式 PYTHONPATH=<worktree>/src（已验证解析稳定）"
+  },
+  "tech_debt": [
+    "planned_react 消息链协议",
+    "tool content 归一化",
+    ".gitignore 的 output*/ 与 models/ 误伤源码包",
+    "editable .pth 与 worktree 混用"
+  ]
 }

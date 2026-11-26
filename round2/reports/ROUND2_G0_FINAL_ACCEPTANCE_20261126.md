@@ -282,3 +282,67 @@ C2a = `BLOCKED_ADMISSION`。工程侧（G0）结论不变：`INTEGRATION_PASS / 
 ### 11.5 判定
 
 C2a = `BLOCKED_PROTOCOL`。已用 3/12 次真实调用，剩余 9。
+
+---
+
+## 12 C2a 第三次尝试：BLOCKED_PROTOCOL（已定位到具体消息）
+
+按 A 方案切到 `workflow: react`，协议预检通过，但真实运行在第二个请求被拒。**已用 8/12，剩 4。**
+
+### 12.1 Direct ReAct 本身是通的
+
+模型行为正常：`finish_reason=tool_calls`，一次发出两个带 id 的调用（`get_surgical_pathology_report`、`get_previous_notes`），参数为 `{"case_id":"T3-001"}`。工具也确实返回了真实病理（Gleason 4+3 / pT4b）。
+
+协议预检（零生成）：
+
+| 形态 | 结果 |
+| --- | --- |
+| assistant(tool_calls) + tool + assistant | **accepted** |
+| assistant(无 tool_calls) + tool（planned_react 形态） | rejected: Unmatched OpenAI tool result ID |
+
+### 12.2 真正的违例：tool 消息 content 是列表
+
+`request_meter.py:125-128` 要求 `content` 为 `str`（assistant 且带 tool_calls 时可为 `None`）。实测：
+
+```
+3 tool  content_type=list  tool_call_id=sK7T2...
+   [{'type': 'text', 'text': '{"case_id": "T3-001", "surgical_pathology_report": "..."}'}]
+4 tool  content_type=list  tool_call_id=MPOh9...
+```
+
+MCP 工具返回的是 `[{"type":"text","text":...}]` 块，LangChain 原样保留，计量层不接受。
+
+这是**第三条**宿主消息链与 OpenAI 协议不一致之处（前两条：planned_react 的 tool 结果无声明；本条 tool content 为块数组）。三条都在宿主消息构造侧，不在 Reflection 侧。
+
+### 12.3 预算已不足以完成一例
+
+| 项 | 次数 |
+| --- | --- |
+| 真实调用已用 | **8 / 12** |
+| 剩余 | **4** |
+| 一例完整链路估算 | ReAct 2 + Form Fill 1 + Critique 1 + Refine 1 + Medical 1 = **6** |
+
+即使立刻修好 content 归一化，剩余 4 次也跑不完整条链。继续试只会把预算耗在同一个协议问题上。
+
+### 12.4 另发现一个隐蔽的复现性缺陷
+
+`site-packages/_editable_impl_chimera_agent_baseline.pth` 把 **主仓** `/home/hedongze/CHIMERA-agent/src` 挂进 `sys.path`，而 worktree 靠脚本内 `sys.path.insert(0, ...)` 抢先。实测两种解析会混用：一次 traceback 的 `rag.py` 来自主仓，`models/__init__.py` 来自 worktree。
+
+后果：前几轮真实运行里有部分模块跑的是**没有本次改动的旧代码**，浪费了调用额度，也让失败原因难以判断。
+
+修正方式已验证：运行时显式 `PYTHONPATH=<worktree>/src`，包解析稳定落在 worktree。
+
+### 12.5 建议（需你定）
+
+| 方案 | 内容 | 预算影响 |
+| --- | --- | --- |
+| A 追加额度 | 修 content 归一化（工具结果转字符串，约 5 行，不动 request_meter 校验），再追加 6–8 次 | 上限提到 18–20 |
+| B 先修再报 | 只做归一化与零生成回归，不跑真实病例，把 C2a 推到下一轮 | 0 |
+
+我倾向 A，但必须先说明：修完仍可能暴露第四条协议不一致。三条已发现的违例形态不同（tool_calls 声明、content 类型、可能还有 metadata），说明宿主消息链从未在严格协议下验证过，逐条试探的成本不可预计。
+
+**另一条更省的思路**：把 tool content 的归一化做成序列化前的统一入口（一次处理掉 content 块、缺 id、多余 metadata 三类），而不是遇到一条修一条。这样只花一次额度就能知道还剩不剩第四条。
+
+### 12.6 判定
+
+C2a = `BLOCKED_PROTOCOL_BUDGET`。8/12 已用，剩 4。
