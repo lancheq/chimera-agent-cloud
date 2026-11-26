@@ -52,6 +52,7 @@ from chimera_agent_baseline.agent.reflection_contract import (
     judgment_label, resolve, upfront_digest, upfront_record, validate_judgment,
 )
 from chimera_agent_baseline.agent.reflection_authority import resolve_authority as _resolve_authority
+from chimera_agent_baseline.judgment_norm import normalize_numeric_fields
 from chimera_agent_baseline.runtime_audit import (
     ProcessingAudit, RuntimeFatal, audit_stage, canonical, consumption_event,
     content_digest, current_runtime, stage_scope,
@@ -282,7 +283,10 @@ def make_form_fill_node(
                         ]
                     )
                     resp_text = response.content if isinstance(response.content, str) else json.dumps(response.content)
-                    raw = "{" + resp_text
+                    # 真模型不总遵守 prefill：可能把 "{" 又输出一遍。两种形态都合法，
+                    # 其余情况原样交给解析层失败，不做通用 JSON 修复。
+                    _body = resp_text.lstrip()
+                    raw = _body if _body.startswith("{") else "{" + resp_text
                 except Exception as invoke_exc:
                     log.warning("form_fill: assistant prefill failed (%s), falling back to no-prefill", invoke_exc)
                     response = model.invoke(
@@ -318,8 +322,16 @@ def make_form_fill_node(
                 # --- 检测扁平输出：变量键直接在顶层而非 variable_weights 内 ---
                 raw_json = _extract_json_object(raw)
                 if authority is not None:
-                    # Do not repair the object before validating the reviewed schema.
-                    judgment = validate_judgment(task, Dynamic, json.loads(raw_json))
+                    # 不做结构修复，但允许「字段级无损数值归一化」：把声明为 float 的
+                    # 字段上的 int 字面量改成 float（12 -> 12.0），语义不变且留痕。
+                    # canonical 全等校验本身不变，类型之外的差异仍会被拒绝。
+                    _parsed = json.loads(raw_json)
+                    _parsed, _num_norm = normalize_numeric_fields(task, _parsed)
+                    if _num_norm:
+                        consumption_event('formfill_numeric_normalised', {}, _num_norm,
+                                          task=task, case_id=case_id, attempt=attempt,
+                                          status='lossless_int_to_float')
+                    judgment = validate_judgment(task, Dynamic, _parsed)
                 else:
                     try:
                         flat = json.loads(raw_json)

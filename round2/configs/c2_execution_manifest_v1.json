@@ -1,6 +1,6 @@
 {
   "config_id": "C2_SINGLE_ROUND_DEV_V1",
-  "status": "STOPPED_J0_SCHEMA_INVALID",
+  "status": "C2A_BLOCKED_INVALID_J0",
   "authorisation": {
     "cases": 3,
     "hard_cap_35b_calls": 12,
@@ -290,5 +290,42 @@
       "needs_approval": true
     }
   },
-  "stop_rule_applied": "剩余 6 次冻结，不再探索性重跑；Reflection 未执行，不产生任何医学能力结论"
+  "stop_rule_applied": "剩余 6 次冻结，不再探索性重跑；Reflection 未执行，不产生任何医学能力结论",
+  "reflection_status": "INTEGRATION_PASS / REAL_VALIDATION_PENDING",
+  "fixes_applied": {
+    "double_brace": "form_fill 兼容完整 JSON 与 prefill 续写，不做通用修复",
+    "months_int": "judgment_norm 字段级无损 int->float，canonical 校验不变",
+    "replay": "3/3 现在通过 Schema，无第四种拒绝原因"
+  },
+  "fact_audit": {
+    "record": "Gleason 4+3 ISUP GG3, pT4b, EPE present, margins positive, SV invaded, LN metastasis present",
+    "j0_1": {
+      "event": 1,
+      "months": 12,
+      "facts": "与记录一致"
+    },
+    "j0_2": {
+      "event": 0,
+      "months": 60,
+      "facts": "切缘阴性/无 EPE 与记录矛盾；'术后 PSA 不可测' 无依据"
+    },
+    "j0_3": {
+      "event": 0,
+      "months": 60,
+      "facts": "'尚未接受根治性治疗' 与记录矛盾"
+    }
+  },
+  "input_comparison": {
+    "attempt1": "base",
+    "attempt2": "base + format retry hint",
+    "attempt3": "identical to attempt2",
+    "implication": "格式重试提示触发结论从 event=1 改为 event=0 并引入矛盾事实"
+  },
+  "conclusion": "Form Fill 非忠实格式转换，会重新解释证据并作出判断；格式失败重试显著放大漂移，单例外推需谨慎",
+  "closed": {
+    "real_budget_remaining": 6,
+    "frozen": true,
+    "g1_g2_started": false,
+    "next_step": "用历史合法 J0 做模块级 Reflection 实验，需单独授权"
+  }
 }

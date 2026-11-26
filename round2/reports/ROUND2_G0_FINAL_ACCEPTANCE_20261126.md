@@ -497,3 +497,103 @@ LangGraph 消息对象 → 归一化 → request_meter 协议校验 → 计量 �
 1. 先修 `{{`（零成本、无变量变更），否则任何真实用例都会在 Form Fill 第一步失败。
 2. `months` 整数问题二选一：在 `_SYSTEM_PROMPT` 里明确"months 必须是带小数点的浮点"，或为 T3 的 `months_to_recurrence` 增加显式的 int→float 标注容差。前者改 prompt，后者改校验强度，都需要你批准。
 3. 上述任一项未解决前，不要再花真实额度——这两条都能用零生成复现（把模型输出喂给 form_fill 的解析函数即可）。
+
+---
+
+## 15 收尾：两项修复、离线回放与事实审计（全部零生成）
+
+真实调用：**0 次**，预算仍为 14/20，剩 6 冻结。
+
+### 15.1 修复一：重复前导大括号
+
+`agent/form_fill.py` 原为无条件 `raw = "{" + resp_text`。改为兼容两种合法形态：
+
+```python
+_body = resp_text.lstrip()
+raw = _body if _body.startswith("{") else "{" + resp_text
+```
+
+完整 JSON 与 prefill 续写都能解析；其他形态仍原样交给解析层失败，**未引入通用 JSON 修复器**。
+
+### 15.2 修复二：字段级无损数值归一化
+
+新增 `src/chimera_agent_baseline/judgment_norm.py`，只在 task 3 的 `months_to_recurrence` 上把 int 字面量改成 float，并写 `formfill_numeric_normalised` 事件留痕。`reflection_contract` 的 canonical 全等校验一字未改。
+
+| 输入 | 处理 |
+| --- | --- |
+| `12` / `60` | → `12.0` / `60.0`，记录 `int_to_float_lossless` |
+| `12.0` / `12.5` | 原样保留 |
+| `"12"` / `true` / `null` / 负数 / NaN / inf | **不归一化，交给下游拒绝** |
+
+### 15.3 三份真实输出的离线回放
+
+| 文件 | 模型原文首字符 | 归一化记录 | Schema |
+| --- | --- | --- | --- |
+| attempt1 | `{` | `12 → 12.0` | **PASS** event=1 months=12.0 |
+| attempt2 | `{` | `60 → 60.0` | **PASS** event=0 months=60.0 |
+| attempt3 | `{` | `60 → 60.0` | **PASS** event=0 months=60.0 |
+
+两处修复之后三份全部通过，**没有第四种拒绝原因**。真实模型确实把 prefill 的 `{` 又输出了一遍，且确实给整数 months。
+
+### 15.4 离线事实审计（依据本次已存记录）
+
+检索到的真实病理（`get_surgical_pathology_report` 原文）：
+
+> robot-assisted radical prostatectomy specimen … Gleason 4+3 (ISUP GG3), **pT4b**. **Extraprostatic extension present**; **surgical margins positive**; seminal vesicles invaded; lymphovascular invasion absent; **lymph node metastasis present**.
+
+ReAct 推理阶段的结论与此一致，并明确指出"我没有术后 PSA 值"。
+
+| 核查项 | 记录 | J0-1 | J0-2 | J0-3 |
+| --- | --- | --- | --- | --- |
+| 是否接受根治术 | 是（RP 标本） | 是 ✓ | 是 ✓ | **否 ✗ 矛盾** |
+| 手术切缘 | 阳性 | 阳性 ✓ | **阴性 ✗ 矛盾** | 未提 |
+| 包膜外侵犯 | 有 | 有 ✓ | **无 ✗ 矛盾** | 未提 |
+| 术后 PSA | 无此数据 | 未声称 ✓ | **"不可测" ✗ 无依据** | 未声称 ✓ |
+| event | — | 1 | 0 | 0 |
+| months | — | 12 | 60 | 60 |
+
+三类变化必须分开看：
+
+- **医学决策不稳定**：event 1 → 0（12 个月复发 → 无复发）
+- **患者事实错误**：J0-2 的"切缘阴性/无包膜外侵犯"、J0-3 的"尚未接受根治性治疗"，都与已取回记录直接矛盾
+- **无依据陈述**：J0-2 的"术后 PSA 不可测"，记录中不存在该数据（ReAct 阶段自己也承认没有）
+
+### 15.5 Form Fill 是否在重新做决策：证据支持"是"
+
+三次输入对比：
+
+| 次数 | 输入长度 | 输入 sha | 与前次相同 |
+| --- | --- | --- | --- |
+| 1 | 2620 | cea72d81 | — |
+| 2 | 2842 | ed20ad6b | 否（追加了格式重试提示） |
+| 3 | 2842 | ed20ad6b | **完全相同** |
+
+两条关键推论：
+
+1. 第 2、3 次**输入逐字相同**，输出结论也相同（event=0/60），但措辞不同 → 这部分差异属采样随机性。
+2. 第 1 次与第 2 次的唯一差别是**格式重试提示**（"Judgment is incomplete or has coerced/unknown fields…"），而结论从 event=1 变成 event=0，并新增了与记录矛盾的事实陈述。
+
+也就是说：**一次纯格式层面的失败重试，把医学判断从"复发"改写成了"无复发"，并引入了与记录矛盾的临床事实。** 这不是单纯的采样噪声。
+
+结论：Form Fill 在本例中并非忠实转换既有判断，而是会重新解释证据、甚至重新作出判断；格式重试会显著放大这一效应。
+
+（限定：单例、单模型、单病例；不能外推为普遍规律，但足以否定"Form Fill 只是格式化"的假设。）
+
+### 15.6 状态登记
+
+| 项 | 状态 |
+| --- | --- |
+| C2a | `C2A_BLOCKED_INVALID_J0` |
+| Reflection | `INTEGRATION_PASS / REAL_VALIDATION_PENDING` |
+| 真实 Critique / Refine / Medical Review | 均未执行 |
+| Reflection 医学有效性 | **既不能判定有效，也不能判定无效** |
+
+### 15.7 对 G2 的影响与建议
+
+1. 共享 J0 的必要性被进一步证实，但**共享 J0 不足以保证两臂可比**——若 J0 本身在重试中会漂移，必须先固定"一次采样、不回退重试"的约定。
+2. 后续若重启，建议先用合法历史 J0 做**模块级** Reflection 实验（只跑 Critique/Refine/Reviewer），先把 Reflection 的独立纠错能力测出来，而不是每次重付 ReAct + Form Fill 的成本。该实验不能冒充端到端验证，需单独授权。
+3. "从证据获取到结构化输出的全过程一致性"是本次暴露出的、可能比 Reflection 本身更值得研究的问题：模型可在格式重试中改写既有事实。
+
+### 15.8 结项
+
+本轮 Reflection 工程建设到此结束：不追加预算、不重跑真实用例、不启动 G1/G2。剩余 6 次额度冻结。
