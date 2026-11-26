@@ -185,7 +185,8 @@ class PrivateRuntime:
         self.lock = RLock()
         self.identity_digest = content_digest(identity or {})
         self.reflection_test = None
-        self.reflection_authority = None   # 生产 Reflection，与合成测试注入相互独立
+        self.reflection_authority = None
+        self.reflection_pilot = None      # C2a 受限真实模型准入，默认无   # 生产 Reflection，与合成测试注入相互独立
         self.emit('run_started', identity=identity or {})
 
     def emit(self, kind, **data):

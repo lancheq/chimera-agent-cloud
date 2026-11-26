@@ -225,3 +225,60 @@ raise RuntimeFatal("Synthetic entry approval cannot load a real model")
 ### 10.5 判定
 
 C2a = `BLOCKED_ADMISSION`。工程侧（G0）结论不变：`INTEGRATION_PASS / REAL_VALIDATION_PENDING`，宿主 ON/OFF 已通过桩模型验证，真实模型行为仍未知。
+
+---
+
+## 11 C2a 第二次尝试：BLOCKED_PROTOCOL
+
+新增 `ReflectionPilotApproval` 后已越过准入门（8 项正负对照通过），真实模型调用成功发起，但在第二个请求被计量层拒绝。
+
+### 11.1 已打通的部分
+
+| 环节 | 结果 |
+| --- | --- |
+| 受限准入（病例/模型/端点/摘要/计量器） | 通过，`meter_openai` 生效 |
+| SDK 零重试 | 已强制，一次 invoke = 一次 HTTP POST = 一次额度 |
+| HTTP 边界计量 | 生效（`runtime.wire` 的 `attempts >= max_attempts` 即硬上限） |
+| embedding 服务 | 补齐（原只在 `run.py:749` 的 main 里启动，直接调 `run_agent` 会漏） |
+| 真实 35B 首请求 | 成功，模型返回带推理的 plan 文本 |
+
+### 11.2 阻塞点：消息链不符合 OpenAI 协议
+
+`request_meter.py:129-134` 校验：每个 `tool` 消息的 `tool_call_id` 必须对应前一条 assistant 的 `tool_calls`。
+
+实测该用例：
+
+- 首次响应 `finish_reason=stop`，`tool_calls=None`，内容是 "Plan: 1. Retrieve surgical pathology report…"
+- 但 LangGraph 之后仍路由到 `tools`，第二个请求携带了 tool 结果
+- 第二个请求因此被判 `Unmatched OpenAI tool result ID`（`request_rejected`，reason=`unverified_sdk_request`）
+
+即：**assistant 没有声明 tool_calls，却出现了 tool 结果**。这是协议层的非法消息链。llama.cpp 对这种形态宽容，所以未计量的生产运行不会暴露；一旦走计量层就被拦。
+
+配置为 `workflow: planned_react`，plan 节点"规划 + 预执行"，工具由节点侧执行而非模型 tool_calls 声明，是这条链的结构性成因。
+
+### 11.3 预算账（累计）
+
+| 项 | 次数 |
+| --- | --- |
+| 端点探测 | 1 |
+| 第一次运行（14:03:36） | 1 |
+| 第二次运行（14:05:35） | 1 |
+| **累计已用** | **3 / 12** |
+| 剩余 | **9** |
+
+（此前几次运行在准入/计量/embedding 处失败，未产生模型调用。脚本内 meter 每轮从 PREUSED 重置，已记下需改为累计传入。）
+
+### 11.4 两条可选处置
+
+| 方案 | 做法 | 是否改变实验变量 | 成本 |
+| --- | --- | --- | --- |
+| A 改用 `workflow: react` | 模型自己发 tool_calls，消息链天然合规 | **是**，换了宿主工作流 | 单例约 5–9 次 |
+| B 修 `planned_react` 的消息链 | 让 plan 预执行的工具结果以合法 assistant.tool_calls 形式回填 | 否（工程修复） | 需改 graph，风险高于本轮范围 |
+
+我倾向 A 做一次，把"Reflection 在真实模型下能否工作"这件事先回答掉，并明确标注它与 `planned_react` 基线不可直接比较；B 留作后续工程债。
+
+但 A 违反你冻结的"不引入其他实验变量"，所以停在这里等你定。
+
+### 11.5 判定
+
+C2a = `BLOCKED_PROTOCOL`。已用 3/12 次真实调用，剩余 9。

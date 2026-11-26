@@ -18,6 +18,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 CASE = os.environ.get("C2_CASE", "T3-001")
 HARD_CAP = int(os.environ.get("C2_CAP", "12"))
+PREUSED = int(os.environ.get("C2_PREUSED", "1"))   # 端点探测已用 1 次
 MAX_TURNS = int(os.environ.get("C2_MAX_TURNS", "6"))
 RUN_ID = time.strftime("c2a_%Y%m%d_%H%M%S")
 
@@ -28,13 +29,16 @@ class BudgetExhausted(RuntimeError):
     pass
 
 
+from chimera_agent_baseline.reflection_pilot import CallMeter, make_approval  # noqa: E402
+
+
 class CountingModel:
     """包在真实模型外面：计数、落盘、超限即抛。不改变响应内容。"""
 
-    def __init__(self, inner, sink: Path, cap: int):
+    def __init__(self, inner, sink: Path, meter):
         self.inner = inner
         self.sink = sink
-        self.cap = cap
+        self.meter = meter
         self.n = 0
 
     def _tag(self, messages):
@@ -51,8 +55,10 @@ class CountingModel:
 
     def _record(self, kind, messages, resp):
         self.n += 1
-        if self.n > self.cap:
-            raise BudgetExhausted(f"model call #{self.n} exceeds cap {self.cap}")
+        try:
+            self.meter.consume(kind)      # 额度由准入对象持有，不可重置
+        except RuntimeFatal as exc:
+            raise BudgetExhausted(str(exc)) from exc
         content = getattr(resp, "content", str(resp))
         row = {"seq": self.n, "kind": kind,
                "prompt_tail": "\n".join(str(getattr(m, "content", m)) for m in messages)[-3000:],
@@ -83,6 +89,19 @@ class CountingModel:
         return getattr(self.inner, name)
 
 
+def _exact_counter(payload) -> dict:
+    """wire() 要求的回执：input_tokens 为非负整数，fits 为真，且不得改动 payload。
+
+    这里是保守估计（按字符数上界折算），只用于 token 预留；调用次数上限由
+    runtime.max_attempts 在 HTTP 边界强制执行，与 token 估算无关。
+    """
+    import math
+    body = payload.get("messages") or []
+    chars = sum(len(str(m.get("content", ""))) for m in body if isinstance(m, dict))
+    est = max(1, math.ceil(chars / 3.0))
+    return {"input_tokens": est, "fits": True, "estimator": "chars_div_3_upper_bound"}
+
+
 def main() -> int:
     from omegaconf import OmegaConf
 
@@ -103,13 +122,16 @@ def main() -> int:
     cfg.paths.output_dir = str(out)
     cfg.paths.resource_dir = str(HOST / "resources")
     cfg.paths.model_dir = str(HOST / "model")
+    cfg.paths.embedding_model_dir = str(HOST / "resources" / "embedding_model")
     cfg.agent.max_model_turns = MAX_TURNS
+    # 计量完整性前提：SDK 层零重试，一次 invoke == 一次 HTTP POST == 一次额度
+    cfg.model.max_retries = 0
 
     frozen = {
         "run_id": RUN_ID, "case": CASE, "task": 3,
         "structured_refine": True, "reflection_rounds": 1,
         "medical_reviewer": True, "calibration": "frozen_v1",
-        "predictor": "off", "max_model_turns": MAX_TURNS, "hard_cap": HARD_CAP,
+        "predictor": "off", "max_model_turns": MAX_TURNS, "max_retries": 0, "hard_cap": HARD_CAP, "preused": PREUSED, "remaining": HARD_CAP - PREUSED,
         "model": {"provider": str(cfg.model.provider), "id": str(cfg.model.model_id),
                   "base_url": str(cfg.model.base_url)},
         "git": os.popen("git rev-parse HEAD").read().strip(),
@@ -117,19 +139,30 @@ def main() -> int:
     (work / "run_config.json").write_text(json.dumps(frozen, ensure_ascii=False, indent=2))
 
     import chimera_agent_baseline.run as run_mod
-    from chimera_agent_baseline.runtime_audit import PrivateRuntime
+    from chimera_agent_baseline.rag import start_embedding_service
+    from chimera_agent_baseline.runtime_audit import PrivateRuntime, RuntimeFatal
 
-    real = run_mod.load_model(cfg)
-    model = CountingModel(real, calls, HARD_CAP)
+    meter = CallMeter(HARD_CAP, used=PREUSED)
+    approval = make_approval(cfg, experiment="C2a", case_id=CASE, meter=meter)
+    approval.verify_case(CASE, {CASE})
 
-    rt = PrivateRuntime(audit, max_attempts=8, max_reserved_tokens=10 ** 9,
-                        token_counter=lambda payload: 0,
+    rt = PrivateRuntime(audit, max_attempts=meter.remaining, max_reserved_tokens=10 ** 9,
+                        token_counter=_exact_counter,
                         identity={"profile": "c2a", "purpose": "real_validation",
                                   "effective_config": frozen, "sources": {}, "loaded_flags": {}},
                         identity_check=lambda: None)
+    _holder = {}
+    # run.py 的 main() 会起 embedding 服务，直接调 run_agent 需自行补齐，否则
+    # GuidelinesSearch 拿不到 socket，工具报错后消息链会失配。
+    embed_svc = start_embedding_service(cfg.paths.embedding_model_dir)
     status = "ok"
     try:
         with rt.activate():
+            rt.reflection_pilot = approval        # 准入在 runtime 激活后挂载，load_model 时才校验
+            real = run_mod.load_model(cfg)
+            model = CountingModel(real, calls, meter)
+            _holder["model"] = model
+            run_mod.load_model = lambda cfg_: model
             asyncio.run(run_mod.run_agent(cfg))
     except BudgetExhausted as exc:
         status = f"budget_exhausted: {exc}"
@@ -137,8 +170,15 @@ def main() -> int:
         status = f"{type(exc).__name__}: {str(exc)[:200]}"
         traceback.print_exc(limit=2)
 
+    if embed_svc is not None:
+        try:
+            embed_svc.stop()
+        except Exception:  # noqa: BLE001
+            pass
+
     summary = {"run_id": RUN_ID, "case": CASE, "status": status,
-               "model_calls": model.n, "cap": HARD_CAP,
+               "model_calls": _holder["model"].n if "model" in _holder else 0,
+               "cap": HARD_CAP, "meter_used": meter.used, "meter_remaining": meter.remaining,
                "authority": type(getattr(rt, "reflection_authority", None)).__name__,
                "work_dir": str(work)}
     (work / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2))

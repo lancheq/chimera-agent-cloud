@@ -1,6 +1,6 @@
 {
   "config_id": "C2_SINGLE_ROUND_DEV_V1",
-  "status": "BLOCKED_ADMISSION",
+  "status": "BLOCKED_PROTOCOL",
   "authorisation": {
     "cases": 3,
     "hard_cap_35b_calls": 12,
@@ -37,7 +37,14 @@
       "per_case_base": 3,
       "three_cases_base": 9
     },
-    "finding": "真实宿主单例在桩模型下即 7 次调用（plan/agent/form_fill/fact_check 4 + 反射 3）；12 次硬上限最多支撑 1 例，原 3 例×3 次估算未计入宿主基线，属低估"
+    "finding": "真实宿主单例在桩模型下即 7 次调用（plan/agent/form_fill/fact_check 4 + 反射 3）；12 次硬上限最多支撑 1 例，原 3 例×3 次估算未计入宿主基线，属低估",
+    "real_calls_used": 3,
+    "real_calls_remaining": 9,
+    "usage_breakdown": {
+      "endpoint_probe": 1,
+      "run_1": 1,
+      "run_2": 1
+    }
   },
   "cases": [
     {
@@ -120,6 +127,29 @@
       "harness_calls": 0,
       "endpoint_probe_calls": 1,
       "remaining_if_counted": 11
+    },
+    "implemented": {
+      "module": "src/chimera_agent_baseline/reflection_pilot.py",
+      "class": "ReflectionPilotApproval",
+      "checks": [
+        "experiment",
+        "case_id",
+        "loopback endpoint",
+        "model id",
+        "config digest (incl. max_retries=0)",
+        "meter remaining"
+      ],
+      "tests": "tests/test_reflection_pilot.py (8 passed)",
+      "env_bypass": "none"
+    }
+  },
+  "blocker_protocol": {
+    "where": "src/chimera_agent_baseline/models/request_meter.py:129-134",
+    "message": "Unmatched OpenAI tool result ID",
+    "cause": "workflow=planned_react 的 plan 节点侧执行工具，assistant 未声明 tool_calls 却出现 tool 结果；llama.cpp 宽容、计量层严格",
+    "options": {
+      "A": "改用 workflow=react（改变实验变量）",
+      "B": "修 planned_react 消息链（工程改动，风险较高）"
     }
   }
 }

@@ -34,6 +34,13 @@ def load_model(cfg: DictConfig) -> BaseChatModel:
         if getattr(runtime, 'host_smoke', False) or pilot is not None:
             from chimera_agent_baseline.models.request_meter import meter_openai
             return meter_openai(_load_openai(cfg, loopback_only=True))
+        approval = getattr(runtime, 'reflection_pilot', None)
+        if approval is not None:
+            # C2a 受限准入：病例/模型/端点/配置摘要/计量器全部匹配才放行，
+            # 且强制 loopback + SDK 零重试（meter_openai 结构上禁止重试）。
+            from chimera_agent_baseline.models.request_meter import meter_openai
+            approval.verify(cfg, runtime)
+            return meter_openai(_load_openai(cfg, loopback_only=True))
         # G1A only approves synthetic test profiles; tests supply fake models.
         # No production model initialization/download or network is authorized.
         raise RuntimeFatal("Synthetic entry approval cannot load a real model")
