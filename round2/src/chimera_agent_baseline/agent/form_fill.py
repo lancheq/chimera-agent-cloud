@@ -343,7 +343,6 @@ def make_form_fill_node(
                 # --- 补缺必要字段（扁平输出时 wrapper 字段可能缺失或为 None）---
                 # P6: decision 缺失时先 salvage raw_json，失败才走默认值（warning 区分）
                 if strict_output:
-                    from chimera_agent_baseline.agent.reflection_contract import judgment_label
                     if (judgment_label(task, judgment) is None
                             or task in (1, 2) and judgment.get("confidence") is None
                             or len((judgment.get("free_text") or "").strip()) < 40):
@@ -493,7 +492,9 @@ def make_form_fill_node(
                                   task=task, case_id=case_id, error_type=type(error).__name__)
                 batch = ReviewBatch('error')
             if type(batch) is ReviewBatch:
-                consumption_event('reflection_review', {}, asdict(batch), status='synthetic_stub',
+                _review_src = ('synthetic_stub' if type(authority).__name__ == 'SyntheticReview'
+                               else 'production_authority')
+                consumption_event('reflection_review', {}, asdict(batch), status=_review_src,
                                   task=task, case_id=case_id, binding=asdict(subject),
                                   source_record_id='rendered_upfront')
             selection = resolve(context, batch, authority, Dynamic)

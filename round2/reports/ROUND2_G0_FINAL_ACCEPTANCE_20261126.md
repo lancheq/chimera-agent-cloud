@@ -89,3 +89,82 @@
 
 - `src/chimera_agent_baseline/output` 未被 git 跟踪，worktree 中不可导入，`form_fill` 因此无法 import。宿主环境无法从版本库完整重建，这是继 `tests/` 之后第二处同类缺口。
 - `authority.review(context)` 只拿得到 J0 与 upfront，拿不到 ReAct transcript。Critique 审的是判断本身，不是推理轨迹。要审轨迹需给 `Context` 加字段，属契约变更，未动。
+
+---
+
+## 7 生产入口宿主验证（补做，已通过）
+
+用真实 `run_agent` 路径、仅模型调用边界打桩，跑通 T3-001 单例。工具：`tools/host_probe.py`。
+
+### 7.1 探针为什么必须打桩 prefill
+
+`form_fill.py` 用 assistant prefill：先发一个 `{`，再 `raw = "{" + resp_text`。桩若直接返回完整 JSON 就变成 `{{...`，解析必失败。这是前三次失败的真实原因，不是接线问题。
+
+另有两处 schema 约束：T3 的 Dynamic 模型只有 4 个字段（`event` / `months_to_recurrence` / `free_text` / `repeat_test`），`repeat_test` 默认 `None` 但 `validate_judgment` 做 canonical 全等，不显式给出就被判非法；`free_text` 最少 40 字符。
+
+### 7.2 结果
+
+| 路径 | 模型调用 | 反射事件 | 最终 prediction |
+| --- | --- | --- | --- |
+| `CHIMERA_STRUCTURED_REFINE=1` | 7 | 3 | 含新理由，旧理由消失 |
+| `CHIMERA_STRUCTURED_REFINE=0` | 7 | 0 | 保留原理由 |
+
+ON 路径的账本事件（`audit/*/events.jsonl`）：
+
+- `reflection_review` status=`production_authority`
+- `reflection_selection` status=`accepted_candidate`
+- `reflection_formfill_consumed` status=`actual_assignment`，`changed_fields` 指向新理由
+
+即 Producer → Review → Consumer → 最终落盘这条链在真实宿主上被执行过一次，不再是 WIRED / NOT EXERCISED。
+
+### 7.3 宿主验证抓到的两个真实缺陷
+
+**缺陷 1：`judgment_label` UnboundLocalError（致命）**
+`form_fill.py:346` 在 `if strict_output:` 分支里又做了一次 `from ... import judgment_label`。函数内局部导入会让该名字在整个函数作用域内成为局部变量，`strict_output=False` 时第 503 行访问即抛 `UnboundLocalError`。
+
+影响：**任何 `authority is not None` 且 `strict_output=False` 的运行都会崩**。因为生产路径此前从未执行过，这个 bug 一直休眠。已删除冗余局部导入（模块顶层第 52 行本就已导入）。
+
+**缺陷 2：审计标签错误**
+`form_fill.py:496` 把 `reflection_review` 的 status 硬编码成 `synthetic_stub`，生产路径也会被标成合成。已改为按 authority 类型区分 `production_authority` / `synthetic_stub`。
+
+### 7.4 附带：宿主可复现性
+
+worktree 缺两个未跟踪的包，导致 `import form_fill` 直接失败：
+
+- `src/chimera_agent_baseline/output/`：`__init__.py` + `schema.py`（提交契约，无患者数据）
+- `src/chimera_agent_baseline/models/`：`__init__.py` / `openai_compat.py` / `request_meter.py` / `vllm_offline.py`（模型加载与计量，无权重）
+
+已选择性纳入 `refl-g0b`，不触及 `data/`、`resources/`、历史运行产物。`data/` 仍不入库，探针通过 `HOST_REPO` 指向主仓读取。
+
+## 8 C2 预算需要重算（原 12 次上限不成立）
+
+探针在桩模型下即为单例 7 次调用：
+
+| 环节 | 次数 |
+| --- | --- |
+| plan | 1 |
+| ReAct agent | 1（桩模型一次收敛；真实模型需多轮工具调用） |
+| form_fill（prefill J0） | 1 |
+| Critique | 1 |
+| Structured Refine | 1 |
+| Medical Review | 1 |
+| fact_check / 其他后处理 | 1 |
+| **合计** | **7** |
+
+其中反射固定占 3 次，宿主基线 4 次起。真实模型下 ReAct 轮次增加，`cfg.agent.max_model_turns` 上限更高。
+
+结论：**12 次硬上限最多支撑 1 例真实病例（7–10 次），撑不到 3 例。** 原 manifest 的「3 例 × 3 次 = 9」建立在"初始状态可复用且 Reflection 单独计"的假设上，未计入宿主基线调用，属低估。
+
+建议改法（未执行，需批准）：
+
+| 方案 | 例数 | 预估调用 | 说明 |
+| --- | --- | --- | --- |
+| C2a 单例真实 | 1 | 7–10 | 唯一能在 12 次内完成的方案 |
+| C2b 两例真实 | 2 | 14–20 | 超上限，需追加授权 |
+| C2c 三例 | 3 | 21–30 | 原计划，需追加约 20 次 |
+
+## 9 更新后的状态
+
+`INTEGRATION_PASS / REAL_VALIDATION_PENDING`
+
+生产入口已在真实宿主上执行并通过，OFF/ON 双路径均符合预期。C2 仍为 `BLOCKED`，原因已从"接线未验证"变为"预算上限与实际调用链不符"。
