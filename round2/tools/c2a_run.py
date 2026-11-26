@@ -161,6 +161,11 @@ def main() -> int:
     from chimera_agent_baseline.rag import start_embedding_service
     from chimera_agent_baseline.runtime_audit import PrivateRuntime, RuntimeFatal
 
+    from chimera_agent_baseline.run_guard import assert_environment
+    origin = assert_environment(ROOT / "src")
+    (work / "module_origin.json").write_text(
+        json.dumps(origin, ensure_ascii=False, indent=2))
+
     meter = CallMeter(HARD_CAP, used=PREUSED)
     approval = make_approval(cfg, experiment="C2a", case_id=CASE, meter=meter)
     approval.verify_case(CASE, {CASE})

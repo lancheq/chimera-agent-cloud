@@ -441,3 +441,59 @@ LangGraph 消息对象 → 归一化 → request_meter 协议校验 → 计量 �
 | **合计** | **7–8** |
 
 建议把累计上限提到 20，为这一次留出 12 次余量（已用 8 + 12 = 20）。本轮不追加、不启动。
+
+---
+
+## 14 C2a 真实单例运行结果（上限 20，已用 14）
+
+真实 35B 调用：本次 6 次，累计 **14 / 20**，剩余 6。**Reflection 环节仍未进入。**
+
+### 14.1 走到了哪一步
+
+| 阶段 | 结果 |
+| --- | --- |
+| 环境守卫 | 通过（模块来源、哈希、配置摘要一致） |
+| 真实 ReAct 取数 | 成功，模型发出带 id 的工具调用并拿到真实记录 |
+| Form Fill（J0） | **三次尝试全部被 canonical 校验拒绝** |
+| Critique / Refine / Medical | 未执行 |
+| 最终输出 | 未生成 |
+
+### 14.2 三次 J0 的原始输出（未做任何清洗）
+
+| 次数 | event | months | 关键内容 |
+| --- | --- | --- | --- |
+| 1 | 1 | `12`（整数） | "recurrence within 12 months…positive margins or extraprostatic extension" |
+| 2 | 0 | `60`（整数） | "negative margins and no extraprostatic extension…post-operative PSA undetectable" |
+| 3 | 0 | `60`（整数） | "has not yet undergone definitive treatment…recurrence not yet applicable" |
+
+失败原因两类：
+
+1. **重复前导大括号**：`raw` 以 `{{` 开头（`form_fill.py:283-284` 无条件 `raw = "{" + resp_text`，真模型把 prefill 的 `{` 又输出了一遍）→ JSON 解析失败。
+2. **整数未按 float 输出**：`months_to_recurrence` 给出 `12` / `60`，T3 schema 声明 `float`，`validate_judgment` 做 canonical 全等，pydantic 的 int→float 隐式转换被判为 coerced 字段 → 拒绝。
+
+### 14.3 顺带发现的模型行为问题（对研究更关键）
+
+同一病例三次尝试的**临床结论互相矛盾**：一次说 12 个月内复发，两次说无复发、随访 60 个月。第 2 次还断言"切缘阴性、无包膜外侵犯、术后 PSA 不可测"，第 3 次则说"尚未接受根治性治疗"。
+
+这说明 35B 在这个病例上的 J0 **不稳定，且对已取回的事实给出不一致陈述**。即使 schema 问题解决，J0 本身的可信度也需要单独评估——这是 Reflection 之外的问题，但会直接影响 G2 的配对基线。
+
+（受剩余预算限制，未能逐条核对这三次陈述与工具返回记录的对应关系，暂不断言哪一次是虚构。）
+
+### 14.4 两个可修与不可修的区分
+
+| 问题 | 性质 | 处理 | 是否改实验变量 |
+| --- | --- | --- | --- |
+| `{{` 重复前导括号 | 确定性工程缺陷 | 一行修复（前缀已存在则不重复添加） | 否 |
+| `months` 整数 | 模型输出不合规 | 需 prompt 约束，或放宽 canonical 对 int→float 的判定 | **是**（prompt 变更）或**放宽校验**，均需批准 |
+
+### 14.5 停止与预算
+
+按预定止损规则：**不再用剩余 6 次做探索性重跑**。Reflection 一次都没执行，任何关于其医学能力的结论都不成立。
+
+账本：`output/c2_budget_ledger.json` = `{"used": 14, "limit": 20}`，跨进程不可重置。
+
+### 14.6 建议
+
+1. 先修 `{{`（零成本、无变量变更），否则任何真实用例都会在 Form Fill 第一步失败。
+2. `months` 整数问题二选一：在 `_SYSTEM_PROMPT` 里明确"months 必须是带小数点的浮点"，或为 T3 的 `months_to_recurrence` 增加显式的 int→float 标注容差。前者改 prompt，后者改校验强度，都需要你批准。
+3. 上述任一项未解决前，不要再花真实额度——这两条都能用零生成复现（把模型输出喂给 form_fill 的解析函数即可）。

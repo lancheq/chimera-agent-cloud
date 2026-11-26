@@ -1,6 +1,6 @@
 {
   "config_id": "C2_SINGLE_ROUND_DEV_V1",
-  "status": "ZERO_GEN_REGRESSION_PASS_BUDGET_FROZEN",
+  "status": "STOPPED_J0_SCHEMA_INVALID",
   "authorisation": {
     "cases": 3,
     "hard_cap_35b_calls": 12,
@@ -38,13 +38,15 @@
       "three_cases_base": 9
     },
     "finding": "真实宿主单例在桩模型下即 7 次调用（plan/agent/form_fill/fact_check 4 + 反射 3）；12 次硬上限最多支撑 1 例，原 3 例×3 次估算未计入宿主基线，属低估",
-    "real_calls_used": 8,
-    "real_calls_remaining": 4,
+    "real_calls_used": 14,
+    "real_calls_remaining": 6,
     "usage_breakdown": {
       "endpoint_probe": 1,
-      "failed_runs": 7
+      "failed_runs_before_protocol_fix": 7,
+      "final_real_run": 6
     },
-    "one_case_needs": 6
+    "one_case_needs": 6,
+    "cap": 20
   },
   "cases": [
     {
@@ -231,5 +233,62 @@
     "remaining_for_one_case": 12,
     "estimated_calls_per_case": "7-8",
     "approved": false
-  }
+  },
+  "final_real_run": {
+    "run_id": "c2a_20261126_160818",
+    "case": "T3-001",
+    "workflow": "react",
+    "model_calls": 6,
+    "stages_reached": [
+      "guard",
+      "react_evidence",
+      "form_fill"
+    ],
+    "stages_not_reached": [
+      "critique",
+      "structured_refine",
+      "medical_review",
+      "consumer",
+      "calibration",
+      "final_output"
+    ],
+    "j0_attempts": [
+      {
+        "n": 1,
+        "event": 1,
+        "months": "12 (int)",
+        "reject": "double leading brace + int type"
+      },
+      {
+        "n": 2,
+        "event": 0,
+        "months": "60 (int)",
+        "reject": "int type coercion"
+      },
+      {
+        "n": 3,
+        "event": 0,
+        "months": "60 (int)",
+        "reject": "int type coercion"
+      }
+    ],
+    "model_consistency": "三次结论互相矛盾（12 个月复发 vs 无复发 60 个月；已治疗 vs 未治疗）"
+  },
+  "blockers": {
+    "double_brace": {
+      "where": "agent/form_fill.py:283-284",
+      "kind": "deterministic",
+      "fix": "前缀已存在则不重复添加",
+      "needs_approval": false
+    },
+    "int_months": {
+      "kind": "model_output_vs_canonical",
+      "options": [
+        "prompt 约束必须输出浮点（改实验变量）",
+        "为 months_to_recurrence 增加显式 int->float 容差（放宽校验）"
+      ],
+      "needs_approval": true
+    }
+  },
+  "stop_rule_applied": "剩余 6 次冻结，不再探索性重跑；Reflection 未执行，不产生任何医学能力结论"
 }
