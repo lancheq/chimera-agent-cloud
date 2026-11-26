@@ -168,3 +168,60 @@ worktree 缺两个未跟踪的包，导致 `import form_fill` 直接失败：
 `INTEGRATION_PASS / REAL_VALIDATION_PENDING`
 
 生产入口已在真实宿主上执行并通过，OFF/ON 双路径均符合预期。C2 仍为 `BLOCKED`，原因已从"接线未验证"变为"预算上限与实际调用链不符"。
+
+---
+
+## 10 C2a 执行结果：BLOCKED（准入权限）
+
+按批准范围执行 C2a（单例 T3-001，真实 35B，硬上限 12 次）。**未产生任何宿主内模型调用**，在第 0 步被准入检查拦下。
+
+### 10.1 环境就绪情况
+
+| 项 | 状态 |
+| --- | --- |
+| 真实端点 `127.0.0.1:8765` | 存活，模型 `Qwen3.6-35B-A3B-UD-Q4_K_M.gguf` |
+| 进程 | PID 3287478，`llama-server`，双 3090 共约 23 GB |
+| 直连可用性 | 已验证（一次 "reply with OK" 探测返回 OK） |
+| 病例输入 `data/task3/agent_input/T3-001` | 4 个文件齐备 |
+| 宿主路径 | 探针已验证可跑通（OFF/ON 双路径） |
+
+### 10.2 阻塞点
+
+`src/chimera_agent_baseline/models/__init__.py:37-39`：
+
+```python
+# G1A only approves synthetic test profiles; tests supply fake models.
+# No production model initialization/download or network is authorized.
+raise RuntimeFatal("Synthetic entry approval cannot load a real model")
+```
+
+真实模型加载只有两条被批准的入口：
+
+1. **Case Pilot**（`case_pilot.py`）：需要 `/pilot/input`、`/pilot/sockets`、`/pilot/control` 挂载、`host_namespaces.json` 与 `/pilot/backend/count.sock` 计数套接字。**本机无 `/pilot` 目录**，这套准入属于容器化试点部署。
+2. **Host Smoke**（`host_smoke.py`）：只批准一个固定夹具，`NN = {1:'F01', 2:'F05', 3:'F06'}`，且 `inference.py:506` 要求 `adaptive` workflow + v2 profile 才能启用 —— 那是 Adaptive Plan 的实验通道，不属于本轮 Reflection。
+
+没有 env 级旁路（`grep CHIMERA_ALLOW|ALLOW_REAL|real_model` 无结果）。
+
+### 10.3 预算账
+
+| 项 | 次数 |
+| --- | --- |
+| 宿主内模型调用 | **0** |
+| 端点连通性探测（直连，非宿主） | **1** |
+| 剩余可用 | 11（若探测计入 12 次上限） |
+
+探测调用发生在准入拦截之前，用于确认端点存活，不产出任何病例数据。如实计入。
+
+### 10.4 三个可选处置（均需你决定）
+
+| 方案 | 做法 | 代价 | 风险 |
+| --- | --- | --- | --- |
+| A 进试点容器跑 | 在带 `/pilot` 挂载的部署里执行同一脚本 | 部署成本 | 最合规，但脱离当前服务器 |
+| B 授权一个受限真实模型准入 | 新增 case-scoped approval：仅 loopback、仅指定 case、`request_meter` 计量、硬上限 12 | 需改 `models/__init__.py` 一处门禁 | 等于放宽安全门，必须由你显式批准并记录 |
+| C 复用 Host Smoke 的 F06 夹具 | 用 `HostSmokeApproval` 直接调用 `run_agent`，绕过 `inference.py` 的 adaptive 前置 | 低 | 属于把别的实验通道挪用于 Reflection，越界 |
+
+我倾向 B，但**不会自行改动这条门禁**。B 的最小改法是在 `load_model` 里增加一个显式 approval 分支，其校验条件为：`loopback_only`、`case_id` 在白名单、`request_meter` 已挂、上限 12 次；这样就把"放宽"变成"可审计的新准入"，而不是把门打开。
+
+### 10.5 判定
+
+C2a = `BLOCKED_ADMISSION`。工程侧（G0）结论不变：`INTEGRATION_PASS / REAL_VALIDATION_PENDING`，宿主 ON/OFF 已通过桩模型验证，真实模型行为仍未知。

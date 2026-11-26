@@ -1,0 +1,150 @@
+"""C2a：真实 35B 单例 T3 验证，模型调用边界硬计数（上限 12）。
+
+只做三件事：真模型、真 run_agent 路径、全程留痕。不修改任何实验变量，
+除 max_model_turns 为预算保护而下调（记录在 run_config）。
+"""
+import asyncio
+import json
+import os
+import shutil
+import sys
+import time
+import traceback
+from pathlib import Path
+
+ROOT = Path.cwd()
+HOST = Path(os.environ.get("HOST_REPO", "/home/hedongze/CHIMERA-agent"))
+sys.path.insert(0, str(ROOT / "src"))
+
+CASE = os.environ.get("C2_CASE", "T3-001")
+HARD_CAP = int(os.environ.get("C2_CAP", "12"))
+MAX_TURNS = int(os.environ.get("C2_MAX_TURNS", "6"))
+RUN_ID = time.strftime("c2a_%Y%m%d_%H%M%S")
+
+os.environ["CHIMERA_STRUCTURED_REFINE"] = "1"
+
+
+class BudgetExhausted(RuntimeError):
+    pass
+
+
+class CountingModel:
+    """包在真实模型外面：计数、落盘、超限即抛。不改变响应内容。"""
+
+    def __init__(self, inner, sink: Path, cap: int):
+        self.inner = inner
+        self.sink = sink
+        self.cap = cap
+        self.n = 0
+
+    def _tag(self, messages):
+        text = "\n".join(str(getattr(m, "content", m)) for m in messages)
+        if "reviewing a proposed correction" in text:
+            return "medical_review"
+        if "clinical reasoning auditor" in text or "Audit the judgment" in text:
+            return "critique"
+        if "clinical reasoning corrector" in text or "patch set" in text:
+            return "structured_refine"
+        if "form for" in text or "fill out the form" in text:
+            return "form_fill"
+        return "other"
+
+    def _record(self, kind, messages, resp):
+        self.n += 1
+        if self.n > self.cap:
+            raise BudgetExhausted(f"model call #{self.n} exceeds cap {self.cap}")
+        content = getattr(resp, "content", str(resp))
+        row = {"seq": self.n, "kind": kind,
+               "prompt_tail": "\n".join(str(getattr(m, "content", m)) for m in messages)[-3000:],
+               "response": content if isinstance(content, str) else json.dumps(content, ensure_ascii=False)}
+        with open(self.sink, "a") as f:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+    def invoke(self, messages, *a, **kw):
+        kind = self._tag(messages)
+        resp = self.inner.invoke(messages, *a, **kw)
+        self._record(kind, messages, resp)
+        return resp
+
+    async def ainvoke(self, messages, *a, **kw):
+        kind = self._tag(messages)
+        resp = await self.inner.ainvoke(messages, *a, **kw)
+        self._record(kind, messages, resp)
+        return resp
+
+    def bind_tools(self, tools, **kw):
+        self.inner = self.inner.bind_tools(tools, **kw)
+        return self
+
+    def with_structured_output(self, *a, **kw):
+        return self.inner.with_structured_output(*a, **kw)
+
+    def __getattr__(self, name):
+        return getattr(self.inner, name)
+
+
+def main() -> int:
+    from omegaconf import OmegaConf
+
+    cfg = OmegaConf.load(HOST / "configs" / "config.yaml")
+    work = ROOT / "output" / RUN_ID
+    audit = work / "audit"
+    out = work / "out"
+    calls = work / "model_calls.jsonl"
+    work.mkdir(parents=True, exist_ok=True)
+    out.mkdir(parents=True, exist_ok=True)
+
+    data = work / "data"
+    dst = data / "task3" / "agent_input" / CASE
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copytree(HOST / "data" / "task3" / "agent_input" / CASE, dst)
+
+    cfg.paths.data_root = str(data)
+    cfg.paths.output_dir = str(out)
+    cfg.paths.resource_dir = str(HOST / "resources")
+    cfg.paths.model_dir = str(HOST / "model")
+    cfg.agent.max_model_turns = MAX_TURNS
+
+    frozen = {
+        "run_id": RUN_ID, "case": CASE, "task": 3,
+        "structured_refine": True, "reflection_rounds": 1,
+        "medical_reviewer": True, "calibration": "frozen_v1",
+        "predictor": "off", "max_model_turns": MAX_TURNS, "hard_cap": HARD_CAP,
+        "model": {"provider": str(cfg.model.provider), "id": str(cfg.model.model_id),
+                  "base_url": str(cfg.model.base_url)},
+        "git": os.popen("git rev-parse HEAD").read().strip(),
+    }
+    (work / "run_config.json").write_text(json.dumps(frozen, ensure_ascii=False, indent=2))
+
+    import chimera_agent_baseline.run as run_mod
+    from chimera_agent_baseline.runtime_audit import PrivateRuntime
+
+    real = run_mod.load_model(cfg)
+    model = CountingModel(real, calls, HARD_CAP)
+
+    rt = PrivateRuntime(audit, max_attempts=8, max_reserved_tokens=10 ** 9,
+                        token_counter=lambda payload: 0,
+                        identity={"profile": "c2a", "purpose": "real_validation",
+                                  "effective_config": frozen, "sources": {}, "loaded_flags": {}},
+                        identity_check=lambda: None)
+    status = "ok"
+    try:
+        with rt.activate():
+            asyncio.run(run_mod.run_agent(cfg))
+    except BudgetExhausted as exc:
+        status = f"budget_exhausted: {exc}"
+    except BaseException as exc:      # noqa: BLE001
+        status = f"{type(exc).__name__}: {str(exc)[:200]}"
+        traceback.print_exc(limit=2)
+
+    summary = {"run_id": RUN_ID, "case": CASE, "status": status,
+               "model_calls": model.n, "cap": HARD_CAP,
+               "authority": type(getattr(rt, "reflection_authority", None)).__name__,
+               "work_dir": str(work)}
+    (work / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2))
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

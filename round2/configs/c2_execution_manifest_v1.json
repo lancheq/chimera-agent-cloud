@@ -1,6 +1,6 @@
 {
   "config_id": "C2_SINGLE_ROUND_DEV_V1",
-  "status": "BLOCKED_BUDGET",
+  "status": "BLOCKED_ADMISSION",
   "authorisation": {
     "cases": 3,
     "hard_cap_35b_calls": 12,
@@ -107,5 +107,19 @@
     "status": "PASS",
     "off_path": "no reflection events, original rationale kept",
     "on_path": "reflection_selection=accepted_candidate, formfill_consumed=actual_assignment"
+  },
+  "admission": {
+    "blocked_by": "src/chimera_agent_baseline/models/__init__.py:37-39",
+    "message": "Synthetic entry approval cannot load a real model",
+    "approved_paths": {
+      "case_pilot": "requires /pilot/{input,sockets,control} mounts + count.sock; absent on host",
+      "host_smoke": "requires adaptive workflow (inference.py:506) + fixed F06 fixture; not this experiment"
+    },
+    "env_bypass": "none",
+    "budget_used": {
+      "harness_calls": 0,
+      "endpoint_probe_calls": 1,
+      "remaining_if_counted": 11
+    }
   }
 }
